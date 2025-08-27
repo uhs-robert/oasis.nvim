@@ -1,341 +1,247 @@
 -- lua/oasis/palette.lua
---
--- local melange = {
---  -- stylua: ignore
--- return {
---   a = {
---     bg      = "#292522",
---     float   = "#34302C",
---     sel     = "#403A36",
---     ui      = "#867462",
---     com     = "#C1A78E",
---     fg      = "#ECE1D7",
---   },
---   b = {
---     red     = "#D47766",
---     yellow  = "#EBC06D",
---     green   = "#85B695",
---     cyan    = "#89B3B6",
---     blue    = "#A3A9CE",
---     magenta = "#CF9BC2",
---   },
---   c = {
---     red     = "#BD8183",
---     yellow  = "#E49B5D",
---     green   = "#78997A",
---     cyan    = "#7B9695",
---     blue    = "#7F91B2",
---     magenta = "#B380B0",
---   },
---   d = {
---     red     = "#7D2A2F",
---     yellow  = "#8B7449",
---     green   = "#233524",
---     cyan    = "#253333",
---     blue    = "#273142",
---     magenta = "#422741",
---   },
--- }
--- }
---
---
--- khakiOrange1 = "#E3963E", -- sandstone orange (rich ochre, already in your theme)
--- khakiOrange2 = "#F5B041", -- golden orange (sunlit, vibrant but not harsh)
--- khakiOrange3 = "#FF8C42", -- burnt amber (stronger, desert sunset orange)
--- khakiOrange4 = "#D2691E", -- sienna orange (earthy, grounded)
--- khakiOrange5 = "#CD853F", -- peru (classic warm orange-brown)
 
-local colors = {
-	diag = {
-		error = {
-			fg = "#FF0000",
-			bg = "#322639",
-		},
-		warn = {
-			fg = "#eeee00",
-			bg = "#38343d",
-		},
-		info = {
-			fg = "#75A0FF",
-			bg = "#203346",
-		},
-		hint = {
-			fg = "#62aba0",
-			bg = "#273644",
-		},
-		ok = {
-			fg = "#00FF7F",
-			bg = "#2f4f4f",
-		},
+-- Terminal
+local terminal = {
+	color0 = "#000000",
+	color8 = "#514742",
+
+	color1 = "#CD5C5C",
+	color9 = "#FFA0A0 ",
+
+	color2 = "#35B56E",
+	color10 = "#6BBF59",
+
+	color3 = "#F0E68C",
+	color11 = "#FF9F41 ",
+
+	color4 = "#87CEEB",
+	color12 = "#48B4E0",
+
+	color5 = "#B499FF",
+	color13 = "#9F7FFF ",
+
+	color6 = "#1CA1FF",
+	color14 = "#8FD1C7",
+
+	color7 = "#F6F0E1",
+	color15 = "#F2E9E4",
+}
+
+-- Visual BG
+local visual = {
+	red = "#532E2E",
+	brown = "#2d251f",
+	orange = "#5A3824",
+	yellow = "#4D4528",
+	green = "#1F3A2D",
+	teal = "#2B4A46",
+	blue = "#335668",
+	indigo = "#3E2F4A",
+	violet = "#50325A",
+}
+
+-- Diagnoistics
+local diag = {
+	error = {
+		fg = "#FF0000",
+		bg = "#322639",
 	},
-	white = "#ffffff",
-	black = "#000000",
-	slategrey = "#708090",
-	grey20 = "#333333",
-	grey30 = "#4D4D4D",
-	grey50 = "#7F7F7F",
+	warn = {
+		fg = "#eeee00",
+		bg = "#38343d",
+	},
+	info = {
+		fg = "#75A0FF",
+		bg = "#203346",
+	},
+	hint = {
+		fg = "#62aba0",
+		bg = "#273644",
+	},
+	ok = {
+		fg = "#00FF7F",
+		bg = "#2f4f4f",
+	},
+}
 
-	moss = "#bfcc9b",
-	moss2 = "#809867",
-	moss3 = "#406533",
-	moss4 = "#003100",
+-- Full palette
+local colors = {
+	terminal = terminal,
+	visual = visual,
+	diag = diag,
 
-	softgreen = "#c8f08c",
+	-- Darks (Backgrounds)
+	black = {
+		charcoal = "#111111",
 
-	cactus = "#9ba367",
-	cactus2 = "#30bc73",
-	cactus3 = "#169c43",
-	cactus4 = "#536e2b",
-	cactus5 = "#284608",
-	cactus6 = "#1b340d",
+		desertCore = "#333333",
+		desertMantle = "#4D4D4D",
+		desertCrust = "#2F2F2F",
+		desertSurface = "#666666",
 
-	catusNew1 = "#60a44f",
-	catusNew2 = "#2a8e48",
-	catusNew3 = "#35b56e",
-	catusNew4 = "#5ee285",
-	catusNew5 = "#398825",
+		abyssCore = "#000000",
+		abyssMantle = "#080808",
+		abyssCrust = "#1C1612",
+		abyssSurface = "#1A1A1A",
 
-copperDust        = "#B87333", -- metallic copper, desert mineral
-ironOxide         = "#B7410E", -- rusty soil, strong and earthy
-sandstoneOrange   = "#E3963E", -- warm ochre, canyon rock
-clayRose          = "#C97E6E", -- clay with red tint
-adobeBrick        = "#A0522D", -- classic adobe wall
+		nightCore = "#0D0D1A",
+		nightMantle = "#06060E",
+		nightCrust = "#11111E",
+		nightSurface = "#262633",
 
-terraCotta        = "#E2725B", -- terracotta pottery, vibrant clay
-burntSienna       = "#E97451", -- sun-baked sienna, warm mineral
-desertRust        = "#AF593E", -- oxidized iron, muted rust
-mesaClay          = "#CC7357", -- mesa cliff clay, reddish
-canyonSoil        = "#A5542F", -- canyon floor soil
+		solCore = "#3A1E1A",
+		solMantle = "#4A2823",
+		solCrust = "#42221E",
+		solSurface = "#56312C",
 
-sunsetOchre       = "#D2691E", -- strong ochre, orange-brown
-puebloClay        = "#D99058", -- pueblo plaster clay, softer tone
-aridClaystone     = "#BC6C43", -- muted claystone, earthy
-canyonAmber       = "#CD7F32", -- amber-brown, mineral rich
-bakedEarth        = "#C65D3E", -- parched earth, reddish brown
+		canyonCore = "#3B2207",
+		canyonMantle = "#512D0F",
+		canyonCrust = "#331B06",
+		canyonSurface = "#754215",
 
-sierraBrown       = "#8B4513", -- saddle brown, petrified wood
-dustyUmber        = "#8E5B3D", -- raw umber, muted earthy
-cinderTan         = "#B86B4B", -- volcanic cinder tan
-earthenware       = "#9C4A2F", -- pottery clay red-brown
-rustClay          = "#A94F2C", -- deep rusted clay
+		duneCore = "#443E34",
+		duneMantle = "#50483E",
+		duneCrust = "#3A342B",
+		duneSurface = "#62594D",
 
--- punctuation = hsl("#B8AFA1"), -- sandstone dust (muted tan-grey)
--- punctuation = hsl("#A89F94"), -- canyon silt (darker grey-beige, still neutral)
--- punctuation = hsl("#CCC5B9"), -- pale adobe dust (very light, chalky)
--- punctuation = hsl("#D6CFCB"), -- desert dust (softest, airy neutral)
+		mirageCore = "#18252A",
+		mirageMantle = "#22343A",
+		mirageCrust = "#192b2e",
+		mirageSurface = "#2A3F46",
 
-	twilightViolet = "#B499FF", -- lighter, glowing vibe
-	desertOrchid = "#CC99FF", -- clear medium-bright violet
-	sunlitAmethyst = "#D8B4F8", -- soft lavender, airy
-	pricklyPearBlossom = "#BC8FEE", -- lively but grounded
-	paleDesertBloom = "#E6C2FF", -- very light pastel violet
-	mesaLilac = "#A788F7", -- slightly deeper, duskier violet
-	canyonHeather = "#AD7FE4", -- muted but still vibrant, dusk bloom
+		lagoonCore = "#101825",
+		lagoonMantle = "#1A283F",
+		lagoonCrust = "#0F1522",
+		lagoonSurface = "#22385C",
 
-	sageBloom = "#D1B2FF", -- soft pastel violet, like sage in bloom
-	desertLilac = "#C8A2C8", -- classic lilac, airy, floral
-	mesaViolet = "#B57EDC", -- medium lavender, slightly warmer
-	twilightBloom = "#D6A9F8", -- lavender-pink, glowing dusk flower
-	canyonLavender = "#E0B0FF", -- pale lavender, high desert bloom
+		twilightCore = "#221B2F",
+		twilightMantle = "#2B243B",
+		twilightCrust = "#282037",
+		twilightSurface = "#352D47",
+	},
 
-	desertIndigo = "#7B68EE", -- vivid indigo, lighter than deep navy
-	canyonIndigo = "#6F42C1", -- rich canyon shadow indigo
-	horizonIndigo = "#8A2BE2", -- blue-violet glow, energetic but readable
-	nightIndigo = "#7966FF", -- brightened indigo, pops on dark bg
-	starlitIndigo = "#9F7FFF", -- softer indigo-lavender, airy desert night
-	mesaIndigo = "#5D54A4", -- muted dusk indigo, grounded and earthy
+	-- Lights (Foregrounds)
+	white = {
+		ivorysand = "#F6F0E1",
+		dunesand = "#F5E6DC",
+		moonstone = "#D0D0E0",
+		moonpearl = "#EAE6F4",
+		moondust = "#E0E0E0",
+		moonash = "#E2E6E5",
+		duneveil = "#F8E7D3",
+	},
 
-	warningDesertBloom = "#D946EF", -- neon cactus bloom violet (bright, floral, desert wildflower)
-	warningPricklyNeon = "#C724B1", -- magenta-violet, prickly pear flower intensity
-	warningTwilightNeon = "#9D00FF", -- electric indigo, twilight desert horizon
-	warningStarglow = "#B026FF", -- glowing violet-indigo, feels like desert night sky
-	warningMesaGlow = "#A23BEC", -- neon lilac-indigo, luminous canyon dusk
+	grey = {
+		twilight = "#7A7A99",
+		darktwilight = "#7b6f90",
+		palemoon = "#A3A3BB",
+		duskslate = "#4A4A66",
+		duskash = "#6F667C",
+		dustcloud = "#555B66",
+		duskbasalt = "#5A5A5A",
+		stone = "#808080",
+		dusklilac = "#9D92AA",
+		ivorysilver = "#A8B3B3",
+		lightgrey = "#BCBCB8",
+	},
 
-functionBuiltin1 = "#FF7A1C", -- molten copper (brighter, more saturated orange)
-functionBuiltin2 = "#FF6F3C", -- desert ember (leans red-orange, stronger than func)
-functionBuiltin3 = "#FF8520", -- solar flare (bold sunset orange, clear pop)
-functionBuiltin4 = "#E56717", -- sienna flame (earthy but still vibrant)
-functionBuiltin5 = "#FF5E0E", -- lava orange (aggressive, borders on danger but not red)
+	-- Neutrals (Foregrounds/Backgrounds/Neutrals)
+	brown = {
+		dryriverbed = "#9E9584",
+		bonedryriverbed = "#938976",
+		driftwood = "#8b7765",
+		lightdriftwood = "#96816e",
+		wood = "#a59383",
+		canyonsoil = "#7C6A5B",
+		canyonshadow = "#514742",
+		umber = "#2E2620",
+		drybone = "#C5C0B3",
+		charredClay = "#6A5247",
+		clay = "#BDA896",
+		paleclay = "#DDC8B4",
+		fadedclay = "#D5C2B2",
+		puebloclay = "#E0C4A8",
+		darkpuebloclay = "#d8b592",
+		dustysand = "#C6BFAD",
+		mud = "#857C70",
+	},
 
-desertRose        = "#FF6EB4", -- vivid hot pink, iconic desert rose bloom
-desertRose2       = "#FF69B4", -- saturated blossom pink
-cactusRose        = "#FF77FF", -- bright pink-violet, floral pop
-sunsetPetal       = "#FF85C1", -- warm pink glow, late sunset
-paleRoseQuartz    = "#FF99CC", -- soft pastel pink
+	-- Primary Colors
+	red = {
+		indianred = "#CD5C5c",
+		heatwave = "#E68A8A",
+		deepheatwave = "#e17070",
+		desertrose = "#ffa0a0",
+		deepdesertrose = "#ff8080",
+		brick = "#A23B3B",
+	},
 
-sandstoneBlush    = "#FFB6C1", -- muted light pink, desert stone reflection
-ghostFlower       = "#FFCCE5", -- pale pastel, ghost flower bloom
-adobeBlush        = "#F19CBB", -- earthy pink, adobe clay tone
-hibiscusFire      = "#E75480", -- magenta-pink, hibiscus in desert heat
-dustyPrimrose     = "#DB7093", -- muted violet-pink, faded desert bloom
+	orange = {
+		sun = "#F5A72C",
+		deepsun = "#f49f15",
+		lightsunset = "#ffa852",
+		sunset = "#FF9F41",
+		lightdawn = "#f9c97b",
+		dawn = "#F8C471",
+		lightamber = "#e69e4c",
+		amber = "#E3963E",
+	},
 
-wildOrchid        = "#EE82EE", -- bright violet, orchid bloom
-canyonOrchid      = "#DA70D6", -- medium orchid, canyon flora
-amethystSpire     = "#BA55D3", -- bold violet, crystal-like
-claretBloom       = "#C154C1", -- magenta-violet, rich bloom
-neonThistle       = "#D36CFF", -- glowing lilac, electric desert bloom
+	yellow = {
+		gold = "#FFD700",
+		khaki = "#F0E68C",
+		khaki2 = "#ede173",
+		dune = "#D4A017",
+		wheat = "#FFD87C",
+		moonlitsand = "#eadd61",
+	},
 
-sageLavender      = "#E6A9EC", -- pastel violet-lavender, airy
-plumShadow        = "#DDA0DD", -- soft violet-pink, dusk plum
-cactusFlower      = "#CFA7FF", -- pastel violet-pink, cactus flower
-pearBlossom       = "#BC8FEE", -- vibrant lilac, prickly pear bloom
+	lime = {},
 
-punctuation1 = "#D6CFCB", -- desert dust (lightest, almost invisible)
-punctuation2 = "#CCC5B9", -- pale adobe dust (airy)
-punctuation3 = "#C2BEB3", -- desert ash (your current, balanced)
-punctuation4 = "#B0A99A", -- canyon stone (a touch darker)
-punctuation5 = "#9E9584", -- dry riverbed (darkest I'd go without clutter)
+	green = {
+		cactus = "#30bc73",
+		springcactus = "#34cb7d",
+		moss = "#6BBF59",
+		springmoss = "#8dcd7e",
+		aloe = "#A7D3A9",
+		lightaloe = "#aed6b0",
+		mutedaloe = "#739675",
+		oasis = "#9CEB87",
+		darkoasis = "#94e97c",
+	},
 
-khaki01_paleThatch     = "#FAFAD2", -- very pale golden straw
-khaki02_goldenSteppe   = "#FFF68F", -- light golden khaki (khaki1)
-khaki03_canyonDust     = "#EEE8AA", -- pale sandy khaki
-khaki04_sunlitSand     = "#FFD87C", -- bright golden sand
-khaki05_bleachedWheat  = "#F5DEB3", -- wheat-like soft khaki
+	teal = {
+		sky = "#019992",
+		agave = "#8FD1C7",
+		lightagave = "#96d4cb",
+		deepagave = "#3b9184",
+	},
 
-khaki06_duneSand       = "#F0E68C", -- classic khaki
-khaki07_mesaGold       = "#DAA520", -- goldenrod khaki
-khaki08_puebloClay     = "#E0C068", -- clay-gold khaki
-khaki09_sageDust       = "#D8C378", -- dusty sage-gold
-khaki10_dryGrass       = "#D6C38B", -- pale golden grass
+	cyan = {},
 
-khaki11_sunbakedOchre  = "#D2B48C", -- tan/ochre khaki
-khaki12_adobeBeige     = "#DECBA4", -- sandy beige
-khaki13_sagebrushTan   = "#C2B280", -- muted sage khaki
-khaki14_aridSteppe     = "#C5C599", -- muted pale olive khaki
-khaki15_sandstoneLight = "#EEE685", -- khaki2 (light stone khaki)
+	blue = {
+		lunartide = "#4680a4",
+		lunarShade = "#2c5168",
+		azure = "#1CA1FF",
+		lightazure = "#2ea8ff",
+		deepazure = "#0597ff",
+		skyblue = "#87CEEB",
+		lightskyblue = "#92d3ed",
+		darkskyblue = "#6fc5e7",
+		darkerskyblue = "#378ba4",
+		horizon = "#4AC8FF",
+		lighthorizon = "#5cceff",
+		deephorizon = "#33c2ff",
+	},
 
-khaki16_sandstoneDeep  = "#CDC673", -- khaki3 (darker stone khaki)
-khaki17_desertOlive    = "#8B864E", -- khaki4 (olive khaki)
-khaki18_sunBleachedRock= "#BDB76B", -- darkkhaki
-khaki19_coyoteTan      = "#C3B091", -- earthy tan
-khaki20_mesaShadow     = "#7A6A4F", -- deep olive-brown khaki
+	indigo = {
+		cactusflower = "#CFA7FF",
+		lightcactusflower = "#d2adff",
+		darkcactusflower = "#bc85ff",
+		moonlitflower = "#c799ff",
+	},
 
-
-	skyBlue = "#87CEEB",
-	skyDesertBlue = "#56c1d8",
-	skyDarkCyan = "#4e93b4",
-	-- skyAqua="#019992",
-	skyNight = "#003030",
-  skyBlueDark = "#36525e",
-
-	skyYellow = "#ffc929",
-	skyOrange = "#f9a159",
-	skyOrangeRed = "#cc7025",
-	skyOrangeBrown = "#9f561a",
-
-	skyMauve = "#CAB8FF", -- hazy mauve sky at dusk
-	skyRose = "#F4A6C9", -- sunset rose tint
-	skyAmber = "#FFBF69", -- amber horizon
-
-	skyPink = "#ec5f4c",
-	skyRed = "#c91f26",
-
-	skyDusk = "#614e66",
-	skyTwilight = "#B499FF",
-	skyTeal = "#b6d7bb",
-	skyAqua = "#62aba0",
-	skyCyan = "#2b8f91",
-
-	sunYellow = "#f7dc6f",
-	sunHotYellow = "#f9fb07",
-	sunDarkYellow = "#cda214",
-	sunOrange = "#f5b041",
-	sunHotOrange = "#f6540d",
-	sunDarkOrange = "#cd4514",
-	sunRed = "#f06e6e",
-	sunHotRed = "#a51515",
-	sunDarkRed = "#8c141a",
-	sunPurple = "#6a4477",
-	sunHotPurple = "#b22e7e",
-	sunDarkPurple = "#8c1456",
-
-
-sertGreen01 = "#D4E157", -- bright lime (desert bloom lime)
-sertGreen02 = "#C0CA33", -- cactus sprout (yellow-green, earthy)
-sertGreen03 = "#A3C244", -- sage pad (balanced yellow-green)
-sertGreen04 = "#8BC34A", -- prickly pear leaf (fresh)
-sertGreen05 = "#7CB342", -- agave green (deeper desert plant)
-
-sertGreen06 = "#AED581", -- soft cactus (muted pastel yellow-green)
-sertGreen07 = "#9CCC65", -- palo verde (vivid plant tone)
-sertGreen08 = "#8BC671", -- desert aloe (sage-leaning)
-sertGreen09 = "#7FAE42", -- yucca pad (darker cactus leaf)
-sertGreen10 = "#689F38", -- ocotillo stem (deep earthy green)
-
-sertGreen11 = "#CDDC39", -- sunlit lime (very bright, high pop)
-sertGreen12 = "#C5E17A", -- pale bloom (soft, light green-yellow)
-sertGreen13 = "#B2EB50", -- new growth (lively pastel lime)
-sertGreen14 = "#A9DF4C", -- tender cactus (muted chartreuse)
-sertGreen15 = "#99CC32", -- desert sage bright (classic yellowgreen)
-
-sertGreen16 = "#80CC28", -- desert mesquite (intense lime green)
-sertGreen17 = "#76B947", -- prickly pear fresh (rich green-yellow)
-sertGreen18 = "#6FAE3D", -- agave stalk (mid-dark)
-sertGreen19 = "#5D8C2B", -- desert olive (earthy dark yellow-green)
-sertGreen20 = "#4F772D", -- deep cactus shade (structural, muted)
-
-	-- ⚠️ Warning (replace yellow)
-	cactusBloom = "#D946EF", -- neon cactus bloom violet
-
-	-- ❗ Risky (replace orange)
-	riskyViolet = "#C724B1", -- magenta-violet, prickly pear bloom
-	riskyTwilight = "#B499FF", -- twilight violet (lighter, glowing)
-
-	-- 🔥 Danger (replace red)
-	dangerIndigo = "#9D00FF", -- electric indigo, desert twilight
-	dangerStarglow = "#B026FF", -- glowing indigo-violet, night sky
-
-
-comment = "#8B7765",   -- desert parchment (lighter, readable)
-nontext = "#514742",   -- canyon shadow (darker, subdued)
-
-
-	nightSand = "#f2e9e4",
-	nightSand2 = "#c9ada7",
-	nightSand3 = "#9a8c98",
-
-	lightSand = "#f6f0e1",
-	lightSand2 = "#f6edd2",
-	lightSand3 = "#f2e9e4",
-
-	sand = "#ffdcb4",
-	sand2 = "#dfc8a2",
-	sand3 = "#f8c471",
-  desertSand = "#edc9af",
-
-	darkSand = "#7C6A5B",
-	darkSand2 = "#6B5B56",
-	brown = "#e2a754",
-	red = "#ff7f59",
-	indianred = "#cd5c5c",
-	indianpink = "#ffa0a0",
-	gold = "#ffd700",
-	khaki = "#f0e68c",
-	khakireverse = "#8c96f0",
-	khaki1 = "#fff68f",
-	khaki2 = "#eee685",
-	khaki3 = "#cdc673",
-	khaki4 = "#8b864e",
-	goldenrod = "#daa520",
-	seagreen = "#2E8B57",
-	springgreen = "#00FF7F",
-	yellowgreen = "#9ACD32",
-	darkgreen = "#006400",
-	lightblue = "#ADD8E6",
-	olivedrab = "#6B8E23",
-	salmon = "#FA8072",
-	orangered = "#FF4500",
-	darkred = "#8B0000",
-	navajowhite = "#FFDEAD",
-	darkkhaki = "#BDB76B",
-	palegreen = "#98FB98",
-	wheat = "#F5DEB3",
-	peru = "#CD853F",
-	tan = "#D2B48C",
-	yellow2 = "#EEEE00",
+	violet = {},
 }
 
 return colors
-
-
-
