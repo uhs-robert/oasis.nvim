@@ -1,41 +1,61 @@
 -- shipwright_build.lua
+-- Generic template for exporting Oasis colorscheme variants using Shipwright
+-- This file serves as a template and reference for manual exports
+-- For automated bulk exports, use _exported_themes/export_all.lua instead
+
 local lushwright = require("shipwright.transform.lush")
 
--- Theme
-local colorscheme = require("lush_theme.oasis")
+-- Configuration
+local PALETTE_NAME = "oasis_midnight"  -- Change this to the desired palette
+local OUTPUT_FORMAT = "lua"           -- "lua" or "vim"
+local OUTPUT_FILENAME = "oasis-midnight" -- Output filename (without extension)
 
--- NEOVIM
-run(
-	colorscheme,
-	-- generate lua code
-	lushwright.to_lua,
-	-- write the lua code into our destination.
-	-- you must specify open and close markers yourself to account
-	-- for differing comment styles, patchwrite isn't limited to lua files.
-	{ patchwrite, "colors/oasis-midnight.lua", "-- PATCH_OPEN", "-- PATCH_CLOSE" } --TODO: Enter file name
-)
+-- Helper function to build colorscheme with specific palette
+local function build_colorscheme(palette_name)
+  -- Load the palette
+  local ok, palette = pcall(require, "oasis.color_palettes." .. palette_name)
+  if not ok then
+    error(('Palette "%s" not found: %s'):format(palette_name, palette))
+  end
+  
+  -- Load theme generator and build colorscheme
+  local theme_generator = require("oasis.theme_generator")
+  return theme_generator(palette)
+end
 
---VIM SCRIPT
--- run(
--- 	colorscheme,
--- 	lushwright.to_vimscript,
---
--- 	-- we can pass the vimscript through a vim compatible transform if we want.
--- 	-- note: this strips blending
--- 	-- lushwright.vim_compatible_vimscript,
---
--- 	-- the vimscript commands alone are generally not enough for a colorscheme, we
--- 	-- will need to append a few housekeeping lines first.
--- 	--
--- 	-- note how we are passing arguments to append by wrapping the transform in a table.
--- 	-- {transform 1 2 3} ends up as transform(last_pipe_value, 1, 2, 3)
--- 	--
--- 	-- append() accepts a table of values, or one value, so this call ends up being:
--- 	-- append(last_pipe_value, {"set...",  "let..."})
--- 	{ append, { "set background=dark", 'let g:colors_name="oasis"' } }, -- TODO: Enter name
---
--- 	-- now we are ready to write our colors file. note: there is no reason this has
--- 	-- to be written to the relative "colors" dir, you could write the file to an
--- 	-- entirely different vim plugin.
--- 	{ overwrite, "colors/colorscheme.vim" }
--- )
+-- Build the colorscheme
+local colorscheme = build_colorscheme(PALETTE_NAME)
+
+-- Export based on format
+if OUTPUT_FORMAT == "lua" then
+  -- NEOVIM LUA EXPORT
+  run(
+    colorscheme,
+    -- generate lua code
+    lushwright.to_lua,
+    -- write the lua code into our destination
+    { patchwrite, ("colors/%s.lua"):format(OUTPUT_FILENAME), "-- PATCH_OPEN", "-- PATCH_CLOSE" }
+  )
+  
+elseif OUTPUT_FORMAT == "vim" then
+  -- VIM SCRIPT EXPORT
+  run(
+    colorscheme,
+    lushwright.to_vimscript,
+    
+    -- append housekeeping lines for vimscript colorschemes
+    { append, { 
+      "set background=dark", 
+      ('let g:colors_name="%s"'):format(OUTPUT_FILENAME)
+    }},
+    
+    -- write to colors directory
+    { overwrite, ("colors/%s.vim"):format(OUTPUT_FILENAME) }
+  )
+  
+else
+  error(("Unsupported format: %s"):format(OUTPUT_FORMAT))
+end
+
+print(("Exported %s palette as %s to colors/%s.%s"):format(
+  PALETTE_NAME, OUTPUT_FORMAT, OUTPUT_FILENAME, OUTPUT_FORMAT))

@@ -1,4 +1,4 @@
--- lua/oasis/color_palettes/oasis_mirage.lua
+-- lua/oasis/color_palettes/oasis_sol.lua
 local lush = require("lush")
 local hsl = lush.hsl
 local p = require("oasis.palette")
@@ -7,23 +7,22 @@ local p = require("oasis.palette")
 local ui = {
 	-- Backgrounds
 	bg = {
-		core = hsl(p.black.mirageCore),
-		mantle = hsl(p.black.mirageMantle),
-		crust = hsl(p.black.mirageCrust),
-		surface = hsl(p.black.mirageSurface),
-		-- gutter = hsl(p.black.mirageSurface),
+		core = hsl(p.black.solCore),
+		mantle = hsl(p.black.solMantle),
+		crust = hsl(p.black.solCrust),
+		surface = hsl(p.black.solSurface),
 	},
 	-- Foregrounds
 	fg = {
-		core = hsl(p.white.moonash),
-		muted = hsl(p.grey.ivorysilver),
-		dim = hsl(p.grey.dustcloud),
+		core = hsl(p.white.dunesand),
+		muted = hsl(p.brown.fadedclay),
+		dim = hsl(p.brown.charredClay),
 	},
 	-- General colors
 	theme = {
-		primary = hsl(p.teal.sky),
+		primary = hsl(p.red.indianred),
 		secondary = hsl(p.orange.sunset),
-		accent = hsl(p.indigo.darkcactusflower),
+		accent = hsl(p.blue.horizon),
 	},
 }
 
@@ -36,29 +35,29 @@ local c = {
 	-- Syntax
 	syntax = {
 		-- Cold: (Data)
-		parameter = hsl(p.indigo.darkcactusflower), -- (paramaters) [UNIQUE]
+		parameter = hsl(p.indigo.lightcactusflower), -- (paramaters) [UNIQUE]
 		identifier = hsl(p.blue.skyblue), -- (property identifiers)
-		type = hsl(p.blue.horizon), -- (type definitions)
+		type = hsl(p.blue.lighthorizon), -- (type definitions)
 		builtinVar = hsl(p.blue.lightazure), -- (this, document, window, etc)
 		string = hsl(p.green.springcactus), -- (strings)
-		regex = hsl(p.green.darkoasis), -- (reg ex string)
+		regex = hsl(p.green.oasis), -- (reg ex string)
 		builtinConst = hsl(p.green.lightaloe), -- (e.g. null, undefined, Infinity, etc)
 		constant = hsl(p.teal.lightagave), -- (constant: number, float, boolean, or const not string/character)
 
 		-- Warm: (Control / Flow)
 		func = hsl(p.orange.dawn), -- [inverse of identifier]
-		builtinFunc = hsl(p.orange.sun), -- (eg. parseInst, Array, Object etc)
+		builtinFunc = hsl(p.orange.deepsun), -- (eg. parseInst, Array, Object etc)
 		statement = hsl(p.yellow.khaki2), -- (primary p, general statement, conditonal, repeat, label )
 		exception = hsl(p.red.indianred), -- (try/catch, return)
-		keyword = hsl(p.orange.amber), -- (general catch all)
-		special = hsl(p.orange.sunset), -- (other catch all)
-		operator = hsl(p.red.deepdesertrose), -- (operators)
-		punctuation = hsl(p.red.deepheatwave), -- (punctuation)
+		keyword = hsl(p.orange.lightamber), -- (general catch all)
+		special = hsl(p.orange.lightsunset), -- (other catch all)
+		operator = hsl(p.red.desertrose), -- (operators)
+		punctuation = hsl(p.red.heatwave), -- (punctuation)
 		preproc = hsl(p.brown.darkpuebloclay), -- (imports)
 
 		-- Neutral: (Connections / Info)
-		bracket = hsl(p.brown.bonedryriverbed), -- (bracket punctuation)
-		comment = hsl(p.blue.darkerskyblue), -- (comments)
+		bracket = hsl(p.brown.puebloclay), -- (bracket punctuation)
+		comment = hsl(p.brown.driftwood), -- (comments)
 	},
 
 	-- Diff
@@ -70,8 +69,8 @@ local c = {
 
 	-- UI
 	ui = {
-		match = hsl(p.yellow.khaki),
-		visual = { bg = hsl(p.visual.teal), fg = "none" },
+		match = hsl(p.orange.deepsun), -- gold
+		visual = { bg = hsl(p.visual.orange), fg = "none" },
 		search = { bg = hsl(p.teal.sky), fg = ui.fg.core },
 		curSearch = { bg = hsl(p.orange.sun), fg = ui.bg.core },
 		dir = hsl(p.blue.skyblue),
