@@ -40,7 +40,7 @@ local c = {
 		type = hsl(p.blue.horizon), -- (type definitions)
 		builtinVar = hsl(p.blue.azure), -- (this, document, window, etc)
 		string = hsl(p.green.springcactus), -- (strings)
-		regex = hsl(p.green.oasis), -- (reg ex string)
+		regex = hsl(p.green.palm), -- (reg ex string)
 		builtinConst = hsl(p.green.aloe), -- (e.g. null, undefined, Infinity, etc)
 		constant = hsl(p.teal.agave), -- (constant: number, float, boolean, or const not string/character)
 
