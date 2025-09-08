@@ -15,7 +15,7 @@ local ui = {
 	},
 	-- Foregrounds
 	fg = {
-		core = hsl(p.white.dunesand),
+		core = hsl(p.white.duneveil),
 		muted = hsl(p.brown.canyonsoil),
 		dim = hsl(p.grey.darktwilight),
 	},
@@ -48,17 +48,17 @@ local c = {
 		-- Warm: (Control / Flow)
 		func = hsl(p.orange.dawn), -- [inverse of identifier]
 		builtinFunc = hsl(p.orange.sun), -- (eg. parseInst, Array, Object etc)
-		statement = hsl(p.yellow.khaki), -- (primary p, general statement, conditonal, repeat, label )
+		statement = hsl(p.orange.amber), -- (primary p, general statement, conditonal, repeat, label )
 		exception = hsl(p.red.indianred), -- (try/catch, return)
-		keyword = hsl(p.orange.amber), -- (general catch all)
-		special = hsl(p.orange.sunset), -- (other catch all)
+		keyword = hsl(p.yellow.khaki), -- (general catch all)
+		special = hsl(p.orange.lightsunset), -- (other catch all)
 		operator = hsl(p.red.desertrose), -- (operators)
 		punctuation = hsl(p.red.heatwave), -- (punctuation)
-		preproc = hsl(p.brown.puebloclay), -- (imports)
+		preproc = hsl(p.brown.dune), -- (imports)
 
 		-- Neutral: (Connections / Info)
 		bracket = hsl(p.brown.dryriverbed), -- (bracket punctuation)
-		comment = hsl(p.brown.lightdriftwood), -- (comments)
+		comment = hsl(p.brown.driftwood), -- (comments)
 	},
 
 	-- Diff
