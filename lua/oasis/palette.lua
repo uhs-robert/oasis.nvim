@@ -205,8 +205,8 @@ local colors = {
 		aloe = "#A7D3A9",
 		lightaloe = "#AED6B0",
 		mutedaloe = "#739675",
-		oasis = "#9CEB87",
-		darkoasis = "#94E97C",
+		palm = "#9CEB87",
+		darkPalm = "#94E97C",
 	},
 
 	teal = {
