@@ -265,7 +265,7 @@ return function(c)
       -- sym"@keyword.coroutine"      {fg=c.syntax.keyword}, -- Keyword coroutines (e.g. `go` in Go, `async/await` in Python)
       sym"@keyword.operator"       { fg=c.syntax.operator, gui="bold" }, -- Keyword English words (e.g. `and`, `or`)
       sym"@keyword.import"         { PreProc }, -- Keyword  (e.g. `import`, `from` in Python)
-      sym"@keyword.return"         { fg=c.syntax.exception, gui="italic" }, -- Keyword -- `return` and `yield`
+      sym"@keyword.return"         { fg=c.syntax.keyword, gui="italic" }, -- Keyword -- `return` and `yield`
       sym"@keyword.exception"      { Exception }, -- Keyword (e.g. `throw`, `catch`)
       sym"@keyword.luap"           { Exception }, -- Keyword
       sym"@keyword.repeat"         { Repeat }, -- Keyword
