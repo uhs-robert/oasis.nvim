@@ -30,7 +30,7 @@ local terminal = {
 -- Visual BG
 local visual = {
 	red = "#532E2E",
-	brown = "#2d251f",
+	brown = "#2D251F",
 	orange = "#5A3824",
 	yellow = "#4D4528",
 	green = "#1F3A2D",
@@ -47,20 +47,20 @@ local diag = {
 		bg = "#322639",
 	},
 	warn = {
-		fg = "#eeee00",
-		bg = "#38343d",
+		fg = "#EEEE00",
+		bg = "#38343D",
 	},
 	info = {
 		fg = "#75A0FF",
 		bg = "#203346",
 	},
 	hint = {
-		fg = "#62aba0",
+		fg = "#62ABA0",
 		bg = "#273644",
 	},
 	ok = {
 		fg = "#00FF7F",
-		bg = "#2f4f4f",
+		bg = "#2F4F4F",
 	},
 }
 
@@ -106,7 +106,7 @@ local colors = {
 
 		mirageCore = "#18252A",
 		mirageMantle = "#22343A",
-		mirageCrust = "#192b2e",
+		mirageCrust = "#192B2E",
 		mirageSurface = "#2A3F46",
 
 		lagoonCore = "#101825",
@@ -149,9 +149,9 @@ local colors = {
 	brown = {
 		dryriverbed = "#9E9584",
 		bonedryriverbed = "#938976",
-		driftwood = "#8b7765",
-		lightdriftwood = "#96816e",
-		wood = "#a59383",
+		driftwood = "#8B7765",
+		lightdriftwood = "#96816E",
+		wood = "#A59383",
 		canyonsoil = "#7C6A5B",
 		canyonshadow = "#514742",
 		umber = "#2E2620",
@@ -161,84 +161,83 @@ local colors = {
 		paleclay = "#DDC8B4",
 		fadedclay = "#D5C2B2",
 		puebloclay = "#E0C4A8",
-		darkpuebloclay = "#d8b592",
 		dustysand = "#C6BFAD",
 		mud = "#857C70",
 	},
 
 	-- Primary Colors
 	red = {
-		indianred = "#CD5C5c",
+		indianred = "#CD5C5C",
 		heatwave = "#E68A8A",
-		deepheatwave = "#e17070",
-		desertrose = "#ffa0a0",
-		deepdesertrose = "#ff8080",
+		deepheatwave = "#E17070",
+		desertrose = "#FFA0A0",
+		deepdesertrose = "#FF8080",
 		brick = "#A23B3B",
 	},
 
 	orange = {
 		sun = "#F5A72C",
-		deepsun = "#f49f15",
-		lightsunset = "#ffa852",
+		deepsun = "#F49F15",
+		lightsunset = "#FFA852",
 		sunset = "#FF9F41",
-		lightdawn = "#f9c97b",
+		lightdawn = "#F9C97B",
 		dawn = "#F8C471",
-		lightamber = "#e69e4c",
+		lightamber = "#E69E4C",
 		amber = "#E3963E",
 	},
 
 	yellow = {
 		gold = "#FFD700",
 		khaki = "#F0E68C",
-		khaki2 = "#ede173",
+		khaki2 = "#EDE173",
 		dune = "#D4A017",
 		wheat = "#FFD87C",
-		moonlitsand = "#eadd61",
+		moonlitsand = "#EADD61",
 	},
 
 	lime = {},
 
 	green = {
-		cactus = "#30bc73",
-		springcactus = "#34cb7d",
+		cactus = "#30BC73",
+		springcactus = "#34CB7D",
 		moss = "#6BBF59",
-		springmoss = "#8dcd7e",
+		springmoss = "#8DCD7E",
 		aloe = "#A7D3A9",
-		lightaloe = "#aed6b0",
+		lightaloe = "#AED6B0",
 		mutedaloe = "#739675",
 		oasis = "#9CEB87",
-		darkoasis = "#94e97c",
+		darkoasis = "#94E97C",
 	},
 
 	teal = {
 		sky = "#019992",
 		agave = "#8FD1C7",
-		lightagave = "#96d4cb",
-		deepagave = "#3b9184",
+		lightagave = "#96D4CB",
+		deepagave = "#3B9184",
 	},
 
 	cyan = {},
 
 	blue = {
-		lunartide = "#4680a4",
-		lunarShade = "#2c5168",
+		lunartide = "#4680A4",
+		lunarShade = "#2C5168",
 		azure = "#1CA1FF",
-		lightazure = "#2ea8ff",
-		deepazure = "#0597ff",
+		lightazure = "#2EA8FF",
+		deepazure = "#0597FF",
 		skyblue = "#87CEEB",
-		lightskyblue = "#92d3ed",
-		darkskyblue = "#6fc5e7",
-		darkerskyblue = "#378ba4",
+		lightskyblue = "#92D3ED",
+		darkskyblue = "#6FC5E7",
+		darkerskyblue = "#378BA4",
 		horizon = "#4AC8FF",
-		lighthorizon = "#5cceff",
-		deephorizon = "#33c2ff",
+		lighthorizon = "#5CCEFF",
+		deephorizon = "#33C2FF",
 	},
 
 	indigo = {
 		cactusflower = "#CFA7FF",
-		lightcactusflower = "#d2adff",
-		darkcactusflower = "#bc85ff",
-		moonlitflower = "#c799ff",
+		lightcactusflower = "#D2ADFF",
+		darkcactusflower = "#BC85FF",
+		moonlitflower = "#C799FF",
 	},
 
 	violet = {},
