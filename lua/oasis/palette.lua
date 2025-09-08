@@ -161,6 +161,10 @@ local colors = {
 		paleclay = "#DDC8B4",
 		fadedclay = "#D5C2B2",
 		puebloclay = "#E0C4A8",
+		adobeDust = "#D8B592",
+		dune = "#D2B48C",
+		sandstoneGlow = "#C68E4D",
+		coyoteGold = "#C99A41",
 		dustysand = "#C6BFAD",
 		mud = "#857C70",
 	},
@@ -182,6 +186,8 @@ local colors = {
 		sunset = "#FF9F41",
 		lightdawn = "#F9C97B",
 		dawn = "#F8C471",
+    redDawn = "#F8B471",
+    darkRedDawn = "#F8A471",
 		lightamber = "#E69E4C",
 		amber = "#E3963E",
 	},
@@ -211,9 +217,11 @@ local colors = {
 
 	teal = {
 		sky = "#019992",
+    darkagave = "#7BBDB3",
 		agave = "#8FD1C7",
 		lightagave = "#96D4CB",
 		deepagave = "#3B9184",
+    depthagave = "#23877A",
 	},
 
 	cyan = {},
