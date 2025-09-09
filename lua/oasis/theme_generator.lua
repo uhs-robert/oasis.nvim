@@ -121,12 +121,12 @@ return function(c)
       Identifier                   { fg=c.syntax.identifier }, -- (*) Any variable name
       Function                     { fg=c.syntax.func }, --   Function name (also: methods for classes)
       --
-      Statement                    { fg=c.syntax.statement}, -- (*) Any statement
-      Conditional                  { Statement }, --   if, then, else, endif, switch, etc.
-      Repeat                       { Statement }, --   for, do, while, etc.
-      Label                        { Statement }, --   case, default, etc.
+      Statement                    { fg=c.syntax.statement }, -- (*) Any statement
+      Keyword                      { fg=c.syntax.statement }, --   any other keyword
+      Conditional                  { fg=c.syntax.keyword }, --   if, then, else, endif, switch, etc.
+      Repeat                       { Conditional }, --   for, do, while, etc.
+      Label                        { Conditional }, --   case, default, etc.
       Operator                     { fg=c.syntax.operator }, --   "sizeof", "+", "*", etc.
-      Keyword                      { fg=c.syntax.keyword }, --   any other keyword
       Exception                    { fg=c.syntax.exception, gui="bold" }, --   try, catch, throw
 
       PreProc                      { fg=c.syntax.preproc }, -- (*) Generic Preprocessor
@@ -255,17 +255,17 @@ return function(c)
       -- sym"@method"                 { Function }, -- Function
       -- sym"@field"                  { Identifier }, -- Identifier
       -- sym"@property"               { Identifier }, -- Identifier
-      sym"@constructor"            { fg=c.syntax.statement }, -- Special (e.g. 'Map', 'Set', 'Error')
+      sym"@constructor"            { fg=c.syntax.keyword }, -- Special (e.g. 'Map', 'Set', 'Error')
       -- sym"@conditional"            { Conditional }, -- Conditional
       -- sym"@repeat"                 { Repeat }, -- Repeat
       -- sym"@label"                  { Label }, -- Label
       sym"@operator"               { fg=c.syntax.operator, gui="bold" }, -- Operator
 
-      sym"@keyword"                { Keyword }, --  Keyword misc not fitting into specific categories
-      -- sym"@keyword.coroutine"      {fg=c.syntax.keyword}, -- Keyword coroutines (e.g. `go` in Go, `async/await` in Python)
+      sym"@keyword"                { Statement }, --  Keyword misc not fitting into specific categories
+      -- sym"@keyword.coroutine"      { fg=c.syntax.keyword }, -- Keyword coroutines (e.g. `go` in Go, `async/await` in Python)
       sym"@keyword.operator"       { fg=c.syntax.operator, gui="bold" }, -- Keyword English words (e.g. `and`, `or`)
       sym"@keyword.import"         { PreProc }, -- Keyword  (e.g. `import`, `from` in Python)
-      sym"@keyword.return"         { fg=c.syntax.keyword, gui="italic" }, -- Keyword -- `return` and `yield`
+      sym"@keyword.return"         { fg=c.syntax.exception, gui="italic" }, -- Keyword -- `return` and `yield`
       sym"@keyword.exception"      { Exception }, -- Keyword (e.g. `throw`, `catch`)
       sym"@keyword.luap"           { Exception }, -- Keyword
       sym"@keyword.repeat"         { Repeat }, -- Keyword
