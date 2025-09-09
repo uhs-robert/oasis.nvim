@@ -36,25 +36,25 @@ local c = {
 	-- Syntax
 	syntax = {
 		-- Cold: (Data)
-		parameter = hsl(p.indigo.cactusflower), -- (paramaters) [UNIQUE]
+		parameter = hsl(p.indigo.darkcactusflower), -- (paramaters) [UNIQUE]
 		identifier = hsl(p.blue.skyblue), -- (property identifiers)
 		type = hsl(p.teal.darkagave), -- (type definitions)
-		builtinVar = hsl(p.blue.azure), -- (this, document, window, etc)
+		builtinVar = hsl(p.blue.skyBlueDress), -- (this, document, window, etc)
 		string = hsl(p.green.cactus), -- (strings)
 		regex = hsl(p.green.darkPalm), -- (reg ex string)
 		builtinConst = hsl(p.teal.deepagave), -- (e.g. null, undefined, Infinity, etc)
-		constant = hsl(p.red.indianred), -- (constant: number, float, boolean, or const not string/character)
+		constant = hsl(p.orange.darkRedDawn), -- (constant: number, float, boolean, or const not string/character)
 
 		-- Warm: (Control / Flow)
 		func = hsl(p.orange.redDawn), -- [inverse of identifier]
-		builtinFunc = hsl(p.orange.darkRedDawn), -- (eg. parseInst, Array, Object etc)
-		statement = hsl(p.orange.amber), -- (primary p, general statement, conditonal, repeat, label )
-		exception = hsl(p.orange.amber), -- (try/catch)
-		keyword = hsl(p.yellow.khaki), -- (general catch all)
+		builtinFunc = hsl(p.orange.sunrise), -- (eg. parseInst, Array, Object etc)
+		statement = hsl(p.yellow.khaki), -- (primary p, general statement, conditonal, repeat, label )
+		exception = hsl(p.red.indianred), -- (try/catch, return)
+		keyword = hsl(p.yellow.darkkhaki), -- (general catch all)
 		special = hsl(p.orange.lightsunset), -- (other catch all)
 		operator = hsl(p.red.desertrose), -- (operators)
 		punctuation = hsl(p.red.heatwave), -- (punctuation)
-		preproc = hsl(p.teal.lightagave), -- (imports)
+		preproc = hsl(p.blue.crystalBlue), -- (imports)
 
 		-- Neutral: (Connections / Info)
 		bracket = hsl(p.brown.dryriverbed), -- (bracket punctuation)
