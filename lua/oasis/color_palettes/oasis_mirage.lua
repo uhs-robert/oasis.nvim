@@ -15,7 +15,7 @@ local ui = {
 	},
 	-- Foregrounds
 	fg = {
-		core = hsl(p.white.moonash),
+		core = hsl(p.white.duneveil), -- NOTE: maybe navajowhite
 		muted = hsl(p.grey.ivorysilver),
 		dim = hsl(p.grey.dustcloud),
 	},
@@ -38,23 +38,23 @@ local c = {
 		-- Cold: (Data)
 		parameter = hsl(p.indigo.darkcactusflower), -- (paramaters) [UNIQUE]
 		identifier = hsl(p.blue.skyblue), -- (property identifiers)
-		type = hsl(p.blue.horizon), -- (type definitions)
-		builtinVar = hsl(p.blue.lightazure), -- (this, document, window, etc)
+		type = hsl(p.teal.darkagave), -- (type definitions)
+		builtinVar = hsl(p.blue.skyBlueDress), -- (this, document, window, etc)
 		string = hsl(p.green.springcactus), -- (strings)
 		regex = hsl(p.green.darkPalm), -- (reg ex string)
-		builtinConst = hsl(p.green.lightaloe), -- (e.g. null, undefined, Infinity, etc)
-		constant = hsl(p.teal.lightagave), -- (constant: number, float, boolean, or const not string/character)
+		builtinConst = hsl(p.teal.deepagave), -- (e.g. null, undefined, Infinity, etc)
+		constant = hsl(p.orange.darkRedDawn), -- (constant: number, float, boolean, or const not string/character)
 
 		-- Warm: (Control / Flow)
-		func = hsl(p.orange.dawn), -- [inverse of identifier]
-		builtinFunc = hsl(p.orange.sun), -- (eg. parseInst, Array, Object etc)
+		func = hsl(p.orange.redDawn), -- [inverse of identifier]
+		builtinFunc = hsl(p.orange.sunrise), -- (eg. parseInst, Array, Object etc)
 		statement = hsl(p.yellow.khaki2), -- (primary p, general statement, conditonal, repeat, label )
 		exception = hsl(p.red.indianred), -- (try/catch, return)
-		keyword = hsl(p.orange.amber), -- (general catch all)
+		keyword = hsl(p.yellow.darkkhaki), -- (general catch all)
 		special = hsl(p.orange.sunset), -- (other catch all)
 		operator = hsl(p.red.deepdesertrose), -- (operators)
 		punctuation = hsl(p.red.deepheatwave), -- (punctuation)
-		preproc = hsl(p.brown.darkpuebloclay), -- (imports)
+		preproc = hsl(p.blue.crystalBlue), -- (imports)
 
 		-- Neutral: (Connections / Info)
 		bracket = hsl(p.brown.bonedryriverbed), -- (bracket punctuation)
