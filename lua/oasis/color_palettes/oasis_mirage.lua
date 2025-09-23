@@ -3,22 +3,23 @@
 local lush = require("lush")
 local hsl = lush.hsl
 local p = require("oasis.palette")
+local key = "mirage"
 
 -- General Reusable Colors
 local ui = {
 	-- Backgrounds
 	bg = {
-		core = hsl(p.black.mirageCore),
-		mantle = hsl(p.black.mirageMantle),
-		crust = hsl(p.black.mirageCrust),
-		surface = hsl(p.black.mirageSurface),
-		-- gutter = hsl(p.black.mirageSurface),
+		core = hsl(p.theme.bg.core[key]),
+		mantle = hsl(p.theme.bg.mantle[key]),
+		crust = hsl(p.theme.bg.crust[key]),
+		surface = hsl(p.theme.bg.surface[key]),
 	},
 	-- Foregrounds
 	fg = {
-		core = hsl(p.white.ivorysand),
-		muted = hsl(p.grey.dustcloud),
-		dim = hsl(p.grey.dustcloud),
+		core = hsl(p.theme.fg.core[key]),
+		muted = hsl(p.theme.fg.muted[key]),
+		dim = hsl(p.theme.fg.dim[key]),
+		comment = hsl(p.theme.fg.comment[key]),
 	},
 	-- General colors
 	theme = {
@@ -38,9 +39,9 @@ local c = {
 	-- Syntax
 	syntax = {
 		-- Cold: (Data)
-		parameter = hsl(p.indigo.darkcactusflower), -- (paramaters) [UNIQUE]
+		parameter = hsl(p.indigo.darkcactusflower), -- (paramaters)
 		identifier = hsl(p.yellow.navajowhite), -- (property identifiers)
-		delimiter = hsl(p.red.indianred), -- (delimiters)
+		delimiter = ui.theme.primary, -- (delimiters)
 		type = hsl(p.teal.darkagave), -- (type definitions)
 		builtinVar = hsl(p.blue.skyBlueDress), -- (this, document, window, etc)
 		string = hsl(p.green.springcactus), -- (strings)
@@ -61,7 +62,7 @@ local c = {
 
 		-- Neutral: (Connections / Info)
 		bracket = hsl(p.brown.bonedryriverbed), -- (bracket punctuation)
-		comment = hsl(p.teal.dustyAgave), -- (comments)
+		comment = ui.theme.comment, -- (comments)
 	},
 
 	-- Diff

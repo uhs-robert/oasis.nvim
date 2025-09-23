@@ -65,60 +65,124 @@ local diag = {
 	},
 }
 
+-- Theme specific
+local theme = {
+	bg = {
+		core = {
+			desert = "#333333",
+			abyss = "#000000",
+			night = "#0D0D1A",
+			sol = "#2F1815",
+			canyon = "#2F1A05",
+			dune = "#2E2620",
+			mirage = "#18252A",
+			lagoon = "#101825",
+			twilight = "#221B2F",
+			starlight = "#000000",
+		},
+		mantle = {
+			desert = "#444444",
+			abyss = "#080808",
+			night = "#06060E",
+			sol = "#3A2521",
+			canyon = "#402412",
+			dune = "#3C332C",
+			mirage = "#1A2D33",
+			lagoon = "#1A283F",
+			twilight = "#2B243B",
+			starlight = "#080808",
+		},
+		crust = {
+			desert = "#303030",
+			abyss = "#050505",
+			night = "#0C0C18",
+			sol = "#2C1512",
+			canyon = "#2B1804",
+			dune = "#2B231E",
+			mirage = "#172328",
+			lagoon = "#0F1522",
+			twilight = "#201C2B",
+			starlight = "#050505",
+		},
+		surface = {
+			desert = "#555555",
+			abyss = "#1A1A1A",
+			night = "#262633",
+			sol = "#4F312B",
+			canyon = "#624020",
+			dune = "#534A3F",
+			mirage = "#2A3F46",
+			lagoon = "#22385C",
+			twilight = "#352D47",
+			starlight = "#1A1A1A",
+		},
+	},
+	fg = {
+		-- Normal
+		core = {
+			desert = "#ECE6D8",
+			abyss = "#DADADA",
+			night = "#E0E4F8",
+			sol = "#F6DAD7",
+			canyon = "#F1DCCF",
+			dune = "#ECE6D8",
+			mirage = "#DDEFEF",
+			lagoon = "#D9E6FA",
+			twilight = "#E6E0F8",
+			starlight = "#E6E6E6",
+		},
+		-- Inlay hints / nontext (slightly warm/dark, distinct from comments)
+		dim = {
+			desert = "#7C6A5B",
+			abyss = "#5A4E45",
+			night = "#5E564C",
+			sol = "#566B5D",
+			canyon = "#566B5D",
+			dune = "#5B7464",
+			mirage = "#5A4E45",
+			lagoon = "#5A524B",
+			twilight = "#5A4E45",
+			starlight = "#6A5448",
+		},
+		-- Line numbers (darkest, low-chroma)
+		muted = {
+			desert = "#4A5C66",
+			abyss = "#3A4A50",
+			night = "#3B3A4C",
+			sol = "#5F4642",
+			canyon = "#5C402D",
+			dune = "#6B5A4A",
+			mirage = "#3C4F4D",
+			lagoon = "#2F536A",
+			twilight = "#43385B",
+			starlight = "#4E5A6A",
+		},
+		-- Comments (mid-contrast, readable but soft)
+		comment = {
+			desert = "#6D90A8",
+			abyss = "#5E7B88",
+			night = "#676B88",
+			sol = "#9B756E",
+			canyon = "#9A6C4E",
+			dune = "#8A7663",
+			mirage = "#387F74",
+			lagoon = "#467B99",
+			twilight = "#6F6291",
+			starlight = "#7FA5CC",
+		},
+	},
+}
+
 -- Full palette
 local colors = {
 	terminal = terminal,
 	visual = visual,
 	diag = diag,
+	theme = theme,
 
 	-- Darks (Backgrounds)
 	black = {
 		charcoal = "#111111",
-
-		desertCore = "#333333",
-		desertMantle = "#444444",
-		desertCrust = "#2F2F2F",
-		desertSurface = "#555555",
-
-		abyssCore = "#000000",
-		abyssMantle = "#080808",
-		abyssCrust = "#1C1612",
-		abyssSurface = "#1A1A1A",
-
-		nightCore = "#0D0D1A",
-		nightMantle = "#06060E",
-		nightCrust = "#11111E",
-		nightSurface = "#262633",
-
-		solCore = "#3A1E1A",
-		solMantle = "#4A2823",
-		solCrust = "#42221E",
-		solSurface = "#56312C",
-
-		canyonCore = "#3B2207",
-		canyonMantle = "#512D0F",
-		canyonCrust = "#331B06",
-		canyonSurface = "#754215",
-
-		duneCore = "#443B31",
-		duneMantle = "#50483E",
-		duneCrust = "#3A342B",
-		duneSurface = "#62594D",
-
-		mirageCore = "#18252A",
-		mirageMantle = "#22343A",
-		mirageCrust = "#192B2E",
-		mirageSurface = "#2A3F46",
-
-		lagoonCore = "#101825",
-		lagoonMantle = "#1A283F",
-		lagoonCrust = "#0F1522",
-		lagoonSurface = "#22385C",
-
-		twilightCore = "#221B2F",
-		twilightMantle = "#2B243B",
-		twilightCrust = "#282037",
-		twilightSurface = "#352D47",
 	},
 
 	-- Lights (Foregrounds)
@@ -193,7 +257,7 @@ local colors = {
 		lightamber = "#E69E4C",
 		amber = "#E3963E",
 		indianSaffron = "#FF7722",
-    burntUmber = "#8A5A3C",
+		burntUmber = "#8A5A3C",
 	},
 
 	yellow = {
@@ -231,7 +295,7 @@ local colors = {
 		lightagave = "#96D4CB",
 		lightdeepagave = "#47A99B",
 		deepagave = "#3B9184",
-    dustyAgave = "#387F74",
+		dustyAgave = "#387F74",
 		depthagave = "#23877A",
 	},
 

@@ -110,7 +110,7 @@ return function(c)
       --
       -- Uncomment and edit if you want more specific syntax highlighting.
 
-      Comment                      { fg=c.syntax.comment, gui="italic" }, -- Any comment
+      Comment                      { fg=(c.syntax.comment or c.fg.comment), gui="italic" }, -- Any comment
 
       Constant                     { fg=c.syntax.constant }, -- (*) Any constant
       String                       { fg=c.syntax.string }, --   A string constant: "this is a string"

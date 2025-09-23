@@ -3,22 +3,37 @@
 local lush = require("lush")
 local hsl = lush.hsl
 local p = require("oasis.palette")
+local key = "starlight"
 
 -- General Reusable Colors
 local ui = {
 	-- Backgrounds
 	bg = {
-		core = hsl(p.black.abyssCore),
-		mantle = hsl(p.black.charcoal),
-		crust = hsl(p.black.abyssMantle),
-		surface = hsl(p.black.abyssCrust),
+		core = hsl(p.theme.bg.core[key]),
+		mantle = hsl(p.theme.bg.mantle[key]),
+		crust = hsl(p.theme.bg.crust[key]),
+		surface = hsl(p.theme.bg.surface[key]),
 	},
 	-- Foregrounds
 	fg = {
-		core = hsl(p.white.moondust),
-		muted = hsl(p.grey.duskbasalt),
-		dim = hsl(p.grey.duskbasalt),
+		core = hsl(p.theme.fg.core[key]),
+		muted = hsl(p.theme.fg.muted[key]),
+		dim = hsl(p.theme.fg.dim[key]),
+		comment = hsl(p.theme.fg.comment[key]),
 	},
+	-- -- Backgrounds
+	-- bg = {
+	-- 	core = hsl(p.black.abyssCore),
+	-- 	mantle = hsl(p.black.charcoal),
+	-- 	crust = hsl(p.black.abyssMantle),
+	-- 	surface = hsl(p.black.abyssCrust),
+	-- },
+	-- -- Foregrounds
+	-- fg = {
+	-- 	core = hsl(p.white.moondust),
+	-- 	muted = hsl(p.grey.duskbasalt),
+	-- 	dim = hsl(p.grey.duskbasalt),
+	-- },
 	-- General colors
 	theme = {
 		primary = hsl(p.blue.horizon),
@@ -38,9 +53,8 @@ local c = {
 	syntax = {
 		-- Cold: (Data)
 		parameter = hsl(p.indigo.moonlitflower), -- (paramaters) [UNIQUE]
-		-- identifier = hsl(p.blue.darkskyblue), -- (property identifiers)
 		identifier = hsl(p.yellow.navajowhite), -- (property identifiers)
-		delimiter = hsl(p.red.indianred), -- (delimiters)
+		delimiter = ui.theme.primary, -- (delimiters)
 		type = hsl(p.teal.agave), -- (type definitions)
 		builtinVar = hsl(p.blue.skyBlueDress), -- (this, document, window, etc)
 		string = hsl(p.green.springcactus), -- (strings)
@@ -61,7 +75,7 @@ local c = {
 
 		-- Neutral: (Connections / Info)
 		bracket = hsl(p.grey.palemoon), -- (bracket punctuation)
-		comment = hsl(p.blue.lunartide), -- (comments)
+		comment = ui.fg.comment, -- (comments)
 	},
 
 	-- Diff
