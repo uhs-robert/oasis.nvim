@@ -10,8 +10,8 @@ local ui = {
 	-- Backgrounds
 	bg = {
 		core = hsl(p.theme.bg.core[key]),
+		shadow = hsl(p.theme.bg.shadow[key]),
 		mantle = hsl(p.theme.bg.mantle[key]),
-		crust = hsl(p.theme.bg.crust[key]),
 		surface = hsl(p.theme.bg.surface[key]),
 	},
 	-- Foregrounds
@@ -75,14 +75,14 @@ local c = {
 	-- UI
 	ui = {
 		match = hsl(p.orange.sunset),
-		visual = { bg = hsl(p.visual.yellow), fg = "none" },
+		visual = { bg = hsl(p.visual.teal), fg = "none" },
 		search = { bg = hsl(p.teal.sky), fg = ui.fg.core },
 		curSearch = { bg = hsl(p.orange.sun), fg = ui.bg.core },
 		dir = hsl(p.blue.skyblue),
 
 		title = ui.theme.primary,
 		border = ui.theme.primary,
-		cursorLine = ui.bg.crust.lighten(6),
+		cursorLine = ui.bg.shadow.lighten(6),
 		nontext = ui.fg.dim,
 		float = {
 			title = ui.theme.primary,
