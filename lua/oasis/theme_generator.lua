@@ -13,6 +13,7 @@ return function(c)
       --
 
       OasisPrimary                 { fg=c.theme.primary, bg="none" },
+      OasisLightPrimary                 { fg=(c.theme.light_primary or c.theme.primary), bg="none" },
       OasisFloatPrimary            { fg=c.theme.primary, bg=c.ui.float.border.bg },
       OasisSecondary               { fg=c.theme.secondary, bg="none" },
       OasisFloatSecondary          { fg=c.theme.secondary, bg=c.ui.float.border.bg },
@@ -303,7 +304,7 @@ return function(c)
 
       -- PLUGIN GROUPS
       WhichKey                    { Statement },
-      WhichKeyDesc                { OasisPrimary },
+      WhichKeyDesc                { OasisLightPrimary },
       WhichKeyGroup               { OasisSecondary },
 
       SnacksDashboardFile         { Statement },
