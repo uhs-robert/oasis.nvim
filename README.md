@@ -1,6 +1,6 @@
 # 🏜️ Oasis.nvim
 
-A modular desert-themed colorscheme for Neovim with warm, earthy tones and multiple palette variants.
+A modular desert-themed colorscheme for Neovim with warm, earthy tones and multiple palette variants. Originally inspired by the classic `desert` theme for vim, also uses the cool/warm philosophy from `melange` (i.e., `warm colors = action/flow` and `cool colors = structure/data`). 
 
 ## Features
 
@@ -48,29 +48,26 @@ git clone https://github.com/uhs-robert/oasis.nvim ~/.config/nvim/pack/plugins/s
 ### Basic Usage
 
 ```lua
--- Set colorscheme
-vim.cmd.colorscheme("oasis")
+-- Set colorscheme directly
+vim.cmd.colorscheme("oasis_desert")
 
 -- Or set/use a specific palette
 vim.g.oasis_palette = "oasis_desert"
 vim.cmd.colorscheme("oasis")
-
--- Or just pick the palette
-vim.cmd.colorscheme("oasis_desert")
 ```
 
 ### Available Palettes
 
-- `oasis_lagoon` (default) - The heart of the oasis (blue hues)
-- `oasis_desert` - Inspired by vim's classic desert theme
-- `oasis_mirage` - Desert mirage variant (agave)
-- `oasis_night` - The dark night variant (dark)
-- `oasis_twilight` - Evening twilight colors (purple)
-- `oasis_abyss` - Darker than night, it's the abyss (black)
-- `oasis_canyon` - Warm canyon-inspired (orange)
-- `oasis_dune` - Sandy dune colors (yellow/brown)
-- `oasis_sol` - Bright sun-inspired (red)
-- `oasis_starlight` - A starlit night (black/vivid)
+- `oasis_lagoon` (default) - The heart of the oasis is a `blue` lagoon
+- `oasis_desert` - Inspired by `vim's classic desert` theme
+- `oasis_mirage` - The `green` agave can't be real, it must be a mirage
+- `oasis_night` - The chill of the night, a cool `dark grey`
+- `oasis_twilight` - The evening twilight's `purple` horizon
+- `oasis_abyss` - Darker than night, the `black` abyss
+- `oasis_canyon` - The warm `red/orange` rock canyon
+- `oasis_dune` - The dunes are an endless `brown sand`
+- `oasis_sol` - The unforgiving `red` hot sun
+- `oasis_starlight` - Guided by the moon/stars during the `vivid black` night
 
 ### Commands (with Lush)
 
