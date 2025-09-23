@@ -16,7 +16,7 @@ local ui = {
 	},
 	-- Foregrounds
 	fg = {
-		core = hsl(p.white.ivorysand), -- NOTE: maybe navajowhite
+		core = hsl(p.white.ivorysand),
 		muted = hsl(p.grey.dustcloud),
 		dim = hsl(p.grey.dustcloud),
 	},
@@ -60,7 +60,7 @@ local c = {
 
 		-- Neutral: (Connections / Info)
 		bracket = hsl(p.brown.bonedryriverbed), -- (bracket punctuation)
-		comment = hsl(p.blue.darkerskyblue), -- (comments)
+		comment = hsl(p.teal.dustyAgave), -- (comments)
 	},
 
 	-- Diff

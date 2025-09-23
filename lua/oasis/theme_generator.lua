@@ -302,7 +302,9 @@ return function(c)
       sym"@diff.delta"             { fg=c.diff.change }, -- changed text (for diff files)
 
       -- PLUGIN GROUPS
-      WhichKey                    {Statement},
+      WhichKey                    { Statement },
+      WhichKeyDesc                { OasisPrimary },
+      WhichKeyGroup               { OasisSecondary },
 
       SnacksDashboardFile         { Statement },
       SnacksDashboardSpecial      { OasisAccent },

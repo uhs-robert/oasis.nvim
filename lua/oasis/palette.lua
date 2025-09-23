@@ -193,6 +193,7 @@ local colors = {
 		lightamber = "#E69E4C",
 		amber = "#E3963E",
 		indianSaffron = "#FF7722",
+    burntUmber = "#8A5A3C",
 	},
 
 	yellow = {
@@ -230,6 +231,7 @@ local colors = {
 		lightagave = "#96D4CB",
 		lightdeepagave = "#47A99B",
 		deepagave = "#3B9184",
+    dustyAgave = "#387F74",
 		depthagave = "#23877A",
 	},
 
