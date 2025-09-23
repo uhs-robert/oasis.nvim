@@ -1,4 +1,5 @@
 -- lua/oasis/color_palettes/oasis_sol.lua
+
 local lush = require("lush")
 local hsl = lush.hsl
 local p = require("oasis.palette")
@@ -15,7 +16,7 @@ local ui = {
 	-- Foregrounds
 	fg = {
 		core = hsl(p.white.dunesand),
-		muted = hsl(p.brown.fadedclay),
+		muted = hsl(p.brown.charredClay),
 		dim = hsl(p.brown.charredClay),
 	},
 	-- General colors
@@ -36,27 +37,28 @@ local c = {
 	syntax = {
 		-- Cold: (Data)
 		parameter = hsl(p.indigo.lightcactusflower), -- (paramaters) [UNIQUE]
-		identifier = hsl(p.blue.skyblue), -- (property identifiers)
-		type = hsl(p.blue.lighthorizon), -- (type definitions)
+		identifier = hsl(p.yellow.navajowhite), -- (property identifiers)
+		delimiter = hsl(p.red.indianred), -- (delimiters)
+		type = hsl(p.teal.darkagave), -- (type definitions)
 		builtinVar = hsl(p.blue.lightazure), -- (this, document, window, etc)
 		string = hsl(p.green.springcactus), -- (strings)
 		regex = hsl(p.green.palm), -- (reg ex string)
 		builtinConst = hsl(p.green.lightaloe), -- (e.g. null, undefined, Infinity, etc)
-		constant = hsl(p.teal.lightagave), -- (constant: number, float, boolean, or const not string/character)
+		constant = hsl(p.orange.darkRedDawn), -- (constant: number, float, boolean, or const not string/character)
 
 		-- Warm: (Control / Flow)
-		func = hsl(p.orange.dawn), -- [inverse of identifier]
+		func = hsl(p.orange.redDawn), -- [inverse of identifier]
 		builtinFunc = hsl(p.orange.deepsun), -- (eg. parseInst, Array, Object etc)
-		statement = hsl(p.yellow.khaki2), -- (primary p, general statement, conditonal, repeat, label )
+		statement = hsl(p.yellow.khaki), -- (primary p, general statement, conditonal, repeat, label )
 		exception = hsl(p.red.indianred), -- (try/catch, return)
-		keyword = hsl(p.orange.lightamber), -- (general catch all)
+		keyword = hsl(p.yellow.darkkhaki), -- (general catch all)
 		special = hsl(p.orange.lightsunset), -- (other catch all)
 		operator = hsl(p.red.desertrose), -- (operators)
 		punctuation = hsl(p.red.heatwave), -- (punctuation)
-		preproc = hsl(p.brown.darkpuebloclay), -- (imports)
+		preproc = hsl(p.blue.crystalBlue), -- (imports)
 
 		-- Neutral: (Connections / Info)
-		bracket = hsl(p.brown.puebloclay), -- (bracket punctuation)
+		bracket = hsl(p.brown.dryriverbed), -- (bracket punctuation)
 		comment = hsl(p.brown.driftwood), -- (comments)
 	},
 

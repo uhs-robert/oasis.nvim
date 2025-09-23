@@ -1,4 +1,5 @@
 -- lua/oasis/color_palettes/oasis_twilight.lua
+
 local lush = require("lush")
 local hsl = lush.hsl
 local p = require("oasis.palette")
@@ -15,7 +16,7 @@ local ui = {
 	-- Foregrounds
 	fg = {
 		core = hsl(p.white.moonpearl),
-		muted = hsl(p.grey.dusklilac),
+		muted = hsl(p.grey.duskslate),
 		dim = hsl(p.grey.duskash),
 	},
 	-- General colors
@@ -36,24 +37,25 @@ local c = {
 	syntax = {
 		-- Cold: (Data)
 		parameter = hsl(p.indigo.cactusflower), --
-		identifier = hsl(p.blue.skyblue), -- (property identifiers)
-		type = hsl(p.blue.horizon), -- (type definitions)
-		builtinVar = hsl(p.blue.azure), -- (this, document, window, etc)
+		identifier = hsl(p.yellow.navajowhite), -- (property identifiers)
+		delimiter = hsl(p.red.indianred), -- (delimiters)
+		type = hsl(p.teal.darkagave), -- (type definitions)
+		builtinVar = hsl(p.blue.skyBlueDress), -- (this, document, window, etc)
 		string = hsl(p.green.springcactus), -- (strings)
 		regex = hsl(p.green.palm), -- (reg ex string)
-		builtinConst = hsl(p.green.aloe), -- (e.g. null, undefined, Infinity, etc)
-		constant = hsl(p.teal.agave), -- (constant: number, float, boolean, or const not string/character)
+		builtinConst = hsl(p.teal.deepagave), -- (e.g. null, undefined, Infinity, etc)
+		constant = hsl(p.orange.darkRedDawn), -- (constant: number, float, boolean, or const not string/character)
 
 		-- Warm: (Control / Flow)
-		func = hsl(p.orange.dawn), -- [inverse of identifier]
-		builtinFunc = hsl(p.orange.sun), -- (eg. parseInst, Array, Object etc)
-		statement = hsl(p.yellow.khaki2), -- (primary p, general statement, conditonal, repeat, label )
+		func = hsl(p.orange.redDawn), -- [inverse of identifier]
+		builtinFunc = hsl(p.orange.sunrise), -- (eg. parseInst, Array, Object etc)
+		statement = hsl(p.yellow.khaki), -- (primary p, general statement, conditonal, repeat, label )
 		exception = hsl(p.red.indianred), -- (try/catch, return)
-		keyword = hsl(p.orange.amber), -- (general catch all)
+		keyword = hsl(p.yellow.darkkhaki), -- (general catch all)
 		special = hsl(p.orange.sunset), -- (other catch all)
 		operator = hsl(p.red.deepdesertrose), -- (operators)
 		punctuation = hsl(p.red.deepheatwave), -- (punctuation)
-		preproc = hsl(p.brown.darkpuebloclay), -- (imports)
+		preproc = hsl(p.blue.crystalBlue), -- (imports)
 
 		-- Neutral: (Connections / Info)
 		bracket = hsl(p.brown.dryriverbed), -- (bracket punctuation)
@@ -69,7 +71,7 @@ local c = {
 
 	-- UI
 	ui = {
-		match = hsl(p.yellow.gold), -- gold
+		match = hsl(p.orange.sunset),
 		visual = { bg = hsl(p.visual.yellow), fg = "none" },
 		search = { bg = hsl(p.teal.sky), fg = ui.fg.core },
 		curSearch = { bg = hsl(p.orange.sun), fg = ui.bg.core },

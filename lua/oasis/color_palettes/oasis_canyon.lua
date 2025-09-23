@@ -15,9 +15,9 @@ local ui = {
 	},
 	-- Foregrounds
 	fg = {
-		core = hsl(p.white.duneveil),
-		muted = hsl(p.brown.paleclay),
-		dim = hsl(p.brown.clay),
+		core = hsl(p.white.ivorysand),
+		muted = hsl(p.brown.canyonsoil),
+		dim = hsl(p.brown.canyonshadow),
 	},
 	-- General colors
 	theme = {
@@ -37,27 +37,28 @@ local c = {
 	syntax = {
 		-- Cold: (Data)
 		parameter = hsl(p.indigo.lightcactusflower), -- (paramaters) [UNIQUE]
-		identifier = hsl(p.blue.lightskyblue), -- (property identifiers)
-		type = hsl(p.blue.lighthorizon), -- (type definitions)
+		identifier = hsl(p.yellow.navajowhite), -- (property identifiers)
+		delimiter = hsl(p.orange.darkRedDawn), -- (delimiter)
+		type = hsl(p.teal.agave), -- (type definitions)
 		builtinVar = hsl(p.blue.lightazure), -- (this, document, window, etc)
 		string = hsl(p.green.springcactus), -- (strings)
 		regex = hsl(p.green.palm), -- (reg ex string)
 		builtinConst = hsl(p.green.lightaloe), -- (e.g. null, undefined, Infinity, etc)
-		constant = hsl(p.teal.lightagave), -- (constant: number, float, boolean, or const not string/character)
+		constant = hsl(p.orange.darkRedDawn), -- (constant: number, float, boolean, or const not string/character)
 
 		-- Warm: (Control / Flow)
 		func = hsl(p.orange.lightdawn), -- [inverse of identifier]
-		builtinFunc = hsl(p.orange.sun), -- (eg. parseInst, Array, Object etc)
+		builtinFunc = hsl(p.orange.sunrise), -- (eg. parseInst, Array, Object etc)
 		statement = hsl(p.yellow.khaki), -- (primary p, general statement, conditonal, repeat, label )
 		exception = hsl(p.red.indianred), -- (try/catch, return)
-		keyword = hsl(p.orange.lightamber), -- (general catch all)
+		keyword = hsl(p.yellow.darkkhaki), -- (general catch all)
 		special = hsl(p.orange.lightsunset), -- (other catch all)
 		operator = hsl(p.red.deepdesertrose), -- (operators)
 		punctuation = hsl(p.red.deepheatwave), -- (punctuation)
-		preproc = hsl(p.brown.darkpuebloclay), -- (imports)
+		preproc = hsl(p.blue.crystalBlue), -- (imports)
 
 		-- Neutral: (Connections / Info)
-		bracket = hsl(p.brown.puebloclay), -- (bracket punctuation)
+		bracket = hsl(p.brown.mud), -- (bracket punctuation)
 		comment = hsl(p.blue.darkerskyblue), -- (comments)
 	},
 
@@ -70,7 +71,7 @@ local c = {
 
 	-- UI
 	ui = {
-		match = hsl(p.blue.darkskyblue),
+		match = hsl(p.orange.darkRedDawn),
 		visual = { bg = hsl(p.visual.blue), fg = "none" },
 		search = { bg = hsl(p.teal.sky), fg = ui.fg.core },
 		curSearch = { bg = hsl(p.orange.sun), fg = ui.bg.core },
