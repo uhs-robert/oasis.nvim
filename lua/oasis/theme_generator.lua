@@ -162,7 +162,7 @@ return function(c)
       LspReferenceText             { bg=c.bg.surface } , -- Used for highlighting "text" references
       LspReferenceRead             { bg=c.bg.surface } , -- Used for highlighting "read" references
       LspReferenceWrite            { bg=c.bg.surface } , -- Used for highlighting "write" references
-      LspInlayHint                 { fg=c.ui.nontext, bg=c.bg.crust, gui="italic" } , -- Used to color the virtual text of the codelens. See |nvim_buf_set_extmark()|.
+      LspInlayHint                 { fg=c.ui.nontext, bg=c.bg.shadow, gui="italic" } , -- Used to color the virtual text of the codelens. See |nvim_buf_set_extmark()|.
       LspCodeLens                  { fg=c.fg.muted } , -- Used to color the virtual text of the codelens. See |nvim_buf_set_extmark()|.
       LspCodeLensSeparator         { fg=c.fg.muted } , -- Used to color the seperator between two or more code lens.
       LspSignatureActiveParameter  { fg=c.bg.core, bg=c.syntax.constant.darken(20) } , -- Used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.

@@ -9,8 +9,8 @@ local ui = {
 	-- Backgrounds
 	bg = {
 		core = hsl(p.theme.bg.core[key]),
+		shadow = hsl(p.theme.bg.shadow[key]),
 		mantle = hsl(p.theme.bg.mantle[key]),
-		crust = hsl(p.theme.bg.crust[key]),
 		surface = hsl(p.theme.bg.surface[key]),
 	},
 	-- Foregrounds
@@ -23,7 +23,7 @@ local ui = {
 	-- General colors
 	theme = {
 		primary = hsl(p.yellow.khaki),
-		secondary = hsl(p.green.cactus),
+		secondary = hsl(p.green.aloe),
 		accent = hsl(p.green.cactus),
 	},
 }
@@ -80,7 +80,7 @@ local c = {
 
 		title = ui.theme.primary,
 		border = ui.theme.primary,
-		cursorLine = ui.bg.crust.lighten(6),
+		cursorLine = ui.bg.shadow.lighten(6),
 		nontext = ui.fg.dim,
 		float = {
 			title = ui.theme.primary,

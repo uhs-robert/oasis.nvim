@@ -68,6 +68,22 @@ local diag = {
 -- Theme specific
 local theme = {
 	bg = {
+		-- Inlay and gutter (0)
+		shadow = {
+			desert = "#303030",
+			abyss = "#050505",
+			night = "#0C0C18",
+			sol = "#2C1512",
+			canyon = "#2B1804",
+			dune = "#2B231E",
+			mirage = "#172328",
+			cactus = "#19231B",
+			lagoon = "#0F1522",
+			twilight = "#201C2B",
+			rose = "#2B1523",
+			starlight = "#050505",
+		},
+		-- Main background (1)
 		core = {
 			desert = "#333333",
 			abyss = "#000000",
@@ -76,10 +92,13 @@ local theme = {
 			canyon = "#2F1A05",
 			dune = "#2E2620",
 			mirage = "#18252A",
+			cactus = "#1C261E",
 			lagoon = "#101825",
 			twilight = "#221B2F",
+			rose = "#301828",
 			starlight = "#000000",
 		},
+		-- Panels (2)
 		mantle = {
 			desert = "#444444",
 			abyss = "#080808",
@@ -88,22 +107,13 @@ local theme = {
 			canyon = "#402412",
 			dune = "#3C332C",
 			mirage = "#1A2D33",
+			cactus = "#2C3A30",
 			lagoon = "#1A283F",
 			twilight = "#2B243B",
+			rose = "#3E2636",
 			starlight = "#080808",
 		},
-		crust = {
-			desert = "#303030",
-			abyss = "#050505",
-			night = "#0C0C18",
-			sol = "#2C1512",
-			canyon = "#2B1804",
-			dune = "#2B231E",
-			mirage = "#172328",
-			lagoon = "#0F1522",
-			twilight = "#201C2B",
-			starlight = "#050505",
-		},
+		-- Floats (3)
 		surface = {
 			desert = "#555555",
 			abyss = "#1A1A1A",
@@ -112,8 +122,10 @@ local theme = {
 			canyon = "#624020",
 			dune = "#534A3F",
 			mirage = "#2A3F46",
+			cactus = "#3C4B3E",
 			lagoon = "#22385C",
 			twilight = "#352D47",
+			rose = "#523A4B",
 			starlight = "#1A1A1A",
 		},
 	},
@@ -127,8 +139,10 @@ local theme = {
 			canyon = "#F1DCCF",
 			dune = "#ECE6D8",
 			mirage = "#DDEFEF",
+			cactus = "#E2E8E2",
 			lagoon = "#D9E6FA",
 			twilight = "#E6E0F8",
+			rose = "#E9E3E8",
 			starlight = "#E6E6E6",
 		},
 		-- Inlay hints / nontext (slightly warm/dark, distinct from comments)
@@ -140,8 +154,10 @@ local theme = {
 			canyon = "#566B5D",
 			dune = "#5B7464",
 			mirage = "#5A4E45",
+			cactus = "#7C6A5B",
 			lagoon = "#5A524B",
 			twilight = "#5A4E45",
+			rose = "#5A4E45",
 			starlight = "#6A5448",
 		},
 		-- Line numbers (darkest, low-chroma)
@@ -153,8 +169,10 @@ local theme = {
 			canyon = "#5C402D",
 			dune = "#6B5A4A",
 			mirage = "#3C4F4D",
+			cactus = "#4B5F4F",
 			lagoon = "#2F536A",
 			twilight = "#43385B",
+			rose = "#3E2E38",
 			starlight = "#4E5A6A",
 		},
 		-- Comments (mid-contrast, readable but soft)
@@ -166,8 +184,10 @@ local theme = {
 			canyon = "#9A6C4E",
 			dune = "#8A7663",
 			mirage = "#387F74",
+			cactus = "#5F8663",
 			lagoon = "#467B99",
 			twilight = "#6F6291",
+			rose = "#9F6C85",
 			starlight = "#7FA5CC",
 		},
 	},
@@ -249,11 +269,11 @@ local colors = {
 		deepsun = "#F49F15",
 		lightsunset = "#FFA852",
 		sunset = "#FF9F41",
-		sunrise = "#E67451", -- EXCEPTION?
+		sunrise = "#E67451",
 		lightdawn = "#F9C97B",
 		dawn = "#F8C471",
 		redDawn = "#F8B471",
-		darkRedDawn = "#F89047", -- CONSTANT?
+		darkRedDawn = "#F89047",
 		lightamber = "#E69E4C",
 		amber = "#E3963E",
 		indianSaffron = "#FF7722",
@@ -261,8 +281,9 @@ local colors = {
 	},
 
 	yellow = {
-		sunYellow = "#FFE87C",
+		dawn = "#F2C44A",
 		gold = "#FFD700",
+		sunYellow = "#F4E36B",
 		khaki = "#F0E68C",
 		khaki2 = "#EDE173",
 		khaki3 = "#CDC673",

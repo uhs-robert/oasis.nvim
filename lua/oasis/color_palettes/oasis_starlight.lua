@@ -10,8 +10,8 @@ local ui = {
 	-- Backgrounds
 	bg = {
 		core = hsl(p.theme.bg.core[key]),
+		shadow = hsl(p.theme.bg.shadow[key]),
 		mantle = hsl(p.theme.bg.mantle[key]),
-		crust = hsl(p.theme.bg.crust[key]),
 		surface = hsl(p.theme.bg.surface[key]),
 	},
 	-- Foregrounds
@@ -21,19 +21,6 @@ local ui = {
 		dim = hsl(p.theme.fg.dim[key]),
 		comment = hsl(p.theme.fg.comment[key]),
 	},
-	-- -- Backgrounds
-	-- bg = {
-	-- 	core = hsl(p.black.abyssCore),
-	-- 	mantle = hsl(p.black.charcoal),
-	-- 	crust = hsl(p.black.abyssMantle),
-	-- 	surface = hsl(p.black.abyssCrust),
-	-- },
-	-- -- Foregrounds
-	-- fg = {
-	-- 	core = hsl(p.white.moondust),
-	-- 	muted = hsl(p.grey.duskbasalt),
-	-- 	dim = hsl(p.grey.duskbasalt),
-	-- },
 	-- General colors
 	theme = {
 		primary = hsl(p.blue.horizon),
@@ -95,7 +82,7 @@ local c = {
 
 		title = ui.theme.primary,
 		border = ui.theme.primary,
-		cursorLine = ui.bg.crust.lighten(6),
+		cursorLine = ui.bg.shadow.lighten(6),
 		nontext = ui.fg.dim,
 		float = {
 			title = ui.theme.primary,
