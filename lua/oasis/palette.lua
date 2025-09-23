@@ -1,3 +1,4 @@
+-- palette.lua
 -- lua/oasis/palette.lua
 
 -- Terminal
@@ -75,9 +76,9 @@ local colors = {
 		charcoal = "#111111",
 
 		desertCore = "#333333",
-		desertMantle = "#4D4D4D",
+		desertMantle = "#444444",
 		desertCrust = "#2F2F2F",
-		desertSurface = "#666666",
+		desertSurface = "#555555",
 
 		abyssCore = "#000000",
 		abyssMantle = "#080808",
@@ -99,7 +100,7 @@ local colors = {
 		canyonCrust = "#331B06",
 		canyonSurface = "#754215",
 
-		duneCore = "#443E34",
+		duneCore = "#443B31",
 		duneMantle = "#50483E",
 		duneCrust = "#3A342B",
 		duneSurface = "#62594D",
@@ -124,11 +125,11 @@ local colors = {
 	white = {
 		ivorysand = "#F6F0E1",
 		dunesand = "#F5E6DC",
+		duneveil = "#F8E7D3",
 		moonstone = "#D0D0E0",
 		moonpearl = "#EAE6F4",
 		moondust = "#E0E0E0",
 		moonash = "#E2E6E5",
-		duneveil = "#F8E7D3",
 	},
 
 	grey = {
@@ -184,26 +185,27 @@ local colors = {
 		deepsun = "#F49F15",
 		lightsunset = "#FFA852",
 		sunset = "#FF9F41",
-    sunrise = "#E67451", -- EXCEPTION?
+		sunrise = "#E67451", -- EXCEPTION?
 		lightdawn = "#F9C97B",
 		dawn = "#F8C471",
-    redDawn = "#F8B471",
-    darkRedDawn = "#F89047", -- CONSTANT?
+		redDawn = "#F8B471",
+		darkRedDawn = "#F89047", -- CONSTANT?
 		lightamber = "#E69E4C",
 		amber = "#E3963E",
-    indianSaffron = "#FF7722",
+		indianSaffron = "#FF7722",
 	},
 
 	yellow = {
-    sunYellow = "#FFE87C",
+		sunYellow = "#FFE87C",
 		gold = "#FFD700",
 		khaki = "#F0E68C",
 		khaki2 = "#EDE173",
-    khaki3 = "#CDC673",
-    darkkhaki = "#BDB76B",
-    khaki4 = "#8B864E",
+		khaki3 = "#CDC673",
+		darkkhaki = "#BDB76B",
+		khaki4 = "#8B864E",
 		dune = "#D4A017",
 		wheat = "#FFD87C",
+		navajowhite = "#FFDEAD",
 		moonlitsand = "#EADD61",
 	},
 
@@ -223,28 +225,30 @@ local colors = {
 
 	teal = {
 		sky = "#019992",
-    darkagave = "#7BBDB3",
+		darkagave = "#7BBDB3",
 		agave = "#8FD1C7",
 		lightagave = "#96D4CB",
+		lightdeepagave = "#47A99B",
 		deepagave = "#3B9184",
-    depthagave = "#23877A",
+		depthagave = "#23877A",
 	},
 
 	cyan = {},
 
 	blue = {
-    water = "#0E87CC",
+		water = "#0E87CC",
 		lunartide = "#4680A4",
 		lunarShade = "#2C5168",
 		azure = "#1CA1FF",
 		lightazure = "#2EA8FF",
 		deepazure = "#0597FF",
-    blueLagoon = "#8EEBEC",
+		blueLagoon = "#8EEBEC",
 		skyblue = "#87CEEB",
-    crystalBlue = "#5CB3FF",
-    skyBlueDress = "#6698FF",
+		crystalBlue = "#5CB3FF",
+		skyBlueDress = "#6698FF",
 		lightskyblue = "#92D3ED",
 		darkskyblue = "#6FC5E7",
+		deepskyblue = "#319EC9",
 		darkerskyblue = "#378BA4",
 		horizon = "#4AC8FF",
 		lighthorizon = "#5CCEFF",

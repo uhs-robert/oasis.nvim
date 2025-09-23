@@ -7,7 +7,7 @@ local M = {}
 ---   require('oasis').apply('oasis')         -- default
 ---@param palette_name string|nil
 function M.apply(palette_name)
-	palette_name = palette_name or vim.g.oasis_palette or "oasis-lagoon"
+	palette_name = palette_name or vim.g.oasis_palette or "oasis_lagoon"
 
 	-- Load palette
 	local ok, c = pcall(require, "oasis.color_palettes." .. palette_name)
