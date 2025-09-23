@@ -16,8 +16,8 @@ local ui = {
 	-- Foregrounds
 	fg = {
 		core = hsl(p.white.ivorysand),
-		muted = hsl(p.brown.canyonsoil),
-		dim = hsl(p.brown.canyonshadow),
+		muted = hsl(p.orange.burntUmber),
+		dim = hsl(p.brown.canyonsoil),
 	},
 	-- General colors
 	theme = {
@@ -59,7 +59,7 @@ local c = {
 
 		-- Neutral: (Connections / Info)
 		bracket = hsl(p.brown.mud), -- (bracket punctuation)
-		comment = hsl(p.blue.darkerskyblue), -- (comments)
+		comment = hsl(p.orange.burntUmber), -- (comments)
 	},
 
 	-- Diff
