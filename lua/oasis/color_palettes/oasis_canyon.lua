@@ -3,21 +3,23 @@
 local lush = require("lush")
 local hsl = lush.hsl
 local p = require("oasis.palette")
+local key = "canyon"
 
 -- General Reusable Colors
 local ui = {
 	-- Backgrounds
 	bg = {
-		core = hsl(p.black.canyonCore),
-		mantle = hsl(p.black.canyonMantle),
-		crust = hsl(p.black.canyonCrust),
-		surface = hsl(p.black.canyonSurface),
+		core = hsl(p.theme.bg.core[key]),
+		mantle = hsl(p.theme.bg.mantle[key]),
+		crust = hsl(p.theme.bg.crust[key]),
+		surface = hsl(p.theme.bg.surface[key]),
 	},
 	-- Foregrounds
 	fg = {
-		core = hsl(p.white.ivorysand),
-		muted = hsl(p.orange.burntUmber),
-		dim = hsl(p.brown.canyonsoil),
+		core = hsl(p.theme.fg.core[key]),
+		muted = hsl(p.theme.fg.muted[key]),
+		dim = hsl(p.theme.fg.dim[key]),
+		comment = hsl(p.theme.fg.comment[key]),
 	},
 	-- General colors
 	theme = {
@@ -39,7 +41,7 @@ local c = {
 		-- Cold: (Data)
 		parameter = hsl(p.indigo.lightcactusflower), -- (paramaters) [UNIQUE]
 		identifier = hsl(p.yellow.navajowhite), -- (property identifiers)
-		delimiter = hsl(p.orange.darkRedDawn), -- (delimiter)
+		delimiter = ui.theme.primary, -- (delimiter)
 		type = hsl(p.teal.agave), -- (type definitions)
 		builtinVar = hsl(p.blue.lightazure), -- (this, document, window, etc)
 		string = hsl(p.green.springcactus), -- (strings)
@@ -60,7 +62,7 @@ local c = {
 
 		-- Neutral: (Connections / Info)
 		bracket = hsl(p.brown.mud), -- (bracket punctuation)
-		comment = hsl(p.orange.burntUmber), -- (comments)
+		comment = ui.fg.comment, -- (comments)
 	},
 
 	-- Diff
@@ -72,7 +74,7 @@ local c = {
 
 	-- UI
 	ui = {
-		match = hsl(p.orange.darkRedDawn),
+		match = hsl(p.yellow.gold),
 		visual = { bg = hsl(p.visual.blue), fg = "none" },
 		search = { bg = hsl(p.teal.sky), fg = ui.fg.core },
 		curSearch = { bg = hsl(p.orange.sun), fg = ui.bg.core },

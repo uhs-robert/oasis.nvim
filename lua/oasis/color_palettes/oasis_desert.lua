@@ -3,21 +3,23 @@
 local lush = require("lush")
 local hsl = lush.hsl
 local p = require("oasis.palette")
+local key = "desert"
 
 -- General Reusable Colors
 local ui = {
-	-- Backgrounds
+	-- -- Backgrounds
 	bg = {
-		core = hsl(p.black.desertCore),
-		mantle = hsl(p.black.desertMantle),
-		crust = hsl(p.black.desertCrust),
-		surface = hsl(p.black.desertSurface),
+		core = hsl(p.theme.bg.core[key]),
+		mantle = hsl(p.theme.bg.mantle[key]),
+		crust = hsl(p.theme.bg.crust[key]),
+		surface = hsl(p.theme.bg.surface[key]),
 	},
 	-- Foregrounds
 	fg = {
-		core = hsl(p.white.ivorysand),
-		muted = hsl(p.brown.canyonsoil),
-		dim = hsl(p.brown.mud),
+		core = hsl(p.theme.fg.core[key]),
+		muted = hsl(p.theme.fg.muted[key]),
+		dim = hsl(p.theme.fg.dim[key]),
+		comment = hsl(p.theme.fg.comment[key]),
 	},
 	-- General colors
 	theme = {
@@ -39,7 +41,7 @@ local c = {
 		-- Cold: (Data)
 		parameter = hsl(p.indigo.lightcactusflower), -- (paramaters) [UNIQUE]
 		identifier = hsl(p.yellow.navajowhite), -- (property identifiers)
-		delimiter = hsl(p.red.deepdesertrose), -- (delimiters)
+		delimiter = ui.theme.primary, -- (delimiters)
 		type = hsl(p.teal.darkagave), -- (type definitions)
 		builtinVar = hsl(p.blue.lightazure), -- (this, document, window, etc)
 		string = hsl(p.green.cactus), -- (strings)
