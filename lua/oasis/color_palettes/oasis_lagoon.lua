@@ -15,7 +15,7 @@ local ui = {
 	},
 	-- Foregrounds
 	fg = {
-		core = hsl(p.white.duneveil),
+		core = hsl(p.white.ivorysand),
 		muted = hsl(p.brown.canyonsoil),
 		dim = hsl(p.grey.darktwilight),
 	},
@@ -37,7 +37,9 @@ local c = {
 	syntax = {
 		-- Cold: (Data)
 		parameter = hsl(p.indigo.darkcactusflower), -- (paramaters) [UNIQUE]
-		identifier = hsl(p.blue.skyblue), -- (property identifiers)
+		-- identifier = hsl(p.blue.skyblue), -- (property identifiers)
+		identifier = hsl(p.yellow.navajowhite), -- (property identifiers)
+		delimiter = hsl(p.red.indianred), -- (delimiters)
 		type = hsl(p.teal.darkagave), -- (type definitions)
 		builtinVar = hsl(p.blue.skyBlueDress), -- (this, document, window, etc)
 		string = hsl(p.green.cactus), -- (strings)
@@ -48,7 +50,7 @@ local c = {
 		-- Warm: (Control / Flow)
 		func = hsl(p.orange.redDawn), -- [inverse of identifier]
 		builtinFunc = hsl(p.orange.sunrise), -- (eg. parseInst, Array, Object etc)
-		statement = hsl(p.yellow.khaki), -- (primary p, general statement, conditonal, repeat, label )
+		statement = hsl(p.yellow.khaki), -- (primary, general statement, conditonal, repeat, label )
 		exception = hsl(p.red.indianred), -- (try/catch, return)
 		keyword = hsl(p.yellow.darkkhaki), -- (general catch all)
 		special = hsl(p.orange.lightsunset), -- (other catch all)
