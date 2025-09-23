@@ -143,14 +143,14 @@ return function(c)
       Special                      { fg=c.syntax.special }, -- (*) Any special symbol
       SpecialChar                  { Special }, --   Special character in a constant
       Tag                          { Special }, --   You can use CTRL-] on this
-      Delimiter                    { fg=(c.syntax.identifier) }, --   Character that needs attention
+      Delimiter                    { fg=(c.syntax.delimiter or c.syntax.identifier) }, --   Character that needs attention
       SpecialComment               { Special }, --   Special things inside a comment (e.g. '\n')
       Debug                        { Constant }, --   Debugging statements
 
       Underlined                   { cterm="underline", gui="underline" }, -- Text that stands out, HTML links
       Ignore                       { Normal }, -- Left blank, hidden |hl-Ignore| (NOTE: May be invisible here in template)
       Error                        { fg=c.bg.core, bg=c.ui.diag.error.fg, gui="reverse", term="bold,reverse" }, -- Any erroneous construct
-      Todo                                       { fg=c.bg.core, bg=c.ui.diag.warn.fg, gui="bold", term="bold,reverse" }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+      Todo                         { fg=c.bg.core, bg=c.ui.diag.warn.fg, gui="bold", term="bold,reverse" }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
       -- These groups are for the native LSP client and diagnostic system. Some
       -- other LSP clients may use these groups, or use their own. Consult your
