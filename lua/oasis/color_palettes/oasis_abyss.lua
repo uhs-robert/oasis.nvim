@@ -75,7 +75,7 @@ local c = {
 	-- UI
 	ui = {
 		match = hsl(p.orange.sunset),
-		visual = { bg = hsl(p.visual.teal), fg = "none" },
+		visual = { bg = hsl(p.visual.red), fg = "none" },
 		search = { bg = hsl(p.teal.sky), fg = ui.fg.core },
 		curSearch = { bg = hsl(p.orange.sun), fg = ui.bg.core },
 		dir = hsl(p.blue.skyblue),
