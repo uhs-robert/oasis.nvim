@@ -22,6 +22,7 @@ local ui = {
 	-- General colors
 	theme = {
 		primary = hsl(p.blue.azure),
+		light_primary = hsl(p.blue.skyblue),
 		secondary = hsl(p.orange.sunset),
 		accent = hsl(p.red.desertrose),
 	},

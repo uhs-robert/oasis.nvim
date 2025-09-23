@@ -22,6 +22,7 @@ local ui = {
 	-- General colors
 	theme = {
 		primary = hsl(p.indigo.moonlitflower),
+		light_primary = hsl(p.indigo.cactusflower),
 		secondary = hsl(p.yellow.moonlitsand),
 		accent = hsl(p.green.springcactus),
 	},
