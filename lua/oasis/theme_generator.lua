@@ -10,7 +10,6 @@ return function(c)
 
     return {
       -- Main Theme Colors (Used mostly by plugins to add some flavor)
-      --
 
       OasisPrimary                 { fg=c.theme.primary, bg="none" },
       OasisLightPrimary                 { fg=(c.theme.light_primary or c.theme.primary), bg="none" },
