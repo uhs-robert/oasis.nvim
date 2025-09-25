@@ -24,13 +24,10 @@ function M.apply(palette_name)
 	local build = require("oasis.theme_generator")
 	build(c)
 
-	-- Refresh lualine if it's loaded and using oasis theme
-	if package.loaded['lualine'] then
-		local lualine_config = require('lualine').get_config()
-		if lualine_config and lualine_config.options and lualine_config.options.theme == 'oasis' then
-			require('lualine').setup()
-		end
-	end
+	-- Load and refresh plugin integrations
+	pcall(require, 'oasis.integrations.lualine')
+	pcall(require, 'oasis.integrations.tabby')
+	require('oasis.integrations').refresh_all()
 end
 
 -- :Oasis <palette> command with completion from lua/oasis/color_palettes/*.lua
