@@ -21,7 +21,7 @@ function M.apply(palette_name)
 	require("lush")(spec)
 
 	-- You can set a stable name ('oasis') or ecode the variant; both work.
-	vim.g.colors_name = "oasis" -- or ('oasis-' .. palette_name)
+	vim.g.colors_name = palette_name -- or ('oasis-' .. palette_name)
 end
 
 -- :Oasis <palette> command with completion from lua/oasis/color_palettes/*.lua

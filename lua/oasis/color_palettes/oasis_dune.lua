@@ -1,4 +1,5 @@
 -- lua/oasis/color_palettes/oasis_dune.lua
+
 local lush = require("lush")
 local hsl = lush.hsl
 local p = require("oasis.palette")
