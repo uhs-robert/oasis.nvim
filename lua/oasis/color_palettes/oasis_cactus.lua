@@ -21,11 +21,10 @@ local ui = {
 	},
 	-- General colors
 	theme = {
-		-- primary = p.red.indianred,
 		primary = p.green.cactus,
 		light_primary = p.green.aloe,
 		secondary = p.red.deepdesertrose,
-		accent = p.yellow.gold,
+		accent = p.red.desertrose,
 	},
 }
 
