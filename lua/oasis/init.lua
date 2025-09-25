@@ -7,7 +7,12 @@ local M = {}
 ---   require('oasis').apply('oasis')         -- default
 ---@param palette_name string|nil
 function M.apply(palette_name)
+	-- Reset
+	vim.cmd("highlight clear")
+	vim.cmd("syntax reset")
+	vim.opt.background = "dark"
 	palette_name = palette_name or vim.g.oasis_palette or "oasis_lagoon"
+	vim.g.colors_name = palette_name -- or ('oasis-' .. palette_name)
 
 	-- Load palette
 	local ok, c = pcall(require, "oasis.color_palettes." .. palette_name)
@@ -15,13 +20,9 @@ function M.apply(palette_name)
 		error(('Oasis: palette "%s" not found: %s'):format(palette_name, c))
 	end
 
-	-- Build the colorscheme
+	-- Build and apply the colorscheme
 	local build = require("oasis.theme_generator")
-	local spec = build(c)
-	require("lush")(spec)
-
-	-- You can set a stable name ('oasis') or ecode the variant; both work.
-	vim.g.colors_name = palette_name -- or ('oasis-' .. palette_name)
+	build(c)
 end
 
 -- :Oasis <palette> command with completion from lua/oasis/color_palettes/*.lua
