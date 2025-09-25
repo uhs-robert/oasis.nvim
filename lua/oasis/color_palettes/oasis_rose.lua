@@ -1,7 +1,5 @@
 -- lua/oasis/color_palettes/oasis_rose.lua
 
-local lush = require("lush")
-local hsl = lush.hsl
 local p = require("oasis.palette")
 local key = "rose"
 
@@ -9,23 +7,23 @@ local key = "rose"
 local ui = {
 	-- Backgrounds
 	bg = {
-		core = hsl(p.theme.bg.core[key]),
-		shadow = hsl(p.theme.bg.shadow[key]),
-		mantle = hsl(p.theme.bg.mantle[key]),
-		surface = hsl(p.theme.bg.surface[key]),
+		core = p.theme.bg.core[key],
+		shadow = p.theme.bg.shadow[key],
+		mantle = p.theme.bg.mantle[key],
+		surface = p.theme.bg.surface[key],
 	},
 	-- Foregrounds
 	fg = {
-		core = hsl(p.theme.fg.core[key]),
-		muted = hsl(p.theme.fg.muted[key]),
-		dim = hsl(p.theme.fg.dim[key]),
-		comment = hsl(p.theme.fg.comment[key]),
+		core = p.theme.fg.core[key],
+		muted = p.theme.fg.muted[key],
+		dim = p.theme.fg.dim[key],
+		comment = p.theme.fg.comment[key],
 	},
 	-- General colors
 	theme = {
-		primary = hsl(p.red.desertrose),
-		secondary = hsl(p.yellow.sunYellow),
-		accent = hsl(p.blue.skyblue),
+		primary = p.red.desertrose,
+		secondary = p.yellow.sunYellow,
+		accent = p.blue.skyblue,
 	},
 }
 
@@ -38,63 +36,63 @@ local c = {
 	-- Syntax
 	syntax = {
 		-- Cold: (Data)
-		parameter = hsl(p.indigo.lightcactusflower), -- (paramaters) [UNIQUE]
-		identifier = hsl(p.yellow.navajowhite), -- (property identifiers)
+		parameter = p.indigo.lightcactusflower, -- (paramaters) [UNIQUE]
+		identifier = p.yellow.navajowhite, -- (property identifiers)
 		delimiter = ui.theme.primary, -- (delimiters)
-		type = hsl(p.teal.darkagave), -- (type definitions)
-		builtinVar = hsl(p.blue.lightazure), -- (this, document, window, etc)
-		string = hsl(p.green.springcactus), -- (strings)
-		regex = hsl(p.green.palm), -- (reg ex string)
-		builtinConst = hsl(p.green.lightaloe), -- (e.g. null, undefined, Infinity, etc)
-		constant = hsl(p.orange.darkRedDawn), -- (constant: number, float, boolean, or const not string/character)
+		type = p.teal.darkagave, -- (type definitions)
+		builtinVar = p.blue.lightazure, -- (this, document, window, etc)
+		string = p.green.springcactus, -- (strings)
+		regex = p.green.palm, -- (reg ex string)
+		builtinConst = p.green.lightaloe, -- (e.g. null, undefined, Infinity, etc)
+		constant = p.orange.darkRedDawn, -- (constant: number, float, boolean, or const not string/character)
 
 		-- Warm: (Control / Flow)
-		func = hsl(p.orange.redDawn), -- [inverse of identifier]
-		builtinFunc = hsl(p.orange.deepsun), -- (eg. parseInst, Array, Object etc)
-		statement = hsl(p.yellow.khaki), -- (primary p, general statement, conditonal, repeat, label )
-		exception = hsl(p.red.indianred), -- (try/catch, return)
-		keyword = hsl(p.yellow.darkkhaki), -- (general catch all)
-		special = hsl(p.orange.lightsunset), -- (other catch all)
-		operator = hsl(p.red.desertrose), -- (operators)
-		punctuation = hsl(p.red.heatwave), -- (punctuation)
-		preproc = hsl(p.blue.crystalBlue), -- (imports)
+		func = p.orange.redDawn, -- [inverse of identifier]
+		builtinFunc = p.orange.deepsun, -- (eg. parseInst, Array, Object etc)
+		statement = p.yellow.khaki, -- (primary p, general statement, conditonal, repeat, label )
+		exception = p.red.indianred, -- (try/catch, return)
+		keyword = p.yellow.darkkhaki, -- (general catch all)
+		special = p.orange.lightsunset, -- (other catch all)
+		operator = p.red.desertrose, -- (operators)
+		punctuation = p.red.heatwave, -- (punctuation)
+		preproc = p.blue.crystalBlue, -- (imports)
 
 		-- Neutral: (Connections / Info)
-		bracket = hsl(p.brown.dryriverbed), -- (bracket punctuation)
+		bracket = p.brown.dryriverbed, -- (bracket punctuation)
 		comment = ui.fg.comment, -- (comments)
 	},
 
 	-- Diff
 	diff = {
-		add = hsl(p.green.springmoss),
-		change = hsl(p.yellow.dune),
-		delete = hsl(p.red.brick),
+		add = p.green.springmoss,
+		change = p.yellow.dune,
+		delete = p.red.brick,
 	},
 
 	-- UI
 	ui = {
-		match = hsl(p.orange.deepsun), -- gold
-		visual = { bg = hsl(p.visual.orange), fg = "none" },
-		search = { bg = hsl(p.teal.sky), fg = ui.fg.core },
-		curSearch = { bg = hsl(p.orange.sun), fg = ui.bg.core },
-		dir = hsl(p.blue.skyblue),
+		match = p.orange.deepsun, -- gold
+		visual = { bg = p.visual.orange, fg = "none" },
+		search = { bg = p.teal.sky, fg = ui.fg.core },
+		curSearch = { bg = p.orange.sun, fg = ui.bg.core },
+		dir = p.blue.skyblue,
 
 		title = ui.theme.primary,
 		border = ui.theme.primary,
-		cursorLine = ui.bg.shadow.lighten(6),
+		cursorLine = ui.bg.mantle,
 		nontext = ui.fg.dim,
 		float = {
 			title = ui.theme.primary,
 			fg = ui.fg.core,
-			bg = ui.bg.mantle,
+			bg = ui.bg.surface,
 			border = { fg = ui.theme.primary, bg = ui.bg.mantle },
 		},
 		diag = {
-			error = { fg = hsl(p.diag.error.fg), bg = hsl(p.diag.error.bg) },
-			warn = { fg = hsl(p.diag.warn.fg), bg = hsl(p.diag.warn.bg) },
-			info = { fg = hsl(p.diag.info.fg), bg = hsl(p.diag.info.bg) },
-			hint = { fg = hsl(p.diag.hint.fg), bg = hsl(p.diag.hint.bg) },
-			ok = { fg = hsl(p.diag.ok.fg), bg = "none" },
+			error = { fg = p.diag.error.fg, bg = p.diag.error.bg },
+			warn = { fg = p.diag.warn.fg, bg = p.diag.warn.bg },
+			info = { fg = p.diag.info.fg, bg = p.diag.info.bg },
+			hint = { fg = p.diag.hint.fg, bg = p.diag.hint.bg },
+			ok = { fg = p.diag.ok.fg, bg = "none" },
 		},
 	},
 }

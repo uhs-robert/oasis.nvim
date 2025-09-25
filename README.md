@@ -1,14 +1,14 @@
 # 🏜️ Oasis.nvim
 
-A modular desert-themed colorscheme for Neovim with warm, earthy tones and multiple palette variants. Originally inspired by the classic `desert` theme for vim, also uses the cool/warm philosophy from `melange` (i.e., `warm colors = action/flow` and `cool colors = structure/data`). 
+A modular desert-themed colorscheme for Neovim with warm, earthy tones and multiple palette variants. Originally inspired by the classic `desert` theme for vim, also uses the cool/warm philosophy from `melange` (i.e., `warm colors = action/flow` and `cool colors = structure/data`).
 
 ## Features
 
 - **10+ palette variants** - From cool lagoons to warm desert sands
+- **Zero dependencies** - Works out of the box without external plugins
+- **Fast loading** - Direct highlight application for optimal performance
 - **Modular architecture** - Easy to customize and extend
-- **Dual modes** - Works with or without Lush dependency
-- **Live editing** - Real-time theme development with Lush
-- **Export system** - Generate static colorschemes for distribution
+- **Export system** - Generate static colorschemes for distribution (requires Shipwright)
 - **Comprehensive highlighting** - LSP, Tree-sitter, and plugin support
 
 ## Installation
@@ -18,7 +18,6 @@ A modular desert-themed colorscheme for Neovim with warm, earthy tones and multi
 ```lua
 {
   "uhs-robert/oasis.nvim",
-  dependencies = { "rktjmp/lush.nvim" }, -- Optional for live editing
   config = function()
     vim.cmd.colorscheme("oasis") -- or a variant like (oasis_desert)
   end
@@ -30,7 +29,6 @@ A modular desert-themed colorscheme for Neovim with warm, earthy tones and multi
 ```lua
 use {
   "uhs-robert/oasis.nvim",
-  requires = { "rktjmp/lush.nvim" }, -- Optional for live editing
   config = function()
     vim.cmd.colorscheme("oasis") -- or a variant like (oasis_desert)
   end
@@ -48,12 +46,15 @@ git clone https://github.com/uhs-robert/oasis.nvim ~/.config/nvim/pack/plugins/s
 ### Basic Usage
 
 ```lua
--- Set colorscheme directly
+-- Set colorscheme directly with a specific palette
 vim.cmd.colorscheme("oasis_desert")
 
--- Or set/use a specific palette
+-- Or set default palette and use base command
 vim.g.oasis_palette = "oasis_desert"
 vim.cmd.colorscheme("oasis")
+
+-- Or use the Lua API directly
+require('oasis').apply('oasis_desert')
 ```
 
 ### Available Palettes
@@ -69,24 +70,19 @@ vim.cmd.colorscheme("oasis")
 - `oasis_sol` - The unforgiving `red` hot sun
 - `oasis_starlight` - Guided by the moon/stars during the `vivid black` night
 
-### Commands (with Lush)
+### Commands
 
 ```vim
 :Oasis oasis_desert    " Switch to desert palette
-:OasisExport all       " Export all palettes as static files
+:OasisExport all       " Export all palettes as static files (requires Shipwright)
 :OasisExport list      " List available palettes
 ```
 
-## Two Usage Modes
+## Architecture
 
-### Dynamic Mode (with Lush)
+The colorscheme uses a modular architecture with:
 
-- Live palette switching with `:Oasis` command
-- Real-time theme editing and development
-- Access to all advanced features
-
-### Static Mode (without Lush)
-
-- Zero dependencies, works out of the box
-- Use pre-exported colorschemes: `:colorscheme oasis-desert`
-- Slightly faster loading times
+- **Direct highlight application** - Uses `vim.api.nvim_set_hl()` for optimal performance
+- **Palette-based system** - Colors organized by semantic meaning (warm/cool/neutral)
+- **Zero external dependencies** - Self-contained implementation
+- **Export compatibility** - Can generate static files for distribution
