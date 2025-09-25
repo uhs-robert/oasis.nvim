@@ -17,13 +17,13 @@ function M.get(style)
 
 	hl.normal = {
 		a = { bg = c.syntax.statement, fg = c.bg.core },
-		b = { bg = c.bg.mantle, fg = c.fg.core },
-		c = { bg = c.bg.surface, fg = c.fg.muted },
+		b = { bg = c.bg.mantle, fg = c.syntax.statement },
+		c = { bg = c.bg.surface, fg = c.fg.core },
 	}
 
 	hl.insert = {
-		a = { bg = c.syntax.operator, fg = c.bg.core },
-		b = { bg = c.bg.mantle, fg = c.syntax.operator },
+		a = { bg = c.syntax.string, fg = c.bg.core },
+		b = { bg = c.bg.mantle, fg = c.syntax.string },
 	}
 
 	hl.command = {
@@ -37,13 +37,13 @@ function M.get(style)
 	}
 
 	hl.replace = {
-		a = { bg = c.syntax.exception, fg = c.bg.core },
-		b = { bg = c.bg.mantle, fg = c.syntax.exception },
+		a = { bg = c.syntax.operator, fg = c.bg.core },
+		b = { bg = c.bg.mantle, fg = c.syntax.operator },
 	}
 
 	hl.terminal = {
-		a = { bg = c.syntax.keyword, fg = c.bg.core },
-		b = { bg = c.bg.mantle, fg = c.syntax.keyword },
+		a = { bg = c.syntax.type, fg = c.bg.core },
+		b = { bg = c.bg.mantle, fg = c.syntax.type },
 	}
 
 	hl.inactive = {

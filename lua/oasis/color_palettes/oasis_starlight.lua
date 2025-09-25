@@ -1,3 +1,4 @@
+-- oasis_starlight.lua
 -- lua/oasis/color_palettes/oasis_starlight.lua
 
 local p = require("oasis.palette")
@@ -80,7 +81,7 @@ local c = {
 
 		title = ui.theme.primary,
 		border = ui.theme.primary,
-		cursorLine = ui.bg.surface,
+		cursorLine = p.theme.bg.mantle.lagoon,
 		nontext = ui.fg.dim,
 		float = {
 			title = ui.theme.primary,
