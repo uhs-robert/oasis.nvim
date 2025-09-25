@@ -1,4 +1,3 @@
--- oasis_starlight.lua
 -- lua/oasis/color_palettes/oasis_starlight.lua
 
 local p = require("oasis.palette")

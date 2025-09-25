@@ -1,4 +1,3 @@
--- palette.lua
 -- lua/oasis/palette.lua
 
 -- Terminal
