@@ -38,6 +38,7 @@ local visual = {
 	blue = "#335668",
 	indigo = "#3E2F4A",
 	violet = "#50325A",
+	pink = "#47283B",
 }
 
 -- Diagnoistics

@@ -73,7 +73,7 @@ local c = {
 	-- UI
 	ui = {
 		match = p.orange.deepsun, -- gold
-		visual = { bg = p.visual.orange, fg = "none" },
+		visual = { bg = p.visual.blue, fg = "none" },
 		search = { bg = p.teal.sky, fg = ui.fg.core },
 		curSearch = { bg = p.orange.sun, fg = ui.bg.core },
 		dir = p.blue.skyblue,
