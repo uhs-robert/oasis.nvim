@@ -79,7 +79,7 @@ local c = {
 
 		title = ui.theme.primary,
 		border = ui.theme.primary,
-		cursorLine = ui.bg.surface,
+		cursorLine = ui.bg.mantle,
 		nontext = ui.fg.dim,
 		float = {
 			title = ui.theme.primary,
