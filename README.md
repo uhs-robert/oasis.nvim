@@ -130,6 +130,32 @@ require('oasis').apply('oasis_desert')
 :OasisExport list      " List available palettes
 ```
 
+## Plugin Integrations
+
+### Lualine
+
+Oasis includes automatic Lualine theme integration that matches your current palette:
+
+```lua
+require('lualine').setup {
+  options = {
+    theme = 'oasis'  -- Automatically matches your current Oasis palette
+  }
+}
+```
+
+### Tabby (Tab Bar)
+
+For enhanced tab bar styling that matches your Oasis theme:
+
+```lua
+require('tabby').setup({
+  theme = 'oasis'  -- Uses current Oasis palette for tab styling
+})
+```
+
+> **Note**: Both integrations automatically adapt to theme changes when you switch between Oasis variants using `:Oasis <variant>`.
+
 ## Architecture
 
 The colorscheme uses a modular architecture with:
@@ -191,14 +217,6 @@ The original Oasis theme and default variant, featuring cool blues of the oasis 
 
 <img src="assets/screenshots/lagoon-code.webp" alt="Lagoon Code" width="800">
 
-### Rose - Pink
-
-Soft pinks of the warm desert rose
-
-<img src="assets/screenshots/rose-dashboard.webp" alt="Rose Dashboard" width="800">
-
-<img src="assets/screenshots/rose-code.webp" alt="Rose Code" width="800">
-
 ### Twilight - Purple
 
 Evening desert with purple and indigo hues
@@ -206,6 +224,14 @@ Evening desert with purple and indigo hues
 <img src="assets/screenshots/twilight-dashboard.webp" alt="Twilight Dashboard" width="800">
 
 <img src="assets/screenshots/twilight-code.webp" alt="Twilight Code" width="800">
+
+### Rose - Pink
+
+Soft pinks of the warm desert rose
+
+<img src="assets/screenshots/rose-dashboard.webp" alt="Rose Dashboard" width="800">
+
+<img src="assets/screenshots/rose-code.webp" alt="Rose Code" width="800">
 
 ### Desert - Grey
 
