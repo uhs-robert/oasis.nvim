@@ -22,35 +22,47 @@ If you want the top status line from the dashboard screenshots too, that's from 
 <table>
   <tr>
     <td align="center" colspan="2">Lagoon</td>
+  </tr>
+  <tr>
+    <td align="center"><em>Dashboard</em></td>
+    <td align="center"><em>Code</em></td>
+  </tr>
+  <tr>
+    <td><img src="assets/screenshots/lagoon-dashboard.webp" alt="Lagoon Dashboard" width="360"></td>
+    <td><img src="assets/screenshots/lagoon-code.webp" alt="Lagoon Code" width="360"></td>
+  </tr>
+  <tr>
     <td align="center" colspan="2">Desert</td>
   </tr>
   <tr>
     <td align="center"><em>Dashboard</em></td>
     <td align="center"><em>Code</em></td>
+  </tr>
+  <tr>
+    <td><img src="assets/screenshots/desert-dashboard.webp" alt="Desert Dashboard" width="360"></td>
+    <td><img src="assets/screenshots/desert-code.webp" alt="Desert Code" width="360"></td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2">Abyss</td>
+  </tr>
+  <tr>
     <td align="center"><em>Dashboard</em></td>
     <td align="center"><em>Code</em></td>
   </tr>
   <tr>
-    <td><img src="assets/screenshots/lagoon-dashboard.webp" alt="Lagoon Dashboard" width="240"></td>
-    <td><img src="assets/screenshots/lagoon-code.webp" alt="Lagoon Code" width="240"></td>
-    <td><img src="assets/screenshots/desert-dashboard.webp" alt="Desert Dashboard" width="240"></td>
-    <td><img src="assets/screenshots/desert-code.webp" alt="Desert Code" width="240"></td>
+    <td><img src="assets/screenshots/abyss-dashboard.webp" alt="Abyss Dashboard" width="360"></td>
+    <td><img src="assets/screenshots/abyss-code.webp" alt="Abyss Code" width="360"></td>
   </tr>
   <tr>
-    <td align="center" colspan="2">Abyss</td>
     <td align="center" colspan="2">Twilight</td>
   </tr>
   <tr>
     <td align="center"><em>Dashboard</em></td>
     <td align="center"><em>Code</em></td>
-    <td align="center"><em>Dashboard</em></td>
-    <td align="center"><em>Code</em></td>
   </tr>
   <tr>
-    <td><img src="assets/screenshots/abyss-dashboard.webp" alt="Abyss Dashboard" width="240"></td>
-    <td><img src="assets/screenshots/abyss-code.webp" alt="Abyss Code" width="240"></td>
-    <td><img src="assets/screenshots/twilight-dashboard.webp" alt="Twilight Dashboard" width="240"></td>
-    <td><img src="assets/screenshots/twilight-code.webp" alt="Twilight Code" width="240"></td>
+    <td><img src="assets/screenshots/twilight-dashboard.webp" alt="Twilight Dashboard" width="360"></td>
+    <td><img src="assets/screenshots/twilight-code.webp" alt="Twilight Code" width="360"></td>
   </tr>
 </table>
 
@@ -59,35 +71,47 @@ If you want the top status line from the dashboard screenshots too, that's from 
 <table>
   <tr>
     <td align="center" colspan="2">Sol</td>
+  </tr>
+  <tr>
+    <td align="center"><em>Dashboard</em></td>
+    <td align="center"><em>Code</em></td>
+  </tr>
+  <tr>
+    <td><img src="assets/screenshots/sol-dashboard.webp" alt="Sol Dashboard" width="360"></td>
+    <td><img src="assets/screenshots/sol-code.webp" alt="Sol Code" width="360"></td>
+  </tr>
+  <tr>
     <td align="center" colspan="2">Canyon</td>
   </tr>
   <tr>
     <td align="center"><em>Dashboard</em></td>
     <td align="center"><em>Code</em></td>
+  </tr>
+  <tr>
+    <td><img src="assets/screenshots/canyon-dashboard.webp" alt="Canyon Dashboard" width="360"></td>
+    <td><img src="assets/screenshots/canyon-code.webp" alt="Canyon Code" width="360"></td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2">Mirage</td>
+  </tr>
+  <tr>
     <td align="center"><em>Dashboard</em></td>
     <td align="center"><em>Code</em></td>
   </tr>
   <tr>
-    <td><img src="assets/screenshots/sol-dashboard.webp" alt="Sol Dashboard" width="240"></td>
-    <td><img src="assets/screenshots/sol-code.webp" alt="Sol Code" width="240"></td>
-    <td><img src="assets/screenshots/canyon-dashboard.webp" alt="Canyon Dashboard" width="240"></td>
-    <td><img src="assets/screenshots/canyon-code.webp" alt="Canyon Code" width="240"></td>
+    <td><img src="assets/screenshots/mirage-dashboard.webp" alt="Mirage Dashboard" width="360"></td>
+    <td><img src="assets/screenshots/mirage-code.webp" alt="Mirage Code" width="360"></td>
   </tr>
   <tr>
-    <td align="center" colspan="2">Mirage</td>
     <td align="center" colspan="2">Cactus</td>
   </tr>
   <tr>
     <td align="center"><em>Dashboard</em></td>
     <td align="center"><em>Code</em></td>
-    <td align="center"><em>Dashboard</em></td>
-    <td align="center"><em>Code</em></td>
   </tr>
   <tr>
-    <td><img src="assets/screenshots/mirage-dashboard.webp" alt="Mirage Dashboard" width="240"></td>
-    <td><img src="assets/screenshots/mirage-code.webp" alt="Mirage Code" width="240"></td>
-    <td><img src="assets/screenshots/cactus-dashboard.webp" alt="Cactus Dashboard" width="240"></td>
-    <td><img src="assets/screenshots/cactus-code.webp" alt="Cactus Code" width="240"></td>
+    <td><img src="assets/screenshots/cactus-dashboard.webp" alt="Cactus Dashboard" width="360"></td>
+    <td><img src="assets/screenshots/cactus-code.webp" alt="Cactus Code" width="360"></td>
   </tr>
 
 </table>
