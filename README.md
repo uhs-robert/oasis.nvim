@@ -13,11 +13,74 @@ A modular desert-themed colorscheme for Neovim with warm, earthy tones and multi
 - **Zero dependencies** - Works out of the box without external plugins
 - **Modular architecture** - Easy to customize and extend
 
+## Theme Overview
+
+Choose from 12 distinct desert-inspired variants, each with its own personality and color palette:
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="#lagoon---blue"><img src="assets/screenshots/lagoon-dashboard.webp" alt="Lagoon" width="180"></a><br>
+      <strong>Lagoon</strong><br><em>Blue</em>
+    </td>
+    <td align="center">
+      <a href="#dune---yellow"><img src="assets/screenshots/dune-dashboard.webp" alt="Dune" width="180"></a><br>
+      <strong>Dune</strong><br><em>Yellow</em>
+    </td>
+    <td align="center">
+      <a href="#night---off-black"><img src="assets/screenshots/night-dashboard.webp" alt="Night" width="180"></a><br>
+      <strong>Night</strong><br><em>Off Black</em>
+    </td>
+    <td align="center">
+      <a href="#desert---grey"><img src="assets/screenshots/desert-dashboard.webp" alt="Desert" width="180"></a><br>
+      <strong>Desert</strong><br><em>Grey</em>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="#sol---red"><img src="assets/screenshots/sol-dashboard.webp" alt="Sol" width="180"></a><br>
+      <strong>Sol</strong><br><em>Red</em>
+    </td>
+    <td align="center">
+      <a href="#twilight---purple"><img src="assets/screenshots/twilight-dashboard.webp" alt="Twilight" width="180"></a><br>
+      <strong>Twilight</strong><br><em>Purple</em>
+    </td>
+    <td align="center">
+      <a href="#abyss---black"><img src="assets/screenshots/abyss-dashboard.webp" alt="Abyss" width="180"></a><br>
+      <strong>Abyss</strong><br><em>Black</em>
+    </td>
+    <td align="center">
+      <a href="#mirage---teal"><img src="assets/screenshots/mirage-dashboard.webp" alt="Mirage" width="180"></a><br>
+      <strong>Mirage</strong><br><em>Teal</em>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="#canyon---orange"><img src="assets/screenshots/canyon-dashboard.webp" alt="Canyon" width="180"></a><br>
+      <strong>Canyon</strong><br><em>Orange</em>
+    </td>
+    <td align="center">
+      <a href="#rose---pink"><img src="assets/screenshots/rose-dashboard.webp" alt="Rose" width="180"></a><br>
+      <strong>Rose</strong><br><em>Pink</em>
+    </td>
+    <td align="center">
+      <a href="#starlight---black-vivid"><img src="assets/screenshots/starlight-dashboard.webp" alt="Starlight" width="180"></a><br>
+      <strong>Starlight</strong><br><em>Black Vivid</em>
+    </td>
+    <td align="center">
+      <a href="#cactus---green"><img src="assets/screenshots/cactus-dashboard.webp" alt="Cactus" width="180"></a><br>
+      <strong>Cactus</strong><br><em>Green</em>
+    </td>
+  </tr>
+</table>
+
+**[↓ View detailed screenshots below](#screenshots)** | **[↓ See all variants expanded](#view-all-theme-variants)**
+
 ## Screenshots
 
 If you want the top status line from the dashboard screenshots too, that's from TMUX. You can install the [Oasis TMUX companion plugin here](https://github.com/uhs-robert/tmux-oasis).
 
-### Classic Desert Themes
+### Preview Gallery
 
 <table>
   <tr>
@@ -32,17 +95,6 @@ If you want the top status line from the dashboard screenshots too, that's from 
     <td><img src="assets/screenshots/lagoon-code.webp" alt="Lagoon Code" width="360"></td>
   </tr>
   <tr>
-    <td align="center" colspan="2">Desert</td>
-  </tr>
-  <tr>
-    <td align="center"><em>Dashboard</em></td>
-    <td align="center"><em>Code</em></td>
-  </tr>
-  <tr>
-    <td><img src="assets/screenshots/desert-dashboard.webp" alt="Desert Dashboard" width="360"></td>
-    <td><img src="assets/screenshots/desert-code.webp" alt="Desert Code" width="360"></td>
-  </tr>
-  <tr>
     <td align="center" colspan="2">Abyss</td>
   </tr>
   <tr>
@@ -54,15 +106,26 @@ If you want the top status line from the dashboard screenshots too, that's from 
     <td><img src="assets/screenshots/abyss-code.webp" alt="Abyss Code" width="360"></td>
   </tr>
   <tr>
-    <td align="center" colspan="2">Twilight</td>
+    <td align="center" colspan="2">Dune</td>
   </tr>
   <tr>
     <td align="center"><em>Dashboard</em></td>
     <td align="center"><em>Code</em></td>
   </tr>
   <tr>
-    <td><img src="assets/screenshots/twilight-dashboard.webp" alt="Twilight Dashboard" width="360"></td>
-    <td><img src="assets/screenshots/twilight-code.webp" alt="Twilight Code" width="360"></td>
+    <td><img src="assets/screenshots/dune-dashboard.webp" alt="Dune Dashboard" width="360"></td>
+    <td><img src="assets/screenshots/dune-code.webp" alt="Dune Code" width="360"></td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2">Desert</td>
+  </tr>
+  <tr>
+    <td align="center"><em>Dashboard</em></td>
+    <td align="center"><em>Code</em></td>
+  </tr>
+  <tr>
+    <td><img src="assets/screenshots/desert-dashboard.webp" alt="Desert Dashboard" width="360"></td>
+    <td><img src="assets/screenshots/desert-code.webp" alt="Desert Code" width="360"></td>
   </tr>
 </table>
 
@@ -81,15 +144,15 @@ If you want the top status line from the dashboard screenshots too, that's from 
     <td><img src="assets/screenshots/sol-code.webp" alt="Sol Code" width="360"></td>
   </tr>
   <tr>
-    <td align="center" colspan="2">Canyon</td>
+    <td align="center" colspan="2">Dune</td>
   </tr>
   <tr>
     <td align="center"><em>Dashboard</em></td>
     <td align="center"><em>Code</em></td>
   </tr>
   <tr>
-    <td><img src="assets/screenshots/canyon-dashboard.webp" alt="Canyon Dashboard" width="360"></td>
-    <td><img src="assets/screenshots/canyon-code.webp" alt="Canyon Code" width="360"></td>
+    <td><img src="assets/screenshots/dune-dashboard.webp" alt="Dune Dashboard" width="360"></td>
+    <td><img src="assets/screenshots/dune-code.webp" alt="Dune Code" width="360"></td>
   </tr>
   <tr>
     <td align="center" colspan="2">Mirage</td>
@@ -166,7 +229,7 @@ Cool teals of shimmering desert mirages
 
 ### Lagoon - Blue
 
-The original Oasis theme, cool blues of the oasis lagoon
+The original Oasis theme and default variant, featuring cool blues of the oasis lagoon
 
 <img src="assets/screenshots/lagoon-dashboard.webp" alt="Lagoon Dashboard" width="800">
 
@@ -257,29 +320,15 @@ git clone https://github.com/uhs-robert/oasis.nvim ~/.config/nvim/pack/plugins/s
 ### Basic Usage
 
 ```lua
--- Set colorscheme directly with a specific palette
+-- Use default theme (lagoon variant)
+vim.cmd.colorscheme("oasis")
+
+-- Or set colorscheme directly with a specific palette
 vim.cmd.colorscheme("oasis_desert")
 
 -- Or use the Lua API directly
 require('oasis').apply('oasis_desert')
 ```
-
-### Available Theme Variants
-
-#### By Dominant Color
-
-- `sol` - **Red** - Hot, scorching desert sun with intense red tones
-- `canyon` - **Orange** - Rich oranges of desert canyon walls
-- `dune` - **Yellow** - Sandy beiges and warm yellow earth tones
-- `cactus` - **Green** - Fresh greens of desert vegetation
-- `mirage` - **Teal** - Cool teals of shimmering desert mirages
-- `lagoon` (default) - **Blue** - The original Oasis theme, cool blues of the oasis lagoon
-- `twilight` - **Purple** - Evening desert with purple and indigo hues
-- `rose` - **Pink** - Soft pinks of the warm desert rose
-- `desert` - **Grey** - Inspired by the classic vim desert theme, neutral sand and earth tones
-- `night` - **Off Black** - Deep desert night sky, almost black for those who prefer softer darkness
-- `abyss` - **Black** - Deep, dark variant with mysterious depths
-- `starlight` - **Black Vivid** - Desert abyss illuminated by brilliant starlight with vivid accent colors
 
 ### Commands
 
