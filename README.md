@@ -21,20 +21,36 @@ If you want the top status line from the dashboard screenshots too, that's from 
 
 <table>
   <tr>
-    <td align="center">Lagoon</td>
-    <td align="center">Desert</td>
+    <td align="center" colspan="2">Lagoon</td>
+    <td align="center" colspan="2">Desert</td>
   </tr>
   <tr>
-    <td><img src="assets/screenshots/lagoon-dashboard.webp" alt="Lagoon" width="320"></td>
-    <td><img src="assets/screenshots/desert-dashboard.webp" alt="Desert" width="320"></td>
+    <td align="center"><em>Dashboard</em></td>
+    <td align="center"><em>Code</em></td>
+    <td align="center"><em>Dashboard</em></td>
+    <td align="center"><em>Code</em></td>
   </tr>
   <tr>
-    <td align="center">Abyss</td>
-    <td align="center">Twilight</td>
+    <td><img src="assets/screenshots/lagoon-dashboard.webp" alt="Lagoon Dashboard" width="240"></td>
+    <td><img src="assets/screenshots/lagoon-code.webp" alt="Lagoon Code" width="240"></td>
+    <td><img src="assets/screenshots/desert-dashboard.webp" alt="Desert Dashboard" width="240"></td>
+    <td><img src="assets/screenshots/desert-code.webp" alt="Desert Code" width="240"></td>
   </tr>
   <tr>
-    <td><img src="assets/screenshots/abyss-dashboard.webp" alt="Abyss" width="320"></td>
-    <td><img src="assets/screenshots/twilight-dashboard.webp" alt="Twilight" width="320"></td>
+    <td align="center" colspan="2">Abyss</td>
+    <td align="center" colspan="2">Twilight</td>
+  </tr>
+  <tr>
+    <td align="center"><em>Dashboard</em></td>
+    <td align="center"><em>Code</em></td>
+    <td align="center"><em>Dashboard</em></td>
+    <td align="center"><em>Code</em></td>
+  </tr>
+  <tr>
+    <td><img src="assets/screenshots/abyss-dashboard.webp" alt="Abyss Dashboard" width="240"></td>
+    <td><img src="assets/screenshots/abyss-code.webp" alt="Abyss Code" width="240"></td>
+    <td><img src="assets/screenshots/twilight-dashboard.webp" alt="Twilight Dashboard" width="240"></td>
+    <td><img src="assets/screenshots/twilight-code.webp" alt="Twilight Code" width="240"></td>
   </tr>
 </table>
 
@@ -42,20 +58,36 @@ If you want the top status line from the dashboard screenshots too, that's from 
 
 <table>
   <tr>
-    <td align="center">Sol</td>
-    <td align="center">Canyon</td>
+    <td align="center" colspan="2">Sol</td>
+    <td align="center" colspan="2">Canyon</td>
   </tr>
   <tr>
-    <td><img src="assets/screenshots/sol-dashboard.webp" alt="Sol" width="320"></td>
-    <td><img src="assets/screenshots/canyon-dashboard.webp" alt="Canyon" width="320"></td>
+    <td align="center"><em>Dashboard</em></td>
+    <td align="center"><em>Code</em></td>
+    <td align="center"><em>Dashboard</em></td>
+    <td align="center"><em>Code</em></td>
   </tr>
   <tr>
-    <td align="center">Mirage</td>
-    <td align="center">Cactus</td>
+    <td><img src="assets/screenshots/sol-dashboard.webp" alt="Sol Dashboard" width="240"></td>
+    <td><img src="assets/screenshots/sol-code.webp" alt="Sol Code" width="240"></td>
+    <td><img src="assets/screenshots/canyon-dashboard.webp" alt="Canyon Dashboard" width="240"></td>
+    <td><img src="assets/screenshots/canyon-code.webp" alt="Canyon Code" width="240"></td>
   </tr>
   <tr>
-    <td><img src="assets/screenshots/mirage-dashboard.webp" alt="Mirage" width="320"></td>
-    <td><img src="assets/screenshots/cactus-dashboard.webp" alt="Cactus" width="320"></td>
+    <td align="center" colspan="2">Mirage</td>
+    <td align="center" colspan="2">Cactus</td>
+  </tr>
+  <tr>
+    <td align="center"><em>Dashboard</em></td>
+    <td align="center"><em>Code</em></td>
+    <td align="center"><em>Dashboard</em></td>
+    <td align="center"><em>Code</em></td>
+  </tr>
+  <tr>
+    <td><img src="assets/screenshots/mirage-dashboard.webp" alt="Mirage Dashboard" width="240"></td>
+    <td><img src="assets/screenshots/mirage-code.webp" alt="Mirage Code" width="240"></td>
+    <td><img src="assets/screenshots/cactus-dashboard.webp" alt="Cactus Dashboard" width="240"></td>
+    <td><img src="assets/screenshots/cactus-code.webp" alt="Cactus Code" width="240"></td>
   </tr>
 
 </table>
@@ -72,73 +104,97 @@ If you want the top status line from the dashboard screenshots too, that's from 
 
 Hot, scorching desert sun with intense red tones
 
-<img src="assets/screenshots/sol-dashboard.webp" alt="Sol" width="800">
+<img src="assets/screenshots/sol-dashboard.webp" alt="Sol Dashboard" width="800">
+
+<img src="assets/screenshots/sol-code.webp" alt="Sol Code" width="800">
 
 ### Canyon - Orange
 
 Rich oranges of desert canyon walls
 
-<img src="assets/screenshots/canyon-dashboard.webp" alt="Canyon" width="800">
+<img src="assets/screenshots/canyon-dashboard.webp" alt="Canyon Dashboard" width="800">
+
+<img src="assets/screenshots/canyon-code.webp" alt="Canyon Code" width="800">
 
 ### Dune - Yellow
 
 Sandy beiges and warm yellow earth tones
 
-<img src="assets/screenshots/dune-dashboard.webp" alt="Dune" width="800">
+<img src="assets/screenshots/dune-dashboard.webp" alt="Dune Dashboard" width="800">
+
+<img src="assets/screenshots/dune-code.webp" alt="Dune Code" width="800">
 
 ### Cactus - Green
 
 Fresh greens of desert vegetation
 
-<img src="assets/screenshots/cactus-dashboard.webp" alt="Cactus" width="800">
+<img src="assets/screenshots/cactus-dashboard.webp" alt="Cactus Dashboard" width="800">
+
+<img src="assets/screenshots/cactus-code.webp" alt="Cactus Code" width="800">
 
 ### Mirage - Teal
 
 Cool teals of shimmering desert mirages
 
-<img src="assets/screenshots/mirage-dashboard.webp" alt="Mirage" width="800">
+<img src="assets/screenshots/mirage-dashboard.webp" alt="Mirage Dashboard" width="800">
+
+<img src="assets/screenshots/mirage-code.webp" alt="Mirage Code" width="800">
 
 ### Lagoon - Blue
 
 The original Oasis theme, cool blues of the oasis lagoon
 
-<img src="assets/screenshots/lagoon-dashboard.webp" alt="Lagoon" width="800">
+<img src="assets/screenshots/lagoon-dashboard.webp" alt="Lagoon Dashboard" width="800">
+
+<img src="assets/screenshots/lagoon-code.webp" alt="Lagoon Code" width="800">
 
 ### Rose - Pink
 
 Soft pinks of the warm desert rose
 
-<img src="assets/screenshots/rose-dashboard.webp" alt="Rose" width="800">
+<img src="assets/screenshots/rose-dashboard.webp" alt="Rose Dashboard" width="800">
+
+<img src="assets/screenshots/rose-code.webp" alt="Rose Code" width="800">
 
 ### Twilight - Purple
 
 Evening desert with purple and indigo hues
 
-<img src="assets/screenshots/twilight-dashboard.webp" alt="Twilight" width="800">
+<img src="assets/screenshots/twilight-dashboard.webp" alt="Twilight Dashboard" width="800">
+
+<img src="assets/screenshots/twilight-code.webp" alt="Twilight Code" width="800">
 
 ### Desert - Grey
 
 Inspired by the classic vim desert theme, neutral sand and earth tones
 
-<img src="assets/screenshots/desert-dashboard.webp" alt="Desert" width="800">
+<img src="assets/screenshots/desert-dashboard.webp" alt="Desert Dashboard" width="800">
+
+<img src="assets/screenshots/desert-code.webp" alt="Desert Code" width="800">
 
 ### Night - Off Black
 
 Deep desert night sky, almost black for those who prefer softer darkness
 
-<img src="assets/screenshots/night-dashboard.webp" alt="Night" width="800">
+<img src="assets/screenshots/night-dashboard.webp" alt="Night Dashboard" width="800">
+
+<img src="assets/screenshots/night-code.webp" alt="Night Code" width="800">
 
 ### Abyss - Black
 
 Deep, dark variant with mysterious depths
 
-<img src="assets/screenshots/abyss-dashboard.webp" alt="Abyss" width="800">
+<img src="assets/screenshots/abyss-dashboard.webp" alt="Abyss Dashboard" width="800">
+
+<img src="assets/screenshots/abyss-code.webp" alt="Abyss Code" width="800">
 
 ### Starlight - Black Vivid
 
 Desert abyss illuminated by brilliant starlight with vivid accent colors
 
-<img src="assets/screenshots/starlight-dashboard.webp" alt="Starlight" width="800">
+<img src="assets/screenshots/starlight-dashboard.webp" alt="Starlight Dashboard" width="800">
+
+<img src="assets/screenshots/starlight-code.webp" alt="Starlight Code" width="800">
 
 </details>
 
