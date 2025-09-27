@@ -107,7 +107,7 @@ Choose from 12 distinct desert-inspired variants, each with its own personality 
   </tr>
 </table>
 
-**[↓ See all variants expanded with code syntax](#🖼️-view-all-theme-variants)**
+**[↓ 👀 View all variants expanded with code syntax](#view-all-theme-variants)**
 
 ## 📦 Installation
 
@@ -175,9 +175,6 @@ require('tabby').setup({
 })
 ```
 
-> [!NOTE]
-> Integrations automatically adapt to theme changes when you switch between Oasis variants via `colorscheme <variant>`.
-
 </details>
 
 ## 🍭 Extras
@@ -200,7 +197,9 @@ Want to help shape **Oasis.nvim**?
 >
 > You can vote for more than one and leave feedback about contrast, accents, or plugin integration.
 
-## 🖼️ View All Theme Variants
+<a id="view-all-theme-variants"></a>
+
+## 👀 View All Theme Variants
 
 <details open>
   <summary><b>All variants (click to collapse)</b></summary>
