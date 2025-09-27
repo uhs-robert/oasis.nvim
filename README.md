@@ -13,6 +13,20 @@ A modular desert-themed colorscheme for Neovim with warm, earthy tones and multi
 - **Zero dependencies** - Works out of the box without external plugins
 - **Modular architecture** - Easy to customize and extend
 
+</details>
+
+<details>
+<summary>🍭 Extras</summary>
+
+<!-- extras:start -->
+
+| Tool | Extra |
+| --- | --- |
+| Kitty | [extras/kitty](extras/kitty) |
+| TMUX | [tmux-oasis](https://github.com/uhs-robert/tmux-oasis) |
+
+<!-- extras:end -->
+
 ## Theme Overview
 
 Choose from 12 distinct desert-inspired variants, each with its own personality and color palette:
