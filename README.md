@@ -17,6 +17,8 @@ A modular desert-themed colorscheme for Neovim with warm, earthy tones and multi
 
 Choose from 12 distinct desert-inspired variants, each with its own personality and color palette:
 
+> Click one below to see a larger image along with code syntax preview
+
 <table>
   <tr>
     <td align="center">
@@ -74,118 +76,72 @@ Choose from 12 distinct desert-inspired variants, each with its own personality 
   </tr>
 </table>
 
-**[↓ View detailed screenshots below](#screenshots)** | **[↓ See all variants expanded](#view-all-theme-variants)**
+**[↓ See all variants expanded with code syntax](#view-all-theme-variants)**
 
-## Screenshots
+## Installation
 
-If you want the top status line from the dashboard screenshots too, that's from TMUX. You can install the [Oasis TMUX companion plugin here](https://github.com/uhs-robert/tmux-oasis).
+### Using lazy.nvim
 
-### Preview Gallery
+```lua
+{
+  "uhs-robert/oasis.nvim",
+  config = function()
+    vim.cmd.colorscheme("oasis") -- or use a variant like ("oasis_desert")
+  end
+}
+```
 
-<table>
-  <tr>
-    <td align="center" colspan="2">Lagoon</td>
-  </tr>
-  <tr>
-    <td align="center"><em>Dashboard</em></td>
-    <td align="center"><em>Code</em></td>
-  </tr>
-  <tr>
-    <td><img src="assets/screenshots/lagoon-dashboard.webp" alt="Lagoon Dashboard" width="360"></td>
-    <td><img src="assets/screenshots/lagoon-code.webp" alt="Lagoon Code" width="360"></td>
-  </tr>
-  <tr>
-    <td align="center" colspan="2">Abyss</td>
-  </tr>
-  <tr>
-    <td align="center"><em>Dashboard</em></td>
-    <td align="center"><em>Code</em></td>
-  </tr>
-  <tr>
-    <td><img src="assets/screenshots/abyss-dashboard.webp" alt="Abyss Dashboard" width="360"></td>
-    <td><img src="assets/screenshots/abyss-code.webp" alt="Abyss Code" width="360"></td>
-  </tr>
-  <tr>
-    <td align="center" colspan="2">Dune</td>
-  </tr>
-  <tr>
-    <td align="center"><em>Dashboard</em></td>
-    <td align="center"><em>Code</em></td>
-  </tr>
-  <tr>
-    <td><img src="assets/screenshots/dune-dashboard.webp" alt="Dune Dashboard" width="360"></td>
-    <td><img src="assets/screenshots/dune-code.webp" alt="Dune Code" width="360"></td>
-  </tr>
-  <tr>
-    <td align="center" colspan="2">Desert</td>
-  </tr>
-  <tr>
-    <td align="center"><em>Dashboard</em></td>
-    <td align="center"><em>Code</em></td>
-  </tr>
-  <tr>
-    <td><img src="assets/screenshots/desert-dashboard.webp" alt="Desert Dashboard" width="360"></td>
-    <td><img src="assets/screenshots/desert-code.webp" alt="Desert Code" width="360"></td>
-  </tr>
-</table>
+### Using packer.nvim
 
-### Full Color Spectrum (12 Themes Total)
+```lua
+use {
+  "uhs-robert/oasis.nvim",
+  config = function()
+    vim.cmd.colorscheme("oasis")-- or use a variant like ("oasis_desert")
+  end
+}
+```
 
-<table>
-  <tr>
-    <td align="center" colspan="2">Sol</td>
-  </tr>
-  <tr>
-    <td align="center"><em>Dashboard</em></td>
-    <td align="center"><em>Code</em></td>
-  </tr>
-  <tr>
-    <td><img src="assets/screenshots/sol-dashboard.webp" alt="Sol Dashboard" width="360"></td>
-    <td><img src="assets/screenshots/sol-code.webp" alt="Sol Code" width="360"></td>
-  </tr>
-  <tr>
-    <td align="center" colspan="2">Dune</td>
-  </tr>
-  <tr>
-    <td align="center"><em>Dashboard</em></td>
-    <td align="center"><em>Code</em></td>
-  </tr>
-  <tr>
-    <td><img src="assets/screenshots/dune-dashboard.webp" alt="Dune Dashboard" width="360"></td>
-    <td><img src="assets/screenshots/dune-code.webp" alt="Dune Code" width="360"></td>
-  </tr>
-  <tr>
-    <td align="center" colspan="2">Mirage</td>
-  </tr>
-  <tr>
-    <td align="center"><em>Dashboard</em></td>
-    <td align="center"><em>Code</em></td>
-  </tr>
-  <tr>
-    <td><img src="assets/screenshots/mirage-dashboard.webp" alt="Mirage Dashboard" width="360"></td>
-    <td><img src="assets/screenshots/mirage-code.webp" alt="Mirage Code" width="360"></td>
-  </tr>
-  <tr>
-    <td align="center" colspan="2">Cactus</td>
-  </tr>
-  <tr>
-    <td align="center"><em>Dashboard</em></td>
-    <td align="center"><em>Code</em></td>
-  </tr>
-  <tr>
-    <td><img src="assets/screenshots/cactus-dashboard.webp" alt="Cactus Dashboard" width="360"></td>
-    <td><img src="assets/screenshots/cactus-code.webp" alt="Cactus Code" width="360"></td>
-  </tr>
+### Manual Installation
 
-</table>
+```bash
+git clone https://github.com/uhs-robert/oasis.nvim ~/.config/nvim/pack/plugins/start/oasis.nvim
+```
 
-> [!NOTE]
-> This is just a small sample. There are many more below.
+## Usage
+
+### Basic Usage
+
+```lua
+-- Use default theme (lagoon variant)
+vim.cmd.colorscheme("oasis")
+
+-- Or set colorscheme directly with a specific palette
+vim.cmd.colorscheme("oasis_desert")
+
+-- Or use the Lua API directly
+require('oasis').apply('oasis_desert')
+```
+
+### Commands
+
+```vim
+:Oasis oasis_desert    " Switch to another palette (i.e., oasis_desert, oasis_lagoon, oasis_starlight etc:)
+:OasisExport list      " List available palettes
+```
+
+## Architecture
+
+The colorscheme uses a modular architecture with:
+
+- **Direct highlight application** - Uses `vim.api.nvim_set_hl()` for optimal performance
+- **Palette-based system** - Colors organized by semantic meaning (warm/cool/neutral)
+- **Zero external dependencies** - Self-contained implementation
 
 ## View All Theme Variants
 
-<details>
-  <summary><b>All variants (click to expand)</b></summary>
+<details open>
+  <summary><b>All variants (click to collapse)</b></summary>
 
 ### Sol - Red
 
@@ -284,63 +240,3 @@ Desert abyss illuminated by brilliant starlight with vivid accent colors
 <img src="assets/screenshots/starlight-code.webp" alt="Starlight Code" width="800">
 
 </details>
-
-## Installation
-
-### Using lazy.nvim
-
-```lua
-{
-  "uhs-robert/oasis.nvim",
-  config = function()
-    vim.cmd.colorscheme("oasis") -- or use a variant like ("oasis_desert")
-  end
-}
-```
-
-### Using packer.nvim
-
-```lua
-use {
-  "uhs-robert/oasis.nvim",
-  config = function()
-    vim.cmd.colorscheme("oasis")-- or use a variant like ("oasis_desert")
-  end
-}
-```
-
-### Manual Installation
-
-```bash
-git clone https://github.com/uhs-robert/oasis.nvim ~/.config/nvim/pack/plugins/start/oasis.nvim
-```
-
-## Usage
-
-### Basic Usage
-
-```lua
--- Use default theme (lagoon variant)
-vim.cmd.colorscheme("oasis")
-
--- Or set colorscheme directly with a specific palette
-vim.cmd.colorscheme("oasis_desert")
-
--- Or use the Lua API directly
-require('oasis').apply('oasis_desert')
-```
-
-### Commands
-
-```vim
-:Oasis oasis_desert    " Switch to another palette (i.e., oasis_desert, oasis_lagoon, oasis_starlight etc:)
-:OasisExport list      " List available palettes
-```
-
-## Architecture
-
-The colorscheme uses a modular architecture with:
-
-- **Direct highlight application** - Uses `vim.api.nvim_set_hl()` for optimal performance
-- **Palette-based system** - Colors organized by semantic meaning (warm/cool/neutral)
-- **Zero external dependencies** - Self-contained implementation
