@@ -2,10 +2,10 @@
 
 A modular desert-themed colorscheme for Neovim with warm, earthy tones and multiple palette variants (12 Total Themes). Originally inspired by the classic `desert` theme for vim, also uses the cool/warm philosophy from `melange` (i.e., `warm colors = action/flow` and `cool colors = structure/data`).
 
-> [!TIP]
+> [!NOTE]
 > Use TMUX? There is a companion TMUX plugin for this **Oasis** theme suite: [tmux-oasis](https://github.com/uhs-robert/tmux-oasis)
 
-## Features
+## ✨ Features
 
 - **12 theme variants**: Covers the entire rainbow of options with an emphasis on being dark. Variants are all desert-inspired.
 - **Comprehensive highlighting** - LSP, Tree-sitter, and plugin support
@@ -13,6 +13,19 @@ A modular desert-themed colorscheme for Neovim with warm, earthy tones and multi
 - **Zero dependencies** - Works out of the box without external plugins
 - **Modular architecture** - Easy to customize and extend
 
+<details>
+<summary>🎨 Supported Plugins</summary>
+
+<!-- plugins:start -->
+
+| Plugin                                                      |
+| ----------------------------------------------------------- |
+| [fzf-lua](https://github.com/ibhagwan/fzf-lua)              |
+| [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) |
+| [snacks.nvim](https://github.com/folke/snacks.nvim)         |
+| [which-key.nvim](https://github.com/folke/which-key.nvim)   |
+
+<!-- plugins:end -->
 </details>
 
 <details>
@@ -20,19 +33,22 @@ A modular desert-themed colorscheme for Neovim with warm, earthy tones and multi
 
 <!-- extras:start -->
 
-| Tool | Extra |
-| --- | --- |
-| Kitty | [extras/kitty](extras/kitty) |
-| TMUX | [tmux-oasis](https://github.com/uhs-robert/tmux-oasis) |
+| Tool  | Extra                                                  |
+| ----- | ------------------------------------------------------ |
+| Kitty | [extras/kitty](extras/kitty)                           |
+| TMUX  | [tmux-oasis](https://github.com/uhs-robert/tmux-oasis) |
 
 <!-- extras:end -->
 </details>
 
-## Theme Overview
+## 🌅 Overview
 
 Choose from 12 distinct desert-inspired variants, each with its own personality and color palette:
 
+> [!TIP]
 > Click one below to see a larger image along with code syntax preview
+>
+> **[Vote for your favorite variant →](https://github.com/uhs-robert/oasis.nvim/discussions/2)**
 
 <table>
   <tr>
@@ -91,11 +107,12 @@ Choose from 12 distinct desert-inspired variants, each with its own personality 
   </tr>
 </table>
 
-**[↓ See all variants expanded with code syntax](#view-all-theme-variants)**
+**[↓ See all variants expanded with code syntax](#🖼️-view-all-theme-variants)**
 
-## Installation
+## 📦 Installation
 
-### Using lazy.nvim
+Install the theme with your preferred package manager, such as
+[folke/lazy.nvim](https://github.com/folke/lazy.nvim):
 
 ```lua
 {
@@ -106,46 +123,35 @@ Choose from 12 distinct desert-inspired variants, each with its own personality 
 }
 ```
 
-### Using packer.nvim
-
-```lua
-use {
-  "uhs-robert/oasis.nvim",
-  config = function()
-    vim.cmd.colorscheme("oasis")-- or use a variant like ("oasis_desert")
-  end
-}
-```
-
-### Manual Installation
-
-```bash
-git clone https://github.com/uhs-robert/oasis.nvim ~/.config/nvim/pack/plugins/start/oasis.nvim
-```
-
-## Usage
-
-### Basic Usage
+## 🚀 Usage
 
 ```lua
 -- Use default theme (lagoon variant)
 vim.cmd.colorscheme("oasis")
-
--- Or set colorscheme directly with a specific palette
-vim.cmd.colorscheme("oasis_desert")
-
--- Or use the Lua API directly
-require('oasis').apply('oasis_desert')
 ```
-
-### Commands
 
 ```vim
-:Oasis oasis_desert    " Switch to another palette (i.e., oasis_desert, oasis_lagoon, oasis_starlight etc:)
-:OasisExport list      " List available palettes
+colorscheme oasis
+
+" You may also use different variants
+colorscheme oasis-abyss
+colorscheme oasis-cactus
+colorscheme oasis-canyon
+colorscheme oasis-desert
+colorscheme oasis-dune
+colorscheme oasis-lagoon
+colorscheme oasis-mirage
+colorscheme oasis-night
+colorscheme oasis-rose
+colorscheme oasis-sol
+colorscheme oasis-starlight
+colorscheme oasis-twilight
 ```
 
-## Plugin Integrations
+Some plugins need extra configuration to work with **Oasis**.
+
+<details>
+  <summary>Click here for more details</summary>
 
 ### Lualine
 
@@ -169,17 +175,32 @@ require('tabby').setup({
 })
 ```
 
-> **Note**: Both integrations automatically adapt to theme changes when you switch between Oasis variants using `:Oasis <variant>`.
+> [!NOTE]
+> Integrations automatically adapt to theme changes when you switch between Oasis variants via `colorscheme <variant>`.
 
-## Architecture
+</details>
 
-The colorscheme uses a modular architecture with:
+## 🍭 Extras
 
-- **Direct highlight application** - Uses `vim.api.nvim_set_hl()` for optimal performance
-- **Palette-based system** - Colors organized by semantic meaning (warm/cool/neutral)
-- **Zero external dependencies** - Self-contained implementation
+Extra color configs for [Kitty](https://sw.kovidgoyal.net/kitty/conf.html) can be found in [extras](extras/). If you'd like an extra config added, raise a feature request and I'll put it together.
 
-## View All Theme Variants
+To use the extras, refer to their respective documentation.
+
+There are also companion plugins for other applications:
+
+- **TMUX**: [tmux-oasis](https://github.com/uhs-robert/tmux-oasis)
+
+## 🎯 Vote for Your Favorite Variant
+
+Want to help shape **Oasis.nvim**?
+**[👉 Join the Discussion and Vote Here](https://github.com/uhs-robert/oasis.nvim/discussions/2)**
+
+> [!IMPORTANT]
+> Click the screenshot of your favorite variant in the discussion and hit 👍 on the comment.
+>
+> You can vote for more than one and leave feedback about contrast, accents, or plugin integration.
+
+## 🖼️ View All Theme Variants
 
 <details open>
   <summary><b>All variants (click to collapse)</b></summary>
