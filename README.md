@@ -22,56 +22,56 @@ Choose from 12 distinct desert-inspired variants, each with its own personality 
 <table>
   <tr>
     <td align="center">
-      <a href="#lagoon---blue"><img src="assets/screenshots/lagoon-dashboard.webp" alt="Lagoon" width="180"></a><br>
-      <strong>Lagoon</strong><br><em>Blue</em>
+      <a href="#sol---red"><img src="assets/screenshots/sol-dashboard.webp" alt="Sol" width="180"></a><br>
+      <strong>Sol</strong><br><em>Red</em>
+    </td>
+    <td align="center">
+      <a href="#canyon---orange"><img src="assets/screenshots/canyon-dashboard.webp" alt="Canyon" width="180"></a><br>
+      <strong>Canyon</strong><br><em>Orange</em>
     </td>
     <td align="center">
       <a href="#dune---yellow"><img src="assets/screenshots/dune-dashboard.webp" alt="Dune" width="180"></a><br>
       <strong>Dune</strong><br><em>Yellow</em>
     </td>
     <td align="center">
-      <a href="#night---off-black"><img src="assets/screenshots/night-dashboard.webp" alt="Night" width="180"></a><br>
-      <strong>Night</strong><br><em>Off Black</em>
-    </td>
-    <td align="center">
-      <a href="#desert---grey"><img src="assets/screenshots/desert-dashboard.webp" alt="Desert" width="180"></a><br>
-      <strong>Desert</strong><br><em>Grey</em>
+      <a href="#cactus---green"><img src="assets/screenshots/cactus-dashboard.webp" alt="Cactus" width="180"></a><br>
+      <strong>Cactus</strong><br><em>Green</em>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <a href="#sol---red"><img src="assets/screenshots/sol-dashboard.webp" alt="Sol" width="180"></a><br>
-      <strong>Sol</strong><br><em>Red</em>
+      <a href="#mirage---teal"><img src="assets/screenshots/mirage-dashboard.webp" alt="Mirage" width="180"></a><br>
+      <strong>Mirage</strong><br><em>Teal</em>
+    </td>
+    <td align="center">
+      <a href="#lagoon---blue"><img src="assets/screenshots/lagoon-dashboard.webp" alt="Lagoon" width="180"></a><br>
+      <strong>Lagoon (Default)</strong><br><em>Blue</em>
     </td>
     <td align="center">
       <a href="#twilight---purple"><img src="assets/screenshots/twilight-dashboard.webp" alt="Twilight" width="180"></a><br>
       <strong>Twilight</strong><br><em>Purple</em>
     </td>
     <td align="center">
-      <a href="#abyss---black"><img src="assets/screenshots/abyss-dashboard.webp" alt="Abyss" width="180"></a><br>
-      <strong>Abyss</strong><br><em>Black</em>
-    </td>
-    <td align="center">
-      <a href="#mirage---teal"><img src="assets/screenshots/mirage-dashboard.webp" alt="Mirage" width="180"></a><br>
-      <strong>Mirage</strong><br><em>Teal</em>
+      <a href="#rose---pink"><img src="assets/screenshots/rose-dashboard.webp" alt="Rose" width="180"></a><br>
+      <strong>Rose</strong><br><em>Pink</em>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <a href="#canyon---orange"><img src="assets/screenshots/canyon-dashboard.webp" alt="Canyon" width="180"></a><br>
-      <strong>Canyon</strong><br><em>Orange</em>
+      <a href="#desert---grey"><img src="assets/screenshots/desert-dashboard.webp" alt="Desert" width="180"></a><br>
+      <strong>Desert</strong><br><em>Grey</em>
     </td>
     <td align="center">
-      <a href="#rose---pink"><img src="assets/screenshots/rose-dashboard.webp" alt="Rose" width="180"></a><br>
-      <strong>Rose</strong><br><em>Pink</em>
+      <a href="#night---off-black"><img src="assets/screenshots/night-dashboard.webp" alt="Night" width="180"></a><br>
+      <strong>Night</strong><br><em>Off Black</em>
+    </td>
+    <td align="center">
+      <a href="#abyss---black"><img src="assets/screenshots/abyss-dashboard.webp" alt="Abyss" width="180"></a><br>
+      <strong>Abyss</strong><br><em>Black</em>
     </td>
     <td align="center">
       <a href="#starlight---black-vivid"><img src="assets/screenshots/starlight-dashboard.webp" alt="Starlight" width="180"></a><br>
       <strong>Starlight</strong><br><em>Black Vivid</em>
-    </td>
-    <td align="center">
-      <a href="#cactus---green"><img src="assets/screenshots/cactus-dashboard.webp" alt="Cactus" width="180"></a><br>
-      <strong>Cactus</strong><br><em>Green</em>
     </td>
   </tr>
 </table>
