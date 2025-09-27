@@ -26,6 +26,7 @@ A modular desert-themed colorscheme for Neovim with warm, earthy tones and multi
 | TMUX | [tmux-oasis](https://github.com/uhs-robert/tmux-oasis) |
 
 <!-- extras:end -->
+</details>
 
 ## Theme Overview
 
