@@ -22,6 +22,24 @@ Choose from 12 distinct desert-inspired variants, each with its own personality 
 <table>
   <tr>
     <td align="center">
+      <a href="#desert---grey"><img src="assets/screenshots/desert-dashboard.webp" alt="Desert" width="180"></a><br>
+      <strong>Desert</strong><br><em>Grey</em>
+    </td>
+    <td align="center">
+      <a href="#night---off-black"><img src="assets/screenshots/night-dashboard.webp" alt="Night" width="180"></a><br>
+      <strong>Night</strong><br><em>Off Black</em>
+    </td>
+    <td align="center">
+      <a href="#abyss---black"><img src="assets/screenshots/abyss-dashboard.webp" alt="Abyss" width="180"></a><br>
+      <strong>Abyss</strong><br><em>Black</em>
+    </td>
+    <td align="center">
+      <a href="#starlight---black-vivid"><img src="assets/screenshots/starlight-dashboard.webp" alt="Starlight" width="180"></a><br>
+      <strong>Starlight</strong><br><em>Black Vivid</em>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
       <a href="#sol---red"><img src="assets/screenshots/sol-dashboard.webp" alt="Sol" width="180"></a><br>
       <strong>Sol</strong><br><em>Red</em>
     </td>
@@ -54,24 +72,6 @@ Choose from 12 distinct desert-inspired variants, each with its own personality 
     <td align="center">
       <a href="#rose---pink"><img src="assets/screenshots/rose-dashboard.webp" alt="Rose" width="180"></a><br>
       <strong>Rose</strong><br><em>Pink</em>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <a href="#desert---grey"><img src="assets/screenshots/desert-dashboard.webp" alt="Desert" width="180"></a><br>
-      <strong>Desert</strong><br><em>Grey</em>
-    </td>
-    <td align="center">
-      <a href="#night---off-black"><img src="assets/screenshots/night-dashboard.webp" alt="Night" width="180"></a><br>
-      <strong>Night</strong><br><em>Off Black</em>
-    </td>
-    <td align="center">
-      <a href="#abyss---black"><img src="assets/screenshots/abyss-dashboard.webp" alt="Abyss" width="180"></a><br>
-      <strong>Abyss</strong><br><em>Black</em>
-    </td>
-    <td align="center">
-      <a href="#starlight---black-vivid"><img src="assets/screenshots/starlight-dashboard.webp" alt="Starlight" width="180"></a><br>
-      <strong>Starlight</strong><br><em>Black Vivid</em>
     </td>
   </tr>
 </table>
@@ -169,6 +169,38 @@ The colorscheme uses a modular architecture with:
 <details open>
   <summary><b>All variants (click to collapse)</b></summary>
 
+### Desert - Grey
+
+Inspired by the classic vim desert theme, neutral sand and earth tones
+
+<img src="assets/screenshots/desert-dashboard.webp" alt="Desert Dashboard" width="800">
+
+<img src="assets/screenshots/desert-code.webp" alt="Desert Code" width="800">
+
+### Night - Off Black
+
+Deep desert night sky, almost black for those who prefer softer darkness
+
+<img src="assets/screenshots/night-dashboard.webp" alt="Night Dashboard" width="800">
+
+<img src="assets/screenshots/night-code.webp" alt="Night Code" width="800">
+
+### Abyss - Black
+
+Deep, dark variant with mysterious depths
+
+<img src="assets/screenshots/abyss-dashboard.webp" alt="Abyss Dashboard" width="800">
+
+<img src="assets/screenshots/abyss-code.webp" alt="Abyss Code" width="800">
+
+### Starlight - Black Vivid
+
+Desert abyss illuminated by brilliant starlight with vivid accent colors
+
+<img src="assets/screenshots/starlight-dashboard.webp" alt="Starlight Dashboard" width="800">
+
+<img src="assets/screenshots/starlight-code.webp" alt="Starlight Code" width="800">
+
 ### Sol - Red
 
 Hot, scorching desert sun with intense red tones
@@ -232,37 +264,5 @@ Soft pinks of the warm desert rose
 <img src="assets/screenshots/rose-dashboard.webp" alt="Rose Dashboard" width="800">
 
 <img src="assets/screenshots/rose-code.webp" alt="Rose Code" width="800">
-
-### Desert - Grey
-
-Inspired by the classic vim desert theme, neutral sand and earth tones
-
-<img src="assets/screenshots/desert-dashboard.webp" alt="Desert Dashboard" width="800">
-
-<img src="assets/screenshots/desert-code.webp" alt="Desert Code" width="800">
-
-### Night - Off Black
-
-Deep desert night sky, almost black for those who prefer softer darkness
-
-<img src="assets/screenshots/night-dashboard.webp" alt="Night Dashboard" width="800">
-
-<img src="assets/screenshots/night-code.webp" alt="Night Code" width="800">
-
-### Abyss - Black
-
-Deep, dark variant with mysterious depths
-
-<img src="assets/screenshots/abyss-dashboard.webp" alt="Abyss Dashboard" width="800">
-
-<img src="assets/screenshots/abyss-code.webp" alt="Abyss Code" width="800">
-
-### Starlight - Black Vivid
-
-Desert abyss illuminated by brilliant starlight with vivid accent colors
-
-<img src="assets/screenshots/starlight-dashboard.webp" alt="Starlight Dashboard" width="800">
-
-<img src="assets/screenshots/starlight-code.webp" alt="Starlight Code" width="800">
 
 </details>
