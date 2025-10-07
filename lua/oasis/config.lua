@@ -4,6 +4,7 @@ local M = {}
 
 -- Default configuration
 M.defaults = {
+	style = nil, -- Shorthand palette name (e.g., "lagoon" -> "oasis_lagoon")
 	useLegacyComments = false,
 	palette_overrides = {},
 	highlight_overrides = {},
@@ -41,6 +42,15 @@ end
 ---@return table config The current configuration
 function M.get()
 	return M.options
+end
+
+--- Get the full palette name from the configured style
+---@return string|nil palette_name Full palette name (e.g., "oasis_lagoon") or nil
+function M.get_palette_name()
+	if M.options.style then
+		return "oasis_" .. M.options.style
+	end
+	return nil
 end
 
 --- Apply palette overrides to a loaded palette

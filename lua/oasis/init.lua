@@ -5,6 +5,7 @@ local config = require('oasis.config')
 --- Setup Oasis with user configuration
 --- Examples:
 ---   require('oasis').setup({
+---     style = "lagoon",  -- Shorthand for "oasis_lagoon"
 ---     useLegacyComments = true,
 ---     palette_overrides = { oasis_desert = { syntax = { comment = "#87CEEB" } } },
 ---     highlight_overrides = { Comment = { fg = "#AABBCC" } }
@@ -24,7 +25,7 @@ function M.apply(palette_name)
 	vim.cmd("highlight clear")
 	vim.cmd("syntax reset")
 	vim.opt.background = "dark"
-	palette_name = palette_name or vim.g.oasis_palette or "oasis_lagoon"
+	palette_name = palette_name or config.get_palette_name() or vim.g.oasis_palette or "oasis_lagoon"
 	vim.g.colors_name = palette_name -- or ('oasis_' .. palette_name)
 
 	-- Load palette
