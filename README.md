@@ -1,13 +1,12 @@
 # 🏜️ Oasis.nvim
 
-A modular desert-themed colorscheme for Neovim with warm, earthy tones and multiple palette styles (12 Total Themes). Originally inspired by the classic [desert theme for vim](https://github.com/fugalh/desert.vim), also uses the [cool/warm philosophy from melange](https://github.com/savq/melange-nvim?tab=readme-ov-file#design) (i.e., `warm colors = action/flow` and `cool colors = structure/data`).
+A modular desert-themed colorscheme for Neovim with warm, earthy tones and 12 unique palette styles.
 
-> [!NOTE]
-> Use TMUX? There is a companion TMUX plugin for this **Oasis** theme suite: [tmux-oasis](https://github.com/uhs-robert/tmux-oasis)
+Originally inspired by the classic [desert theme for vim](https://github.com/fugalh/desert.vim); Oasis modernizes it and uses the [cool/warm philosophy from melange](https://github.com/savq/melange-nvim?tab=readme-ov-file#design) (i.e., `warm colors = action/flow` and `cool colors = structure/data`).
 
 ## ✨ Features
 
-- **12 theme styles**: Covers the entire rainbow of options with an emphasis on being dark. Styles are all desert-inspired.
+- **12 theme styles**: A rainbow of desert-inspired options; with an emphasis on being dark.
 - **Comprehensive highlighting** - LSP, Tree-sitter, and plugin support
 - **Fast loading** - Direct highlight application for optimal performance
 - **Zero dependencies** - Works out of the box without external plugins
@@ -41,14 +40,15 @@ A modular desert-themed colorscheme for Neovim with warm, earthy tones and multi
 <!-- extras:end -->
 </details>
 
+> [!NOTE]
+> Use TMUX? There is a companion TMUX plugin for this **Oasis** theme suite: [tmux-oasis](https://github.com/uhs-robert/tmux-oasis)
+
 ## 🌅 Overview
 
 Choose from 12 distinct desert-inspired styles, each with its own personality and color palette:
 
 > [!TIP]
 > Click one below to see a larger image along with code syntax preview
->
-> **[Vote for your favorite style →](https://github.com/uhs-robert/oasis.nvim/discussions/2)**
 
 <table>
   <tr>
@@ -153,10 +153,14 @@ require('oasis').setup({
 
 ## 🪓 Overriding Colors & Highlight Groups
 
-**`palette_overrides`** - Customize colors in specific palettes. See [Color Palettes](lua/oasis/color_palettes) for palette structure:
+Thirsty for total control? Oasis allows you to override whatever you like.
+
+> Whoever drinketh of the water that I shall give him, shall never thirst...
 
 <details>
   <summary>🎨 Changing Palette Colors for Each Style</summary>
+
+**`palette_overrides`** - Customize colors in specific palettes. See [Color Palettes](lua/oasis/color_palettes) for palette structure:
 
 ```lua
 require('oasis').setup({
@@ -171,10 +175,10 @@ require('oasis').setup({
 
 </details>
 
-**`highlight_overrides`** - Override specific highlight groups (takes precedence over theme) or add new ones. See [Theme Generator](lua/oasis/theme_generator.lua) for highlight groups used:
-
 <details>
   <summary>💅 Changing Colors for Highlight Groups</summary>
+
+**`highlight_overrides`** - Override specific highlight groups (takes precedence over theme) or add new ones. See [Theme Generator](lua/oasis/theme_generator.lua) for highlight groups used:
 
 ```lua
 require('oasis').setup({
