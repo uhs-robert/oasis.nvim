@@ -27,7 +27,7 @@ function M.apply(palette_name)
 	vim.cmd("syntax reset")
 	vim.opt.background = "dark"
 	palette_name = palette_name or config.get_palette_name() or vim.g.oasis_palette or "oasis_lagoon"
-	vim.g.colors_name = palette_name -- or ('oasis_' .. palette_name)
+	vim.g.colors_name = palette_name:gsub("_", "-") -- Convert to hyphen format to match colorscheme files
 
 	-- Load palette
 	local ok, c = pcall(require, "oasis.color_palettes." .. palette_name)
