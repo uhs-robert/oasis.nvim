@@ -2,7 +2,7 @@
 local M = {}
 local config = require('oasis.config')
 
---- Setup Oasis with user configuration
+--- Setup Oasis with user configuration and apply the theme
 --- Examples:
 ---   require('oasis').setup({
 ---     style = "lagoon",  -- Shorthand for "oasis_lagoon"
@@ -13,6 +13,7 @@ local config = require('oasis.config')
 ---@param user_config table|nil User configuration
 function M.setup(user_config)
 	config.setup(user_config)
+	M.apply()
 end
 
 --- Apply Oasis using a palette module name (no prefix).
