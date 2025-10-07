@@ -2,7 +2,9 @@
 
 A modular desert-themed colorscheme for Neovim with warm, earthy tones and 12 unique palette styles.
 
-Originally inspired by the classic [desert theme for vim](https://github.com/fugalh/desert.vim); Oasis modernizes it and uses the [cool/warm philosophy from melange](https://github.com/savq/melange-nvim?tab=readme-ov-file#design) (i.e., `warm colors = action/flow` and `cool colors = structure/data`).
+Originally inspired by the classic [desert theme for vim](https://github.com/fugalh/desert.vim).
+
+Uses the [cool/warm philosophy from melange](https://github.com/savq/melange-nvim?tab=readme-ov-file#design) (i.e., `warm colors = action/flow` and `cool colors = structure/data`).
 
 ## ✨ Features
 
