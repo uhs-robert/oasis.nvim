@@ -1,20 +1,20 @@
 # 🏜️ Oasis.nvim
 
-A modular desert-themed colorscheme for Neovim with warm, earthy tones and multiple palette variants (12 Total Themes). Originally inspired by the classic `desert` theme for vim, also uses the cool/warm philosophy from `melange` (i.e., `warm colors = action/flow` and `cool colors = structure/data`).
+A modular desert-themed colorscheme for Neovim with warm, earthy tones and multiple palette styles (12 Total Themes). Originally inspired by the classic [desert theme for vim](https://github.com/fugalh/desert.vim), also uses the [cool/warm philosophy from melange](https://github.com/savq/melange-nvim?tab=readme-ov-file#design) (i.e., `warm colors = action/flow` and `cool colors = structure/data`).
 
 > [!NOTE]
 > Use TMUX? There is a companion TMUX plugin for this **Oasis** theme suite: [tmux-oasis](https://github.com/uhs-robert/tmux-oasis)
 
 ## ✨ Features
 
-- **12 theme variants**: Covers the entire rainbow of options with an emphasis on being dark. Variants are all desert-inspired.
+- **12 theme styles**: Covers the entire rainbow of options with an emphasis on being dark. Styles are all desert-inspired.
 - **Comprehensive highlighting** - LSP, Tree-sitter, and plugin support
 - **Fast loading** - Direct highlight application for optimal performance
 - **Zero dependencies** - Works out of the box without external plugins
 - **Modular architecture** - Easy to customize and extend
 
 <details>
-<summary>🎨 Supported Plugins</summary>
+<summary>💪 Supported Plugins</summary>
 
 <!-- plugins:start -->
 
@@ -43,12 +43,12 @@ A modular desert-themed colorscheme for Neovim with warm, earthy tones and multi
 
 ## 🌅 Overview
 
-Choose from 12 distinct desert-inspired variants, each with its own personality and color palette:
+Choose from 12 distinct desert-inspired styles, each with its own personality and color palette:
 
 > [!TIP]
 > Click one below to see a larger image along with code syntax preview
 >
-> **[Vote for your favorite variant →](https://github.com/uhs-robert/oasis.nvim/discussions/2)**
+> **[Vote for your favorite style →](https://github.com/uhs-robert/oasis.nvim/discussions/2)**
 
 <table>
   <tr>
@@ -107,7 +107,7 @@ Choose from 12 distinct desert-inspired variants, each with its own personality 
   </tr>
 </table>
 
-**[↓ 👀 View all variants expanded with code syntax](#view-all-theme-variants)**
+**[↓ 👀 View all styles expanded with code syntax](#view-all-theme-styles)**
 
 ## 📦 Installation
 
@@ -117,23 +117,100 @@ Install the theme with your preferred package manager, such as
 ```lua
 {
   "uhs-robert/oasis.nvim",
+  lazy = false,
+  priority = 1000,
   config = function()
-    vim.cmd.colorscheme("oasis") -- or use a variant like ("oasis_desert")
+    require('oasis').setup({
+      style = "lagoon",  -- Optional: Choose any style like `lagoon` or 'dune'.
+    })
   end
 }
 ```
 
-## 🚀 Usage
+## ⚙️ Configuration
+
+The theme offers 12 different styles to choose from: `night`, `abyss`, `starlight`, `desert`, `sol`, `canyon`, `dune`, `cactus`, `mirage`, `lagoon`, `twilight`, and `rose`.
+
+Oasis works out of the box, but you can customize it using `setup()`.
+
+<details>
+  <summary>🍦 Default Options</summary>
+
+<!-- config:start -->
 
 ```lua
--- Use default theme (lagoon variant)
-vim.cmd.colorscheme("oasis")
+require('oasis').setup({
+  style = "lagoon",            -- Choose your style (e.g., "lagoon", "desert", "dune", etc:)
+  useLegacyComments = false,   -- Uses the legacy comment color in the `desert` style only (a bright sky blue)
+  palette_overrides = {},      -- Override colors in specific palettes
+  highlight_overrides = {},    -- Override specific highlight groups
+})
+```
+
+<!-- config:end -->
+
+</details>
+
+## 🪓 Overriding Colors & Highlight Groups
+
+**`palette_overrides`** - Customize colors in specific palettes. See [Color Palettes](lua/oasis/color_palettes) for palette structure:
+
+<details>
+  <summary>🎨 Changing Palette Colors for Each Style</summary>
+
+```lua
+require('oasis').setup({
+  palette_overrides = {
+    oasis_lagoon = {
+      syntax = { func = "#E06C75", comment = "#5C6370" },
+      ui = { border = "#61AFEF" }
+    }
+  }
+})
+```
+
+</details>
+
+**`highlight_overrides`** - Override specific highlight groups (takes precedence over theme) or add new ones. See [Theme Generator](lua/oasis/theme_generator.lua) for highlight groups used:
+
+<details>
+  <summary>💅 Changing Colors for Highlight Groups</summary>
+
+```lua
+require('oasis').setup({
+  highlight_overrides = {
+    Comment = { fg = "#5C6370", italic = true },
+    Function = { fg = "#E06C75", bold = true },
+    Identifier = "Function"  -- Link to another group
+  }
+})
+```
+
+</details>
+
+## 🚀 Usage
+
+### ⭐ Recommended: Use `setup()` to launch nvim with your desired style
+
+```lua
+-- Use default style (lagoon)
+require('oasis').setup()
+
+-- Or specify a style
+require('oasis').setup({ style = "desert" })
+```
+
+### Alternative: Use `colorscheme` command to swap on the fly
+
+```lua
+vim.cmd.colorscheme("oasis")  -- default (lagoon)
+vim.cmd.colorscheme("oasis-desert")  -- specific style
 ```
 
 ```vim
 colorscheme oasis
 
-" You may also use different variants
+" You may also use different styles, this method must be prefixed with `oasis-`
 colorscheme oasis-abyss
 colorscheme oasis-cactus
 colorscheme oasis-canyon
@@ -151,27 +228,40 @@ colorscheme oasis-twilight
 Some plugins need extra configuration to work with **Oasis**.
 
 <details>
-  <summary>Click here for more details</summary>
+  <summary>🌵 Click here for more details</summary>
+
+### LazyVim
+
+To override the tokyonight default and start fresh in the oasis:
+
+```lua
+  {
+  "LazyVim/LazyVim",
+  opts = {
+    colorscheme = "oasis",
+  },
+},
+```
 
 ### Lualine
 
-Oasis includes automatic Lualine theme integration that matches your current palette:
+To include automatic Lualine theme integration:
 
 ```lua
 require('lualine').setup {
   options = {
-    theme = 'oasis'  -- Automatically matches your current Oasis palette
+    theme = 'oasis'  -- Automatically matches your current Oasis style
   }
 }
 ```
 
 ### Tabby (Tab Bar)
 
-For enhanced tab bar styling that matches your Oasis theme:
+To include tab bar theme integration:
 
 ```lua
 require('tabby').setup({
-  theme = 'oasis'  -- Uses current Oasis palette for tab styling
+  theme = 'oasis' -- Automatically matches your current Oasis style
 })
 ```
 
@@ -187,22 +277,22 @@ There are also companion plugins for other applications:
 
 - **TMUX**: [tmux-oasis](https://github.com/uhs-robert/tmux-oasis)
 
-## 🎯 Vote for Your Favorite Variant
+## 🎯 Vote for Your Favorite Style
 
 Want to help shape **Oasis.nvim**?
 **[👉 Join the Discussion and Vote Here](https://github.com/uhs-robert/oasis.nvim/discussions/2)**
 
 > [!IMPORTANT]
-> Click the screenshot of your favorite variant in the discussion and hit 👍 on the comment.
+> Click the screenshot of your favorite style in the discussion and hit 👍 on the comment.
 >
 > You can vote for more than one and leave feedback about contrast, accents, or plugin integration.
 
-<a id="view-all-theme-variants"></a>
+<a id="view-all-theme-styles"></a>
 
-## 👀 View All Theme Variants
+## 👀 View All Theme Styles
 
 <details open>
-  <summary><b>All variants (click to collapse)</b></summary>
+  <summary><b>All styles (click to collapse)</b></summary>
 
 ### Night - Off Black
 
@@ -213,7 +303,7 @@ Deep desert night sky, almost black for those who prefer softer darkness
 
 ### Abyss - Black
 
-Deep, dark variant with mysterious depths
+Deep, dark style with mysterious depths
 
 ![abyss-dashboard](https://github.com/user-attachments/assets/6ec77ade-b352-4ccc-a0cf-0f1081a458b1)
 ![abyss-code](https://github.com/user-attachments/assets/f35a4429-ce35-49f5-80d0-e8ee9a339db0)
@@ -269,7 +359,7 @@ Cool teals of shimmering desert mirages
 
 ### Lagoon - Blue
 
-The original Oasis theme and default variant, featuring cool blues of the oasis lagoon
+The original Oasis theme and default style, featuring cool blues of the oasis lagoon
 
 ![lagoon-dashboard](https://github.com/user-attachments/assets/076d4097-d3a0-4051-8e2a-32962a4b2ba5)
 ![lagoon-code](https://github.com/user-attachments/assets/1bd9c4b6-524b-407f-97f2-a3a5d4ecb3f9)
