@@ -157,12 +157,13 @@ require('oasis').setup({
 
 Thirsty for total control? Oasis allows you to override whatever you like.
 
-> Whoever drinketh of the water that I shall give him, shall never thirst...
+> _Whoever drinketh of the water that I shall give him, shall never thirst..._
 
 <details>
   <summary>🎨 Changing Palette Colors for Each Style</summary>
+  <br>
 
-**`palette_overrides`** - Customize colors in specific palettes. See [Color Palettes](lua/oasis/color_palettes) for palette structure:
+**`palette_overrides`** - Customize colors in palettes (See [Color Palettes](lua/oasis/color_palettes) for palette structure)
 
 ```lua
 require('oasis').setup({
@@ -179,8 +180,9 @@ require('oasis').setup({
 
 <details>
   <summary>💅 Changing Colors for Highlight Groups</summary>
+  <br>
 
-**`highlight_overrides`** - Override specific highlight groups (takes precedence over theme) or add new ones. See [Theme Generator](lua/oasis/theme_generator.lua) for highlight groups used:
+**`highlight_overrides`** - Override or add highlight groups (See [Theme Generator](lua/oasis/theme_generator.lua) for highlight groups):
 
 ```lua
 require('oasis').setup({
