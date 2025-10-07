@@ -1,6 +1,7 @@
 -- lua/oasis/theme_generator.lua
 
-return function(c)
+return function(c, palette_name)
+  local config = require('oasis.config').get()
   local highlights = {
       -- Main Theme Colors (Highlights for plugins)
 
@@ -297,8 +298,17 @@ return function(c)
 
     }
 
-  -- Apply all highlights
+  -- Apply base highlights first
   for name, attrs in pairs(highlights) do
+    if type(attrs) == 'table' then
+      vim.api.nvim_set_hl(0, name, attrs)
+    else
+      vim.api.nvim_set_hl(0, name, { link = attrs })
+    end
+  end
+
+  -- Apply user highlight overrides last (they take precedence)
+  for name, attrs in pairs(config.highlight_overrides or {}) do
     if type(attrs) == 'table' then
       vim.api.nvim_set_hl(0, name, attrs)
     else

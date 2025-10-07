@@ -1,5 +1,18 @@
 -- lua/oasis/init.lua
 local M = {}
+local config = require('oasis.config')
+
+--- Setup Oasis with user configuration
+--- Examples:
+---   require('oasis').setup({
+---     useLegacyComments = true,
+---     palette_overrides = { oasis_desert = { syntax = { comment = "#87CEEB" } } },
+---     highlight_overrides = { Comment = { fg = "#AABBCC" } }
+---   })
+---@param user_config table|nil User configuration
+function M.setup(user_config)
+	config.setup(user_config)
+end
 
 --- Apply Oasis using a palette module name (no prefix).
 --- Examples:
@@ -20,9 +33,12 @@ function M.apply(palette_name)
 		error(('Oasis: palette "%s" not found: %s'):format(palette_name, c))
 	end
 
+	-- Apply palette overrides from config
+	c = config.apply_palette_overrides(c, palette_name)
+
 	-- Build and apply the colorscheme
 	local build = require("oasis.theme_generator")
-	build(c)
+	build(c, palette_name)
 
 	-- Load and refresh plugin integrations
 	pcall(require, 'oasis.integrations.lualine')
