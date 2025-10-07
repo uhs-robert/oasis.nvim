@@ -60,7 +60,7 @@ local c = {
 
 		-- Neutral: (Connections / Info)
 		bracket = p.brown.dryriverbed, -- (bracket punctuation)
-		comment = p.blue.skyblue, -- (comments)
+		comment = ui.fg.comment, -- (comments)
 	},
 
 	-- Diff
