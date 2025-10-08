@@ -55,12 +55,12 @@ Choose from 13 distinct desert-inspired styles, each with its own personality an
 <table>
   <tr>
     <td align="center">
-      <a href="#night---off-black"><img src="assets/screenshots/night-dashboard.webp" alt="Night" width="180"></a><br>
-      <strong>Night</strong><br><em>Off Black</em>
+      <a href="#night---purple-night-sky"><img src="assets/screenshots/night-dashboard.webp" alt="Night" width="180"></a><br>
+      <strong>Night</strong><br><em>Purple Night Sky</em>
     </td>
     <td align="center">
-      <a href="#midnight---dark-black"><img src="assets/screenshots/midnight-dashboard.webp" alt="Midnight" width="180"></a><br>
-      <strong>Midnight</strong><br><em>Darker Black</em>
+      <a href="#midnight---off-black"><img src="assets/screenshots/midnight-dashboard.webp" alt="Midnight" width="180"></a><br>
+      <strong>Midnight</strong><br><em>Off Black</em>
     </td>
     <td align="center">
       <a href="#abyss---black"><img src="assets/screenshots/abyss-dashboard.webp" alt="Abyss" width="180"></a><br>
@@ -309,16 +309,16 @@ Want to help shape **Oasis.nvim**?
 <details open>
   <summary><b>All styles (click to collapse)</b></summary>
 
-### Night - Off Black
+### Night - Purple Night Sky
 
-Deep desert night sky with purple-indigo undertones, almost black for those who prefer softer darkness
+Deep desert night sky with purple-indigo undertones, a deeper purple than twilight for those who prefer soft darkness
 
 ![night-dashboard](https://github.com/user-attachments/assets/f49b637f-2309-4ae2-8118-8036594eef1d)
 ![night-code](https://github.com/user-attachments/assets/d4e0624f-aed7-4540-9439-8ebe913178ca)
 
-### Midnight - Dark Black
+### Midnight - Off Black
 
-Deep slate and navy tones of the desert at midnight, a true off-black between twilight and abyss
+Deep slate and navy tones of the desert at midnight, a tinted-black lighter than abyss
 
 ![midnight-dashboard](assets/screenshots/midnight-dashboard.webp)
 ![midnight-code](assets/screenshots/midnight-code.webp)
