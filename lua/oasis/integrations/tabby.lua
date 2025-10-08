@@ -7,6 +7,9 @@ local M = {}
 function M.get_theme()
 	local current_palette = vim.g.colors_name or "oasis_lagoon"
 
+	-- Convert hyphen format to underscore format for module loading
+	current_palette = current_palette:gsub("%-", "_")
+
 	-- Ensure the palette name has proper format
 	if not current_palette:match("^oasis_") then
 		current_palette = "oasis_lagoon"
