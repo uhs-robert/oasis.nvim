@@ -1,3 +1,4 @@
+-- palette.lua
 -- lua/oasis/palette.lua
 
 -- Terminal
@@ -39,6 +40,7 @@ local visual = {
 	indigo = "#3E2F4A",
 	violet = "#50325A",
 	pink = "#47283B",
+	slate = "#1B242B",
 }
 
 -- Diagnoistics
@@ -72,6 +74,7 @@ local theme = {
 		shadow = {
 			desert = "#303030",
 			abyss = "#050505",
+			midnight = "#0C1014",
 			night = "#0C0C18",
 			sol = "#2C1512",
 			canyon = "#2B1804",
@@ -87,6 +90,7 @@ local theme = {
 		core = {
 			desert = "#333333",
 			abyss = "#000000",
+			midnight = "#101418",
 			night = "#0D0D1A",
 			sol = "#2F1815",
 			canyon = "#2F1A05",
@@ -102,6 +106,7 @@ local theme = {
 		mantle = {
 			desert = "#444444",
 			abyss = "#080808",
+			midnight = "#14181C",
 			night = "#06060E",
 			sol = "#3A2521",
 			canyon = "#402412",
@@ -117,6 +122,7 @@ local theme = {
 		surface = {
 			desert = "#555555",
 			abyss = "#1A1A1A",
+			midnight = "#1C242C",
 			night = "#262633",
 			sol = "#4F312B",
 			canyon = "#624020",
@@ -134,6 +140,7 @@ local theme = {
 		core = {
 			desert = "#ECE6D8",
 			abyss = "#DADADA",
+			midnight = "#DEE4F0",
 			night = "#E0E4F8",
 			sol = "#F6DAD7",
 			canyon = "#F1DCCF",
@@ -149,6 +156,7 @@ local theme = {
 		dim = {
 			desert = "#7C6A5B",
 			abyss = "#5A4E45",
+			midnight = "#5B534B",
 			night = "#5E564C",
 			sol = "#566B5D",
 			canyon = "#566B5D",
@@ -164,6 +172,7 @@ local theme = {
 		muted = {
 			desert = "#4A5C66",
 			abyss = "#3A4A50",
+			midnight = "#3A4A58",
 			night = "#3B3A4C",
 			sol = "#5F4642",
 			canyon = "#5C402D",
@@ -179,6 +188,7 @@ local theme = {
 		comment = {
 			desert = "#6D90A8",
 			abyss = "#5E7B88",
+			midnight = "#5F7390",
 			night = "#676B88",
 			sol = "#9B756E",
 			canyon = "#9A6C4E",
