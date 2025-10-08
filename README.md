@@ -1,6 +1,6 @@
 # 🏜️ Oasis.nvim
 
-A modular desert-themed colorscheme for Neovim with warm, earthy tones and 12 unique palette styles.
+A modular desert-themed colorscheme for Neovim with warm, earthy tones and 13 unique palette styles.
 
 Originally inspired by the classic [desert theme for vim](https://github.com/fugalh/desert.vim).
 
@@ -8,7 +8,7 @@ Uses the [cool/warm philosophy from melange](https://github.com/savq/melange-nvi
 
 ## ✨ Features
 
-- **12 theme styles**: A rainbow of desert-inspired options; with an emphasis on being dark.
+- **13 theme styles**: A rainbow of desert-inspired options; with an emphasis on being dark.
 - **Comprehensive highlighting** - LSP, Tree-sitter, and plugin support
 - **Fast loading** - Direct highlight application for optimal performance
 - **Zero dependencies** - Works out of the box without external plugins
@@ -47,7 +47,7 @@ Uses the [cool/warm philosophy from melange](https://github.com/savq/melange-nvi
 
 ## 🌅 Overview
 
-Choose from 12 distinct desert-inspired styles, each with its own personality and color palette:
+Choose from 13 distinct desert-inspired styles, each with its own personality and color palette:
 
 > [!TIP]
 > Click one below to see a larger image along with code syntax preview
@@ -57,6 +57,10 @@ Choose from 12 distinct desert-inspired styles, each with its own personality an
     <td align="center">
       <a href="#night---off-black"><img src="assets/screenshots/night-dashboard.webp" alt="Night" width="180"></a><br>
       <strong>Night</strong><br><em>Off Black</em>
+    </td>
+    <td align="center">
+      <a href="#midnight---dark-black"><img src="assets/screenshots/midnight-dashboard.webp" alt="Midnight" width="180"></a><br>
+      <strong>Midnight</strong><br><em>Darker Black</em>
     </td>
     <td align="center">
       <a href="#abyss---black"><img src="assets/screenshots/abyss-dashboard.webp" alt="Abyss" width="180"></a><br>
@@ -131,7 +135,7 @@ Install the theme with your preferred package manager, such as
 
 ## ⚙️ Configuration
 
-The theme offers 12 different styles to choose from: `night`, `abyss`, `starlight`, `desert`, `sol`, `canyon`, `dune`, `cactus`, `mirage`, `lagoon`, `twilight`, and `rose`.
+The theme offers 13 different styles to choose from: `night`, `midnight`, `abyss`, `starlight`, `desert`, `sol`, `canyon`, `dune`, `cactus`, `mirage`, `lagoon`, `twilight`, and `rose`.
 
 Oasis works out of the box, but you can customize it using `setup()`.
 
@@ -227,6 +231,7 @@ colorscheme oasis-dune
 colorscheme oasis-lagoon
 colorscheme oasis-mirage
 colorscheme oasis-night
+colorscheme oasis-midnight
 colorscheme oasis-rose
 colorscheme oasis-sol
 colorscheme oasis-starlight
@@ -304,10 +309,17 @@ Want to help shape **Oasis.nvim**?
 
 ### Night - Off Black
 
-Deep desert night sky, almost black for those who prefer softer darkness
+Deep desert night sky with purple-indigo undertones, almost black for those who prefer softer darkness
 
 ![night-dashboard](https://github.com/user-attachments/assets/f49b637f-2309-4ae2-8118-8036594eef1d)
 ![night-code](https://github.com/user-attachments/assets/d4e0624f-aed7-4540-9439-8ebe913178ca)
+
+### Midnight - Dark Black
+
+Deep slate and navy tones of the desert at midnight, a true off-black between twilight and abyss
+
+![midnight-dashboard](assets/screenshots/midnight-dashboard.webp)
+![midnight-code](assets/screenshots/midnight-code.webp)
 
 ### Abyss - Black
 
