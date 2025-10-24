@@ -148,10 +148,10 @@ Oasis works out of the box, but you can customize it using `setup()`.
 
 ```lua
 require('oasis').setup({
-  style = "lagoon",            -- Choose your style (e.g., "lagoon", "desert", "dune", etc:)
-  useLegacyComments = false,   -- Uses the legacy comment color in the `desert` style only (a bright sky blue)
-  palette_overrides = {},      -- Override colors in specific palettes
-  highlight_overrides = {},    -- Override specific highlight groups
+  style = "lagoon",              -- Choose your style (e.g., "lagoon", "desert", "dune", etc:)
+  use_legacy_comments = false,   -- Uses the legacy comment color in the `desert` style only (a bright sky blue)
+  palette_overrides = {},        -- Override colors in specific palettes
+  highlight_overrides = {},      -- Override specific highlight groups
 })
 ```
 
