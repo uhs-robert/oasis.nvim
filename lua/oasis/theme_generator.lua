@@ -188,7 +188,7 @@ return function(c, palette_name)
       -- See :h treesitter-highlight-groups, some groups may not be listed,
       --
 
-      ["@variable"]             = { fg=c.fg.core }, -- Identifier
+      ["@variable"]             = { fg=c.fg.variable }, -- Identifier
       ["@variable.builtin"]     = { fg=c.syntax.builtinVar }, -- Identifier
       ["@variable.parameter"]   = { fg=c.syntax.parameter }, -- Identifier
       ["@variable.member"]      = { fg=c.syntax.identifier }, -- Identifier
