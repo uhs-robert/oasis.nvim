@@ -5,7 +5,7 @@ local M = {}
 -- Default configuration
 M.defaults = {
 	style = nil, -- Shorthand palette name (e.g., "lagoon" -> "oasis_lagoon")
-	useLegacyComments = false,
+	use_legacy_comments = false,
 	palette_overrides = {},
 	highlight_overrides = {},
 }
@@ -60,8 +60,9 @@ end
 function M.apply_palette_overrides(palette, palette_name)
 	local result = vim.deepcopy(palette)
 
-	-- Apply legacy comment color if enabled
-	if M.options.useLegacyComments and palette_name == "oasis_desert" then
+	-- Apply desert legacy comment color override if enabled
+	local use_legacy_comments = M.options.useLegacyComments or M.options.use_legacy_comments
+	if use_legacy_comments and palette_name == "oasis_desert" then
 		result.syntax = result.syntax or {}
 		result.syntax.comment = "#87CEEB"
 	end
