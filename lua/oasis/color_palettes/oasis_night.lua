@@ -38,7 +38,7 @@ local c = {
 	syntax = {
 		-- Cold: (Data)
 		parameter = p.indigo.moonlitflower, --  #B499FF (paramaters) [UNIQUE]
-		identifier = p.blue.darkskyblue, --  #87CEEB (property identifiers)
+		identifier = p.yellow.navajowhite, --  #87CEEB (property identifiers)
 		delimiter = ui.theme.primary, -- (delimiters)
 		type = p.teal.darkagave, --  #48B4E0 (type definitions)
 		builtinVar = p.blue.skyBlueDress, --  #1CA1FF (this, document, window, etc)
