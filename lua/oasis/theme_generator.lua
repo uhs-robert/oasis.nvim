@@ -24,7 +24,7 @@ return function(c, palette_name)
       lCursor                    = { fg=c.bg.core, bg=c.syntax.exception }, -- Character under the cursor when |language-mapping| is used (see 'guicursor')
       CursorIM                   = "Cursor", -- Like Cursor, but used when in IME mode |CursorIM|
       CursorColumn               = { bg=c.ui.cursorLine }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
-      CursorLine                 = { bg = c.ui.cursorLine }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermc.fg.core OR guifg) is not set.
+      CursorLine                 = { bg = c.ui.cursorLine }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermc.fg OR guifg) is not set.
       Directory                  = { fg= c.ui.dir }, -- Directory names (and other special names in listings)
       DiffAdd                    = { fg=c.fg.core, bg=c.diff.add, reverse=true }, -- Diff mode: Added line |diff.txt|
       DiffChange                 = { fg=c.fg.core, bg=c.diff.change }, -- Diff mode: Changed line |diff.txt|
@@ -32,12 +32,12 @@ return function(c, palette_name)
       DiffText                   = { fg=c.fg.core, bg=c.bg.surface }, -- Diff mode: Changed text within a changed line |diff.txt|
       TermCursor                 = { reverse=true }, -- Cursor in a focused terminal
       TermCursorNC               = { reverse=true }, -- Cursor in an unfocusd terminal
-      ErrorMsg                   = { fg=c.ui.diag.error.fg, bg=c.fg.core, reverse=true }, -- Error messages on the command line
+      ErrorMsg                   = { fg=c.ui.diag.error.fg, bg=c.fg.strong, reverse=true }, -- Error messages on the command line
       Folded                     = { fg=c.syntax.statement, bg=c.bg.surface }, -- Line used for closed folds
       FoldColumn                 = { fg=c.fg.muted, bg=c.bg.core }, -- 'foldcolumn'
       SignColumn                 = { fg=c.fg.muted, bg=c.bg.core }, -- Column where |signs| are displayed
       IncSearch                  = { fg=c.ui.curSearch.fg, bg=c.ui.curSearch.bg }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-      Search                     = { fg=c.fg.core, bg=c.ui.search.bg }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
+      Search                     = { fg=c.fg.strong, bg=c.ui.search.bg }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
       Substitute                 = "Search", -- |:substitute| replacement text highlighting
       LineNr                     = { fg=c.fg.muted, bg=(c.bg.gutter or "NONE") }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
       LineNrAbove                = "LineNr", -- Line number for when the 'relativenumber' option is set, above the cursor line
@@ -53,7 +53,7 @@ return function(c, palette_name)
       EndOfBuffer                = "NonText", -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
       Normal                     = { fg=c.fg.core, bg=c.bg.core }, -- Normal text
       NormalNC                   = { fg=c.fg.muted }, -- normal text in non-current windows
-      Pmenu                      = { fg=c.fg.core, bg=c.bg.mantle }, -- Popup menu: Normal item.
+      Pmenu                      = { fg=c.fg.strong, bg=c.bg.mantle }, -- Popup menu: Normal item.
       PmenuSel                   = { fg=c.bg.core, bg=c.syntax.statement }, -- Popup menu: Selected item.
       PmenuKind                  = "Pmenu", -- Popup menu: Normal item "kind"
       PmenuKindSel               = "PmenuSel", -- Popup menu: Selected item "kind"
@@ -61,7 +61,7 @@ return function(c, palette_name)
       PmenuExtraSel              = "PmenuSel", -- Popup menu: Selected item "extra text"
       PmenuSbar                  = { bg=c.bg.core }, -- Popup menu: Scrollbar.
       PmenuThumb                 = { bg=c.bg.surface }, -- Popup menu: Thumb of the scrollbar.
-      NormalFloat                = { fg=c.fg.core, bg=c.bg.mantle }, -- Normal text in floating windows.
+      NormalFloat                = { fg=c.fg.strong, bg=c.bg.mantle }, -- Normal text in floating windows.
       FloatBorder                = { fg=c.ui.float.border.fg, bg=c.ui.float.border.bg }, -- Border of floating windows.
       Question                   = { fg=c.ui.diag.ok.fg, bold=true }, -- |hit-enter| prompt and yes/no questions
       QuickFixLine               = { fg=c.bg.core, bg=c.syntax.statement }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
@@ -188,7 +188,7 @@ return function(c, palette_name)
       -- See :h treesitter-highlight-groups, some groups may not be listed,
       --
 
-      ["@variable"]             = { fg=c.fg.variable }, -- Identifier
+      ["@variable"]             = { fg=c.fg.core }, -- Identifier
       ["@variable.builtin"]     = { fg=c.syntax.builtinVar }, -- Identifier
       ["@variable.parameter"]   = { fg=c.syntax.parameter }, -- Identifier
       ["@variable.member"]      = { fg=c.syntax.identifier }, -- Identifier
