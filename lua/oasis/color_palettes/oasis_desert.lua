@@ -15,7 +15,7 @@ local ui = {
 	-- Foregrounds
 	fg = {
 		core = p.theme.fg.core[key],
-		variable = p.theme.fg.variable[key],
+		strong = p.theme.fg.strong[key],
 		muted = p.theme.fg.muted[key],
 		dim = p.theme.fg.dim[key],
 		comment = p.theme.fg.comment[key],
