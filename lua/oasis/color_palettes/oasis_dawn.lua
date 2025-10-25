@@ -34,6 +34,7 @@ local c = {
 	bg = ui.bg,
 	fg = ui.fg,
 	theme = ui.theme,
+  terminal = p.light_terminal,
 
 	-- Syntax
 	syntax = {
@@ -73,11 +74,11 @@ local c = {
 
 	-- UI
 	ui = {
-		match = p.orange.embercore,
+		match = "#804d13",
 		visual = { bg = p.visual.light_blue, fg = "none" },
 		search = { bg = p.yellow.wheat, fg = ui.bg.core },
 		curSearch = { bg = p.orange.deepsun, fg = ui.bg.core },
-		dir = p.blue.wellwater,
+		dir = "#255e6f",
 
 		title = ui.theme.primary,
 		border = ui.theme.primary,
@@ -92,8 +93,8 @@ local c = {
 		diag = {
 			error = { fg = "#C12424", bg = p.brown.paleclay },
 			warn = { fg = p.brown.sandstoneGlow, bg = p.brown.fadedclay },
-			info = { fg = p.blue.wellwater, bg = p.brown.fadedclay },
-			hint = { fg = p.teal.shadepool, bg = p.brown.fadedclay },
+			info = { fg = "#255e6f", bg = p.brown.fadedclay },
+			hint = { fg = "#2c635a", bg = p.brown.fadedclay },
 			ok = { fg = '#2F7D32', bg = "none" },
 		},
 	},
