@@ -22,8 +22,8 @@ local ui = {
 	},
 	-- General colors
 	theme = {
-    primary = "#C12424",
-		light_primary = "#B44A18",
+		primary = "#B5563A",
+		light_primary = "#B5563A",
 		secondary = "#1C6FB8",
 		accent = "#1C6FB8",
 	},
@@ -34,14 +34,14 @@ local c = {
 	bg = ui.bg,
 	fg = ui.fg,
 	theme = ui.theme,
-  terminal = p.light_terminal,
+	terminal = p.light_terminal,
 
 	-- Syntax
 	syntax = {
 		-- Cold: (Data)
 		parameter = "#7A3FE2", -- parameters
 		identifier = "#8F6F4E", -- property identifiers
-		delimiter = ui.theme.light_primary, -- delimiters
+		delimiter = ui.theme.primary, -- delimiters
 		type = "#0A6F8D", -- type definitions
 		builtinVar = "#2A60EA", -- this, document, window, etc
 		string = "#2F7D32", -- strings
@@ -56,7 +56,8 @@ local c = {
 		exception = "#C12424", -- try/catch/return
 		keyword = "#7B5C00", -- general keywords
 		special = "#B44A18", -- misc specials
-		operator = "#AD6078", -- operators
+		-- operator = "#AD6078", -- operators
+operator = "#B85763",  -- or "#B3505E" / "#A84B58"
 		punctuation = "#6F664D", -- punctuation
 		preproc = "#1C6FB8", -- imports/preprocessor
 
@@ -95,7 +96,7 @@ local c = {
 			warn = { fg = p.brown.sandstoneGlow, bg = p.brown.fadedclay },
 			info = { fg = "#255e6f", bg = p.brown.fadedclay },
 			hint = { fg = "#2c635a", bg = p.brown.fadedclay },
-			ok = { fg = '#2F7D32', bg = "none" },
+			ok = { fg = "#2F7D32", bg = "none" },
 		},
 	},
 }

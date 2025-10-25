@@ -1,6 +1,6 @@
 # 🏜️ Oasis.nvim
 
-A modular desert-themed colorscheme for Neovim with warm, earthy tones and 13 unique palette styles.
+A modular desert-themed colorscheme for Neovim with warm, earthy tones and 14 unique palette styles.
 
 Originally inspired by the classic [desert theme for vim](https://github.com/fugalh/desert.vim).
 
@@ -8,7 +8,7 @@ Uses the [cool/warm philosophy from melange](https://github.com/savq/melange-nvi
 
 ## ✨ Features
 
-- **13 theme styles**: A rainbow of desert-inspired options; with an emphasis on being dark.
+- **14 theme styles**: A rainbow of desert-inspired options; with an emphasis on being dark (with only one light theme).
 - **Comprehensive highlighting** - LSP, Tree-sitter, and plugin support
 - **Fast loading** - Direct highlight application for optimal performance
 - **Zero dependencies** - Works out of the box without external plugins
@@ -47,7 +47,7 @@ Uses the [cool/warm philosophy from melange](https://github.com/savq/melange-nvi
 
 ## 🌅 Overview
 
-Choose from 13 distinct desert-inspired styles, each with its own personality and color palette:
+Choose from 14 distinct desert-inspired styles, each with its own personality and color palette:
 
 > [!TIP]
 > Click one below to see a larger image along with code syntax preview
@@ -113,6 +113,12 @@ Choose from 13 distinct desert-inspired styles, each with its own personality an
       <strong>Rose</strong><br><em>Pink</em>
     </td>
   </tr>
+  <tr>
+    <td align="center">
+      <a href="#dawn---light"><img src="assets/screenshots/dawn-dashboard.webp" alt="Dawn" width="180"></a><br>
+      <strong>Dawn</strong><br><em>Light</em>
+    </td>
+  </tr>
 </table>
 
 **[↓ 👀 View all styles expanded with code syntax](#view-all-theme-styles)**
@@ -137,7 +143,7 @@ Install the theme with your preferred package manager, such as
 
 ## ⚙️ Configuration
 
-The theme offers 13 different styles to choose from: `night`, `midnight`, `abyss`, `starlight`, `desert`, `sol`, `canyon`, `dune`, `cactus`, `mirage`, `lagoon`, `twilight`, and `rose`.
+The theme offers 14 different styles to choose from: `night`, `midnight`, `abyss`, `starlight`, `desert`, `sol`, `canyon`, `dune`, `cactus`, `mirage`, `lagoon`, `twilight`, `rose`, and `dawn`.
 
 Oasis works out of the box, but you can customize it using `setup()`.
 
@@ -238,6 +244,7 @@ colorscheme oasis-rose
 colorscheme oasis-sol
 colorscheme oasis-starlight
 colorscheme oasis-twilight
+colorscheme oasis-dawn
 ```
 
 Some plugins need extra configuration to work with **Oasis**.
@@ -399,5 +406,12 @@ Soft pinks of the warm desert rose
 
 ![rose-dashboard](https://github.com/user-attachments/assets/ff4922d2-5ae9-4445-9eb4-ba04832798dd)
 ![rose-code](https://github.com/user-attachments/assets/be74caed-a1e4-4219-9c49-34bad64f9cda)
+
+### Dawn - Light
+
+Ah, the morning sun. Don't forget your sunglasses!
+
+![dawn-dashboard](https://github.com/user-attachments/assets/ff4922d2-5ae9-4445-9eb4-ba04832798dd)
+![dawn-code](https://github.com/user-attachments/assets/be74caed-a1e4-4219-9c49-34bad64f9cda)
 
 </details>
