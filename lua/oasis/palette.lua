@@ -6,25 +6,51 @@ local terminal = {
 	color8 = "#514742",
 
 	color1 = "#CD5C5C",
-	color9 = "#FFA0A0 ",
+	color9 = "#FFA0A0",
 
 	color2 = "#35B56E",
 	color10 = "#6BBF59",
 
 	color3 = "#F0E68C",
-	color11 = "#FF9F41 ",
+	color11 = "#FF9F41",
 
 	color4 = "#87CEEB",
 	color12 = "#48B4E0",
 
 	color5 = "#B499FF",
-	color13 = "#9F7FFF ",
+	color13 = "#9F7FFF",
 
 	color6 = "#1CA1FF",
 	color14 = "#8FD1C7",
 
 	color7 = "#F6F0E1",
 	color15 = "#F2E9E4",
+}
+
+local light_terminal = {
+	color0 = "#3A3427",
+	color8 = "#6F664D",
+
+	color1 = "#C12424",
+	color9 = "#B4412E",
+
+	color2 = "#2F7D32",
+	color10 = "#3D8A3D",
+
+	color3 = "#A07400",
+	color11 = "#C6911A",
+
+	color4 = "#2A60EA",
+	color12 = "#1C6FB8",
+
+	color5 = "#7A3FE2",
+	color13 = "#AD6078",
+
+	color6 = "#169885",
+	color14 = "#0A6F8D",
+
+	color7 = "#453826",
+	color15 = "#2A2518",
 }
 
 -- Visual BG
@@ -231,6 +257,7 @@ local theme = {
 -- Full palette
 local colors = {
 	terminal = terminal,
+  light_terminal = light_terminal,
 	visual = visual,
 	diag = diag,
 	theme = theme,
