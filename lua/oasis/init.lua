@@ -25,8 +25,11 @@ function M.apply(palette_name)
 	-- Reset
 	vim.cmd("highlight clear")
 	vim.cmd("syntax reset")
-	vim.opt.background = "dark"
 	palette_name = palette_name or config.get_palette_name() or vim.g.oasis_palette or "oasis_lagoon"
+
+	-- Set background based on palette (dawn is light mode, all others are dark)
+	vim.opt.background = (palette_name == "oasis_dawn") and "light" or "dark"
+
 	vim.g.colors_name = palette_name:gsub("_", "-") -- Convert to hyphen format to match colorscheme files
 
 	-- Load palette
