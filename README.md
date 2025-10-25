@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-A collection of <strong>14</strong> desert-inspired Neovim colorschemes for each color of the rainbow. Warm, readable, and configurable.
+A collection of <strong>14</strong> desert-inspired Neovim colorschemes; warm, readable, and configurable.
 </p>
 
 ## 🌅 Overview
@@ -421,7 +421,7 @@ Soft pinks of the warm desert rose
 
 Ah, the morning sun. Don't forget your sunglasses!
 
-![dawn-dashboard](https://github.com/user-attachments/assets/ff4922d2-5ae9-4445-9eb4-ba04832798dd)
-![dawn-code](https://github.com/user-attachments/assets/be74caed-a1e4-4219-9c49-34bad64f9cda)
+![dawn-dashboard](https://github.com/user-attachments/assets/fdbd794c-1ede-495b-b9b6-f3e809ce6a05)
+![dawn-code](https://github.com/user-attachments/assets/bf0731c8-046f-4928-abc5-32c4093bbc07)
 
 </details>
