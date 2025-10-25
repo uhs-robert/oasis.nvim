@@ -36,6 +36,7 @@ local visual = {
 	green = "#1F3A2D",
 	teal = "#2B4A46",
 	blue = "#335668",
+  light_blue = "#9BC1E6",
 	indigo = "#3E2F4A",
 	violet = "#50325A",
 	pink = "#47283B",
@@ -84,6 +85,7 @@ local theme = {
 			twilight = "#201C2B",
 			rose = "#2B1523",
 			starlight = "#050505",
+			dawn = "#E9E0AE",
 		},
 		-- Main background (1)
 		core = {
@@ -100,6 +102,7 @@ local theme = {
 			twilight = "#221B2F",
 			rose = "#301828",
 			starlight = "#000000",
+			dawn = "#EFE5B6",  -- alt #ECDFA3
 		},
 		-- Panels (2)
 		mantle = {
@@ -116,6 +119,7 @@ local theme = {
 			twilight = "#2B243B",
 			rose = "#3E2636",
 			starlight = "#080808",
+			dawn = "#E3D8A4",
 		},
 		-- Floats (3)
 		surface = {
@@ -132,6 +136,7 @@ local theme = {
 			twilight = "#352D47",
 			rose = "#523A4B",
 			starlight = "#1A1A1A",
+			dawn = "#D7CC97",
 		},
 	},
 	fg = {
@@ -150,7 +155,7 @@ local theme = {
 			twilight = "#E6E0F8",
 			rose = "#E9E3E8",
 			starlight = "#E8E8E8",
-			dawn = "#2A2518",
+			dawn = "#453826",
 		},
 		-- Strong
 		strong = {
@@ -167,6 +172,7 @@ local theme = {
 			twilight = "#E1D2FF",
 			rose = "#E6D6EE",
 			starlight = "#E0E0E0",
+			dawn = "#261E12",
 		},
 		-- Inlay hints / nontext (slightly warm/dark, distinct from comments)
 		dim = {
@@ -183,6 +189,7 @@ local theme = {
 			twilight = "#5A4E45",
 			rose = "#5A4E45",
 			starlight = "#6A5448",
+			dawn = "#A7A585",
 		},
 		-- Line numbers (darkest, low-chroma)
 		muted = {
@@ -199,6 +206,7 @@ local theme = {
 			twilight = "#43385B",
 			rose = "#3E2E38",
 			starlight = "#4E5A6A",
+			dawn = "#A7A585",
 		},
 		-- Comments (mid-contrast, readable but soft)
 		comment = {
@@ -215,6 +223,7 @@ local theme = {
 			twilight = "#6F6291",
 			rose = "#9F6C85",
 			starlight = "#7FA5CC",
+			dawn = "#6886A2",
 		},
 	},
 }
