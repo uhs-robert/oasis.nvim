@@ -1,6 +1,7 @@
 -- lua/oasis/theme_generator.lua
 
 return function(c, palette_name)
+  local LIGHT_MODE = palette_name == "oasis_dawn"
   local config = require('oasis.config').get()
   local highlights = {
     -- Main Theme Colors (Highlights for plugins)
@@ -105,7 +106,7 @@ return function(c, palette_name)
 
     Statement                  = { fg=c.syntax.statement }, -- (*) Any statement
     Keyword                    = { fg=c.syntax.statement }, --   any other keyword
-    Conditional                = { fg=c.syntax.keyword }, --   if, then, else, endif, switch, etc.
+    Conditional                = { fg=c.syntax.keyword }, --   if, then, else, endif, switch, etc. //FIX: keyword is actually going to conditonal
     Repeat                     = "Conditional", --   for, do, while, etc.
     Label                      = "Conditional", --   case, default, etc.
     Operator                   = { fg=c.syntax.operator }, --   "sizeof", "+", "*", etc.
@@ -283,7 +284,29 @@ return function(c, palette_name)
 
     lazyActiveBorder          = "Identifier",
 
+    GitSignsAdd               = { fg=c.diff.add },
+    GitSignsChange            = { fg=c.diff.change },
+    GitSignsDelete            = { fg=c.diff.delete },
   }
+
+  -- Light mode overrides
+  if LIGHT_MODE then
+    highlights.MatchParen = { fg=c.ui.match, bg=c.ui.search.bg, bold=true }
+
+    highlights.GitSignsAdd    = { fg=c.diff.add,    bg=c.bg.core }
+    highlights.GitSignsChange = { fg=c.diff.change, bg=c.bg.core }
+    highlights.GitSignsDelete = { fg=c.diff.delete, bg=c.bg.core }
+
+    -- inline diff
+    highlights.DiffAdd        = { bg="#DDEDDC", fg=c.fg.core }
+    highlights.DiffChange     = { bg="#F0E6D4", fg=c.fg.core }
+    highlights.DiffDelete     = { bg="#F3D8D6", fg=c.fg.core }
+
+    highlights.Pmenu          = { fg=c.fg.core,   bg=c.bg.mantle }
+    highlights.PmenuSel       = { fg=c.bg.core,   bg=c.syntax.statement, bold=true }
+    highlights.PmenuSbar      = { bg=c.bg.mantle }
+    highlights.PmenuThumb     = { bg=c.bg.surface }
+  end
 
 
   -- Apply base highlights first
@@ -303,5 +326,21 @@ return function(c, palette_name)
       vim.api.nvim_set_hl(0, name, { link = attrs })
     end
   end
+
+  -- Apply terminal colors
+  vim.o.termguicolors = true
+  if c.terminal then
+    for i = 0, 15 do
+      local key = ("color%d"):format(i)
+      local val = c.terminal[key]
+      if val and val ~= "NONE" then
+        vim.g["terminal_color_" .. i] = val
+      end
+    end
+
+    vim.g.terminal_color_background = c.bg.core
+    vim.g.terminal_color_foreground = c.fg.core
+  end
+
 end
 -- vi:nowrap
