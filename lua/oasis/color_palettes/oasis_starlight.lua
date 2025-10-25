@@ -34,6 +34,7 @@ local c = {
 	bg = ui.bg,
 	fg = ui.fg,
 	theme = ui.theme,
+  terminal = p.terminal,
 
 	-- Syntax
 	syntax = {
