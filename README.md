@@ -1,56 +1,26 @@
-# 🏜️ Oasis.nvim
+<p align="center">
+  <img
+    src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f3dd.svg"
+    width="128" height="128" alt="Oasis emoji" />
+</p>
+<h1 align="center">Oasis.nvim</h1>
 
-A modular desert-themed colorscheme for Neovim with warm, earthy tones and 14 unique palette styles.
+<p align="center">
+  <a href="https://github.com/uhs-robert/oasis.nvim/stargazers"><img src="https://img.shields.io/github/stars/uhs-robert/oasis.nvim?colorA=192330&colorB=skyblue&style=for-the-badge"></a>
+  <a href="https://github.com/uhs-robert/oasis.nvim/issues"><img src="https://img.shields.io/github/issues/uhs-robert/oasis.nvim?colorA=192330&colorB=khaki&style=for-the-badge"></a>
+  <a href="https://github.com/uhs-robert/oasis.nvim/contributors"><img src="https://img.shields.io/github/contributors/uhs-robert/oasis.nvim?colorA=192330&colorB=8FD1C7&style=for-the-badge"></a>
+  <a href="https://github.com/uhs-robert/oasis.nvim/network/members"><img src="https://img.shields.io/github/forks/uhs-robert/oasis.nvim?colorA=192330&colorB=CFA7FF&style=for-the-badge"></a>
+</p>
 
-Originally inspired by the classic [desert theme for vim](https://github.com/fugalh/desert.vim).
-
-Uses the [cool/warm philosophy from melange](https://github.com/savq/melange-nvim?tab=readme-ov-file#design) (i.e., `warm colors = action/flow` and `cool colors = structure/data`).
-
-## ✨ Features
-
-- **14 theme styles**: A rainbow of desert-inspired options; with an emphasis on being dark (with only one light theme).
-- **Comprehensive highlighting** - LSP, Tree-sitter, and plugin support
-- **Fast loading** - Direct highlight application for optimal performance
-- **Zero dependencies** - Works out of the box without external plugins
-- **Modular architecture** - Easy to customize and extend
-
-<details>
-<summary>💪 Supported Plugins</summary>
-
-<!-- plugins:start -->
-
-| Plugin                                                      |
-| ----------------------------------------------------------- |
-| [fzf-lua](https://github.com/ibhagwan/fzf-lua)              |
-| [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) |
-| [snacks.nvim](https://github.com/folke/snacks.nvim)         |
-| [which-key.nvim](https://github.com/folke/which-key.nvim)   |
-
-<!-- plugins:end -->
-</details>
-
-<details>
-<summary>🍭 Extras</summary>
-
-<!-- extras:start -->
-
-| Tool  | Extra                                                  |
-| ----- | ------------------------------------------------------ |
-| Kitty | [extras/kitty](extras/kitty)                           |
-| TMUX  | [tmux-oasis](https://github.com/uhs-robert/tmux-oasis) |
-
-<!-- extras:end -->
-</details>
-
-> [!NOTE]
-> Use TMUX? There is a companion TMUX plugin for this **Oasis** theme suite: [tmux-oasis](https://github.com/uhs-robert/tmux-oasis)
+<p align="center">
+A collection of <strong>14</strong> desert-inspired Neovim colorschemes for each color of the rainbow. Warm, readable, and configurable.
+</p>
 
 ## 🌅 Overview
 
-Choose from 14 distinct desert-inspired styles, each with its own personality and color palette:
+Born from the classic [desert.vim](https://github.com/fugalh/desert.vim), transformed and modernized into something new entirely.
 
-> [!TIP]
-> Click one below to see a larger image along with code syntax preview
+Oasis follows Melange’s warm/cool split philosophy (**warm = action/flow**, **cool = structure/data**).
 
 <table>
   <tr>
@@ -112,8 +82,6 @@ Choose from 14 distinct desert-inspired styles, each with its own personality an
       <a href="#rose---pink"><img src="assets/screenshots/rose-dashboard.webp" alt="Rose" width="180"></a><br>
       <strong>Rose</strong><br><em>Pink</em>
     </td>
-  </tr>
-  <tr>
     <td align="center">
       <a href="#dawn---light"><img src="assets/screenshots/dawn-dashboard.webp" alt="Dawn" width="180"></a><br>
       <strong>Dawn</strong><br><em>Light</em>
@@ -121,7 +89,49 @@ Choose from 14 distinct desert-inspired styles, each with its own personality an
   </tr>
 </table>
 
-**[↓ 👀 View all styles expanded with code syntax](#view-all-theme-styles)**
+> [!TIP]
+> Click any card above to view the full preview and syntax sample.
+>
+> [↓ Click here to view all full previews](#view-all-theme-styles)
+
+## ✨ Features
+
+- **14 theme styles**: A rainbow of desert-inspired options; with an emphasis on being dark (with only one light theme).
+- **Comprehensive highlighting** - LSP, Tree-sitter, and plugin support
+- **Fast loading** - Direct highlight application for optimal performance
+- **Zero dependencies** - Works out of the box without external plugins
+- **Modular architecture** - Easy to customize and extend
+
+<details>
+<summary>💪 Supported Plugins</summary>
+
+<!-- plugins:start -->
+
+| Plugin                                                      |
+| ----------------------------------------------------------- |
+| [fzf-lua](https://github.com/ibhagwan/fzf-lua)              |
+| [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) |
+| [snacks.nvim](https://github.com/folke/snacks.nvim)         |
+| [which-key.nvim](https://github.com/folke/which-key.nvim)   |
+
+<!-- plugins:end -->
+</details>
+
+<details>
+<summary>🍭 Extras</summary>
+
+<!-- extras:start -->
+
+| Tool  | Extra                                                  |
+| ----- | ------------------------------------------------------ |
+| Kitty | [extras/kitty](extras/kitty)                           |
+| TMUX  | [tmux-oasis](https://github.com/uhs-robert/tmux-oasis) |
+
+<!-- extras:end -->
+</details>
+
+> [!NOTE]
+> Use TMUX? There is a companion TMUX plugin for this **Oasis** theme suite: [tmux-oasis](https://github.com/uhs-robert/tmux-oasis)
 
 ## 📦 Installation
 
