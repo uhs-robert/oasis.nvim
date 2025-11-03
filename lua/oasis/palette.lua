@@ -128,7 +128,7 @@ local theme = {
 			twilight = "#221B2F",
 			rose = "#301828",
 			starlight = "#000000",
-			dawn = "#EFE5B6",  -- alt #ECDFA3
+			dawn = "#EFE5B6", -- alt #ECDFA3
 		},
 		-- Panels (2)
 		mantle = {
@@ -257,7 +257,7 @@ local theme = {
 -- Full palette
 local colors = {
 	terminal = terminal,
-  light_terminal = light_terminal,
+	light_terminal = light_terminal,
 	visual = visual,
 	diag = diag,
 	theme = theme,
