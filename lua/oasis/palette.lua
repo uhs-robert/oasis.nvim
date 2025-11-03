@@ -56,17 +56,27 @@ local light_terminal = {
 -- Visual BG
 local visual = {
 	red = "#532E2E",
+	light_red = "#E8BABA",
 	brown = "#2D251F",
+	light_brown = "#E5CEBD",
 	orange = "#5A3824",
+	light_orange = "#EDCAB6",
 	yellow = "#4D4528",
+	light_yellow = "#E9DFB9",
 	green = "#1F3A2D",
+	light_green = "#BAE9D2",
 	teal = "#2B4A46",
+	light_teal = "#BBE7E2",
 	blue = "#335668",
-  light_blue = "#9BC1E6",
+	light_blue = "#9BC1E6",
 	indigo = "#3E2F4A",
+	light_indigo = "#D3BCE6",
 	violet = "#50325A",
+	light_violet = "#DDBAE8",
 	pink = "#47283B",
+	light_pink = "#E8BAD6",
 	slate = "#1B242B",
+	light_slate = "#BCD4E6",
 }
 
 -- Diagnoistics
