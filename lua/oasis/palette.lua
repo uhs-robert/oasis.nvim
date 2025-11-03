@@ -15,16 +15,16 @@ local terminal = {
 	color11 = "#FF9F41",
 
 	color4 = "#87CEEB",
-	color12 = "#48B4E0",
+	color12 = "#6FB8FF",
 
 	color5 = "#B499FF",
-	color13 = "#9F7FFF",
+	color13 = "#C0A0FF",
 
 	color6 = "#1CA1FF",
 	color14 = "#8FD1C7",
 
-	color7 = "#F6F0E1",
-	color15 = "#F2E9E4",
+	color7 = "#E8E2D4",
+	color15 = "#FFF9F2",
 }
 
 local light_terminal = {
