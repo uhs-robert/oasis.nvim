@@ -245,11 +245,9 @@ require('oasis').setup({
 
 **tmux users:** Add `set -g allow-passthrough on` to your `.tmux.conf` for native method.
 
-> [!WARNING]
 > **Do NOT use both Native and Plugin methods simultaneously.** Test native support first!
-
-> [!TIP]
-> You can still manually switch styles at any time. Auto-switching will only trigger when you are using an Oasis colorscheme.
+>
+> You may still manually switch styles at any time. Auto-switching will only trigger when you are using an Oasis colorscheme.
 
 **Learn more:** [Neovim 0.11 Release Notes](https://neovim.io/doc/user/news-0.11.html) • [PR #31350](https://github.com/neovim/neovim/pull/31350)
 
