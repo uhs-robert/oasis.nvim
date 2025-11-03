@@ -2,6 +2,15 @@
 local M = {}
 local config = require("oasis.config")
 
+-- Flag to track when Oasis is manually setting the background (prevents circular triggering)
+local setting_background = false
+
+--- Check if Oasis is currently setting the background option
+---@return boolean
+function M.is_setting_background()
+	return setting_background
+end
+
 --- Setup Oasis with user configuration and apply the theme
 --- Examples:
 ---   require('oasis').setup({
@@ -23,14 +32,24 @@ end
 ---   require('oasis').apply('oasis_midnight')
 ---   require('oasis').apply('oasis')         -- default
 ---@param palette_name string|nil
-function M.apply(palette_name)
+---@param opts table|nil Options table with skip_background_set flag
+function M.apply(palette_name, opts)
+	opts = opts or {}
+
 	-- Reset
 	vim.cmd("highlight clear")
 	vim.cmd("syntax reset")
 	palette_name = palette_name or config.get_palette_name() or vim.g.oasis_palette or "oasis_lagoon"
 
 	-- Set background based on palette (dawn is light mode, all others are dark)
-	vim.opt.background = (palette_name == "oasis_dawn") and "light" or "dark"
+	-- Skip if requested (e.g., when called from auto-switch)
+	if not opts.skip_background_set then
+		setting_background = true
+		vim.opt.background = (palette_name == "oasis_dawn") and "light" or "dark"
+		vim.schedule(function()
+			setting_background = false
+		end)
+	end
 
 	vim.g.colors_name = palette_name:gsub("_", "-") -- Convert to hyphen format to match colorscheme files
 	vim.g.is_oasis_active = true -- Track whether Oasis is the active colorscheme

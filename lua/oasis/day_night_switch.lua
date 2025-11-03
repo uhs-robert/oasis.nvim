@@ -29,6 +29,13 @@ function M.setup()
 		group = augroup,
 		pattern = "background",
 		callback = function()
+			local oasis = require("oasis")
+
+			-- Ignore if we triggered the change ourselves (prevents circular behavior)
+			if oasis.is_setting_background() then
+				return
+			end
+
 			-- Only switch if Oasis is currently loaded
 			if not vim.g.is_oasis_active then
 				return
@@ -43,7 +50,7 @@ function M.setup()
 			local target_palette = "oasis_" .. target_style
 
 			-- Apply the target palette
-			require("oasis").apply(target_palette)
+			oasis.apply(target_palette, { skip_background_set = true })
 		end,
 	})
 end
