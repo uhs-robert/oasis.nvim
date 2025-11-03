@@ -1,6 +1,6 @@
 -- lua/oasis/init.lua
 local M = {}
-local config = require('oasis.config')
+local config = require("oasis.config")
 
 --- Setup Oasis with user configuration and apply the theme
 --- Examples:
@@ -46,9 +46,9 @@ function M.apply(palette_name)
 	build(c, palette_name)
 
 	-- Load and refresh plugin integrations
-	pcall(require, 'oasis.integrations.lualine')
-	pcall(require, 'oasis.integrations.tabby')
-	require('oasis.integrations').refresh_all()
+	pcall(require, "oasis.integrations.lualine")
+	pcall(require, "oasis.integrations.tabby")
+	require("oasis.integrations").refresh_all()
 end
 
 -- :Oasis <palette> command with completion from lua/oasis/color_palettes/*.lua
@@ -71,6 +71,5 @@ end, {
 		return out
 	end,
 })
-
 
 return M
