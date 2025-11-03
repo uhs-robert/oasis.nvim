@@ -31,26 +31,26 @@ local light_terminal = {
 	color0 = "#3A3427",
 	color8 = "#6F664D",
 
-	color1 = "#C12424",
-	color9 = "#B4412E",
+	color1 = "#B5563A",
+	color9 = "#B85763",
 
-	color2 = "#2F7D32",
-	color10 = "#3D8A3D",
+	color2 = "#2A712D",
+	color10 = "#516B14",
 
-	color3 = "#A07400",
-	color11 = "#C6911A",
+	color3 = "#A34700",
+	color11 = "#A07400",
 
-	color4 = "#2A60EA",
-	color12 = "#1C6FB8",
+	color4 = "#1964A6",
+	color12 = "#2C5AA0",
 
-	color5 = "#7A3FE2",
-	color13 = "#AD6078",
+	color5 = "#5A2FCC",
+	color13 = "#7A3FE2",
 
-	color6 = "#169885",
-	color14 = "#0A6F8D",
+	color6 = "#0A6F8D",
+	color14 = "#0A5A74",
 
 	color7 = "#453826",
-	color15 = "#2A2518",
+	color15 = "#5E574A",
 }
 
 -- Visual BG

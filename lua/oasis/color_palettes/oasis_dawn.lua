@@ -44,8 +44,8 @@ local c = {
 		delimiter = ui.theme.primary, -- delimiters
 		type = "#0A6F8D", -- type definitions
 		builtinVar = "#2A60EA", -- this, document, window, etc
-		string = "#2F7D32", -- strings
-		regex = "#6C8F1A", -- regular expressions
+		string = "#2A712D", -- strings
+		regex = "#516B14", -- regular expressions
 		builtinConst = "#169885", -- null, undefined, Infinity
 		constant = "#D26600", -- numbers/booleans/const (non-string)
 
@@ -57,9 +57,9 @@ local c = {
 		keyword = "#7B5C00", -- general keywords
 		special = "#B44A18", -- misc specials
 		-- operator = "#AD6078", -- operators
-operator = "#B85763",  -- or "#B3505E" / "#A84B58"
+		operator = "#B85763", -- or "#B3505E" / "#A84B58"
 		punctuation = "#6F664D", -- punctuation
-		preproc = "#1C6FB8", -- imports/preprocessor
+		preproc = "#1964A6", -- imports/preprocessor
 
 		-- Neutral: (Connections / Info)
 		bracket = "#5E574A", -- bracket punctuation
