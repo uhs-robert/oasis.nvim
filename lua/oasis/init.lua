@@ -6,6 +6,8 @@ local config = require("oasis.config")
 --- Examples:
 ---   require('oasis').setup({
 ---     style = "lagoon",  -- Shorthand for "oasis_lagoon"
+---     dark_style = "lagoon",
+---     light_style = "dawn",
 ---     useLegacyComments = true,
 ---     palette_overrides = { oasis_desert = { syntax = { comment = "#87CEEB" } } },
 ---     highlight_overrides = { Comment = { fg = "#AABBCC" } }
@@ -31,6 +33,7 @@ function M.apply(palette_name)
 	vim.opt.background = (palette_name == "oasis_dawn") and "light" or "dark"
 
 	vim.g.colors_name = palette_name:gsub("_", "-") -- Convert to hyphen format to match colorscheme files
+	vim.g.is_oasis_active = true -- Track whether Oasis is the active colorscheme
 
 	-- Load palette
 	local ok, c = pcall(require, "oasis.color_palettes." .. palette_name)
@@ -49,6 +52,9 @@ function M.apply(palette_name)
 	pcall(require, "oasis.integrations.lualine")
 	pcall(require, "oasis.integrations.tabby")
 	require("oasis.integrations").refresh_all()
+
+	-- Set up day/night auto-switching (only runs once)
+	require("oasis.day_night_switch").setup()
 end
 
 -- :Oasis <palette> command with completion from lua/oasis/color_palettes/*.lua

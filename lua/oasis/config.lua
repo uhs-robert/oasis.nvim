@@ -5,6 +5,8 @@ local M = {}
 -- Default configuration
 M.defaults = {
 	style = nil, -- Shorthand palette name (e.g., "lagoon" -> "oasis_lagoon")
+	dark_style = "lagoon", -- Shorthand palette name for dark mode
+	light_style = "dawn", -- Shorthand palette name for light mode
 	use_legacy_comments = false,
 	palette_overrides = {},
 	highlight_overrides = {},
