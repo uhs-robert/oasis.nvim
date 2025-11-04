@@ -147,10 +147,10 @@ Install the theme with your preferred package manager, such as
   lazy = false,
   priority = 1000,
   config = function()
-    require('oasis').setup({
-      style = "lagoon",  -- Optional: Choose any style like `lagoon` or 'dune'.
+    require("oasis").setup({
+      style = "lagoon",  -- Optional: Choose any style like "lagoon" or "dune".
     })
-    vim.cmd.colorscheme('oasis')  -- Apply the theme
+    vim.cmd.colorscheme("oasis")  -- Apply the theme
   end
 }
 ```
@@ -168,11 +168,11 @@ Oasis works out of the box, but you can customize it using `setup()`.
 <!-- config:start -->
 
 ```lua
-require('oasis').setup({
+require("oasis").setup({
   style = "lagoon",              -- Choose your style (e.g., "lagoon", "desert", "dune", etc:)
   dark_style = "lagoon",         -- Style to use when vim.o.background is "dark"
   light_style = "dawn",          -- Style to use when vim.o.background is "light"
-  use_legacy_comments = false,   -- Uses the legacy comment color in the `desert` style only (a bright sky blue)
+  use_legacy_comments = false,   -- Uses the legacy comment color in the "desert" style only (a bright sky blue)
   palette_overrides = {},        -- Override colors in specific palettes
   highlight_overrides = {},      -- Override specific highlight groups
 })
@@ -193,11 +193,11 @@ Oasis automatically switches between light and dark styles based on `vim.o.backg
 <!-- light-toggle:start -->
 
 ```lua
-require('oasis').setup({
+require("oasis").setup({
   dark_style = "lagoon",  -- Style when background is dark
   light_style = "dawn"      -- Style when background is light
 })
-vim.cmd.colorscheme('oasis')  -- Apply the theme
+vim.cmd.colorscheme("oasis")  -- Apply the theme
 ```
 
 </details>
@@ -230,7 +230,7 @@ Thirsty for total control? Oasis allows you to override whatever you like.
 **`palette_overrides`** - Customize colors in palettes (See [Color Palettes](lua/oasis/color_palettes) for palette structure)
 
 ```lua
-require('oasis').setup({
+require("oasis").setup({
   palette_overrides = {
     oasis_lagoon = {
       syntax = { func = "#E06C75", comment = "#5C6370" },
@@ -238,7 +238,7 @@ require('oasis').setup({
     }
   }
 })
-vim.cmd.colorscheme('oasis')  -- Apply the theme
+vim.cmd.colorscheme("oasis")  -- Apply the theme
 ```
 
 </details>
@@ -250,14 +250,14 @@ vim.cmd.colorscheme('oasis')  -- Apply the theme
 **`highlight_overrides`** - Override or add highlight groups (See [Theme Generator](lua/oasis/theme_generator.lua) for highlight groups):
 
 ```lua
-require('oasis').setup({
+require("oasis").setup({
   highlight_overrides = {
     Comment = { fg = "#5C6370", italic = true },
     Function = { fg = "#E06C75", bold = true },
     Identifier = "Function"  -- Link to another group
   }
 })
-vim.cmd.colorscheme('oasis')  -- Apply the theme
+vim.cmd.colorscheme("oasis")  -- Apply the theme
 ```
 
 </details>
@@ -270,16 +270,16 @@ First, call `setup()` to configure Oasis, then apply the theme with `:colorschem
 
 ```lua
 -- Use default style
-require('oasis').setup()
-vim.cmd.colorscheme('oasis')
+require("oasis").setup()
+vim.cmd.colorscheme("oasis")
 
 -- Or specify just one style
-require('oasis').setup({ style = "desert" })
-vim.cmd.colorscheme('oasis')
+require("oasis").setup({ style = "desert" })
+vim.cmd.colorscheme("oasis")
 
 -- Or choose dark / light styles (based on background)
-require('oasis').setup({ dark_style = "sol", light_style = "dawn" })
-vim.cmd.colorscheme('oasis')
+require("oasis").setup({ dark_style = "sol", light_style = "dawn" })
+vim.cmd.colorscheme("oasis")
 ```
 
 ### Switching Styles On The Fly
@@ -334,9 +334,9 @@ To override the tokyonight default and start fresh in the oasis:
 To include automatic Lualine theme integration:
 
 ```lua
-require('lualine').setup {
+require("lualine").setup {
   options = {
-    theme = 'oasis'  -- Automatically matches your current Oasis style
+    theme = "oasis"  -- Automatically matches your current Oasis style
   }
 }
 ```
@@ -346,8 +346,8 @@ require('lualine').setup {
 To include tab bar theme integration:
 
 ```lua
-require('tabby').setup({
-  theme = 'oasis' -- Automatically matches your current Oasis style
+require("tabby").setup({
+  theme = "oasis" -- Automatically matches your current Oasis style
 })
 ```
 
