@@ -1,7 +1,7 @@
 -- lua/oasis/integrations/plugins/snacks.lua
 -- Highlights for snacks.nvim plugin
 
-return function(c, palette_name)
+return function(c)
   return {
     -- Dashboard
     SnacksDashboardFile    = "Statement",

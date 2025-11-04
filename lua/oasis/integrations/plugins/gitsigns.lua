@@ -1,8 +1,8 @@
 -- lua/oasis/integrations/plugins/gitsigns.lua
 -- Highlights for gitsigns.nvim plugin
 
-return function(c, palette_name)
-  local LIGHT_MODE = palette_name == "oasis_dawn"
+return function(c)
+  local LIGHT_MODE = c.light_mode or false
 
   local highlights = {
     GitSignsAdd    = { fg=c.diff.add },
