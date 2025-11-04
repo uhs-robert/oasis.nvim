@@ -177,6 +177,41 @@ require('oasis').setup({
 
 </details>
 
+## 🌗 Automatic Light/Dark Mode Switching
+
+Oasis automatically switches between light and dark styles based on `vim.o.background` using your system theme:
+
+```lua
+require('oasis').setup({
+  dark_style = "midnight",  -- Style when background is dark
+  light_style = "dawn"      -- Style when background is light
+})
+```
+
+<details>
+  <summary>📋️ Instructions / Requirements</summary>
+  <br>
+
+<!-- light-toggle:start -->
+
+### System Theme Detection Methods
+
+| Method                   | Description                                                                     | Requirements                                                                  |
+| ------------------------ | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| **Native (Recommended)** | Terminal syncs system theme automatically                                       | Neovim 0.10+, Modern terminal (Kitty 0.26+, Alacritty 0.13+, WezTerm, iTerm2) |
+| **Plugin Fallback**      | [auto-dark-mode.nvim](https://github.com/f-person/auto-dark-mode.nvim)          | macOS, Linux (GNOME, KDE), or Windows 10+                                     |
+| **Manual Control**       | manually set `vim.o.background = "light"` or `"dark"` or `set background=light` | Always available                                                              |
+
+**tmux users:** Add `set -g allow-passthrough on` to your `.tmux.conf` for native method.
+
+> **Do NOT use both Native and Plugin methods simultaneously.** Test native support first!
+>
+> You may still manually switch styles at any time. Auto-switching will only trigger when you are using an Oasis colorscheme.
+
+**Learn more:** [Neovim 0.11 Release Notes](https://neovim.io/doc/user/news-0.11.html) • [PR #31350](https://github.com/neovim/neovim/pull/31350)
+
+</details>
+
 ## 🪓 Overriding Colors & Highlight Groups
 
 Thirsty for total control? Oasis allows you to override whatever you like.
@@ -217,39 +252,6 @@ require('oasis').setup({
   }
 })
 ```
-
-</details>
-
-<details>
-  <summary>🌗 Automatic Light/Dark Mode Switching</summary>
-  <br>
-
-<!-- light-toggle:start -->
-
-Oasis automatically switches between light and dark styles based on `vim.o.background`:
-
-```lua
-require('oasis').setup({
-  dark_style = "midnight",  -- Style when background is dark
-  light_style = "dawn"      -- Style when background is light
-})
-```
-
-### System Theme Detection Methods
-
-| Method                   | Description                                                                     | Requirements                                                                  |
-| ------------------------ | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| **Native (Recommended)** | Terminal syncs system theme automatically                                       | Neovim 0.10+, Modern terminal (Kitty 0.26+, Alacritty 0.13+, WezTerm, iTerm2) |
-| **Plugin Fallback**      | [auto-dark-mode.nvim](https://github.com/f-person/auto-dark-mode.nvim)          | macOS, Linux (GNOME, KDE), or Windows 10+                                     |
-| **Manual Control**       | manually set `vim.o.background = "light"` or `"dark"` or `set background=light` | Always available                                                              |
-
-**tmux users:** Add `set -g allow-passthrough on` to your `.tmux.conf` for native method.
-
-> **Do NOT use both Native and Plugin methods simultaneously.** Test native support first!
->
-> You may still manually switch styles at any time. Auto-switching will only trigger when you are using an Oasis colorscheme.
-
-**Learn more:** [Neovim 0.11 Release Notes](https://neovim.io/doc/user/news-0.11.html) • [PR #31350](https://github.com/neovim/neovim/pull/31350)
 
 </details>
 
