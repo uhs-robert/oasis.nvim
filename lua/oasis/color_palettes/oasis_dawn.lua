@@ -35,6 +35,7 @@ local c = {
 	fg = ui.fg,
 	theme = ui.theme,
 	terminal = p.light_terminal,
+	light_mode = true,
 
 	-- Syntax
 	syntax = {

@@ -1,7 +1,7 @@
 -- lua/oasis/theme_generator.lua
 
 return function(c, palette_name)
-  local LIGHT_MODE = palette_name == "oasis_dawn"
+  local LIGHT_MODE = c.light_mode or false
   local config = require('oasis.config').get()
   local highlights = {
     -- Main Theme Colors (Highlights for plugins)
@@ -282,13 +282,11 @@ return function(c, palette_name)
     highlights.PmenuThumb     = { bg=c.bg.surface }
   end
 
-
   -- Load plugin highlights (lazy-loaded based on installed plugins)
   local plugin_highlights = require('oasis.integrations.plugins').get_highlights(c, palette_name)
   for name, attrs in pairs(plugin_highlights) do
     highlights[name] = attrs
   end
-
 
   -- Apply base highlights first
   for name, attrs in pairs(highlights) do
