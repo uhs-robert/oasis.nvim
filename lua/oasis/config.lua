@@ -52,6 +52,15 @@ function M.get_palette_name()
 	if M.options.style then
 		return "oasis_" .. M.options.style
 	end
+
+	-- If style is not set, use dark_style/light_style based on background
+	local bg = vim.o.background
+	if bg == "light" and M.options.light_style then
+		return "oasis_" .. M.options.light_style
+	elseif M.options.dark_style then
+		return "oasis_" .. M.options.dark_style
+	end
+
 	return nil
 end
 
