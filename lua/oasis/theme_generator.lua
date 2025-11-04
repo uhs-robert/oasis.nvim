@@ -267,6 +267,9 @@ return function(c, palette_name)
     ["@diff.delta"]           = { fg=c.diff.change }, -- changed text (for diff files)
 
     -- PLUGIN GROUPS
+    LazyH1                    = { fg=c.theme.primary, bold=true },
+    LazyH2                    = { fg=c.theme.light_primary, bold=true },
+
     WhichKey                  = "Statement",
     WhichKeyDesc              = "OasisLightPrimary",
     WhichKeyGroup             = "OasisSecondary",
@@ -291,7 +294,7 @@ return function(c, palette_name)
 
   -- Light mode overrides
   if LIGHT_MODE then
-    highlights.MatchParen = { fg=c.ui.match, bg=c.ui.search.bg, bold=true }
+    highlights.MatchParen     = { fg=c.ui.match, bg=c.ui.search.bg, bold=true }
 
     highlights.GitSignsAdd    = { fg=c.diff.add,    bg=c.bg.core }
     highlights.GitSignsChange = { fg=c.diff.change, bg=c.bg.core }
