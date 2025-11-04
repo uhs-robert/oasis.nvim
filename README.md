@@ -124,10 +124,11 @@ Oasis follows Melange’s warm/cool split philosophy (**warm = action/flow**, **
 
 <!-- extras:start -->
 
-| Tool  | Extra                                                  |
-| ----- | ------------------------------------------------------ |
-| Kitty | [extras/kitty](extras/kitty)                           |
-| TMUX  | [tmux-oasis](https://github.com/uhs-robert/tmux-oasis) |
+| Tool    | Extra                                                  |
+| ------- | ------------------------------------------------------ |
+| Kitty   | [extras/kitty](extras/kitty)                           |
+| Ghostty | [extras/ghostty](extras/ghostty)                       |
+| TMUX    | [tmux-oasis](https://github.com/uhs-robert/tmux-oasis) |
 
 <!-- extras:end -->
 </details>
@@ -340,13 +341,9 @@ require('tabby').setup({
 
 ## 🍭 Extras
 
-Extra color configs for [Kitty](https://sw.kovidgoyal.net/kitty/conf.html) can be found in [extras](extras/). If you'd like an extra config added, raise a feature request and I'll put it together.
+Extra color configs for other terminal applications can be found in [extras](extras/). If you'd like an extra config added, raise a feature request and I'll put it together.
 
 To use the extras, refer to their respective documentation.
-
-There are also companion plugins for other applications:
-
-- **TMUX**: [tmux-oasis](https://github.com/uhs-robert/tmux-oasis)
 
 ## 🎯 Vote for Your Favorite Style
 
