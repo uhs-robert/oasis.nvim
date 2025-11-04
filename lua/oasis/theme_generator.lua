@@ -265,40 +265,11 @@ return function(c, palette_name)
     ["@diff.plus"]            = { fg=c.diff.add }, -- added text (for diff files)
     ["@diff.minus"]           = { fg=c.diff.delete }, -- deleted text (for diff files)
     ["@diff.delta"]           = { fg=c.diff.change }, -- changed text (for diff files)
-
-    -- PLUGIN GROUPS
-    LazyH1                    = { fg=c.theme.primary, bold=true },
-    LazyH2                    = { fg=c.theme.light_primary, bold=true },
-
-    WhichKey                  = "Statement",
-    WhichKeyDesc              = "OasisLightPrimary",
-    WhichKeyGroup             = "OasisSecondary",
-
-    SnacksDashboardFile       = "Statement",
-    SnacksDashboardSpecial    = "OasisAccent",
-
-    SnacksPickerBoxTitle      = "OasisFloatSecondary",
-    SnacksPickerInputTitle    = "OasisFloatSecondary",
-    SnacksPickerInputBorder   = "OasisFloatSecondary",
-    SnacksPickerPrompt        = "Identifier",
-
-    FzfLuaBorder              = "FloatBorder",
-    FzfLuaTitle               = "OasisFloatSecondary",
-
-    lazyActiveBorder          = "Identifier",
-
-    GitSignsAdd               = { fg=c.diff.add },
-    GitSignsChange            = { fg=c.diff.change },
-    GitSignsDelete            = { fg=c.diff.delete },
   }
 
   -- Light mode overrides
   if LIGHT_MODE then
     highlights.MatchParen     = { fg=c.ui.match, bg=c.ui.search.bg, bold=true }
-
-    highlights.GitSignsAdd    = { fg=c.diff.add,    bg=c.bg.core }
-    highlights.GitSignsChange = { fg=c.diff.change, bg=c.bg.core }
-    highlights.GitSignsDelete = { fg=c.diff.delete, bg=c.bg.core }
 
     -- inline diff
     highlights.DiffAdd        = { bg="#DDEDDC", fg=c.fg.core }
@@ -309,6 +280,13 @@ return function(c, palette_name)
     highlights.PmenuSel       = { fg=c.bg.core,   bg=c.syntax.statement, bold=true }
     highlights.PmenuSbar      = { bg=c.bg.mantle }
     highlights.PmenuThumb     = { bg=c.bg.surface }
+  end
+
+
+  -- Load plugin highlights (lazy-loaded based on installed plugins)
+  local plugin_highlights = require('oasis.integrations.plugins').get_highlights(c, palette_name)
+  for name, attrs in pairs(plugin_highlights) do
+    highlights[name] = attrs
   end
 
 
