@@ -29,28 +29,30 @@ function M.setup()
 		group = augroup,
 		pattern = "background",
 		callback = function()
-			local oasis = require("oasis")
+			local ok, err = pcall(function()
+				local oasis = require("oasis")
+				local new_bg = vim.v.option_new
 
-			-- Ignore if we triggered the change ourselves (prevents circular behavior)
-			if oasis.is_setting_background() then
-				return
+				-- Ignore if we triggered the change ourselves
+				if oasis.is_manual_bg_change(new_bg) then
+					return
+				end
+
+				-- Only switch if Oasis is currently loaded
+				if not vim.g.is_oasis_active then
+					return
+				end
+
+				local config = require("oasis.config")
+				local cfg = config.get()
+				local target_style = new_bg == "light" and cfg.light_style or cfg.dark_style
+				local target_palette = "oasis_" .. target_style
+				oasis.apply(target_palette, { skip_background_set = true })
+			end)
+
+			if not ok then
+				vim.notify("[Oasis] Error in background auto-switch: " .. tostring(err), vim.log.levels.ERROR)
 			end
-
-			-- Only switch if Oasis is currently loaded
-			if not vim.g.is_oasis_active then
-				return
-			end
-
-			local config = require("oasis.config")
-			local cfg = config.get()
-			local new_bg = vim.v.option_new
-			local target_style = new_bg == "light" and cfg.light_style or cfg.dark_style
-
-			-- Construct full palette name
-			local target_palette = "oasis_" .. target_style
-
-			-- Apply the target palette
-			oasis.apply(target_palette, { skip_background_set = true })
 		end,
 	})
 end

@@ -2,13 +2,15 @@
 local M = {}
 local config = require("oasis.config")
 
--- Flag to track when Oasis is manually setting the background (prevents circular triggering)
-local setting_background = false
+-- Track the expected background value to prevent circular triggering
+-- When we set background ourselves, we store the value here so we can ignore that specific OptionSet event
+local expected_background_value = nil
 
---- Check if Oasis is currently setting the background option
+--- Check if this background value change was triggered by Oasis itself
+---@param new_value string The new background value to check
 ---@return boolean
-function M.is_setting_background()
-	return setting_background
+function M.is_manual_bg_change(new_value)
+	return expected_background_value == new_value
 end
 
 --- Setup Oasis with user configuration and apply the theme
@@ -44,10 +46,12 @@ function M.apply(palette_name, opts)
 	-- Set background based on palette (dawn is light mode, all others are dark)
 	-- Skip if requested (e.g., when called from auto-switch)
 	if not opts.skip_background_set then
-		setting_background = true
-		vim.opt.background = (palette_name == "oasis_dawn") and "light" or "dark"
+		local target_bg = (palette_name == "oasis_dawn") and "light" or "dark"
+		expected_background_value = target_bg
+		vim.opt.background = target_bg
+		-- Reset after OptionSet has been processed
 		vim.schedule(function()
-			setting_background = false
+			expected_background_value = nil
 		end)
 	end
 
