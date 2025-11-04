@@ -150,6 +150,7 @@ Install the theme with your preferred package manager, such as
     require('oasis').setup({
       style = "lagoon",  -- Optional: Choose any style like `lagoon` or 'dune'.
     })
+    vim.cmd.colorscheme('oasis')  -- Apply the theme
   end
 }
 ```
@@ -196,6 +197,7 @@ require('oasis').setup({
   dark_style = "lagoon",  -- Style when background is dark
   light_style = "dawn"      -- Style when background is light
 })
+vim.cmd.colorscheme('oasis')  -- Apply the theme
 ```
 
 </details>
@@ -236,6 +238,7 @@ require('oasis').setup({
     }
   }
 })
+vim.cmd.colorscheme('oasis')  -- Apply the theme
 ```
 
 </details>
@@ -254,23 +257,34 @@ require('oasis').setup({
     Identifier = "Function"  -- Link to another group
   }
 })
+vim.cmd.colorscheme('oasis')  -- Apply the theme
 ```
 
 </details>
 
 ## 🚀 Usage
 
-### ⭐ Recommended: Use `setup()` to launch nvim with your desired style
+### ⭐ Configuration and Application
+
+First, call `setup()` to configure Oasis, then apply the theme with `:colorscheme`:
 
 ```lua
--- Use default style (lagoon)
+-- Use default style
 require('oasis').setup()
+vim.cmd.colorscheme('oasis')
 
--- Or specify a style
+-- Or specify just one style
 require('oasis').setup({ style = "desert" })
+vim.cmd.colorscheme('oasis')
+
+-- Or choose dark / light styles (based on background)
+require('oasis').setup({ dark_style = "sol", light_style = "dawn" })
+vim.cmd.colorscheme('oasis')
 ```
 
-### Alternative: Use `colorscheme` command to swap on the fly
+### Switching Styles On The Fly
+
+After setup, use the `:colorscheme` command to swap between styles:
 
 ```lua
 vim.cmd.colorscheme("oasis")  -- default (lagoon)

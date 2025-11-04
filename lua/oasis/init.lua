@@ -13,7 +13,8 @@ function M.is_manual_bg_change(new_value)
 	return expected_background_value == new_value
 end
 
---- Setup Oasis with user configuration and apply the theme
+--- Setup Oasis with user configuration
+--- Note: This only configures Oasis. To apply the theme, use :colorscheme oasis
 --- Examples:
 ---   require('oasis').setup({
 ---     style = "lagoon",  -- Shorthand for "oasis_lagoon"
@@ -23,10 +24,10 @@ end
 ---     palette_overrides = { oasis_desert = { syntax = { comment = "#87CEEB" } } },
 ---     highlight_overrides = { Comment = { fg = "#AABBCC" } }
 ---   })
+---   vim.cmd.colorscheme('oasis')  -- Apply the theme
 ---@param user_config table|nil User configuration
 function M.setup(user_config)
 	config.setup(user_config)
-	M.apply()
 end
 
 --- Apply Oasis using a palette module name (no prefix).
