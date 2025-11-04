@@ -1,4 +1,4 @@
-# Kitty Theme Setup
+# Kitty Setup
 
 1. Create `~/.config/kitty/themes`
 2. Download theme file into `themes` directory
