@@ -283,7 +283,7 @@ return function(c, palette_name)
   end
 
   -- Load plugin highlights (lazy-loaded based on installed plugins)
-  local plugin_highlights = require('oasis.integrations.plugins').get_highlights(c, palette_name)
+  local plugin_highlights = require('oasis.integrations').get_plugin_highlights(c)
   for name, attrs in pairs(plugin_highlights) do
     highlights[name] = attrs
   end
