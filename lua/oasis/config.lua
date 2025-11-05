@@ -47,7 +47,7 @@ function M.get()
 end
 
 --- Get the full palette name from the configured style
----@return string|nil palette_name Full palette name (e.g., "oasis_lagoon") or nil
+---@return string palette_name Full palette name (e.g., "oasis_lagoon"), always returns a valid palette
 function M.get_palette_name()
 	if M.options.style then
 		return "oasis_" .. M.options.style
@@ -61,7 +61,8 @@ function M.get_palette_name()
 		return "oasis_" .. M.options.dark_style
 	end
 
-	return nil
+	-- Final fallback: check vim.o.background and return appropriate default
+	return bg == "light" and "oasis_dawn" or "oasis_lagoon"
 end
 
 --- Apply palette overrides to a loaded palette
