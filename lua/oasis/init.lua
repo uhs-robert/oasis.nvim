@@ -2,20 +2,9 @@
 local M = {}
 local config = require("oasis.config")
 
--- Track the expected background value to prevent circular triggering
--- When we set background ourselves, we store the value here so we can ignore that specific OptionSet event
-local expected_background_value = nil
-
---- Check if this background value change was triggered by Oasis itself
----@param new_value string The new background value to check
----@return boolean
-function M.is_manual_bg_change(new_value)
-	local result = expected_background_value == new_value
-	if result then
-		expected_background_value = nil
-	end
-	return result
-end
+--- Track current and remembered styles for light/dark switching
+---@type {current?: string, light?: string, dark?: string}
+M.styles = {}
 
 --- Setup Oasis with user configuration
 --- Note: This only configures Oasis. To apply the theme, use :colorscheme oasis
@@ -39,14 +28,31 @@ end
 ---   require('oasis').apply('oasis_midnight')
 ---   require('oasis').apply('oasis')         -- default
 ---@param palette_name string|nil
----@param opts table|nil Options table with skip_background_set flag
-function M.apply(palette_name, opts)
-	opts = opts or {}
+function M.apply(palette_name)
+	palette_name = palette_name or vim.g.oasis_palette or config.get_palette_name()
+	local bg = vim.o.background
+	local cfg = config.get()
+	local is_light_style = palette_name == ("oasis_" .. cfg.light_style)
+	local expected_bg = is_light_style and "light" or "dark"
+
+	-- If we're switching between light/dark, prefer users last choice if different style from config
+	if palette_name == M.styles.current and bg ~= expected_bg then
+		if bg == "light" then
+			palette_name = M.styles.light or ("oasis_" .. cfg.light_style)
+		else
+			palette_name = M.styles.dark or ("oasis_" .. cfg.dark_style)
+		end
+	elseif bg ~= expected_bg then
+		vim.o.background = expected_bg
+	end
+
+	-- Remember this style choice for the current background
+	M.styles.current = palette_name
+	M.styles[vim.o.background] = palette_name
 
 	-- Reset
 	vim.cmd("highlight clear")
 	vim.cmd("syntax reset")
-	palette_name = palette_name or config.get_palette_name() or vim.g.oasis_palette or "oasis_lagoon"
 
 	-- Load palette
 	local ok, c = pcall(require, "oasis.color_palettes." .. palette_name)
@@ -54,16 +60,7 @@ function M.apply(palette_name, opts)
 		error(('Oasis: palette "%s" not found: %s'):format(palette_name, c))
 	end
 
-	-- Set background based on palette metadata (light_mode flag)
-	-- Skip if requested (e.g., when called from auto-switch)
-	if not opts.skip_background_set then
-		local target_bg = (c.light_mode == true) and "light" or "dark"
-		expected_background_value = target_bg
-		vim.opt.background = target_bg
-	end
-
 	vim.g.colors_name = palette_name:gsub("_", "-") -- Convert to hyphen format to match colorscheme files
-	vim.g.is_oasis_active = true -- Track whether Oasis is the active colorscheme
 
 	-- Apply palette overrides from config
 	c = config.apply_palette_overrides(c, palette_name)
@@ -76,9 +73,6 @@ function M.apply(palette_name, opts)
 	pcall(require, "oasis.integrations.lualine")
 	pcall(require, "oasis.integrations.tabby")
 	require("oasis.integrations").refresh_all()
-
-	-- Set up day/night auto-switching (only runs once)
-	require("oasis.day_night_switch").setup()
 end
 
 -- :Oasis <palette> command with completion from lua/oasis/color_palettes/*.lua
