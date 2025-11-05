@@ -125,6 +125,7 @@ Oasis follows Melange’s warm/cool split philosophy (**warm = action/flow**, **
 [All extra configs](extras/) for other terminal applications.
 
 To use the extras, refer to their respective documentation.
+
 <!-- extras:start -->
 
 | Tool    | Extra                                                  |
@@ -133,8 +134,8 @@ To use the extras, refer to their respective documentation.
 | Ghostty | [extras/ghostty](extras/ghostty)                       |
 | TMUX    | [tmux-oasis](https://github.com/uhs-robert/tmux-oasis) |
 
-
 If you'd like an extra config added, raise a feature request and I'll put it together.
+
 <!-- extras:end -->
 </details>
 
@@ -149,134 +150,28 @@ Install the theme with your preferred package manager, such as
   lazy = false,
   priority = 1000,
   config = function()
-    require("oasis").setup()      -- Optional: customize (see Configuration below)
-    vim.cmd.colorscheme("oasis")  -- Apply theme (or any style like "oasis-night")
+    require("oasis").setup()      -- (see Configuration below for all customization options)
+    vim.cmd.colorscheme("oasis")  -- After setup, apply theme (or a any style like "oasis-night")
   end
 }
 ```
 
-## ⚙️ Configuration
-
-Oasis offers 14 different styles to choose from: `night`, `midnight`, `abyss`, `starlight`, `desert`, `sol`, `canyon`, `dune`, `cactus`, `mirage`, `lagoon`, `twilight`, `rose`, and `dawn`.
-
-The theme will work out of the box, but you can customize it using `setup()`.
-
-<details>
-  <summary>🍦 Default Options</summary>
-  <br>
-<!-- config:start -->
-
-```lua
-require("oasis").setup({
-  dark_style = "lagoon",         -- Style to use when vim.o.background is "dark"
-  light_style = "dawn",          -- Style to use when vim.o.background is "light"
-  style = nil,                   -- Optional: Set a single style to disable auto-switching (e.g., "lagoon", "desert")
-  use_legacy_comments = false,   -- Uses the legacy comment color from desert.vim for the "desert" style only (a bright sky blue)
-  palette_overrides = {},        -- Override colors in specific palettes
-  highlight_overrides = {},      -- Override specific highlight groups
-})
-```
-
-<!-- config:end -->
-</details>
-
-## 🌗 Automatic Light/Dark Mode Switching
-
-Oasis automatically switches between light and dark styles based on `vim.o.background` and/or your system theme.
-
-### Auto Switch Methods
-
-| Method                   | Description                                                                     | Requirements                                                                  |
-| ------------------------ | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| **Native (Recommended)** | Terminal syncs OS system theme automatically, no setup required!                | Neovim 0.10+, Modern terminal (Kitty 0.26+, Alacritty 0.13+, WezTerm, iTerm2) |
-| **Plugin Fallback**      | [auto-dark-mode.nvim](https://github.com/f-person/auto-dark-mode.nvim)          | macOS, Linux (GNOME, KDE), or Windows 10+                                     |
-| **Manual Control**       | manually set `vim.o.background = "light"` or `"dark"` or `set background=light` | Always available                                                              |
-
-**tmux users:** Add `set -g allow-passthrough on` to your `.tmux.conf` for the native method.
-
-> [!TIP]
-> **Do NOT** use both Native and Plugin methods simultaneously. Try native first.
-
-<details>
-  <summary>☀️ Configure Light / Dark Styles</summary>
-  <br>
-<!-- light-dark:start -->
-
-```lua
-require("oasis").setup({
-  dark_style = "lagoon",      -- Style when background is dark
-  light_style = "dawn"        -- Style when background is light
-})
-vim.cmd.colorscheme("oasis")  -- Apply the theme
-```
-
-<!-- light-dark:end -->
-</details>
-
-**Learn more:** [Neovim 0.11 Release Notes](https://neovim.io/doc/user/news-0.11.html) • [PR #31350](https://github.com/neovim/neovim/pull/31350)
-
-## 🪓 Overriding Colors & Highlight Groups
-
-Thirsty for total control? You can override whatever you like.
-
-> _Whoever drinketh of the water that I shall give him, shall never thirst..._
-
-<details>
-  <summary>🎨 Changing Palette Colors for Each Style</summary>
-  <br>
-<!-- palette-overrides:start -->
-
-**`palette_overrides`** - Customize colors in palettes (See [Color Palettes](lua/oasis/color_palettes) for palette structure)
-
-```lua
-require("oasis").setup({
-  palette_overrides = {
-    oasis_lagoon = {
-      syntax = { func = "#E06C75", comment = "#5C6370" },
-      ui = { border = "#61AFEF" }
-    }
-  }
-})
-```
-
-<!-- palette-overrides:end-->
-</details>
-
-<details>
-  <summary>💅 Changing Colors for Highlight Groups</summary>
-  <br>
-<!-- highlight-overrides:start -->
-
-**`highlight_overrides`** - Override or add highlight groups (See [Theme Generator](lua/oasis/theme_generator.lua) for highlight groups):
-
-```lua
-require("oasis").setup({
-  highlight_overrides = {
-    Comment = { fg = "#5C6370", italic = true },
-    Function = { fg = "#E06C75", bold = true },
-    Identifier = "Function"  -- Link to another group
-  }
-})
-```
-
-<!-- highlight-overrides:end -->
-</details>
-
 ## 🚀 Usage
 
-After calling `setup()` (see [Installation](#📦-installation) above), use `:colorscheme` to apply or swap styles:
+After calling `setup()`, use `:colorscheme` to apply or swap styles:
 
 ```lua
-vim.cmd.colorscheme("oasis")         -- Uses your configured dark_style/light_style
-vim.cmd.colorscheme("oasis-desert")  -- Load a specific style
+vim.cmd.colorscheme("oasis")         -- Use your config settings
+vim.cmd.colorscheme("oasis-desert")  -- Or load any specific style
 ```
 
 <details>
 <summary>🖌️ All colorscheme commands</summary>
+<br>
 <!-- colorscheme-commands:start -->
 
 ```vim
-" Uses your config settings (dark_style/light_style)
+" Uses your config settings
 colorscheme oasis
 
 " Or load a specific style - must be prefixed with `oasis-`
@@ -342,11 +237,106 @@ require("tabby").setup({
   <!-- more-details:end -->
 </details>
 
+## ⚙️ Configuration
+
+Oasis offers 14 different styles to choose from and any style can be used for dark or light mode.
+
+The theme will work out of the box, but you should have fun customizing it using `setup()`.
+
+<details>
+  <summary>🍦 Default Options</summary>
+  <br>
+<!-- config:start -->
+
+```lua
+-- Oasis.nvim
+-- Styles: "night", "midnight", "abyss", "starlight", "desert", "sol", "canyon", "dune", "cactus", "mirage", "lagoon", "twilight", "rose", "dawn"
+require("oasis").setup({
+  dark_style = "lagoon",         -- Style to use when vim.o.background is "dark"
+  light_style = "dawn",          -- Style to use when vim.o.background is "light"
+  style = nil,                   -- Optional: Set a single style to disable auto-switching (e.g., "lagoon", "desert")
+  use_legacy_comments = false,   -- Uses the legacy comment color from desert.vim for the "desert" style only (a bright sky blue)
+  palette_overrides = {},        -- Override colors in specific palettes
+  highlight_overrides = {},      -- Override specific highlight groups
+})
+```
+
+<!-- config:end -->
+</details>
+
+## 🌗 Automatic Light/Dark Mode Switching
+
+Oasis automatically switches between your config's `light_style` and `dark_style` based on `vim.o.background`.
+
+<details>
+  <summary>☀️ Configure Light / Dark Styles</summary>
+  <br>
+<!-- light-dark:start -->
+
+```lua
+require("oasis").setup({
+  dark_style = "lagoon",      -- Style when background is dark
+  light_style = "dawn"        -- Style when background is light
+})
+vim.cmd.colorscheme("oasis")  -- Apply the theme
+```
+
+<!-- light-dark:end -->
+</details>
+
+You may set **any** oasis theme to `light_style` or `dark_style`. No restrictions.
+
+## 🪓 Overriding Colors & Highlight Groups
+
+Thirsty for total control? You can override whatever you like.
+
+> _Whoever drinketh of the water that I shall give him, shall never thirst..._
+
+<details>
+  <summary>🎨 Changing Palette Colors for Each Style</summary>
+  <br>
+<!-- palette-overrides:start -->
+
+**`palette_overrides`** - Customize colors in palettes (See [Color Palettes](lua/oasis/color_palettes) for palette structure)
+
+```lua
+require("oasis").setup({
+  palette_overrides = {
+    oasis_lagoon = {
+      syntax = { func = "#E06C75", comment = "#5C6370" },
+      ui = { border = "#61AFEF" }
+    }
+  }
+})
+```
+
+<!-- palette-overrides:end-->
+</details>
+
+<details>
+  <summary>💅 Changing Colors for Highlight Groups</summary>
+  <br>
+<!-- highlight-overrides:start -->
+
+**`highlight_overrides`** - Override or add highlight groups (See [Theme Generator](lua/oasis/theme_generator.lua) for highlight groups):
+
+```lua
+require("oasis").setup({
+  highlight_overrides = {
+    Comment = { fg = "#5C6370", italic = true },
+    Function = { fg = "#E06C75", bold = true },
+    Identifier = "Function"  -- Link to another group
+  }
+})
+```
+
+<!-- highlight-overrides:end -->
+</details>
+
 ## 🎯 Vote for Your Favorite Style
 
 Want to help shape **Oasis.nvim**?
 **[👉 Join the Discussion and Vote Here](https://github.com/uhs-robert/oasis.nvim/discussions/2)**
-
 
 <a id="view-all-theme-styles"></a>
 
@@ -412,7 +402,6 @@ Sandy beiges and warm yellow earth tones
 ![dune-dashboard](https://github.com/user-attachments/assets/1d81afdd-9825-4649-bb69-9d102cafc139)
 ![dune-code](https://github.com/user-attachments/assets/9a191088-f577-49dc-81a9-bd7e6af48324)
 
-
 ### Cactus (Green)
 
 Fresh greens of desert vegetation
@@ -454,5 +443,6 @@ Ah, the morning sun and default light style. Don't forget your sunglasses!
 
 ![dawn-dashboard](https://github.com/user-attachments/assets/fdbd794c-1ede-495b-b9b6-f3e809ce6a05)
 ![dawn-code](https://github.com/user-attachments/assets/bf0731c8-046f-4928-abc5-32c4093bbc07)
+
   <!-- all-styles:end -->
 </details>
