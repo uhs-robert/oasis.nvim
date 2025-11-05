@@ -443,7 +443,9 @@ The original Oasis theme and default dark style, featuring cool blues of the oas
 ![lagoon-dashboard](https://github.com/user-attachments/assets/076d4097-d3a0-4051-8e2a-32962a4b2ba5)
 ![lagoon-code](https://github.com/user-attachments/assets/1bd9c4b6-524b-407f-97f2-a3a5d4ecb3f9)
 
-[↑ Back to Overview](#-overview)
+<p align="center">
+  <a href="#-overview">↑ Back to Overview</a>
+</p>
 
 ### Twilight (Purple)
 
