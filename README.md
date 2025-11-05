@@ -25,65 +25,65 @@ Oasis follows Melange’s warm/cool split philosophy (**warm = action/flow**, **
 <table>
   <tr>
     <td align="center">
-      <a href="#night-purple-night-sky"><img src="assets/screenshots/night-dashboard.webp" alt="Night" width="180"></a><br>
+      <a href="#night-purple-night-sky"><img src="assets/screenshots/night-dashboard.png" alt="Night" width="180"></a><br>
       <strong>Night</strong><br><em>Purple Night Sky</em>
     </td>
     <td align="center">
-      <a href="#midnight-off-black"><img src="assets/screenshots/midnight-dashboard.webp" alt="Midnight" width="180"></a><br>
+      <a href="#midnight-off-black"><img src="assets/screenshots/midnight-dashboard.png" alt="Midnight" width="180"></a><br>
       <strong>Midnight</strong><br><em>Off Black</em>
     </td>
     <td align="center">
-      <a href="#abyss-black"><img src="assets/screenshots/abyss-dashboard.webp" alt="Abyss" width="180"></a><br>
+      <a href="#abyss-black"><img src="assets/screenshots/abyss-dashboard.png" alt="Abyss" width="180"></a><br>
       <strong>Abyss</strong><br><em>Black</em>
     </td>
     <td align="center">
-      <a href="#starlight-black-vivid"><img src="assets/screenshots/starlight-dashboard.webp" alt="Starlight" width="180"></a><br>
+      <a href="#starlight-black-vivid"><img src="assets/screenshots/starlight-dashboard.png" alt="Starlight" width="180"></a><br>
       <strong>Starlight</strong><br><em>Black Vivid</em>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <a href="#desert-grey"><img src="assets/screenshots/desert-dashboard.webp" alt="Desert" width="180"></a><br>
+      <a href="#desert-grey"><img src="assets/screenshots/desert-dashboard.png" alt="Desert" width="180"></a><br>
       <strong>Desert</strong><br><em>Grey</em>
     </td>
     <td align="center">
-      <a href="#sol-red"><img src="assets/screenshots/sol-dashboard.webp" alt="Sol" width="180"></a><br>
+      <a href="#sol-red"><img src="assets/screenshots/sol-dashboard.png" alt="Sol" width="180"></a><br>
       <strong>Sol</strong><br><em>Red</em>
     </td>
     <td align="center">
-      <a href="#canyon-orange"><img src="assets/screenshots/canyon-dashboard.webp" alt="Canyon" width="180"></a><br>
+      <a href="#canyon-orange"><img src="assets/screenshots/canyon-dashboard.png" alt="Canyon" width="180"></a><br>
       <strong>Canyon</strong><br><em>Orange</em>
     </td>
     <td align="center">
-      <a href="#dune-yellow"><img src="assets/screenshots/dune-dashboard.webp" alt="Dune" width="180"></a><br>
+      <a href="#dune-yellow"><img src="assets/screenshots/dune-dashboard.png" alt="Dune" width="180"></a><br>
       <strong>Dune</strong><br><em>Yellow</em>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <a href="#cactus-green"><img src="assets/screenshots/cactus-dashboard.webp" alt="Cactus" width="180"></a><br>
+      <a href="#cactus-green"><img src="assets/screenshots/cactus-dashboard.png" alt="Cactus" width="180"></a><br>
       <strong>Cactus</strong><br><em>Green</em>
     </td>
     <td align="center">
-      <a href="#mirage-teal"><img src="assets/screenshots/mirage-dashboard.webp" alt="Mirage" width="180"></a><br>
+      <a href="#mirage-teal"><img src="assets/screenshots/mirage-dashboard.png" alt="Mirage" width="180"></a><br>
       <strong>Mirage</strong><br><em>Teal</em>
     </td>
     <td align="center">
-      <a href="#lagoon-blue"><img src="assets/screenshots/lagoon-dashboard.webp" alt="Lagoon" width="180"></a><br>
+      <a href="#lagoon-blue"><img src="assets/screenshots/lagoon-dashboard.png" alt="Lagoon" width="180"></a><br>
       <strong>Lagoon (Default Dark)</strong><br><em>Blue</em>
     </td>
     <td align="center">
-      <a href="#twilight-purple"><img src="assets/screenshots/twilight-dashboard.webp" alt="Twilight" width="180"></a><br>
+      <a href="#twilight-purple"><img src="assets/screenshots/twilight-dashboard.png" alt="Twilight" width="180"></a><br>
       <strong>Twilight</strong><br><em>Purple</em>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <a href="#rose-pink"><img src="assets/screenshots/rose-dashboard.webp" alt="Rose" width="180"></a><br>
+      <a href="#rose-pink"><img src="assets/screenshots/rose-dashboard.png" alt="Rose" width="180"></a><br>
       <strong>Rose</strong><br><em>Pink</em>
     </td>
     <td align="center">
-      <a href="#dawn-light-yellow"><img src="assets/screenshots/dawn-dashboard.webp" alt="Dawn" width="180"></a><br>
+      <a href="#dawn-light-yellow"><img src="assets/screenshots/dawn-dashboard.png" alt="Dawn" width="180"></a><br>
       <strong>Dawn (Default Light)</strong><br><em>Light Yellow</em>
     </td>
   </tr>
@@ -350,8 +350,8 @@ Want to help shape **Oasis.nvim**?
 
 Deep desert night sky with purple-indigo undertones, a deeper purple than twilight for those who prefer soft darkness
 
-![night-dashboard](https://github.com/user-attachments/assets/f49b637f-2309-4ae2-8118-8036594eef1d)
-![night-code](https://github.com/user-attachments/assets/d4e0624f-aed7-4540-9439-8ebe913178ca)
+![night-dashboard](./assets/screenshots/night-dashboard.png)
+![night-code](./assets/screenshots/night-code.png)
 
 <p align="center">
   <a href="#-overview">↑ Back to Overview</a>
@@ -361,8 +361,8 @@ Deep desert night sky with purple-indigo undertones, a deeper purple than twilig
 
 Deep slate and navy tones of the desert at midnight, a tinted-black lighter than abyss
 
-![midnight-dashboard](assets/screenshots/midnight-dashboard.webp)
-![midnight-code](assets/screenshots/midnight-code.webp)
+![midnight-dashboard](./assets/screenshots/midnight-dashboard.png)
+![midnight-code](./assets/screenshots/midnight-code.png)
 
 <p align="center">
   <a href="#-overview">↑ Back to Overview</a>
@@ -372,8 +372,8 @@ Deep slate and navy tones of the desert at midnight, a tinted-black lighter than
 
 Deep, dark style with mysterious depths
 
-![abyss-dashboard](https://github.com/user-attachments/assets/6ec77ade-b352-4ccc-a0cf-0f1081a458b1)
-![abyss-code](https://github.com/user-attachments/assets/f35a4429-ce35-49f5-80d0-e8ee9a339db0)
+![abyss-dashboard](./assets/screenshots/abyss-dashboard.png)
+![abyss-code](./assets/screenshots/abyss-code.png)
 
 <p align="center">
   <a href="#-overview">↑ Back to Overview</a>
@@ -383,8 +383,8 @@ Deep, dark style with mysterious depths
 
 Desert abyss illuminated by brilliant starlight with vivid accent colors
 
-![starlight-dashboard](https://github.com/user-attachments/assets/2e63e83f-5a85-418b-98ab-765a6fc90d03)
-![starlight-code](https://github.com/user-attachments/assets/e8ec9e0e-366a-4583-89d5-adc17082a720)
+![starlight-dashboard](./assets/screenshots/starlight-dashboard.png)
+![starlight-code](./assets/screenshots/starlight-code.png)
 
 <p align="center">
   <a href="#-overview">↑ Back to Overview</a>
@@ -394,8 +394,8 @@ Desert abyss illuminated by brilliant starlight with vivid accent colors
 
 The original inspiration, the classic vim desert theme reborn with neutral sand and earth tones
 
-![desert-dashboard](https://github.com/user-attachments/assets/b83b0bf9-3726-4bb3-81d7-b065e97b1ef9)
-![desert-code](https://github.com/user-attachments/assets/0a4ab491-f117-44bc-872e-82bacc330109)
+![desert-dashboard](./assets/screenshots/desert-dashboard.png)
+![desert-code](./assets/screenshots/desert-code.png)
 
 <p align="center">
   <a href="#-overview">↑ Back to Overview</a>
@@ -405,8 +405,8 @@ The original inspiration, the classic vim desert theme reborn with neutral sand 
 
 Hot, scorching desert sun with intense red tones
 
-![sol-dashboard](https://github.com/user-attachments/assets/a1bf31d7-d2eb-487c-852f-41d2f2235c67)
-![sol-code](https://github.com/user-attachments/assets/d6772e0c-0698-45e2-a2f2-b3ef07afe2e5)
+![sol-dashboard](./assets/screenshots/sol-dashboard.png)
+![sol-code](./assets/screenshots/sol-code.png)
 
 <p align="center">
   <a href="#-overview">↑ Back to Overview</a>
@@ -416,8 +416,8 @@ Hot, scorching desert sun with intense red tones
 
 Rich oranges of desert canyon walls
 
-![canyon-dashboard](https://github.com/user-attachments/assets/106c43f1-b6be-4130-b094-7c86c87f64ee)
-![canyon-code](https://github.com/user-attachments/assets/4167be1b-15e0-4f7f-9819-164a84b9fc1e)
+![canyon-dashboard](./assets/screenshots/canyon-dashboard.png)
+![canyon-code](./assets/screenshots/canyon-code.png)
 
 <p align="center">
   <a href="#-overview">↑ Back to Overview</a>
@@ -427,8 +427,8 @@ Rich oranges of desert canyon walls
 
 Sandy beiges and warm yellow earth tones
 
-![dune-dashboard](https://github.com/user-attachments/assets/1d81afdd-9825-4649-bb69-9d102cafc139)
-![dune-code](https://github.com/user-attachments/assets/9a191088-f577-49dc-81a9-bd7e6af48324)
+![dune-dashboard](./assets/screenshots/dune-dashboard.png)
+![dune-code](./assets/screenshots/dune-code.png)
 
 <p align="center">
   <a href="#-overview">↑ Back to Overview</a>
@@ -438,8 +438,8 @@ Sandy beiges and warm yellow earth tones
 
 Fresh greens of desert vegetation
 
-![cactus-dashboard](https://github.com/user-attachments/assets/9e988d7e-03c2-42a3-8481-7e64735d0b98)
-![cactus-code](https://github.com/user-attachments/assets/8ef61be0-cc82-4d5b-84b8-1898d193cc3c)
+![cactus-dashboard](./assets/screenshots/cactus-dashboard.png)
+![cactus-code](./assets/screenshots/cactus-code.png)
 
 <p align="center">
   <a href="#-overview">↑ Back to Overview</a>
@@ -449,8 +449,8 @@ Fresh greens of desert vegetation
 
 Cool teals of shimmering desert mirages
 
-![mirage-dashboard](https://github.com/user-attachments/assets/0662545c-c4b8-44dc-b681-10732f90970b)
-![mirage-code](https://github.com/user-attachments/assets/6814e943-5e5a-40d9-b565-44e5ed0141c2)
+![mirage-dashboard](./assets/screenshots/mirage-dashboard.png)
+![mirage-code](./assets/screenshots/mirage-code.png)
 
 <p align="center">
   <a href="#-overview">↑ Back to Overview</a>
@@ -460,8 +460,8 @@ Cool teals of shimmering desert mirages
 
 The original Oasis theme and default dark style, featuring cool blues of the oasis lagoon
 
-![lagoon-dashboard](https://github.com/user-attachments/assets/076d4097-d3a0-4051-8e2a-32962a4b2ba5)
-![lagoon-code](https://github.com/user-attachments/assets/1bd9c4b6-524b-407f-97f2-a3a5d4ecb3f9)
+![lagoon-dashboard](./assets/screenshots/lagoon-dashboard.png)
+![lagoon-code](./assets/screenshots/lagoon-code.png)
 
 <p align="center">
   <a href="#-overview">↑ Back to Overview</a>
@@ -471,8 +471,8 @@ The original Oasis theme and default dark style, featuring cool blues of the oas
 
 Evening desert with purple and indigo hues
 
-![twilight-dashboard](https://github.com/user-attachments/assets/ae993798-7dfd-4721-ba0f-0b695ce498c8)
-![twilight-code](https://github.com/user-attachments/assets/f225f3f3-ff23-4920-93cd-7ffc108daf8e)
+![twilight-dashboard](./assets/screenshots/twilight-dashboard.png)
+![twilight-code](./assets/screenshots/twilight-code.png)
 
 <p align="center">
   <a href="#-overview">↑ Back to Overview</a>
@@ -482,8 +482,8 @@ Evening desert with purple and indigo hues
 
 Soft pinks of the warm desert rose
 
-![rose-dashboard](https://github.com/user-attachments/assets/ff4922d2-5ae9-4445-9eb4-ba04832798dd)
-![rose-code](https://github.com/user-attachments/assets/be74caed-a1e4-4219-9c49-34bad64f9cda)
+![rose-dashboard](./assets/screenshots/rose-dashboard.png)
+![rose-code](./assets/screenshots/rose-code.png)
 
 <p align="center">
   <a href="#-overview">↑ Back to Overview</a>
@@ -493,8 +493,8 @@ Soft pinks of the warm desert rose
 
 Ah, the morning sun and default light style. Don't forget your sunglasses!
 
-![dawn-dashboard](https://github.com/user-attachments/assets/fdbd794c-1ede-495b-b9b6-f3e809ce6a05)
-![dawn-code](https://github.com/user-attachments/assets/bf0731c8-046f-4928-abc5-32c4093bbc07)
+![dawn-dashboard](./assets/screenshots/dawn-dashboard.png)
+![dawn-code](./assets/screenshots/dawn-code.png)
 
 <p align="center">
   <a href="#-overview">↑ Back to Overview</a>
