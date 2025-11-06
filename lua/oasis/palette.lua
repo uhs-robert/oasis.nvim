@@ -383,7 +383,7 @@ local colors = {
 
 	teal = {
 		sky = "#019992",
-		darkagave = "#7BBDB3",
+		darkagave = "#81C0B6",
 		agave = "#8FD1C7",
 		lightagave = "#96D4CB",
 		lightdeepagave = "#47A99B",
