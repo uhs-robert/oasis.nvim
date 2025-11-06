@@ -319,6 +319,25 @@ return function(c)
     highlights[name] = attrs
   end
 
+  -- Apply transparency if enabled
+  if config.transparent then
+    local transparent_groups = {
+      'Normal', 'NormalNC', 'NormalFloat',
+      'SignColumn', 'FoldColumn',
+      'StatusLine', 'StatusLineNC',
+      'TabLine', 'TabLineFill',
+      'Pmenu', 'PmenuSbar',
+      'CursorLine', 'ColorColumn',
+      'FloatBorder',
+    }
+
+    for _, group in ipairs(transparent_groups) do
+      if highlights[group] and type(highlights[group]) == 'table' then
+        highlights[group].bg = "NONE"
+      end
+    end
+  end
+
   -- Apply base highlights first
   for name, attrs in pairs(highlights) do
     if type(attrs) == 'table' then
@@ -339,7 +358,7 @@ return function(c)
 
   -- Apply terminal colors
   vim.o.termguicolors = true
-  if c.terminal then
+  if config.terminal_colors and c.terminal then
     for i = 0, 15 do
       local key = ("color%d"):format(i)
       local val = c.terminal[key]
