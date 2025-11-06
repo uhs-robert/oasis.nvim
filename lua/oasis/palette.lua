@@ -12,7 +12,7 @@ local terminal = {
 	color10 = "#6BBF59",
 
 	color3 = "#F0E68C",
-	color11 = "#FF9F41",
+	color11 = "#FFA247",
 
 	color4 = "#87CEEB",
 	color12 = "#6FB8FF",
@@ -340,7 +340,7 @@ local colors = {
 		sun = "#F5A72C",
 		deepsun = "#F49F15",
 		lightsunset = "#FFA852",
-		sunset = "#FF9F41",
+		sunset = "#FFA247",
 		sunrise = "#E67451",
 		lightdawn = "#F9C97B",
 		dawn = "#F8C471",
