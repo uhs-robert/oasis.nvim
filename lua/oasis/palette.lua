@@ -370,7 +370,7 @@ local colors = {
 	lime = {},
 
 	green = {
-		cactus = "#30BC73",
+		cactus = "#53D390",
 		springcactus = "#34CB7D",
 		moss = "#6BBF59",
 		springmoss = "#8DCD7E",
