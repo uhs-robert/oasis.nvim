@@ -61,7 +61,7 @@ local c = {
 		preproc = p.blue.crystalBlue, --  #E0C4A8 (imports)
 
 		-- Neutral: (Connections / Info)
-		bracket = p.brown.dryriverbed, --  #9E9584 (bracket punctuation)
+		bracket = p.brown.dryriverbed, --  #A39B8E (bracket punctuation)
 		comment = ui.fg.comment, --  #8b7765 (comments)
 	},
 

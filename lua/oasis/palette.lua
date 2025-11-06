@@ -304,7 +304,7 @@ local colors = {
 
 	-- Neutrals (Foregrounds/Backgrounds/Neutrals)
 	brown = {
-		dryriverbed = "#9E9584",
+		dryriverbed = "#A39B8E",
 		bonedryriverbed = "#938976",
 		driftwood = "#8B7765",
 		lightdriftwood = "#96816E",
