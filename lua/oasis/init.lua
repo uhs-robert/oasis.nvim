@@ -67,7 +67,7 @@ function M.apply(palette_name)
 
 	-- Build and apply the colorscheme
 	local build = require("oasis.theme_generator")
-	build(c, palette_name)
+	build(c)
 
 	-- Load and refresh plugin integrations
 	pcall(require, "oasis.integrations.lualine")
