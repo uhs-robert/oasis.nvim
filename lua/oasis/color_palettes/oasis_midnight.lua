@@ -22,7 +22,7 @@ local ui = {
 	},
 	-- General colors
 	theme = {
-		primary = p.red.indianred, --#cd5c5c
+		primary = p.red.indianred, --#D06666
 		light_primary = p.red.desertrose,
 		secondary = p.orange.sunset, --#FF9F41
 		accent = p.teal.darkagave, --#4AC8FF
@@ -53,7 +53,7 @@ local c = {
 		func = p.orange.redDawn, --  #F8C471 [inverse of identifier]
 		builtinFunc = p.orange.sunrise, --  #F5A72C (eg. parseInst, Array, Object etc)
 		statement = p.yellow.khaki, --  #F0E68C (primary p, general statement, conditonal, repeat, label )
-		exception = p.red.indianred, --  #CD5C5C (try/catch, return)
+		exception = p.red.indianred, --  #D06666 (try/catch, return)
 		keyword = p.yellow.darkkhaki, --  #E3963E (general catch all)
 		special = p.orange.sunset, --  #FF9F41 (other catch all)
 		operator = p.red.desertrose, --  #ffa0a0 (operators)
