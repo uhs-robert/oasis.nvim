@@ -24,7 +24,7 @@ local ui = {
 	theme = {
 		primary = p.red.indianred, --#D06666
 		light_primary = p.red.desertrose,
-		secondary = p.orange.sunset, --#FF9F41
+		secondary = p.orange.sunset, --#FFA247
 		accent = p.teal.darkagave, --#4AC8FF
 	},
 }
@@ -55,7 +55,7 @@ local c = {
 		statement = p.yellow.khaki, --  #F0E68C (primary p, general statement, conditonal, repeat, label )
 		exception = p.red.indianred, --  #D06666 (try/catch, return)
 		keyword = p.yellow.darkkhaki, --  #E3963E (general catch all)
-		special = p.orange.sunset, --  #FF9F41 (other catch all)
+		special = p.orange.sunset, --  #FFA247 (other catch all)
 		operator = p.red.desertrose, --  #ffa0a0 (operators)
 		punctuation = p.red.heatwave, --  #E68A8A (punctuation)
 		preproc = p.blue.crystalBlue, --  #E0C4A8 (imports)
