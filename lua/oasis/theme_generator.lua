@@ -1,6 +1,6 @@
 -- lua/oasis/theme_generator.lua
 
-return function(c, palette_name)
+return function(c)
   local LIGHT_MODE = c.light_mode or false
   local config = require('oasis.config').get()
   local highlights = {
