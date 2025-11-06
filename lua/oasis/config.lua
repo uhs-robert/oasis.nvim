@@ -10,6 +10,16 @@ M.defaults = {
 	use_legacy_comments = false,
 	palette_overrides = {},
 	highlight_overrides = {},
+
+	-- Text styling toggles
+	styles = {
+		bold = true,          -- Enable/disable bold text
+		italic = true,        -- Enable/disable italic text
+		underline = true,     -- Enable/disable underline
+		undercurl = true,     -- Enable/disable undercurl (diagnostics, spell)
+		strikethrough = true, -- Enable/disable strikethrough
+	},
+
 }
 
 -- Current active configuration
