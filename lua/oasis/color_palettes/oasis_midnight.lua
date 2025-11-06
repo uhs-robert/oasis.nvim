@@ -45,7 +45,7 @@ local c = {
 		type = p.teal.darkagave, --  #48B4E0 (type definitions)
 		builtinVar = p.blue.skyBlueDress, --  #1CA1FF (this, document, window, etc)
 		string = p.green.cactus, --  #35b56e (strings)
-		regex = p.green.palm, --  #9CEB87 (reg ex string)
+		regex = p.green.palm, --  #96EA7F (reg ex string)
 		builtinConst = p.teal.deepagave, --  #A7D3A9 (e.g. null, undefined, Infinity, etc)
 		constant = p.orange.darkRedDawn, --  #8FD1C7 (constant: number, float, boolean, or const not string/character)
 
