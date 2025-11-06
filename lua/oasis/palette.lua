@@ -377,7 +377,7 @@ local colors = {
 		aloe = "#A7D3A9",
 		lightaloe = "#AED6B0",
 		mutedaloe = "#739675",
-		palm = "#9CEB87",
+		palm = "#96EA7F",
 		darkPalm = "#94E97C",
 	},
 
