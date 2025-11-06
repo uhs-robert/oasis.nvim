@@ -3,6 +3,37 @@
 return function(c)
   local LIGHT_MODE = c.light_mode or false
   local config = require('oasis.config').get()
+
+  -- Helper function to conditionally apply text styles based on config
+  local function apply_styles(attrs)
+    if type(attrs) ~= 'table' then
+      return attrs -- Return as-is if it's a string (link reference)
+    end
+
+    local result = vim.deepcopy(attrs)
+    local styles = config.styles or {}
+
+    -- Remove styles if disabled in config
+    if not styles.bold then
+      result.bold = nil
+    end
+    if not styles.italic then
+      result.italic = nil
+    end
+    if not styles.underline then
+      result.underline = nil
+    end
+    if not styles.undercurl then
+      result.undercurl = nil
+      result.sp = nil  -- Remove special color for undercurl
+    end
+    if not styles.strikethrough then
+      result.strikethrough = nil
+    end
+
+    return result
+  end
+
   local highlights = {
     -- Main Theme Colors (Highlights for plugins)
     OasisPrimary               = { fg=c.theme.primary, bg="none" },
@@ -291,7 +322,7 @@ return function(c)
   -- Apply base highlights first
   for name, attrs in pairs(highlights) do
     if type(attrs) == 'table' then
-      vim.api.nvim_set_hl(0, name, attrs)
+      vim.api.nvim_set_hl(0, name, apply_styles(attrs))
     else
       vim.api.nvim_set_hl(0, name, { link = attrs })
     end
@@ -300,7 +331,7 @@ return function(c)
   -- Apply user highlight overrides last (they take precedence)
   for name, attrs in pairs(config.highlight_overrides or {}) do
     if type(attrs) == 'table' then
-      vim.api.nvim_set_hl(0, name, attrs)
+      vim.api.nvim_set_hl(0, name, apply_styles(attrs))
     else
       vim.api.nvim_set_hl(0, name, { link = attrs })
     end
