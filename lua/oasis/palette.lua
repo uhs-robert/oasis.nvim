@@ -415,7 +415,7 @@ local colors = {
 	},
 
 	indigo = {
-		cactusflower = "#CFA7FF",
+		cactusflower = "#C28EFF",
 		lightcactusflower = "#D2ADFF",
 		darkcactusflower = "#BC85FF",
 		moonlitflower = "#C799FF",
