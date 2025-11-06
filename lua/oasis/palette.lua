@@ -5,7 +5,7 @@ local terminal = {
 	color0 = "#000000",
 	color8 = "#514742",
 
-	color1 = "#CD5C5C",
+	color1 = "#D06666",
 	color9 = "#FFA0A0",
 
 	color2 = "#35B56E",
@@ -328,8 +328,8 @@ local colors = {
 
 	-- Primary Colors
 	red = {
-		indianred = "#CD5C5C",
 		heatwave = "#E68A8A",
+		indianred = "#D06666",
 		deepheatwave = "#E17070",
 		desertrose = "#FFA0A0",
 		deepdesertrose = "#FF8080",
