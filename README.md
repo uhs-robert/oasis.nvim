@@ -256,6 +256,20 @@ require("oasis").setup({
   light_style = "dawn",          -- Style to use when vim.o.background is "light"
   style = nil,                   -- Optional: Set a single style to disable auto-switching (e.g., "lagoon", "desert")
   use_legacy_comments = false,   -- Uses the legacy comment color from desert.vim for the "desert" style only (a bright sky blue)
+
+  -- Text styling - disable individual styles if you like
+  styles = {
+    bold = true,                 -- Enable bold text (keywords, functions, etc.)
+    italic = true,               -- Enable italics (comments, certain keywords) - disable if your font lacks italic support
+    underline = true,            -- Enable underlined text
+    undercurl = true,            -- Enable undercurl for diagnostics/spelling
+    strikethrough = true,        -- Enable strikethrough text
+  },
+
+  -- Display options
+  transparent = false,           -- Set to true for transparent backgrounds
+  terminal_colors = true,        -- Apply Oasis colors to Neovim's built-in terminal
+
   palette_overrides = {},        -- Override colors in specific palettes
   highlight_overrides = {},      -- Override specific highlight groups
 })
