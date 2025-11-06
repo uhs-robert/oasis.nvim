@@ -20,6 +20,9 @@ M.defaults = {
 		strikethrough = true, -- Enable/disable strikethrough
 	},
 
+	-- Additional toggles
+	terminal_colors = true,   -- Enable/disable terminal color setting
+	transparent = false,      -- Make backgrounds transparent (NONE)
 }
 
 -- Current active configuration
