@@ -363,7 +363,7 @@ local colors = {
 		khaki4 = "#8B864E",
 		dune = "#D4A017",
 		wheat = "#FFD87C",
-		navajowhite = "#FFDEAD",
+		navajowhite = "#FFD393",
 		moonlitsand = "#EADD61",
 	},
 
