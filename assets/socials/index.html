@@ -1,0 +1,600 @@
+<!-- assets/socials/index.html -->
+<!doctype html>
+<meta charset="utf-8" />
+<title>Oasis.nvim — Asymmetric Layout Preview</title>
+<style>
+  :root {
+    --safe: 40px;
+    --bg: #0a0a0a;
+    --fg: #ede1c3;
+    --tile: #111827;
+  }
+  /* Full-viewport stage */
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+  }
+  body {
+    display: grid;
+    place-items: center;
+    background: #0b0f1a;
+    color: var(--fg);
+  }
+  /* 1200×560 canvas + 40px padding = 1280×640 total screenshot */
+  .canvas {
+    width: 1200px;
+    height: 560px;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: Maple Mono NF;
+    display: grid;
+    grid-template-columns: 3fr 2.5fr;
+    padding: var(--safe);
+    gap: 0px;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    outline: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .left-side {
+    display: flex;
+  }
+  .left-side .tile {
+    flex: 1;
+    margin: 0;
+    margin-right: 15px;
+  }
+
+  .right-side {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 0px;
+  }
+
+  .right-header {
+    text-align: center;
+  }
+  .title {
+    font-weight: 800;
+    font-size: 72px;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    font-weight: 600;
+    font-size: 28px;
+    opacity: 0.9;
+    margin-bottom: 8px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px;
+    height: 100%;
+  }
+
+  .tile {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--tile);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    margin: 15px;
+  }
+  .img {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    /* background-position: center; */
+    filter: saturate(1.05) contrast(1.05);
+  }
+  .badge {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 1;
+  }
+  .left-side .badge {
+    font-size: 32px;
+    padding: 12px 22px;
+    border-radius: 14px;
+    right: 8px;
+    bottom: 8px;
+  }
+
+  /* Syntax highlighting colors from oasis_abyss palette */
+  .const {
+    color: #61aeff; /* blue.skyBlueDress - builtinVar (oasis = water/blue) */
+  }
+  .punct {
+    color: #e58383; /* red.heatwave - punctuation */
+  }
+  .prop {
+    color: #ffd393; /* yellow.navajowhite - identifiers/properties */
+  }
+  .exception {
+    color: #d06666; /* red.indianred - exceptions/return */
+    font-style: italic;
+  }
+  .string {
+    color: #53d390; /* green.cactus - strings */
+  }
+
+  /* Additional syntax colors for reference */
+  .parameter {
+    color: #c28eff;
+  }
+  .delimiter {
+    color: #d06666;
+  }
+  .type {
+    color: #81c0b6;
+  }
+  .regex {
+    color: #96ea7f;
+  }
+  .builtin-const {
+    color: #3b9184;
+  }
+  .constant {
+    color: #f8944d;
+  }
+  .func {
+    color: #f8b471;
+  }
+  .builtin-func {
+    color: #e67451;
+  }
+  .statement {
+    color: #f0e68c;
+  }
+  .keyword {
+    color: #bdb76b;
+    font-style: italic;
+  }
+  .special {
+    color: #ffa247;
+  }
+  .operator {
+    color: #ffa0a0;
+  }
+  .preproc {
+    color: #47e0ff;
+  }
+  .bracket {
+    color: #a39b8e;
+  }
+  .comment {
+    color: #5e7b88;
+    font-style: italic;
+  }
+
+  /* Color reference footer */
+  .color-reference {
+    margin-top: 40px;
+    padding: 20px;
+    background: #1a1a1a;
+    border-radius: 8px;
+    max-width: 1280px;
+    font-family: monospace;
+    font-size: 14px;
+  }
+  .color-reference h3 {
+    color: #f6f0e1;
+    margin: 0 0 16px 0;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .color-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .color-swatch {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .color-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .color-name {
+    color: #888;
+    font-size: 11px;
+  }
+  .color-value {
+    font-size: 20px;
+  }
+
+  /* Toggle buttons */
+  .toggle-controls {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin: 32px 0;
+  }
+  .toggle-btn {
+    padding: 12px 24px;
+    font-family:
+      Maple Mono NF,
+      monospace;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--fg);
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .toggle-btn:hover {
+    background: #252525;
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  .toggle-btn:active {
+    transform: translateY(1px);
+  }
+  .toggle-btn.active {
+    background: #2a2a2a;
+    border-color: #61aeff;
+    color: #61aeff;
+  }
+</style>
+
+<main class="canvas">
+  <!-- Left side: Full-height Lagoon -->
+  <div class="left-side">
+    <figure class="tile">
+      <div
+        class="img"
+        style="background-image: url(&quot;./images/lagoon-code.png&quot;)"
+      ></div>
+      <figcaption class="badge">Lagoon</figcaption>
+    </figure>
+  </div>
+
+  <!-- Right side: Title + Grid -->
+  <div class="right-side">
+    <header class="right-header">
+      <div class="title">
+        <span class="const">Oasis</span><span class="punct">.</span
+        ><span class="prop">nvim</span>
+      </div>
+      <div class="subtitle">
+        <span class="exception">return</span>
+        <span class="string">"17+ total themes"</span>
+      </div>
+    </header>
+
+    <!-- 2×3 grid of themes -->
+    <section class="grid">
+      <!-- Desert -->
+      <figure class="tile">
+        <div
+          class="img"
+          style="
+            background-image: url(&quot;./images/desert-dashboard.png&quot;);
+          "
+        ></div>
+        <figcaption class="badge">Desert</figcaption>
+      </figure>
+      <!-- Sol -->
+      <figure class="tile">
+        <div
+          class="img"
+          style="background-image: url(&quot;./images/sol-dashboard.png&quot;)"
+        ></div>
+        <figcaption class="badge">Sol</figcaption>
+      </figure>
+
+      <!-- Night -->
+      <figure class="tile">
+        <div
+          class="img"
+          style="
+            background-image: url(&quot;./images/night-dashboard.png&quot;);
+          "
+        ></div>
+        <figcaption class="badge">Night</figcaption>
+      </figure>
+      <!-- Twilight -->
+      <figure class="tile">
+        <div
+          class="img"
+          style="
+            background-image: url(&quot;./images/twilight-dashboard.png&quot;);
+          "
+        ></div>
+        <figcaption class="badge">Twilight</figcaption>
+      </figure>
+
+      <!-- Day-->
+      <figure class="tile">
+        <div
+          class="img"
+          style="background-image: url(&quot;./images/day-dashboard.png&quot;)"
+        ></div>
+        <figcaption class="badge">Dawn</figcaption>
+      </figure>
+      <!-- Mirage -->
+      <figure class="tile">
+        <div
+          class="img"
+          style="
+            background-image: url(&quot;./images/mirage-dashboard.png&quot;);
+          "
+        ></div>
+        <figcaption class="badge">Mirage</figcaption>
+      </figure>
+    </section>
+  </div>
+</main>
+
+<!-- Toggle Controls -->
+<div class="toggle-controls">
+  <button
+    class="toggle-btn active"
+    id="toggleCanvas"
+    onclick="toggleElement('canvas')"
+  >
+    Toggle Canvas
+  </button>
+  <button
+    class="toggle-btn active"
+    id="toggleFooter"
+    onclick="toggleElement('footer')"
+  >
+    Toggle Footer
+  </button>
+</div>
+
+<!-- Syntax Color Reference for Testing -->
+<div class="color-reference" id="footer">
+  <h3>Syntax Highlighting Colors (Oasis Abyss Palette)</h3>
+  <div class="color-grid">
+    <!-- Cold: Data -->
+    <div class="color-item">
+      <div class="color-swatch" style="background-color: #c28eff"></div>
+      <div class="color-info">
+        <div class="color-name">parameter</div>
+        <div class="color-value">
+          <span class="parameter">param</span> - #C28EFF
+        </div>
+      </div>
+    </div>
+
+    <div class="color-item">
+      <div class="color-swatch" style="background-color: #ffd393"></div>
+      <div class="color-info">
+        <div class="color-name">identifier</div>
+        <div class="color-value">
+          <span class="prop">property</span> - #FFD393
+        </div>
+      </div>
+    </div>
+
+    <div class="color-item">
+      <div class="color-swatch" style="background-color: #d06666"></div>
+      <div class="color-info">
+        <div class="color-name">delimiter</div>
+        <div class="color-value">
+          <span class="delimiter">, ; :</span> - #D06666
+        </div>
+      </div>
+    </div>
+
+    <div class="color-item">
+      <div class="color-swatch" style="background-color: #81c0b6"></div>
+      <div class="color-info">
+        <div class="color-name">type</div>
+        <div class="color-value"><span class="type">Type</span> - #81C0B6</div>
+      </div>
+    </div>
+
+    <div class="color-item">
+      <div class="color-swatch" style="background-color: #61aeff"></div>
+      <div class="color-info">
+        <div class="color-name">builtinVar</div>
+        <div class="color-value"><span class="const">this</span> - #61AEFF</div>
+      </div>
+    </div>
+
+    <div class="color-item">
+      <div class="color-swatch" style="background-color: #53d390"></div>
+      <div class="color-info">
+        <div class="color-name">string</div>
+        <div class="color-value">
+          <span class="string">"string"</span> - #53D390
+        </div>
+      </div>
+    </div>
+
+    <div class="color-item">
+      <div class="color-swatch" style="background-color: #96ea7f"></div>
+      <div class="color-info">
+        <div class="color-name">regex</div>
+        <div class="color-value">
+          <span class="regex">/regex/</span> - #96EA7F
+        </div>
+      </div>
+    </div>
+
+    <div class="color-item">
+      <div class="color-swatch" style="background-color: #3b9184"></div>
+      <div class="color-info">
+        <div class="color-name">builtinConst</div>
+        <div class="color-value">
+          <span class="builtin-const">null</span> - #3B9184
+        </div>
+      </div>
+    </div>
+
+    <div class="color-item">
+      <div class="color-swatch" style="background-color: #f8944d"></div>
+      <div class="color-info">
+        <div class="color-name">constant</div>
+        <div class="color-value">
+          <span class="constant">123</span> - #F8944D
+        </div>
+      </div>
+    </div>
+
+    <!-- Warm: Control/Flow -->
+    <div class="color-item">
+      <div class="color-swatch" style="background-color: #f8b471"></div>
+      <div class="color-info">
+        <div class="color-name">func</div>
+        <div class="color-value">
+          <span class="func">myFunc</span> - #F8B471
+        </div>
+      </div>
+    </div>
+
+    <div class="color-item">
+      <div class="color-swatch" style="background-color: #e67451"></div>
+      <div class="color-info">
+        <div class="color-name">builtinFunc</div>
+        <div class="color-value">
+          <span class="builtin-func">Array</span> - #E67451
+        </div>
+      </div>
+    </div>
+
+    <div class="color-item">
+      <div class="color-swatch" style="background-color: #f0e68c"></div>
+      <div class="color-info">
+        <div class="color-name">statement</div>
+        <div class="color-value">
+          <span class="statement">if</span> - #F0E68C
+        </div>
+      </div>
+    </div>
+
+    <div class="color-item">
+      <div class="color-swatch" style="background-color: #d06666"></div>
+      <div class="color-info">
+        <div class="color-name">exception</div>
+        <div class="color-value">
+          <span class="exception">return</span> - #D06666
+        </div>
+      </div>
+    </div>
+
+    <div class="color-item">
+      <div class="color-swatch" style="background-color: #bdb76b"></div>
+      <div class="color-info">
+        <div class="color-name">keyword</div>
+        <div class="color-value">
+          <span class="keyword">const</span> - #BDB76B
+        </div>
+      </div>
+    </div>
+
+    <div class="color-item">
+      <div class="color-swatch" style="background-color: #ffa247"></div>
+      <div class="color-info">
+        <div class="color-name">special</div>
+        <div class="color-value">
+          <span class="special">@decorator</span> - #FFA247
+        </div>
+      </div>
+    </div>
+
+    <div class="color-item">
+      <div class="color-swatch" style="background-color: #ffa0a0"></div>
+      <div class="color-info">
+        <div class="color-name">operator</div>
+        <div class="color-value">
+          <span class="operator">+ = -</span> - #FFA0A0
+        </div>
+      </div>
+    </div>
+
+    <div class="color-item">
+      <div class="color-swatch" style="background-color: #e58383"></div>
+      <div class="color-info">
+        <div class="color-name">punctuation</div>
+        <div class="color-value">
+          <span class="punct">. ( )</span> - #E58383
+        </div>
+      </div>
+    </div>
+
+    <div class="color-item">
+      <div class="color-swatch" style="background-color: #47e0ff"></div>
+      <div class="color-info">
+        <div class="color-name">preproc</div>
+        <div class="color-value">
+          <span class="preproc">import</span> - #38D0EF
+        </div>
+      </div>
+    </div>
+
+    <!-- Neutral: Connections/Info -->
+    <div class="color-item">
+      <div class="color-swatch" style="background-color: #a39b8e"></div>
+      <div class="color-info">
+        <div class="color-name">bracket</div>
+        <div class="color-value">
+          <span class="bracket">[ ] { }</span> - #A39B8E
+        </div>
+      </div>
+    </div>
+
+    <div class="color-item">
+      <div class="color-swatch" style="background-color: #5e7b88"></div>
+      <div class="color-info">
+        <div class="color-name">comment</div>
+        <div class="color-value">
+          <span class="comment">// comment</span> - #5E7B88
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleElement(elementId) {
+    const element = document.getElementById(elementId);
+    const button = document.getElementById(
+      "toggle" + elementId.charAt(0).toUpperCase() + elementId.slice(1),
+    );
+
+    if (elementId === "canvas") {
+      const canvas = document.querySelector(".canvas");
+      if (canvas.style.display === "none") {
+        canvas.style.display = "grid";
+        button.classList.add("active");
+      } else {
+        canvas.style.display = "none";
+        button.classList.remove("active");
+      }
+    } else {
+      if (element.style.display === "none") {
+        element.style.display = "block";
+        button.classList.add("active");
+      } else {
+        element.style.display = "none";
+        button.classList.remove("active");
+      }
+    }
+  }
+</script>
