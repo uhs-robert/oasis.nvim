@@ -97,6 +97,12 @@ Light themes exclusively use warm beige-to-peachy tones to minimize blue light e
       <strong>Day (Default Light)</strong><br><em>Gold</em>
     </td>
   </tr>
+  <tr>
+    <td align="center">
+      <a href="#dusk-peach-gold"><img src="assets/screenshots/dusk-dashboard.png" alt="Dusk" width="180"></a><br>
+      <strong>Dusk</strong><br><em>Peach Gold</em>
+    </td>
+  </tr>
 </table>
 
 > [!TIP]
@@ -106,7 +112,7 @@ Light themes exclusively use warm beige-to-peachy tones to minimize blue light e
 
 ## ✨ Features
 
-- **14 theme styles**: A rainbow of desert-inspired options; with an emphasis on warmth and readability.
+- **17 theme styles**: A rainbow of desert-inspired options; with an emphasis on warmth and readability.
 - **Dark/Light Modes**: Automatic switching based on your system theme or `vim.o.background`.
 - **Comprehensive highlighting** - LSP, Tree-sitter, and plugin support
 - **Fast loading** - Direct highlight application for optimal performance based on the plugins in your config
@@ -201,6 +207,7 @@ colorscheme oasis-rose
 colorscheme oasis-dawn
 colorscheme oasis-daybreak
 colorscheme oasis-day
+colorscheme oasis-dusk
 ```
 
 <!-- colorscheme-commands:end -->
@@ -251,7 +258,7 @@ require("tabby").setup({
 
 ## ⚙️ Configuration
 
-Oasis offers 14 different styles to choose from and any style can be used for dark or light mode.
+Oasis offers 17 different styles to choose from and any style can be used for dark or light mode.
 
 The theme will work out of the box, but you should have fun customizing it using `setup()`.
 
@@ -262,7 +269,7 @@ The theme will work out of the box, but you should have fun customizing it using
 
 ```lua
 -- Oasis.nvim
--- Styles: "night", "midnight", "abyss", "starlight", "desert", "sol", "canyon", "dune", "cactus", "mirage", "lagoon", "twilight", "rose", "dawn"
+-- Styles: "night", "midnight", "abyss", "starlight", "desert", "sol", "canyon", "dune", "cactus", "mirage", "lagoon", "twilight", "rose", "dawn", "daybreak", "day", "dusk"
 require("oasis").setup({
   dark_style = "lagoon",         -- Style to use when vim.o.background is "dark"
   light_style = "day",           -- Style to use when vim.o.background is "light"
@@ -544,6 +551,16 @@ Full daylight warmth with rich golden saturation - the default light style
 ![day-dashboard](./assets/screenshots/day-dashboard.png)
 ![day-code](./assets/screenshots/day-code.png)
 
+<p align="center">
+  <a href="#-overview">↑ Back to Overview</a>
+</p>
+
+### Dusk (Peach Gold)
+
+Warmest peachy-golden tones for extended coding sessions
+
+![dusk-dashboard](./assets/screenshots/dusk-dashboard.png)
+![dusk-code](./assets/screenshots/dusk-code.png)
 
 <p align="center">
   <a href="#-overview">↑ Back to Overview</a>
