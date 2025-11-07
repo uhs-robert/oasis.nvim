@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-A collection of <strong>17</strong> desert-inspired Neovim colorschemes; warm, readable, and configurable.
+A collection of <strong>18</strong> desert-inspired Neovim colorschemes; warm, readable, and configurable.
 </p>
 
 ## 🌅 Overview
@@ -102,6 +102,10 @@ Light themes exclusively use warm beige-to-peachy tones to minimize blue light e
       <a href="#dusk-peach-gold"><img src="assets/screenshots/dusk-dashboard.png" alt="Dusk" width="180"></a><br>
       <strong>Dusk</strong><br><em>Peach Gold</em>
     </td>
+    <td align="center">
+      <a href="#dust-golden-sand"><img src="assets/screenshots/dust-dashboard.png" alt="Dust" width="180"></a><br>
+      <strong>Dust</strong><br><em>Golden Sand</em>
+    </td>
   </tr>
 </table>
 
@@ -112,7 +116,7 @@ Light themes exclusively use warm beige-to-peachy tones to minimize blue light e
 
 ## ✨ Features
 
-- **17 theme styles**: A rainbow of desert-inspired options; with an emphasis on warmth and readability.
+- **18 theme styles**: A rainbow of desert-inspired options; with an emphasis on warmth and readability.
 - **Dark/Light Modes**: Automatic switching based on your system theme or `vim.o.background`.
 - **Comprehensive highlighting** - LSP, Tree-sitter, and plugin support
 - **Fast loading** - Direct highlight application for optimal performance based on the plugins in your config
@@ -208,6 +212,7 @@ colorscheme oasis-dawn
 colorscheme oasis-dawnlight
 colorscheme oasis-day
 colorscheme oasis-dusk
+colorscheme oasis-dust
 ```
 
 <!-- colorscheme-commands:end -->
@@ -258,9 +263,7 @@ require("tabby").setup({
 
 ## ⚙️ Configuration
 
-Oasis offers 17 different styles to choose from and any style can be used for dark or light mode.
-
-The theme will work out of the box, but you should have fun customizing it using `setup()`.
+Oasis offers _many_ different styles to choose from. Have fun customizing with `setup()`!
 
 <details>
   <summary>🍦 Default Options</summary>
@@ -269,7 +272,7 @@ The theme will work out of the box, but you should have fun customizing it using
 
 ```lua
 -- Oasis.nvim
--- Styles: "night", "midnight", "abyss", "starlight", "desert", "sol", "canyon", "dune", "cactus", "mirage", "lagoon", "twilight", "rose", "dawn", "dawnlight", "day", "dusk"
+-- Styles: "night", "midnight", "abyss", "starlight", "desert", "sol", "canyon", "dune", "cactus", "mirage", "lagoon", "twilight", "rose", "dawn", "dawnlight", "day", "dusk", "dust"
 require("oasis").setup({
   dark_style = "lagoon",         -- Style to use when vim.o.background is "dark"
   light_style = "day",           -- Style to use when vim.o.background is "light"
@@ -279,14 +282,14 @@ require("oasis").setup({
   -- Text styling - disable individual styles if you like
   styles = {
     bold = true,                 -- Enable bold text (keywords, functions, etc.)
-    italic = true,               -- Enable italics (comments, certain keywords) - disable if your font lacks italic support
-    underline = true,            -- Enable underlined text
+    italic = true,               -- Enable italics (comments, certain keywords)
+    underline = true,            -- Enable underlined text (matching words)
     undercurl = true,            -- Enable undercurl for diagnostics/spelling
-    strikethrough = true,        -- Enable strikethrough text
+    strikethrough = true,        -- Enable strikethrough text (deprecations)
   },
 
   -- Display options
-  transparent = false,           -- Set to true for transparent backgrounds
+  transparent = false,           -- Set to true for transparent backgrounds (bye bye theme backgrounds)
   terminal_colors = true,        -- Apply Oasis colors to Neovim's built-in terminal
 
   palette_overrides = {},        -- Override colors in specific palettes
@@ -317,7 +320,8 @@ vim.cmd.colorscheme("oasis")  -- Apply the theme
 <!-- light-dark:end -->
 </details>
 
-You may set **any** oasis theme to `light_style` or `dark_style`. No restrictions.
+> [!TIP]
+> You may use _any_ style for light or dark mode. No restrictions apply.
 
 ## 🪓 Overriding Colors & Highlight Groups
 
@@ -366,14 +370,14 @@ require("oasis").setup({
 <!-- highlight-overrides:end -->
 </details>
 
-## 🎯 Vote for Your Favorite Style
+## 🗳️ Vote for Your Favorite Style
 
 Want to help shape **Oasis.nvim**?
 **[👉 Join the Discussion and Vote Here](https://github.com/uhs-robert/oasis.nvim/discussions/2)**
 
-<a id="view-all-theme-styles"></a>
-
 ## 👀 View All Theme Styles
+
+<a id="view-all-theme-styles"></a>
 
 <details open>
   <summary><b>All styles (click to collapse)</b></summary>
@@ -524,7 +528,7 @@ Soft pinks of the warm desert rose
 
 ### Dawn (Beige)
 
-Ah, the morning sun. Don't forget your sunglasses!
+Ah, the morning sun. Don't forget your sunglasses! (`Lightness = 91`)
 
 ![dawn-dashboard](./assets/screenshots/dawn-dashboard.png)
 ![dawn-code](./assets/screenshots/dawn-code.png)
@@ -535,7 +539,7 @@ Ah, the morning sun. Don't forget your sunglasses!
 
 ### Dawnlight (Golden Beige)
 
-Slightly warmer than dawn, a golden morning glow
+Slightly warmer than dawn, a golden morning glow (`Lightness = 88`)
 
 ![dawnlight-dashboard](./assets/screenshots/dawnlight-dashboard.png)
 ![dawnlight-code](./assets/screenshots/dawnlight-code.png)
@@ -546,7 +550,7 @@ Slightly warmer than dawn, a golden morning glow
 
 ### Day (Gold)
 
-Full daylight warmth with rich golden saturation - the default light style
+Full daylight warmth with rich golden saturation - the default light style (`Lightness = 85`)
 
 ![day-dashboard](./assets/screenshots/day-dashboard.png)
 ![day-code](./assets/screenshots/day-code.png)
@@ -557,10 +561,21 @@ Full daylight warmth with rich golden saturation - the default light style
 
 ### Dusk (Peach Gold)
 
-Warmest peachy-golden tones for extended coding sessions
+Warm sky at sunset, peachy-golden tones for extended coding sessions (`Lightness = 77`)
 
 ![dusk-dashboard](./assets/screenshots/dusk-dashboard.png)
 ![dusk-code](./assets/screenshots/dusk-code.png)
+
+<p align="center">
+  <a href="#-overview">↑ Back to Overview</a>
+</p>
+
+### Dust (Golden Sand)
+
+Warm peachy-golden tones for extended coding sessions (`Lightness = 77`)
+
+![dust-dashboard](./assets/screenshots/dust-dashboard.png)
+![dust-code](./assets/screenshots/dust-code.png)
 
 <p align="center">
   <a href="#-overview">↑ Back to Overview</a>
