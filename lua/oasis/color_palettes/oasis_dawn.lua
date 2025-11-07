@@ -77,7 +77,7 @@ local c = {
 	-- UI
 	ui = {
 		match = "#804d13",
-		visual = { bg = p.visual.light_blue, fg = "none" },
+		visual = { bg = ui.bg.surface, fg = "none" },
 		search = { bg = p.yellow.wheat, fg = ui.bg.core },
 		curSearch = { bg = p.orange.deepsun, fg = ui.bg.core },
 		dir = "#255e6f",
