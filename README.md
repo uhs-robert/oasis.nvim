@@ -89,6 +89,10 @@ Light themes exclusively use warm beige-to-peachy tones to minimize blue light e
       <strong>Dawn</strong><br><em>Beige</em>
     </td>
     <td align="center">
+      <a href="#daybreak-golden-beige"><img src="assets/screenshots/daybreak-dashboard.png" alt="Daybreak" width="180"></a><br>
+      <strong>Daybreak</strong><br><em>Golden Beige</em>
+    </td>
+    <td align="center">
       <a href="#day-gold"><img src="assets/screenshots/day-dashboard.png" alt="Day" width="180"></a><br>
       <strong>Day (Default Light)</strong><br><em>Gold</em>
     </td>
@@ -195,6 +199,7 @@ colorscheme oasis-lagoon
 colorscheme oasis-twilight
 colorscheme oasis-rose
 colorscheme oasis-dawn
+colorscheme oasis-daybreak
 colorscheme oasis-day
 ```
 
@@ -516,6 +521,17 @@ Ah, the morning sun. Don't forget your sunglasses!
 
 ![dawn-dashboard](./assets/screenshots/dawn-dashboard.png)
 ![dawn-code](./assets/screenshots/dawn-code.png)
+
+<p align="center">
+  <a href="#-overview">↑ Back to Overview</a>
+</p>
+
+### Daybreak (Golden Beige)
+
+Slightly warmer than dawn, a golden morning glow
+
+![daybreak-dashboard](./assets/screenshots/daybreak-dashboard.png)
+![daybreak-code](./assets/screenshots/daybreak-code.png)
 
 <p align="center">
   <a href="#-overview">↑ Back to Overview</a>
