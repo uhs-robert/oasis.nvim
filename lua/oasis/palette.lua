@@ -124,6 +124,7 @@ local theme = {
 			dawn = "#E9E0AE",
 			daybreak = "#E3D396",
 			day = "#DFC87D",
+			dusk = "#E0C480",
 		},
 		-- Main background (1)
 		core = {
@@ -143,6 +144,7 @@ local theme = {
 			dawn = "#EFE5B6",
 			daybreak = "#ECDFA3",
 			day = "#E5D68B",
+			dusk = "#DCBA75",
 		},
 		-- Panels (2)
 		mantle = {
@@ -162,6 +164,7 @@ local theme = {
 			dawn = "#E3D8A4",
 			daybreak = "#DDD091",
 			day = "#DFC47A",
+			dusk = "#D5B36A",
 		},
 		-- Floats (3)
 		surface = {
@@ -181,6 +184,7 @@ local theme = {
 			dawn = "#D7CC97",
 			daybreak = "#D1C085",
 			day = "#D3BA68",
+			dusk = "#CEAC5F",
 		},
 	},
 	fg = {
@@ -202,6 +206,7 @@ local theme = {
 			dawn = "#453826",
 			daybreak = "#453826",
 			day = "#3F321F",
+			dusk = "#3A2C18",
 		},
 		-- Strong
 		strong = {
@@ -221,6 +226,7 @@ local theme = {
 			dawn = "#261E12",
 			daybreak = "#261E12",
 			day = "#2A1F0F",
+			dusk = "#2A1F0C",
 		},
 		-- Inlay hints / nontext (slightly warm/dark, distinct from comments)
 		dim = {
@@ -240,6 +246,7 @@ local theme = {
 			dawn = "#A7A585",
 			daybreak = "#A29F7F",
 			day = "#9D9870",
+			dusk = "#988E66",
 		},
 		-- Line numbers (darkest, low-chroma)
 		muted = {
@@ -259,6 +266,7 @@ local theme = {
 			dawn = "#A7A585",
 			daybreak = "#A29F7F",
 			day = "#9D9870",
+			dusk = "#988E66",
 		},
 		-- Comments (mid-contrast, readable but soft)
 		comment = {
@@ -278,6 +286,7 @@ local theme = {
 			dawn = "#6886A2",
 			daybreak = "#68869E",
 			day = "#5F7D95",
+			dusk = "#5A748C",
 		},
 	},
 }
