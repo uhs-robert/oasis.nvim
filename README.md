@@ -323,6 +323,16 @@ vim.cmd.colorscheme("oasis")  -- Apply the theme
 > [!TIP]
 > You may use _any_ style for light or dark mode. No restrictions apply.
 
+### Choosing a Light Theme
+
+Light styles vary in brightness to adapt to your workspace lighting. The right lightness keeps your eyes comfortable, reduces strain and headaches, and helps maintain focus throughout the day.
+
+- Dawn (91%) - brightest for well-lit spaces
+- Dawnlight (88%) - a tad softer with golden tones
+- Day (85%) - balanced for everyday use
+- Dusk (77%) - warmer for extended sessions
+- Dust (70%) - warmest for dim lighting
+
 ## 🪓 Overriding Colors & Highlight Groups
 
 Thirsty for total control? You can override whatever you like.
@@ -572,7 +582,7 @@ Warm sky at sunset, peachy-golden tones for extended coding sessions (`Lightness
 
 ### Dust (Golden Sand)
 
-Warm peachy-golden tones for extended coding sessions (`Lightness = 77`)
+Warm peachy-golden tones for extended coding sessions (`Lightness = 70`)
 
 ![dust-dashboard](./assets/screenshots/dust-dashboard.png)
 ![dust-code](./assets/screenshots/dust-code.png)
