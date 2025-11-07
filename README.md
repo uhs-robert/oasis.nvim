@@ -89,8 +89,8 @@ Light themes exclusively use warm beige-to-peachy tones to minimize blue light e
       <strong>Dawn</strong><br><em>Beige</em>
     </td>
     <td align="center">
-      <a href="#dawnlight-golden-beige"><img src="assets/screenshots/dawnlight-dashboard.png" alt="Daybreak" width="180"></a><br>
-      <strong>Daybreak</strong><br><em>Golden Beige</em>
+      <a href="#dawnlight-golden-beige"><img src="assets/screenshots/dawnlight-dashboard.png" alt="Dawnlight" width="180"></a><br>
+      <strong>Dawnlight</strong><br><em>Golden Beige</em>
     </td>
     <td align="center">
       <a href="#day-gold"><img src="assets/screenshots/day-dashboard.png" alt="Day" width="180"></a><br>
@@ -533,7 +533,7 @@ Ah, the morning sun. Don't forget your sunglasses!
   <a href="#-overview">↑ Back to Overview</a>
 </p>
 
-### Daybreak (Golden Beige)
+### Dawnlight (Golden Beige)
 
 Slightly warmer than dawn, a golden morning glow
 
