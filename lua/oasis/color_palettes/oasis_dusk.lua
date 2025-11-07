@@ -53,9 +53,9 @@ local c = {
 		-- Warm: (Control / Flow)
 		func = "#A34700", -- function names
 		builtinFunc = "#C14F00", -- Array, Object, etc --TODO: Seperate from fun and constant
-		statement = "#A07400", -- if/for/while/labels
+		statement = "#6B4F00", -- if/for/while/labels
 		exception = "#C12424", -- try/catch/return
-		keyword = "#7B5C00", -- general keywords
+		keyword = "#624500", -- general keywords
 		special = "#B44A18", -- misc specials
 		-- operator = "#AD6078", -- operators
 		operator = "#B85763", -- or "#B3505E" / "#A84B58"
