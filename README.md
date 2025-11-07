@@ -89,7 +89,7 @@ Light themes exclusively use warm beige-to-peachy tones to minimize blue light e
       <strong>Dawn</strong><br><em>Beige</em>
     </td>
     <td align="center">
-      <a href="#daybreak-golden-beige"><img src="assets/screenshots/daybreak-dashboard.png" alt="Daybreak" width="180"></a><br>
+      <a href="#dawnlight-golden-beige"><img src="assets/screenshots/dawnlight-dashboard.png" alt="Daybreak" width="180"></a><br>
       <strong>Daybreak</strong><br><em>Golden Beige</em>
     </td>
     <td align="center">
@@ -205,7 +205,7 @@ colorscheme oasis-lagoon
 colorscheme oasis-twilight
 colorscheme oasis-rose
 colorscheme oasis-dawn
-colorscheme oasis-daybreak
+colorscheme oasis-dawnlight
 colorscheme oasis-day
 colorscheme oasis-dusk
 ```
@@ -269,7 +269,7 @@ The theme will work out of the box, but you should have fun customizing it using
 
 ```lua
 -- Oasis.nvim
--- Styles: "night", "midnight", "abyss", "starlight", "desert", "sol", "canyon", "dune", "cactus", "mirage", "lagoon", "twilight", "rose", "dawn", "daybreak", "day", "dusk"
+-- Styles: "night", "midnight", "abyss", "starlight", "desert", "sol", "canyon", "dune", "cactus", "mirage", "lagoon", "twilight", "rose", "dawn", "dawnlight", "day", "dusk"
 require("oasis").setup({
   dark_style = "lagoon",         -- Style to use when vim.o.background is "dark"
   light_style = "day",           -- Style to use when vim.o.background is "light"
@@ -537,8 +537,8 @@ Ah, the morning sun. Don't forget your sunglasses!
 
 Slightly warmer than dawn, a golden morning glow
 
-![daybreak-dashboard](./assets/screenshots/daybreak-dashboard.png)
-![daybreak-code](./assets/screenshots/daybreak-code.png)
+![dawnlight-dashboard](./assets/screenshots/dawnlight-dashboard.png)
+![dawnlight-code](./assets/screenshots/dawnlight-code.png)
 
 <p align="center">
   <a href="#-overview">↑ Back to Overview</a>
