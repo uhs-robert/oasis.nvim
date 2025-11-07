@@ -47,8 +47,8 @@ local c = {
 		builtinVar = "#2C5AA0", -- this, document, window, etc
 		string = "#2A712D", -- strings
 		regex = "#516B14", -- regular expressions
-		builtinConst = "#169885", -- null, undefined, Infinity
 		constant = "#D26600", -- numbers/booleans/const (non-string)
+		builtinConst = "#147D75", -- null, undefined, Infinity
 
 		-- Warm: (Control / Flow)
 		func = "#A34700", -- function names
