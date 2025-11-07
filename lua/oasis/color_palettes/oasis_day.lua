@@ -40,7 +40,7 @@ local c = {
 	-- Syntax
 	syntax = {
 		-- Cold: (Data)
-		parameter = "#7A3FE2", -- parameters
+		parameter = "#5A2FCC", -- parameters
 		identifier = "#8F6F4E", -- property identifiers
 		delimiter = ui.theme.primary, -- delimiters
 		type = "#0A6F8D", -- type definitions
