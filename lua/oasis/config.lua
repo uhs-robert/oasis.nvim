@@ -6,7 +6,7 @@ local M = {}
 M.defaults = {
 	style = nil, -- Shorthand palette name (e.g., "lagoon" -> "oasis_lagoon")
 	dark_style = "lagoon", -- Shorthand palette name for dark mode
-	light_style = "dawn", -- Shorthand palette name for light mode
+	light_style = "day", -- Shorthand palette name for light mode
 	use_legacy_comments = false,
 	palette_overrides = {},
 	highlight_overrides = {},
@@ -75,7 +75,7 @@ function M.get_palette_name()
 	end
 
 	-- Final fallback: check vim.o.background and return appropriate default
-	return bg == "light" and "oasis_dawn" or "oasis_lagoon"
+	return bg == "light" and "oasis_day" or "oasis_lagoon"
 end
 
 --- Apply palette overrides to a loaded palette
