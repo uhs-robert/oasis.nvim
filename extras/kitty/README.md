@@ -1,14 +1,16 @@
 # Kitty Setup
 
 1. Create `~/.config/kitty/themes`
-2. Download theme file into `themes` directory
-3. Include the theme in `~/.config/kitty/kitty.conf`
+2. Download your desired theme file(s) into the `themes` directory
+3. From here, you have two options:
 
-### Example
-
-```ini
-include themes/oasis_lagoon.conf
-```
+- **Use the Kitten Themes**:
+  - In your terminal, enter `kitten themes` and search via `/` for `oasis`
+  - Select your desired theme and follow the prompts
+  - Refer to [the official guide](https://sw.kovidgoyal.net/kitty/kittens/themes/) for any questions
+- **Manual:**
+  - Include the theme in `~/.config/kitty/kitty.conf`.
+  - _Ex: `include themes/oasis_lagoon.conf`_
 
 > [!TIP]
-> You can quickly switch themes by changing the `include` line and reloading Kitty with `Ctrl+Shift+F5` or by running `kitty @ load-config` if remote control is enabled.
+> Use the `kitten themes` for automatic light/dark mode based on your OS settings and instant preview/switching.
