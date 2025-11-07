@@ -122,6 +122,7 @@ local theme = {
 			rose = "#2B1523",
 			starlight = "#050505",
 			dawn = "#E9E0AE",
+			day = "#DFC87D",
 		},
 		-- Main background (1)
 		core = {
@@ -139,6 +140,7 @@ local theme = {
 			rose = "#301828",
 			starlight = "#000000",
 			dawn = "#EFE5B6", -- alt #ECDFA3
+			day = "#E5D68B",
 		},
 		-- Panels (2)
 		mantle = {
@@ -156,6 +158,7 @@ local theme = {
 			rose = "#3E2636",
 			starlight = "#080808",
 			dawn = "#E3D8A4",
+			day = "#DFC47A",
 		},
 		-- Floats (3)
 		surface = {
@@ -173,6 +176,7 @@ local theme = {
 			rose = "#523A4B",
 			starlight = "#1A1A1A",
 			dawn = "#D7CC97",
+			day = "#D3BA68",
 		},
 	},
 	fg = {
@@ -192,6 +196,7 @@ local theme = {
 			rose = "#E9E3E8",
 			starlight = "#E8E8E8",
 			dawn = "#453826",
+			day = "#3F321F",
 		},
 		-- Strong
 		strong = {
@@ -209,6 +214,7 @@ local theme = {
 			rose = "#E6D6EE",
 			starlight = "#E0E0E0",
 			dawn = "#261E12",
+			day = "#2A1F0F",
 		},
 		-- Inlay hints / nontext (slightly warm/dark, distinct from comments)
 		dim = {
@@ -226,6 +232,7 @@ local theme = {
 			rose = "#5A4E45",
 			starlight = "#6A5448",
 			dawn = "#A7A585",
+			day = "#9D9870",
 		},
 		-- Line numbers (darkest, low-chroma)
 		muted = {
@@ -243,6 +250,7 @@ local theme = {
 			rose = "#3E2E38",
 			starlight = "#4E5A6A",
 			dawn = "#A7A585",
+			day = "#9D9870",
 		},
 		-- Comments (mid-contrast, readable but soft)
 		comment = {
@@ -260,6 +268,7 @@ local theme = {
 			rose = "#9F6C85",
 			starlight = "#7FA5CC",
 			dawn = "#6886A2",
+			day = "#5F7D95",
 		},
 	},
 }

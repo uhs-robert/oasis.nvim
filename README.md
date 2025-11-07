@@ -20,7 +20,9 @@ A collection of <strong>14</strong> desert-inspired Neovim colorschemes; warm, r
 
 Born from the classic [desert.vim](https://github.com/fugalh/desert.vim), transformed and modernized into something new entirely.
 
-Oasis follows Melange’s warm/cool split philosophy (**warm = action/flow**, **cool = structure/data**).
+Oasis follows Melange's warm/cool split philosophy (**warm = action/flow**, **cool = structure/data**).
+
+Light themes exclusively use warm beige-to-peachy tones to minimize blue light exposure and support eye health during extended coding sessions.
 
 <table>
   <tr>
@@ -83,8 +85,12 @@ Oasis follows Melange’s warm/cool split philosophy (**warm = action/flow**, **
       <strong>Rose</strong><br><em>Pink</em>
     </td>
     <td align="center">
-      <a href="#dawn-light-yellow"><img src="assets/screenshots/dawn-dashboard.png" alt="Dawn" width="180"></a><br>
-      <strong>Dawn (Default Light)</strong><br><em>Light Yellow</em>
+      <a href="#dawn-beige"><img src="assets/screenshots/dawn-dashboard.png" alt="Dawn" width="180"></a><br>
+      <strong>Dawn</strong><br><em>Beige</em>
+    </td>
+    <td align="center">
+      <a href="#day-gold"><img src="assets/screenshots/day-dashboard.png" alt="Day" width="180"></a><br>
+      <strong>Day (Default Light)</strong><br><em>Gold</em>
     </td>
   </tr>
 </table>
@@ -189,6 +195,7 @@ colorscheme oasis-lagoon
 colorscheme oasis-twilight
 colorscheme oasis-rose
 colorscheme oasis-dawn
+colorscheme oasis-day
 ```
 
 <!-- colorscheme-commands:end -->
@@ -253,7 +260,7 @@ The theme will work out of the box, but you should have fun customizing it using
 -- Styles: "night", "midnight", "abyss", "starlight", "desert", "sol", "canyon", "dune", "cactus", "mirage", "lagoon", "twilight", "rose", "dawn"
 require("oasis").setup({
   dark_style = "lagoon",         -- Style to use when vim.o.background is "dark"
-  light_style = "dawn",          -- Style to use when vim.o.background is "light"
+  light_style = "day",           -- Style to use when vim.o.background is "light"
   style = nil,                   -- Optional: Set a single style to disable auto-switching (e.g., "lagoon", "desert")
   use_legacy_comments = false,   -- Uses the legacy comment color from desert.vim for the "desert" style only (a bright sky blue)
 
@@ -290,7 +297,7 @@ Oasis automatically switches between your config's `light_style` and `dark_style
 ```lua
 require("oasis").setup({
   dark_style = "lagoon",      -- Style when background is dark
-  light_style = "dawn"        -- Style when background is light
+  light_style = "day"         -- Style when background is light
 })
 vim.cmd.colorscheme("oasis")  -- Apply the theme
 ```
@@ -503,12 +510,24 @@ Soft pinks of the warm desert rose
   <a href="#-overview">↑ Back to Overview</a>
 </p>
 
-### Dawn (Light Yellow)
+### Dawn (Beige)
 
-Ah, the morning sun and default light style. Don't forget your sunglasses!
+Ah, the morning sun. Don't forget your sunglasses!
 
 ![dawn-dashboard](./assets/screenshots/dawn-dashboard.png)
 ![dawn-code](./assets/screenshots/dawn-code.png)
+
+<p align="center">
+  <a href="#-overview">↑ Back to Overview</a>
+</p>
+
+### Day (Gold)
+
+Full daylight warmth with rich golden saturation - the default light style
+
+![day-dashboard](./assets/screenshots/day-dashboard.png)
+![day-code](./assets/screenshots/day-code.png)
+
 
 <p align="center">
   <a href="#-overview">↑ Back to Overview</a>
