@@ -323,7 +323,7 @@ vim.cmd.colorscheme("oasis")  -- Apply the theme
 > [!TIP]
 > You may use _any_ style for light or dark mode. No restrictions apply.
 
-### Choosing a Light Theme
+### 🕶️ Choosing a Light Theme
 
 Light styles vary in brightness to adapt to your workspace lighting. The right lightness keeps your eyes comfortable, reduces strain and headaches, and helps maintain focus throughout the day.
 
