@@ -1,7 +1,7 @@
--- lua/oasis/color_palettes/oasis_daybreak.lua
+-- lua/oasis/color_palettes/oasis_dawnlight.lua
 
 local p = require("oasis.palette")
-local key = "daybreak"
+local key = "dawnlight"
 
 -- General Reusable Colors
 local ui = {
