@@ -58,7 +58,7 @@ local c = {
 		keyword = "#624500", -- general keywords
 		special = "#B44A18", -- misc specials
 		-- operator = "#AD6078", -- operators
-		operator = "#B85763", -- or "#B3505E" / "#A84B58"
+		operator = "#9D4750", -- or "#B3505E" / "#A84B58"
 		punctuation = "#6F664D", -- punctuation
 		preproc = "#1964A6", -- imports/preprocessor
 
