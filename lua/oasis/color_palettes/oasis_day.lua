@@ -48,7 +48,7 @@ local c = {
 		string = "#2A712D", -- strings
 		regex = "#516B14", -- regular expressions
 		builtinConst = "#147D75", -- null, undefined, Infinity
-		constant = "#C25F00", -- numbers/booleans/const (non-string)
+		constant = "#BF5000", -- numbers/booleans/const (non-string)
 
 		-- Warm: (Control / Flow)
 		func = "#A34700", -- function names
