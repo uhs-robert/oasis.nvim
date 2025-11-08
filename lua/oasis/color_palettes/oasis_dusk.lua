@@ -41,7 +41,7 @@ local c = {
 	syntax = {
 		-- Cold: (Data)
 		parameter = "#5A2FCC", -- parameters
-		identifier = "#8F6F4E", -- property identifiers
+		identifier = "#365060", -- property identifiers
 		delimiter = ui.theme.primary, -- delimiters
 		type = "#0A6F8D", -- type definitions
 		builtinVar = "#2C5AA0", -- this, document, window, etc
