@@ -22,8 +22,8 @@ local ui = {
 	},
 	-- General colors
 	theme = {
-		primary = "#B5563A",
-		light_primary = "#B5563A",
+		primary = "#9D4529",
+		light_primary = "#9D4529",
 		secondary = "#1C6FB8",
 		accent = "#1C6FB8",
 	},
