@@ -1,5 +1,6 @@
 /* extras/vimium-c/vimium-c.css */
 /* #ui */
+
 * {
   /*insertroot*/
   --font-size: 17px;
@@ -51,7 +52,6 @@
   align-items: center;
   padding: 10px;
 }
-
 .HUD.D {
   color: var(--n-primary);
 }
@@ -60,7 +60,6 @@
   background: var(--bg-core);
   border: var(--border);
 }
-
 .HUD.D:after {
   background: var(--n-bg-core);
   border: var(--n-border);
@@ -75,21 +74,19 @@
 .LH {
   color: var(--fg);
   border: 1px solid var(--border);
-  background: var(--bg-core);
+  background: var(--bg-surface);
   box-shadow: var(--shadow);
 }
-
 .D .LH {
   color: var(--n-fg);
   border: 1px solid var(--n-border);
-  background: var(--n-bg-core);
+  background: var(--n-primary);
   box-shadow: var(--shadow);
 }
 
 .MC {
   color: var(--bg-surface);
 }
-
 .D .MC {
   color: var(--n-bg-surface);
 }
@@ -158,10 +155,12 @@ body {
 /* Omni Backgrounds */
 #list {
   background: var(--bg-core);
+  font-weight: var(--font-weight);
 }
 .has-dark #list {
   background: var(--n-bg-core);
 }
+
 #bar,
 #input {
   background: var(--bg-mantle);
@@ -174,12 +173,11 @@ body {
 
 #bar {
   padding: 10px;
-  /*padding: var(--padding);*/
   border-bottom: none;
 }
 
 #bar::before {
-  /*for hint or content icon before typing*/
+  /* for hint or content icon before typing */
   content: "❯";
   position: absolute;
   left: 20px;
@@ -189,7 +187,6 @@ body {
   font-size: var(--font-size);
   color: var(--secondary);
 }
-
 .has-dark #bar::before {
   color: var(--n-secondary);
 }
@@ -202,7 +199,6 @@ body {
   border: none;
   box-shadow: none;
 }
-
 .has-dark #input {
   color: var(--n-fg);
 }
@@ -241,7 +237,6 @@ body {
   border: 3px rgba(0, 0, 0, 0.02) solid;
   cursor: pointer;
 }
-
 .has-dark .item.s,
 .has-dark .item:hover {
   background-color: var(--n-bg-surface);
@@ -252,7 +247,6 @@ body {
   position: relative;
   height: 30px;
 }
-
 .has-dark .item .top {
   color: var(--n-primary);
 }
@@ -266,7 +260,6 @@ body {
 .item .top .title match {
   color: var(--title-match);
 }
-
 .has-dark .item .top .title match {
   color: var(--n-title-match);
 }
@@ -284,7 +277,6 @@ body {
   color: var(--link);
   font-size: var(--font-size-link);
 }
-
 .has-dark .item .bottom a {
   color: var(--n-link);
 }
@@ -293,7 +285,6 @@ body {
   color: var(--link-match);
   text-decoration: none;
 }
-
 .has-dark .item .bottom a match {
   color: var(--n-link-match);
 }
@@ -344,7 +335,6 @@ body {
   border: none;
   box-shadow: none;
 }
-
 .r.D {
   color: var(--n-primary);
   background: var(--n-bg-core);
@@ -353,7 +343,6 @@ body {
 #i {
   color: var(--link-match);
 }
-
 .D #i {
   color: var(--n-link-match);
 }
