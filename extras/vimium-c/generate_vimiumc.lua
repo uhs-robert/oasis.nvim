@@ -93,11 +93,18 @@ local function select_theme(label, themes)
 		print(string.format("  %d. %s", i, theme.display))
 	end
 
-	io.write(string.format("\nSelect %s (1-%d): ", label, #themes))
+	local alternate_label = label:match("light") and "dark" or "light"
+	print(string.format("  %d. Use a %s theme instead", #themes + 1, alternate_label))
+
+	io.write(string.format("\nSelect %s (1-%d): ", label, #themes + 1))
 	local choice = tonumber(io.read())
 
-	if not choice or choice < 1 or choice > #themes then
+	if not choice or choice < 1 or choice > #themes + 1 then
 		return nil, "Invalid selection"
+	end
+
+	if choice > #themes then
+		return "SWITCH_THEME_TYPE"
 	end
 
 	return themes[choice].name
@@ -114,9 +121,6 @@ local function read_template_file(path)
 end
 
 local function generate_vimiumc_css(day_name, night_name, day_palette, night_palette)
-	local day_display = get_display_name(day_name)
-	local night_display = get_display_name(night_name)
-
 	local day_colors = extract_vimiumc_colors(day_palette)
 	local night_colors = extract_vimiumc_colors(night_palette)
 
@@ -244,21 +248,45 @@ Examples:
 		end
 
 		if not day_name then
-			local name, err = select_theme("Day theme (light mode)", light_themes)
-			if not name then
-				print("Error: " .. err)
-				return
+			local name
+			local err
+			local is_light = true
+			while not day_name do
+				local themes = is_light and light_themes or dark_themes
+				local label = is_light and "Day theme (light mode)" or "Day theme (dark mode)"
+				name, err = select_theme(label, themes)
+				if not name then
+					print("Error: " .. err)
+					return
+				end
+
+				if name == "SWITCH_THEME_TYPE" then
+					is_light = not is_light
+				else
+					day_name = name
+				end
 			end
-			day_name = name
 		end
 
 		if not night_name then
-			local name, err = select_theme("Night theme (dark mode)", dark_themes)
-			if not name then
-				print("Error: " .. err)
-				return
+			local name
+			local err
+			local is_dark = true
+			while not night_name do
+				local themes = is_dark and dark_themes or light_themes
+				local label = is_dark and "Night theme (dark mode)" or "Night theme (light mode)"
+				name, err = select_theme(label, themes)
+				if not name then
+					print("Error: " .. err)
+					return
+				end
+
+				if name == "SWITCH_THEME_TYPE" then
+					is_dark = not is_dark
+				else
+					night_name = name
+				end
 			end
-			night_name = name
 		end
 	end
 
