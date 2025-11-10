@@ -66,7 +66,7 @@ end
 local function list_palettes()
 	local palette_names, err = get_palette_files()
 	if not palette_names then
-		return nil, nil, err
+		return {}, {}, err
 	end
 
 	local light_themes = {}
@@ -242,21 +242,21 @@ Examples:
 	-- Interactive mode if not specified via CLI
 	if not day_name or not night_name then
 		local light_themes, dark_themes, err = list_palettes()
-		if err then
-			print("Error: " .. err)
+		if err or not light_themes then
+			print("Error: " .. (err or "Failed to load palettes."))
 			return
 		end
 
 		if not day_name then
 			local name
-			local err
+			local select_err
 			local is_light = true
 			while not day_name do
 				local themes = is_light and light_themes or dark_themes
 				local label = is_light and "Day theme (light mode)" or "Day theme (dark mode)"
-				name, err = select_theme(label, themes)
+				name, select_err = select_theme(label, themes)
 				if not name then
-					print("Error: " .. err)
+					print("Error: " .. select_err)
 					return
 				end
 
@@ -270,14 +270,14 @@ Examples:
 
 		if not night_name then
 			local name
-			local err
+			local select_err
 			local is_dark = true
 			while not night_name do
 				local themes = is_dark and dark_themes or light_themes
 				local label = is_dark and "Night theme (dark mode)" or "Night theme (light mode)"
-				name, err = select_theme(label, themes)
+				name, select_err = select_theme(label, themes)
 				if not name then
-					print("Error: " .. err)
+					print("Error: " .. select_err)
 					return
 				end
 
