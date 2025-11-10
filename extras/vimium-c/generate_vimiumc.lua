@@ -4,8 +4,15 @@
 
 local function get_palette_files()
 	local handle = io.popen("ls ../../lua/oasis/color_palettes/oasis_*.lua 2>/dev/null")
+	if not handle then
+		return nil, "Failed to execute ls command to find palettes."
+	end
 	local result = handle:read("*a")
 	handle:close()
+
+	if not result or result == "" then
+		return nil, "No palette files found."
+	end
 
 	local files = {}
 	for file in result:gmatch("[^\n]+") do
@@ -57,7 +64,10 @@ local function extract_vimiumc_colors(palette)
 end
 
 local function list_palettes()
-	local palette_names = get_palette_files()
+	local palette_names, err = get_palette_files()
+	if not palette_names then
+		return nil, nil, err
+	end
 
 	local light_themes = {}
 	local dark_themes = {}
@@ -164,7 +174,11 @@ end
 
 local function main(args)
 	if args[1] == "--list" or args[1] == "-l" then
-		local light_themes, dark_themes = list_palettes()
+		local light_themes, dark_themes, err = list_palettes()
+		if err then
+			print("Error: " .. err)
+			return
+		end
 		print("\n=== Oasis Vimium-C Themes ===")
 		print("\nLight Themes:")
 		for i, theme in ipairs(light_themes) do
@@ -223,7 +237,11 @@ Examples:
 
 	-- Interactive mode if not specified via CLI
 	if not day_name or not night_name then
-		local light_themes, dark_themes = list_palettes()
+		local light_themes, dark_themes, err = list_palettes()
+		if err then
+			print("Error: " .. err)
+			return
+		end
 
 		if not day_name then
 			local name, err = select_theme("Day theme (light mode)", light_themes)
