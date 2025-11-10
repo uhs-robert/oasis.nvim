@@ -7,6 +7,118 @@ require 'json'
 require 'optparse'
 require 'fileutils'
 
+# Generates CSS output from theme data
+class CSSGenerator
+  def initialize(template_file, output_dir)
+    @template_file = template_file
+    @output_dir = output_dir
+  end
+
+  def generate(day_theme, night_theme)
+    assign_theme_colors(day_theme, night_theme)
+
+    template = ERB.new(File.read(@template_file), trim_mode: '-')
+    result = template.result(binding)
+
+    output_file = build_output_path(day_theme, night_theme)
+    write_output_file(output_file, result)
+    display_success(output_file)
+  end
+
+  private
+
+  def assign_theme_colors(day_theme, night_theme)
+    @day_name = day_theme['display_name']
+    @night_name = night_theme['display_name']
+
+    assign_colors_with_prefix('day', day_theme['colors'])
+    assign_colors_with_prefix('night', night_theme['colors'])
+  end
+
+  def assign_colors_with_prefix(prefix, colors)
+    colors.each do |key, value|
+      instance_variable_set("@#{prefix}_#{key}", value)
+    end
+  end
+
+  def build_output_path(day_theme, night_theme)
+    night_short = night_theme['name'].gsub('oasis_', '')
+    day_short = day_theme['name'].gsub('oasis_', '')
+    File.join(@output_dir, "vimiumc-#{night_short}-#{day_short}.css")
+  end
+
+  def write_output_file(output_file, content)
+    FileUtils.mkdir_p(@output_dir)
+    File.write(output_file, content)
+  end
+
+  def display_success(output_file)
+    puts "\n✓ Generated: #{output_file}"
+    puts "  Day theme: #{@day_name}"
+    puts "  Night theme: #{@night_name}\n"
+  end
+end
+
+# Handles interactive theme selection with user prompts
+class ThemeSelector
+  def initialize(index)
+    @index = index
+  end
+
+  def select(label, preferred_type)
+    preferred_list, alternate_list, alternate_label = theme_lists(preferred_type)
+
+    choice = prompt_selection(label, preferred_type, preferred_list, alternate_label)
+    return preferred_list[choice - 1]['id'] if choice <= preferred_list.length
+
+    select_alternate(label, alternate_list)
+  end
+
+  private
+
+  def theme_lists(preferred_type)
+    preferred_list = @index["#{preferred_type}_themes"]
+    alternate_type = preferred_type == 'light' ? 'dark' : 'light'
+    alternate_list = @index["#{alternate_type}_themes"]
+    [preferred_list, alternate_list, alternate_type]
+  end
+
+  def prompt_selection(label, preferred_type, preferred_list, alternate_label)
+    theme_type_label = preferred_type == 'light' ? 'Light' : 'Dark'
+    puts "\n#{theme_type_label} Themes (recommended for #{label}):"
+    display_list(preferred_list)
+    puts "  #{preferred_list.length + 1}. Use a #{alternate_label} theme instead"
+
+    print "\nSelect #{label} theme (1-#{preferred_list.length + 1}): "
+    choice = gets.chomp.to_i
+    validate_choice(choice, 1, preferred_list.length + 1)
+    choice
+  end
+
+  def select_alternate(label, alternate_list)
+    puts "\n#{alternate_list.first['is_light'] ? 'Light' : 'Dark'} Themes:"
+    display_list(alternate_list)
+
+    print "\nSelect #{label} theme (1-#{alternate_list.length}): "
+    choice = gets.chomp.to_i - 1
+    validate_choice(choice, 0, alternate_list.length - 1)
+    alternate_list[choice]['id']
+  end
+
+  def display_list(theme_list)
+    theme_list.each_with_index do |theme, i|
+      puts "  #{i + 1}. #{theme['name']}"
+    end
+  end
+
+  def validate_choice(choice, min, max)
+    return if choice >= min && choice <= max
+
+    puts 'Error: Invalid selection'
+    exit 1
+  end
+end
+
 # Oasis Vimium-C Theme Generator
 # Generates custom Vimium-C CSS themes from Oasis palette combinations
 #
@@ -35,7 +147,8 @@ class ThemeGenerator
 
     day_theme, night_theme = themes
 
-    generate_css(day_theme, night_theme)
+    css_generator = CSSGenerator.new(TEMPLATE_FILE, OUTPUT_DIR)
+    css_generator.generate(day_theme, night_theme)
   end
 
   private
@@ -95,108 +208,17 @@ class ThemeGenerator
     end
   end
 
-  def select_theme(label, preferred_type)
-    preferred_list, alternate_list, alternate_label = theme_lists(preferred_type)
-
-    choice = prompt_theme_selection(label, preferred_type, preferred_list, alternate_label)
-    return preferred_list[choice - 1]['id'] if choice <= preferred_list.length
-
-    select_alternate_theme(label, alternate_list)
-  end
-
-  def theme_lists(preferred_type)
-    preferred_list = @index["#{preferred_type}_themes"]
-    alternate_type = preferred_type == 'light' ? 'dark' : 'light'
-    alternate_list = @index["#{alternate_type}_themes"]
-    [preferred_list, alternate_list, alternate_type]
-  end
-
-  def prompt_theme_selection(label, preferred_type, preferred_list, alternate_label)
-    theme_type_label = preferred_type == 'light' ? 'Light' : 'Dark'
-    puts "\n#{theme_type_label} Themes (recommended for #{label}):"
-    display_theme_list(preferred_list)
-    puts "  #{preferred_list.length + 1}. Use a #{alternate_label} theme instead"
-
-    print "\nSelect #{label} theme (1-#{preferred_list.length + 1}): "
-    choice = gets.chomp.to_i
-    validate_choice(choice, 1, preferred_list.length + 1)
-    choice
-  end
-
-  def select_alternate_theme(label, alternate_list)
-    puts "\n#{alternate_list.first['is_light'] ? 'Light' : 'Dark'} Themes:"
-    display_theme_list(alternate_list)
-
-    print "\nSelect #{label} theme (1-#{alternate_list.length}): "
-    choice = gets.chomp.to_i - 1
-    validate_choice(choice, 0, alternate_list.length - 1)
-    alternate_list[choice]['id']
-  end
-
-  def display_theme_list(theme_list)
-    theme_list.each_with_index do |theme, i|
-      puts "  #{i + 1}. #{theme['name']}"
-    end
-  end
-
-  def validate_choice(choice, min, max)
-    return if choice >= min && choice <= max
-
-    error 'Invalid selection'
-  end
-
   def interactive_mode
     puts "\n=== Oasis Vimium-C Theme Generator ==="
+    selector = ThemeSelector.new(@index)
 
     # Select day theme (prefer light)
-    day_theme_id = select_theme('day', 'light')
+    day_theme_id = selector.select('day', 'light')
 
     # Select night theme (prefer dark)
-    night_theme_id = select_theme('night', 'dark')
+    night_theme_id = selector.select('night', 'dark')
 
     [load_theme(day_theme_id), load_theme(night_theme_id)]
-  end
-
-  def generate_css(day_theme, night_theme)
-    assign_theme_colors(day_theme, night_theme)
-
-    template = ERB.new(File.read(TEMPLATE_FILE), trim_mode: '-')
-    result = template.result(binding)
-
-    output_file = build_output_path(day_theme, night_theme)
-    write_output_file(output_file, result)
-    display_success(output_file)
-  end
-
-  def assign_theme_colors(day_theme, night_theme)
-    @day_name = day_theme['display_name']
-    @night_name = night_theme['display_name']
-
-    assign_colors_with_prefix('day', day_theme['colors'])
-    assign_colors_with_prefix('night', night_theme['colors'])
-  end
-
-  def assign_colors_with_prefix(prefix, colors)
-    colors.each do |key, value|
-      instance_variable_set("@#{prefix}_#{key}", value)
-    end
-  end
-
-  def build_output_path(day_theme, night_theme)
-    night_short = night_theme['name'].gsub('oasis_', '')
-    day_short = day_theme['name'].gsub('oasis_', '')
-    File.join(OUTPUT_DIR, "vimiumc-#{night_short}-#{day_short}.css")
-  end
-
-  def write_output_file(output_file, content)
-    FileUtils.mkdir_p(OUTPUT_DIR)
-    File.write(output_file, content)
-  end
-
-  def display_success(output_file)
-    puts "\n✓ Generated: #{output_file}"
-    puts "  Day theme: #{@day_name}"
-    puts "  Night theme: #{@night_name}\n"
   end
 
   def error(message)
