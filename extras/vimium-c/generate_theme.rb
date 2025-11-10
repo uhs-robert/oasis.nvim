@@ -145,7 +145,7 @@ class ThemeGenerator
       return
     end
 
-    day_theme, night_theme = themes
+    day_theme, night_theme = set_themes
 
     css_generator = CSSGenerator.new(TEMPLATE_FILE, OUTPUT_DIR)
     css_generator.generate(day_theme, night_theme)
@@ -196,28 +196,25 @@ class ThemeGenerator
     puts ''
   end
 
-  def themes
+  def set_themes
     if @options[:day] && @options[:night]
-      # CLI mode - no restrictions
-      day_theme = load_theme(@options[:day])
-      night_theme = load_theme(@options[:night])
-      [day_theme, night_theme]
+      run_cli_mode
     else
-      # Interactive mode
-      interactive_mode
+      run_interactive_mode
     end
   end
 
-  def interactive_mode
+  def run_cli_mode
+    day_theme = load_theme(@options[:day])
+    night_theme = load_theme(@options[:night])
+    [day_theme, night_theme]
+  end
+
+  def run_interactive_mode
     puts "\n=== Oasis Vimium-C Theme Generator ==="
     selector = ThemeSelector.new(@index)
-
-    # Select day theme (prefer light)
     day_theme_id = selector.select('day', 'light')
-
-    # Select night theme (prefer dark)
     night_theme_id = selector.select('night', 'dark')
-
     [load_theme(day_theme_id), load_theme(night_theme_id)]
   end
 
