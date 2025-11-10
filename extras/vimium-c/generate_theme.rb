@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# extras/vimium-c/generate_theme.rb
 # frozen_string_literal: true
 
 require 'erb'
@@ -38,11 +39,11 @@ class ThemeGenerator
 
   def parse_options(args)
     OptionParser.new do |opts|
-      opts.banner = "Usage: ruby generate_theme.rb [options]"
-      opts.on("-d", "--day THEME", "Day theme (light)") { |t| @options[:day] = t }
-      opts.on("-n", "--night THEME", "Night theme (dark)") { |t| @options[:night] = t }
-      opts.on("-l", "--list", "List all available themes") { @options[:list] = true }
-      opts.on("-h", "--help", "Show this help message") do
+      opts.banner = 'Usage: ruby generate_theme.rb [options]'
+      opts.on('-d', '--day THEME', 'Day theme (light)') { |t| @options[:day] = t }
+      opts.on('-n', '--night THEME', 'Night theme (dark)') { |t| @options[:night] = t }
+      opts.on('-l', '--list', 'List all available themes') { @options[:list] = true }
+      opts.on('-h', '--help', 'Show this help message') do
         puts opts
         exit
       end
@@ -76,14 +77,14 @@ class ThemeGenerator
     @index['dark_themes'].each_with_index do |theme, i|
       puts "  #{i + 1}. #{theme['name']} (#{theme['id']})"
     end
-    puts ""
+    puts ''
   end
 
   def get_themes
     if @options[:day] && @options[:night]
-      # CLI mode
-      day_theme = validate_theme(@options[:day], 'light')
-      night_theme = validate_theme(@options[:night], 'dark')
+      # CLI mode - no restrictions
+      day_theme = load_theme(@options[:day])
+      night_theme = load_theme(@options[:night])
       [day_theme, night_theme]
     else
       # Interactive mode
@@ -91,47 +92,46 @@ class ThemeGenerator
     end
   end
 
-  def validate_theme(theme_id, expected_type)
-    theme = load_theme(theme_id)
-    is_light = theme['is_light']
+  def select_theme(label, preferred_type)
+    # Show preferred themes first
+    preferred_list = preferred_type == 'light' ? @index['light_themes'] : @index['dark_themes']
+    alternate_list = preferred_type == 'light' ? @index['dark_themes'] : @index['light_themes']
+    alternate_label = preferred_type == 'light' ? 'dark' : 'light'
 
-    if expected_type == 'light' && !is_light
-      error "Theme '#{theme_id}' is not a light theme"
-    elsif expected_type == 'dark' && is_light
-      error "Theme '#{theme_id}' is not a dark theme"
+    puts "\n#{preferred_type == 'light' ? 'Light' : 'Dark'} Themes (recommended for #{label}):"
+    preferred_list.each_with_index do |theme, i|
+      puts "  #{i + 1}. #{theme['name']}"
     end
+    puts "  #{preferred_list.length + 1}. Use a #{alternate_label} theme instead"
 
-    theme
+    print "\nSelect #{label} theme (1-#{preferred_list.length + 1}): "
+    choice = gets.chomp.to_i
+
+    error 'Invalid selection' if choice < 1 || choice > preferred_list.length + 1
+
+    # Check if user wants alternate theme type
+    return preferred_list[choice - 1]['id'] unless choice == preferred_list.length + 1
+
+    puts "\n#{alternate_label.capitalize} Themes:"
+    alternate_list.each_with_index do |theme, i|
+      puts "  #{i + 1}. #{theme['name']}"
+    end
+    print "\nSelect #{label} theme (1-#{alternate_list.length}): "
+    alt_choice = gets.chomp.to_i - 1
+
+    error 'Invalid selection' if alt_choice < 0 || alt_choice >= alternate_list.length
+
+    alternate_list[alt_choice]['id']
   end
 
   def interactive_mode
     puts "\n=== Oasis Vimium-C Theme Generator ==="
 
-    # Select day theme
-    puts "\nAvailable Light Themes (Day):"
-    @index['light_themes'].each_with_index do |theme, i|
-      puts "  #{i + 1}. #{theme['name']}"
-    end
-    print "\nSelect day theme (1-#{@index['light_themes'].length}): "
-    day_choice = gets.chomp.to_i - 1
+    # Select day theme (prefer light)
+    day_theme_id = select_theme('day', 'light')
 
-    if day_choice < 0 || day_choice >= @index['light_themes'].length
-      error "Invalid selection"
-    end
-    day_theme_id = @index['light_themes'][day_choice]['id']
-
-    # Select night theme
-    puts "\nAvailable Dark Themes (Night):"
-    @index['dark_themes'].each_with_index do |theme, i|
-      puts "  #{i + 1}. #{theme['name']}"
-    end
-    print "\nSelect night theme (1-#{@index['dark_themes'].length}): "
-    night_choice = gets.chomp.to_i - 1
-
-    if night_choice < 0 || night_choice >= @index['dark_themes'].length
-      error "Invalid selection"
-    end
-    night_theme_id = @index['dark_themes'][night_choice]['id']
+    # Select night theme (prefer dark)
+    night_theme_id = select_theme('night', 'dark')
 
     [load_theme(day_theme_id), load_theme(night_theme_id)]
   end
