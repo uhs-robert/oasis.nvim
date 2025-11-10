@@ -23,7 +23,7 @@ local ui = {
 	-- General colors
 	theme = {
 		primary = "#9D4529",
-		light_primary = "#9D4529",
+		light_primary = "#B3505E",
 		secondary = "#1C6FB8",
 		accent = "#1C6FB8",
 	},
@@ -58,7 +58,7 @@ local c = {
 		keyword = "#624500", -- general keywords
 		special = "#B44A18", -- misc specials
 		-- operator = "#AD6078", -- operators
-		operator = "#9D4750", -- or "#B3505E" / "#A84B58"
+		operator = "#B3505E", -- or "#B3505E" / "#A84B58"
 		punctuation = "#6F664D", -- punctuation
 		preproc = "#1964A6", -- imports/preprocessor
 
