@@ -1,22 +1,22 @@
 # Vimium-C Setup
 
-Generate custom Vimium-C CSS themes using Oasis color palettes (or whatever theme you want).
+Generate custom Vimium-C CSS themes using Oasis color palettes.
 
 > [!NOTE]
-> A generator is necessary because there are too many light/dark combinations to account for all of them ahead of time.
+> A generator is necessary because there are just too many light/dark combinations to account for all of them ahead of time.
 
 ## Requirements
 
-- **Ruby** (pre-installed on macOS and most Linux distributions)
-  - Check: `ruby --version`
-  - Install if needed: [rubyinstaller.org](https://rubyinstaller.org/) (Windows) or `brew install ruby` (macOS) or `sudo apt/dnf/pacman install ruby` (Linux)
+- **Lua** (tested with Lua 5.4) you should already have this if you're using NeoVim
 
 ## Usage
+
+Navigate to this directory (`extras/vimium-c`) before running the script.
 
 ### Interactive Mode (Recommended)
 
 ```bash
-ruby generate_theme.rb
+lua generate_vimiumc.lua
 ```
 
 You'll be prompted to select:
@@ -26,18 +26,17 @@ You'll be prompted to select:
 
 > [!TIP]
 > Each selection includes a final option to "Use a dark/light theme instead" to bypass the day/night recommendations.
-> (e.g., use dark themes for both day and night or vice-versa).
 
 ### CLI Mode
 
 ```bash
-ruby generate_theme.rb --day oasis_day --night oasis_lagoon
+lua generate_vimiumc.lua --day day --night lagoon
 ```
 
 **Options:**
 
-- `-d, --day THEME` - Day theme
-- `-n, --night THEME` - Night theme
+- `-d, --day THEME` - Day theme (e.g., `day`)
+- `-n, --night THEME` - Night theme (e.g., `lagoon`)
 - `-l, --list` - List all available themes
 - `-h, --help` - Show help
 
@@ -58,24 +57,23 @@ Example: `vimiumc-lagoon-day.css`
 5. Save settings
 
 > [!TIP]
-> The extension will automatically parse and apply all sections (HUD, Vomnibar, Find Mode).
+> The extension will automatically parse and apply all sections
 
 ## Customizing the CSS Template
 
-Feel free to [edit the template here](./vimium-c.css.erb), it's just CSS.
+The generator uses [vimium-c.css.erb](./vimium-c.css.erb) as a template. You can edit this file to customize the final CSS output.
+
+The script replaces placeholders like `{{day_bg_core}}` and `{{night_primary}}` with the corresponding hex codes from the selected Oasis palettes.
 
 ### Tips and Tricks
 
 1. Use the [Vimium-C Wiki](https://github.com/gdh1995/vimium-c/wiki/Style-the-UI-of-Vimium-C-using-custom-CSS) to learn how CSS is applied in sections
-2. You can view the html and elements of `vimium-c` by running commands from the settings page of the extension and using your browser's inspect window
-3. Have fun!
+2. You may view the html and elements of `vimium-c` by running commands from the settings page of the extension and using your browser's inspect window
 
-## Adding New/My Own Themes
+## Adding New Themes
 
-Yes, you can extend this script to add new themes.
+The generator automatically discovers all color palettes available in the main Oasis plugin directory: `lua/oasis/color_palettes/`.
 
-You can even take it and use it yourself for your plugin (give me a shout out if you do, please and thank you).
+To add a new theme, simply create a new palette file in that directory.
 
-1. Add a new `.json` theme file to [mappings](./mappings/) following the other files as a template (e.g., [oasis_lagoon](./mappings/oasis_lagoon.json))
-2. Update the [index.json](./mappings/index.json) to include your new theme file, categorize it as light or dark
-3. Run the generator and use your new theme!
+Follow the structure of the existing palette files (e.g., `lua/oasis/color_palettes/oasis_lagoon.lua`).
