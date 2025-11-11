@@ -142,17 +142,18 @@ Light themes exclusively use warm beige-to-peachy tones to minimize blue light e
 <summary>🍭 Extras</summary>
 <br>
 
-[All extra configs](extras/) for other terminal applications.
+[All extra configs](extras/) for other terminal applications or vim related tools.
 
 To use the extras, refer to their respective documentation.
 
 <!-- extras:start -->
 
-| Tool    | Extra                                                  |
-| ------- | ------------------------------------------------------ |
-| Kitty   | [extras/kitty](extras/kitty)                           |
-| Ghostty | [extras/ghostty](extras/ghostty)                       |
-| TMUX    | [tmux-oasis](https://github.com/uhs-robert/tmux-oasis) |
+| Tool     | Extra                                                  |
+| -------- | ------------------------------------------------------ |
+| Ghostty  | [extras/ghostty](extras/ghostty)                       |
+| Kitty    | [extras/kitty](extras/kitty)                           |
+| TMUX     | [tmux-oasis](https://github.com/uhs-robert/tmux-oasis) |
+| Vimium C | [extras/vimium-c](extras/vimium-c)                     |
 
 If you'd like an extra config added, raise a feature request and I'll put it together.
 
