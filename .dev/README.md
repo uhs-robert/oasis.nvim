@@ -67,15 +67,6 @@ Success: 36
 Errors: 0
 ```
 
-## Comparison with Vimium-C Generator
-
-Unlike the Vimium-C generator (Ruby-based with JSON mappings), the Kitty/Ghostty generator:
-
-- Uses pure Lua (no dependencies)
-- Reads palettes directly from source files (no JSON duplication)
-- Generates single-theme configs (not day/night combinations)
-- Fully automated discovery of palette variants
-
 ## Troubleshooting
 
 ### "Failed to load palette" error
