@@ -322,7 +322,7 @@ vim.cmd.colorscheme("oasis")  -- Apply the theme
 </details>
 
 > [!TIP]
-> You may use _any_ style for light or dark mode. No restrictions apply.
+> You may use _any_ style for light or dark mode. No restrictions apply. (e.g. use 'desert' in light_style)
 
 ### 🕶️ Choosing a Light Theme
 
