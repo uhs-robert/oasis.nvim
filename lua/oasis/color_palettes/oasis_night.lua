@@ -22,10 +22,10 @@ local ui = {
 	},
 	-- General colors
 	theme = {
-		primary = p.red.indianred, --#D06666
+		primary = p.red.indianred,
 		light_primary = p.red.desertrose,
-		secondary = p.orange.sunset, --#FFA247
-		accent = p.blue.horizon, --#4AC8FF
+		secondary = p.orange.sunset,
+		accent = p.blue.horizon,
 	},
 }
 
@@ -34,50 +34,50 @@ local c = {
 	bg = ui.bg,
 	fg = ui.fg,
 	theme = ui.theme,
-  terminal = p.terminal,
+	terminal = p.terminal,
 
 	-- Syntax
 	syntax = {
 		-- Cold: (Data)
-		parameter = p.indigo.moonlitflower, --  #B499FF (paramaters) [UNIQUE]
-		identifier = p.yellow.navajowhite, --  #87CEEB (property identifiers)
-		delimiter = ui.theme.primary, -- (delimiters)
-		type = p.teal.darkagave, --  #48B4E0 (type definitions)
-		builtinVar = p.blue.skyBlueDress, --  #1CA1FF (this, document, window, etc)
-		string = p.green.cactus, --  #35b56e (strings)
-		regex = p.green.palm, --  #96EA7F (reg ex string)
-		builtinConst = p.teal.deepagave, --  #A7D3A9 (e.g. null, undefined, Infinity, etc)
-		constant = p.orange.darkRedDawn, --  #8FD1C7 (constant: number, float, boolean, or const not string/character)
+		parameter = p.indigo.moonlitflower,
+		identifier = p.yellow.navajowhite,
+		delimiter = ui.theme.primary,
+		type = p.teal.darkagave,
+		builtinVar = p.blue.skyBlueDress,
+		string = p.green.cactus,
+		regex = p.green.palm,
+		builtinConst = p.teal.deepagave,
+		constant = p.orange.darkRedDawn,
 
 		-- Warm: (Control / Flow)
-		func = p.orange.redDawn, --  #F8C471 [inverse of identifier]
-		builtinFunc = p.orange.sunrise, --  #F5A72C (eg. parseInst, Array, Object etc)
-		statement = p.yellow.khaki, --  #F0E68C (primary p, general statement, conditonal, repeat, label )
-		exception = p.red.indianred, --  #D06666 (try/catch, return)
-		keyword = p.yellow.darkkhaki, --  #E3963E (general catch all)
-		special = p.orange.sunset, --  #FFA247 (other catch all)
-		operator = p.red.desertrose, --  #ffa0a0 (operators)
-		punctuation = p.red.heatwave, --  #E58383 (punctuation)
-		preproc = p.blue.crystalBlue, --  #E0C4A8 (imports)
+		func = p.orange.redDawn,
+		builtinFunc = p.orange.sunrise,
+		statement = p.yellow.khaki,
+		exception = p.red.indianred,
+		keyword = p.yellow.darkkhaki,
+		special = p.orange.sunset,
+		operator = p.red.desertrose,
+		punctuation = p.red.heatwave,
+		preproc = p.blue.crystalBlue,
 
 		-- Neutral: (Connections / Info)
-		bracket = p.brown.dryriverbed, --  #A39B8E (bracket punctuation)
-		comment = ui.fg.comment, --  #8b7765 (comments)
+		bracket = p.brown.dryriverbed,
+		comment = ui.fg.comment,
 	},
 
 	-- Diff
 	diff = {
-		add = p.green.moss, --#6BBF59
-		change = p.yellow.dune, --#D4A017
-		delete = p.red.brick, --#A23B3B
+		add = p.green.moss,
+		change = p.yellow.dune,
+		delete = p.red.brick,
 	},
 
 	-- UI
 	ui = {
 		match = p.orange.sunset,
-		visual = { bg = p.visual.indigo, fg = "none" }, --#4D4528
-		search = { bg = p.teal.sky, fg = ui.fg.core }, -- #019992
-		curSearch = { bg = p.orange.sun, fg = ui.fg.core }, -- #F5A72C
+		visual = { bg = p.visual.indigo, fg = "none" },
+		search = { bg = p.visual.teal, fg = ui.fg.core },
+		curSearch = { bg = p.orange.sun, fg = ui.fg.core },
 
 		title = ui.theme.primary,
 		border = ui.theme.primary,
@@ -90,10 +90,10 @@ local c = {
 			border = { fg = ui.theme.primary, bg = ui.bg.mantle },
 		},
 		diag = {
-			error = { fg = p.diag.error.fg, bg = p.diag.error.bg },
+			error = { fg = p.diag.error.fg_light, bg = p.diag.error.bg },
 			warn = { fg = p.diag.warn.fg, bg = p.diag.warn.bg },
-			info = { fg = p.diag.info.fg, bg = p.diag.info.bg },
-			hint = { fg = p.diag.hint.fg, bg = p.diag.hint.bg },
+			info = { fg = p.diag.info.fg_light, bg = p.diag.info.bg },
+			hint = { fg = p.diag.hint.fg_light, bg = p.diag.hint.bg },
 			ok = { fg = p.diag.ok.fg, bg = "none" },
 		},
 	},
