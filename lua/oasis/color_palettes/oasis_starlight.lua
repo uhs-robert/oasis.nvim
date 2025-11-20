@@ -53,11 +53,11 @@ local c = {
 		func = p.orange.lightdawn, -- [inverse of identifier]
 		builtinFunc = p.orange.deepsun, -- (eg. parseInst, Array, Object etc)
 		statement = p.yellow.khaki, -- (primary p, general statement, conditonal, repeat, label )
-		exception = p.red.indianred, -- (try/catch, return)
+		exception = p.red.vibrantred, -- (try/catch, return)
 		keyword = p.yellow.moonlitsand, -- (general catch all)
 		special = p.orange.lightsunset, -- (other catch all)
-		operator = p.red.deepdesertrose, -- (operators)
-		punctuation = p.red.deepheatwave, -- (punctuation)
+		operator = p.red.desertrose, -- (operators)
+		punctuation = p.red.deepdesertrose, -- (punctuation)
 		preproc = p.blue.crystalBlue, -- (imports)
 
 		-- Neutral: (Connections / Info)
