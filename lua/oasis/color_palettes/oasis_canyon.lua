@@ -34,7 +34,7 @@ local c = {
 	bg = ui.bg,
 	fg = ui.fg,
 	theme = ui.theme,
-  terminal = p.terminal,
+	terminal = p.terminal,
 
 	-- Syntax
 	syntax = {
@@ -43,7 +43,7 @@ local c = {
 		identifier = p.yellow.navajowhite, -- (property identifiers)
 		delimiter = ui.theme.primary, -- (delimiter)
 		type = p.teal.agave, -- (type definitions)
-		builtinVar = p.blue.lightazure, -- (this, document, window, etc)
+		builtinVar = p.blue.brightazure, -- (this, document, window, etc)
 		string = p.green.springcactus, -- (strings)
 		regex = p.green.palm, -- (reg ex string)
 		builtinConst = p.green.lightaloe, -- (e.g. null, undefined, Infinity, etc)
@@ -51,17 +51,17 @@ local c = {
 
 		-- Warm: (Control / Flow)
 		func = p.orange.lightdawn, -- [inverse of identifier]
-		builtinFunc = p.orange.sunrise, -- (eg. parseInst, Array, Object etc)
+		builtinFunc = p.orange.brightestsunrise, -- (eg. parseInst, Array, Object etc)
 		statement = p.yellow.khaki, -- (primary p, general statement, conditonal, repeat, label )
-		exception = p.red.indianred, -- (try/catch, return)
+		exception = p.red.brightestvibrantred, -- (try/catch, return)
 		keyword = p.yellow.darkkhaki, -- (general catch all)
 		special = p.orange.lightsunset, -- (other catch all)
-		operator = p.red.deepdesertrose, -- (operators)
-		punctuation = p.red.deepheatwave, -- (punctuation)
+		operator = p.red.desertrose, -- (operators)
+		punctuation = p.red.brightheatwave, -- (punctuation)
 		preproc = p.blue.crystalBlue, -- (imports)
 
 		-- Neutral: (Connections / Info)
-		bracket = p.brown.mud, -- (bracket punctuation)
+		bracket = p.brown.lightriverbed, -- (bracket punctuation)
 		comment = ui.fg.comment, -- (comments)
 	},
 
@@ -76,7 +76,7 @@ local c = {
 	ui = {
 		match = p.yellow.gold,
 		visual = { bg = p.visual.blue, fg = "none" },
-		search = { bg = p.teal.sky, fg = ui.fg.core },
+		search = { bg = p.visual.orange, fg = ui.fg.core },
 		curSearch = { bg = p.orange.sun, fg = ui.bg.core },
 		dir = p.blue.lightskyblue,
 
@@ -91,10 +91,10 @@ local c = {
 			border = { fg = ui.theme.primary, bg = ui.bg.mantle },
 		},
 		diag = {
-			error = { fg = p.diag.error.fg, bg = p.diag.error.bg },
+			error = { fg = p.diag.error.fg_light, bg = p.diag.error.bg },
 			warn = { fg = p.diag.warn.fg, bg = p.diag.warn.bg },
-			info = { fg = p.diag.info.fg, bg = p.diag.info.bg },
-			hint = { fg = p.diag.hint.fg, bg = p.diag.hint.bg },
+			info = { fg = p.diag.info.fg_light, bg = p.diag.info.bg },
+			hint = { fg = p.diag.hint.fg_light, bg = p.diag.hint.bg },
 			ok = { fg = p.diag.ok.fg, bg = "none" },
 		},
 	},

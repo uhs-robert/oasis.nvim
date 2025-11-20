@@ -57,7 +57,7 @@ local c = {
 		keyword = p.yellow.darkkhaki, -- (general catch all)
 		special = p.orange.lightsunset, -- (other catch all)
 		operator = p.red.brightdesertrose, -- (operators)
-		punctuation = p.red.brightestheatwave, -- (punctuation)
+		punctuation = p.red.brightheatwave, -- (punctuation)
 		preproc = p.blue.crystalBlue, -- (imports)
 
 		-- Neutral: (Connections / Info)
