@@ -22,7 +22,7 @@ local ui = {
 	},
 	-- General colors
 	theme = {
-		primary = p.red.indianred,
+		primary = p.red.vibrantred,
 		light_primary = p.red.desertrose,
 		secondary = p.orange.sunset,
 		accent = p.teal.darkagave,
@@ -46,22 +46,22 @@ local c = {
 		builtinVar = p.blue.skyBlueDress,
 		string = p.green.cactus,
 		regex = p.green.palm,
-		builtinConst = p.teal.deepagave,
+		builtinConst = p.teal.midagave,
 		constant = p.orange.darkRedDawn,
 
 		-- Warm: (Control / Flow)
 		func = p.orange.redDawn,
-		builtinFunc = p.orange.sunrise,
+		builtinFunc = p.orange.brightsunrise,
 		statement = p.yellow.khaki,
-		exception = p.red.indianred,
+		exception = p.red.brightvibrantred,
 		keyword = p.yellow.darkkhaki,
 		special = p.orange.sunset,
 		operator = p.red.desertrose,
-		punctuation = p.red.heatwave,
+		punctuation = p.red.brightheatwave,
 		preproc = p.blue.crystalBlue,
 
 		-- Neutral: (Connections / Info)
-		bracket = p.brown.dryriverbed,
+		bracket = p.brown.drybone,
 		comment = ui.fg.comment,
 	},
 
@@ -76,8 +76,8 @@ local c = {
 	ui = {
 		match = p.orange.sunset,
 		visual = { bg = p.visual.orange, fg = "none" },
-		search = { bg = p.teal.sky, fg = ui.fg.core },
-		curSearch = { bg = p.orange.sun, fg = ui.fg.core },
+		search = { bg = p.visual.orange, fg = ui.fg.core },
+		curSearch = { bg = p.orange.sun, fg = ui.bg.core },
 
 		title = ui.theme.primary,
 		border = ui.theme.primary,
@@ -90,10 +90,10 @@ local c = {
 			border = { fg = ui.theme.primary, bg = ui.bg.mantle },
 		},
 		diag = {
-			error = { fg = p.diag.error.fg, bg = p.diag.error.bg },
+			error = { fg = p.diag.error.fg_light, bg = p.diag.error.bg },
 			warn = { fg = p.diag.warn.fg, bg = p.diag.warn.bg },
-			info = { fg = p.diag.info.fg, bg = p.diag.info.bg },
-			hint = { fg = p.diag.hint.fg, bg = p.diag.hint.bg },
+			info = { fg = p.diag.info.fg_light, bg = p.diag.info.bg },
+			hint = { fg = p.diag.hint.fg_light, bg = p.diag.hint.bg },
 			ok = { fg = p.diag.ok.fg, bg = "none" },
 		},
 	},
