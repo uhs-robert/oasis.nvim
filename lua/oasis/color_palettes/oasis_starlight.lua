@@ -34,7 +34,7 @@ local c = {
 	bg = ui.bg,
 	fg = ui.fg,
 	theme = ui.theme,
-  terminal = p.terminal,
+	terminal = p.terminal,
 
 	-- Syntax
 	syntax = {
@@ -76,7 +76,7 @@ local c = {
 	ui = {
 		match = p.orange.sunset,
 		visual = { bg = p.visual.yellow, fg = "none" },
-		search = { bg = p.teal.sky, fg = ui.fg.core },
+		search = { bg = p.blue.lunarShade, fg = ui.fg.core },
 		curSearch = { bg = p.orange.sun, fg = ui.bg.core },
 		dir = p.blue.skyblue,
 
