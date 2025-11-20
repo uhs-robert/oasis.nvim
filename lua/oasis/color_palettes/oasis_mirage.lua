@@ -56,7 +56,7 @@ local c = {
 		exception = p.red.brightestvibrantred, -- (try/catch, return)
 		keyword = p.yellow.darkkhaki, -- (general catch all)
 		special = p.orange.sunset, -- (other catch all)
-		operator = p.red.brightdesertrose, -- (operators)
+		operator = p.red.brightestdesertrose, -- (operators)
 		punctuation = p.red.brightestheatwave, -- (punctuation)
 		preproc = p.blue.crystalBlue, -- (imports)
 
