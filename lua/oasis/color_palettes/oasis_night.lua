@@ -76,7 +76,7 @@ local c = {
 	ui = {
 		match = p.orange.sunset,
 		visual = { bg = p.visual.indigo, fg = "none" },
-		search = { bg = p.visual.red, fg = ui.fg.core },
+		search = { bg = p.visual.orange, fg = ui.fg.core },
 		curSearch = { bg = p.orange.sun, fg = ui.bg.core },
 
 		title = ui.theme.primary,
