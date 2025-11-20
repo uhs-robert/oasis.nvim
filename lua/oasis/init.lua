@@ -96,4 +96,30 @@ end, {
 	end,
 })
 
+-- :OasisWCAG [palette] command to check WCAG contrast compliance
+vim.api.nvim_create_user_command("OasisWCAG", function(opts)
+	local wcag = require("oasis.wcag_checker")
+	if opts.args ~= "" then
+		wcag.check_palette(opts.args)
+	else
+		wcag.check_all()
+	end
+end, {
+	nargs = "?",
+	complete = function()
+		-- Glob all palette files on runtimepath
+		local paths = vim.fn.globpath(vim.o.rtp, "lua/oasis/color_palettes/*.lua", false, true)
+		local out = {}
+		for _, p in ipairs(paths) do
+			-- handle / or \ separators; capture the basename
+			local name = p:match("[\\/]color_palettes[\\/](.+)%.lua$")
+			if name and name ~= "init" then
+				table.insert(out, name)
+			end
+		end
+		table.sort(out)
+		return out
+	end,
+})
+
 return M
