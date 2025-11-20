@@ -22,7 +22,7 @@ local ui = {
 	},
 	-- General colors
 	theme = {
-		primary = p.red.indianred,
+		primary = p.red.vibrantred,
 		light_primary = p.red.desertrose,
 		secondary = p.orange.sunset,
 		accent = p.blue.horizon,
@@ -46,14 +46,14 @@ local c = {
 		builtinVar = p.blue.skyBlueDress,
 		string = p.green.cactus,
 		regex = p.green.palm,
-		builtinConst = p.teal.deepagave,
+		builtinConst = p.teal.midagave,
 		constant = p.orange.darkRedDawn,
 
 		-- Warm: (Control / Flow)
 		func = p.orange.redDawn,
-		builtinFunc = p.orange.sunrise,
+		builtinFunc = p.orange.brightsunrise,
 		statement = p.yellow.khaki,
-		exception = p.red.indianred,
+		exception = p.red.brightvibrantred,
 		keyword = p.yellow.darkkhaki,
 		special = p.orange.sunset,
 		operator = p.red.desertrose,
@@ -76,8 +76,8 @@ local c = {
 	ui = {
 		match = p.orange.sunset,
 		visual = { bg = p.visual.indigo, fg = "none" },
-		search = { bg = p.visual.teal, fg = ui.fg.core },
-		curSearch = { bg = p.orange.sun, fg = ui.fg.core },
+		search = { bg = p.visual.red, fg = ui.fg.core },
+		curSearch = { bg = p.orange.sun, fg = ui.bg.core },
 
 		title = ui.theme.primary,
 		border = ui.theme.primary,
