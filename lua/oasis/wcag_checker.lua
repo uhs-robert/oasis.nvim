@@ -175,10 +175,15 @@ function M.analyze_palette(palette_name)
 	check("Brackets (bracket on bg.core)", palette.syntax.bracket, palette.bg.core)
 
 	-- Diagnostics (critical for accessibility)
-	check("Error Text (diag.error.fg on bg.core)", palette.ui.diag.error.fg, palette.bg.core)
-	check("Warning Text (diag.warn.fg on bg.core)", palette.ui.diag.warn.fg, palette.bg.core)
-	check("Info Text (diag.info.fg on bg.core)", palette.ui.diag.info.fg, palette.bg.core)
-	check("Hint Text (diag.hint.fg on bg.core)", palette.ui.diag.hint.fg, palette.bg.core)
+	-- Check both inline (on bg.core) and virtual text (on own bg) scenarios
+	check("Error Inline (diag.error.fg on bg.core)", palette.ui.diag.error.fg, palette.bg.core)
+	check("Error Virtual Text (diag.error.fg on diag.error.bg)", palette.ui.diag.error.fg, palette.ui.diag.error.bg)
+	check("Warn Inline (diag.warn.fg on bg.core)", palette.ui.diag.warn.fg, palette.bg.core)
+	check("Warn Virtual Text (diag.warn.fg on diag.warn.bg)", palette.ui.diag.warn.fg, palette.ui.diag.warn.bg)
+	check("Info Inline (diag.info.fg on bg.core)", palette.ui.diag.info.fg, palette.bg.core)
+	check("Info Virtual Text (diag.info.fg on diag.info.bg)", palette.ui.diag.info.fg, palette.ui.diag.info.bg)
+	check("Hint Inline (diag.hint.fg on bg.core)", palette.ui.diag.hint.fg, palette.bg.core)
+	check("Hint Virtual Text (diag.hint.fg on diag.hint.bg)", palette.ui.diag.hint.fg, palette.ui.diag.hint.bg)
 
 	-- Visual feedback (extract fg from table if needed)
 	if palette.ui.search and palette.ui.search.fg then
