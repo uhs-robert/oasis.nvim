@@ -5,7 +5,7 @@
 local M = {}
 
 -- Configuration: Number of color pairs that are intentionally designed to fail WCAG AAA
--- (e.g., muted/dim text, comments, borders)
+-- (e.g., muted, dim, comments, and nontext)
 -- AAA Target = Total Checks - NUMBER_OF_ACCEPTABLE_FAILS
 local NUMBER_OF_ACCEPTABLE_FAILS = 4
 
@@ -185,9 +185,12 @@ function M.analyze_palette(palette_name)
 	check("Hint Inline (diag.hint.fg on bg.core)", palette.ui.diag.hint.fg, palette.bg.core)
 	check("Hint Virtual Text (diag.hint.fg on diag.hint.bg)", palette.ui.diag.hint.fg, palette.ui.diag.hint.bg)
 
-	-- Visual feedback (extract fg from table if needed)
+	-- Visual feedback (text readability only)
 	if palette.ui.search and palette.ui.search.fg then
 		check("Search Text (search.fg on search.bg)", palette.ui.search.fg, palette.ui.search.bg)
+	end
+	if palette.ui.curSearch and palette.ui.curSearch.bg then
+		check("CurSearch Text (curSearch.fg on curSearch.bg)", palette.ui.curSearch.fg, palette.ui.curSearch.bg)
 	end
 	check("Match (match on bg.core)", palette.ui.match, palette.bg.core)
 
