@@ -83,6 +83,7 @@ local visual = {
 local diag = {
 	error = {
 		fg = "#FF0000",
+		fg_light = "#FFA0A0",
 		bg = "#322639",
 	},
 	warn = {
@@ -91,10 +92,12 @@ local diag = {
 	},
 	info = {
 		fg = "#75A0FF",
+		fg_light = "#87CEEB",
 		bg = "#203346",
 	},
 	hint = {
 		fg = "#62ABA0",
+		fg_light = "#8FD1C7",
 		bg = "#273644",
 	},
 	ok = {
