@@ -368,6 +368,7 @@ local colors = {
 	-- Primary Colors
 	red = {
 		indianred = "#D06666",
+		vibrantred = "#ED7777",
 		heatwave = "#E58383",
 		deepheatwave = "#E17070",
 		desertrose = "#FFA0A0",
