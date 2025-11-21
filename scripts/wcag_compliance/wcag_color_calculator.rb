@@ -175,10 +175,12 @@ class WCAGColorCalculator
   # Adjust lightness to meet target contrast ratio using binary search
   def adjust_lightness_for_target(hex_color, target_ratio, min_l, max_l, max_iterations = 100)
     color = Color.from_hex(hex_color)
-    hue, saturation, = color.to_hsl
+    hue, saturation, original_lightness = color.to_hsl
+    lightening = min_l >= original_lightness # true if searching upward (lightening)
     state = {
       min: min_l, max: max_l,
-      best_color: hex_color, best_ratio: contrast_ratio(color, @background)
+      best_color: hex_color, best_ratio: contrast_ratio(color, @background),
+      lightening: lightening
     }
     binary_search_lightness(hue, saturation, target_ratio, state, max_iterations)
   end
@@ -228,11 +230,21 @@ class WCAGColorCalculator
     [color.to_hex, contrast_ratio(color, @background)]
   end
 
-  def update_search_state(state, test_l, test_hex, test_ratio, needs_darker)
-    if needs_darker
-      state[:max] = test_l
+  def update_search_state(state, test_l, test_hex, test_ratio, needs_more_contrast)
+    if needs_more_contrast
+      # Need more contrast - direction depends on whether we're lightening or darkening
+      if state[:lightening]
+        state[:min] = test_l # Go higher (lighter) for more contrast
+      else
+        state[:max] = test_l # Go lower (darker) for more contrast
+      end
     else
-      state[:min] = test_l
+      # Have enough contrast - narrow search in opposite direction
+      if state[:lightening]
+        state[:max] = test_l # Go lower (darker) for less contrast
+      else
+        state[:min] = test_l # Go higher (lighter) for less contrast
+      end
       state[:best_color] = test_hex
       state[:best_ratio] = test_ratio
     end
@@ -255,7 +267,7 @@ module OasisPresets
 
     # Syntax - Warm (Control/Flow)
     'func' => '#F8B471',
-    'builtinFunc' => '#F38565',
+    'builtinFunc' => '#F49F15',
     'statement' => '#F0E68C',
     'exception' => '#ED7777',
     'keyword' => '#BDB76B',
