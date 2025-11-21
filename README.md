@@ -22,7 +22,7 @@ Born from the classic [desert.vim](https://github.com/fugalh/desert.vim), transf
 
 Oasis follows Melange's warm/cool split philosophy (**warm = action/flow**, **cool = structure/data**).
 
-Light themes exclusively use warm beige-to-peachy tones to minimize blue light exposure and support eye health during extended coding sessions. All themes are fully AAA WCAG compliant.
+**All themes are fully AAA WCAG compliant**. Light themes use warm beige-to-peachy tones to minimize blue light exposure and support eye health during extended coding sessions.
 
 <table>
   <tr>
