@@ -6,97 +6,148 @@
 # Calculates AAA-compliant colors while maintaining hue and saturation.
 # No external dependencies required.
 
+# WCAG contrast ratio standards
+module WCAGStandards
+  AAA_NORMAL_TEXT = 7.05 # With a little wiggle room!
+  AAA_LARGE_TEXT = 4.5
+  AA_NORMAL_TEXT = 4.5
+  AA_LARGE_TEXT = 3.0
+end
+
 # Color conversion and manipulation
 class Color
   attr_reader :r, :g, :b
 
-  def initialize(r, g, b)
-    @r = r.to_f
-    @g = g.to_f
-    @b = b.to_f
+  def initialize(red, green, blue)
+    @r = red.to_f
+    @g = green.to_f
+    @b = blue.to_f
   end
 
   def self.from_hex(hex)
     hex = hex.delete('#')
-    r = hex[0..1].to_i(16) / 255.0
-    g = hex[2..3].to_i(16) / 255.0
-    b = hex[4..5].to_i(16) / 255.0
-    new(r, g, b)
+    red = hex[0..1].to_i(16) / 255.0
+    green = hex[2..3].to_i(16) / 255.0
+    blue = hex[4..5].to_i(16) / 255.0
+    new(red, green, blue)
   end
 
   def to_hex
     r_int = (@r * 255).round.clamp(0, 255)
     g_int = (@g * 255).round.clamp(0, 255)
     b_int = (@b * 255).round.clamp(0, 255)
-    format('#%02x%02x%02x', r_int, g_int, b_int)
+    format('#%<r>02x%<g>02x%<b>02x', r: r_int, g: g_int, b: b_int)
   end
 
   # Convert RGB to HSL
   def to_hsl
-    max = [@r, @g, @b].max
-    min = [@r, @g, @b].min
-    delta = max - min
+    max_val = [@r, @g, @b].max
+    min_val = [@r, @g, @b].min
+    delta = max_val - min_val
 
-    # Lightness
-    l = (max + min) / 2.0
+    lightness = (max_val + min_val) / 2.0
+    return [0.0, 0.0, lightness] if delta.zero?
 
-    # Saturation
-    if delta.zero?
-      s = 0.0
-      h = 0.0
-    else
-      s = l > 0.5 ? delta / (2.0 - max - min) : delta / (max + min)
+    saturation = calculate_saturation(lightness, max_val, min_val, delta)
+    hue = calculate_hue(max_val, delta)
 
-      # Hue
-      h = case max
-          when @r then ((@g - @b) / delta + (@g < @b ? 6 : 0)) / 6.0
-          when @g then ((@b - @r) / delta + 2) / 6.0
-          when @b then ((@r - @g) / delta + 4) / 6.0
-          end
-    end
-
-    [h, s, l]
+    [hue, saturation, lightness]
   end
 
   # Convert HSL to RGB
-  def self.from_hsl(h, s, l)
-    if s.zero?
-      # Achromatic
-      new(l, l, l)
-    else
-      q = l < 0.5 ? l * (1 + s) : l + s - l * s
-      p = 2 * l - q
+  def self.from_hsl(hue, saturation, lightness)
+    return new(lightness, lightness, lightness) if saturation.zero?
 
-      r = hue_to_rgb(p, q, h + 1.0 / 3.0)
-      g = hue_to_rgb(p, q, h)
-      b = hue_to_rgb(p, q, h - 1.0 / 3.0)
+    secondary = calculate_hsl_secondary(lightness, saturation)
+    primary = 2 * lightness - secondary
 
-      new(r, g, b)
-    end
+    red = hue_to_rgb(primary, secondary, hue + 1.0 / 3.0)
+    green = hue_to_rgb(primary, secondary, hue)
+    blue = hue_to_rgb(primary, secondary, hue - 1.0 / 3.0)
+
+    new(red, green, blue)
   end
 
-  def self.hue_to_rgb(p, q, t)
-    t += 1 if t < 0
-    t -= 1 if t > 1
+  def self.hue_to_rgb(primary, secondary, temp)
+    temp += 1 if temp.negative?
+    temp -= 1 if temp > 1
 
-    return p + (q - p) * 6 * t if t < 1.0 / 6.0
-    return q if t < 1.0 / 2.0
-    return p + (q - p) * (2.0 / 3.0 - t) * 6 if t < 2.0 / 3.0
+    return primary + (secondary - primary) * 6 * temp if temp < 1.0 / 6.0
+    return secondary if temp < 1.0 / 2.0
+    return primary + (secondary - primary) * (2.0 / 3.0 - temp) * 6 if temp < 2.0 / 3.0
 
-    p
+    primary
+  end
+
+  def self.calculate_hsl_secondary(lightness, saturation)
+    lightness < 0.5 ? lightness * (1 + saturation) : lightness + saturation - lightness * saturation
+  end
+
+  private_class_method :calculate_hsl_secondary
+
+  private
+
+  def calculate_saturation(lightness, max_val, min_val, delta)
+    lightness > 0.5 ? delta / (2.0 - max_val - min_val) : delta / (max_val + min_val)
+  end
+
+  def calculate_hue(max_val, delta)
+    case max_val
+    when @r then ((@g - @b) / delta + (@g < @b ? 6 : 0)) / 6.0
+    when @g then ((@b - @r) / delta + 2) / 6.0
+    when @b then ((@r - @g) / delta + 4) / 6.0
+    end
+  end
+end
+
+# Formats and prints WCAG calculation results
+class ResultsPrinter
+  def initialize(background_hex, aaa_threshold = 7.05)
+    @background_hex = background_hex
+    @aaa_threshold = aaa_threshold
+  end
+
+  def print(results, title = nil)
+    print_header(title)
+    max_name_length = results.keys.map(&:length).max
+    results.sort.each { |name, data| print_row(name, data, max_name_length) }
+    puts
+  end
+
+  def build_entry(original_hex, new_hex, current_ratio, new_ratio)
+    { original: original_hex, new: new_hex, current_ratio: current_ratio, new_ratio: new_ratio }
+  end
+
+  private
+
+  def print_header(title)
+    puts "\n#{'=' * 80}"
+    puts title || "AAA Color Calculations for background: #{@background_hex}"
+    puts "#{'=' * 80}\n\n"
+  end
+
+  def print_row(name, data, max_name_length)
+    status = data[:current_ratio] >= @aaa_threshold ? '✓' : '✗'
+    puts format(
+      "%<name>-#{max_name_length}s: %<original>s → %<new>s (%<current>5.2f:1 → %<new_ratio>5.2f:1) %<status>s",
+      name: name,
+      original: data[:original],
+      new: data[:new],
+      current: data[:current_ratio],
+      new_ratio: data[:new_ratio],
+      status: status
+    )
   end
 end
 
 # Main calculator class
 class WCAGColorCalculator
-  AAA_NORMAL_TEXT = 7.05
-  AAA_LARGE_TEXT = 4.5
-  AA_NORMAL_TEXT = 4.5
-  AA_LARGE_TEXT = 3.0
+  include WCAGStandards
 
   def initialize(background_hex)
     @background = Color.from_hex(background_hex)
     @background_hex = background_hex
+    @printer = ResultsPrinter.new(background_hex, AAA_NORMAL_TEXT)
   end
 
   # Linearize RGB component for luminance calculation
@@ -121,114 +172,70 @@ class WCAGColorCalculator
     (lighter + 0.05) / (darker + 0.05)
   end
 
-  # Darken a color while maintaining hue and saturation until target contrast is achieved
-  def darken_for_target(hex_color, target_ratio = AAA_NORMAL_TEXT, max_iterations = 100)
+  # Adjust lightness to meet target contrast ratio using binary search
+  def adjust_lightness_for_target(hex_color, target_ratio, min_l, max_l, max_iterations = 100)
     color = Color.from_hex(hex_color)
-    h, s, l = color.to_hsl
-
-    # Binary search for the right lightness value
-    min_l = 0.0
-    max_l = l
-    best_color = hex_color
-    best_ratio = contrast_ratio(color, @background)
-
-    max_iterations.times do
-      test_l = (min_l + max_l) / 2.0
-      test_color = Color.from_hsl(h, s, test_l)
-      test_hex = test_color.to_hex
-      test_ratio = contrast_ratio(test_color, @background)
-
-      return [test_hex, test_ratio] if (test_ratio - target_ratio).abs < 0.01
-
-      if test_ratio < target_ratio
-        max_l = test_l # Need darker
-      else
-        min_l = test_l # Can be lighter
-        best_color = test_hex
-        best_ratio = test_ratio
-      end
-    end
-
-    [best_color, best_ratio]
+    hue, saturation, = color.to_hsl
+    state = {
+      min: min_l, max: max_l,
+      best_color: hex_color, best_ratio: contrast_ratio(color, @background)
+    }
+    binary_search_lightness(hue, saturation, target_ratio, state, max_iterations)
   end
 
-  # Lighten a color while maintaining hue and saturation until target contrast is achieved
-  def lighten_for_target(hex_color, target_ratio = AAA_NORMAL_TEXT, max_iterations = 100)
-    color = Color.from_hex(hex_color)
-    h, s, l = color.to_hsl
-
-    # Binary search for the right lightness value
-    min_l = l
-    max_l = 1.0
-    best_color = hex_color
-    best_ratio = contrast_ratio(color, @background)
-
-    max_iterations.times do
-      test_l = (min_l + max_l) / 2.0
-      test_color = Color.from_hsl(h, s, test_l)
-      test_hex = test_color.to_hex
-      test_ratio = contrast_ratio(test_color, @background)
-
-      return [test_hex, test_ratio] if (test_ratio - target_ratio).abs < 0.01
-
-      if test_ratio < target_ratio
-        min_l = test_l # Need lighter
-      else
-        max_l = test_l # Can be darker
-        best_color = test_hex
-        best_ratio = test_ratio
-      end
-    end
-
-    [best_color, best_ratio]
+  # Adjust color brightness for target contrast (darken or lighten)
+  def adjust_brightness(hex_color, target_ratio, darken, max_iterations = 100)
+    _, _, lightness = Color.from_hex(hex_color).to_hsl
+    min_l, max_l = darken ? [0.0, lightness] : [lightness, 1.0]
+    adjust_lightness_for_target(hex_color, target_ratio, min_l, max_l, max_iterations)
   end
 
   # Adjust color for target contrast, deciding whether to lighten or darken
   def adjust_for_target(hex_color, target_ratio = AAA_NORMAL_TEXT, max_iterations = 100)
-    _, _, background_l = @background.to_hsl
-    # Light backgrounds need dark text, dark backgrounds need light text
-    if background_l > 0.5
-      darken_for_target(hex_color, target_ratio, max_iterations)
-    else
-      lighten_for_target(hex_color, target_ratio, max_iterations)
-    end
+    _, _, background_lightness = @background.to_hsl
+    adjust_brightness(hex_color, target_ratio, background_lightness > 0.5, max_iterations)
   end
 
   # Calculate AAA-compliant versions of multiple colors
   def calculate_batch(colors)
-    results = {}
-    colors.each do |name, original_hex|
+    colors.each_with_object({}) do |(name, original_hex), results|
       new_hex, ratio = adjust_for_target(original_hex)
       current_ratio = contrast_ratio(Color.from_hex(original_hex), @background)
-      results[name] = {
-        original: original_hex,
-        new: new_hex,
-        current_ratio: current_ratio,
-        new_ratio: ratio
-      }
+      results[name] = @printer.build_entry(original_hex, new_hex, current_ratio, ratio)
     end
-    results
   end
 
   # Print results in a formatted table
   def print_results(results, title = nil)
-    puts "\n#{'=' * 80}"
-    puts title || "AAA Color Calculations for background: #{@background_hex}"
-    puts "#{'=' * 80}\n\n"
+    @printer.print(results, title)
+  end
 
-    max_name_length = results.keys.map(&:length).max
+  private
 
-    results.sort.each do |name, data|
-      status = data[:current_ratio] >= AAA_NORMAL_TEXT ? '✓' : '✗'
-      printf "%-#{max_name_length}s: %s → %s (%5.2f:1 → %5.2f:1) %s\n",
-             name,
-             data[:original],
-             data[:new],
-             data[:current_ratio],
-             data[:new_ratio],
-             status
+  def binary_search_lightness(hue, saturation, target_ratio, state, iterations = 100)
+    iterations.times do
+      test_l = (state[:min] + state[:max]) / 2.0
+      test_hex, test_ratio = test_color_at_lightness(hue, saturation, test_l)
+      return [test_hex, test_ratio] if (test_ratio - target_ratio).abs < 0.01
+
+      update_search_state(state, test_l, test_hex, test_ratio, test_ratio < target_ratio)
     end
-    puts
+    [state[:best_color], state[:best_ratio]]
+  end
+
+  def test_color_at_lightness(hue, saturation, lightness)
+    color = Color.from_hsl(hue, saturation, lightness)
+    [color.to_hex, contrast_ratio(color, @background)]
+  end
+
+  def update_search_state(state, test_l, test_hex, test_ratio, needs_darker)
+    if needs_darker
+      state[:max] = test_l
+    else
+      state[:min] = test_l
+      state[:best_color] = test_hex
+      state[:best_ratio] = test_ratio
+    end
   end
 end
 
@@ -365,7 +372,7 @@ if __FILE__ == $PROGRAM_NAME
     # Single color mode
     background = ARGV[0]
     foreground = ARGV[1]
-    target = (ARGV[2] || 7.1).to_f
+    target = (ARGV[2] || WCAGStandards::AAA_NORMAL_TEXT).to_f
 
     calculator = WCAGColorCalculator.new(background)
     color = Color.from_hex(foreground)
