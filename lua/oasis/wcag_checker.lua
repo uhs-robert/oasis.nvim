@@ -263,7 +263,16 @@ function M.print_palette_results(results)
 	print("\nDetailed Results:")
 	print(string.rep("-", 80))
 
+	-- Sort checks alphabetically by label
+	local sorted_checks = {}
 	for _, check in ipairs(results.checks) do
+		table.insert(sorted_checks, check)
+	end
+	table.sort(sorted_checks, function(a, b)
+		return a.label < b.label
+	end)
+
+	for _, check in ipairs(sorted_checks) do
 		print(string.format("%-45s %s", check.label, format_ratio(check.ratio, check.level)))
 	end
 end
