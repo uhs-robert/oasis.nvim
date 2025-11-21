@@ -29,28 +29,28 @@ local terminal = {
 
 local light_terminal = {
 	color0 = "#3A3427",
-	color8 = "#6F664D",
+	color8 = "#454030",
 
-	color1 = "#B5563A",
-	color9 = "#B85763",
+	color1 = "#663021",
+	color9 = "#692c34",
 
-	color2 = "#2A712D",
-	color10 = "#516B14",
+	color2 = "#1b491d",
+	color10 = "#35450d",
 
-	color3 = "#A34700",
-	color11 = "#A07400",
+	color3 = "#6b2e00",
+	color11 = "#533c00",
 
-	color4 = "#1964A6",
-	color12 = "#2C5AA0",
+	color4 = "#10426d",
+	color12 = "#1f3f71",
 
-	color5 = "#5A2FCC",
-	color13 = "#7A3FE2",
+	color5 = "#46259f",
+	color13 = "#4d19a8",
 
-	color6 = "#0A6F8D",
-	color14 = "#0A5A74",
+	color6 = "#064658",
+	color14 = "#084559",
 
 	color7 = "#453826",
-	color15 = "#5E574A",
+	color15 = "#443f36",
 }
 
 -- Visual BG
