@@ -50,7 +50,7 @@ local c = {
 
 		-- Warm: (Control / Flow)
 		func = p.orange.redDawn, -- [inverse of identifier]
-		builtinFunc = p.orange.brightestsunrise, -- (eg. parseInst, Array, Object etc)
+		builtinFunc = p.orange.sun, -- (eg. parseInst, Array, Object etc)
 		statement = p.yellow.khaki, -- (primary p, general statement, conditonal, repeat, label )
 		exception = p.red.lightvibrantred, -- (try/catch, return)
 		keyword = p.yellow.darkkhaki, -- (general catch all)
