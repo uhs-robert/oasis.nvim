@@ -51,11 +51,11 @@ local c = {
 
 		-- Warm: (Control / Flow)
 		func = p.orange.redDawn, -- [inverse of identifier]
-		builtinFunc = p.orange.sunset, -- (eg. parseInst, Array, Object etc) TODO: DUPLICATE
+		builtinFunc = p.orange.deepersun, -- (eg. parseInst, Array, Object etc)
 		statement = p.yellow.khaki, -- (primary p, general statement, conditonal, repeat, label )
 		exception = p.red.vibrantred, -- (try/catch, return)
 		keyword = p.yellow.darkkhaki, -- (general catch all)
-		special = p.orange.sunset, -- (other catch all) TODO: DUPLICATE
+		special = p.orange.sunset, -- (other catch all)
 		operator = p.red.desertrose, -- (operators)
 		punctuation = p.red.heatwave, -- (punctuation)
 		preproc = p.blue.crystalBlue, -- (imports)
