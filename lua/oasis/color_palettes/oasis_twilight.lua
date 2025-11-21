@@ -1,24 +1,24 @@
 -- lua/oasis/color_palettes/oasis_twilight.lua
 
 local p = require("oasis.palette")
-local key = "twilight"
+local theme = p.theme.twilight
 
 -- General Reusable Colors
 local ui = {
 	-- Backgrounds
 	bg = {
-		core = p.theme.bg.core[key],
-		shadow = p.theme.bg.shadow[key],
-		mantle = p.theme.bg.mantle[key],
-		surface = p.theme.bg.surface[key],
+		core = theme.bg.core,
+		shadow = theme.bg.shadow,
+		mantle = theme.bg.mantle,
+		surface = theme.bg.surface,
 	},
 	-- Foregrounds
 	fg = {
-		core = p.theme.fg.core[key],
-		strong = p.theme.fg.strong[key],
-		muted = p.theme.fg.muted[key],
-		dim = p.theme.fg.dim[key],
-		comment = p.theme.fg.comment[key],
+		core = theme.fg.core,
+		strong = theme.fg.strong,
+		muted = theme.fg.muted,
+		dim = theme.fg.dim,
+		comment = theme.fg.comment,
 	},
 	-- General colors
 	theme = {
