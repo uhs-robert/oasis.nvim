@@ -39,25 +39,25 @@ local c = {
 	-- Syntax
 	syntax = {
 		-- Cold: (Data)
-		parameter = p.lavender[300], -- (paramaters) [UNIQUE]
-		identifier = p.sand[400], -- (property identifiers)
-		delimiter = ui.theme.primary, -- (delimiters)
-		type = p.agave[400], -- (type definitions)
+		parameter = p.lavender[300],
+		identifier = p.sand[400],
+		delimiter = ui.theme.primary,
+		type = p.agave[400],
 		builtinVar = p.azure[400], -- (this, document, window, etc)
-		string = p.cactus[400], -- (strings)
-		regex = p.palm[500], -- (reg ex string)
+		string = p.cactus[400],
+		regex = p.palm[500],
 		builtinConst = p.agave[500], -- (e.g. null, undefined, Infinity, etc)
 		constant = p.sundown[400], -- (constant: number, float, boolean, or const not string/character)
 
 		-- Warm: (Control / Flow)
-		func = p.sunrise[500], -- [inverse of identifier]
+		func = p.sunrise[500],
 		builtinFunc = p.sunshine[400], -- (eg. parseInst, Array, Object etc)
-		statement = p.khaki[500], -- (primary p, general statement, conditonal, repeat, label )
+		statement = p.khaki[500], -- (general statement (i.e. var, const))
 		exception = p.red[50], -- (try/catch, return)
-		keyword = p.khaki[600], -- (general catch all)
-		special = p.sunshine[200], -- (other catch all)
-		operator = p.rose[200], -- (operators)
-		punctuation = p.coral[200], -- (punctuation)
+		keyword = p.khaki[600], -- (Conditionals, Loops)
+		special = p.sunshine[200], -- (Statement not covered above)
+		operator = p.rose[200],
+		punctuation = p.coral[200],
 		preproc = p.lagoon[500], -- (imports)
 
 		-- Neutral: (Connections / Info)

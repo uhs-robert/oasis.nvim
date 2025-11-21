@@ -44,22 +44,22 @@ local c = {
 		identifier = "#2b3138",
 		delimiter = ui.theme.primary,
 		type = "#1b3531",
-		builtinVar = "#003063",
+		builtinVar = "#003063", -- (this, document, window, etc)
 		string = "#0e3822",
 		regex = "#133809",
-		builtinConst = "#163632",
+		builtinConst = "#163632", -- (constant: number, float, boolean, or const not string/character)
 		constant = "#522403",
 
 		-- Warm: (Control / Flow)
 		func = "#4c2804",
-		builtinFunc = "#5c1a07",
-		statement = "#363107",
-		exception = "#640d0d",
-		keyword = "#343217",
-		special = "#4e2700",
+		builtinFunc = "#5c1a07", -- (eg. parseInt, Array, Object etc)
+		statement = "#363107", -- (general statement (i.e. var, const))
+		exception = "#640d0d", -- (try/catch, return)
+		keyword = "#343217", -- (Conditionals, Loops)
+		special = "#4e2700", -- (Statement not covered above)
 		operator = "#690000",
 		punctuation = "#640e0e",
-		preproc = "#053640",
+		preproc = "#053640", -- (imports)
 
 		-- Neutral: (Connections / Info)
 		bracket = "#353029",
