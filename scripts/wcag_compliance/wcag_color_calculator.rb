@@ -175,21 +175,24 @@ class WCAGColorCalculator
   # Adjust lightness to meet target contrast ratio using binary search
   def adjust_lightness_for_target(hex_color, target_ratio, min_l, max_l, max_iterations = 100)
     color = Color.from_hex(hex_color)
-    hue, saturation, original_lightness = color.to_hsl
-    lightening = min_l >= original_lightness # true if searching upward (lightening)
+    hue, saturation, _original_lightness = color.to_hsl
+
+    # Determine if we should search for lighter or darker colors based on background
+    _, _, bg_lightness = @background.to_hsl
+    search_lighter = bg_lightness < 0.5
+
     state = {
       min: min_l, max: max_l,
       best_color: hex_color, best_ratio: contrast_ratio(color, @background),
-      lightening: lightening
+      search_lighter: search_lighter
     }
     binary_search_lightness(hue, saturation, target_ratio, state, max_iterations)
   end
 
   # Adjust color brightness for target contrast (darken or lighten)
   def adjust_brightness(hex_color, target_ratio, darken, max_iterations = 100)
-    _, _, lightness = Color.from_hex(hex_color).to_hsl
-    min_l, max_l = darken ? [0.0, lightness] : [lightness, 1.0]
-    adjust_lightness_for_target(hex_color, target_ratio, min_l, max_l, max_iterations)
+    # Always search the full lightness range to find the exact target
+    adjust_lightness_for_target(hex_color, target_ratio, 0.0, 1.0, max_iterations)
   end
 
   # Adjust color for target contrast, deciding whether to lighten or darken
@@ -199,9 +202,13 @@ class WCAGColorCalculator
   end
 
   # Calculate AAA-compliant versions of multiple colors
+  # Colors can be:
+  #   { 'name' => '#hex' } or
+  #   { 'name' => { hex: '#hex', target: 7.5 } }
   def calculate_batch(colors)
-    colors.each_with_object({}) do |(name, original_hex), results|
-      new_hex, ratio = adjust_for_target(original_hex)
+    colors.each_with_object({}) do |(name, color_data), results|
+      original_hex, target = parse_color_entry(color_data)
+      new_hex, ratio = adjust_for_target(original_hex, target)
       current_ratio = contrast_ratio(Color.from_hex(original_hex), @background)
       results[name] = @printer.build_entry(original_hex, new_hex, current_ratio, ratio)
     end
@@ -214,8 +221,20 @@ class WCAGColorCalculator
 
   private
 
+  # Parse color entry from batch - supports both simple hex string and hash with target
+  def parse_color_entry(color_data)
+    return [color_data, AAA_NORMAL_TEXT] unless color_data.is_a?(Hash)
+
+    hex = color_data[:hex] || color_data['hex']
+    target = color_data[:target] || color_data['target'] || AAA_NORMAL_TEXT
+    [hex, target]
+  end
+
   def binary_search_lightness(hue, saturation, target_ratio, state, iterations = 100)
-    iterations.times do
+    iterations.times do |i|
+      # Check if search range is valid
+      break if (state[:max] - state[:min]).abs < 0.001
+
       test_l = (state[:min] + state[:max]) / 2.0
       test_hex, test_ratio = test_color_at_lightness(hue, saturation, test_l)
       return [test_hex, test_ratio] if (test_ratio - target_ratio).abs < 0.01
@@ -231,23 +250,19 @@ class WCAGColorCalculator
   end
 
   def update_search_state(state, test_l, test_hex, test_ratio, needs_more_contrast)
-    if needs_more_contrast
-      # Need more contrast - direction depends on whether we're lightening or darkening
-      if state[:lightening]
-        state[:min] = test_l # Go higher (lighter) for more contrast
-      else
-        state[:max] = test_l # Go lower (darker) for more contrast
-      end
-    else
-      # Have enough contrast - narrow search in opposite direction
-      if state[:lightening]
-        state[:max] = test_l # Go lower (darker) for less contrast
-      else
-        state[:min] = test_l # Go higher (lighter) for less contrast
-      end
-      state[:best_color] = test_hex
-      state[:best_ratio] = test_ratio
-    end
+    # Determine which boundary to update based on search direction and contrast need
+    boundary_key = calculate_boundary_key(state[:search_lighter], needs_more_contrast)
+    state[boundary_key] = test_l
+
+    # Update best color when we have sufficient contrast
+    return if needs_more_contrast
+
+    state[:best_color] = test_hex
+    state[:best_ratio] = test_ratio
+  end
+
+  def calculate_boundary_key(search_lighter, needs_more_contrast)
+    search_lighter == needs_more_contrast ? :min : :max
   end
 end
 
@@ -268,6 +283,7 @@ module OasisPresets
     # Syntax - Warm (Control/Flow)
     'func' => '#F8B471',
     'builtinFunc' => '#F49F15',
+    'builtinFuncAlt' => '#E67451',
     'statement' => '#F0E68C',
     'exception' => '#ED7777',
     'keyword' => '#BDB76B',
@@ -280,7 +296,7 @@ module OasisPresets
     'bracket' => '#B5ADA0',
 
     # UI
-    'theme_primary' => '#D06666',
+    'theme_primary' => '#CD5C5C',
     'match' => '#FFA247',
     'dir' => '#87CEEB',
 
@@ -302,7 +318,10 @@ module OasisPresets
 
   # Light palette = base + light-only tweaks
   LIGHT_COLORS = BASE_COLORS.merge(
-    'identifier' => '#6E7D8D'
+    'identifier' => '#6E7D8D',
+    'theme_primary' => { hex: '#D06666', target: 5.0 },
+    'operator' => { hex: '#FFA0A0', target: 9.0 },
+    'punctuation' => { hex: '#F09595', target: 8.0 }
   ).freeze
 
   # Dark theme backgrounds
@@ -323,12 +342,20 @@ module OasisPresets
   }.freeze
 
   # Dark palette = base + dark-only tweaks
-  DARK_COLORS = BASE_COLORS.merge
-                           # # examples – replace with your real dark values
-                           # 'string' => '#75C777',
-                           # 'func' => '#FF8A3A',
-                           # 'theme_primary' => '#FF8A5C'
-                           .freeze
+  DARK_COLORS = BASE_COLORS.merge(
+    'theme_primary' => { hex: '#D06666', target: 5.0 },
+    'operator' => { hex: '#FFA0A0', target: 9.0 },
+    'punctuation' => { hex: '#F09595', target: 8.0 }
+  ).freeze
+end
+
+# Helper method for theme lookup
+def find_theme_config(theme_name)
+  if OasisPresets::LIGHT_THEMES.key?(theme_name)
+    [OasisPresets::LIGHT_THEMES[theme_name], OasisPresets::LIGHT_COLORS]
+  elsif OasisPresets::DARK_THEMES.key?(theme_name)
+    [OasisPresets::DARK_THEMES[theme_name], OasisPresets::DARK_COLORS]
+  end
 end
 
 # CLI interface
@@ -337,7 +364,14 @@ if __FILE__ == $PROGRAM_NAME
     # No arguments - show example batch processing
     puts 'Example batch processing for oasis_dawn background (#EFE5B6):'
     calculator = WCAGColorCalculator.new('#EFE5B6')
-    results = calculator.calculate_batch(OasisPresets::LIGHT_COLORS)
+
+    # Example with custom target for specific colors
+    custom_colors = OasisPresets::LIGHT_COLORS.merge(
+      'error' => { hex: '#D06666', target: 8.0 },  # Higher contrast for errors
+      'warn' => { hex: '#EEEE00', target: 8.0 }    # Higher contrast for warnings
+    )
+
+    results = calculator.calculate_batch(custom_colors)
     calculator.print_results(results)
 
     puts "\nAvailable light theme backgrounds:"
@@ -351,22 +385,19 @@ if __FILE__ == $PROGRAM_NAME
     puts "\nUsage:"
     puts "  Single color: ruby #{$PROGRAM_NAME} <background_hex> <foreground_hex> [target_ratio]"
     puts "  Batch process: ruby #{$PROGRAM_NAME} batch <theme_name>"
-    puts "  Example: ruby #{$PROGRAM_NAME} '#EFE5B6' '#D26600' 7.0"
-    puts "  Example: ruby #{$PROGRAM_NAME} batch dawn"
-    puts "  Example: ruby #{$PROGRAM_NAME} batch night"
+    puts ''
+    puts 'Examples:'
+    puts "  ruby #{$PROGRAM_NAME} '#EFE5B6' '#D26600' 7.0"
+    puts "  ruby #{$PROGRAM_NAME} batch dawn"
+    puts "  ruby #{$PROGRAM_NAME} batch night"
+    puts ''
+    puts 'Custom targets in code:'
+    puts "  colors = { 'error' => { hex: '#D06666', target: 8.0 } }"
+    puts '  calculator.calculate_batch(colors)'
 
   elsif ARGV[0] == 'batch'
-    theme_name = ARGV[1] || 'dawn'
-    background = nil
-    color_set = nil
-
-    if OasisPresets::LIGHT_THEMES.key?(theme_name)
-      background = OasisPresets::LIGHT_THEMES[theme_name]
-      color_set = OasisPresets::LIGHT_COLORS
-    elsif OasisPresets::DARK_THEMES.key?(theme_name)
-      background = OasisPresets::DARK_THEMES[theme_name]
-      color_set = OasisPresets::DARK_COLORS
-    end
+    theme_name = ARGV[1] || 'lagoon'
+    background, color_set = find_theme_config(theme_name)
 
     unless background
       puts "Unknown theme: #{theme_name}"
@@ -390,13 +421,17 @@ if __FILE__ == $PROGRAM_NAME
     color = Color.from_hex(foreground)
     current_ratio = calculator.contrast_ratio(color, calculator.instance_variable_get(:@background))
 
+    # Calculate the target-adjusted color even if it already passes
+    new_color, new_ratio = calculator.adjust_for_target(foreground, target)
+
     puts "\nCurrent contrast: #{format('%.2f', current_ratio)}:1"
 
     if current_ratio >= target
       puts "✓ Already meets target of #{target}:1"
-      puts "Color: #{foreground}"
+      puts "\nCurrent color: #{foreground}"
+      puts "Target-adjusted color: #{new_color} (#{format('%.2f', new_ratio)}:1)"
+      puts '  (Shows what exact target would be)' if foreground != new_color
     else
-      new_color, new_ratio = calculator.adjust_for_target(foreground, target)
       puts "✗ Below target of #{target}:1"
       puts "\nRecommended color: #{new_color}"
       puts "New contrast: #{format('%.2f', new_ratio)}:1"
