@@ -23,7 +23,7 @@ local ui = {
 	-- General colors
 	theme = {
 		primary = "#752424",
-		light_primary = "#752424",
+		light_primary = "#4E1818",
 		secondary = "#11426e",
 		accent = "#11426e",
 	},
@@ -40,10 +40,10 @@ local c = {
 	-- Syntax
 	syntax = {
 		-- Cold: (Data)
-		parameter = "#33116F",
+		parameter = "#39007C",
 		identifier = "#1D2B32",
 		delimiter = ui.theme.primary,
-		type = "#042D3A",
+		type = "#172E2B",
 		builtinVar = "#0A2465",
 		string = "#122F13",
 		regex = "#222D08",
@@ -68,8 +68,8 @@ local c = {
 
 	-- Diff
 	diff = {
-		add = "#1C491D",
-		change = "#422d15",
+		add = "#25491C",
+		change = "#523E09",
 		delete = "#530F0F",
 	},
 
@@ -86,7 +86,7 @@ local c = {
 		cursorLine = ui.bg.mantle,
 		nontext = ui.fg.dim,
 		float = {
-			title = ui.theme.primary,
+			title = ui.theme.light_primary,
 			fg = ui.fg.strong,
 			bg = ui.bg.surface,
 			border = { fg = ui.theme.primary, bg = ui.bg.mantle },
@@ -96,7 +96,7 @@ local c = {
 			warn = { fg = "#372612", bg = ui.bg.core },
 			info = { fg = "#122D35", bg = ui.bg.core },
 			hint = { fg = "#142E29", bg = ui.bg.core },
-			ok = { fg = "#2F7D32", bg = "none" },
+			ok = { fg = "#25491C", bg = "none" },
 		},
 	},
 }
