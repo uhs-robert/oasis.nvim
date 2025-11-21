@@ -187,67 +187,6 @@ vim.cmd.colorscheme("oasis-desert")  -- Or load any specific style
 ```
 
 <details>
-<summary>⚡ API Commands</summary>
-<br>
-
-### Toggle Transparency
-
-Toggle transparency on-the-fly without restarting:
-
-```vim
-:OasisTransparency
-```
-
-```lua
--- Or use the Lua API
-require('oasis').toggle_transparency()
-
--- Example: bind to a keymap
-vim.keymap.set('n', '<leader>tt', require('oasis').toggle_transparency, { desc = 'Toggle transparency' })
-```
-
-### WCAG Accessibility Checker
-
-Check WCAG 2.1 contrast compliance for palettes:
-
-```vim
-" Check all palettes
-:OasisWCAG
-
-" Check specific palette
-:OasisWCAG oasis_lagoon
-```
-
-```lua
--- Lua API
-local wcag = require("oasis.wcag_checker")
-
--- Analyze all palettes
-local all_results = wcag.analyze_all()
-wcag.print_comparison_table(all_results)
-
--- Analyze specific palette
-local results = wcag.analyze_palette("oasis_lagoon")
-wcag.print_palette_results(results)
-
--- Calculate contrast ratio between two colors
-local ratio = wcag.get_contrast_ratio("#e0def4", "#191724")  -- Returns: 12.44
-
--- Get compliance level
-local level = wcag.get_compliance_level(ratio, false)  -- Returns: "AAA"
-```
-
-**WCAG Standards:**
-
-- **AAA (7.0:1)**: Enhanced contrast for normal text
-- **AA (4.5:1)**: Minimum contrast for normal text
-- **AA Large (3.0:1)**: Minimum for large text (18pt+ or 14pt+ bold)
-
-Reference: [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)
-
-</details>
-
-<details>
 <summary>🖌️ All colorscheme commands</summary>
 <br>
 <!-- colorscheme-commands:start -->
@@ -321,6 +260,68 @@ require("tabby").setup({
 ```
 
   <!-- more-details:end -->
+</details>
+
+<details>
+<summary>⚡ API Commands</summary>
+<!-- api:start -->
+
+### Toggle Transparency
+
+Toggle transparency on-the-fly without restarting:
+
+```vim
+:OasisTransparency
+```
+
+```lua
+-- Or use the Lua API
+require('oasis').toggle_transparency()
+
+-- Example: bind to a keymap
+vim.keymap.set('n', '<leader>tt', require('oasis').toggle_transparency, { desc = 'Toggle transparency' })
+```
+
+### WCAG Accessibility Checker
+
+Check WCAG 2.1 contrast compliance for palettes:
+
+```vim
+" Check all palettes
+:OasisWCAG
+
+" Check specific palette
+:OasisWCAG oasis_lagoon
+```
+
+```lua
+-- Lua API
+local wcag = require("oasis.wcag_checker")
+
+-- Analyze all palettes
+local all_results = wcag.analyze_all()
+wcag.print_comparison_table(all_results)
+
+-- Analyze specific palette
+local results = wcag.analyze_palette("oasis_lagoon")
+wcag.print_palette_results(results)
+
+-- Calculate contrast ratio between two colors
+local ratio = wcag.get_contrast_ratio("#e0def4", "#191724")  -- Returns: 12.44
+
+-- Get compliance level
+local level = wcag.get_compliance_level(ratio, false)  -- Returns: "AAA"
+```
+
+**WCAG Standards:**
+
+- **AAA (7.0:1)**: Enhanced contrast for normal text
+- **AA (4.5:1)**: Minimum contrast for normal text
+- **AA Large (3.0:1)**: Minimum for large text (18pt+ or 14pt+ bold)
+
+Reference: [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)
+
+<!-- api:end -->
 </details>
 
 ## ⚙️ Configuration
