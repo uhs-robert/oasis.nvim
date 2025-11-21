@@ -22,10 +22,10 @@ local ui = {
 	},
 	-- General colors
 	theme = {
-		primary = "#522415",
-		light_primary = "#522415",
-		secondary = "#0d3354",
-		accent = "#0d3354",
+		primary = "#8A2A2A",
+		light_primary = "#5A1B1B",
+		secondary = "#11426E",
+		accent = "#11426E",
 	},
 }
 
@@ -68,8 +68,8 @@ local c = {
 
 	-- Diff
 	diff = {
-		add = "#2F7D32",
-		change = "#422d15",
+		add = "#2B5621",
+		change = "#60490A",
 		delete = "#621212",
 	},
 
@@ -86,7 +86,7 @@ local c = {
 		cursorLine = ui.bg.mantle,
 		nontext = ui.fg.dim,
 		float = {
-			title = ui.theme.primary,
+			title = ui.theme.light_primary,
 			fg = ui.fg.strong,
 			bg = ui.bg.surface,
 			border = { fg = ui.theme.primary, bg = ui.bg.mantle },
@@ -96,7 +96,7 @@ local c = {
 			warn = { fg = "#3f2b14", bg = ui.bg.core },
 			info = { fg = "#15353f", bg = ui.bg.core },
 			hint = { fg = "#183631", bg = ui.bg.core },
-			ok = { fg = "#2F7D32", bg = "none" },
+			ok = { fg = "#2B5621", bg = "none" },
 		},
 	},
 }

@@ -22,8 +22,8 @@ local ui = {
 	},
 	-- General colors
 	theme = {
-		primary = "#683121",
-		light_primary = "#692d36",
+		primary = "#9B3030",
+		light_primary = "#762424",
 		secondary = "#11426e",
 		accent = "#11426e",
 	},
@@ -86,7 +86,7 @@ local c = {
 		cursorLine = ui.bg.mantle,
 		nontext = ui.fg.dim,
 		float = {
-			title = ui.theme.primary,
+			title = ui.theme.light_primary,
 			fg = ui.fg.core,
 			bg = ui.bg.surface,
 			border = { fg = ui.theme.primary, bg = ui.bg.mantle },
