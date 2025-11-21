@@ -29,6 +29,10 @@ local ui = {
 	},
 }
 
+-- string       : #53D390 → #0c301d ( 1.08:1 →  7.05:1) ✗
+-- type         : #81C0B6 → #172e2a ( 1.01:1 →  7.05:1) ✗
+-- warn         : #EEEE00 → #2b2b00 ( 1.64:1 →  7.05:1) ✗
+
 -- Colorscheme
 local c = {
 	bg = ui.bg,
@@ -40,46 +44,46 @@ local c = {
 	-- Syntax
 	syntax = {
 		-- Cold: (Data)
-		parameter = "#39007C",
-		identifier = "#1D2B32",
+		parameter = "#39007B",
+		identifier = "#252a30",
 		delimiter = ui.theme.primary,
-		type = "#172E2B",
-		builtinVar = "#0A2465",
-		string = "#122F13",
-		regex = "#222D08",
-		builtinConst = "#072F29",
-		constant = "#432000",
+		type = "#172E2A",
+		builtinVar = "#002a55",
+		string = "#0c301d",
+		regex = "#113008",
+		builtinConst = "#132e2b",
+		constant = "#461f03",
 
 		-- Warm: (Control / Flow)
-		func = "#461E00",
-		builtinFunc = "#471D00",
-		statement = "#362700",
-		exception = "#530F0F",
-		keyword = "#352800",
-		special = "#471D09",
-		operator = "#441D22",
-		punctuation = "#2D291F",
-		preproc = "#0B2B47",
+		func = "#412203",
+		builtinFunc = "#4f1706",
+		statement = "#2e2a06",
+		exception = "#570b0b",
+		keyword = "#2c2b14",
+		special = "#432100",
+		operator = "#5c0000",
+		punctuation = "#560c0c",
+		preproc = "#042e37",
 
 		-- Neutral: (Connections / Info)
-		bracket = "#2C2923",
+		bracket = "#2d2923",
 		comment = ui.fg.comment,
 	},
 
 	-- Diff
 	diff = {
 		add = "#25491C",
-		change = "#523E09",
-		delete = "#530F0F",
+		change = "#2b2b00",
+		delete = "#4d1818",
 	},
 
 	-- UI
 	ui = {
-		match = "#3C2409",
+		match = "#432100",
 		visual = { bg = ui.bg.surface, fg = "none" },
 		search = { bg = "#FFD87C", fg = "#462E23" },
 		curSearch = { bg = p.orange.deepsun, fg = "#2C1810" },
-		dir = "#122D35",
+		dir = "#0a2d3c",
 
 		title = ui.theme.primary,
 		border = ui.theme.primary,
@@ -92,10 +96,10 @@ local c = {
 			border = { fg = ui.theme.primary, bg = ui.bg.mantle },
 		},
 		diag = {
-			error = { fg = "#530F0F", bg = ui.bg.core },
-			warn = { fg = "#372612", bg = ui.bg.core },
-			info = { fg = "#122D35", bg = ui.bg.core },
-			hint = { fg = "#142E29", bg = ui.bg.core },
+			error = { fg = "#4d1818", bg = ui.bg.core },
+			warn = { fg = "#2b2b00", bg = ui.bg.core },
+			info = { fg = "#0a2d3c", bg = ui.bg.core },
+			hint = { fg = "#132e2a", bg = ui.bg.core },
 			ok = { fg = "#25491C", bg = "none" },
 		},
 	},
