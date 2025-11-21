@@ -1,4 +1,5 @@
 -- lua/oasis/palette.lua
+-- Tailwind-style numeric scale palette system
 
 -- Terminal
 local terminal = {
@@ -303,7 +304,7 @@ local theme = {
 	},
 }
 
--- Full palette
+-- Full palette with Tailwind-style numeric scales
 local colors = {
 	terminal = terminal,
 	light_terminal = light_terminal,
@@ -311,110 +312,149 @@ local colors = {
 	diag = diag,
 	theme = theme,
 
+	-- Neutrals
 	grey = {
-		palemoon = "#A3A3BB",
+		[500] = "#A3A3BB", -- palemoon
 	},
 
-	-- Neutrals (Foregrounds/Backgrounds/Neutrals)
 	brown = {
-		dryriverbed = "#A39B8E",
-		lightriverbed = "#B5ADA0",
-		drybone = "#C5C0B3",
-		paleclay = "#DDC8B4",
+		[700] = "#A39B8E", -- dryriverbed
+		[600] = "#B5ADA0", -- lightriverbed
+		[500] = "#C5C0B3", -- drybone (BASE)
+		[400] = "#DDC8B4", -- paleclay
 	},
 
-	-- Primary Colors
+	-- Reds/Pinks
 	red = {
-		indianred = "#D06666",
-		vibrantred = "#ED7777",
-		brightvibrantred = "#F58888",
-		brightervibrantred = "#F28D8D",
-		brightestvibrantred = "#F39493",
-		lightvibrantred = "#F29B9B",
-		lightestvibrantred = "#FFACA5",
-		heatwave = "#E58383",
-		brightheatwave = "#F09595",
-		brightestheatwave = "#FBABAB",
-		lighterheatwave = "#F6C1C1",
-		desertrose = "#FFA0A0",
-		brightdesertrose = "#FFB0B0",
-		brightestdesertrose = "#FFC0C0",
-		lightdesertrose = "#FFCECE",
-		deepdesertrose = "#FF8080",
-		brick = "#A23B3B",
+		[900] = "#A23B3B", -- brick
+		[800] = "#D06666", -- indianred
+		[500] = "#ED7777", -- vibrantred (BASE)
+		[400] = "#F58888", -- brightvibrantred
+		[300] = "#F28D8D", -- brightervibrantred
+		[200] = "#F39493", -- brightestvibrantred
+		[100] = "#F29B9B", -- lightvibrantred
+		[50] = "#FFACA5", -- lightestvibrantred
 	},
 
-	orange = {
-		lightsun = "#F7B64D",
-		sun = "#F5A72C",
-		deepsun = "#F49F15",
-		deepersun = "#E3910B",
-		lightsunset = "#FFA852",
-		lightestsunset = "#FFB870",
-		sunset = "#FFA247",
-		brightestsunrise = "#F89D82",
-		lightdawn = "#F9C97B",
-		dawn = "#F8C471",
-		redDawn = "#F8B471",
-		darkRedDawn = "#F8944D",
-		lightRedDawn = "#F9A05E",
-		lightestlightRedDawn = "#FFBA80",
+	coral = {
+		[500] = "#E58383", -- heatwave (BASE)
+		[400] = "#F09595", -- brightheatwave
+		[300] = "#FBABAB", -- brightestheatwave
+		[200] = "#F6C1C1", -- lighterheatwave
 	},
 
-	yellow = {
-		gold = "#FFD700",
-		sunYellow = "#F4E36B",
-		khaki = "#F0E68C",
-		khaki3 = "#CDC673",
-		darkkhaki = "#BDB76B",
-		dune = "#D4A017",
-		navajowhite = "#FFD393",
-		moonlitsand = "#EADD61",
+	rose = {
+		[700] = "#FF8080", -- deepdesertrose
+		[500] = "#FFA0A0", -- desertrose (BASE)
+		[400] = "#FFB0B0", -- brightdesertrose
+		[300] = "#FFC0C0", -- brightestdesertrose
+		[200] = "#FFCECE", -- lightdesertrose
 	},
 
-	lime = {},
-
-	green = {
-		cactus = "#53D390",
-		lightcactus = "#6DDFA0",
-		springcactus = "#34CB7D",
-		moss = "#6BBF59",
-		springmoss = "#8DCD7E",
-		aloe = "#A7D3A9",
-		lightaloe = "#AED6B0",
-		palm = "#96EA7F",
-		darkPalm = "#94E97C",
+	-- Oranges
+	sundown = {
+		[500] = "#F89D82", -- brightestsunrise (BASE)
+		[400] = "#FFBA80", -- lightestlightRedDawn
 	},
 
-	teal = {
-		darkagave = "#81C0B6",
-		agave = "#8FD1C7",
-		lightagave = "#96D4CB",
-		lightdeepagave = "#47A99B",
-		midagave = "#5ABAAE",
+	sunrise = {
+		[700] = "#F8944D", -- darkRedDawn
+		[600] = "#F9A05E", -- lightRedDawn
+		[500] = "#F8B471", -- redDawn (BASE)
 	},
 
-	cyan = {},
-
-	blue = {
-		brightazure = "#3DB5FF",
-		blueLagoon = "#8EEBEC",
-		skyblue = "#87CEEB",
-		crystalBlue = "#38D0EF",
-		skyBlueDress = "#61AEFF",
-		lightskyblue = "#92D3ED",
-		horizon = "#4AC8FF",
-		lighthorizon = "#5CCEFF",
+	sunshine = {
+		[700] = "#E3910B", -- deepersun
+		[600] = "#F49F15", -- deepsun
+		[500] = "#F5A72C", -- sun (BASE)
+		[400] = "#F7B64D", -- lightsun
+		[300] = "#F8C471", -- dawn
+		[200] = "#F9C97B", -- lightdawn
 	},
 
-	indigo = {
-		cactusflower = "#C28EFF",
-		lightcactusflower = "#D2ADFF",
-		lightestcactusflower = "#D8B7FF",
-		moonlitflower = "#C799FF",
+	sunset = {
+		[500] = "#FFA247", -- sunset (BASE)
+		[400] = "#FFA852", -- lightsunset
+		[300] = "#FFB870", -- lightestsunset
 	},
 
-	violet = {},
+	-- Yellows
+	gold = {
+		[500] = "#FFD700", -- gold (BASE)
+		[400] = "#F4E36B", -- sunYellow
+		[300] = "#EADD61", -- moonlitsand
+	},
+
+	khaki = {
+		[700] = "#BDB76B", -- darkkhaki
+		[600] = "#CDC673", -- khaki3
+		[500] = "#F0E68C", -- khaki (BASE)
+	},
+
+	dune = {
+		[500] = "#D4A017", -- dune (BASE)
+	},
+
+	sand = {
+		[400] = "#FFD393", -- navajowhite
+	},
+
+	-- Greens
+	cactus = {
+		[700] = "#34CB7D", -- springcactus
+		[500] = "#53D390", -- cactus (BASE)
+		[400] = "#6DDFA0", -- lightcactus
+	},
+
+	moss = {
+		[500] = "#6BBF59", -- moss (BASE)
+		[400] = "#8DCD7E", -- springmoss
+	},
+
+	palm = {
+		[600] = "#94E97C", -- darkPalm
+		[500] = "#96EA7F", -- palm (BASE)
+	},
+
+	aloe = {
+		[500] = "#A7D3A9", -- aloe (BASE)
+		[400] = "#AED6B0", -- lightaloe
+	},
+
+	-- Teals/Cyans
+	agave = {
+		[800] = "#47A99B", -- lightdeepagave
+		[700] = "#5ABAAE", -- midagave
+		[600] = "#81C0B6", -- darkagave
+		[500] = "#8FD1C7", -- agave (BASE)
+		[400] = "#96D4CB", -- lightagave
+	},
+
+	-- Blues
+	sky = {
+		[600] = "#61AEFF", -- skyBlueDress
+		[500] = "#87CEEB", -- skyblue (BASE)
+		[400] = "#92D3ED", -- lightskyblue
+	},
+
+	azure = {
+		[600] = "#3DB5FF", -- brightazure
+		[500] = "#4AC8FF", -- horizon (BASE)
+		[400] = "#5CCEFF", -- lighthorizon
+	},
+
+	lagoon = {
+		[600] = "#38D0EF", -- crystalBlue
+		[500] = "#8EEBEC", -- blueLagoon (BASE)
+	},
+
+	-- Purples/Indigos
+	lavender = {
+		[600] = "#C28EFF", -- cactusflower
+		[500] = "#C799FF", -- moonlitflower (BASE)
+		[400] = "#D2ADFF", -- lightcactusflower
+		[300] = "#D8B7FF", -- lightestcactusflower
+	},
 }
 
 return colors

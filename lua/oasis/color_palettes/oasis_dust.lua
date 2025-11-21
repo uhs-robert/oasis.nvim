@@ -82,7 +82,7 @@ local c = {
 		match = "#432100",
 		visual = { bg = ui.bg.surface, fg = "none" },
 		search = { bg = "#FFD87C", fg = "#462E23" },
-		curSearch = { bg = p.orange.deepsun, fg = "#2C1810" },
+		curSearch = { bg = p.sunshine[600], fg = "#2C1810" },
 		dir = "#0a2d3c",
 
 		title = ui.theme.primary,
