@@ -40,46 +40,46 @@ local c = {
 	-- Syntax
 	syntax = {
 		-- Cold: (Data)
-		parameter = "#4d1aa8",
-		identifier = "#2d434e",
+		parameter = "#5300B5",
+		identifier = "#39414A",
 		delimiter = ui.theme.primary,
-		type = "#064659",
-		builtinVar = "#0f379b",
-		string = "#1b4a1d",
-		regex = "#35460d",
-		builtinConst = "#0b4940",
-		constant = "#683200",
+		type = "#234641",
+		builtinVar = "#003F81",
+		string = "#134A2D",
+		regex = "#1A4A0C",
+		builtinConst = "#1E4742",
+		constant = "#6B2F04",
 
 		-- Warm: (Control / Flow)
-		func = "#6c2f00",
-		builtinFunc = "#6e2d00",
-		statement = "#543d00",
-		exception = "#7e1818",
-		keyword = "#513e00",
-		special = "#6e2d0f",
-		operator = "#6a2d35",
-		punctuation = "#464031",
-		preproc = "#11426e",
+		func = "#643405",
+		builtinFunc = "#782209",
+		statement = "#474109",
+		exception = "#821111",
+		keyword = "#44411E",
+		special = "#663300",
+		operator = "#870000",
+		punctuation = "#811212",
+		preproc = "#074754",
 
 		-- Neutral: (Connections / Info)
-		bracket = "#454037",
+		bracket = "#454036",
 		comment = ui.fg.comment,
 	},
 
 	-- Diff
 	diff = {
 		add = "#2F7D32",
-		change = "#563b1c",
-		delete = "#7e1818",
+		change = "#434300",
+		delete = "#752424",
 	},
 
 	-- UI
 	ui = {
-		match = "#5d380e",
+		match = "#663300",
 		visual = { bg = ui.bg.surface, fg = "none" },
 		search = { bg = "#FFD87C", fg = "#462E23" },
 		curSearch = { bg = p.orange.deepsun, fg = "#2C1810" },
-		dir = "#1c4552",
+		dir = "#0F455B",
 
 		title = ui.theme.primary,
 		border = ui.theme.primary,
@@ -92,10 +92,10 @@ local c = {
 			border = { fg = ui.theme.primary, bg = ui.bg.mantle },
 		},
 		diag = {
-			error = { fg = "#7e1818", bg = ui.bg.core },
-			warn = { fg = "#563b1c", bg = ui.bg.core },
-			info = { fg = "#1c4552", bg = ui.bg.core },
-			hint = { fg = "#204741", bg = ui.bg.core },
+			error = { fg = "#752424", bg = ui.bg.core },
+			warn = { fg = "#434300", bg = ui.bg.core },
+			info = { fg = "#0F455B", bg = ui.bg.core },
+			hint = { fg = "#1d4741", bg = ui.bg.core },
 			ok = { fg = "#2F7D32", bg = "none" },
 		},
 	},
