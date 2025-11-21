@@ -149,18 +149,7 @@ end
 local function generate_zed_theme(name, palette)
   local display_name = capitalize(name)
   local is_light = palette.light_mode or false
-  local term = palette.terminal
-
-  -- For light themes, check if there's a light_terminal table
-  -- (Based on observation, light themes might use regular terminal)
-
-  -- Helper to get color or fallback
-  local function get_color(color, fallback)
-    if color and color ~= "NONE" then
-      return color
-    end
-    return fallback
-  end
+  local term = palette.terminal -- Each Oasis palette defines its own terminal table
 
   -- Calculate adjusted colors for UI states
   local hover_bg = is_light and adjust_brightness(palette.bg.mantle, 0.95) or adjust_brightness(palette.bg.surface, 1.1)
