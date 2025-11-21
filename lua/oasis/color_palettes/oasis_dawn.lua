@@ -57,8 +57,8 @@ local c = {
 		exception = "#931313",
 		keyword = "#4e4b23",
 		special = "#753a00",
-		operator = "#990000",
-		punctuation = "#931515",
+		operator = "#6D0000",
+		punctuation = "#7F1B1B",
 		preproc = "#085160",
 
 		-- Neutral: (Connections / Info)
