@@ -22,10 +22,10 @@ local ui = {
 	},
 	-- General colors
 	theme = {
-		primary = p.red.vibrantred,
-		light_primary = p.red.desertrose,
-		secondary = p.orange.sunset,
-		accent = p.teal.darkagave,
+		primary = p.red[500],
+		light_primary = p.rose[500],
+		secondary = p.sunset[500],
+		accent = p.agave[600],
 	},
 }
 
@@ -39,45 +39,45 @@ local c = {
 	-- Syntax
 	syntax = {
 		-- Cold: (Data)
-		parameter = p.indigo.cactusflower,
-		identifier = p.yellow.navajowhite,
+		parameter = p.lavender[600],
+		identifier = p.sand[400],
 		delimiter = ui.theme.primary,
-		type = p.teal.darkagave,
-		builtinVar = p.blue.skyBlueDress,
-		string = p.green.cactus,
-		regex = p.green.palm,
-		builtinConst = p.teal.midagave,
-		constant = p.orange.darkRedDawn,
+		type = p.agave[600],
+		builtinVar = p.sky[600],
+		string = p.cactus[500],
+		regex = p.palm[500],
+		builtinConst = p.agave[700],
+		constant = p.sunrise[700],
 
 		-- Warm: (Control / Flow)
-		func = p.orange.redDawn,
-		builtinFunc = p.orange.deepersun,
-		statement = p.yellow.khaki,
-		exception = p.red.brightvibrantred,
-		keyword = p.yellow.darkkhaki,
-		special = p.orange.sunset,
-		operator = p.red.desertrose,
-		punctuation = p.red.brightheatwave,
-		preproc = p.blue.crystalBlue,
+		func = p.sunrise[500],
+		builtinFunc = p.sunshine[700],
+		statement = p.khaki[500],
+		exception = p.red[400],
+		keyword = p.khaki[700],
+		special = p.sunset[500],
+		operator = p.rose[500],
+		punctuation = p.coral[400],
+		preproc = p.lagoon[600],
 
 		-- Neutral: (Connections / Info)
-		bracket = p.brown.drybone,
+		bracket = p.brown[500],
 		comment = ui.fg.comment,
 	},
 
 	-- Diff
 	diff = {
-		add = p.green.springmoss,
-		change = p.yellow.dune,
-		delete = p.red.brick,
+		add = p.moss[400],
+		change = p.dune[500],
+		delete = p.red[900],
 	},
 
 	-- UI
 	ui = {
-		match = p.orange.sunset,
+		match = p.sunset[500],
 		visual = { bg = p.visual.orange, fg = "none" },
 		search = { bg = p.visual.orange, fg = ui.fg.core },
-		curSearch = { bg = p.orange.sun, fg = ui.bg.core },
+		curSearch = { bg = p.sunshine[500], fg = ui.bg.core },
 
 		title = ui.theme.primary,
 		border = ui.theme.primary,

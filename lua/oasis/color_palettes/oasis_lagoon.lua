@@ -22,10 +22,10 @@ local ui = {
 	},
 	-- General colors
 	theme = {
-		primary = p.blue.brightazure,
-		light_primary = p.blue.skyblue,
-		secondary = p.orange.sunset,
-		accent = p.red.desertrose,
+		primary = p.azure[600],
+		light_primary = p.sky[500],
+		secondary = p.sunset[500],
+		accent = p.rose[500],
 	},
 }
 
@@ -39,46 +39,46 @@ local c = {
 	-- Syntax
 	syntax = {
 		-- Cold: (Data)
-		parameter = p.indigo.cactusflower, -- (paramaters)
-		identifier = p.yellow.navajowhite, -- (property identifiers)
+		parameter = p.lavender[600], -- (paramaters)
+		identifier = p.sand[400], -- (property identifiers)
 		delimiter = ui.theme.primary, -- (delimiters)
-		type = p.teal.agave, -- (type definitions)
-		builtinVar = p.blue.skyBlueDress, -- (this, document, window, etc)
-		string = p.green.cactus, -- (strings)
-		regex = p.green.darkPalm, -- (reg ex string)
-		builtinConst = p.teal.midagave, -- (e.g. null, undefined, Infinity, etc)
-		constant = p.orange.darkRedDawn, -- (constant: number, float, boolean, or const not string/character)
+		type = p.agave[500], -- (type definitions)
+		builtinVar = p.sky[600], -- (this, document, window, etc)
+		string = p.cactus[500], -- (strings)
+		regex = p.palm[600], -- (reg ex string)
+		builtinConst = p.agave[700], -- (e.g. null, undefined, Infinity, etc)
+		constant = p.sunrise[700], -- (constant: number, float, boolean, or const not string/character)
 
 		-- Warm: (Control / Flow)
-		func = p.orange.redDawn, -- [inverse of identifier]
-		builtinFunc = p.orange.deepersun, -- (eg. parseInst, Array, Object etc)
-		statement = p.yellow.khaki, -- (primary, general statement, conditonal, repeat, label )
-		exception = p.red.brightvibrantred, -- (try/catch, return)
-		keyword = p.yellow.darkkhaki, -- (general catch all)
-		special = p.orange.lightsunset, -- (other catch all)
-		operator = p.red.desertrose, -- (operators)
-		punctuation = p.red.brightheatwave, -- (punctuation)
-		preproc = p.blue.crystalBlue, -- (imports)
+		func = p.sunrise[500], -- [inverse of identifier]
+		builtinFunc = p.sunshine[700], -- (eg. parseInst, Array, Object etc)
+		statement = p.khaki[500], -- (primary, general statement, conditonal, repeat, label )
+		exception = p.red[400], -- (try/catch, return)
+		keyword = p.khaki[700], -- (general catch all)
+		special = p.sunset[400], -- (other catch all)
+		operator = p.rose[500], -- (operators)
+		punctuation = p.coral[400], -- (punctuation)
+		preproc = p.lagoon[600], -- (imports)
 
 		-- Neutral: (Connections / Info)
-		bracket = p.brown.lightriverbed, -- (bracket punctuation)
+		bracket = p.brown[600], -- (bracket punctuation)
 		comment = ui.fg.comment, -- (comments)
 	},
 
 	-- Diff
 	diff = {
-		add = p.green.springmoss,
-		change = p.yellow.dune,
-		delete = p.red.brick,
+		add = p.moss[400],
+		change = p.dune[500],
+		delete = p.red[900],
 	},
 
 	-- UI
 	ui = {
-		match = p.orange.sunset,
+		match = p.sunset[500],
 		visual = { bg = p.visual.orange, fg = "none" },
 		search = { bg = p.visual.orange, fg = ui.fg.core },
-		curSearch = { bg = p.orange.sun, fg = ui.bg.core },
-		dir = p.blue.skyblue,
+		curSearch = { bg = p.sunshine[500], fg = ui.bg.core },
+		dir = p.sky[500],
 
 		title = ui.theme.primary,
 		border = ui.theme.primary,
