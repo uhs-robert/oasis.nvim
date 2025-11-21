@@ -23,6 +23,18 @@ function M.setup(user_config)
 	config.setup(user_config)
 end
 
+--- Toggle transparency and reapply the current theme
+--- Examples:
+---   require('oasis').toggle_transparency()
+---   :OasisTransparency
+function M.toggle_transparency()
+	local cfg = config.get()
+	cfg.transparent = not cfg.transparent
+	M.apply(M.styles.current)
+	local status = cfg.transparent and "enabled" or "disabled"
+	vim.notify(string.format("Oasis transparency %s", status), vim.log.levels.INFO)
+end
+
 --- Apply Oasis using a palette module name (no prefix).
 --- Examples:
 ---   require('oasis').apply('oasis_midnight')
@@ -120,6 +132,13 @@ end, {
 		table.sort(out)
 		return out
 	end,
+})
+
+-- :OasisTransparency command to toggle transparency mid-session
+vim.api.nvim_create_user_command("OasisTransparency", function()
+	M.toggle_transparency()
+end, {
+	desc = "Toggle transparency for Oasis theme"
 })
 
 return M
