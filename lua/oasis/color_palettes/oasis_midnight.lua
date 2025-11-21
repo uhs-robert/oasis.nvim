@@ -51,7 +51,7 @@ local c = {
 
 		-- Warm: (Control / Flow)
 		func = p.orange.redDawn,
-		builtinFunc = p.orange.brightsunrise,
+		builtinFunc = p.orange.deepersun,
 		statement = p.yellow.khaki,
 		exception = p.red.brightvibrantred,
 		keyword = p.yellow.darkkhaki,
