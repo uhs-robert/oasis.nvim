@@ -319,9 +319,9 @@ module OasisPresets
   # Light palette = base + light-only tweaks
   LIGHT_COLORS = BASE_COLORS.merge(
     'identifier' => '#6E7D8D',
-    'theme_primary' => { hex: '#D06666', target: 5.0 },
-    'operator' => { hex: '#FFA0A0', target: 9.0 },
-    'punctuation' => { hex: '#F09595', target: 8.0 }
+    'theme_primary' => { hex: BASE_COLORS['theme_primary'], target: 5.0 },
+    'operator' => { hex: BASE_COLORS['operator'], target: 9.0 },
+    'punctuation' => { hex: BASE_COLORS['punctuation'], target: 8.0 }
   ).freeze
 
   # Dark theme backgrounds
@@ -343,9 +343,9 @@ module OasisPresets
 
   # Dark palette = base + dark-only tweaks
   DARK_COLORS = BASE_COLORS.merge(
-    'theme_primary' => { hex: '#D06666', target: 5.0 },
-    'operator' => { hex: '#FFA0A0', target: 9.0 },
-    'punctuation' => { hex: '#F09595', target: 8.0 }
+    'theme_primary' => { hex: BASE_COLORS['theme_primary'], target: 5.0 },
+    'operator' => { hex: BASE_COLORS['operator'], target: 9.0 },
+    'punctuation' => { hex: BASE_COLORS['punctuation'], target: 8.0 }
   ).freeze
 end
 
