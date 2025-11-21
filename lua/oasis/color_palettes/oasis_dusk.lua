@@ -40,46 +40,46 @@ local c = {
 	-- Syntax
 	syntax = {
 		-- Cold: (Data)
-		parameter = "#3B1483",
-		identifier = "#1F343C",
+		parameter = "#41008d",
+		identifier = "#2b3138",
 		delimiter = ui.theme.primary,
-		type = "#1f343c",
-		builtinVar = "#0b2978",
-		string = "#153817",
-		regex = "#263603",
-		builtinConst = "#053831",
-		constant = "#4f2600",
+		type = "#1b3531",
+		builtinVar = "#003063",
+		string = "#0e3822",
+		regex = "#133809",
+		builtinConst = "#163632",
+		constant = "#522403",
 
 		-- Warm: (Control / Flow)
-		func = "#502300",
-		builtinFunc = "#542300",
-		statement = "#402e00",
-		exception = "#621212",
-		keyword = "#3c2d00",
-		special = "#51220b",
-		operator = "#512228",
-		punctuation = "#353125",
-		preproc = "#0c3050",
+		func = "#4c2804",
+		builtinFunc = "#5c1a07",
+		statement = "#363107",
+		exception = "#640d0d",
+		keyword = "#343217",
+		special = "#4e2700",
+		operator = "#690000",
+		punctuation = "#640e0e",
+		preproc = "#053640",
 
 		-- Neutral: (Connections / Info)
-		bracket = "#322f27",
+		bracket = "#353029",
 		comment = ui.fg.comment,
 	},
 
 	-- Diff
 	diff = {
 		add = "#2B5621",
-		change = "#60490A",
+		change = "#333300",
 		delete = "#621212",
 	},
 
 	-- UI
 	ui = {
-		match = "#44290b",
+		match = "#4e2600",
 		visual = { bg = ui.bg.surface, fg = "none" },
 		search = { bg = "#FFD87C", fg = "#462E23" },
 		curSearch = { bg = p.orange.deepsun, fg = "#2C1810" },
-		dir = "#15353f",
+		dir = "#0c3545",
 
 		title = ui.theme.primary,
 		border = ui.theme.primary,
@@ -92,10 +92,10 @@ local c = {
 			border = { fg = ui.theme.primary, bg = ui.bg.mantle },
 		},
 		diag = {
-			error = { fg = "#621212", bg = ui.bg.core },
-			warn = { fg = "#3f2b14", bg = ui.bg.core },
-			info = { fg = "#15353f", bg = ui.bg.core },
-			hint = { fg = "#183631", bg = ui.bg.core },
+			error = { fg = "#591b1b", bg = ui.bg.core },
+			warn = { fg = "#333300", bg = ui.bg.core },
+			info = { fg = "#0c3545", bg = ui.bg.core },
+			hint = { fg = "#163631", bg = ui.bg.core },
 			ok = { fg = "#2B5621", bg = "none" },
 		},
 	},
