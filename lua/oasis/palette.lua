@@ -214,7 +214,7 @@ local theme = {
 			dawnlight = "#453826",
 			day = "#382D1C",
 			dusk = "#3A2C18",
-			dust = "#352A15",
+			dust = "#332814",
 		},
 		-- Strong
 		strong = {
@@ -235,7 +235,7 @@ local theme = {
 			dawnlight = "#261E12",
 			day = "#2A1F0F",
 			dusk = "#2A1F0C",
-			dust = "#2A1F0B",
+			dust = "#1C160B",
 		},
 		-- Inlay hints / nontext (slightly warm/dark, distinct from comments)
 		dim = {
@@ -256,7 +256,7 @@ local theme = {
 			dawnlight = "#656349",
 			day = "#605D42",
 			dusk = "#534e38",
-			dust = "#8A7F5F",
+			dust = "#45412E",
 		},
 		-- Line numbers (darkest, low-chroma)
 		muted = {
@@ -277,7 +277,7 @@ local theme = {
 			dawnlight = "#656349",
 			day = "#605D42",
 			dusk = "#534e38",
-			dust = "#8A7F5F",
+			dust = "#45412E",
 		},
 		-- Comments (mid-contrast, readable but soft)
 		comment = {
@@ -298,7 +298,7 @@ local theme = {
 			dawnlight = "#43677b",
 			day = "#3E6174",
 			dusk = "#3e5060",
-			dust = "#527080",
+			dust = "#31434C",
 		},
 	},
 }

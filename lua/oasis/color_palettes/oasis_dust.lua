@@ -22,10 +22,10 @@ local ui = {
 	},
 	-- General colors
 	theme = {
-		primary = "#9D4529",
-		light_primary = "#9D4529",
-		secondary = "#1C6FB8",
-		accent = "#1C6FB8",
+		primary = "#752424",
+		light_primary = "#752424",
+		secondary = "#11426e",
+		accent = "#11426e",
 	},
 }
 
@@ -40,47 +40,46 @@ local c = {
 	-- Syntax
 	syntax = {
 		-- Cold: (Data)
-		parameter = "#5A2FCC", -- parameters
-		identifier = "#365060", -- property identifiers
-		delimiter = ui.theme.primary, -- delimiters
-		type = "#0A6F8D", -- type definitions
-		builtinVar = "#2C5AA0", -- this, document, window, etc
-		string = "#2A712D", -- strings
-		regex = "#516B14", -- regular expressions
-		builtinConst = "#147D75", -- null, undefined, Infinity
-		constant = "#C25F00", -- numbers/booleans/const (non-string)
+		parameter = "#33116F",
+		identifier = "#1D2B32",
+		delimiter = ui.theme.primary,
+		type = "#042D3A",
+		builtinVar = "#0A2465",
+		string = "#122F13",
+		regex = "#222D08",
+		builtinConst = "#072F29",
+		constant = "#432000",
 
 		-- Warm: (Control / Flow)
-		func = "#A34700", -- function names
-		builtinFunc = "#C14F00", -- Array, Object, etc --TODO: Seperate from fun and constant
-		statement = "#6B4F00", -- if/for/while/labels
-		exception = "#C12424", -- try/catch/return
-		keyword = "#624500", -- general keywords
-		special = "#9D3E14", -- misc specials
-		-- operator = "#AD6078", -- operators
-		operator = "#9D4750", -- or "#B3505E" / "#A84B58"
-		punctuation = "#6F664D", -- punctuation
-		preproc = "#1964A6", -- imports/preprocessor
+		func = "#461E00",
+		builtinFunc = "#471D00",
+		statement = "#362700",
+		exception = "#530F0F",
+		keyword = "#352800",
+		special = "#471D09",
+		operator = "#441D22",
+		punctuation = "#2D291F",
+		preproc = "#0B2B47",
 
 		-- Neutral: (Connections / Info)
-		bracket = "#5E574A", -- bracket punctuation
-		comment = ui.fg.comment, -- comments
+		bracket = "#2C2923",
+		comment = ui.fg.comment,
 	},
 
 	-- Diff
 	diff = {
-		add = "#2F7D32",
-		change = p.brown.sandstoneGlow,
-		delete = "#C12424",
+		add = "#1C491D",
+		change = "#422d15",
+		delete = "#530F0F",
 	},
 
 	-- UI
 	ui = {
-		match = "#804d13",
+		match = "#3C2409",
 		visual = { bg = ui.bg.surface, fg = "none" },
-		search = { bg = p.yellow.wheat, fg = ui.bg.core },
-		curSearch = { bg = p.orange.deepsun, fg = ui.fg.core },
-		dir = "#255e6f",
+		search = { bg = "#FFD87C", fg = "#462E23" },
+		curSearch = { bg = p.orange.deepsun, fg = "#2C1810" },
+		dir = "#122D35",
 
 		title = ui.theme.primary,
 		border = ui.theme.primary,
@@ -88,15 +87,15 @@ local c = {
 		nontext = ui.fg.dim,
 		float = {
 			title = ui.theme.primary,
-			fg = ui.fg.core,
+			fg = ui.fg.strong,
 			bg = ui.bg.surface,
 			border = { fg = ui.theme.primary, bg = ui.bg.mantle },
 		},
 		diag = {
-			error = { fg = "#C12424", bg = p.brown.paleclay },
-			warn = { fg = p.brown.sandstoneGlow, bg = p.brown.fadedclay },
-			info = { fg = "#255e6f", bg = p.brown.fadedclay },
-			hint = { fg = "#2c635a", bg = p.brown.fadedclay },
+			error = { fg = "#530F0F", bg = ui.bg.core },
+			warn = { fg = "#372612", bg = ui.bg.core },
+			info = { fg = "#122D35", bg = ui.bg.core },
+			hint = { fg = "#142E29", bg = ui.bg.core },
 			ok = { fg = "#2F7D32", bg = "none" },
 		},
 	},
