@@ -109,198 +109,77 @@ local diag = {
 
 -- Theme specific
 local theme = {
-	bg = {
-		-- Inlay and gutter (0)
-		shadow = {
-			desert = "#303030",
-			abyss = "#050505",
-			midnight = "#0C1014",
-			night = "#0C0C18",
-			sol = "#2C1512",
-			canyon = "#2B1804",
-			dune = "#2B231E",
-			mirage = "#172328",
-			cactus = "#19231B",
-			lagoon = "#0F1522",
-			twilight = "#201C2B",
-			rose = "#2B1523",
-			starlight = "#050505",
-			dawn = "#E9E0AE",
-			dawnlight = "#E3D396",
-			day = "#DFC87D",
-			dusk = "#E0C480",
-			dust = "#CFA955",
-		},
-		-- Main background (1)
-		core = {
-			desert = "#333333",
-			abyss = "#000000",
-			midnight = "#101418",
-			night = "#0D0D1A",
-			sol = "#2F1815",
-			canyon = "#2F1A05",
-			dune = "#2E2620",
-			mirage = "#18252A",
-			cactus = "#1C261E",
-			lagoon = "#101825",
-			twilight = "#221B2F",
-			rose = "#301828",
-			starlight = "#000000",
-			dawn = "#EFE5B6",
-			dawnlight = "#ECDFA3",
-			day = "#E5D68B",
-			dusk = "#DCBA75",
-			dust = "#D4B165",
-		},
-		-- Panels (2)
-		mantle = {
-			desert = "#444444",
-			abyss = "#080808",
-			midnight = "#14181C",
-			night = "#06060E",
-			sol = "#3A2521",
-			canyon = "#402412",
-			dune = "#3C332C",
-			mirage = "#1A2D33",
-			cactus = "#2C3A30",
-			lagoon = "#1A283F",
-			twilight = "#2B243B",
-			rose = "#3E2636",
-			starlight = "#080808",
-			dawn = "#E3D8A4",
-			dawnlight = "#DDD091",
-			day = "#DFC47A",
-			dusk = "#D5B36A",
-			dust = "#C9A55A",
-		},
-		-- Floats (3)
-		surface = {
-			desert = "#555555",
-			abyss = "#1A1A1A",
-			midnight = "#1C242C",
-			night = "#262633",
-			sol = "#4F312B",
-			canyon = "#624020",
-			dune = "#534A3F",
-			mirage = "#2A3F46",
-			cactus = "#3C4B3E",
-			lagoon = "#22385C",
-			twilight = "#352D47",
-			rose = "#523A4B",
-			starlight = "#1A1A1A",
-			dawn = "#D7CC97",
-			dawnlight = "#D1C085",
-			day = "#D3BA68",
-			dusk = "#CEAC5F",
-			dust = "#C39E4F",
-		},
+	desert = {
+		bg = { shadow = "#303030", core = "#333333", mantle = "#444444", surface = "#555555" },
+		fg = { core = "#F9F8F7", strong = "#E5D9CE", dim = "#7C6A5B", muted = "#4A5C66", comment = "#6D90A8" },
 	},
-	fg = {
-		-- Normal
-		core = {
-			desert = "#F9F8F7",
-			abyss = "#D5D9E2",
-			midnight = "#E1E9FF",
-			night = "#E0E4F8",
-			sol = "#FFE0DA",
-			canyon = "#F8E7D3",
-			dune = "#ECE6DF",
-			mirage = "#DDEFEF",
-			cactus = "#E2E8E2",
-			lagoon = "#D9E6FA",
-			twilight = "#E6E0F8",
-			rose = "#E9E3E8",
-			starlight = "#E8E8E8",
-			dawn = "#453826",
-			dawnlight = "#453826",
-			day = "#382D1C",
-			dusk = "#3A2C18",
-			dust = "#332814",
-		},
-		-- Strong
-		strong = {
-			desert = "#E5D9CE",
-			abyss = "#CED3E0",
-			midnight = "#D7E0FF",
-			night = "#DAD3FF",
-			sol = "#FFD3CB",
-			canyon = "#FFD8BC",
-			dune = "#E6DAC9",
-			mirage = "#C9EEE6",
-			cactus = "#C7ECD8",
-			lagoon = "#D0E2F0",
-			twilight = "#E1D2FF",
-			rose = "#E6D6EE",
-			starlight = "#E0E0E0",
-			dawn = "#261E12",
-			dawnlight = "#261E12",
-			day = "#2A1F0F",
-			dusk = "#2A1F0C",
-			dust = "#1C160B",
-		},
-		-- Inlay hints / nontext (slightly warm/dark, distinct from comments)
-		dim = {
-			desert = "#7C6A5B",
-			abyss = "#5A4E45",
-			midnight = "#5B534B",
-			night = "#5E564C",
-			sol = "#566B5D",
-			canyon = "#566B5D",
-			dune = "#5B7464",
-			mirage = "#5A4E45",
-			cactus = "#7C6A5B",
-			lagoon = "#5A524B",
-			twilight = "#5A4E45",
-			rose = "#5A4E45",
-			starlight = "#6A5448",
-			dawn = "#69674C",
-			dawnlight = "#656349",
-			day = "#605D42",
-			dusk = "#534e38",
-			dust = "#45412E",
-		},
-		-- Line numbers (darkest, low-chroma)
-		muted = {
-			desert = "#4A5C66",
-			abyss = "#3A4A50",
-			midnight = "#3A4A58",
-			night = "#3B3A4C",
-			sol = "#5F4642",
-			canyon = "#5C402D",
-			dune = "#6B5A4A",
-			mirage = "#3C4F4D",
-			cactus = "#4B5F4F",
-			lagoon = "#2F536A",
-			twilight = "#43385B",
-			rose = "#3E2E38",
-			starlight = "#4E5A6A",
-			dawn = "#69674C",
-			dawnlight = "#656349",
-			day = "#605D42",
-			dusk = "#534e38",
-			dust = "#45412E",
-		},
-		-- Comments (mid-contrast, readable but soft)
-		comment = {
-			desert = "#6D90A8",
-			abyss = "#5E7B88",
-			midnight = "#5F7390",
-			night = "#676B88",
-			sol = "#9B756E",
-			canyon = "#9A6C4E",
-			dune = "#8A7663",
-			mirage = "#387F74",
-			cactus = "#5F8663",
-			lagoon = "#467B99",
-			twilight = "#6F6291",
-			rose = "#9F6C85",
-			starlight = "#7FA5CC",
-			dawn = "#456B80",
-			dawnlight = "#43677b",
-			day = "#3E6174",
-			dusk = "#3e5060",
-			dust = "#31434C",
-		},
+	abyss = {
+		bg = { shadow = "#050505", core = "#000000", mantle = "#080808", surface = "#1A1A1A" },
+		fg = { core = "#D5D9E2", strong = "#CED3E0", dim = "#5A4E45", muted = "#3A4A50", comment = "#5E7B88" },
+	},
+	midnight = {
+		bg = { shadow = "#0C1014", core = "#101418", mantle = "#14181C", surface = "#1C242C" },
+		fg = { core = "#E1E9FF", strong = "#D7E0FF", dim = "#5B534B", muted = "#3A4A58", comment = "#5F7390" },
+	},
+	night = {
+		bg = { shadow = "#0C0C18", core = "#0D0D1A", mantle = "#06060E", surface = "#262633" },
+		fg = { core = "#E0E4F8", strong = "#DAD3FF", dim = "#5E564C", muted = "#3B3A4C", comment = "#676B88" },
+	},
+	sol = {
+		bg = { shadow = "#2C1512", core = "#2F1815", mantle = "#3A2521", surface = "#4F312B" },
+		fg = { core = "#FFE0DA", strong = "#FFD3CB", dim = "#566B5D", muted = "#5F4642", comment = "#9B756E" },
+	},
+	canyon = {
+		bg = { shadow = "#2B1804", core = "#2F1A05", mantle = "#402412", surface = "#624020" },
+		fg = { core = "#F8E7D3", strong = "#FFD8BC", dim = "#566B5D", muted = "#5C402D", comment = "#9A6C4E" },
+	},
+	dune = {
+		bg = { shadow = "#2B231E", core = "#2E2620", mantle = "#3C332C", surface = "#534A3F" },
+		fg = { core = "#ECE6DF", strong = "#E6DAC9", dim = "#5B7464", muted = "#6B5A4A", comment = "#8A7663" },
+	},
+	mirage = {
+		bg = { shadow = "#172328", core = "#18252A", mantle = "#1A2D33", surface = "#2A3F46" },
+		fg = { core = "#DDEFEF", strong = "#C9EEE6", dim = "#5A4E45", muted = "#3C4F4D", comment = "#387F74" },
+	},
+	cactus = {
+		bg = { shadow = "#19231B", core = "#1C261E", mantle = "#2C3A30", surface = "#3C4B3E" },
+		fg = { core = "#E2E8E2", strong = "#C7ECD8", dim = "#7C6A5B", muted = "#4B5F4F", comment = "#5F8663" },
+	},
+	lagoon = {
+		bg = { shadow = "#0F1522", core = "#101825", mantle = "#1A283F", surface = "#22385C" },
+		fg = { core = "#D9E6FA", strong = "#D0E2F0", dim = "#5A524B", muted = "#2F536A", comment = "#467B99" },
+	},
+	twilight = {
+		bg = { shadow = "#201C2B", core = "#221B2F", mantle = "#2B243B", surface = "#352D47" },
+		fg = { core = "#E6E0F8", strong = "#E1D2FF", dim = "#5A4E45", muted = "#43385B", comment = "#6F6291" },
+	},
+	rose = {
+		bg = { shadow = "#2B1523", core = "#301828", mantle = "#3E2636", surface = "#523A4B" },
+		fg = { core = "#E9E3E8", strong = "#E6D6EE", dim = "#5A4E45", muted = "#3E2E38", comment = "#9F6C85" },
+	},
+	starlight = {
+		bg = { shadow = "#050505", core = "#000000", mantle = "#080808", surface = "#1A1A1A" },
+		fg = { core = "#E8E8E8", strong = "#E0E0E0", dim = "#6A5448", muted = "#4E5A6A", comment = "#7FA5CC" },
+	},
+	dawn = {
+		bg = { shadow = "#E9E0AE", core = "#EFE5B6", mantle = "#E3D8A4", surface = "#D7CC97" },
+		fg = { core = "#453826", strong = "#261E12", dim = "#69674C", muted = "#69674C", comment = "#456B80" },
+	},
+	dawnlight = {
+		bg = { shadow = "#E3D396", core = "#ECDFA3", mantle = "#DDD091", surface = "#D1C085" },
+		fg = { core = "#453826", strong = "#261E12", dim = "#656349", muted = "#656349", comment = "#43677b" },
+	},
+	day = {
+		bg = { shadow = "#DFC87D", core = "#E5D68B", mantle = "#DFC47A", surface = "#D3BA68" },
+		fg = { core = "#382D1C", strong = "#2A1F0F", dim = "#605D42", muted = "#605D42", comment = "#3E6174" },
+	},
+	dusk = {
+		bg = { shadow = "#E0C480", core = "#DCBA75", mantle = "#D5B36A", surface = "#CEAC5F" },
+		fg = { core = "#3A2C18", strong = "#2A1F0C", dim = "#534e38", muted = "#534e38", comment = "#3e5060" },
+	},
+	dust = {
+		bg = { shadow = "#CFA955", core = "#D4B165", mantle = "#C9A55A", surface = "#C39E4F" },
+		fg = { core = "#332814", strong = "#1C160B", dim = "#45412E", muted = "#45412E", comment = "#31434C" },
 	},
 }
 
@@ -318,142 +197,142 @@ local colors = {
 	},
 
 	brown = {
-		[700] = "#A39B8E", -- dryriverbed
-		[600] = "#B5ADA0", -- lightriverbed
-		[500] = "#C5C0B3", -- drybone (BASE)
-		[400] = "#DDC8B4", -- paleclay
+		[700] = "#A39B8E",
+		[600] = "#B5ADA0",
+		[500] = "#C5C0B3",
+		[400] = "#DDC8B4",
 	},
 
 	-- Reds/Pinks
 	red = {
-		[900] = "#A23B3B", -- brick
-		[800] = "#D06666", -- indianred
-		[500] = "#ED7777", -- vibrantred (BASE)
-		[400] = "#F58888", -- brightvibrantred
-		[300] = "#F28D8D", -- brightervibrantred
-		[200] = "#F39493", -- brightestvibrantred
-		[100] = "#F29B9B", -- lightvibrantred
-		[50] = "#FFACA5", -- lightestvibrantred
+		[900] = "#A23B3B",
+		[800] = "#D06666",
+		[500] = "#ED7777",
+		[400] = "#F58888",
+		[300] = "#F28D8D",
+		[200] = "#F39493",
+		[100] = "#F29B9B",
+		[50] = "#FFACA5",
 	},
 
 	coral = {
-		[500] = "#E58383", -- heatwave (BASE)
-		[400] = "#F09595", -- brightheatwave
-		[300] = "#FBABAB", -- brightestheatwave
-		[200] = "#F6C1C1", -- lighterheatwave
+		[500] = "#E58383",
+		[400] = "#F09595",
+		[300] = "#FBABAB",
+		[200] = "#F6C1C1",
 	},
 
 	rose = {
-		[700] = "#FF8080", -- deepdesertrose
-		[500] = "#FFA0A0", -- desertrose (BASE)
-		[400] = "#FFB0B0", -- brightdesertrose
-		[300] = "#FFC0C0", -- brightestdesertrose
-		[200] = "#FFCECE", -- lightdesertrose
+		[700] = "#FF8080",
+		[500] = "#FFA0A0",
+		[400] = "#FFB0B0",
+		[300] = "#FFC0C0",
+		[200] = "#FFCECE",
 	},
 
 	-- Oranges
 	sundown = {
-		[500] = "#F89D82", -- brightestsunrise (BASE)
-		[400] = "#FFBA80", -- lightestlightRedDawn
+		[500] = "#F89D82",
+		[400] = "#FFBA80",
 	},
 
 	sunrise = {
-		[700] = "#F8944D", -- darkRedDawn
-		[600] = "#F9A05E", -- lightRedDawn
-		[500] = "#F8B471", -- redDawn (BASE)
+		[700] = "#F8944D",
+		[600] = "#F9A05E",
+		[500] = "#F8B471",
 	},
 
 	sunshine = {
-		[700] = "#E3910B", -- deepersun
-		[600] = "#F49F15", -- deepsun
-		[500] = "#F5A72C", -- sun (BASE)
-		[400] = "#F7B64D", -- lightsun
-		[300] = "#F8C471", -- dawn
-		[200] = "#F9C97B", -- lightdawn
+		[700] = "#E3910B",
+		[600] = "#F49F15",
+		[500] = "#F5A72C",
+		[400] = "#F7B64D",
+		[300] = "#F8C471",
+		[200] = "#F9C97B",
 	},
 
 	sunset = {
-		[500] = "#FFA247", -- sunset (BASE)
-		[400] = "#FFA852", -- lightsunset
-		[300] = "#FFB870", -- lightestsunset
+		[500] = "#FFA247",
+		[400] = "#FFA852",
+		[300] = "#FFB870",
 	},
 
 	-- Yellows
 	gold = {
-		[500] = "#FFD700", -- gold (BASE)
-		[400] = "#F4E36B", -- sunYellow
-		[300] = "#EADD61", -- moonlitsand
+		[500] = "#FFD700",
+		[400] = "#F4E36B",
+		[300] = "#EADD61",
 	},
 
 	khaki = {
-		[700] = "#BDB76B", -- darkkhaki
-		[600] = "#CDC673", -- khaki3
-		[500] = "#F0E68C", -- khaki (BASE)
+		[700] = "#BDB76B",
+		[600] = "#CDC673",
+		[500] = "#F0E68C",
 	},
 
 	dune = {
-		[500] = "#D4A017", -- dune (BASE)
+		[500] = "#D4A017",
 	},
 
 	sand = {
-		[400] = "#FFD393", -- navajowhite
+		[400] = "#FFD393",
 	},
 
 	-- Greens
 	cactus = {
-		[700] = "#34CB7D", -- springcactus
-		[500] = "#53D390", -- cactus (BASE)
-		[400] = "#6DDFA0", -- lightcactus
+		[700] = "#34CB7D",
+		[500] = "#53D390",
+		[400] = "#6DDFA0",
 	},
 
 	moss = {
-		[500] = "#6BBF59", -- moss (BASE)
-		[400] = "#8DCD7E", -- springmoss
+		[500] = "#6BBF59",
+		[400] = "#8DCD7E",
 	},
 
 	palm = {
-		[600] = "#94E97C", -- darkPalm
-		[500] = "#96EA7F", -- palm (BASE)
+		[600] = "#94E97C",
+		[500] = "#96EA7F",
 	},
 
 	aloe = {
-		[500] = "#A7D3A9", -- aloe (BASE)
-		[400] = "#AED6B0", -- lightaloe
+		[500] = "#A7D3A9",
+		[400] = "#AED6B0",
 	},
 
 	-- Teals/Cyans
 	agave = {
-		[800] = "#47A99B", -- lightdeepagave
-		[700] = "#5ABAAE", -- midagave
-		[600] = "#81C0B6", -- darkagave
-		[500] = "#8FD1C7", -- agave (BASE)
-		[400] = "#96D4CB", -- lightagave
+		[800] = "#47A99B",
+		[700] = "#5ABAAE",
+		[600] = "#81C0B6",
+		[500] = "#8FD1C7",
+		[400] = "#96D4CB",
 	},
 
 	-- Blues
 	sky = {
-		[600] = "#61AEFF", -- skyBlueDress
-		[500] = "#87CEEB", -- skyblue (BASE)
-		[400] = "#92D3ED", -- lightskyblue
+		[600] = "#61AEFF",
+		[500] = "#87CEEB",
+		[400] = "#92D3ED",
 	},
 
 	azure = {
-		[600] = "#3DB5FF", -- brightazure
-		[500] = "#4AC8FF", -- horizon (BASE)
-		[400] = "#5CCEFF", -- lighthorizon
+		[600] = "#3DB5FF",
+		[500] = "#4AC8FF",
+		[400] = "#5CCEFF",
 	},
 
 	lagoon = {
-		[600] = "#38D0EF", -- crystalBlue
-		[500] = "#8EEBEC", -- blueLagoon (BASE)
+		[600] = "#38D0EF",
+		[500] = "#8EEBEC",
 	},
 
 	-- Purples/Indigos
 	lavender = {
-		[600] = "#C28EFF", -- cactusflower
-		[500] = "#C799FF", -- moonlitflower (BASE)
-		[400] = "#D2ADFF", -- lightcactusflower
-		[300] = "#D8B7FF", -- lightestcactusflower
+		[600] = "#C28EFF",
+		[500] = "#C799FF",
+		[400] = "#D2ADFF",
+		[300] = "#D8B7FF",
 	},
 }
 
