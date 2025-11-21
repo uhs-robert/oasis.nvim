@@ -255,7 +255,7 @@ local theme = {
 			dawn = "#69674C",
 			dawnlight = "#656349",
 			day = "#605D42",
-			dusk = "#988E66",
+			dusk = "#534e38",
 			dust = "#8A7F5F",
 		},
 		-- Line numbers (darkest, low-chroma)
@@ -276,7 +276,7 @@ local theme = {
 			dawn = "#69674C",
 			dawnlight = "#656349",
 			day = "#605D42",
-			dusk = "#988E66",
+			dusk = "#534e38",
 			dust = "#8A7F5F",
 		},
 		-- Comments (mid-contrast, readable but soft)
@@ -297,7 +297,7 @@ local theme = {
 			dawn = "#456B80",
 			dawnlight = "#43677b",
 			day = "#3E6174",
-			dusk = "#5A748C",
+			dusk = "#3e5060",
 			dust = "#527080",
 		},
 	},
