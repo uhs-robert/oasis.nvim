@@ -154,6 +154,7 @@ To use the extras, refer to their respective documentation.
 | Kitty    | [extras/kitty](extras/kitty)                           |
 | TMUX     | [tmux-oasis](https://github.com/uhs-robert/tmux-oasis) |
 | Vimium C | [extras/vimium-c](extras/vimium-c)                     |
+| Zed      | [extras/zed](extras/zed)                               |
 
 If you'd like an extra config added, raise a feature request and I'll put it together.
 
