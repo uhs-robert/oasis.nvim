@@ -22,7 +22,7 @@ Born from the classic [desert.vim](https://github.com/fugalh/desert.vim), transf
 
 Oasis follows Melange's warm/cool split philosophy (**warm = action/flow**, **cool = structure/data**).
 
-Light themes exclusively use warm beige-to-peachy tones to minimize blue light exposure and support eye health during extended coding sessions.
+Light themes exclusively use warm beige-to-peachy tones to minimize blue light exposure and support eye health during extended coding sessions. All themes are fully AAA WCAG compliant.
 
 <table>
   <tr>
@@ -86,7 +86,7 @@ Light themes exclusively use warm beige-to-peachy tones to minimize blue light e
     </td>
     <td align="center">
       <a href="#dawn-beige"><img src="assets/screenshots/dawn-dashboard.png" alt="Dawn" width="180"></a><br>
-      <strong>Dawn</strong><br><em>Beige</em>
+      <strong>Dawn (Default Light)</strong><br><em>Beige</em>
     </td>
     <td align="center">
       <a href="#dawnlight-golden-beige"><img src="assets/screenshots/dawnlight-dashboard.png" alt="Dawnlight" width="180"></a><br>
@@ -94,7 +94,7 @@ Light themes exclusively use warm beige-to-peachy tones to minimize blue light e
     </td>
     <td align="center">
       <a href="#day-gold"><img src="assets/screenshots/day-dashboard.png" alt="Day" width="180"></a><br>
-      <strong>Day (Default Light)</strong><br><em>Gold</em>
+      <strong>Day</strong><br><em>Gold</em>
     </td>
   </tr>
   <tr>
@@ -276,7 +276,7 @@ Oasis offers _many_ different styles to choose from. Have fun customizing with `
 -- Styles: "night", "midnight", "abyss", "starlight", "desert", "sol", "canyon", "dune", "cactus", "mirage", "lagoon", "twilight", "rose", "dawn", "dawnlight", "day", "dusk", "dust"
 require("oasis").setup({
   dark_style = "lagoon",         -- Style to use when vim.o.background is "dark"
-  light_style = "day",           -- Style to use when vim.o.background is "light"
+  light_style = "dawn",          -- Style to use when vim.o.background is "light"
   style = nil,                   -- Optional: Set a single style to disable auto-switching (e.g., "lagoon", "desert")
   use_legacy_comments = false,   -- Uses the legacy comment color from desert.vim for the "desert" style only (a bright sky blue)
 
@@ -313,7 +313,7 @@ Oasis automatically switches between your config's `light_style` and `dark_style
 ```lua
 require("oasis").setup({
   dark_style = "lagoon",      -- Style when background is dark
-  light_style = "day"         -- Style when background is light
+  light_style = "dawn"        -- Style when background is light
 })
 vim.cmd.colorscheme("oasis")  -- Apply the theme
 ```
@@ -501,7 +501,7 @@ Deep, dark style with mysterious depths
 
 ### Starlight (Black Vivid)
 
-Desert abyss illuminated by brilliant starlight with vivid accent colors
+Desert abyss illuminated by brilliant starlight with vivid high-contrast colors and excellent WCAG compliance.
 
 ![starlight-dashboard](./assets/screenshots/starlight-dashboard.png)
 ![starlight-code](./assets/screenshots/starlight-code.png)
@@ -611,7 +611,7 @@ Soft pinks of the warm desert rose
 
 ### Dawn (Beige)
 
-Ah, the morning sun. Don't forget your sunglasses! (`Lightness = 91`)
+The default light style - bright morning sun with excellent WCAG compliance (`Lightness = 91`)
 
 ![dawn-dashboard](./assets/screenshots/dawn-dashboard.png)
 ![dawn-code](./assets/screenshots/dawn-code.png)
@@ -633,7 +633,7 @@ Slightly warmer than dawn, a golden morning glow (`Lightness = 88`)
 
 ### Day (Gold)
 
-Full daylight warmth with rich golden saturation - the default light style (`Lightness = 85`)
+Full daylight warmth with rich golden saturation (`Lightness = 85`)
 
 ![day-dashboard](./assets/screenshots/day-dashboard.png)
 ![day-code](./assets/screenshots/day-code.png)
