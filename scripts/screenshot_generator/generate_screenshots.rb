@@ -56,7 +56,7 @@ class ScreenshotGenerator
   def check_dependencies
     puts 'Checking dependencies...'
 
-    required_commands = %w[vhs tmux]
+    required_commands = %w[vhs tmux convert]
     missing = required_commands.reject { |cmd| system("which #{cmd} > /dev/null 2>&1") }
 
     if missing.any?
@@ -64,6 +64,7 @@ class ScreenshotGenerator
       puts '   Install with:'
       puts '   - vhs: https://github.com/charmbracelet/vhs'
       puts '   - tmux: your package manager'
+      puts '   - convert (ImageMagick): your package manager'
       exit 1
     end
 
@@ -115,8 +116,19 @@ class ScreenshotGenerator
       "set -g @oasis_flavor \"#{variant}\""
     )
 
+    if updated == content
+      puts "  WARNING: tmux config was not modified - flavor line may not match regex"
+    end
+
     File.write(TMUX_CONFIG, updated)
-    puts "  Updated tmux config to flavor: #{variant}"
+
+    # Verify the change
+    verify = File.read(TMUX_CONFIG)
+    if verify.include?("@oasis_flavor \"#{variant}\"")
+      puts "  ✓ Updated tmux config to flavor: #{variant}"
+    else
+      raise "Failed to update tmux config to #{variant}"
+    end
   end
 
   def generate_variant_screenshots(variant)
@@ -147,7 +159,7 @@ class ScreenshotGenerator
       raise "VHS recording failed for #{variant}" unless system("vhs #{tape_file}")
     end
 
-    # Move both screenshots to final location (force overwrite if exists)
+    # Crop and move both screenshots to final location
     [dashboard_screenshot, code_screenshot].each do |screenshot|
       source_file = File.join(TEMP_DIR, screenshot)
       final_file = File.join(OUTPUT_DIR, screenshot.sub('oasis-', ''))
@@ -155,6 +167,12 @@ class ScreenshotGenerator
       # Check if source file was actually created
       unless File.file?(source_file)
         raise "VHS did not create #{screenshot} - check tape file"
+      end
+
+      # Crop to exact dimensions (1266x1389) to remove VHS padding
+      puts "  Cropping #{screenshot} to 1266x1389..."
+      unless system("convert #{source_file} -gravity center -crop 1266x1389+0+0 +repage #{source_file}")
+        raise "ImageMagick crop failed for #{screenshot}"
       end
 
       # Remove existing file/directory at destination

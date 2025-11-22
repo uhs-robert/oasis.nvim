@@ -3,25 +3,33 @@ Output oasis-<%= variant %>-dashboard.png
 
 Require tmux
 
-# Terminal settings
+# Terminal settings - add 2px to dimensions to account for Padding 1 on all sides
 Set FontSize 14
 Set FontFamily "Maple Mono NF"
-Set Width 1266
-Set Height 1389
+Set Width 1268
+Set Height 1391
 Set Padding 1
 Set Margin 0
 
 Hide
+  # Kill entire tmux server to ensure fresh theme load
+  Type "tmux kill-server 2>/dev/null || true" Enter
+  Sleep 1s
   # Start tmux with user config (already updated to <%= variant %> flavor)
   Type "tmux -f ~/dotfiles/tmux/.tmux.conf -L oasis_screenshot new-session -- bash" Enter
   Sleep 2s
   Ctrl+L
 Show
 
-# Launch nvim to show dashboard
+# Launch nvim first, let it load
 Type "cd ~/Documents/github-uphill/oasis.nvim && nvim"
 Enter
 Sleep 2s
+
+# Now set the colorscheme
+Type ":colorscheme oasis-<%= variant %>"
+Enter
+Sleep 1s
 
 # Take dashboard screenshot
 Screenshot oasis-<%= variant %>-dashboard.png
