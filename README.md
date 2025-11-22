@@ -297,7 +297,7 @@ Check WCAG 2.1 contrast compliance for palettes:
 
 ```lua
 -- Lua API
-local wcag = require("oasis.wcag_checker")
+local wcag = require("oasis.tools.wcag_checker")
 
 -- Analyze all palettes
 local all_results = wcag.analyze_all()

@@ -110,7 +110,7 @@ end, {
 
 -- :OasisWCAG [palette] command to check WCAG contrast compliance
 vim.api.nvim_create_user_command("OasisWCAG", function(opts)
-	local wcag = require("oasis.wcag_checker")
+	local wcag = require("oasis.tools.wcag_checker")
 	if opts.args ~= "" then
 		wcag.check_palette(opts.args)
 	else

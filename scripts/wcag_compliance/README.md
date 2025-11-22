@@ -4,7 +4,7 @@ This guide documents the process for achieving AAA WCAG compliance in Oasis them
 
 ## Development Tools
 
-**Required:** Neovim with Oasis installed (uses `lua/oasis/wcag_checker.lua`)
+**Required:** Neovim with Oasis installed (uses `lua/oasis/tools/wcag_checker.lua`)
 **Optional:** Lua for the color calculator script (`scripts/wcag_compliance/wcag_calculator.lua`)
 
 This directory contains development tools for creating accessible color palettes. End users don't need these tools - they're only for theme maintainers and contributors.
@@ -30,7 +30,7 @@ This directory contains development tools for creating accessible color palettes
 1. Run WCAG checker on the palette:
 
    ```lua
-   :lua require('oasis.wcag_checker').check_palette('oasis_<variant>')
+   :lua require('oasis.tools.wcag_checker').check_palette('oasis_<variant>')
    ```
 
 2. Identify all colors failing AAA (contrast < 7.0:1 for normal, < 4.5:1 for large)
@@ -95,7 +95,7 @@ The logic has been tuned a bit with some AAA exceptions for artistic flair (i.e.
 
 #### Tips
 
-- You can update the presets, `BASE_COLORS`, in [WCAG Color Calculator](../../lua/oasis/wcag_color_calculator.lua) as well as set custom `LIGHT_TARGETS` and `DARK_TARGETS` for _any_ palette color.
+- You can update the presets, `BASE_COLORS`, in [WCAG Color Calculator](../../lua/oasis/tools/wcag_color_calculator.lua) as well as set custom `LIGHT_TARGETS` and `DARK_TARGETS` for _any_ palette color.
   - The targets are in reference to light/dark themes. This lets you make choices like: "I want comments to have a contrast ratio of 3.5 for dark themes and 4.5 for light".
 - Play around with the `single color calculation` and adjust the target till you get it _just right_.
 - If none of this works, it's time to get really creative and make something new. Take a deep breath. Remember the core philosophy of the theme. Now, [use an external color picker tool with WCAG AA and AAA constrast checker like this](https://webaim.org/resources/contrastchecker/) and play with the colors till you find the one that is _just right_!
@@ -174,7 +174,7 @@ ui = {
 2. **Run WCAG checker**:
 
    ```lua
-   :lua require('oasis.wcag_checker').check_palette('oasis_<variant>')
+   :lua require('oasis.tools.wcag_checker').check_palette('oasis_<variant>')
    ```
 
 3. **Verify results**:
@@ -192,14 +192,14 @@ ui = {
 5. **Compare with other themes**:
 
    ```lua
-   :lua require('oasis.wcag_checker').check_all()
+   :lua require('oasis.tools.wcag_checker').check_all()
    ```
 
 ## Tools and Resources
 
 ### Oasis Tools
 
-- **WCAG Checker (Lua)**: `lua/oasis/wcag_checker.lua` - Runtime palette compliance checking within Neovim
+- **WCAG Checker (Lua)**: `lua/oasis/tools/wcag_checker.lua` - Runtime palette compliance checking within Neovim
 - **Color Calculator (Lua)**: `scripts/wcag_compliance/wcag_calculator.lua` - Development tool for calculating AAA-compliant colors
 
 ### External Resources

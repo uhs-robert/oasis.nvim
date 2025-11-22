@@ -9,7 +9,7 @@ local project_root = script_dir:gsub("scripts/wcag_compliance/$", "")
 package.path = project_root .. "lua/?.lua;" .. project_root .. "lua/?/init.lua;" .. package.path
 
 -- Load the calculator
-local calc = require("oasis.wcag_color_calculator")
+local calc = require("oasis.tools.wcag_color_calculator")
 
 -- Available themes
 local LIGHT_THEMES = {
@@ -36,7 +36,7 @@ local DARK_THEMES = {
 	"oasis_starlight",
 }
 
--- Use targets from the module (edit lua/oasis/wcag_color_calculator.lua to customize)
+-- Use targets from the module (edit lua/oasis/tools/wcag_color_calculator.lua to customize)
 local function get_light_theme_targets()
 	return calc.PRESETS.LIGHT_TARGETS
 end
@@ -79,7 +79,7 @@ Commands:
   actual [theme|all]      - Test actual colors with auto light/dark targets
   presets [theme|all]     - Test reference BASE_COLORS against all backgrounds
 
-Custom Targets (edit lua/oasis/wcag_color_calculator.lua):
+Custom Targets (edit lua/oasis/tools/wcag_color_calculator.lua):
   LIGHT_TARGETS - Comments: AA (4.5), Muted/Dim/Nontext: <AA, Others: AAA (7.05)
   DARK_TARGETS  - All colors use AAA (7.05) by default
 

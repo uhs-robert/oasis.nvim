@@ -1,4 +1,4 @@
--- lua/oasis/wcag_checker.lua
+-- lua/oasis/tools/wcag_checker.lua
 -- WCAG Contrast Checker for Oasis Palettes
 -- Analyzes color contrast ratios and WCAG compliance
 
@@ -371,9 +371,9 @@ function M.check_all()
 	-- Coach user on getting detailed results
 	print("\n" .. string.rep("=", 80))
 	print("\nDetailed results available. Run with palette name for specifics:")
-	print("  :lua require('oasis.wcag_checker').check_palette('oasis_lagoon')")
-	print("  :lua require('oasis.wcag_checker').print_palette_results(")
-	print("    require('oasis.wcag_checker').analyze_palette('oasis_lagoon'))")
+	print("  :lua require('oasis.tools.wcag_checker').check_palette('oasis_lagoon')")
+	print("  :lua require('oasis.tools.wcag_checker').print_palette_results(")
+	print("    require('oasis.tools.wcag_checker').analyze_palette('oasis_lagoon'))")
 end
 
 --- Check a specific palette
