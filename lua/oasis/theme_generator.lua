@@ -61,7 +61,7 @@ return function(c)
     DiffText                   = { fg=c.fg.core, bg=c.bg.surface }, -- Diff mode: Changed text within a changed line |diff.txt|
     TermCursor                 = { reverse=true }, -- Cursor in a focused terminal
     TermCursorNC               = { reverse=true }, -- Cursor in an unfocusd terminal
-    ErrorMsg                   = { fg=c.ui.diag.error.fg, bg=c.fg.strong, reverse=true }, -- Error messages on the command line
+    ErrorMsg                   = { fg=c.ui.diag.error.fg, bg=c.ui.diag.error.bg }, -- Error messages on the command line
     Folded                     = { fg=c.syntax.statement, bg=c.bg.surface }, -- Line used for closed folds
     FoldColumn                 = { fg=c.fg.muted, bg=c.bg.core }, -- 'foldcolumn'
     SignColumn                 = { fg=c.fg.muted, bg=c.bg.core }, -- Column where |signs| are displayed
@@ -111,7 +111,7 @@ return function(c)
     FloatTitle                 = { fg=c.ui.float.title, bg=c.ui.float.border.bg, bold=true }, -- Title of floating windows.
     VertSplit                  = { fg=c.ui.border, bg=c.bg.mantle }, -- Column separating vertically split windows
     Visual                     = { bg=c.ui.visual.bg, fg = (c.ui.fg_visual or "NONE") }, -- Visual mode selection
-    VisualNOS                  = { bg=c.ui.visual.bg }, -- Visual mode selection when vim is "Not Owning the Selection". -- ISSUE: Was visual.bg.desaturate(10).darken(6)
+    VisualNOS                  = { bg=c.ui.visual.bg }, -- Visual mode selection when vim is "Not Owning the Selection".
     WarningMsg                 = { fg=c.ui.diag.warn.fg, bold=true }, -- Warning messages
     Whitespace                 = "NonText", -- "nbsp", "space", "tab" and "trail" in 'listchars'
     Winseparator               = "VertSplit", -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
