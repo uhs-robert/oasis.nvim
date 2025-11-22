@@ -5,7 +5,7 @@ This guide documents the process for achieving AAA WCAG compliance in Oasis them
 ## Development Tools
 
 **Required:** Neovim with Oasis installed (uses `lua/oasis/wcag_checker.lua`)
-**Optional:** Ruby 2.7+ (no gems needed) for the color calculator script
+**Optional:** Lua for the color calculator script (`scripts/wcag_compliance/wcag_calculator.lua`)
 
 This directory contains development tools for creating accessible color palettes. End users don't need these tools - they're only for theme maintainers and contributors.
 
@@ -43,34 +43,62 @@ This directory contains development tools for creating accessible color palettes
 
 For each failing color, calculate the darkened value needed to achieve 7.0:1 contrast while maintaining hue/saturation.
 
-### Using the Ruby Color Calculator
+### Using the Lua Color Calculator
 
-The Ruby script can calculate AAA-compliant colors while preserving hue and saturation:
+The Lua script can calculate AAA-compliant colors while preserving hue and saturation:
 
 **Single color calculation:**
 
 ```bash
-ruby scripts/wcag_color_calculator.rb '#EFE5B6' '#D26600' 7.05
-# Output: #D26600 → #763900 (7.05:1)
+lua scripts/wcag_compliance/wcag_calculator.lua '#EFE5B6' '#D26600' 7.0
+# Output:
+# Current contrast: 3.86:1
+# ✗ Below target of 7.00:1
+
+# Recommended color: #B35100
+# New contrast: 7.01:1
+
+# Change: #D26600 → #B35100
 ```
 
-**Batch process entire theme:**
+**Theme-based calculation (actual colors):**
 
 ```bash
-ruby scripts/wcag_color_calculator.rb batch dawn
-# Calculates all typical syntax/UI colors for dawn theme
+lua scripts/wcag_compliance/wcag_calculator.lua actual dawn
+# Calculates actual theme colors for 'dawn' and suggests compliant versions.
 ```
 
-**Batch process other light themes:**
+**Preset-based calculation (template reference colors):**
 
 ```bash
-ruby scripts/wcag_color_calculator.rb batch dawnlight
-ruby scripts/wcag_color_calculator.rb batch day
-ruby scripts/wcag_color_calculator.rb batch dusk
-ruby scripts/wcag_color_calculator.rb batch dust
+lua scripts/wcag_compliance/wcag_calculator.lua presets dawn
+# Calculates reference 'BASE_COLORS' against the 'dawn' theme's background.
 ```
 
-The batch mode processes all typical colors and shows before/after contrast ratios.
+**Check actual and presets simultaneously:**
+
+```bash
+lua scripts/wcag_compliance/wcag_calculator.lua both dawn
+# Calculates both actual and preset colors for 'dawn' theme simultaneously.
+```
+
+**Check all themes:**
+
+```bash
+lua scripts/wcag_compliance/wcag_calculator.lua actual all
+lua scripts/wcag_compliance/wcag_calculator.lua presets all
+```
+
+The script can analyze actual theme colors or a set of preset reference colors against the theme's background. It shows before/after contrast ratios and recommended adjusted colors.
+
+The logic has been tuned a bit with some AAA exceptions for artistic flair (i.e., comments, inlay hints, line numbers) but a human-eye is always needed to make it look _just right_ for each color theme.
+
+#### Tips
+
+- You can update the presets, `BASE_COLORS`, in [WCAG Color Calculator](../../lua/oasis/wcag_color_calculator.lua) as well as set custom `LIGHT_TARGETS` and `DARK_TARGETS` for _any_ palette color.
+  - The targets are in reference to light/dark themes. This lets you make choices like: "I want comments to have a contrast ratio of 3.5 for dark themes and 4.5 for light".
+- Play around with the `single color calculation` and adjust the target till you get it _just right_.
+- If none of this works, it's time to get really creative and make something new. Take a deep breath. Remember the core philosophy of the theme. Now, [use an external color picker tool with WCAG AA and AAA constrast checker like this](https://webaim.org/resources/contrastchecker/) and play with the colors till you find the one that is _just right_!
 
 ### Phase 3: Apply Updates
 
@@ -170,10 +198,12 @@ ui = {
 ## Tools and Resources
 
 ### Oasis Tools
+
 - **WCAG Checker (Lua)**: `lua/oasis/wcag_checker.lua` - Runtime palette compliance checking within Neovim
-- **Color Calculator (Ruby)**: `scripts/wcag_color_calculator.rb` - Development tool for calculating AAA-compliant colors
+- **Color Calculator (Lua)**: `scripts/wcag_compliance/wcag_calculator.lua` - Development tool for calculating AAA-compliant colors
 
 ### External Resources
+
 - **WCAG Standard**: <https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html>
 - **Contrast Calculator**: <https://contrast-ratio.com/>
 - **Color Space Converter**: <https://www.nixsensor.com/free-color-converter/>
