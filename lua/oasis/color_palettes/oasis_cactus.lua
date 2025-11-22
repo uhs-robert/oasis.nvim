@@ -74,7 +74,8 @@ local c = {
 
 	-- UI
 	ui = {
-		match = p.sunshine[600],
+    lineNumber = p.sunshine[600],
+		match = { bg= p.sunshine[600], fg = ui.bg.core },
 		visual = { bg = p.visual.orange, fg = "none" },
 		search = { bg = p.visual.orange, fg = ui.fg.core },
 		curSearch = { bg = p.sunshine[500], fg = ui.bg.core },
