@@ -438,11 +438,14 @@ end
 M.PRESETS = {
 	-- Custom target overrides for light themes
 	LIGHT_TARGETS = {
+		["fg.core"] = M.STANDARDS.AAA_NORMAL + 2,
+		["syntax.punctuation"] = M.STANDARDS.AAA_NORMAL + 1,
+		["syntax.operator"] = M.STANDARDS.AAA_NORMAL + 0.5,
 		["fg.comment"] = M.STANDARDS.AA_NORMAL,
 		["syntax.comment"] = M.STANDARDS.AA_NORMAL,
-		["fg.dim"] = M.STANDARDS.AA_NORMAL - 1.5,
-		["ui.nontext"] = M.STANDARDS.AA_NORMAL - 1.5,
-		["fg.muted"] = M.STANDARDS.AA_NORMAL - 1.25,
+		["fg.dim"] = M.STANDARDS.AA_NORMAL + 1.75,
+		["ui.nontext"] = M.STANDARDS.AA_NORMAL + 1.75,
+		["fg.muted"] = M.STANDARDS.AA_NORMAL + 2.25,
 	},
 
 	-- Custom target overrides for dark themes
