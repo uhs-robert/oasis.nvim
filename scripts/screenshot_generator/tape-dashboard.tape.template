@@ -1,0 +1,47 @@
+# VHS tape for capturing <%= variant %> screenshots (both dashboard and code)
+Output oasis-<%= variant %>-dashboard.png
+
+Require tmux
+
+# Terminal settings
+Set FontSize 14
+Set FontFamily "Maple Mono NF"
+Set Width 1266
+Set Height 1389
+Set Padding 1
+Set Margin 0
+
+Hide
+  # Start tmux with user config (already updated to <%= variant %> flavor)
+  Type "tmux -f ~/dotfiles/tmux/.tmux.conf -L oasis_screenshot new-session -- bash" Enter
+  Sleep 2s
+  Ctrl+L
+Show
+
+# Launch nvim to show dashboard
+Type "cd ~/Documents/github-uphill/oasis.nvim && nvim"
+Enter
+Sleep 2s
+
+# Take dashboard screenshot
+Screenshot oasis-<%= variant %>-dashboard.png
+Sleep 500ms
+
+# Open the code file
+Type ":e assets/example-scripts/index.js"
+Enter
+Sleep 5s # Allow any swap file errors to go away
+
+# Take code screenshot
+Output oasis-<%= variant %>-code.png
+Screenshot oasis-<%= variant %>-code.png
+
+# Exit nvim
+Type ":qa!"
+Enter
+Sleep 500ms
+
+# Exit tmux
+Type "exit"
+Enter
+Sleep 500ms
