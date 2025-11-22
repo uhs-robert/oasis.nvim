@@ -11,30 +11,49 @@ package.path = project_root .. "lua/?.lua;" .. project_root .. "lua/?/init.lua;"
 -- Load the calculator
 local calc = require("oasis.tools.wcag_color_calculator")
 
--- Available themes
-local LIGHT_THEMES = {
-	"oasis_dawn",
-	"oasis_dawnlight",
-	"oasis_day",
-	"oasis_dusk",
-	"oasis_dust",
-}
+-- Dynamically discover available themes from color_palettes directory
+local function discover_themes()
+	local light_themes = {}
+	local dark_themes = {}
+	local palette_dir = project_root .. "lua/oasis/color_palettes/"
 
-local DARK_THEMES = {
-	"oasis_desert",
-	"oasis_abyss",
-	"oasis_midnight",
-	"oasis_night",
-	"oasis_sol",
-	"oasis_canyon",
-	"oasis_dune",
-	"oasis_mirage",
-	"oasis_cactus",
-	"oasis_lagoon",
-	"oasis_twilight",
-	"oasis_rose",
-	"oasis_starlight",
-}
+	-- Get all .lua files in the palette directory (basename only)
+	local handle = io.popen('ls "' .. palette_dir .. '" 2>/dev/null | grep "\\.lua$"')
+	if not handle then
+		print("Error: Could not read palette directory")
+		return {}, {}
+	end
+
+	local result = handle:read("*a")
+	handle:close()
+
+	-- Process each file
+	for filename in result:gmatch("[^\r\n]+") do
+		if filename:match("%.lua$") then
+			-- Extract theme name (remove .lua extension)
+			local theme_name = filename:gsub("%.lua$", "")
+			local success, palette = pcall(require, "oasis.color_palettes." .. theme_name)
+
+			if success and palette then
+				if palette.light_mode then
+					table.insert(light_themes, theme_name)
+				else
+					table.insert(dark_themes, theme_name)
+				end
+			else
+				print("Warning: Could not load palette: " .. theme_name)
+			end
+		end
+	end
+
+	-- Sort alphabetically for consistent output
+	table.sort(light_themes)
+	table.sort(dark_themes)
+
+	return light_themes, dark_themes
+end
+
+local LIGHT_THEMES, DARK_THEMES = discover_themes()
 
 -- Use targets from the module (edit lua/oasis/tools/wcag_color_calculator.lua to customize)
 local function get_light_theme_targets()
