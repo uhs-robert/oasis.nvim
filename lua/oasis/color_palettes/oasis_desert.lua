@@ -22,7 +22,7 @@ local ui = {
 	},
 	-- General colors
 	theme = {
-		primary = p.red[500],
+		primary = p.red[800],
 		light_primary = p.rose[300],
 		secondary = p.khaki[500],
 		accent = p.sky[500],
