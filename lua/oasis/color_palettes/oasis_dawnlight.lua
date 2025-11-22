@@ -44,19 +44,19 @@ local c = {
 		identifier = "#3e4750",
 		delimiter = ui.theme.primary,
 		type = "#264c46",
-		builtinVar = "#00458d", -- (this, document, window, etc)
+		builtinVar = "#00448C", -- (this, document, window, etc)
 		string = "#145031",
-		regex = "#1c510d",
+		regex = "#1C510E",
 		builtinConst = "#204d48", -- (constant: number, float, boolean, or const not string/character)
 		constant = "#743305",
 
 		-- Warm: (Control / Flow)
-		func = "#6d3905",
+		func = "#6d3805",
 		builtinFunc = "#82250a", -- (eg. parseInt, Array, Object etc)
 		statement = "#4d470a", -- (general statement (i.e. var, const))
 		exception = "#8c1313", -- (try/catch, return)
 		keyword = "#413E1D", -- (Conditionals, Loops)
-		special = "#6f3700", -- (Statement not covered above)
+		special = "#6f3701", -- (Statement not covered above)
 		operator = "#890000",
 		punctuation = "#7C1212",
 		preproc = "#074d5b", -- (imports)
@@ -69,7 +69,7 @@ local c = {
 	-- Diff
 	diff = {
 		add = "#2F7D32",
-		change = "#494900",
+		change = "#484800",
 		delete = "#7f2727",
 	},
 
@@ -93,7 +93,7 @@ local c = {
 		},
 		diag = {
 			error = { fg = "#7f2727", bg = ui.bg.core },
-			warn = { fg = "#494900", bg = ui.bg.core },
+			warn = { fg = "#484800", bg = ui.bg.core },
 			info = { fg = "#114b63", bg = ui.bg.core },
 			hint = { fg = "#204d46", bg = ui.bg.core },
 			ok = { fg = "#2F7D32", bg = "none" },
