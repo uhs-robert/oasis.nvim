@@ -74,7 +74,7 @@ return function(c)
     CursorLineNr               = { fg=c.ui.lineNumber, bg=(c.bg.gutter or c.bg.core), bold=true }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     CursorLineFold             = { bg=c.bg.core }, -- Like FoldColumn when 'cursorline' is set for the cursor line
     CursorLineSign             = { bg=c.bg.core }, -- Like SignColumn when 'cursorline' is set for the cursor line
-    MatchParen                 = { fg=c.ui.match.fg, bg=c.syntax.delimiter, bold=true }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+    MatchParen                 = { fg=c.ui.lineNumber, bg=c.ui.search.bg, bold=true }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     ModeMsg                    = { fg=c.syntax.statement, bold=true }, -- 'showmode' message (e.g., "-- INSERT -- ")
     MsgArea                    = { fg=c.syntax.statement }, -- Area for messages and cmdline
     MoreMsg                    = { fg=c.syntax.type, bold=true }, -- |more-prompt|
