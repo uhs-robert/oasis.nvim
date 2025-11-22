@@ -277,31 +277,50 @@ function M.print_palette_results(results)
 	end
 end
 
+--- Dynamically discover all available Oasis palettes
+---@return table Array of palette names
+local function discover_palettes()
+	local palettes = {}
+	local script_path = debug.getinfo(1, "S").source:sub(2)
+	local script_dir = script_path:match("(.*[/\\])")
+	local palette_dir = script_dir:gsub("tools[/\\]?$", "") .. "color_palettes/"
+	local files = {}
+
+	-- Method 1: Try to get files via vim.fn.glob if available (Neovim)
+	if vim and vim.fn and vim.fn.glob then
+		files = vim.fn.glob(palette_dir .. "*.lua", false, true)
+		if files and #files > 0 then
+			for _, file in ipairs(files) do
+				local filename = vim.fn.fnamemodify(file, ":t:r")
+				table.insert(palettes, filename)
+			end
+		end
+	end
+
+	-- Method 2: Fallback to io.popen for standalone Lua
+	if #palettes == 0 then
+		local handle = io.popen('ls "' .. palette_dir .. '" 2>/dev/null | grep "\\.lua$"')
+		if handle then
+			local result = handle:read("*a")
+			handle:close()
+
+			for filename in result:gmatch("[^\r\n]+") do
+				if filename:match("%.lua$") then
+					local theme_name = filename:gsub("%.lua$", "")
+					table.insert(palettes, theme_name)
+				end
+			end
+		end
+	end
+
+	table.sort(palettes)
+	return palettes
+end
+
 --- Analyze all Oasis palettes
 ---@return table Array of analysis results
 function M.analyze_all()
-	local palettes = {
-		-- Dark themes
-		"oasis_night",
-		"oasis_midnight",
-		"oasis_abyss",
-		"oasis_starlight",
-		"oasis_desert",
-		"oasis_sol",
-		"oasis_canyon",
-		"oasis_dune",
-		"oasis_cactus",
-		"oasis_mirage",
-		"oasis_lagoon",
-		"oasis_twilight",
-		"oasis_rose",
-		-- Light themes
-		"oasis_dawn",
-		"oasis_dawnlight",
-		"oasis_day",
-		"oasis_dusk",
-		"oasis_dust",
-	}
+	local palettes = discover_palettes()
 
 	local all_results = {}
 	for _, palette_name in ipairs(palettes) do
