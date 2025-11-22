@@ -51,7 +51,7 @@ local c = {
 
 		-- Warm: (Control / Flow)
 		func = p.sunrise[500],
-		builtinFunc = p.sunshine[700], -- (eg. parseInst, Array, Object etc)
+		builtinFunc = p.sunshine[500], -- (eg. parseInst, Array, Object etc)
 		statement = p.khaki[500], -- (general statement (i.e. var, const))
 		exception = p.red[400], -- (try/catch, return)
 		keyword = p.khaki[700], -- (Conditionals, Loops)
