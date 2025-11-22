@@ -57,8 +57,8 @@ local c = {
 		exception = "#931313", -- (try/catch, return)
 		keyword = "#4e4b23", -- (Conditionals, Loops)
 		special = "#753a00", -- (Statement not covered above)
-		operator = "#6D0000",
-		punctuation = "#7F1B1B",
+		operator = "#900000",
+		punctuation = "#7E1B1B",
 		preproc = "#085160", -- (imports)
 
 		-- Neutral: (Connections / Info)
