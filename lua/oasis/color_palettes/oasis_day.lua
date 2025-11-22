@@ -75,7 +75,8 @@ local c = {
 
 	-- UI
 	ui = {
-		match = "#663300",
+		lineNumber = "#663300",
+		match = { bg= "#FFD87C", fg = "#663300" },
 		visual = { bg = ui.bg.surface, fg = "none" },
 		search = { bg = "#FFD87C", fg = "#462E23" },
 		curSearch = { bg = p.sunshine[600], fg = "#2C1810" },

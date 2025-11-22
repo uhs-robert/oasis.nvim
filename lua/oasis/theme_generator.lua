@@ -71,10 +71,10 @@ return function(c)
     LineNr                     = { fg=c.fg.muted, bg=(c.bg.gutter or "NONE") }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
     LineNrAbove                = "LineNr", -- Line number for when the 'relativenumber' option is set, above the cursor line
     LineNrBelow                = "LineNr", -- Line number for when the 'relativenumber' option is set, below the cursor line
-    CursorLineNr               = { fg=(c.ui.lineNumber or c.ui.match), bg=(c.bg.gutter or c.bg.core), bold=true }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line. TODO: Remove conditional ORs
+    CursorLineNr               = { fg=c.ui.lineNumber, bg=(c.bg.gutter or c.bg.core), bold=true }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     CursorLineFold             = { bg=c.bg.core }, -- Like FoldColumn when 'cursorline' is set for the cursor line
     CursorLineSign             = { bg=c.bg.core }, -- Like SignColumn when 'cursorline' is set for the cursor line
-    MatchParen                 = { fg=(c.ui.match.fg or c.ui.match), bg=(c.ui.match.bg or c.ui.visual.bg), bold=true }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|  TODO: Remove conditional ORs
+    MatchParen                 = { fg=c.ui.match.fg, bg=c.syntax.delimiter, bold=true }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     ModeMsg                    = { fg=c.syntax.statement, bold=true }, -- 'showmode' message (e.g., "-- INSERT -- ")
     MsgArea                    = { fg=c.syntax.statement }, -- Area for messages and cmdline
     MoreMsg                    = { fg=c.syntax.type, bold=true }, -- |more-prompt|
@@ -300,8 +300,7 @@ return function(c)
 
   -- Light mode overrides
   if LIGHT_MODE then
-    highlights.MatchParen     = { fg=c.ui.match, bg=c.ui.search.bg, bold=true }
-
+    highlights.MatchParen     = { fg=c.ui.match.fg, bg=c.ui.match.bg, bold=true }
     -- inline diff
     highlights.DiffAdd        = { bg="#DDEDDC", fg=c.fg.core }
     highlights.DiffChange     = { bg="#F0E6D4", fg=c.fg.core }
