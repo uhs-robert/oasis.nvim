@@ -1,4 +1,4 @@
--- lua/oasis/wcag_color_calculator.lua
+-- lua/oasis/tools/wcag_color_calculator.lua
 -- WCAG Color Calculator for Oasis Theme
 -- Calculates AAA-compliant colors while maintaining hue and saturation
 
