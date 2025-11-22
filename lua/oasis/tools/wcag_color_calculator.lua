@@ -441,6 +441,7 @@ M.PRESETS = {
 		["fg.core"] = M.STANDARDS.AAA_NORMAL + 2,
 		["syntax.punctuation"] = M.STANDARDS.AAA_NORMAL + 1,
 		["syntax.operator"] = M.STANDARDS.AAA_NORMAL + 0.5,
+		["syntax.keyword"] = M.STANDARDS.AAA_NORMAL + 1,
 		["fg.comment"] = M.STANDARDS.AA_NORMAL,
 		["syntax.comment"] = M.STANDARDS.AA_NORMAL,
 		["fg.dim"] = M.STANDARDS.AA_NORMAL + 1.75,
