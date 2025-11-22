@@ -3,21 +3,23 @@ Output oasis-<%= variant %>-dashboard.png
 
 Require tmux
 
-# Terminal settings - add 2px to dimensions to account for Padding 1 on all sides
-Set FontSize 14
+# Terminal settings - keep padding but shrink to final size (no crop needed)
+Set FontSize 16
 Set FontFamily "Maple Mono NF"
-Set Width 1268
-Set Height 1391
+Set Width 1266
+Set Height 1389
 Set Padding 1
 Set Margin 0
+Set Shell bash
+Set Theme { "name": "OasisAbyss", "black": "#000000", "red": "#D06666", "green": "#35B56E", "yellow": "#F0E68C", "blue": "#87CEEB", "magenta": "#B499FF", "cyan": "#1CA1FF", "white": "#E8E2D4", "brightBlack": "#514742", "brightRed": "#FFA0A0", "brightGreen": "#6BBF59", "brightYellow": "#FFA247", "brightBlue": "#6FB8FF", "brightMagenta": "#C0A0FF", "brightCyan": "#8FD1C7", "brightWhite": "#FFF9F2", "background": "#000000", "foreground": "#D5D9E2", "selection": "#5A3824", "cursor": "#F0E68C" }
 
 Hide
-  # Kill entire tmux server to ensure fresh theme load
-  Type "tmux kill-server 2>/dev/null || true" Enter
-  Sleep 1s
-  # Start tmux with user config (already updated to <%= variant %> flavor)
-  Type "tmux -f ~/dotfiles/tmux/.tmux.conf -L oasis_screenshot new-session -- bash" Enter
-  Sleep 2s
+  # Set environment for true color before starting tmux
+  Type "export TERM=xterm-direct COLORTERM=truecolor" Enter
+  Sleep 500ms
+  # Start fresh tmux with user config (already updated to <%= variant %> flavor and tmux killed)
+  Type "tmux -2 -f ~/dotfiles/tmux/.tmux.conf new-session -- bash" Enter
+  Sleep 3s
   Ctrl+L
 Show
 
@@ -26,8 +28,8 @@ Type "cd ~/Documents/github-uphill/oasis.nvim && nvim"
 Enter
 Sleep 2s
 
-# Now set the colorscheme
-Type ":colorscheme oasis-<%= variant %>"
+# Force termguicolors and set the colorscheme
+Type ":set termguicolors | colorscheme oasis-<%= variant %>"
 Enter
 Sleep 1s
 

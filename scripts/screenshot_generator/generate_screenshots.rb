@@ -35,6 +35,9 @@ VARIANTS = %w[
   dust
 ]
 
+# Testing single variant
+# VARIANTS = %w[canyon]
+
 # Screenshot dimensions match existing assets/screenshots/ (full terminal size)
 # Note: Cropped versions for social media are created separately in assets/socials/
 
@@ -88,6 +91,12 @@ class ScreenshotGenerator
     puts 'Config restored'
   end
 
+  def kill_tmux
+    puts '  Killing tmux server...'
+    system('tmux kill-server 2>/dev/null || true')
+    sleep 1
+  end
+
   def generate_all_screenshots
     puts "\nGenerating screenshots for #{VARIANTS.count} variants..."
     puts '=' * 60
@@ -96,6 +105,7 @@ class ScreenshotGenerator
       puts "\n[#{index + 1}/#{VARIANTS.count}] Processing: #{variant}"
 
       begin
+        kill_tmux
         update_tmux_config(variant)
         generate_variant_screenshots(variant)
         puts "#{variant} complete"
@@ -116,19 +126,15 @@ class ScreenshotGenerator
       "set -g @oasis_flavor \"#{variant}\""
     )
 
-    if updated == content
-      puts "  WARNING: tmux config was not modified - flavor line may not match regex"
-    end
+    puts '  WARNING: tmux config was not modified - flavor line may not match regex' if updated == content
 
     File.write(TMUX_CONFIG, updated)
 
     # Verify the change
     verify = File.read(TMUX_CONFIG)
-    if verify.include?("@oasis_flavor \"#{variant}\"")
-      puts "  ✓ Updated tmux config to flavor: #{variant}"
-    else
-      raise "Failed to update tmux config to #{variant}"
-    end
+    raise "Failed to update tmux config to #{variant}" unless verify.include?("@oasis_flavor \"#{variant}\"")
+
+    puts "  ✓ Updated tmux config to flavor: #{variant}"
   end
 
   def generate_variant_screenshots(variant)
@@ -137,7 +143,7 @@ class ScreenshotGenerator
   end
 
   def generate_screenshots_combined(variant)
-    template_file = File.join(TEMPLATE_DIR, "tape-dashboard.tape.template")
+    template_file = File.join(TEMPLATE_DIR, 'tape-dashboard.tape.template')
     tape_file = File.join(TEMP_DIR, "oasis-#{variant}.tape")
     dashboard_screenshot = "oasis-#{variant}-dashboard.png"
     code_screenshot = "oasis-#{variant}-code.png"
@@ -153,7 +159,7 @@ class ScreenshotGenerator
     tape_content = template.result_with_hash(variant: variant)
     File.write(tape_file, tape_content)
 
-    puts "  Recording both screenshots with VHS..."
+    puts '  Recording both screenshots with VHS...'
     # Run VHS from TEMP_DIR so output goes there
     Dir.chdir(TEMP_DIR) do
       raise "VHS recording failed for #{variant}" unless system("vhs #{tape_file}")
@@ -165,15 +171,13 @@ class ScreenshotGenerator
       final_file = File.join(OUTPUT_DIR, screenshot.sub('oasis-', ''))
 
       # Check if source file was actually created
-      unless File.file?(source_file)
-        raise "VHS did not create #{screenshot} - check tape file"
-      end
+      raise "VHS did not create #{screenshot} - check tape file" unless File.file?(source_file)
 
-      # Crop to exact dimensions (1266x1389) to remove VHS padding
-      puts "  Cropping #{screenshot} to 1266x1389..."
-      unless system("convert #{source_file} -gravity center -crop 1266x1389+0+0 +repage #{source_file}")
-        raise "ImageMagick crop failed for #{screenshot}"
-      end
+      # Cropping disabled - using exact dimensions in VHS tape
+      # puts "  Cropping #{screenshot} to 1266x1389..."
+      # unless system("convert #{source_file} -gravity center -crop 1266x1389+0+0 +repage #{source_file}")
+      #   raise "ImageMagick crop failed for #{screenshot}"
+      # end
 
       # Remove existing file/directory at destination
       FileUtils.rm_rf(final_file) if File.exist?(final_file)
@@ -188,7 +192,7 @@ class ScreenshotGenerator
   def generate_screenshot(variant, type)
     template_file = File.join(TEMPLATE_DIR, "tape-#{type}.tape.template")
     tape_file = File.join(TEMP_DIR, "oasis-#{variant}-#{type}.tape")
-    temp_screenshot = "oasis-#{variant}-#{type}.png"  # VHS outputs to current directory
+    temp_screenshot = "oasis-#{variant}-#{type}.png" # VHS outputs to current directory
     final_screenshot = File.join(OUTPUT_DIR, "#{variant}-#{type}.png")
 
     # Generate VHS tape from template
