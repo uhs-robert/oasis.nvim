@@ -294,7 +294,7 @@ local function generate_zed_theme(name, palette)
 					["editor.active_line.background"] = with_alpha(palette.ui.cursorLine, "bf"),
 					["editor.highlighted_line.background"] = palette.ui.cursorLine,
 					["editor.line_number"] = palette.fg.muted,
-					["editor.active_line_number"] = palette.ui.match,
+					["editor.active_line_number"] = palette.ui.lineNumber,
 					["editor.invisible"] = palette.ui.nontext or palette.fg.dim,
 					["editor.wrap_guide"] = with_alpha(palette.fg.dim, "0d"),
 					["editor.active_wrap_guide"] = with_alpha(palette.fg.dim, "1a"),
