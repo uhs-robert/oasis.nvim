@@ -381,6 +381,15 @@ function M.extract_colors_from_palette(palette)
 		end
 	end
 
+	-- Terminal colors
+	if palette.terminal then
+		for key, value in pairs(palette.terminal) do
+			if type(value) == "string" and value:match("^#") then
+				colors["terminal." .. key] = value
+			end
+		end
+	end
+
 	return colors
 end
 
