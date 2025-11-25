@@ -66,15 +66,9 @@ local function main()
 		else
 			local theme = generate_ghostty_theme(name, palette)
 			local ghostty_path = string.format("extras/ghostty/oasis_%s", name)
-			local ok, write_err = utils.write_file(ghostty_path, theme)
-
-			if ok then
-				print(string.format("✓ Generated: %s", ghostty_path))
-				success_count = success_count + 1
-			else
-				print(string.format("✗ Failed to write: %s", write_err))
-				error_count = error_count + 1
-			end
+			utils.write_file(ghostty_path, theme)
+			print(string.format("✓ Generated: %s", ghostty_path))
+			success_count = success_count + 1
 		end
 	end
 

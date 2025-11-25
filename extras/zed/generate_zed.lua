@@ -557,15 +557,9 @@ local function main()
 			local theme = generate_zed_theme(name, palette)
 			local json = color_utils.encode_json(theme, 0)
 			local zed_path = string.format("extras/zed/oasis_%s.json", name)
-			local ok, write_err = utils.write_file(zed_path, json)
-
-			if ok then
-				print(string.format("✓ Generated: %s", zed_path))
-				success_count = success_count + 1
-			else
-				print(string.format("✗ Failed to write: %s", write_err))
-				error_count = error_count + 1
-			end
+			utils.write_file(zed_path, json)
+			print(string.format("✓ Generated: %s", zed_path))
+			success_count = success_count + 1
 		end
 	end
 
