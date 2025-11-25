@@ -9,55 +9,35 @@ local utils = require("oasis.utils")
 local function generate_ghostty_theme(name, palette)
 	local term = palette.terminal -- Each Oasis palette defines its own terminal table
 
-	local lines = {}
+	local lines = {
+		"# Oasis " .. utils.capitalize(name),
+		"# Author: uhs-robert",
+		"",
+	}
 
 	-- Terminal palette colors (0-15)
-	table.insert(lines, "palette = 0=" .. term.color0)
-	table.insert(lines, "palette = 8=" .. term.color8)
-	table.insert(lines, "")
+	for i = 0, 7 do
+		lines[#lines + 1] = string.format("palette = %d=%s", i, term["color" .. i])
+		lines[#lines + 1] = string.format("palette = %d=%s", i + 8, term["color" .. (i + 8)])
+		lines[#lines + 1] = ""
+	end
 
-	table.insert(lines, "palette = 1=" .. term.color1)
-	table.insert(lines, "palette = 9=" .. term.color9)
-	table.insert(lines, "")
+	-- Static content
+	local static = {
+		"foreground = " .. palette.fg.core,
+		"background = " .. palette.bg.core,
+		"",
+		"selection-background = " .. palette.ui.visual.bg,
+		"selection-foreground = " .. palette.fg.core,
+		"",
+		"cursor-color = " .. term.color3, -- Yellow
+		"cursor-text = " .. term.color0, -- Black
+		"",
+	}
 
-	table.insert(lines, "palette = 2=" .. term.color2)
-	table.insert(lines, "palette = 10=" .. term.color10)
-	table.insert(lines, "")
-
-	table.insert(lines, "palette = 3=" .. term.color3)
-	table.insert(lines, "palette = 11=" .. term.color11)
-	table.insert(lines, "")
-
-	table.insert(lines, "palette = 4=" .. term.color4)
-	table.insert(lines, "palette = 12=" .. term.color12)
-	table.insert(lines, "")
-
-	table.insert(lines, "palette = 5=" .. term.color5)
-	table.insert(lines, "palette = 13=" .. term.color13)
-	table.insert(lines, "")
-
-	table.insert(lines, "palette = 6=" .. term.color6)
-	table.insert(lines, "palette = 14=" .. term.color14)
-	table.insert(lines, "")
-
-	table.insert(lines, "palette = 7=" .. term.color7)
-	table.insert(lines, "palette = 15=" .. term.color15)
-	table.insert(lines, "")
-
-	-- Core colors
-	table.insert(lines, "foreground = " .. palette.fg.core)
-	table.insert(lines, "background = " .. palette.bg.core)
-	table.insert(lines, "")
-
-	-- Selection colors
-	table.insert(lines, "selection-background = " .. palette.ui.visual.bg)
-	table.insert(lines, "selection-foreground = " .. palette.fg.core)
-	table.insert(lines, "")
-
-	-- Cursor colors
-	table.insert(lines, "cursor-color = " .. term.color3) -- Using yellow for cursor
-	table.insert(lines, "cursor-text = " .. term.color0) -- Using black for cursor text
-	table.insert(lines, "")
+	for _, line in ipairs(static) do
+		lines[#lines + 1] = line
+	end
 
 	return table.concat(lines, "\n")
 end

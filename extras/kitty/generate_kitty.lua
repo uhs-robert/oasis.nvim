@@ -10,78 +10,50 @@ local function generate_kitty_theme(name, palette)
 	local display_name = utils.capitalize(name)
 	local term = palette.terminal -- Each Oasis palette defines its own terminal table
 
-	local lines = {}
-
-	-- Header
-	table.insert(lines, "# extras/kitty/oasis_" .. name .. ".conf")
-	table.insert(lines, "## name: Oasis " .. display_name)
-	table.insert(lines, "")
+	local lines = {
+		"# extras/kitty/oasis_" .. name .. ".conf",
+		"## name: Oasis " .. display_name,
+		"## author: uhs-robert",
+		"",
+		"# Palette",
+	}
 
 	-- Terminal palette colors (0-15)
-	table.insert(lines, "# Palette")
-	table.insert(lines, string.format("%-24s %s", "color0", term.color0))
-	table.insert(lines, string.format("%-24s %s", "color8", term.color8))
-	table.insert(lines, "")
+	for i = 0, 7 do
+		lines[#lines + 1] = string.format("%-24s %s", "color" .. i, term["color" .. i])
+		lines[#lines + 1] = string.format("%-24s %s", "color" .. (i + 8), term["color" .. (i + 8)])
+		lines[#lines + 1] = ""
+	end
 
-	table.insert(lines, string.format("%-24s %s", "color1", term.color1))
-	table.insert(lines, string.format("%-24s %s", "color9", term.color9))
-	table.insert(lines, "")
+	-- Static content
+	local static = {
+		"# Core",
+		string.format("%-24s %s", "foreground", palette.fg.core),
+		string.format("%-24s %s", "background", palette.bg.core),
+		"",
+		"# Selection",
+		string.format("%-24s %s", "selection_background", palette.ui.visual.bg),
+		string.format("%-24s %s", "selection_foreground", palette.fg.core),
+		"",
+		"# Cursor",
+		string.format("%-24s %s", "cursor", term.color3),
+		string.format("%-24s %s", "cursor_text_color", term.color0),
+		"",
+		"# Borders (panes)",
+		string.format("%-24s %s", "active_border_color", term.color1),
+		string.format("%-24s %s", "inactive_border_color", term.color8),
+		"",
+		"# Tabs",
+		string.format("%-24s %s", "active_tab_foreground", term.color0),
+		string.format("%-24s %s", "active_tab_background", term.color3),
+		string.format("%-24s %s", "inactive_tab_foreground", palette.fg.muted),
+		string.format("%-24s %s", "inactive_tab_background", palette.bg.mantle),
+		"",
+	}
 
-	table.insert(lines, string.format("%-24s %s", "color2", term.color2))
-	table.insert(lines, string.format("%-24s %s", "color10", term.color10))
-	table.insert(lines, "")
-
-	table.insert(lines, string.format("%-24s %s", "color3", term.color3))
-	table.insert(lines, string.format("%-24s %s", "color11", term.color11))
-	table.insert(lines, "")
-
-	table.insert(lines, string.format("%-24s %s", "color4", term.color4))
-	table.insert(lines, string.format("%-24s %s", "color12", term.color12))
-	table.insert(lines, "")
-
-	table.insert(lines, string.format("%-24s %s", "color5", term.color5))
-	table.insert(lines, string.format("%-24s %s", "color13", term.color13))
-	table.insert(lines, "")
-
-	table.insert(lines, string.format("%-24s %s", "color6", term.color6))
-	table.insert(lines, string.format("%-24s %s", "color14", term.color14))
-	table.insert(lines, "")
-
-	table.insert(lines, string.format("%-24s %s", "color7", term.color7))
-	table.insert(lines, string.format("%-24s %s", "color15", term.color15))
-	table.insert(lines, "")
-
-	-- Core colors
-	table.insert(lines, "# Core")
-	table.insert(lines, string.format("%-24s %s", "foreground", palette.fg.core))
-	table.insert(lines, string.format("%-24s %s", "background", palette.bg.core))
-	table.insert(lines, "")
-
-	-- Selection colors
-	table.insert(lines, "# Selection")
-	table.insert(lines, string.format("%-24s %s", "selection_background", palette.ui.visual.bg))
-	table.insert(lines, string.format("%-24s %s", "selection_foreground", palette.fg.core))
-	table.insert(lines, "")
-
-	-- Cursor colors
-	table.insert(lines, "# Cursor")
-	table.insert(lines, string.format("%-24s %s", "cursor", term.color3)) -- Using yellow for cursor
-	table.insert(lines, string.format("%-24s %s", "cursor_text_color", term.color0)) -- Using black for cursor text
-	table.insert(lines, "")
-
-	-- Border colors (panes)
-	table.insert(lines, "# Borders (panes)")
-	table.insert(lines, string.format("%-24s %s", "active_border_color", term.color1)) -- Using red for active
-	table.insert(lines, string.format("%-24s %s", "inactive_border_color", term.color8)) -- Using bright black for inactive
-	table.insert(lines, "")
-
-	-- Tab colors
-	table.insert(lines, "# Tabs")
-	table.insert(lines, string.format("%-24s %s", "active_tab_foreground", term.color0)) -- Black text on...
-	table.insert(lines, string.format("%-24s %s", "active_tab_background", term.color3)) -- Yellow background
-	table.insert(lines, string.format("%-24s %s", "inactive_tab_foreground", palette.fg.muted)) -- Muted text
-	table.insert(lines, string.format("%-24s %s", "inactive_tab_background", palette.bg.mantle)) -- Mantle background
-	table.insert(lines, "")
+	for _, line in ipairs(static) do
+		lines[#lines + 1] = line
+	end
 
 	return table.concat(lines, "\n")
 end
