@@ -2,47 +2,12 @@
 -- extras/vimium-c/generate_vimiumc.lua
 -- Generates Vimium-C browser extension themes from Oasis color palettes
 
-local function get_palette_files()
-	local handle = io.popen("ls ../../lua/oasis/color_palettes/oasis_*.lua 2>/dev/null")
-	if not handle then
-		return nil, "Failed to execute ls command to find palettes."
-	end
-	local result = handle:read("*a")
-	handle:close()
-
-	if not result or result == "" then
-		return nil, "No palette files found."
-	end
-
-	local files = {}
-	for file in result:gmatch("[^\n]+") do
-		local name = file:match("oasis_(%w+)%.lua")
-		if name then
-			table.insert(files, name)
-		end
-	end
-
-	table.sort(files)
-	return files
-end
-
-local function load_palette(name)
-	-- Add project root to package path
-	package.path = package.path .. ";../../lua/?.lua;../../lua/?/init.lua"
-
-	local palette_name = "oasis_" .. name
-	local ok, palette = pcall(require, "oasis.color_palettes." .. palette_name)
-
-	if not ok then
-		return nil, "Failed to load palette: " .. palette
-	end
-
-	return palette
-end
+-- Load shared utilities
+package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
+local utils = require("oasis.utils")
 
 local function get_display_name(name)
-	-- Capitalize first letter
-	return name:gsub("^%l", string.upper)
+	return utils.capitalize(name)
 end
 
 local function extract_vimiumc_colors(palette)
@@ -64,16 +29,16 @@ local function extract_vimiumc_colors(palette)
 end
 
 local function list_palettes()
-	local palette_names, err = get_palette_files()
-	if not palette_names then
-		return {}, {}, err
+	local palette_names = utils.get_palette_names()
+	if #palette_names == 0 then
+		return {}, {}, "No palettes found"
 	end
 
 	local light_themes = {}
 	local dark_themes = {}
 
 	for _, name in ipairs(palette_names) do
-		local palette = load_palette(name)
+		local palette = utils.load_palette(name)
 		if palette then
 			local display_name = get_display_name(name)
 			if palette.light_mode then
@@ -110,22 +75,12 @@ local function select_theme(label, themes)
 	return themes[choice].name
 end
 
-local function read_template_file(path)
-	local file = io.open(path, "r")
-	if not file then
-		return nil
-	end
-	local content = file:read("*a")
-	file:close()
-	return content
-end
-
 local function generate_vimiumc_css(day_name, night_name, day_palette, night_palette)
 	local day_colors = extract_vimiumc_colors(day_palette)
 	local night_colors = extract_vimiumc_colors(night_palette)
 
 	-- Read the CSS template
-	local template = read_template_file("./vimium-c.css.erb")
+	local template = utils.read_file("./extras/vimium-c/vimium-c.css.erb")
 	if not template then
 		return nil, "Failed to read CSS template file."
 	end
@@ -163,17 +118,6 @@ local function generate_vimiumc_css(day_name, night_name, day_palette, night_pal
 	end
 
 	return css
-end
-
-local function write_file(path, content)
-	local file = io.open(path, "w")
-	if not file then
-		return false, "Could not open file for writing: " .. path
-	end
-
-	file:write(content)
-	file:close()
-	return true
 end
 
 local function main(args)
@@ -291,13 +235,13 @@ Examples:
 	end
 
 	-- Load palettes
-	local day_palette, day_err = load_palette(day_name)
+	local day_palette, day_err = utils.load_palette(day_name)
 	if not day_palette then
 		print("Error loading day palette: " .. day_err)
 		return
 	end
 
-	local night_palette, night_err = load_palette(night_name)
+	local night_palette, night_err = utils.load_palette(night_name)
 	if not night_palette then
 		print("Error loading night palette: " .. night_err)
 		return
@@ -307,8 +251,8 @@ Examples:
 	local css = generate_vimiumc_css(day_name, night_name, day_palette, night_palette)
 
 	-- Write to file
-	local output_path = string.format("./output/vimiumc-%s-%s.css", night_name, day_name)
-	local ok, err = write_file(output_path, css)
+	local output_path = string.format("extras/vimium-c/output/vimiumc-%s-%s.css", night_name, day_name)
+	local ok, err = utils.write_file(output_path, css)
 
 	if ok then
 		print(string.format("\n✓ Generated: %s", output_path))

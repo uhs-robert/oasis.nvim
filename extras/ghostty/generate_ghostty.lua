@@ -2,36 +2,9 @@
 -- extras/ghostty/generate_ghostty.lua
 -- Generates Ghostty terminal themes from Oasis color palettes
 
-local function get_palette_files()
-	local handle = io.popen("ls ../../lua/oasis/color_palettes/oasis_*.lua 2>/dev/null")
-	local result = handle:read("*a")
-	handle:close()
-
-	local files = {}
-	for file in result:gmatch("[^\n]+") do
-		local name = file:match("oasis_(%w+)%.lua")
-		if name then
-			table.insert(files, name)
-		end
-	end
-
-	table.sort(files)
-	return files
-end
-
-local function load_palette(name)
-	-- Add project root to package path
-	package.path = package.path .. ";../../lua/?.lua;../../lua/?/init.lua"
-
-	local palette_name = "oasis_" .. name
-	local ok, palette = pcall(require, "oasis.color_palettes." .. palette_name)
-
-	if not ok then
-		return nil, "Failed to load palette: " .. palette
-	end
-
-	return palette
-end
+-- Load shared utilities
+package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
+local utils = require("oasis.utils")
 
 local function generate_ghostty_theme(name, palette)
 	local term = palette.terminal -- Each Oasis palette defines its own terminal table
@@ -89,21 +62,10 @@ local function generate_ghostty_theme(name, palette)
 	return table.concat(lines, "\n")
 end
 
-local function write_file(path, content)
-	local file = io.open(path, "w")
-	if not file then
-		return false, "Could not open file for writing: " .. path
-	end
-
-	file:write(content)
-	file:close()
-	return true
-end
-
 local function main()
 	print("\n=== Oasis Ghostty Theme Generator ===\n")
 
-	local palette_names = get_palette_files()
+	local palette_names = utils.get_palette_names()
 
 	if #palette_names == 0 then
 		print("Error: No palette files found in lua/oasis/color_palettes/")
@@ -116,15 +78,15 @@ local function main()
 	local error_count = 0
 
 	for _, name in ipairs(palette_names) do
-		local palette, err = load_palette(name)
+		local palette, err = utils.load_palette(name)
 
 		if not palette then
 			print(string.format("✗ Failed to load %s: %s", name, err))
 			error_count = error_count + 1
 		else
 			local theme = generate_ghostty_theme(name, palette)
-			local ghostty_path = string.format("oasis_%s", name)
-			local ok, write_err = write_file(ghostty_path, theme)
+			local ghostty_path = string.format("extras/ghostty/oasis_%s", name)
+			local ok, write_err = utils.write_file(ghostty_path, theme)
 
 			if ok then
 				print(string.format("✓ Generated: %s", ghostty_path))
