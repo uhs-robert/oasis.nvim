@@ -30,22 +30,18 @@ end
 
 local function list_palettes()
 	local palette_names = utils.get_palette_names()
-	if #palette_names == 0 then
-		return {}, {}, "No palettes found"
-	end
+	assert(#palette_names > 0, "No palettes found")
 
 	local light_themes = {}
 	local dark_themes = {}
 
 	for _, name in ipairs(palette_names) do
 		local palette = utils.load_palette(name)
-		if palette then
-			local display_name = get_display_name(name)
-			if palette.light_mode then
-				table.insert(light_themes, { name = name, display = display_name })
-			else
-				table.insert(dark_themes, { name = name, display = display_name })
-			end
+		local display_name = get_display_name(name)
+		if palette.light_mode then
+			table.insert(light_themes, { name = name, display = display_name })
+		else
+			table.insert(dark_themes, { name = name, display = display_name })
 		end
 	end
 
@@ -81,9 +77,7 @@ local function generate_vimiumc_css(day_name, night_name, day_palette, night_pal
 
 	-- Read the CSS template
 	local template = utils.read_file("./extras/vimium-c/vimium-c.css.erb")
-	if not template then
-		return nil, "Failed to read CSS template file."
-	end
+
 	local replacements = {
 		["{{day_name}}"] = get_display_name(day_name),
 		["{{night_name}}"] = get_display_name(night_name),
@@ -122,11 +116,7 @@ end
 
 local function main(args)
 	if args[1] == "--list" or args[1] == "-l" then
-		local light_themes, dark_themes, err = list_palettes()
-		if err then
-			print("Error: " .. err)
-			return
-		end
+		local light_themes, dark_themes = list_palettes()
 		print("\n=== Oasis Vimium-C Themes ===")
 		print("\nLight Themes:")
 		for i, theme in ipairs(light_themes) do
@@ -145,7 +135,7 @@ local function main(args)
 Oasis Vimium-C Theme Generator
 
 Usage:
-  lua .dev/generate_vimiumc.lua [options]
+  lua extras/vimium-c/generate_vimiumc.lua [options]
 
 Options:
   -d, --day THEME     Specify day theme (light mode)
@@ -158,9 +148,9 @@ Interactive Mode:
   select day and night themes from a menu.
 
 Examples:
-  lua .dev/generate_vimiumc.lua                    # Interactive mode
-  lua .dev/generate_vimiumc.lua -d day -n lagoon   # CLI mode
-  lua .dev/generate_vimiumc.lua --list             # List themes
+  lua extras/vimium-c/generate_vimiumc.lua                    # Interactive mode
+  lua extras/vimium-c/generate_vimiumc.lua -d day -n lagoon   # CLI mode
+  lua extras/vimium-c/generate_vimiumc.lua --list             # List themes
 ]])
 		return
 	end
@@ -185,11 +175,7 @@ Examples:
 
 	-- Interactive mode if not specified via CLI
 	if not day_name or not night_name then
-		local light_themes, dark_themes, err = list_palettes()
-		if err or not light_themes then
-			print("Error: " .. (err or "Failed to load palettes."))
-			return
-		end
+		local light_themes, dark_themes = list_palettes()
 
 		if not day_name then
 			local name
@@ -235,32 +221,18 @@ Examples:
 	end
 
 	-- Load palettes
-	local day_palette, day_err = utils.load_palette(day_name)
-	if not day_palette then
-		print("Error loading day palette: " .. day_err)
-		return
-	end
-
-	local night_palette, night_err = utils.load_palette(night_name)
-	if not night_palette then
-		print("Error loading night palette: " .. night_err)
-		return
-	end
+	local day_palette = utils.load_palette(day_name)
+	local night_palette = utils.load_palette(night_name)
 
 	-- Generate CSS
 	local css = generate_vimiumc_css(day_name, night_name, day_palette, night_palette)
 
 	-- Write to file
 	local output_path = string.format("extras/vimium-c/output/vimiumc-%s-%s.css", night_name, day_name)
-	local ok, err = utils.write_file(output_path, css)
-
-	if ok then
-		print(string.format("\n✓ Generated: %s", output_path))
-		print(string.format("  Day theme: Oasis %s", get_display_name(day_name)))
-		print(string.format("  Night theme: Oasis %s\n", get_display_name(night_name)))
-	else
-		print(string.format("\n✗ Failed: %s\n", err))
-	end
+	utils.write_file(output_path, css)
+	print(string.format("\n✓ Generated: %s", output_path))
+	print(string.format("  Day theme: Oasis %s", get_display_name(day_name)))
+	print(string.format("  Night theme: Oasis %s\n", get_display_name(night_name)))
 end
 
 -- Run the generator

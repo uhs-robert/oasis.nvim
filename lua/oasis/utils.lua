@@ -7,7 +7,7 @@ local M = {}
 --- @return string|nil Project root path or nil if not found
 function M.find_project_root()
 	-- Try current directory first
-	local handle = io.popen("test -d lua/oasis/color_palettes && pwd")
+	local handle = assert(io.popen("test -d lua/oasis/color_palettes && pwd"))
 	local result = handle:read("*l")
 	handle:close()
 
@@ -16,14 +16,14 @@ function M.find_project_root()
 	end
 
 	-- Walk up directory tree
-	handle = io.popen("pwd")
+	handle = assert(io.popen("pwd"))
 	local current = handle:read("*l")
 	handle:close()
 
 	-- Try up to 3 levels up
 	for _ = 1, 3 do
 		local test_path = current .. "/lua/oasis/color_palettes"
-		local test_handle = io.popen("test -d '" .. test_path .. "' && echo 'found'")
+		local test_handle = assert(io.popen("test -d '" .. test_path .. "' && echo 'found'"))
 		local test_result = test_handle:read("*l")
 		test_handle:close()
 
@@ -83,30 +83,20 @@ function M.load_palette(name)
 	return palette
 end
 
---- Write content to file with error handling
+--- Write content to file
 --- @param path string File path
 --- @param content string Content to write
---- @return boolean, string|nil Success status, error message if failed
 function M.write_file(path, content)
-	local file = io.open(path, "w")
-	if not file then
-		return false, "Could not open file for writing: " .. path
-	end
-
+	local file = assert(io.open(path, "w"), "Could not open file for writing: " .. path)
 	file:write(content)
 	file:close()
-	return true
 end
 
---- Read file content with error handling
+--- Read file content
 --- @param path string File path
---- @return string|nil, string|nil Content or nil, error message if failed
+--- @return string File content
 function M.read_file(path)
-	local file = io.open(path, "r")
-	if not file then
-		return nil, "Could not open file for reading: " .. path
-	end
-
+	local file = assert(io.open(path, "r"), "Could not open file for reading: " .. path)
 	local content = file:read("*a")
 	file:close()
 	return content
@@ -117,6 +107,37 @@ end
 --- @return string String with first letter capitalized
 function M.capitalize(str)
 	return str:gsub("^%l", string.upper)
+end
+
+--- Find files matching a pattern using find command
+--- @param pattern string Pattern to search for (e.g., "generate_*.lua")
+--- @param directory? string Directory to search in (default: current directory)
+--- @return table List of file paths
+function M.find_files(pattern, directory)
+	directory = directory or "."
+	local cmd = string.format("find %s -type f -name '%s' 2>/dev/null | sort", directory, pattern)
+	local handle = assert(io.popen(cmd), "Failed to execute find command")
+	local result = handle:read("*a")
+	handle:close()
+
+	local files = {}
+	for path in result:gmatch("[^\n]+") do
+		if path ~= "" then
+			table.insert(files, path)
+		end
+	end
+
+	return files
+end
+
+--- Execute a shell command and capture output
+--- @param command string Command to execute
+--- @return string, boolean Output string, success boolean
+function M.execute_command(command)
+	local handle = assert(io.popen(command .. " 2>&1"), "Failed to execute command: " .. command)
+	local output = handle:read("*a")
+	local success = handle:close()
+	return output, success
 end
 
 return M

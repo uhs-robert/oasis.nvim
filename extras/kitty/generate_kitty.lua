@@ -82,15 +82,9 @@ local function main()
 		else
 			local theme = generate_kitty_theme(name, palette)
 			local kitty_path = string.format("extras/kitty/oasis_%s.conf", name)
-			local ok, write_err = utils.write_file(kitty_path, theme)
-
-			if ok then
-				print(string.format("✓ Generated: %s", kitty_path))
-				success_count = success_count + 1
-			else
-				print(string.format("✗ Failed to write: %s", write_err))
-				error_count = error_count + 1
-			end
+			utils.write_file(kitty_path, theme)
+			print(string.format("✓ Generated: %s", kitty_path))
+			success_count = success_count + 1
 		end
 	end
 
