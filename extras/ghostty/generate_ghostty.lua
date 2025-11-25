@@ -58,18 +58,12 @@ local function main()
 	local error_count = 0
 
 	for _, name in ipairs(palette_names) do
-		local palette, err = utils.load_palette(name)
-
-		if not palette then
-			print(string.format("✗ Failed to load %s: %s", name, err))
-			error_count = error_count + 1
-		else
-			local theme = generate_ghostty_theme(name, palette)
-			local ghostty_path = string.format("extras/ghostty/oasis_%s", name)
-			utils.write_file(ghostty_path, theme)
-			print(string.format("✓ Generated: %s", ghostty_path))
-			success_count = success_count + 1
-		end
+		local palette = utils.load_palette(name)
+		local theme = generate_ghostty_theme(name, palette)
+		local ghostty_path = string.format("extras/ghostty/oasis_%s", name)
+		utils.write_file(ghostty_path, theme)
+		print(string.format("✓ Generated: %s", ghostty_path))
+		success_count = success_count + 1
 	end
 
 	print(string.format("\n=== Summary ==="))

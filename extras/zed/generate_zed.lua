@@ -548,19 +548,13 @@ local function main()
 	local error_count = 0
 
 	for _, name in ipairs(palette_names) do
-		local palette, err = utils.load_palette(name)
-
-		if not palette then
-			print(string.format("✗ Failed to load %s: %s", name, err))
-			error_count = error_count + 1
-		else
-			local theme = generate_zed_theme(name, palette)
-			local json = color_utils.encode_json(theme, 0)
-			local zed_path = string.format("extras/zed/oasis_%s.json", name)
-			utils.write_file(zed_path, json)
-			print(string.format("✓ Generated: %s", zed_path))
-			success_count = success_count + 1
-		end
+		local palette = utils.load_palette(name)
+		local theme = generate_zed_theme(name, palette)
+		local json = color_utils.encode_json(theme, 0)
+		local zed_path = string.format("extras/zed/oasis_%s.json", name)
+		utils.write_file(zed_path, json)
+		print(string.format("✓ Generated: %s", zed_path))
+		success_count = success_count + 1
 	end
 
 	print(string.format("\n=== Summary ==="))
