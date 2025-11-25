@@ -36,16 +36,16 @@ local function generate_kitty_theme(name, palette)
 		string.format("%-24s %s", "selection_foreground", palette.fg.core),
 		"",
 		"# Cursor",
-		string.format("%-24s %s", "cursor", term.color3),
-		string.format("%-24s %s", "cursor_text_color", term.color0),
+		string.format("%-24s %s", "cursor", term.color3), -- Yellow
+		string.format("%-24s %s", "cursor_text_color", term.color0), -- Black
 		"",
 		"# Borders (panes)",
-		string.format("%-24s %s", "active_border_color", term.color1),
-		string.format("%-24s %s", "inactive_border_color", term.color8),
+		string.format("%-24s %s", "active_border_color", term.color1), -- Red
+		string.format("%-24s %s", "inactive_border_color", term.color8), -- Light black
 		"",
 		"# Tabs",
-		string.format("%-24s %s", "active_tab_foreground", term.color0),
-		string.format("%-24s %s", "active_tab_background", term.color3),
+		string.format("%-24s %s", "active_tab_foreground", term.color0), -- Black
+		string.format("%-24s %s", "active_tab_background", term.color3), -- Yellow
 		string.format("%-24s %s", "inactive_tab_foreground", palette.fg.muted),
 		string.format("%-24s %s", "inactive_tab_background", palette.bg.mantle),
 		"",
