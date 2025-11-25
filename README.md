@@ -151,6 +151,7 @@ To use the extras, refer to their respective documentation.
 | Tool      | Extra                                                  |
 | --------- | ------------------------------------------------------ |
 | Alacritty | [extras/alacritty](extras/alacritty)                   |
+| Foot      | [extras/foot](extras/foot)                             |
 | Ghostty   | [extras/ghostty](extras/ghostty)                       |
 | Kitty     | [extras/kitty](extras/kitty)                           |
 | TMUX      | [tmux-oasis](https://github.com/uhs-robert/tmux-oasis) |
