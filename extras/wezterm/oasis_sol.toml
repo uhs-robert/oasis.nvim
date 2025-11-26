@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_sol.toml
+## name: Oasis Sol
+## author: uhs-robert
+
+[colors]
+foreground = "#FFE0DA"
+background= "#2F1815"
+cursor_bg= "#F0E68C"
+cursor_border= "#F0E68C"
+cursor_fg= "#3A2521"
+selection_bg= "#335668"
+selection_fg= "#3A2521"
+split= "#F58888"
+compose_cursor= "#F49F15"
+scrollbar_thumb= "#4F312B"
+visual_bell= "#3A2521"
+
+ansi = [
+  '#000000',
+  '#D06666',
+  '#35B56E',
+  '#F0E68C',
+  '#87CEEB',
+  '#B499FF',
+  '#1CA1FF',
+  '#E8E2D4',
+]
+
+brights = [
+  '#514742',
+  '#FFA0A0',
+  '#6BBF59',
+  '#FFA247',
+  '#6FB8FF',
+  '#C0A0FF',
+  '#8FD1C7',
+  '#FFF9F2',
+]
+
+[colors.indexed]
+16 = '#F49F15'
+17 = '#F28D8D'
+
+[colors.tab_bar]
+background = '#3A2521'
+inactive_tab_edge = '#2C1512'
+
+[colors.tab_bar.active_tab]
+bg_color = '#F58888'
+fg_color = '#2F1815'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#4F312B'
+fg_color = '#2F1815'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#3A2521'
+fg_color = '#2F1815'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#FFA247'
+fg_color = '#2F1815'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#4AC8FF'
+fg_color = '#2F1815'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Sol'

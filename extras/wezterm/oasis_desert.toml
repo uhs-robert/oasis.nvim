@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_desert.toml
+## name: Oasis Desert
+## author: uhs-robert
+
+[colors]
+foreground = "#F9F8F7"
+background= "#333333"
+cursor_bg= "#F0E68C"
+cursor_border= "#F0E68C"
+cursor_fg= "#444444"
+selection_bg= "#335668"
+selection_fg= "#444444"
+split= "#D06666"
+compose_cursor= "#FFB870"
+scrollbar_thumb= "#555555"
+visual_bell= "#444444"
+
+ansi = [
+  '#000000',
+  '#D06666',
+  '#35B56E',
+  '#F0E68C',
+  '#87CEEB',
+  '#B499FF',
+  '#1CA1FF',
+  '#E8E2D4',
+]
+
+brights = [
+  '#514742',
+  '#FFA0A0',
+  '#6BBF59',
+  '#FFA247',
+  '#6FB8FF',
+  '#C0A0FF',
+  '#8FD1C7',
+  '#FFF9F2',
+]
+
+[colors.indexed]
+16 = '#FFB870'
+17 = '#FFACA5'
+
+[colors.tab_bar]
+background = '#444444'
+inactive_tab_edge = '#303030'
+
+[colors.tab_bar.active_tab]
+bg_color = '#D06666'
+fg_color = '#333333'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#555555'
+fg_color = '#333333'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#444444'
+fg_color = '#333333'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#F0E68C'
+fg_color = '#333333'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#87CEEB'
+fg_color = '#333333'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Desert'
