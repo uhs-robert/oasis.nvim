@@ -48,6 +48,25 @@ function M.adjust_brightness(color, factor)
 	return string.format("#%02x%02x%02x", r, g, b)
 end
 
+--- Convert hex color to RGB decimal format "R,G,B"
+--- @param hex string Hex color (e.g., "#808080" or "808080")
+--- @return string RGB decimal string (e.g., "128,128,128")
+function M.hex_to_rgb(hex)
+	if not hex or hex == "NONE" then
+		return "0,0,0"
+	end
+
+	-- Remove # if present
+	hex = hex:gsub("#", "")
+
+	-- Convert hex to RGB
+	local r = tonumber(hex:sub(1, 2), 16)
+	local g = tonumber(hex:sub(3, 4), 16)
+	local b = tonumber(hex:sub(5, 6), 16)
+
+	return string.format("%d,%d,%d", r, g, b)
+end
+
 --- Escape string for JSON encoding
 --- @param str string Input string
 --- @return string JSON-escaped string
