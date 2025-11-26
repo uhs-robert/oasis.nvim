@@ -1,5 +1,5 @@
 # 🍭 Extras
 
 1. Open the folder for the application that you're interested in.
-2. Download the themes you like
-3. Follow any installation instructions or refer to your application's instructions
+2. Follow any installation instructions in the README for each folder.
+3. Download the themes you like and please enjoy!
