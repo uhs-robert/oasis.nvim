@@ -138,6 +138,9 @@ Oasis follows Melange's warm/cool split philosophy (**warm = action/flow**, **co
 <!-- plugins:end -->
 </details>
 
+> [!NOTE]
+> Oasis goes beyond Neovim with themes for **web browsers**, **terminals**, **development tools**, and **more**. Don't miss the Extras!
+
 <details>
 <summary>🍭 Extras</summary>
 <br>
