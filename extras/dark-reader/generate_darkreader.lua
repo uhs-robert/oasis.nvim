@@ -28,7 +28,7 @@ local function generate_darkreader_theme(name, palette)
 		"",
 		"Background: " .. palette.bg.core,
 		"Text:       " .. palette.fg.core,
-		"Scrollbar:  " .. palette.theme.accent,
+		-- "Scrollbar:  " .. palette.theme.accent,
 		"Selection:  " .. palette.ui.visual.bg,
 	}
 
