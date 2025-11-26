@@ -2,57 +2,60 @@
 -- Tailwind-style numeric scale palette system
 
 -- Terminal
+-- stylua: ignore start
 local terminal = {
-	color0 = "#000000",
-	color8 = "#514742",
-
-	color1 = "#D06666",
-	color9 = "#FFA0A0",
-
-	color2 = "#35B56E",
-	color10 = "#6BBF59",
-
-	color3 = "#F0E68C",
-	color11 = "#FFA247",
-
-	color4 = "#87CEEB",
-	color12 = "#6FB8FF",
-
-	color5 = "#B499FF",
-	color13 = "#C0A0FF",
-
-	color6 = "#1CA1FF",
-	color14 = "#8FD1C7",
-
-	color7 = "#E8E2D4",
-	color15 = "#FFF9F2",
+	black =               "#000000",
+	bright_black =        "#514742",
+	red =                 "#D06666",
+	bright_red =          "#FFA0A0",
+	green =               "#53D390",
+	bright_green =        "#96EA7F",
+	yellow =              "#F0E68C",
+	bright_yellow =       "#FFA247",
+	blue =                "#519BFF",
+	bright_blue =         "#87CEEB",
+	magenta =             "#C28EFF",
+	bright_magenta =      "#D2ADFF",
+	cyan =                "#5ABAAE",
+	bright_cyan =         "#8FD1C7",
+	white =               "#DFDCD3",
+	bright_white =        "#FFF9F2",
 }
 
 local light_terminal = {
-	color0 = "#3A3427",
-	color8 = "#454030",
-
-	color1 = "#663021",
-	color9 = "#692c34",
-
-	color2 = "#1b491d",
-	color10 = "#35450d",
-
-	color3 = "#6b2e00",
-	color11 = "#533c00",
-
-	color4 = "#10426d",
-	color12 = "#1f3f71",
-
-	color5 = "#46259f",
-	color13 = "#4d19a8",
-
-	color6 = "#064658",
-	color14 = "#084559",
-
-	color7 = "#453826",
-	color15 = "#443f36",
+	black =               "#3A3427",
+	bright_black =        "#454030",
+	red =                 "#663021",
+	bright_red =          "#692c34",
+	green =               "#1b491d",
+	bright_green =        "#35450d",
+	yellow =              "#6b2e00",
+	bright_yellow =       "#533c00",
+	blue =                "#10426d",
+	bright_blue =         "#1f3f71",
+	magenta =             "#46259f",
+	bright_magenta =      "#4d19a8",
+	cyan =                "#064658",
+	bright_cyan =         "#084559",
+	white =               "#453826",
+	bright_white =        "#443f36",
 }
+
+-- Map semantic names to numeric colors
+local semantic_ansi_map = {
+	"black", "red", "green", "yellow", "blue", "magenta", "cyan", "white",
+	"bright_black", "bright_red", "bright_green", "bright_yellow", "bright_blue", "bright_magenta", "bright_cyan", "bright_white",
+}
+-- stylua: ignore end
+
+local function map_ansi_colors(ansi_map, terminal_type)
+	for i, name in ipairs(ansi_map) do
+		terminal_type["color" .. (i - 1)] = terminal_type[name]
+	end
+end
+
+map_ansi_colors(semantic_ansi_map, terminal)
+map_ansi_colors(semantic_ansi_map, light_terminal)
 
 -- Visual BG
 local visual = {

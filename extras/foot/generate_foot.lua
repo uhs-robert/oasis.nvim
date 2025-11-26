@@ -8,7 +8,6 @@ local utils = require("oasis.utils")
 
 local function generate_foot_theme(name, palette)
 	local display_name = utils.capitalize(name)
-	local term = palette.terminal -- Each Oasis palette defines its own terminal table
 
 	local lines = {
 		"; extras/foot/oasis_" .. name .. ".ini",
@@ -32,13 +31,13 @@ local function generate_foot_theme(name, palette)
 	}
 
 	for i = 0, 7 do
-		lines[#lines + 1] = string.format("regular%d=%s", i, term["color" .. i])
+		lines[#lines + 1] = string.format("regular%d=%s", i, palette.terminal["color" .. i])
 	end
 
 	lines[#lines + 1] = ""
 
 	for i = 0, 7 do
-		lines[#lines + 1] = string.format("bright%d=%s", i, term["color" .. (i + 8)])
+		lines[#lines + 1] = string.format("bright%d=%s", i, palette.terminal["color" .. (i + 8)])
 	end
 
 	lines[#lines + 1] = string.format("16=%s", palette.ui.lineNumber)

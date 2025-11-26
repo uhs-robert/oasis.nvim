@@ -8,7 +8,6 @@ local utils = require("oasis.utils")
 
 local function generate_kitty_theme(name, palette)
 	local display_name = utils.capitalize(name)
-	local term = palette.terminal -- Each Oasis palette defines its own terminal table
 
 	local lines = {
 		"# extras/kitty/oasis_" .. name .. ".conf",
@@ -20,8 +19,8 @@ local function generate_kitty_theme(name, palette)
 
 	-- Terminal palette colors (0-15)
 	for i = 0, 7 do
-		lines[#lines + 1] = string.format("%-24s %s", "color" .. i, term["color" .. i])
-		lines[#lines + 1] = string.format("%-24s %s", "color" .. (i + 8), term["color" .. (i + 8)])
+		lines[#lines + 1] = string.format("%-24s %s", "color" .. i, palette.terminal["color" .. i])
+		lines[#lines + 1] = string.format("%-24s %s", "color" .. (i + 8), palette.terminal["color" .. (i + 8)])
 		lines[#lines + 1] = ""
 	end
 
@@ -36,16 +35,16 @@ local function generate_kitty_theme(name, palette)
 		string.format("%-24s %s", "selection_foreground", palette.fg.core),
 		"",
 		"# Cursor",
-		string.format("%-24s %s", "cursor", term.color3), -- Yellow
-		string.format("%-24s %s", "cursor_text_color", term.color0), -- Black
+		string.format("%-24s %s", "cursor", palette.terminal.yellow),
+		string.format("%-24s %s", "cursor_text_color", palette.terminal.black),
 		"",
 		"# Borders (panes)",
-		string.format("%-24s %s", "active_border_color", term.color1), -- Red
-		string.format("%-24s %s", "inactive_border_color", term.color8), -- Light black
+		string.format("%-24s %s", "active_border_color", palette.terminal.red),
+		string.format("%-24s %s", "inactive_border_color", palette.terminal.bright_black),
 		"",
 		"# Tabs",
-		string.format("%-24s %s", "active_tab_foreground", term.color0), -- Black
-		string.format("%-24s %s", "active_tab_background", term.color3), -- Yellow
+		string.format("%-24s %s", "active_tab_foreground", palette.terminal.black),
+		string.format("%-24s %s", "active_tab_background", palette.terminal.yellow),
 		string.format("%-24s %s", "inactive_tab_foreground", palette.fg.muted),
 		string.format("%-24s %s", "inactive_tab_background", palette.bg.mantle),
 		"",

@@ -10,29 +10,19 @@ local color_utils = require("oasis.tools.color_utils")
 local function generate_gemini_cli_theme(name, palette)
 	local display_name = "Oasis " .. utils.capitalize(name)
 
-	-- Terminal color mappings
-	local colors = {}
-	local bright_colors = {}
-	local color_names = { "black", "red", "green", "yellow", "blue", "magenta", "cyan", "white" }
-
-	for i, color_name in ipairs(color_names) do
-		colors[color_name] = palette.terminal["color" .. (i - 1)]
-		bright_colors[color_name] = palette.terminal["color" .. (i + 7)]
-	end
-
 	-- Build JSON theme structure
 	local theme = {
 		name = display_name,
 		type = "custom",
 		Background = palette.bg.core,
 		Foreground = palette.fg.core,
-		LightBlue = bright_colors.blue,
-		AccentBlue = colors.blue,
-		AccentPurple = colors.magenta,
-		AccentCyan = colors.cyan,
-		AccentGreen = colors.green,
-		AccentYellow = colors.yellow,
-		AccentRed = colors.red,
+		LightBlue = palette.terminal.bright_blue,
+		AccentBlue = palette.terminal.blue,
+		AccentPurple = palette.terminal.magenta,
+		AccentCyan = palette.terminal.cyan,
+		AccentGreen = palette.terminal.green,
+		AccentYellow = palette.terminal.yellow,
+		AccentRed = palette.terminal.red,
 		Comment = palette.syntax.comment,
 		Gray = palette.fg.muted,
 		DiffAdded = palette.diff.add,

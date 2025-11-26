@@ -8,7 +8,6 @@ local utils = require("oasis.utils")
 
 local function generate_wezterm_theme(name, palette)
 	local display_name = utils.capitalize(name)
-	local term = palette.terminal
 
 	local lines = {
 		"# extras/wezterm/oasis_" .. name .. ".toml",
@@ -33,7 +32,7 @@ local function generate_wezterm_theme(name, palette)
 	-- Ansi
 	lines[#lines + 1] = "ansi = ["
 	for i = 0, 7 do
-		lines[#lines + 1] = string.format("  '%s',", term["color" .. i])
+		lines[#lines + 1] = string.format("  '%s',", palette.terminal["color" .. i])
 	end
 	lines[#lines + 1] = "]"
 	lines[#lines + 1] = ""
@@ -41,7 +40,7 @@ local function generate_wezterm_theme(name, palette)
 	-- Brights
 	lines[#lines + 1] = "brights = ["
 	for i = 0, 7 do
-		lines[#lines + 1] = string.format("  '%s',", term["color" .. (i + 8)])
+		lines[#lines + 1] = string.format("  '%s',", palette.terminal["color" .. (i + 8)])
 	end
 	lines[#lines + 1] = "]"
 	lines[#lines + 1] = ""

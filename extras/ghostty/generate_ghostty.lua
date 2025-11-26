@@ -7,8 +7,6 @@ package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local utils = require("oasis.utils")
 
 local function generate_ghostty_theme(name, palette)
-	local term = palette.terminal -- Each Oasis palette defines its own terminal table
-
 	local lines = {
 		"# Oasis " .. utils.capitalize(name),
 		"# Author: uhs-robert",
@@ -17,8 +15,8 @@ local function generate_ghostty_theme(name, palette)
 
 	-- Terminal palette colors (0-15)
 	for i = 0, 7 do
-		lines[#lines + 1] = string.format("palette = %d=%s", i, term["color" .. i])
-		lines[#lines + 1] = string.format("palette = %d=%s", i + 8, term["color" .. (i + 8)])
+		lines[#lines + 1] = string.format("palette = %d=%s", i, palette.terminal["color" .. i])
+		lines[#lines + 1] = string.format("palette = %d=%s", i + 8, palette.terminal["color" .. (i + 8)])
 		lines[#lines + 1] = ""
 	end
 
@@ -30,8 +28,8 @@ local function generate_ghostty_theme(name, palette)
 		"selection-background = " .. palette.ui.visual.bg,
 		"selection-foreground = " .. palette.fg.core,
 		"",
-		"cursor-color = " .. term.color3, -- Yellow
-		"cursor-text = " .. term.color0, -- Black
+		"cursor-color = " .. palette.terminal.yellow,
+		"cursor-text = " .. palette.terminal.black,
 		"",
 	}
 
