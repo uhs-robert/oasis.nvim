@@ -27,3 +27,8 @@ Edit your `~/.config/yazi/theme.toml` to import the Oasis theme:
 dark = "oasis-lagoon"
 light = "oasis-dawn"
 ```
+
+> [!NOTE]
+> Yazi uses your terminal background.
+>
+> You should set it to the relevant background for your theme.
