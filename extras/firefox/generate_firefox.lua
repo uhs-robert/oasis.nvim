@@ -28,31 +28,31 @@ local function generate_firefox_color_theme(name, palette)
 	return {
 		colors = {
 			-- Main UI
-			toolbar = hex_to_rgb(palette.bg.core),
-			toolbar_text = hex_to_rgb(palette.fg.core),
-			frame = hex_to_rgb(palette.bg.crust),
-			tab_background_text = hex_to_rgb(palette.fg.core),
+			frame = hex_to_rgb(palette.bg.core),
+			toolbar = hex_to_rgb(palette.bg.mantle),
+			toolbar_text = hex_to_rgb(palette.theme.primary),
+			tab_background_text = hex_to_rgb(palette.theme.primary),
 
 			-- Input fields
 			toolbar_field = hex_to_rgb(palette.bg.mantle),
 			toolbar_field_text = hex_to_rgb(palette.fg.core),
 			toolbar_field_border = hex_to_rgb(palette.bg.surface),
 			toolbar_field_focus = hex_to_rgb(palette.bg.core),
-			toolbar_field_border_focus = hex_to_rgb(palette.theme.accent),
-			toolbar_field_highlight = hex_to_rgb(palette.theme.accent),
+			toolbar_field_border_focus = hex_to_rgb(palette.theme.primary),
+			toolbar_field_highlight = hex_to_rgb(palette.syntax.exception),
 			toolbar_field_highlight_text = hex_to_rgb(palette.bg.core),
 
 			-- Tabs
-			tab_line = hex_to_rgb(palette.theme.accent),
+			tab_line = hex_to_rgb(palette.theme.secondary),
 			tab_selected = hex_to_rgb(palette.bg.core),
 			tab_text = hex_to_rgb(palette.fg.core),
-			tab_loading = hex_to_rgb(palette.theme.accent),
+			tab_loading = hex_to_rgb(palette.theme.secondary),
 			tab_background_separator = hex_to_rgb(palette.theme.accent),
 
 			-- Popups and menus
 			popup = hex_to_rgb(palette.bg.core),
 			popup_text = hex_to_rgb(palette.fg.core),
-			popup_border = hex_to_rgb(palette.theme.accent),
+			popup_border = hex_to_rgb(palette.bg.surface),
 			popup_highlight = hex_to_rgb(palette.ui.visual.bg),
 			popup_highlight_text = hex_to_rgb(palette.fg.core),
 
@@ -62,13 +62,13 @@ local function generate_firefox_color_theme(name, palette)
 			-- Sidebar
 			sidebar = hex_to_rgb(palette.bg.core),
 			sidebar_text = hex_to_rgb(palette.fg.core),
-			sidebar_border = hex_to_rgb(palette.theme.accent),
+			sidebar_border = hex_to_rgb(palette.theme.primary),
 			sidebar_highlight = hex_to_rgb(palette.theme.accent),
 			sidebar_highlight_text = hex_to_rgb(palette.bg.crust),
 
 			-- Icons and accents
-			icons = hex_to_rgb(palette.theme.accent),
-			icons_attention = hex_to_rgb(palette.theme.accent),
+			icons = hex_to_rgb(palette.theme.primary),
+			icons_attention = hex_to_rgb(palette.syntax.exception),
 
 			-- New tab page
 			ntp_background = hex_to_rgb(palette.bg.crust),
@@ -90,7 +90,7 @@ end
 -- Compress JSON for Firefox Color using json-url LZMA codec
 local function compress_for_firefox(json_str)
 	-- Check if Node.js and json-url are available
-	local check_node = io.popen("command -v node 2>/dev/null")
+	local check_node = assert(io.popen("command -v node 2>/dev/null"))
 	local node_path = check_node:read("*a"):gsub("%s+", "")
 	check_node:close()
 
@@ -110,7 +110,7 @@ local function compress_for_firefox(json_str)
 
 	-- Use the Node.js script to compress
 	local cmd = string.format("echo '%s' | node %s", json_str:gsub("'", "'\\''"), compress_script)
-	local handle = io.popen(cmd .. " 2>&1")
+	local handle = assert(io.popen(cmd .. " 2>&1"))
 	local result = handle:read("*a")
 	local success = handle:close()
 
@@ -205,7 +205,7 @@ local function generate_readme(palette_data)
 	table.insert(lines, "")
 	table.insert(
 		lines,
-		"Looking for a terminal-friendly Firefox experience? Check out [**Textfox**](https://github.com/adriankarlen/textfox) - a TUI (Text User Interface) configuration for Firefox that pairs beautifully with Oasis themes!"
+		"Wouldn't it be nice if Firefox looked like a TUI application? Check out [**Textfox**](https://github.com/adriankarlen/textfox) - a TUI (Text User Interface) configuration for Firefox. It's what I use personally and this Oasis design is tailored for it specifically."
 	)
 	table.insert(lines, "")
 	table.insert(
@@ -233,7 +233,7 @@ local function main()
 	local success_count = 0
 
 	for _, name in ipairs(palette_names) do
-		local palette = utils.load_palette(name)
+		local palette = assert(utils.load_palette(name))
 		local theme = generate_firefox_color_theme(name, palette)
 
 		-- Convert to JSON
