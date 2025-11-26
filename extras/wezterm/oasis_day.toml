@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_day.toml
+## name: Oasis Day
+## author: uhs-robert
+
+[colors]
+foreground = "#392E1D"
+background= "#E5D68B"
+cursor_bg= "#474109"
+cursor_border= "#474109"
+cursor_fg= "#DFC47A"
+selection_bg= "#D3BA68"
+selection_fg= "#DFC47A"
+split= "#9B3030"
+compose_cursor= "#663300"
+scrollbar_thumb= "#D3BA68"
+visual_bell= "#DFC47A"
+
+ansi = [
+  '#3A3427',
+  '#663021',
+  '#1b491d',
+  '#6b2e00',
+  '#10426d',
+  '#46259f',
+  '#064658',
+  '#453826',
+]
+
+brights = [
+  '#454030',
+  '#692c34',
+  '#35450d',
+  '#533c00',
+  '#1f3f71',
+  '#4d19a8',
+  '#084559',
+  '#443f36',
+]
+
+[colors.indexed]
+16 = '#663300'
+17 = '#821111'
+
+[colors.tab_bar]
+background = '#DFC47A'
+inactive_tab_edge = '#DFC87D'
+
+[colors.tab_bar.active_tab]
+bg_color = '#9B3030'
+fg_color = '#E5D68B'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#D3BA68'
+fg_color = '#E5D68B'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#DFC47A'
+fg_color = '#E5D68B'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#11426e'
+fg_color = '#E5D68B'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#11426e'
+fg_color = '#E5D68B'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Day'

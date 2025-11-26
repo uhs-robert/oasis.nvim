@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_cactus.toml
+## name: Oasis Cactus
+## author: uhs-robert
+
+[colors]
+foreground = "#E2E8E2"
+background= "#1C261E"
+cursor_bg= "#F0E68C"
+cursor_border= "#F0E68C"
+cursor_fg= "#2C3A30"
+selection_bg= "#5A3824"
+selection_fg= "#2C3A30"
+split= "#53D390"
+compose_cursor= "#F49F15"
+scrollbar_thumb= "#3C4B3E"
+visual_bell= "#2C3A30"
+
+ansi = [
+  '#000000',
+  '#D06666',
+  '#35B56E',
+  '#F0E68C',
+  '#87CEEB',
+  '#B499FF',
+  '#1CA1FF',
+  '#E8E2D4',
+]
+
+brights = [
+  '#514742',
+  '#FFA0A0',
+  '#6BBF59',
+  '#FFA247',
+  '#6FB8FF',
+  '#C0A0FF',
+  '#8FD1C7',
+  '#FFF9F2',
+]
+
+[colors.indexed]
+16 = '#F49F15'
+17 = '#F39493'
+
+[colors.tab_bar]
+background = '#2C3A30'
+inactive_tab_edge = '#19231B'
+
+[colors.tab_bar.active_tab]
+bg_color = '#53D390'
+fg_color = '#1C261E'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#3C4B3E'
+fg_color = '#1C261E'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#2C3A30'
+fg_color = '#1C261E'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#FF8080'
+fg_color = '#1C261E'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#FFA0A0'
+fg_color = '#1C261E'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Cactus'
