@@ -142,26 +142,27 @@ Oasis follows Melange's warm/cool split philosophy (**warm = action/flow**, **co
 <summary>🍭 Extras</summary>
 <br>
 
-[All extra configs](extras/) for other terminal applications or vim related tools.
+[All extra configs](extras/) for other software, terminal applications, or vim related tools.
 
 To use the extras, refer to their respective documentation.
 
 <!-- extras:start -->
 
-| Tool       | Extra                                                  |
-| ---------- | ------------------------------------------------------ |
-| Alacritty  | [extras/alacritty](extras/alacritty)                   |
-| Btop       | [extras/btop](extras/btop)                             |
-| Foot       | [extras/foot](extras/foot)                             |
-| Gemini CLI | [extras/gemini-cli](extras/gemini-cli)                 |
-| Ghostty    | [extras/ghostty](extras/ghostty)                       |
-| Kitty      | [extras/kitty](extras/kitty)                           |
-| Konsole    | [extras/konsole](extras/konsole)                       |
-| Termux     | [extras/termux](extras/termux)                         |
-| TMUX       | [tmux-oasis](https://github.com/uhs-robert/tmux-oasis) |
-| Vimium C   | [extras/vimium-c](extras/vimium-c)                     |
-| WezTerm    | [extras/wezterm](extras/wezterm)                       |
-| Zed        | [extras/zed](extras/zed)                               |
+| Tool        | Extra                                                  |
+| ----------- | ------------------------------------------------------ |
+| Alacritty   | [extras/alacritty](extras/alacritty)                   |
+| Btop        | [extras/btop](extras/btop)                             |
+| Dark Reader | [extras/dark-reader](/extras/dark-reader)              |
+| Foot        | [extras/foot](extras/foot)                             |
+| Gemini CLI  | [extras/gemini-cli](extras/gemini-cli)                 |
+| Ghostty     | [extras/ghostty](extras/ghostty)                       |
+| Kitty       | [extras/kitty](extras/kitty)                           |
+| Konsole     | [extras/konsole](extras/konsole)                       |
+| Termux      | [extras/termux](extras/termux)                         |
+| TMUX        | [tmux-oasis](https://github.com/uhs-robert/tmux-oasis) |
+| Vimium C    | [extras/vimium-c](extras/vimium-c)                     |
+| WezTerm     | [extras/wezterm](extras/wezterm)                       |
+| Zed         | [extras/zed](extras/zed)                               |
 
 If you'd like an extra config added, raise a feature request and I'll put it together.
 
