@@ -142,7 +142,7 @@ Oasis follows Melange's warm/cool split philosophy (**warm = action/flow**, **co
 <summary>🍭 Extras</summary>
 <br>
 
-[All extra configs](extras/) for other software, terminal applications, or vim related tools.
+[All extra configs](extras/) for other applications.
 
 To use the extras, refer to their respective documentation.
 
@@ -153,6 +153,7 @@ To use the extras, refer to their respective documentation.
 | Alacritty   | [extras/alacritty](extras/alacritty)                   |
 | Btop        | [extras/btop](extras/btop)                             |
 | Dark Reader | [extras/dark-reader](/extras/dark-reader)              |
+| Firefox     | [extras/firefox](extras/firefox)                       |
 | Foot        | [extras/foot](extras/foot)                             |
 | Gemini CLI  | [extras/gemini-cli](extras/gemini-cli)                 |
 | Ghostty     | [extras/ghostty](extras/ghostty)                       |
