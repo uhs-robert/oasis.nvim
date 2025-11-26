@@ -151,6 +151,7 @@ To use the extras, refer to their respective documentation.
 | Tool      | Extra                                                  |
 | --------- | ------------------------------------------------------ |
 | Alacritty | [extras/alacritty](extras/alacritty)                   |
+| Btop      | [extras/btop](extras/btop)                             |
 | Foot      | [extras/foot](extras/foot)                             |
 | Ghostty   | [extras/ghostty](extras/ghostty)                       |
 | Kitty     | [extras/kitty](extras/kitty)                           |
