@@ -1,0 +1,27 @@
+# extras/lazygit/oasis_lagoon.yml
+# name: Oasis Lagoon
+# author: uhs-robert
+
+theme:
+  activeBorderColor:
+    - '#FFA247'
+    - bold
+  inactiveBorderColor:
+    - '#3DB5FF'
+  optionsTextColor:
+    - '#F0E68C'
+  selectedLineBgColor:
+    - '#1A283F'
+  cherryPickedCommitBgColor:
+    - '#22385C'
+  cherryPickedCommitFgColor:
+    - '#3DB5FF'
+  unstagedChangesColor:
+    - '#D06666'
+  defaultFgColor:
+    - '#D9E6FA'
+  searchingActiveBorderColor:
+    - '#F0E68C'
+
+authorColors:
+  '*': '#FFA247'
