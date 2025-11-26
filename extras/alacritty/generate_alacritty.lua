@@ -8,8 +8,6 @@ local utils = require("oasis.utils")
 
 local function generate_alacritty_theme(name, palette)
 	local display_name = utils.capitalize(name)
-	local term = palette.terminal -- Each Oasis palette defines its own terminal table
-	local color_names = { "black", "red", "green", "yellow", "blue", "magenta", "cyan", "white" }
 
 	local lines = {
 		"# extras/alacritty/oasis_" .. name .. ".toml",
@@ -25,26 +23,33 @@ local function generate_alacritty_theme(name, palette)
 		string.format("text = '%s'", palette.fg.core),
 		"",
 		"[colors.cursor]",
-		string.format("cursor = '%s'", term.color3), -- Yellow
-		string.format("text = '%s'", term.color0), -- Black
+		string.format("cursor = '%s'", palette.terminal.yellow),
+		string.format("text = '%s'", palette.terminal.black),
 		"",
 		"[colors.vi_mode_cursor]",
-		string.format("cursor = '%s'", term.color10), -- Bright Yellow
-		string.format("text = '%s'", term.color0), -- Black
+		string.format("cursor = '%s'", palette.terminal.bright_yellow),
+		string.format("text = '%s'", palette.terminal.black),
 		"",
 		"[colors.normal]",
+		string.format("black   = '%s'", palette.terminal.black),
+		string.format("red     = '%s'", palette.terminal.red),
+		string.format("green   = '%s'", palette.terminal.green),
+		string.format("yellow  = '%s'", palette.terminal.yellow),
+		string.format("blue    = '%s'", palette.terminal.blue),
+		string.format("magenta = '%s'", palette.terminal.magenta),
+		string.format("cyan    = '%s'", palette.terminal.cyan),
+		string.format("white   = '%s'", palette.terminal.white),
+		"",
+		"[colors.bright]",
+		string.format("black   = '%s'", palette.terminal.bright_black),
+		string.format("red     = '%s'", palette.terminal.bright_red),
+		string.format("green   = '%s'", palette.terminal.bright_green),
+		string.format("yellow  = '%s'", palette.terminal.bright_yellow),
+		string.format("blue    = '%s'", palette.terminal.bright_blue),
+		string.format("magenta = '%s'", palette.terminal.bright_magenta),
+		string.format("cyan    = '%s'", palette.terminal.bright_cyan),
+		string.format("white   = '%s'", palette.terminal.bright_white),
 	}
-
-	for i = 0, 7 do
-		lines[#lines + 1] = string.format("%-7s = '%s'", color_names[i + 1], term["color" .. i])
-	end
-
-	lines[#lines + 1] = ""
-	lines[#lines + 1] = "[colors.bright]"
-
-	for i = 0, 7 do
-		lines[#lines + 1] = string.format("%-7s = '%s'", color_names[i + 1], term["color" .. (i + 8)])
-	end
 
 	return table.concat(lines, "\n")
 end

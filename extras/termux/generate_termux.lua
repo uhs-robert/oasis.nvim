@@ -8,7 +8,6 @@ local utils = require("oasis.utils")
 
 local function generate_termux_theme(name, palette)
 	local display_name = utils.capitalize(name)
-	local term = palette.terminal -- Each Oasis palette defines its own terminal table
 
 	-- Termux uses a properties file format
 	local lines = {
@@ -23,7 +22,7 @@ local function generate_termux_theme(name, palette)
 	}
 
 	for i = 0, 7 do
-		lines[#lines + 1] = string.format("color%d:  %s", i, term["color" .. i])
+		lines[#lines + 1] = string.format("color%d:  %s", i, palette.terminal["color" .. i])
 	end
 
 	lines[#lines + 1] = ""
@@ -31,7 +30,7 @@ local function generate_termux_theme(name, palette)
 
 	for i = 8, 15 do
 		-- Note: termux properties use color8, color9, etc.
-		lines[#lines + 1] = string.format("color%d: %s", i, term["color" .. i])
+		lines[#lines + 1] = string.format("color%d: %s", i, palette.terminal["color" .. i])
 	end
 
 	lines[#lines + 1] = ""

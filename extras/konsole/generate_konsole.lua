@@ -9,7 +9,6 @@ local color_utils = require("oasis.tools.color_utils")
 
 local function generate_konsole_theme(name, palette)
 	local display_name = utils.capitalize(name)
-	local term = palette.terminal -- Each Oasis palette defines its own terminal table
 
 	local lines = {
 		"[Background]",
@@ -25,8 +24,8 @@ local function generate_konsole_theme(name, palette)
 
 	-- Generate Color0-7 with Faint and Intense variants (normal colors)
 	for i = 0, 7 do
-		local normal_color = term["color" .. i]
-		local intense_color = term["color" .. (i + 8)]
+		local normal_color = palette.terminal["color" .. i]
+		local intense_color = palette.terminal["color" .. (i + 8)]
 
 		lines[#lines + 1] = string.format("[Color%d]", i)
 		lines[#lines + 1] = string.format("Color=%s", color_utils.hex_to_rgb(normal_color))
