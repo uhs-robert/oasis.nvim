@@ -158,6 +158,7 @@ To use the extras, refer to their respective documentation.
 | Dark Reader | [extras/dark-reader](/extras/dark-reader)              |
 | Firefox     | [extras/firefox](extras/firefox)                       |
 | Foot        | [extras/foot](extras/foot)                             |
+| FZF         | [extras/fzf](extras/fzf)                               |
 | Gemini CLI  | [extras/gemini-cli](extras/gemini-cli)                 |
 | Ghostty     | [extras/ghostty](extras/ghostty)                       |
 | Kitty       | [extras/kitty](extras/kitty)                           |
