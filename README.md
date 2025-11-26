@@ -148,19 +148,20 @@ To use the extras, refer to their respective documentation.
 
 <!-- extras:start -->
 
-| Tool      | Extra                                                  |
-| --------- | ------------------------------------------------------ |
-| Alacritty | [extras/alacritty](extras/alacritty)                   |
-| Btop      | [extras/btop](extras/btop)                             |
-| Foot      | [extras/foot](extras/foot)                             |
-| Ghostty   | [extras/ghostty](extras/ghostty)                       |
-| Kitty     | [extras/kitty](extras/kitty)                           |
-| Konsole   | [extras/konsole](extras/konsole)                       |
-| Termux    | [extras/termux](extras/termux)                         |
-| TMUX      | [tmux-oasis](https://github.com/uhs-robert/tmux-oasis) |
-| Vimium C  | [extras/vimium-c](extras/vimium-c)                     |
-| WezTerm   | [extras/wezterm](extras/wexterm)                       |
-| Zed       | [extras/zed](extras/zed)                               |
+| Tool       | Extra                                                  |
+| ---------- | ------------------------------------------------------ |
+| Alacritty  | [extras/alacritty](extras/alacritty)                   |
+| Btop       | [extras/btop](extras/btop)                             |
+| Foot       | [extras/foot](extras/foot)                             |
+| Gemini CLI | [extras/gemini-cli](extras/gemini-cli)                 |
+| Ghostty    | [extras/ghostty](extras/ghostty)                       |
+| Kitty      | [extras/kitty](extras/kitty)                           |
+| Konsole    | [extras/konsole](extras/konsole)                       |
+| Termux     | [extras/termux](extras/termux)                         |
+| TMUX       | [tmux-oasis](https://github.com/uhs-robert/tmux-oasis) |
+| Vimium C   | [extras/vimium-c](extras/vimium-c)                     |
+| WezTerm    | [extras/wezterm](extras/wezterm)                       |
+| Zed        | [extras/zed](extras/zed)                               |
 
 If you'd like an extra config added, raise a feature request and I'll put it together.
 
