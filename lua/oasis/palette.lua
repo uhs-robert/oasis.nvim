@@ -5,7 +5,7 @@
 -- stylua: ignore start
 local terminal = {
 	black =               "#000000",
-	bright_black =        "#514742",
+	bright_black =        "#666666",
 	red =                 "#D06666",
 	bright_red =          "#FFA0A0",
 	green =               "#53D390",
@@ -18,7 +18,7 @@ local terminal = {
 	bright_magenta =      "#D2ADFF",
 	cyan =                "#5ABAAE",
 	bright_cyan =         "#8FD1C7",
-	white =               "#DFDCD3",
+	white =               "#DDDBD5",
 	bright_white =        "#FFF9F2",
 }
 

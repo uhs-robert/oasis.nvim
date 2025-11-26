@@ -1,0 +1,123 @@
+# MANAGER
+[mgr]
+cwd = { fg = "{{secondary}}" }
+
+hovered = { fg = "{{fg_core}}", bg = "{{bg_surface}}" }
+preview_hovered = { fg = "{{fg_core}}", bg = "{{bg_mantle}}" }
+
+find_keyword = { fg = "{{search}}", bold = true, italic = true, underline = true }
+find_position = { fg = "{{error}}", bg = "reset", bold = true, italic = true }
+
+marker_copied = { fg = "{{success}}", bg = "{{success}}" }
+marker_cut = { fg = "{{error}}", bg = "{{error}}" }
+marker_marked = { fg = "{{info}}", bg = "{{info}}" }
+marker_selected = { fg = "{{warning}}", bg = "{{warning}}" }
+
+count_copied = { fg = "{{bg_core}}", bg = "{{success}}" }
+count_cut = { fg = "{{bg_core}}", bg = "{{error}}" }
+count_selected = { fg = "{{bg_core}}", bg = "{{warning}}" }
+
+border_symbol = "│"
+border_style = { fg = "{{border}}" }
+
+# TABS
+[tabs]
+active = { fg = "{{bg_core}}", bg = "{{tab_active}}", bold = true }
+inactive = { fg = "{{tab_active}}", bg = "{{bg_mantle}}" }
+
+# MODE
+[mode]
+normal_main = { fg = "{{bg_core}}", bg = "{{mode_normal}}", bold = true }
+normal_alt = { fg = "{{mode_normal}}", bg = "{{bg_core}}" }
+
+select_main = { fg = "{{bg_core}}", bg = "{{mode_select}}", bold = true }
+select_alt = { fg = "{{mode_select}}", bg = "{{bg_core}}" }
+
+unset_main = { fg = "{{bg_core}}", bg = "{{mode_unset}}", bold = true }
+unset_alt = { fg = "{{mode_unset}}", bg = "{{bg_core}}" }
+
+# STATUS
+[status]
+sep_left = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+
+progress_label = { fg = "{{bg_core}}", bold = true }
+progress_normal = { fg = "{{info}}", bg = "{{bg_core}}" }
+progress_error = { fg = "{{error}}", bg = "{{bg_core}}" }
+
+perm_sep = { fg = "{{fg_muted}}" }
+perm_type = { fg = "{{info}}" }
+perm_read = { fg = "{{warning}}" }
+perm_write = { fg = "{{error}}" }
+perm_exec = { fg = "{{success}}" }
+
+# INPUT
+[input]
+border = { fg = "{{primary}}" }
+title = {}
+value = {}
+selected = { reversed = true }
+
+# PICK
+[pick]
+border = { fg = "{{primary}}" }
+active = { fg = "{{secondary}}", bold = true }
+inactive = {}
+
+# COMPLETION
+[cmp]
+border = { fg = "{{primary}}" }
+
+# TASKS
+[tasks]
+border = { fg = "{{primary}}" }
+title = {}
+hovered = { fg = "{{secondary}}", underline = true }
+
+# WHICH
+[which]
+mask = { bg = "{{bg_mantle}}" }
+cand = { fg = "{{secondary}}" }
+rest = { fg = "{{fg_strong}}" }
+desc = { fg = "{{info}}" }
+separator = "  "
+separator_style = { fg = "{{fg_muted}}" }
+
+# HELP
+[help]
+on = { fg = "{{primary}}" }
+run = { fg = "{{info}}" }
+hovered = { reversed = true, bold = true }
+footer = { fg = "{{fg_strong}}", bg = "{{bg_surface}}" }
+
+# NOTIFY
+[notify]
+title_info = { fg = "{{info}}" }
+title_warn = { fg = "{{warning}}" }
+title_error = { fg = "{{error}}" }
+
+# FILETYPE
+[filetype]
+rules = [
+  # Media
+  { mime = "image/*", fg = "{{ft_image}}" },
+  { mime = "{audio,video}/*", fg = "{{ft_media}}" },
+
+  # Archives
+  { mime = "application/*zip", fg = "{{ft_archive}}" },
+  { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", fg = "{{ft_archive}}" },
+
+  # Documents
+  { mime = "application/{pdf,doc,rtf,txt,md}", fg = "{{ft_document}}" },
+
+  # Fallback
+  { name = "*", fg = "{{fg_strong}}" },
+  { name = "*/", fg = "{{info}}" },
+]
+
+# SPOT
+[spot]
+border = { fg = "{{spot_border}}" }
+title = { fg = "{{secondary}}" }
+tbl_cell = { fg = "{{secondary}}", reversed = true }
+tbl_col = { bold = true }
