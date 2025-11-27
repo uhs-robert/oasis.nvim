@@ -164,6 +164,7 @@ To use the extras, refer to their respective documentation.
 | Kitty       | [extras/kitty](extras/kitty)                           |
 | Konsole     | [extras/konsole](extras/konsole)                       |
 | LazyGit     | [extras/lazygit](extras/lazygit)                       |
+| Slack       | [extras/slack](extras/slack)                           |
 | Termux      | [extras/termux](extras/termux)                         |
 | TMUX        | [tmux-oasis](https://github.com/uhs-robert/tmux-oasis) |
 | Vimium C    | [extras/vimium-c](extras/vimium-c)                     |
