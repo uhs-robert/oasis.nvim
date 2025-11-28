@@ -2,6 +2,8 @@
 
 Dark Reader is a browser extension that applies dark themes to websites. These Oasis themes provide custom color schemes for a consistent experience across the web.
 
+<img width="2534" height="1518" alt="screenshot-2025-11-28_12h24m38s" src="https://github.com/user-attachments/assets/3789dfb9-d342-417a-a27b-85bedcc4b98f" />
+
 ## Installation
 
 1. Install the Dark Reader extension:
