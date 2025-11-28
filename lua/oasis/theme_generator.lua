@@ -228,7 +228,7 @@ return function(c)
     ["@punctuation.bracket"]  = { fg=c.syntax.bracket }, -- Delimiter (e.g. `()`, `{}`, `[]`)
     ["@punctuation.special"]  = { fg=c.syntax.operator }, -- Delimiter (e.g. `{}` in string interpolation)
     -- ["@constant"]             = "Constant", -- Constant
-    ["@constant.builtin"]     = { fg=c.syntax.builtinConst }, -- Special
+    ["@constant.builtin"]     = { fg=c.syntax.builtinConst, italic=true }, -- Special
     -- ["@constant.macro"]       = "Define", -- Define
 
     -- ["@define"]               = "Define", -- Define
