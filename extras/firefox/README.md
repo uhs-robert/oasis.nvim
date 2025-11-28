@@ -4,8 +4,7 @@ Install Oasis themes for Firefox using [Firefox Color](https://color.firefox.com
 
 Click the theme links below to instantly apply Oasis color palettes to your Firefox browser.
 
-<img width="2534" height="1518" alt="screenshot-2025-11-28_12h18m58s" src="https://github.com/user-attachments/assets/2e974bbc-0be2-4b1f-8411-734ed7a88cf5" />
-
+<img src="assets/screenshots/extras/firefox.png" alt="Night" width="2534" height="1518">
 
 ## Themes
 
@@ -51,6 +50,6 @@ After installing a theme, you can further customize it using Firefox Color:
 
 ## Textfox - TUI Firefox
 
-Looking for a terminal-friendly Firefox experience? Check out [**Textfox**](https://github.com/adriankarlen/textfox) - a TUI (Text User Interface) configuration for Firefox that pairs beautifully with Oasis themes!
+Wouldn't it be nice if Firefox looked like a TUI application? Check out [**Textfox**](https://github.com/adriankarlen/textfox) - a TUI (Text User Interface) configuration for Firefox. It's what I use personally and this Oasis design is tailored for it specifically.
 
 Textfox provides a minimal Firefox interface that complements the Oasis color palette perfectly for users who prefer terminal-based workflows.
