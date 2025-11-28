@@ -4,7 +4,7 @@ Install Oasis themes for Firefox using [Firefox Color](https://color.firefox.com
 
 Click the theme links below to instantly apply Oasis color palettes to your Firefox browser.
 
-<img src="assets/screenshots/extras/firefox.png" alt="Night" width="2534" height="1518">
+<img src="/assets/screenshots/extras/firefox.png" alt="Firefox" width="2534" height="1518">
 
 ## Themes
 
