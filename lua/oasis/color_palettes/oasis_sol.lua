@@ -24,7 +24,7 @@ local ui = {
 	},
 	-- General colors
 	theme = {
-		primary = p.red[400],
+		primary = p.red[600],
 		light_primary = p.rose[500],
 		secondary = p.sunset[500],
 		accent = p.lagoon[500],
@@ -51,19 +51,19 @@ local c = {
 		builtinVar = p.lagoon[500], -- (this, document, window, etc)
 		string = p.cactus[700],
 		regex = p.palm[500],
-		builtinConst = p.soil[700], -- (e.g. null, undefined, Infinity, etc)
-		constant = p.sunset[600], -- (constant: number, float, boolean, or const not string/character)
+		builtinConst = p.slate[600], -- (e.g. null, undefined, Infinity, etc)
+		constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
 		-- Warm: (Control / Flow)
-		func = p.sunset[300],
+		func = p.sunset[200],
 		builtinFunc = p.sundown[400], -- (eg. parseInst, Array, Object etc)
 		statement = opts.themed_syntax and ui.theme.palette.primary[400] or p.khaki[500], -- (general statement (i.e. var, const))
 		exception = opts.themed_syntax and p.khaki[500] or p.red[300], -- (try/catch, return)
 		keyword = opts.themed_syntax and ui.theme.palette.primary[500] or p.khaki[700], -- (Conditionals, Loops)
 		special = p.sunset[400], -- (Statement not covered above)
-		operator = p.rose[400],
-		punctuation = p.coral[400],
-		preproc = p.sky[600], -- (imports)
+		operator = opts.themed_syntax and p.peach[400] or p.rose[400],
+		punctuation = opts.themed_syntax and p.peach[500] or p.coral[400],
+		preproc = p.sky[500], -- (imports)
 
 		-- Neutral: (Connections / Info)
 		bracket = p.slate[600], -- (bracket punctuation)

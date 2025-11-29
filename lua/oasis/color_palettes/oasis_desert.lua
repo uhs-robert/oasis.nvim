@@ -45,28 +45,28 @@ local c = {
 	syntax = {
 		-- Cold: (Data)
 		parameter = p.lavender[300],
-		identifier = p.teal[200],
+		identifier = p.teal[300],
 		delimiter = ui.theme.palette.primary[800],
-		type = p.teal[500],
+		type = p.teal[600],
 		builtinVar = p.lagoon[400], -- (this, document, window, etc)
 		string = p.cactus[400],
 		regex = p.palm[400],
-		builtinConst = p.soil[600], -- (e.g. null, undefined, Infinity, etc)
+		builtinConst = p.slate[600], -- (e.g. null, undefined, Infinity, etc)
 		constant = p.sunset[400], -- (constant: number, float, boolean, or const not string/character)
 
 		-- Warm: (Control / Flow)
-		func = p.sunset[100],
+		func = p.sunset[200],
 		builtinFunc = p.sundown[400], -- (eg. parseInst, Array, Object etc)
 		statement = opts.themed_syntax and ui.theme.palette.primary[50] or p.khaki[500], -- (general statement (i.e. var, const))
 		exception = opts.themed_syntax and p.khaki[500] or p.red[50], -- (try/catch, return)
 		keyword = opts.themed_syntax and ui.theme.palette.primary[300] or p.khaki[600], -- (Conditionals, Loops)
 		special = p.sunset[400], -- (Statement not covered above)
-		operator = p.rose[200],
+		operator = p.rose[300],
 		punctuation = p.coral[200],
 		preproc = p.sky[500], -- (imports)
 
 		-- Neutral: (Connections / Info)
-		bracket = p.slate[500], -- (bracket punctuation)
+		bracket = p.slate[600], -- (bracket punctuation)
 		comment = (opts.useLegacyComments or opts.use_legacy_comments) and "#87CEEB" or ui.fg.comment,
 	},
 

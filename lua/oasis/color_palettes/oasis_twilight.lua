@@ -48,10 +48,10 @@ local c = {
 		identifier = p.teal[300],
 		delimiter = ui.theme.palette.primary[600],
 		type = p.teal[600],
-		builtinVar = p.sapphire[400], -- (this, document, window, etc)
+		builtinVar = p.lagoon[500], -- (this, document, window, etc)
 		string = p.cactus[700],
 		regex = p.palm[500],
-		builtinConst = p.soil[700], -- (e.g. null, undefined, Infinity, etc)
+		builtinConst = p.slate[600], -- (e.g. null, undefined, Infinity, etc)
 		constant = p.sunset[400], -- (constant: number, float, boolean, or const not string/character)
 
 		-- Warm: (Control / Flow)

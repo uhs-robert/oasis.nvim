@@ -24,12 +24,12 @@ local ui = {
 	},
 	-- General colors
 	theme = {
-		primary = p.sapphire[500],
+		primary = p.lagoon[500],
 		light_primary = p.sky[500],
 		secondary = p.khaki[400],
 		accent = p.sunrise[500],
 		palette = {
-			primary = p.sapphire,
+			primary = p.lagoon,
 		},
 	},
 }
@@ -45,13 +45,13 @@ local c = {
 	syntax = {
 		-- Cold: (Data)
 		parameter = p.lavender[500],
-		identifier = p.teal[200],
+		identifier = p.teal[300],
 		delimiter = ui.theme.palette.primary[600],
 		type = p.teal[600],
-		builtinVar = opts.themed_syntax and p.khaki[500] or p.sapphire[500], -- (this, document, window, etc)
+		builtinVar = opts.themed_syntax and p.khaki[500] or p.lagoon[500], -- (this, document, window, etc)
 		string = p.cactus[700],
 		regex = p.palm[600],
-		builtinConst = p.soil[700], -- (e.g. null, undefined, Infinity, etc)
+		builtinConst = p.slate[600], -- (e.g. null, undefined, Infinity, etc)
 		constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
 		-- Warm: (Control / Flow)
@@ -66,7 +66,7 @@ local c = {
 		preproc = p.sky[500], -- (imports)
 
 		-- Neutral: (Connections / Info)
-		bracket = p.grey[500], -- (bracket punctuation)
+		bracket = p.grey[600], -- (bracket punctuation)
 		comment = ui.fg.comment, -- (comments)
 	},
 

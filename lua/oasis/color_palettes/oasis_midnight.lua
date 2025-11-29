@@ -44,18 +44,18 @@ local c = {
 	-- Syntax
 	syntax = {
 		-- Cold: (Data)
-		parameter = p.lavender[600],
+		parameter = p.lavender[500],
 		identifier = p.teal[500],
 		delimiter = ui.theme.primary,
 		type = p.teal[700],
-		builtinVar = p.sapphire[500], -- (this, document, window, etc)
+		builtinVar = p.lagoon[500], -- (this, document, window, etc)
 		string = p.cactus[500],
 		regex = p.palm[500],
-		builtinConst = p.soil[700], -- (constant: number, float, boolean, or const not string/character)
-		constant = p.sunset[600],
+		builtinConst = p.slate[600], -- (constant: number, float, boolean, or const not string/character)
+		constant = p.sunset[500],
 
 		-- Warm: (Control / Flow)
-		func = p.sunset[300],
+		func = p.sunset[200],
 		builtinFunc = p.sundown[400], -- (eg. parseInt, Array, Object etc)
 		statement = opts.themed_syntax and ui.theme.palette.primary[500] or p.khaki[500], -- (general statement (i.e. var, const))
 		exception = opts.themed_syntax and p.khaki[500] or p.red[500], -- (try/catch, return)
@@ -63,10 +63,10 @@ local c = {
 		special = p.sunset[500], -- (Statement not covered above)
 		operator = p.rose[500],
 		punctuation = p.coral[400],
-		preproc = p.sky[600], -- (imports)
+		preproc = p.sky[500], -- (imports)
 
 		-- Neutral: (Connections / Info)
-		bracket = p.slate[500],
+		bracket = p.slate[600],
 		comment = ui.fg.comment,
 	},
 

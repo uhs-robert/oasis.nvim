@@ -44,15 +44,15 @@ local c = {
 	-- Syntax
 	syntax = {
 		-- Cold: (Data)
-		parameter = p.lavender[600],
-		identifier = p.teal[500],
+		parameter = p.lavender[500],
+		identifier = p.teal[600],
 		delimiter = ui.theme.palette.primary[800],
 		type = p.teal[700],
-		builtinVar = p.sapphire[500], -- (this, document, window, etc)
+		builtinVar = p.lagoon[500], -- (this, document, window, etc)
 		string = p.cactus[500],
 		regex = p.palm[500],
-		builtinConst = p.soil[700], -- (e.g. null, undefined, Infinity, etc)
-		constant = p.sunset[600], -- (constant: number, float, boolean, or const not string/character)
+		builtinConst = p.slate[600], -- (e.g. null, undefined, Infinity, etc)
+		constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
 		-- Warm: (Control / Flow)
 		func = p.sunset[300],
