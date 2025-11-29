@@ -5,40 +5,40 @@
 [colors]
 foreground = "#D9E6FA"
 background= "#101825"
-cursor_bg= "#F0E68C"
-cursor_border= "#F0E68C"
+cursor_bg= "#58B8FD"
+cursor_border= "#58B8FD"
 cursor_fg= "#1A283F"
 selection_bg= "#5A3824"
 selection_fg= "#1A283F"
-split= "#3DB5FF"
-compose_cursor= "#FFA247"
+split= "#1CA0FD"
+compose_cursor= "#FF8A1F"
 scrollbar_thumb= "#22385C"
 visual_bell= "#1A283F"
 
 ansi = [
   '#000000',
   '#D06666',
-  '#35B56E',
+  '#53D390',
   '#F0E68C',
-  '#87CEEB',
-  '#B499FF',
-  '#1CA1FF',
-  '#E8E2D4',
+  '#519BFF',
+  '#C28EFF',
+  '#5ABAAE',
+  '#DDDBD5',
 ]
 
 brights = [
-  '#514742',
+  '#666666',
   '#FFA0A0',
-  '#6BBF59',
+  '#96EA7F',
   '#FFA247',
-  '#6FB8FF',
-  '#C0A0FF',
+  '#87CEEB',
+  '#D2ADFF',
   '#8FD1C7',
   '#FFF9F2',
 ]
 
 [colors.indexed]
-16 = '#FFA247'
+16 = '#FF8A1F'
 17 = '#F58888'
 
 [colors.tab_bar]
@@ -46,7 +46,7 @@ background = '#1A283F'
 inactive_tab_edge = '#0F1522'
 
 [colors.tab_bar.active_tab]
-bg_color = '#3DB5FF'
+bg_color = '#1CA0FD'
 fg_color = '#101825'
 intensity = 'Normal'
 italic = false

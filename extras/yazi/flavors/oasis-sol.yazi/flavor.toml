@@ -10,24 +10,24 @@ hovered = { fg = "#FFE0DA", bg = "#4F312B" }
 preview_hovered = { fg = "#FFE0DA", bg = "#3A2521" }
 
 find_keyword = { fg = "#F49F15", bold = true, italic = true, underline = true }
-find_position = { fg = "#F28D8D", bg = "reset", bold = true, italic = true }
+find_position = { fg = "#F0E68C", bg = "reset", bold = true, italic = true }
 
 marker_copied = { fg = "#34CB7D", bg = "#34CB7D" }
-marker_cut = { fg = "#F28D8D", bg = "#F28D8D" }
+marker_cut = { fg = "#F0E68C", bg = "#F0E68C" }
 marker_marked = { fg = "#87CEEB", bg = "#87CEEB" }
 marker_selected = { fg = "#F0E68C", bg = "#F0E68C" }
 
 count_copied = { fg = "#2F1815", bg = "#34CB7D" }
-count_cut = { fg = "#2F1815", bg = "#F28D8D" }
+count_cut = { fg = "#2F1815", bg = "#F0E68C" }
 count_selected = { fg = "#2F1815", bg = "#F0E68C" }
 
 border_symbol = "│"
-border_style = { fg = "#F58888" }
+border_style = { fg = "#E87272" }
 
 # TABS
 [tabs]
-active = { fg = "#2F1815", bg = "#F58888", bold = true }
-inactive = { fg = "#F58888", bg = "#3A2521" }
+active = { fg = "#2F1815", bg = "#E87272", bold = true }
+inactive = { fg = "#E87272", bg = "#3A2521" }
 
 # MODE
 [mode]
@@ -47,34 +47,34 @@ sep_right = { open = "", close = "" }
 
 progress_label = { fg = "#2F1815", bold = true }
 progress_normal = { fg = "#87CEEB", bg = "#2F1815" }
-progress_error = { fg = "#F28D8D", bg = "#2F1815" }
+progress_error = { fg = "#F0E68C", bg = "#2F1815" }
 
 perm_sep = { fg = "#987069" }
 perm_type = { fg = "#87CEEB" }
 perm_read = { fg = "#F0E68C" }
-perm_write = { fg = "#F28D8D" }
+perm_write = { fg = "#F0E68C" }
 perm_exec = { fg = "#34CB7D" }
 
 # INPUT
 [input]
-border = { fg = "#F58888" }
+border = { fg = "#E87272" }
 title = {}
 value = {}
 selected = { reversed = true }
 
 # PICK
 [pick]
-border = { fg = "#F58888" }
+border = { fg = "#E87272" }
 active = { fg = "#FFA247", bold = true }
 inactive = {}
 
 # COMPLETION
 [cmp]
-border = { fg = "#F58888" }
+border = { fg = "#E87272" }
 
 # TASKS
 [tasks]
-border = { fg = "#F58888" }
+border = { fg = "#E87272" }
 title = {}
 hovered = { fg = "#FFA247", underline = true }
 
@@ -89,7 +89,7 @@ separator_style = { fg = "#987069" }
 
 # HELP
 [help]
-on = { fg = "#F58888" }
+on = { fg = "#E87272" }
 run = { fg = "#87CEEB" }
 hovered = { reversed = true, bold = true }
 footer = { fg = "#FFD3CB", bg = "#4F312B" }
@@ -98,7 +98,7 @@ footer = { fg = "#FFD3CB", bg = "#4F312B" }
 [notify]
 title_info = { fg = "#87CEEB" }
 title_warn = { fg = "#F0E68C" }
-title_error = { fg = "#F28D8D" }
+title_error = { fg = "#F0E68C" }
 
 # FILETYPE
 [filetype]

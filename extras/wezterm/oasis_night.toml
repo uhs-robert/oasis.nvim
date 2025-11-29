@@ -5,8 +5,8 @@
 [colors]
 foreground = "#E0E4F8"
 background= "#0D0D1A"
-cursor_bg= "#F0E68C"
-cursor_border= "#F0E68C"
+cursor_bg= "#F58888"
+cursor_border= "#F58888"
 cursor_fg= "#06060E"
 selection_bg= "#3E2F4A"
 selection_fg= "#06060E"
@@ -18,28 +18,28 @@ visual_bell= "#06060E"
 ansi = [
   '#000000',
   '#D06666',
-  '#35B56E',
+  '#53D390',
   '#F0E68C',
-  '#87CEEB',
-  '#B499FF',
-  '#1CA1FF',
-  '#E8E2D4',
+  '#519BFF',
+  '#C28EFF',
+  '#5ABAAE',
+  '#DDDBD5',
 ]
 
 brights = [
-  '#514742',
+  '#666666',
   '#FFA0A0',
-  '#6BBF59',
+  '#96EA7F',
   '#FFA247',
-  '#6FB8FF',
-  '#C0A0FF',
+  '#87CEEB',
+  '#D2ADFF',
   '#8FD1C7',
   '#FFF9F2',
 ]
 
 [colors.indexed]
 16 = '#FFA247'
-17 = '#F58888'
+17 = '#F0E68C'
 
 [colors.tab_bar]
 background = '#06060E'
@@ -78,7 +78,7 @@ strikethrough = false
 underline = 'None'
 
 [colors.tab_bar.new_tab_hover]
-bg_color = '#4AC8FF'
+bg_color = '#58B8FD'
 fg_color = '#0D0D1A'
 intensity = 'Normal'
 italic = false

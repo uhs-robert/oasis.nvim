@@ -4,7 +4,7 @@
 
 # MANAGER
 [mgr]
-cwd = { fg = "#EADD61" }
+cwd = { fg = "#F3EA9F" }
 
 hovered = { fg = "#E6E0F8", bg = "#352D47" }
 preview_hovered = { fg = "#E6E0F8", bg = "#2B243B" }
@@ -22,12 +22,12 @@ count_cut = { fg = "#221B2F", bg = "#F28D8D" }
 count_selected = { fg = "#221B2F", bg = "#F0E68C" }
 
 border_symbol = "│"
-border_style = { fg = "#C799FF" }
+border_style = { fg = "#C28EFF" }
 
 # TABS
 [tabs]
-active = { fg = "#221B2F", bg = "#C799FF", bold = true }
-inactive = { fg = "#C799FF", bg = "#2B243B" }
+active = { fg = "#221B2F", bg = "#C28EFF", bold = true }
+inactive = { fg = "#C28EFF", bg = "#2B243B" }
 
 # MODE
 [mode]
@@ -57,31 +57,31 @@ perm_exec = { fg = "#34CB7D" }
 
 # INPUT
 [input]
-border = { fg = "#C799FF" }
+border = { fg = "#C28EFF" }
 title = {}
 value = {}
 selected = { reversed = true }
 
 # PICK
 [pick]
-border = { fg = "#C799FF" }
-active = { fg = "#EADD61", bold = true }
+border = { fg = "#C28EFF" }
+active = { fg = "#F3EA9F", bold = true }
 inactive = {}
 
 # COMPLETION
 [cmp]
-border = { fg = "#C799FF" }
+border = { fg = "#C28EFF" }
 
 # TASKS
 [tasks]
-border = { fg = "#C799FF" }
+border = { fg = "#C28EFF" }
 title = {}
-hovered = { fg = "#EADD61", underline = true }
+hovered = { fg = "#F3EA9F", underline = true }
 
 # WHICH
 [which]
 mask = { bg = "#2B243B" }
-cand = { fg = "#EADD61" }
+cand = { fg = "#F3EA9F" }
 rest = { fg = "#E1D2FF" }
 desc = { fg = "#87CEEB" }
 separator = "  "
@@ -89,7 +89,7 @@ separator_style = { fg = "#8073A1" }
 
 # HELP
 [help]
-on = { fg = "#C799FF" }
+on = { fg = "#C28EFF" }
 run = { fg = "#87CEEB" }
 hovered = { reversed = true, bold = true }
 footer = { fg = "#E1D2FF", bg = "#352D47" }
@@ -122,8 +122,8 @@ rules = [
 # SPOT
 [spot]
 border = { fg = "#FFA0A0" }
-title = { fg = "#EADD61" }
-tbl_cell = { fg = "#EADD61", reversed = true }
+title = { fg = "#F3EA9F" }
+tbl_cell = { fg = "#F3EA9F", reversed = true }
 tbl_col = { bold = true }
 
 # extras/yazi/icons.toml.template
