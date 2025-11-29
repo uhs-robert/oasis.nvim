@@ -4,21 +4,21 @@
 
 # MANAGER
 [mgr]
-cwd = { fg = "#FFA247" }
+cwd = { fg = "#FFA852" }
 
 hovered = { fg = "#E1E9FF", bg = "#1C242C" }
 preview_hovered = { fg = "#E1E9FF", bg = "#14181C" }
 
 find_keyword = { fg = "#FFA247", bold = true, italic = true, underline = true }
-find_position = { fg = "#F58888", bg = "reset", bold = true, italic = true }
+find_position = { fg = "#F0E68C", bg = "reset", bold = true, italic = true }
 
 marker_copied = { fg = "#53D390", bg = "#53D390" }
-marker_cut = { fg = "#F58888", bg = "#F58888" }
+marker_cut = { fg = "#F0E68C", bg = "#F0E68C" }
 marker_marked = { fg = "#87CEEB", bg = "#87CEEB" }
 marker_selected = { fg = "#F0E68C", bg = "#F0E68C" }
 
 count_copied = { fg = "#101418", bg = "#53D390" }
-count_cut = { fg = "#101418", bg = "#F58888" }
+count_cut = { fg = "#101418", bg = "#F0E68C" }
 count_selected = { fg = "#101418", bg = "#F0E68C" }
 
 border_symbol = "│"
@@ -47,12 +47,12 @@ sep_right = { open = "", close = "" }
 
 progress_label = { fg = "#101418", bold = true }
 progress_normal = { fg = "#87CEEB", bg = "#101418" }
-progress_error = { fg = "#F58888", bg = "#101418" }
+progress_error = { fg = "#F0E68C", bg = "#101418" }
 
 perm_sep = { fg = "#5F7390" }
 perm_type = { fg = "#87CEEB" }
 perm_read = { fg = "#F0E68C" }
-perm_write = { fg = "#F58888" }
+perm_write = { fg = "#F0E68C" }
 perm_exec = { fg = "#53D390" }
 
 # INPUT
@@ -65,7 +65,7 @@ selected = { reversed = true }
 # PICK
 [pick]
 border = { fg = "#D06666" }
-active = { fg = "#FFA247", bold = true }
+active = { fg = "#FFA852", bold = true }
 inactive = {}
 
 # COMPLETION
@@ -76,12 +76,12 @@ border = { fg = "#D06666" }
 [tasks]
 border = { fg = "#D06666" }
 title = {}
-hovered = { fg = "#FFA247", underline = true }
+hovered = { fg = "#FFA852", underline = true }
 
 # WHICH
 [which]
 mask = { bg = "#14181C" }
-cand = { fg = "#FFA247" }
+cand = { fg = "#FFA852" }
 rest = { fg = "#D7E0FF" }
 desc = { fg = "#87CEEB" }
 separator = "  "
@@ -98,7 +98,7 @@ footer = { fg = "#D7E0FF", bg = "#1C242C" }
 [notify]
 title_info = { fg = "#87CEEB" }
 title_warn = { fg = "#F0E68C" }
-title_error = { fg = "#F58888" }
+title_error = { fg = "#F0E68C" }
 
 # FILETYPE
 [filetype]
@@ -122,8 +122,8 @@ rules = [
 # SPOT
 [spot]
 border = { fg = "#FFA0A0" }
-title = { fg = "#FFA247" }
-tbl_cell = { fg = "#FFA247", reversed = true }
+title = { fg = "#FFA852" }
+tbl_cell = { fg = "#FFA852", reversed = true }
 tbl_col = { bold = true }
 
 # extras/yazi/icons.toml.template

@@ -9,7 +9,7 @@ cwd = { fg = "#FF8080" }
 hovered = { fg = "#E2E8E2", bg = "#3C4B3E" }
 preview_hovered = { fg = "#E2E8E2", bg = "#2C3A30" }
 
-find_keyword = { fg = "#F49F15", bold = true, italic = true, underline = true }
+find_keyword = { fg = "#FFA247", bold = true, italic = true, underline = true }
 find_position = { fg = "#F39493", bg = "reset", bold = true, italic = true }
 
 marker_copied = { fg = "#34CB7D", bg = "#34CB7D" }
@@ -22,12 +22,12 @@ count_cut = { fg = "#1C261E", bg = "#F39493" }
 count_selected = { fg = "#1C261E", bg = "#F0E68C" }
 
 border_symbol = "│"
-border_style = { fg = "#53D390" }
+border_style = { fg = "#7FBB82" }
 
 # TABS
 [tabs]
-active = { fg = "#1C261E", bg = "#53D390", bold = true }
-inactive = { fg = "#53D390", bg = "#2C3A30" }
+active = { fg = "#1C261E", bg = "#7FBB82", bold = true }
+inactive = { fg = "#7FBB82", bg = "#2C3A30" }
 
 # MODE
 [mode]
@@ -57,24 +57,24 @@ perm_exec = { fg = "#34CB7D" }
 
 # INPUT
 [input]
-border = { fg = "#53D390" }
+border = { fg = "#7FBB82" }
 title = {}
 value = {}
 selected = { reversed = true }
 
 # PICK
 [pick]
-border = { fg = "#53D390" }
+border = { fg = "#7FBB82" }
 active = { fg = "#FF8080", bold = true }
 inactive = {}
 
 # COMPLETION
 [cmp]
-border = { fg = "#53D390" }
+border = { fg = "#7FBB82" }
 
 # TASKS
 [tasks]
-border = { fg = "#53D390" }
+border = { fg = "#7FBB82" }
 title = {}
 hovered = { fg = "#FF8080", underline = true }
 
@@ -89,7 +89,7 @@ separator_style = { fg = "#608864" }
 
 # HELP
 [help]
-on = { fg = "#53D390" }
+on = { fg = "#7FBB82" }
 run = { fg = "#87CEEB" }
 hovered = { reversed = true, bold = true }
 footer = { fg = "#C7ECD8", bg = "#3C4B3E" }
