@@ -44,29 +44,29 @@ local c = {
 	-- Syntax
 	syntax = {
 		-- Cold: (Data)
-		parameter = p.lavender[500],
+		parameter = p.lavender[400],
 		identifier = p.lagoon[300],
 		delimiter = ui.theme.primary,
 		type = p.lagoon[500],
 		builtinVar = opts.themed_syntax and p.khaki[500] or p.gold[600], -- (this, document, window, etc)
 		string = p.cactus[700],
 		regex = p.palm[600],
-		builtinConst = p.slate[600], -- (e.g. null, undefined, Infinity, etc)
+		builtinConst = p.slate[400], -- (e.g. null, undefined, Infinity, etc)
 		constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
 		-- Warm: (Control / Flow)
-		func = p.sunset[200],
+		func = p.sunset[300],
 		builtinFunc = p.sundown[400], -- (eg. parseInst, Array, Object etc) -- TODO: Sundown could be darker, check cactus too
-		statement = opts.themed_syntax and ui.theme.palette.primary[500] or p.khaki[500], -- (general statement (i.e. var, const))
+		statement = opts.themed_syntax and ui.theme.palette.primary[400] or p.khaki[500], -- (general statement (i.e. var, const))
 		exception = p.red[200], -- (try/catch, return)
-		keyword = opts.themed_syntax and ui.theme.palette.primary[700] or p.khaki[700], -- (Conditionals, Loops)
+		keyword = opts.themed_syntax and ui.theme.palette.primary[600] or p.khaki[700], -- (Conditionals, Loops)
 		special = p.sunset[400], -- (Statement not covered above)
 		operator = p.rose[400],
 		punctuation = p.coral[300],
 		preproc = p.sand[400], -- (imports)
 
 		-- Neutral: (Connections / Info)
-		bracket = p.slate[600], -- (bracket punctuation)
+		bracket = p.slate[400], -- (bracket punctuation)
 		comment = ui.theme.comment, -- (comments)
 	},
 

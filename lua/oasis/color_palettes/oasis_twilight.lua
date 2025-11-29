@@ -46,27 +46,27 @@ local c = {
 		-- Cold: (Data)
 		parameter = opts.themed_syntax and p.khaki[500] or p.lavender[500],
 		identifier = p.teal[300],
-		delimiter = ui.theme.palette.primary[600],
+		delimiter = ui.theme.palette.primary[500],
 		type = p.teal[600],
 		builtinVar = p.lagoon[500], -- (this, document, window, etc)
 		string = p.cactus[700],
 		regex = p.palm[500],
-		builtinConst = p.slate[600], -- (e.g. null, undefined, Infinity, etc)
+		builtinConst = p.slate[500], -- (e.g. null, undefined, Infinity, etc)
 		constant = p.sunset[400], -- (constant: number, float, boolean, or const not string/character)
 
 		-- Warm: (Control / Flow)
 		func = p.sunset[200],
 		builtinFunc = p.sundown[400], -- (eg. parseInst, Array, Object etc)
-		statement = opts.themed_syntax and ui.theme.palette.primary[400] or p.khaki[500], -- (general statement (i.e. var, const))
+		statement = opts.themed_syntax and ui.theme.palette.primary[200] or p.khaki[500], -- (general statement (i.e. var, const))
 		exception = p.red[300], -- (try/catch, return)
-		keyword = opts.themed_syntax and ui.theme.palette.primary[500] or p.khaki[700], -- (Conditionals, Loops)
+		keyword = opts.themed_syntax and ui.theme.palette.primary[400] or p.khaki[700], -- (Conditionals, Loops)
 		special = p.sunset[400], -- (Statement not covered above)
 		operator = p.rose[400],
 		punctuation = p.coral[400],
 		preproc = p.sky[500], -- (imports)
 
 		-- Neutral: (Connections / Info)
-		bracket = p.grey[600], -- (bracket punctuation)
+		bracket = p.grey[400], -- (bracket punctuation)
 		comment = ui.fg.comment, --  (comments)
 	},
 
