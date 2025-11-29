@@ -24,11 +24,18 @@ local function get_palette_files()
 	return files
 end
 
--- Extract all color references like p.red.example
+-- Extract all color references like p.red.example or p.red[900]
 local function extract_colors(content)
 	local colors = {}
-	-- Match p.color.variant but exclude p.theme, p.visual, p.diag, p.terminal, p.light_terminal
+	-- Match p.color.variant or p.color[variant] but exclude p.theme, p.visual, p.diag, p.terminal, p.light_terminal
 	for color, variant in content:gmatch("p%.([a-z]+)%.([a-zA-Z0-9_]+)") do
+		if color ~= "theme" and color ~= "visual" and color ~= "diag" and color ~= "terminal" then
+			colors[color] = colors[color] or {}
+			colors[color][variant] = (colors[color][variant] or 0) + 1
+		end
+	end
+	-- Also match bracket notation p.color[900]
+	for color, variant in content:gmatch("p%.([a-z]+)%[([0-9]+)%]") do
 		if color ~= "theme" and color ~= "visual" and color ~= "diag" and color ~= "terminal" then
 			colors[color] = colors[color] or {}
 			colors[color][variant] = (colors[color][variant] or 0) + 1
@@ -133,11 +140,16 @@ if palette_content then
 				palette_lua_colors[current_color] = {}
 			end
 
-			-- Inside a color family, look for variants
+			-- Inside a color family, look for variants (now using numeric keys in brackets)
 			if current_color then
+				-- Match both old format: variant = "#hex" and new format: [900] = "#hex"
 				local variant = line:match('^%s+([a-zA-Z0-9_]+)%s*=%s*"#[%x]+"')
+				local numeric_variant = line:match('^%s+%[([0-9]+)%]%s*=%s*"#[%x]+"')
+
 				if variant then
 					table.insert(palette_lua_colors[current_color], variant)
+				elseif numeric_variant then
+					table.insert(palette_lua_colors[current_color], numeric_variant)
 				end
 			end
 
