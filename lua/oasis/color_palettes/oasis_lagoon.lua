@@ -24,12 +24,12 @@ local ui = {
 	},
 	-- General colors
 	theme = {
-		primary = p.sapphire[600],
+		primary = p.lagoon[700],
 		light_primary = p.lagoon[300],
 		secondary = p.sunset[500],
 		accent = p.rose[500],
 		palette = {
-			primary = p.sapphire,
+			primary = p.lagoon,
 		},
 	},
 }
@@ -44,14 +44,14 @@ local c = {
 	-- Syntax
 	syntax = {
 		-- Cold: (Data)
-		parameter = p.lavender[600],
+		parameter = p.lavender[500],
 		identifier = p.teal[300],
 		delimiter = ui.theme.primary,
 		type = p.teal[600],
-		builtinVar = opts.themed_syntax and p.khaki[500] or p.sapphire[500], -- (this, document, window, etc)
+		builtinVar = opts.themed_syntax and p.khaki[500] or p.lagoon[500], -- (this, document, window, etc)
 		string = p.cactus[500],
 		regex = p.palm[500],
-		builtinConst = p.soil[700], -- (e.g. null, undefined, Infinity, etc)
+		builtinConst = p.slate[600], -- (e.g. null, undefined, Infinity, etc)
 		constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
 		-- Warm: (Control / Flow)

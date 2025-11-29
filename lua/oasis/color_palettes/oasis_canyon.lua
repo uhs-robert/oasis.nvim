@@ -26,7 +26,7 @@ local ui = {
 	theme = {
 		primary = p.sunset[500],
 		light_primary = p.sunshine[200],
-		secondary = p.lagoon[400],
+		secondary = p.sky[500],
 		accent = p.cactus[700],
 		palette = {
 			primary = p.sunset,
@@ -48,10 +48,10 @@ local c = {
 		identifier = p.teal[400],
 		delimiter = ui.theme.primary,
 		type = p.teal[600],
-		builtinVar = p.lagoon[600], -- (this, document, window, etc)
+		builtinVar = p.lagoon[400], -- (this, document, window, etc)
 		string = p.cactus[700],
 		regex = p.palm[400],
-		builtinConst = p.soil[700], -- (e.g. null, undefined, Infinity, etc)
+		builtinConst = p.slate[600], -- (e.g. null, undefined, Infinity, etc)
 		constant = p.gold[400], -- (constant: number, float, boolean, or const not string/character)
 
 		-- Warm: (Control / Flow)
@@ -59,11 +59,11 @@ local c = {
 		builtinFunc = p.sand[500], -- (eg. parseInst, Array, Object etc)
 		statement = opts.themed_syntax and ui.theme.palette.primary[300] or p.khaki[500], -- (general statement (i.e. var, const))
 		exception = p.red[300], -- (try/catch, return)
-		keyword = opts.themed_syntax and ui.theme.palette.primary[500] or p.khaki[700], -- (Conditionals, Loops)
+		keyword = opts.themed_syntax and ui.theme.palette.primary[400] or p.khaki[700], -- (Conditionals, Loops)
 		special = p.sunset[400], -- (Statement not covered above)
 		operator = p.rose[500],
 		punctuation = p.coral[400],
-		preproc = p.sky[600], -- (imports)
+		preproc = p.sky[500], -- (imports)
 
 		-- Neutral: (Connections / Info)
 		bracket = p.slate[600], -- (bracket punctuation)
