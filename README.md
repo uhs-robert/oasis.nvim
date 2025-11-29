@@ -25,7 +25,7 @@ Oasis follows Melange's warm/cool split philosophy (**warm = action/flow**, **co
 **All themes are fully AAA WCAG compliant**. Light themes use warm beige-to-peachy tones to minimize blue light exposure and support eye health during extended coding sessions.
 
 > [!NOTE]
-> **✨ NEW: Themed Syntax Mode** - Try `:OasisThemedSyntax` to make each variant feel more distinct! Statements and keywords now use each theme's signature color (blue in lagoon, teal in mirage, orange in canyon, etc.) instead of universal yellow tones. [Learn more ↓](#toggle-themed-syntax)
+> **✨ NEW in v3.0: Themed Syntax is Now Default** - Each variant now uses its signature color for statements and keywords (blue in lagoon, teal in mirage, orange in canyon, etc.) creating more distinct visual personalities. Prefer classic yellow syntax? [See how to opt-out ↓](#toggle-themed-syntax)
 
 <table>
   <tr>
@@ -305,7 +305,7 @@ vim.keymap.set('n', '<leader>tt', require('oasis').toggle_transparency, { desc =
 
 ### Toggle Themed Syntax
 
-Toggle the `themed_syntax` option on-the-fly to give each variant more personality (dark themes only):
+Toggle the `themed_syntax` option on-the-fly to switch between themed and classic syntax highlighting (dark themes only):
 
 ```vim
 :OasisThemedSyntax
@@ -319,12 +319,17 @@ require('oasis').toggle_themed_syntax()
 vim.keymap.set('n', '<leader>ts', require('oasis').toggle_themed_syntax, { desc = 'Toggle themed syntax' })
 ```
 
-> [!TIP]
-> **Try the new themed syntax mode!** Use `:OasisThemedSyntax` to see how it makes each variant feel more distinct and cohesive.
+> [!IMPORTANT]
+> **v3.0 Breaking Change**: Themed syntax is now enabled by default. To restore classic syntax highlighting, disable it:
+> ```lua
+> require("oasis").setup({
+>   themed_syntax = false,  -- Use traditional yellow/khaki for all variants
+> })
+> ```
 
-This option swaps statement/keyword colors to use each theme's signature color, making variants feel more unique:
-- **Enabled**: Statements and keywords use the theme's primary color (e.g., blue in lagoon, teal in mirage, orange in canyon)
-- **Disabled** (default): Statements and keywords use traditional yellow/khaki tones across all variants
+This option controls how statement/keyword colors are rendered:
+- **Enabled** (default): Statements and keywords use the theme's primary color (e.g., blue in lagoon, teal in mirage, orange in canyon)
+- **Disabled**: Statements and keywords use traditional yellow/khaki tones across all variants
 
 ### WCAG Accessibility Checker
 
@@ -385,7 +390,7 @@ require("oasis").setup({
   light_style = "dawn",                 -- Style to use when vim.o.background is "light"
   style = nil,                          -- Optional: Set a single style to disable auto-switching (e.g., "lagoon", "desert")
   use_legacy_comments = false,          -- Uses the legacy comment color from desert.vim for the "desert" style only (a bright sky blue)
-  themed_syntax = false,   -- Use theme primary color for statements/keywords (dark themes only)
+  themed_syntax = true,    -- Use theme primary color for statements/keywords - set to false for classic yellow syntax (dark themes only)
 
   -- Text styling - disable individual styles if you like
   styles = {
