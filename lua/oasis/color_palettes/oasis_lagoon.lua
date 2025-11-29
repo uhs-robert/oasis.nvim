@@ -51,7 +51,7 @@ local c = {
 		builtinVar = opts.themed_syntax and p.khaki[500] or p.lagoon[500], -- (this, document, window, etc)
 		string = p.cactus[500],
 		regex = p.palm[500],
-		builtinConst = p.slate[600], -- (e.g. null, undefined, Infinity, etc)
+		builtinConst = p.slate[500], -- (e.g. null, undefined, Infinity, etc)
 		constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
 		-- Warm: (Control / Flow)
@@ -66,7 +66,7 @@ local c = {
 		preproc = p.sky[500], -- (imports)
 
 		-- Neutral: (Connections / Info)
-		bracket = p.slate[600], -- (bracket punctuation)
+		bracket = p.slate[500], -- (bracket punctuation)
 		comment = ui.fg.comment, -- (comments)
 	},
 

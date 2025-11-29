@@ -51,11 +51,11 @@ local c = {
 		builtinVar = opts.themed_syntax and p.khaki[500] or p.lagoon[500], -- (this, document, window, etc)
 		string = p.cactus[700],
 		regex = p.palm[600],
-		builtinConst = p.slate[600], -- (e.g. null, undefined, Infinity, etc)
+		builtinConst = p.slate[500], -- (e.g. null, undefined, Infinity, etc)
 		constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
 		-- Warm: (Control / Flow)
-		func = p.sunset[200],
+		func = p.sunset[300],
 		builtinFunc = p.sundown[400], -- (eg. parseInst, Array, Object etc)
 		statement = opts.themed_syntax and ui.theme.palette.primary[500] or p.khaki[500], -- (general statement (i.e. var, const))
 		exception = p.red[500], -- (try/catch, return)
@@ -66,7 +66,7 @@ local c = {
 		preproc = p.sky[500], -- (imports)
 
 		-- Neutral: (Connections / Info)
-		bracket = p.grey[600], -- (bracket punctuation)
+		bracket = p.grey[500], -- (bracket punctuation)
 		comment = ui.fg.comment, -- (comments)
 	},
 

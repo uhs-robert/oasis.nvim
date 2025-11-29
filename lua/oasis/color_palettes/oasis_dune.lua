@@ -48,11 +48,11 @@ local c = {
 		identifier = p.teal[400],
 		delimiter = opts.themed_syntax and ui.theme.palette.primary[600] or ui.theme.primary,
 		type = p.teal[600],
-		builtinVar = p.lagoon[500], -- (this, document, window, etc)
+		builtinVar = p.lagoon[400], -- (this, document, window, etc)
 		string = p.cactus[500],
 		regex = p.palm[500],
-		builtinConst = p.slate[600], -- (e.g. null, undefined, Infinity, etc)
-		constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
+		builtinConst = p.slate[400], -- (e.g. null, undefined, Infinity, etc)
+		constant = p.sunset[400], -- (constant: number, float, boolean, or const not string/character)
 
 		-- Warm: (Control / Flow)
 		func = p.sunset[200],
@@ -63,10 +63,10 @@ local c = {
 		special = p.sunset[500], -- (Statement not covered above)
 		operator = p.rose[300],
 		punctuation = p.coral[300],
-		preproc = p.sky[600], -- (imports)
+		preproc = p.sky[500], -- (imports)
 
 		-- Neutral: (Connections / Info)
-		bracket = p.slate[600], -- (bracket punctuation)
+		bracket = p.slate[400], -- (bracket punctuation)
 		comment = ui.fg.comment, -- (comments)
 	},
 

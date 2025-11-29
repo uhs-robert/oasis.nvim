@@ -51,22 +51,22 @@ local c = {
 		builtinVar = p.lagoon[500], -- (this, document, window, etc)
 		string = p.cactus[500],
 		regex = p.palm[500],
-		builtinConst = p.slate[600], -- (e.g. null, undefined, Infinity, etc)
+		builtinConst = p.slate[500], -- (e.g. null, undefined, Infinity, etc)
 		constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
 		-- Warm: (Control / Flow)
 		func = p.sunset[300],
 		builtinFunc = p.sundown[400], -- (eg. parseInst, Array, Object etc)
-		statement = opts.themed_syntax and ui.theme.palette.primary[500] or p.khaki[500], -- (general statement (i.e. var, const))
+		statement = opts.themed_syntax and ui.theme.palette.primary[400] or p.khaki[500], -- (general statement (i.e. var, const))
 		exception = opts.themed_syntax and p.khaki[600] or p.red[500], -- (try/catch, return)
 		keyword = opts.themed_syntax and ui.theme.palette.primary[600] or p.khaki[700], -- (Conditionals, Loops)
 		special = p.sunset[500], -- (Statement not covered above)
-		operator = p.rose[500],
+		operator = p.peach[400],
 		punctuation = p.coral[500],
 		preproc = p.sky[600], -- (imports)
 
 		-- Neutral: (Connections / Info)
-		bracket = p.slate[600],
+		bracket = p.slate[500],
 		comment = ui.fg.comment,
 	},
 
