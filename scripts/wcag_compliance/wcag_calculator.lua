@@ -103,13 +103,19 @@ Modes:
 
 Usage:
   Single color:           lua wcag_calculator.lua <background_hex> <foreground_hex> [target_ratio]
-  Actual:                 lua wcag_calculator.lua actual [theme_name|all]
+  Actual:                 lua wcag_calculator.lua actual [theme_name|all] [flags]
   Presets:                lua wcag_calculator.lua presets [theme_name|all]
+
+Flags (for 'actual' mode only):
+  --themed-syntax, -t     Test with themed_syntax enabled (dark themes only)
+  --both, -b              Test both normal and themed_syntax modes (dark themes only)
 
 Examples:
   lua wcag_calculator.lua '#EFE5B6' '#D26600' 7.0
   lua wcag_calculator.lua actual lagoon
-  lua wcag_calculator.lua actual all
+  lua wcag_calculator.lua actual lagoon --themed-syntax
+  lua wcag_calculator.lua actual lagoon --both
+  lua wcag_calculator.lua actual all --themed-syntax
   lua wcag_calculator.lua presets lagoon
   lua wcag_calculator.lua presets all
 
@@ -157,18 +163,29 @@ local function process_single_color(background, foreground, target)
 	end
 end
 
-local function process_palette(palette_name, custom_targets)
+local function process_palette(palette_name, custom_targets, config_opts)
+	config_opts = config_opts or {}
 	print(string.format("Processing %s...", palette_name))
 
 	-- If no custom targets provided, auto-detect light/dark and apply appropriate defaults
 	if not custom_targets then
-		local palette, err = calc.load_palette(palette_name)
+		local palette, err
+		if next(config_opts) then
+			palette, err = calc.load_palette_with_config(palette_name, config_opts)
+		else
+			palette, err = calc.load_palette(palette_name)
+		end
 		if palette then
 			custom_targets = palette.light_mode and get_light_theme_targets() or get_dark_theme_targets()
 		end
 	end
 
-	calc.check_palette(palette_name, nil, custom_targets)
+	-- Use config-aware check if config options provided
+	if next(config_opts) then
+		calc.check_palette_with_config(palette_name, config_opts, nil, custom_targets)
+	else
+		calc.check_palette(palette_name, nil, custom_targets)
+	end
 end
 
 local function process_preset_single(palette_name)
@@ -195,9 +212,12 @@ local function process_preset_single(palette_name)
 	end
 end
 
-local function process_all_palettes()
+local function process_all_palettes(config_opts)
+	config_opts = config_opts or {}
+	local mode_label = config_opts.themed_syntax and " (themed_syntax)" or ""
+
 	print("\n" .. string.rep("=", 80))
-	print("WCAG: Compliance Check for All Actual Oasis Palettes")
+	print("WCAG: Compliance Check for All Actual Oasis Palettes" .. mode_label)
 	print("(Light: AA comments, AAA others | Dark: AAA all)")
 	print(string.rep("=", 80))
 
@@ -205,15 +225,33 @@ local function process_all_palettes()
 	print("LIGHT THEMES")
 	print(string.rep("-", 80))
 	for _, theme in ipairs(LIGHT_THEMES) do
-		process_palette(theme)
+		process_palette(theme, nil, config_opts)
 	end
 
 	print("\n" .. string.rep("-", 80))
 	print("DARK THEMES")
 	print(string.rep("-", 80))
 	for _, theme in ipairs(DARK_THEMES) do
-		process_palette(theme)
+		process_palette(theme, nil, config_opts)
 	end
+end
+
+-- Parse flags from arguments
+local function parse_flags(args)
+	local flags = {
+		themed_syntax = false,
+		both = false,
+	}
+
+	for _, arg in ipairs(args) do
+		if arg == "--themed-syntax" or arg == "-t" then
+			flags.themed_syntax = true
+		elseif arg == "--both" or arg == "-b" then
+			flags.both = true
+		end
+	end
+
+	return flags
 end
 
 -- Main CLI handler
@@ -233,11 +271,59 @@ local function main(...)
 			process_preset_single(theme_name)
 		end
 	elseif args[1] == "actual" then
+		local flags = parse_flags(args)
 		local theme_name = args[2]
-		if not theme_name or theme_name == "all" then
-			process_all_palettes()
+
+		-- Handle flags: theme name might be in args[2] or later if flags come first
+		if theme_name and (theme_name:match("^%-") or theme_name == "all") then
+			-- args[2] is a flag or "all"
+			if theme_name == "all" then
+				if flags.both then
+					-- Run both normal and themed_syntax
+					process_all_palettes({})
+					process_all_palettes({ themed_syntax = true })
+				elseif flags.themed_syntax then
+					process_all_palettes({ themed_syntax = true })
+				else
+					process_all_palettes({})
+				end
+			else
+				-- No theme specified, check args[3] for "all"
+				if args[3] == "all" then
+					if flags.both then
+						process_all_palettes({})
+						process_all_palettes({ themed_syntax = true })
+					elseif flags.themed_syntax then
+						process_all_palettes({ themed_syntax = true })
+					else
+						process_all_palettes({})
+					end
+				else
+					process_all_palettes({})
+				end
+			end
+		elseif not theme_name then
+			-- No theme specified, default to all
+			if flags.both then
+				process_all_palettes({})
+				process_all_palettes({ themed_syntax = true })
+			elseif flags.themed_syntax then
+				process_all_palettes({ themed_syntax = true })
+			else
+				process_all_palettes({})
+			end
 		else
-			process_palette(ensure_oasis_prefix(theme_name))
+			-- Specific theme
+			local palette_name = ensure_oasis_prefix(theme_name)
+			if flags.both then
+				-- Run both normal and themed_syntax
+				process_palette(palette_name, nil, {})
+				process_palette(palette_name, nil, { themed_syntax = true })
+			elseif flags.themed_syntax then
+				process_palette(palette_name, nil, { themed_syntax = true })
+			else
+				process_palette(palette_name, nil, {})
+			end
 		end
 	elseif args[1] == "both" then
 		local theme_name = args[2]
