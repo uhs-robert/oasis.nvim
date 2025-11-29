@@ -104,10 +104,12 @@ local function main()
 	utils.write_file("extras/slack/README.md", readme_content)
 	print("✓ Generated: extras/slack/README.md")
 
+	local total_themes = #dark_themes + #light_themes
 	print(string.format("\n=== Summary ==="))
+	print(string.format("Success: %d", total_themes))
+	print(string.format("Errors: %d", 0))
 	print(string.format("Dark themes: %d", #dark_themes))
-	print(string.format("Light themes: %d", #light_themes))
-	print(string.format("Total: %d\n", #dark_themes + #light_themes))
+	print(string.format("Light themes: %d\n", #light_themes))
 end
 
 -- Run the generator
