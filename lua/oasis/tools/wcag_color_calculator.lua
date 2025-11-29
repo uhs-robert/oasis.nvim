@@ -339,6 +339,44 @@ function M.load_palette(palette_name)
 	return palette, nil
 end
 
+--- Load a palette with specific config options temporarily
+---@param palette_name string Palette name like "oasis_lagoon"
+---@param temp_config table Temporary config options to apply
+---@return table|nil, string|nil Palette colors or nil, error message
+function M.load_palette_with_config(palette_name, temp_config)
+	-- Ensure palette name has oasis_ prefix
+	if not palette_name:match("^oasis_") then
+		palette_name = "oasis_" .. palette_name
+	end
+
+	-- Save current config
+	local config = require("oasis.config")
+	local original_config = vim.deepcopy(config.get())
+
+	-- Apply temporary config
+	for key, value in pairs(temp_config) do
+		config.options[key] = value
+	end
+
+	-- Clear palette cache to force reload with new config
+	package.loaded["oasis.color_palettes." .. palette_name] = nil
+
+	-- Load palette with new config
+	local ok, palette = pcall(require, "oasis.color_palettes." .. palette_name)
+
+	-- Restore original config
+	config.options = original_config
+
+	-- Clear cache again to ensure next load uses current config
+	package.loaded["oasis.color_palettes." .. palette_name] = nil
+
+	if not ok then
+		return nil, "Failed to load palette: " .. palette_name
+	end
+
+	return palette, nil
+end
+
 --- Extract colors from palette for WCAG testing
 ---@param palette table Loaded palette
 ---@return table Colors map for batch processing
@@ -441,6 +479,64 @@ function M.check_palette(palette_name, target_ratio, custom_targets)
 	local background = palette.bg and palette.bg.core or "#000000"
 
 	M.print_results(results, background, "WCAG AAA: Actual Calculations for `" .. palette_name .. "`")
+end
+
+--- Analyze a palette with specific config options (e.g., themed_syntax)
+---@param palette_name string Palette name like "oasis_lagoon"
+---@param config_opts table Config options to apply (e.g., {themed_syntax = true})
+---@param target_ratio? number Default target contrast ratio (default: AAA_NORMAL)
+---@param custom_targets? table<string, number> Custom targets for specific colors
+---@return table|nil, string|nil Results or nil, error message
+function M.analyze_palette_with_config(palette_name, config_opts, target_ratio, custom_targets)
+	target_ratio = target_ratio or M.STANDARDS.AAA_NORMAL
+	custom_targets = custom_targets or {}
+
+	local palette, err = M.load_palette_with_config(palette_name, config_opts)
+	if not palette then
+		return nil, err
+	end
+
+	local background = palette.bg and palette.bg.core or "#000000"
+	local colors = M.extract_colors_from_palette(palette)
+
+	if next(colors) == nil then
+		return nil, "No colors found in palette"
+	end
+
+	-- Apply custom targets to specific colors
+	for color_name, hex_value in pairs(colors) do
+		if custom_targets[color_name] then
+			-- Convert to table format with custom target
+			colors[color_name] = { hex = hex_value, target = custom_targets[color_name] }
+		end
+	end
+
+	local results = M.calculate_batch(colors, background)
+	return results, nil
+end
+
+--- Check palette with specific config options and print results
+---@param palette_name string Palette name
+---@param config_opts table Config options (e.g., {themed_syntax = true})
+---@param target_ratio? number Default target contrast ratio
+---@param custom_targets? table<string, number> Custom targets for specific colors
+function M.check_palette_with_config(palette_name, config_opts, target_ratio, custom_targets)
+	local results, err = M.analyze_palette_with_config(palette_name, config_opts, target_ratio, custom_targets)
+	if not results then
+		print("Error: " .. err)
+		return
+	end
+
+	local palette, _ = M.load_palette_with_config(palette_name, config_opts)
+	local background = palette.bg and palette.bg.core or "#000000"
+
+	-- Build title with config options
+	local title = "WCAG AAA: Actual Calculations for `" .. palette_name .. "`"
+	if config_opts.themed_syntax then
+		title = title .. " (themed_syntax = true)"
+	end
+
+	M.print_results(results, background, title)
 end
 
 -- Preset color collections for Oasis themes (reference colors to test)
