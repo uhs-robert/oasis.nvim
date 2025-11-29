@@ -24,6 +24,9 @@ Oasis follows Melange's warm/cool split philosophy (**warm = action/flow**, **co
 
 **All themes are fully AAA WCAG compliant**. Light themes use warm beige-to-peachy tones to minimize blue light exposure and support eye health during extended coding sessions.
 
+> [!NOTE]
+> **✨ NEW: Themed Syntax Mode** - Try `:OasisThemedSyntax` to make each variant feel more distinct! Statements and keywords now use each theme's signature color (blue in lagoon, teal in mirage, orange in canyon, etc.) instead of universal yellow tones. [Learn more ↓](#toggle-themed-syntax)
+
 <table>
   <tr>
     <td align="center">
@@ -300,6 +303,29 @@ require('oasis').toggle_transparency()
 vim.keymap.set('n', '<leader>tt', require('oasis').toggle_transparency, { desc = 'Toggle transparency' })
 ```
 
+### Toggle Themed Syntax
+
+Toggle the `themed_syntax` option on-the-fly to give each variant more personality (dark themes only):
+
+```vim
+:OasisThemedSyntax
+```
+
+```lua
+-- Or use the Lua API
+require('oasis').toggle_themed_syntax()
+
+-- Example: bind to a keymap
+vim.keymap.set('n', '<leader>ts', require('oasis').toggle_themed_syntax, { desc = 'Toggle themed syntax' })
+```
+
+> [!TIP]
+> **Try the new themed syntax mode!** Use `:OasisThemedSyntax` to see how it makes each variant feel more distinct and cohesive.
+
+This option swaps statement/keyword colors to use each theme's signature color, making variants feel more unique:
+- **Enabled**: Statements and keywords use the theme's primary color (e.g., blue in lagoon, teal in mirage, orange in canyon)
+- **Disabled** (default): Statements and keywords use traditional yellow/khaki tones across all variants
+
 ### WCAG Accessibility Checker
 
 Check WCAG 2.1 contrast compliance for palettes:
@@ -355,10 +381,11 @@ Oasis offers _many_ different styles to choose from. Have fun customizing with `
 -- Oasis.nvim
 -- Styles: "night", "midnight", "abyss", "starlight", "desert", "sol", "canyon", "dune", "cactus", "mirage", "lagoon", "twilight", "rose", "dawn", "dawnlight", "day", "dusk", "dust"
 require("oasis").setup({
-  dark_style = "lagoon",         -- Style to use when vim.o.background is "dark"
-  light_style = "dawn",          -- Style to use when vim.o.background is "light"
-  style = nil,                   -- Optional: Set a single style to disable auto-switching (e.g., "lagoon", "desert")
-  use_legacy_comments = false,   -- Uses the legacy comment color from desert.vim for the "desert" style only (a bright sky blue)
+  dark_style = "lagoon",                -- Style to use when vim.o.background is "dark"
+  light_style = "dawn",                 -- Style to use when vim.o.background is "light"
+  style = nil,                          -- Optional: Set a single style to disable auto-switching (e.g., "lagoon", "desert")
+  use_legacy_comments = false,          -- Uses the legacy comment color from desert.vim for the "desert" style only (a bright sky blue)
+  themed_syntax = false,   -- Use theme primary color for statements/keywords (dark themes only)
 
   -- Text styling - disable individual styles if you like
   styles = {

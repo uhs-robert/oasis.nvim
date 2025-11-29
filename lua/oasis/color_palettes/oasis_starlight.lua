@@ -1,6 +1,8 @@
 -- lua/oasis/color_palettes/oasis_starlight.lua
 
 local p = require("oasis.palette")
+local config = require("oasis.config")
+local opts = config.get()
 local theme = p.theme.starlight
 
 -- General Reusable Colors
@@ -22,10 +24,13 @@ local ui = {
 	},
 	-- General colors
 	theme = {
-		primary = p.azure[500],
+		primary = p.sapphire[500],
 		light_primary = p.sky[500],
-		secondary = p.khaki[500],
+		secondary = p.khaki[400],
 		accent = p.sunrise[500],
+		palette = {
+			primary = p.sapphire,
+		},
 	},
 }
 
@@ -40,25 +45,25 @@ local c = {
 	syntax = {
 		-- Cold: (Data)
 		parameter = p.lavender[500],
-		identifier = p.sand[400],
-		delimiter = ui.theme.primary,
-		type = p.agave[500],
-		builtinVar = p.sky[600], -- (this, document, window, etc)
+		identifier = p.teal[200],
+		delimiter = ui.theme.palette.primary[600],
+		type = p.teal[600],
+		builtinVar = opts.themed_syntax and p.khaki[500] or p.sapphire[500], -- (this, document, window, etc)
 		string = p.cactus[700],
-		regex = p.palm[500],
-		builtinConst = p.aloe[400], -- (e.g. null, undefined, Infinity, etc)
-		constant = p.sunrise[700], -- (constant: number, float, boolean, or const not string/character)
+		regex = p.palm[600],
+		builtinConst = p.soil[700], -- (e.g. null, undefined, Infinity, etc)
+		constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
 		-- Warm: (Control / Flow)
-		func = p.sunshine[200],
-		builtinFunc = p.sunshine[600], -- (eg. parseInst, Array, Object etc)
-		statement = p.khaki[500], -- (general statement (i.e. var, const))
+		func = p.sunset[200],
+		builtinFunc = p.sundown[400], -- (eg. parseInst, Array, Object etc)
+		statement = opts.themed_syntax and ui.theme.palette.primary[500] or p.khaki[500], -- (general statement (i.e. var, const))
 		exception = p.red[500], -- (try/catch, return)
-		keyword = p.gold[300], -- (Conditionals, Loops)
+		keyword = opts.themed_syntax and ui.theme.palette.primary[600] or p.gold[300], -- (Conditionals, Loops)
 		special = p.sunset[400], -- (Statement not covered above)
 		operator = p.rose[500],
 		punctuation = p.rose[700],
-		preproc = p.lagoon[600], -- (imports)
+		preproc = p.sky[500], -- (imports)
 
 		-- Neutral: (Connections / Info)
 		bracket = p.grey[500], -- (bracket punctuation)
@@ -74,8 +79,8 @@ local c = {
 
 	-- UI
 	ui = {
-    lineNumber = p.sunset[500],
-		match = { bg= p.sunset[500], fg = ui.bg.core },
+		lineNumber = p.sunset[500],
+		match = { bg = p.sunset[500], fg = ui.bg.core },
 		visual = { bg = p.visual.yellow, fg = "none" },
 		search = { bg = p.visual.orange, fg = ui.fg.core },
 		curSearch = { bg = p.sunshine[500], fg = ui.bg.core },

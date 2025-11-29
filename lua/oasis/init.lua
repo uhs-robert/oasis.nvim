@@ -35,6 +35,18 @@ function M.toggle_transparency()
 	vim.notify(string.format("Oasis transparency %s", status), vim.log.levels.INFO)
 end
 
+--- Toggle themed_syntax and reapply the current theme
+--- Examples:
+---   require('oasis').toggle_themed_syntax()
+---   :OasisThemedSyntax
+function M.toggle_themed_syntax()
+	local cfg = config.get()
+	cfg.themed_syntax = not cfg.themed_syntax
+	M.apply(M.styles.current)
+	local status = cfg.themed_syntax and "enabled" or "disabled"
+	vim.notify(string.format("Oasis themed syntax %s", status), vim.log.levels.INFO)
+end
+
 --- Apply Oasis using a palette module name (no prefix).
 --- Examples:
 ---   require('oasis').apply('oasis_midnight')
@@ -66,7 +78,10 @@ function M.apply(palette_name)
 	vim.cmd("highlight clear")
 	vim.cmd("syntax reset")
 
-	-- Load palette
+	-- Clear palette cache to ensure fresh load with current config
+	package.loaded["oasis.color_palettes." .. palette_name] = nil
+
+	-- Load palette (will read fresh config)
 	local ok, c = pcall(require, "oasis.color_palettes." .. palette_name)
 	if not ok then
 		error(('Oasis: palette "%s" not found: %s'):format(palette_name, c))
@@ -138,7 +153,14 @@ end, {
 vim.api.nvim_create_user_command("OasisTransparency", function()
 	M.toggle_transparency()
 end, {
-	desc = "Toggle transparency for Oasis theme"
+	desc = "Toggle transparency for Oasis theme",
+})
+
+-- :OasisThemedSyntax command to toggle themed syntax mid-session
+vim.api.nvim_create_user_command("OasisThemedSyntax", function()
+	M.toggle_themed_syntax()
+end, {
+	desc = "Toggle themed syntax using primary color for statements/keywords (dark themes only)",
 })
 
 return M

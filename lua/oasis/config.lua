@@ -8,6 +8,7 @@ M.defaults = {
 	dark_style = "lagoon", -- Shorthand palette name for dark mode
 	light_style = "dawn", -- Shorthand palette name for light mode
 	use_legacy_comments = false,
+	themed_syntax = false, -- Use theme primary color for statements/keywords (dark themes only)
 	palette_overrides = {},
 	highlight_overrides = {},
 
@@ -84,13 +85,6 @@ end
 ---@return table palette The palette with overrides applied
 function M.apply_palette_overrides(palette, palette_name)
 	local result = vim.deepcopy(palette)
-
-	-- Apply desert legacy comment color override if enabled
-	local use_legacy_comments = M.options.useLegacyComments or M.options.use_legacy_comments
-	if use_legacy_comments and palette_name == "oasis_desert" then
-		result.syntax = result.syntax or {}
-		result.syntax.comment = "#87CEEB"
-	end
 
 	-- Apply user palette overrides
 	if M.options.palette_overrides[palette_name] then
