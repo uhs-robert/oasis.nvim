@@ -1,39 +1,40 @@
 -- lua/oasis/theme_generator.lua
 
 return function(c)
-  local LIGHT_MODE = c.light_mode or false
-  local config = require('oasis.config').get()
+	local LIGHT_MODE = c.light_mode or false
+	local config = require("oasis.config").get()
 
-  -- Helper function to conditionally apply text styles based on config
-  local function apply_styles(attrs)
-    if type(attrs) ~= 'table' then
-      return attrs -- Return as-is if it's a string (link reference)
-    end
+	-- Helper function to conditionally apply text styles based on config
+	local function apply_styles(attrs)
+		if type(attrs) ~= "table" then
+			return attrs -- Return as-is if it's a string (link reference)
+		end
 
-    local result = vim.deepcopy(attrs)
-    local styles = config.styles or {}
+		local result = vim.deepcopy(attrs)
+		local styles = config.styles or {}
 
-    -- Remove styles if disabled in config
-    if not styles.bold then
-      result.bold = nil
-    end
-    if not styles.italic then
-      result.italic = nil
-    end
-    if not styles.underline then
-      result.underline = nil
-    end
-    if not styles.undercurl then
-      result.undercurl = nil
-      result.sp = nil  -- Remove special color for undercurl
-    end
-    if not styles.strikethrough then
-      result.strikethrough = nil
-    end
+		-- Remove styles if disabled in config
+		if not styles.bold then
+			result.bold = nil
+		end
+		if not styles.italic then
+			result.italic = nil
+		end
+		if not styles.underline then
+			result.underline = nil
+		end
+		if not styles.undercurl then
+			result.undercurl = nil
+			result.sp = nil -- Remove special color for undercurl
+		end
+		if not styles.strikethrough then
+			result.strikethrough = nil
+		end
 
-    return result
-  end
+		return result
+	end
 
+  -- stylua: ignore start
   local highlights = {
     -- Main Theme Colors (Highlights for plugins)
     OasisPrimary               = { fg=c.theme.primary, bg="none" },
@@ -302,73 +303,80 @@ return function(c)
   if LIGHT_MODE then
     highlights.MatchParen     = { fg=c.ui.match.fg, bg=c.ui.match.bg, bold=true }
     -- inline diff
-    highlights.DiffAdd        = { bg="#DDEDDC", fg=c.fg.core }
-    highlights.DiffChange     = { bg="#F0E6D4", fg=c.fg.core }
-    highlights.DiffDelete     = { bg="#F3D8D6", fg=c.fg.core }
+    highlights.DiffAdd        = { fg=c.fg.core,     bg="#DDEDDC" }
+    highlights.DiffChange     = { fg=c.fg.core,     bg="#F0E6D4" }
+    highlights.DiffDelete     = { fg=c.fg.core,     bg="#F3D8D6" }
 
-    highlights.Pmenu          = { fg=c.fg.core,   bg=c.bg.mantle }
-    highlights.PmenuSel       = { fg=c.bg.core,   bg=c.syntax.statement, bold=true }
+    highlights.Pmenu          = { fg=c.fg.core,     bg=c.bg.mantle }
+    highlights.PmenuSel       = { fg=c.bg.core,     bg=c.syntax.statement, bold=true }
     highlights.PmenuSbar      = { bg=c.bg.mantle }
     highlights.PmenuThumb     = { bg=c.bg.surface }
   end
+	-- stylua: ignore end
 
-  -- Load plugin highlights (lazy-loaded based on installed plugins)
-  local plugin_highlights = require('oasis.integrations').get_plugin_highlights(c)
-  for name, attrs in pairs(plugin_highlights) do
-    highlights[name] = attrs
-  end
+	-- Load plugin highlights (lazy-loaded based on installed plugins)
+	local plugin_highlights = require("oasis.integrations").get_plugin_highlights(c)
+	for name, attrs in pairs(plugin_highlights) do
+		highlights[name] = attrs
+	end
 
-  -- Apply transparency if enabled
-  if config.transparent then
-    local transparent_groups = {
-      'Normal', 'NormalNC', 'NormalFloat',
-      'SignColumn', 'FoldColumn',
-      'StatusLine', 'StatusLineNC',
-      'TabLine', 'TabLineFill',
-      'Pmenu', 'PmenuSbar',
-      'CursorLine', 'ColorColumn',
-      'FloatBorder',
-    }
+	-- Apply transparency if enabled
+	if config.transparent then
+		local transparent_groups = {
+			"Normal",
+			"NormalNC",
+			"NormalFloat",
+			"SignColumn",
+			"FoldColumn",
+			"StatusLine",
+			"StatusLineNC",
+			"TabLine",
+			"TabLineFill",
+			"Pmenu",
+			"PmenuSbar",
+			"CursorLine",
+			"ColorColumn",
+			"FloatBorder",
+		}
 
-    for _, group in ipairs(transparent_groups) do
-      if highlights[group] and type(highlights[group]) == 'table' then
-        highlights[group].bg = "NONE"
-      end
-    end
-  end
+		for _, group in ipairs(transparent_groups) do
+			if highlights[group] and type(highlights[group]) == "table" then
+				highlights[group].bg = "NONE"
+			end
+		end
+	end
 
-  -- Apply base highlights first
-  for name, attrs in pairs(highlights) do
-    if type(attrs) == 'table' then
-      vim.api.nvim_set_hl(0, name, apply_styles(attrs))
-    else
-      vim.api.nvim_set_hl(0, name, { link = attrs })
-    end
-  end
+	-- Apply base highlights first
+	for name, attrs in pairs(highlights) do
+		if type(attrs) == "table" then
+			vim.api.nvim_set_hl(0, name, apply_styles(attrs))
+		else
+			vim.api.nvim_set_hl(0, name, { link = attrs })
+		end
+	end
 
-  -- Apply user highlight overrides last (they take precedence)
-  for name, attrs in pairs(config.highlight_overrides or {}) do
-    if type(attrs) == 'table' then
-      vim.api.nvim_set_hl(0, name, apply_styles(attrs))
-    else
-      vim.api.nvim_set_hl(0, name, { link = attrs })
-    end
-  end
+	-- Apply user highlight overrides last (they take precedence)
+	for name, attrs in pairs(config.highlight_overrides or {}) do
+		if type(attrs) == "table" then
+			vim.api.nvim_set_hl(0, name, apply_styles(attrs))
+		else
+			vim.api.nvim_set_hl(0, name, { link = attrs })
+		end
+	end
 
-  -- Apply terminal colors
-  vim.o.termguicolors = true
-  if config.terminal_colors and c.terminal then
-    for i = 0, 15 do
-      local key = ("color%d"):format(i)
-      local val = c.terminal[key]
-      if val and val ~= "NONE" then
-        vim.g["terminal_color_" .. i] = val
-      end
-    end
+	-- Apply terminal colors
+	vim.o.termguicolors = true
+	if config.terminal_colors and c.terminal then
+		for i = 0, 15 do
+			local key = ("color%d"):format(i)
+			local val = c.terminal[key]
+			if val and val ~= "NONE" then
+				vim.g["terminal_color_" .. i] = val
+			end
+		end
 
-    vim.g.terminal_color_background = c.bg.core
-    vim.g.terminal_color_foreground = c.fg.core
-  end
-
+		vim.g.terminal_color_background = c.bg.core
+		vim.g.terminal_color_foreground = c.fg.core
+	end
 end
 -- vi:nowrap
