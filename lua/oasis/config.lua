@@ -8,7 +8,7 @@ M.defaults = {
 	dark_style = "lagoon", -- Shorthand palette name for dark mode
 	light_style = "dawn", -- Shorthand palette name for light mode
 	use_legacy_comments = false,
-	themed_syntax = false, -- Use theme primary color for statements/keywords (dark themes only)
+	themed_syntax = true, -- Use theme primary color for statements/keywords (dark themes only)
 	palette_overrides = {},
 	highlight_overrides = {},
 
