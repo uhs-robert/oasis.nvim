@@ -233,6 +233,7 @@ local function main()
 
 	local palette_data = {}
 	local success_count = 0
+	local error_count = 0
 
 	for _, name in ipairs(palette_names) do
 		local palette = assert(utils.load_palette(name))
@@ -254,6 +255,7 @@ local function main()
 			success_count = success_count + 1
 		else
 			print(string.format("✗ Failed: %s", name))
+			error_count = error_count + 1
 		end
 	end
 
@@ -266,6 +268,7 @@ local function main()
 
 	print(string.format("\n=== Summary ==="))
 	print(string.format("Success: %d", success_count))
+	print(string.format("Errors: %d", error_count))
 	print()
 end
 
