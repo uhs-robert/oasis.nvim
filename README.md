@@ -25,7 +25,7 @@ Oasis follows Melange's warm/cool split philosophy (**warm = action/flow**, **co
 **All themes are fully AAA WCAG compliant**. Light themes use warm beige-to-peachy tones to minimize blue light exposure and support eye health during extended coding sessions.
 
 > [!NOTE]
-> **✨ NEW in v3.0: Themed Syntax is Now Default** - Each variant now uses its signature color for statements and keywords (blue in lagoon, teal in mirage, orange in canyon, etc.) creating more distinct visual personalities. Prefer classic yellow syntax? [See how to opt-out ↓](#toggle-themed-syntax)
+> **✨ NEW in v3.0: Themed Syntax is Now Default** - Each variant now uses its signature color for statements and keywords (blue in lagoon, teal in mirage, orange in canyon, etc.) creating more distinct visual personalities. Prefer classic yellow syntax? [See how to opt-out under API Commands ↓](#-usage)
 
 <table>
   <tr>
@@ -319,8 +319,8 @@ require('oasis').toggle_themed_syntax()
 vim.keymap.set('n', '<leader>ts', require('oasis').toggle_themed_syntax, { desc = 'Toggle themed syntax' })
 ```
 
-> [!IMPORTANT]
-> **v3.0 Breaking Change**: Themed syntax is now enabled by default. To restore classic syntax highlighting, disable it:
+> **⚠️ v3.0 Breaking Change**: Themed syntax is now enabled by default. To restore classic syntax highlighting, disable it:
+>
 > ```lua
 > require("oasis").setup({
 >   themed_syntax = false,  -- Use traditional yellow/khaki for all variants
@@ -328,6 +328,7 @@ vim.keymap.set('n', '<leader>ts', require('oasis').toggle_themed_syntax, { desc 
 > ```
 
 This option controls how statement/keyword colors are rendered:
+
 - **Enabled** (default): Statements and keywords use the theme's primary color (e.g., blue in lagoon, teal in mirage, orange in canyon)
 - **Disabled**: Statements and keywords use traditional yellow/khaki tones across all variants
 
