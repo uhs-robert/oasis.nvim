@@ -2,6 +2,27 @@
 
 local M = {}
 
+-- Import utils for deepcopy fallback when running in standalone Lua
+local utils = require("oasis.utils")
+
+-- Helper to get deepcopy function (use vim.deepcopy if available, otherwise utils.deepcopy)
+local function deepcopy(orig)
+	if vim and vim.deepcopy then
+		return vim.deepcopy(orig)
+	else
+		return utils.deepcopy(orig)
+	end
+end
+
+-- Helper to get background setting (use vim.o.background if available, otherwise default to "dark")
+local function get_background()
+	if vim and vim.o and vim.o.background then
+		return vim.o.background
+	else
+		return "dark" -- Default for standalone Lua
+	end
+end
+
 -- Default configuration
 M.defaults = {
 	style = nil, -- Shorthand palette name (e.g., "lagoon" -> "oasis_lagoon")
@@ -27,14 +48,14 @@ M.defaults = {
 }
 
 -- Current active configuration
-M.options = vim.deepcopy(M.defaults)
+M.options = deepcopy(M.defaults)
 
 --- Deep merge two tables
 ---@param base table The base table
 ---@param override table The table to merge on top
 ---@return table merged The merged result
 local function deep_merge(base, override)
-	local result = vim.deepcopy(base)
+	local result = deepcopy(base)
 
 	for k, v in pairs(override) do
 		if type(v) == "table" and type(result[k]) == "table" then
@@ -68,14 +89,14 @@ function M.get_palette_name()
 	end
 
 	-- If style is not set, use dark_style/light_style based on background
-	local bg = vim.o.background
+	local bg = get_background()
 	if bg == "light" and M.options.light_style then
 		return "oasis_" .. M.options.light_style
 	elseif M.options.dark_style then
 		return "oasis_" .. M.options.dark_style
 	end
 
-	-- Final fallback: check vim.o.background and return appropriate default
+	-- Final fallback: check background and return appropriate default
 	return bg == "light" and "oasis_dawn" or "oasis_lagoon"
 end
 
@@ -84,7 +105,7 @@ end
 ---@param palette_name string The name of the palette (e.g., "oasis_desert")
 ---@return table palette The palette with overrides applied
 function M.apply_palette_overrides(palette, palette_name)
-	local result = vim.deepcopy(palette)
+	local result = deepcopy(palette)
 
 	-- Apply user palette overrides
 	if M.options.palette_overrides[palette_name] then

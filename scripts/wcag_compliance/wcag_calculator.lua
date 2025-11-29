@@ -8,26 +8,6 @@ local script_dir = script_path:match("(.*/)")
 local project_root = script_dir:gsub("scripts/wcag_compliance/$", "")
 package.path = project_root .. "lua/?.lua;" .. project_root .. "lua/?/init.lua;" .. package.path
 
--- Mock vim global for standalone execution (config.lua needs vim.deepcopy)
-if not _G.vim then
-	_G.vim = {
-		deepcopy = function(orig)
-			local orig_type = type(orig)
-			local copy
-			if orig_type == 'table' then
-				copy = {}
-				for orig_key, orig_value in next, orig, nil do
-					copy[vim.deepcopy(orig_key)] = vim.deepcopy(orig_value)
-				end
-				setmetatable(copy, vim.deepcopy(getmetatable(orig)))
-			else
-				copy = orig
-			end
-			return copy
-		end
-	}
-end
-
 -- Load the calculator
 local calc = require("oasis.tools.wcag_color_calculator")
 
