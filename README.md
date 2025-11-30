@@ -247,31 +247,34 @@ colorscheme oasis-dust
 
 Hmm... with so many options to choose from why settle for one. Use the right theme for the right occasion to differentiate between your environments. Here are some examples:
 
-- A custom theme for when **root**
+- A custom theme for when **root** or **sudoedit**
 - A custom theme for when **remote**
 - A custom theme for when **BOTH**
 
 Use this example config to have a custom theme for each situation above:
 
 ```lua
-  local is_root = vim.loop and vim.loop.getuid and vim.loop.getuid() == 0
-  local is_remote = vim.env.SSH_CONNECTION ~= nil or vim.env.SSH_TTY ~= nil
+local uid = (vim.uv or vim.loop).getuid()
+local is_root = uid == 0
+local is_remote = vim.env.SSH_CONNECTION ~= nil or vim.env.SSH_TTY ~= nil
+local is_sudoedit = (not is_root) and vim.env.SUDOEDIT == "1" -- This requires your shell's config to export a flag like: SUDO_EDITOR="env SUDOEDIT=1 /usr/bin/nvim"
 
-  {
+local function pick_colorscheme()
+  local is_elevated = is_root or is_sudoedit
+  if is_remote then
+    return is_elevated and "oasis-abyss" or "oasis-mirage"
+  else
+    return is_elevated and "oasis-sol" or "oasis"
+  end
+end
+
+return {
     "uhs-robert/oasis.nvim",
     lazy = false,
     priority = 1000,
     config = function()
       require("oasis").setup()
-      if is_root and is_remote then
-        vim.cmd.colorscheme("oasis-abyss")
-      elseif is_root then
-        vim.cmd.colorscheme("oasis-sol")
-      elseif is_remote then
-        vim.cmd.colorscheme("oasis-mirage")
-      else
-        vim.cmd.colorscheme("oasis")
-      end
+      vim.cmd.colorscheme(pick_colorscheme())
     end
   }
 ```
