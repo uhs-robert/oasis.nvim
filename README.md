@@ -193,7 +193,7 @@ Install the theme with your preferred package manager, such as
   priority = 1000,
   config = function()
     require("oasis").setup()      -- (see Configuration below for all customization options)
-    vim.cmd.colorscheme("oasis")  -- After setup, apply theme (or a any style like "oasis-night")
+    vim.cmd.colorscheme("oasis")  -- After setup, apply theme (or any style like "oasis-night")
   end
 }
 ```
@@ -238,6 +238,45 @@ colorscheme oasis-dust
 ```
 
 <!-- colorscheme-commands:end -->
+</details>
+
+<details>
+<summary>🕵️‍♂️ Different Themes for Different Environments</summary>
+<br>
+<!-- user-themes:start -->
+
+Hmm... with so many options to choose from why settle for one. Use the right theme for the right occasion to differentiate between your environments. Here are some examples:
+
+- A custom theme for when **root**
+- A custom theme for when **remote**
+- A custom theme for when **BOTH**
+
+Use this example config to have a custom theme for each situation above:
+
+```lua
+  local is_root = vim.loop and vim.loop.getuid and vim.loop.getuid() == 0
+  local is_remote = vim.env.SSH_CONNECTION ~= nil or vim.env.SSH_TTY ~= nil
+
+  {
+    "uhs-robert/oasis.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("oasis").setup()
+      if is_root and is_remote then
+        vim.cmd.colorscheme("oasis-abyss")
+      elseif is_root then
+        vim.cmd.colorscheme("oasis-sol")
+      elseif is_remote then
+        vim.cmd.colorscheme("oasis-mirage")
+      else
+        vim.cmd.colorscheme("oasis")
+      end
+    end
+  }
+```
+
+<!-- user-themes:end-->
 </details>
 
 <details>
