@@ -56,7 +56,7 @@ return function(c)
     CursorColumn               = { bg=c.ui.cursorLine }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
     CursorLine                 = { bg = c.ui.cursorLine }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermc.fg OR guifg) is not set.
     Directory                  = { fg= c.ui.dir }, -- Directory names (and other special names in listings)
-    DiffAdd                    = { fg=c.fg.core, bg=c.diff.add, reverse=true }, -- Diff mode: Added line |diff.txt|
+    DiffAdd                    = { fg=c.fg.core, bg=c.diff.add }, -- Diff mode: Added line |diff.txt|
     DiffChange                 = { fg=c.fg.core, bg=c.diff.change }, -- Diff mode: Changed line |diff.txt|
     DiffDelete                 = { fg=c.fg.core, bg=c.diff.delete }, -- Diff mode: Deleted line |diff.txt|
     DiffText                   = { fg=c.fg.core, bg=c.bg.surface }, -- Diff mode: Changed text within a changed line |diff.txt|

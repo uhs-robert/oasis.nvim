@@ -73,8 +73,8 @@ local c = {
 	-- Diff
 	diff = {
 		add = p.moss[500],
-		change = p.dune[500],
-		delete = p.red[900],
+		change = theme.bg.surface,
+		delete = p.visual.red,
 	},
 
 	-- UI
