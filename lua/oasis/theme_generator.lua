@@ -304,7 +304,7 @@ return function(c)
     highlights.MatchParen     = { fg=c.ui.match.fg, bg=c.ui.match.bg, bold=true }
     -- inline diff
     highlights.DiffAdd        = { fg=c.fg.core,     bg="#DDEDDC" }
-    highlights.DiffChange     = { fg=c.fg.core,     bg="#F0E6D4" }
+    highlights.DiffChange     = { fg=c.fg.core,     bg=c.bg.surface }
     highlights.DiffDelete     = { fg=c.fg.core,     bg="#F3D8D6" }
 
     highlights.Pmenu          = { fg=c.fg.core,     bg=c.bg.mantle }
