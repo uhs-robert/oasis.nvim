@@ -30,8 +30,8 @@ Oasis follows Melange's warm/cool split philosophy (**warm = action/flow**, **co
 <table>
   <tr>
     <td align="center">
-      <a href="#night-purple-night-sky"><img src="assets/screenshots/night-dashboard.png" alt="Night" width="180"></a><br>
-      <strong>Night</strong><br><em>Purple Night Sky</em>
+      <a href="#night-night-sky"><img src="assets/screenshots/night-dashboard.png" alt="Night" width="180"></a><br>
+      <strong>Night</strong><br><em>Night Sky</em>
     </td>
     <td align="center">
       <a href="#midnight-off-black"><img src="assets/screenshots/midnight-dashboard.png" alt="Midnight" width="180"></a><br>
@@ -549,9 +549,9 @@ Want to help shape **Oasis.nvim**?
   <summary><b>All styles (click to collapse)</b></summary>
   <!-- all-styles:start -->
 
-### Night (Purple Night Sky)
+### Night (Night Sky)
 
-Deep desert night sky with purple-indigo undertones, a deeper purple than twilight for those who prefer soft darkness
+Deep desert night sky with indigo undertones, for those who prefer a soft darkness
 
 ![night-dashboard](./assets/screenshots/night-dashboard.png)
 ![night-code](./assets/screenshots/night-code.png)
@@ -584,7 +584,7 @@ Deep, dark style with mysterious depths
 
 ### Starlight (Black Vivid)
 
-Desert abyss illuminated by brilliant starlight with vivid high-contrast colors and excellent WCAG compliance.
+The abyss illuminated by brilliant starlight with vivid high-contrast colors
 
 ![starlight-dashboard](./assets/screenshots/starlight-dashboard.png)
 ![starlight-code](./assets/screenshots/starlight-code.png)
@@ -606,7 +606,7 @@ The original inspiration, the classic vim desert theme reborn with neutral sand 
 
 ### Sol (Red)
 
-Hot, scorching desert sun with intense red tones
+Hot, scorching desert sun with intense red tones (my go-to for `sudoedit` or `sudo nvim`)
 
 ![sol-dashboard](./assets/screenshots/sol-dashboard.png)
 ![sol-code](./assets/screenshots/sol-code.png)
@@ -661,7 +661,7 @@ Cool teals of shimmering desert mirages
 
 ### Lagoon (Blue)
 
-The original Oasis theme and default dark style, featuring cool blues of the oasis lagoon
+The original and default Oasis theme, featuring cool blues of the desert lagoon
 
 ![lagoon-dashboard](./assets/screenshots/lagoon-dashboard.png)
 ![lagoon-code](./assets/screenshots/lagoon-code.png)
@@ -672,7 +672,7 @@ The original Oasis theme and default dark style, featuring cool blues of the oas
 
 ### Twilight (Purple)
 
-Evening desert with purple and indigo hues
+Evening in the desert with purple hues
 
 ![twilight-dashboard](./assets/screenshots/twilight-dashboard.png)
 ![twilight-code](./assets/screenshots/twilight-code.png)
@@ -694,7 +694,7 @@ Soft pinks of the warm desert rose
 
 ### Dawn (Beige)
 
-The default light style - bright morning sun with excellent WCAG compliance (`Lightness = 91`)
+The default light style - the bright morning sun (`Lightness = 91`)
 
 ![dawn-dashboard](./assets/screenshots/dawn-dashboard.png)
 ![dawn-code](./assets/screenshots/dawn-code.png)
@@ -727,7 +727,7 @@ Full daylight warmth with rich golden saturation (`Lightness = 85`)
 
 ### Dusk (Peach Gold)
 
-Warm sky at sunset, peachy-golden tones for extended coding sessions (`Lightness = 77`)
+Warm sky at sunset, peachy-golden tones (`Lightness = 77`)
 
 ![dusk-dashboard](./assets/screenshots/dusk-dashboard.png)
 ![dusk-code](./assets/screenshots/dusk-code.png)
@@ -738,7 +738,7 @@ Warm sky at sunset, peachy-golden tones for extended coding sessions (`Lightness
 
 ### Dust (Golden Sand)
 
-Warm peachy-golden tones for extended coding sessions (`Lightness = 70`)
+Warmest peachy-golden tones (`Lightness = 70`)
 
 ![dust-dashboard](./assets/screenshots/dust-dashboard.png)
 ![dust-code](./assets/screenshots/dust-code.png)
