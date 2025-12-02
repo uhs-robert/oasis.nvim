@@ -66,17 +66,19 @@ local function main()
 	local dark_themes = {}
 	local light_themes = {}
 
-	for _, name in ipairs(palette_names) do
-		local palette = utils.load_palette(name)
-		local display_name, theme_string = generate_slack_theme(name, palette)
+	local success_count, error_count = utils.for_each_palette_mode(function(name, palette, mode)
+		-- Build variant name (append mode suffix for dual-mode palettes)
+		local variant_name = mode and (name .. "_" .. mode) or name
 
-		-- Determine if theme is light or dark based on naming convention
-		if name:match("dawnlight") or name:match("^day$") or name:match("^dusk$") or name:match("^dust$") then
+		local display_name, theme_string = generate_slack_theme(variant_name, palette)
+
+		-- Categorize based on palette light_mode flag
+		if palette.light_mode then
 			table.insert(light_themes, { name = display_name, string = theme_string })
 		else
 			table.insert(dark_themes, { name = display_name, string = theme_string })
 		end
-	end
+	end)
 
 	-- Add dark themes to README
 	for _, theme in ipairs(dark_themes) do
@@ -104,10 +106,9 @@ local function main()
 	utils.write_file("extras/slack/README.md", readme_content)
 	print("✓ Generated: extras/slack/README.md")
 
-	local total_themes = #dark_themes + #light_themes
 	print(string.format("\n=== Summary ==="))
-	print(string.format("Success: %d", total_themes))
-	print(string.format("Errors: %d", 0))
+	print(string.format("Success: %d", success_count))
+	print(string.format("Errors: %d", error_count))
 	print(string.format("Dark themes: %d", #dark_themes))
 	print(string.format("Light themes: %d\n", #light_themes))
 end

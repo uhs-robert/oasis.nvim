@@ -232,12 +232,12 @@ local function main()
 	print(string.format("Found %d palette(s)\n", #palette_names))
 
 	local palette_data = {}
-	local success_count = 0
-	local error_count = 0
 
-	for _, name in ipairs(palette_names) do
-		local palette = assert(utils.load_palette(name))
-		local theme = generate_firefox_color_theme(name, palette)
+	local success_count, error_count = utils.for_each_palette_mode(function(name, palette, mode)
+		-- Build variant name (append mode suffix for dual-mode palettes)
+		local variant_name = mode and (name .. "_" .. mode) or name
+
+		local theme = generate_firefox_color_theme(variant_name, palette)
 
 		-- Convert to JSON
 		local json = color_utils.encode_json(theme)
@@ -246,18 +246,16 @@ local function main()
 		local compressed = compress_for_firefox(json)
 
 		if compressed and compressed ~= "" then
-			palette_data[name] = {
+			palette_data[variant_name] = {
 				url = compressed,
 				is_light = palette.light_mode == true,
 			}
-			local mode = palette.light_mode and "light" or "dark"
-			print(string.format("✓ Generated: %s (%s, %d chars)", name, mode, #compressed))
-			success_count = success_count + 1
+			local theme_mode = palette.light_mode and "light" or "dark"
+			print(string.format("✓ Generated: %s (%s, %d chars)", variant_name, theme_mode, #compressed))
 		else
-			print(string.format("✗ Failed: %s", name))
-			error_count = error_count + 1
+			error("Failed to compress theme for " .. variant_name)
 		end
-	end
+	end)
 
 	-- Generate README
 	if success_count > 0 then

@@ -238,37 +238,30 @@ local function main()
 
 	print(string.format("Found %d palette(s)\n", #palette_names))
 
-	local success_count = 0
-	local error_count = 0
 	local dark_themes = {}
 	local light_themes = {}
 
-	for _, name in ipairs(palette_names) do
-		local palette = utils.load_palette(name)
-		if not palette then
-			print(string.format("✗ Failed to load palette: %s", name))
-			error_count = error_count + 1
-		else
-			local manifest = generate_manifest(name, palette)
-			local success = create_xpi(name, manifest)
+	local success_count, error_count = utils.for_each_palette_mode(function(name, palette, mode)
+		-- Build variant name (append mode suffix for dual-mode palettes)
+		local variant_name = mode and (name .. "_" .. mode) or name
 
-			if success then
-				print(string.format("✓ Generated: extras/thunderbird/themes/oasis_%s.xpi", name))
-				success_count = success_count + 1
+		local manifest = generate_manifest(variant_name, palette)
+		local success = create_xpi(variant_name, manifest)
 
-				-- Track for README generation
-				local display_name = utils.capitalize(name)
-				if palette.light_mode then
-					table.insert(light_themes, { name = name, display = display_name })
-				else
-					table.insert(dark_themes, { name = name, display = display_name })
-				end
+		if success then
+			print(string.format("✓ Generated: extras/thunderbird/themes/oasis_%s.xpi", variant_name))
+
+			-- Track for README generation
+			local display_name = utils.capitalize(variant_name)
+			if palette.light_mode then
+				table.insert(light_themes, { name = variant_name, display = display_name })
 			else
-				print(string.format("✗ Failed: %s", name))
-				error_count = error_count + 1
+				table.insert(dark_themes, { name = variant_name, display = display_name })
 			end
+		else
+			error("Failed to create xpi for " .. variant_name)
 		end
-	end
+	end)
 
 	-- Generate README
 	if success_count > 0 then
