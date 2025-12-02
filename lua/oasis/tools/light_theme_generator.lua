@@ -15,7 +15,7 @@ function M.apply_light_intensity(base_color, intensity_level)
 		return base_color
 	end
 
-	local h, s, l = color_utils.rgb_to_hsl(base_color)
+	local h, _, _ = color_utils.rgb_to_hsl(base_color)
 
 	local new_hue, new_sat, new_light
 
@@ -179,13 +179,29 @@ function M.generate_light_syntax(dark_syntax, light_bg_core, intensity_level, co
 		cold = { l_offset = 4, s_factor = 0.75 },
 		-- Warm colors (control): slightly darker, more prominent
 		warm = { l_offset = -2, s_factor = 0.80 },
+		-- Outlier colors: for emphasis, most prominent
+		emphasis = { l_offset = 0, s_factor = 1.00 },
 		-- Neutral colors: medium
 		neutral = { l_offset = 0, s_factor = 0.65 },
 	}
 
+	-- Give emphasis tokens extra pop when their hue is unusually warm or cold for the theme.
+	local function emphasize_outlier(h, target_l, new_s)
+		local warm = (h < 60) or (h > 300) -- reds/oranges/yellows
+		local cold = (h >= 180 and h <= 260) -- cyans/blue-purples
+		if warm then
+			-- Warm hues can look blown-out in light mode: darken and enrich
+			return target_l - 3, math.min(1, new_s * 1.15)
+		elseif cold then
+			-- Cool hues tend to sink: lift lightness slightly and add a touch of saturation
+			return target_l + 3, math.min(1, new_s * 1.08)
+		end
+		return target_l, new_s
+	end
+
 	-- Classify syntax elements by category
 	local categories = {
-		cold = { "parameter", "identifier", "type", "builtinVar", "string", "regex", "builtinConst", "constant" },
+		cold = { "identifier", "type", "string", "regex", "builtinConst" },
 		warm = {
 			"func",
 			"builtinFunc",
@@ -197,6 +213,7 @@ function M.generate_light_syntax(dark_syntax, light_bg_core, intensity_level, co
 			"punctuation",
 			"preproc",
 		},
+		emphasis = { "constant", "builtinVar", "parameter" },
 		neutral = { "bracket", "comment", "delimiter" },
 	}
 
@@ -212,6 +229,11 @@ function M.generate_light_syntax(dark_syntax, light_bg_core, intensity_level, co
 				-- Apply category-specific adjustments
 				local target_l = base_lightness + adj.l_offset
 				local new_s = s * adj.s_factor
+
+				-- Emphasis tokens get extra contrast
+				if category == "emphasis" then
+					target_l, new_s = emphasize_outlier(h, target_l, new_s)
+				end
 
 				-- Allow slight hue shifts for better light-mode appearance
 				-- Shift blues/purples slightly warmer, oranges/reds slightly cooler
@@ -287,7 +309,7 @@ function M.generate_light_ui(dark_ui, light_bg, intensity_level, contrast_target
 
 	-- Match (high contrast bg with dark fg)
 	if dark_ui.match then
-		local h, s, _ = color_utils.rgb_to_hsl(dark_ui.match.bg or "#000000")
+		local h, _, _ = color_utils.rgb_to_hsl(dark_ui.match.bg or "#000000")
 		-- Create a saturated mid-tone background
 		local match_bg = color_utils.hsl_to_rgb(h, 70, 70)
 		local match_fg = color_utils.hsl_to_rgb(h, 80, 15)
@@ -296,7 +318,7 @@ function M.generate_light_ui(dark_ui, light_bg, intensity_level, contrast_target
 
 	-- Search colors
 	if dark_ui.search then
-		local h, s, _ = color_utils.rgb_to_hsl(dark_ui.search.bg or "#000000")
+		local h, _, _ = color_utils.rgb_to_hsl(dark_ui.search.bg or "#000000")
 		result.search = {
 			bg = color_utils.hsl_to_rgb(h, 65, 75),
 			fg = color_utils.hsl_to_rgb(h, 85, 18),
@@ -305,7 +327,7 @@ function M.generate_light_ui(dark_ui, light_bg, intensity_level, contrast_target
 
 	-- Current search (more prominent)
 	if dark_ui.curSearch then
-		local h, s, _ = color_utils.rgb_to_hsl(dark_ui.curSearch.bg or "#000000")
+		local h, _, _ = color_utils.rgb_to_hsl(dark_ui.curSearch.bg or "#000000")
 		result.curSearch = {
 			bg = color_utils.hsl_to_rgb(h, 75, 65),
 			fg = color_utils.hsl_to_rgb(h, 90, 12),
@@ -325,19 +347,22 @@ function M.generate_light_ui(dark_ui, light_bg, intensity_level, contrast_target
 		}
 	end
 
-	-- Diagnostics (keep vibrant but ensure readability)
+	-- Diagnostics (vibrant backgrounds that pop)
 	if dark_ui.diag then
 		result.diag = {}
 		for level, colors in pairs(dark_ui.diag) do
 			if type(colors) == "table" and colors.fg then
-				local h, s, _ = color_utils.rgb_to_hsl(colors.fg)
-				-- Darker, more saturated versions
-				local diag_fg = color_utils.hsl_to_rgb(h, math.min(100, s * 1.2), 25)
-				-- Ensure contrast
-				diag_fg = color_utils.darken_to_contrast(diag_fg, light_bg.core, 7.0)
+				local h, _, _ = color_utils.rgb_to_hsl(colors.fg)
+				-- Create vibrant, darker background (higher saturation, lower lightness)
+				local diag_bg = color_utils.hsl_to_rgb(h, 55, 70)
+				-- Generate dark foreground from the same hue for AAA contrast
+				local diag_fg = color_utils.hsl_to_rgb(h, 80, 15)
+				-- Ensure AAA contrast (7.0:1) against the background
+				diag_fg = color_utils.darken_to_contrast(diag_fg, diag_bg, 7.0)
+
 				result.diag[level] = {
 					fg = diag_fg,
-					bg = light_bg.core,
+					bg = diag_bg,
 				}
 			end
 		end
