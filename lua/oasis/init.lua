@@ -219,77 +219,7 @@ function M.apply(palette_name)
 	apply_theme(palette)
 end
 
--- :Oasis <palette> command with completion from lua/oasis/color_palettes/*.lua
-vim.api.nvim_create_user_command("Oasis", function(opts)
-	M.apply(opts.args ~= "" and opts.args or nil)
-end, {
-	nargs = "?",
-	complete = function()
-		local utils = require("oasis.utils")
-		local bg = vim.o.background
-		local paths = vim.fn.globpath(vim.o.rtp, "lua/oasis/color_palettes/*.lua", false, true)
-		local out = {}
-
-		for _, p in ipairs(paths) do
-			local name = p:match("[\\/]color_palettes[\\/](.+)%.lua$")
-			if name and name ~= "init" then
-				local mode = utils.get_palette_mode(name)
-				if mode == "dual" or mode == bg then
-					table.insert(out, name)
-				end
-			end
-		end
-
-		table.sort(out)
-		return out
-	end,
-})
-
--- :OasisWCAG [palette] command to check WCAG contrast compliance
-vim.api.nvim_create_user_command("OasisWCAG", function(opts)
-	local wcag = require("oasis.tools.wcag_checker")
-	if opts.args ~= "" then
-		wcag.check_palette(opts.args)
-	else
-		wcag.check_all()
-	end
-end, {
-	nargs = "?",
-	complete = function()
-		-- Glob all palette files on runtimepath
-		local paths = vim.fn.globpath(vim.o.rtp, "lua/oasis/color_palettes/*.lua", false, true)
-		local out = {}
-		for _, p in ipairs(paths) do
-			-- handle / or \ separators; capture the basename
-			local name = p:match("[\\/]color_palettes[\\/](.+)%.lua$")
-			if name and name ~= "init" then
-				table.insert(out, name)
-			end
-		end
-		table.sort(out)
-		return out
-	end,
-})
-
--- :OasisTransparency command to toggle transparency mid-session
-vim.api.nvim_create_user_command("OasisTransparency", function()
-	M.toggle_transparency()
-end, {
-	desc = "Toggle transparency for Oasis theme",
-})
-
--- :OasisThemedSyntax command to toggle themed syntax mid-session
-vim.api.nvim_create_user_command("OasisThemedSyntax", function()
-	M.toggle_themed_syntax()
-end, {
-	desc = "Toggle themed syntax using primary color for statements/keywords (dark themes only)",
-})
-
--- :OasisIntensity command to show UI picker to select intensity mid-session
-vim.api.nvim_create_user_command("OasisIntensity", function()
-	M.cycle_intensity()
-end, {
-	desc = "Show UI picker for light background intensity (1-5)",
-})
+-- Setup API commands
+require("oasis.api").setup(M)
 
 return M
