@@ -44,13 +44,31 @@ local function format_ratio(ratio, level)
 end
 
 --- Analyze a single palette for WCAG compliance
----@param palette_name string Name of the palette (e.g., "oasis_lagoon")
+---@param palette_name string Name of the palette (e.g., "oasis_lagoon" or "oasis_lagoon.dark")
 ---@return table Analysis results
 function M.analyze_palette(palette_name)
-	-- Load the palette
-	local ok, palette = pcall(require, "oasis.color_palettes." .. palette_name)
-	if not ok then
-		return { error = "Failed to load palette: " .. palette_name }
+	-- Check if palette_name has mode suffix (e.g., "oasis_lagoon.dark")
+	local base_name, mode = palette_name:match("^(.+)%.(.+)$")
+	local palette
+
+	if base_name and (mode == "dark" or mode == "light") then
+		-- Load dual-mode palette and extract specific mode
+		local ok, raw_palette = pcall(require, "oasis.color_palettes." .. base_name)
+		if not ok then
+			return { error = "Failed to load palette: " .. palette_name }
+		end
+		if raw_palette[mode] then
+			palette = raw_palette[mode]
+		else
+			return { error = "Mode " .. mode .. " not found in palette: " .. base_name }
+		end
+	else
+		-- Load legacy flat palette
+		local ok, loaded_palette = pcall(require, "oasis.color_palettes." .. palette_name)
+		if not ok then
+			return { error = "Failed to load palette: " .. palette_name }
+		end
+		palette = loaded_palette
 	end
 
 	local results = {
@@ -218,8 +236,8 @@ function M.print_palette_results(results)
 	end
 end
 
---- Dynamically discover all available Oasis palettes
----@return table Array of palette names
+--- Dynamically discover all available Oasis palette variants (including dual-mode)
+---@return table Array of palette variant names (e.g., "oasis_lagoon.dark", "oasis_lagoon.light", "oasis_desert")
 local function discover_palettes()
 	local palettes = {}
 	local script_path = debug.getinfo(1, "S").source:sub(2)
@@ -233,7 +251,18 @@ local function discover_palettes()
 		if files and #files > 0 then
 			for _, file in ipairs(files) do
 				local filename = vim.fn.fnamemodify(file, ":t:r")
-				table.insert(palettes, filename)
+				-- Load and check if dual-mode
+				local ok, palette = pcall(require, "oasis.color_palettes." .. filename)
+				if ok then
+					if palette.dark and palette.light then
+						-- Dual-mode: add both variants
+						table.insert(palettes, filename .. ".dark")
+						table.insert(palettes, filename .. ".light")
+					else
+						-- Legacy: add as-is
+						table.insert(palettes, filename)
+					end
+				end
 			end
 		end
 	end
@@ -248,7 +277,18 @@ local function discover_palettes()
 			for filename in result:gmatch("[^\r\n]+") do
 				if filename:match("%.lua$") then
 					local theme_name = filename:gsub("%.lua$", "")
-					table.insert(palettes, theme_name)
+					-- Load and check if dual-mode
+					local ok, palette = pcall(require, "oasis.color_palettes." .. theme_name)
+					if ok then
+						if palette.dark and palette.light then
+							-- Dual-mode: add both variants
+							table.insert(palettes, theme_name .. ".dark")
+							table.insert(palettes, theme_name .. ".light")
+						else
+							-- Legacy: add as-is
+							table.insert(palettes, theme_name)
+						end
+					end
 				end
 			end
 		end

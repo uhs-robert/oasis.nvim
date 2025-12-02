@@ -94,52 +94,71 @@ end
 ---   require('oasis').apply('oasis')
 ---@param palette_name string|nil
 function M.apply(palette_name)
-	palette_name = palette_name or vim.g.oasis_palette or config.get_palette_name()
-	local bg = vim.o.background
-	local cfg = config.get()
 	local utils = require("oasis.utils")
+	local bg = vim.o.background
 
-	-- Check if this is a dual-mode palette (need to peek at it first)
-	local palette_module = "oasis.color_palettes." .. palette_name
-	local temp_palette = pcall(require, palette_module) and require(palette_module) or nil
-	local is_dual_mode = temp_palette and utils.is_dual_mode_palette(temp_palette)
+	-- Use the provided `palette_name` or get one from the configuration
+	if not palette_name then
+		palette_name = config.get_palette_name()
+	else
+		local is_current_theme = (palette_name == M.styles.current)
+		local last_theme_for_this_bg = M.styles[bg]
 
-	-- Legacy palette logic: infer background from palette name
-	if not is_dual_mode then
-		local is_light_style = palette_name == ("oasis_" .. cfg.light_style)
-		local expected_bg = is_light_style and "light" or "dark"
+		-- Background change detected
+		if is_current_theme and palette_name ~= last_theme_for_this_bg then
+			-- Check if user has configured a specific style for this background
+			local cfg = config.get()
+			local style_option = bg == "light" and cfg.light_style or cfg.dark_style
+			local has_explicit_style = style_option and style_option ~= "auto"
 
-		-- If we're switching between light/dark, prefer users last choice if different style from config
-		if palette_name == M.styles.current and bg ~= expected_bg then
-			if bg == "light" then
-				palette_name = M.styles.light or ("oasis_" .. cfg.light_style)
+			if has_explicit_style then
+				-- User has explicit preference, use configured theme
+				palette_name = config.get_palette_name()
 			else
-				palette_name = M.styles.dark or ("oasis_" .. cfg.dark_style)
+				-- No explicit preference, check if current theme is compatible
+				local mode = utils.get_palette_mode(palette_name)
+				if not (mode == "dual" or mode == bg) then
+					-- Current theme incompatible, get configured theme for this background
+					palette_name = config.get_palette_name()
+				end
+				-- else: keep current theme (it's compatible with the new background)
 			end
-		elseif bg ~= expected_bg then
-			vim.o.background = expected_bg
 		end
 	end
 
-	-- Remember this style choice for the current background
+	-- Check for theme compatibility
+	local mode = utils.get_palette_mode(palette_name)
+	if not mode then
+		vim.notify(string.format('Oasis: Palette "%s" not found.', palette_name), vim.log.levels.ERROR)
+		return
+	end
+
+	if mode ~= "dual" and mode ~= bg then
+		local msg = string.format('Oasis: Cannot use %s theme "%s" with background=%s', mode, palette_name, bg)
+		vim.notify(msg, vim.log.levels.ERROR)
+		return
+	end
+
+	-- 3. Remember and apply
 	M.styles.current = palette_name
-	M.styles[vim.o.background] = palette_name
+	M.styles[bg] = palette_name
 
 	-- Reset
 	vim.cmd("highlight clear")
-	vim.cmd("syntax reset")
+	if vim.fn.exists("syntax_on") then
+		vim.cmd("syntax reset")
+	end
 
-	-- Clear palette cache to ensure fresh load with current config
+	-- Use a fresh palette load
 	package.loaded["oasis.color_palettes." .. palette_name] = nil
 
-	-- Load and extract palette (handles both legacy and dual-mode)
-	-- Palette respects config.light_intensity and generates backgrounds accordingly
-	local c, err = utils.load_and_extract_palette("oasis.color_palettes." .. palette_name)
+	-- Load and extract palette.
+	local c, err = utils.load_and_extract_palette("oasis.color_palettes." .. palette_name, nil)
 	if not c then
 		error(('Oasis: palette "%s" not found: %s'):format(palette_name, err))
 	end
 
-	vim.g.colors_name = palette_name:gsub("_", "-") -- Convert to hyphen format to match colorscheme files
+	vim.g.colors_name = palette_name:gsub("_", "-") -- Convert to hyphen for colorscheme file convention
 
 	-- Apply palette overrides from config
 	c = config.apply_palette_overrides(c, palette_name)
@@ -160,16 +179,21 @@ vim.api.nvim_create_user_command("Oasis", function(opts)
 end, {
 	nargs = "?",
 	complete = function()
-		-- Glob all palette files on runtimepath
+		local utils = require("oasis.utils")
+		local bg = vim.o.background
 		local paths = vim.fn.globpath(vim.o.rtp, "lua/oasis/color_palettes/*.lua", false, true)
 		local out = {}
+
 		for _, p in ipairs(paths) do
-			-- handle / or \ separators; capture the basename
 			local name = p:match("[\\/]color_palettes[\\/](.+)%.lua$")
 			if name and name ~= "init" then
-				table.insert(out, name)
+				local mode = utils.get_palette_mode(name)
+				if mode == "dual" or mode == bg then
+					table.insert(out, name)
+				end
 			end
 		end
+
 		table.sort(out)
 		return out
 	end,

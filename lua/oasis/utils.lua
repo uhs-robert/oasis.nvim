@@ -64,23 +64,56 @@ end
 --- @param palette table Palette table
 --- @return boolean True if dual-mode palette
 function M.is_dual_mode_palette(palette)
-	return palette.dark ~= nil and palette.light ~= nil and type(palette.dark) == "table" and type(palette.light) == "table"
+	return palette.dark ~= nil
+		and palette.light ~= nil
+		and type(palette.dark) == "table"
+		and type(palette.light) == "table"
+end
+
+--- Get the mode of a palette ('light', 'dark', or 'dual') by inspecting it.
+--- @param palette_name string Palette name (e.g., "oasis_lagoon")
+--- @return string|nil mode ('light', 'dark', 'dual') or nil if palette not found
+function M.get_palette_mode(palette_name)
+	local palette_module = "oasis.color_palettes." .. palette_name
+
+	-- Use a fresh require to inspect the module without affecting the main load
+	local original_module = package.loaded[palette_module]
+	package.loaded[palette_module] = nil
+
+	local ok, palette = pcall(require, palette_module)
+
+	-- Restore the original cache state
+	package.loaded[palette_module] = original_module
+
+	if not ok then
+		return nil
+	end
+
+	if M.is_dual_mode_palette(palette) then
+		return "dual"
+	elseif palette.light_mode == true then
+		return "light"
+	else
+		return "dark"
+	end
 end
 
 --- Load and extract palette based on current background mode
 --- Handles both legacy flat palettes and dual-mode palettes automatically
 --- @param palette_name string Palette module name (e.g., "oasis_lagoon")
+--- @param explicit_mode string|nil Force a specific mode ("dark" or "light"), overrides background detection
 --- @return table|nil, string|nil Extracted palette or nil, error message
-function M.load_and_extract_palette(palette_name)
+function M.load_and_extract_palette(palette_name, explicit_mode)
 	-- Load the palette module
 	local ok, palette = pcall(require, palette_name)
 	if not ok then
 		return nil, "Failed to load palette: " .. palette
 	end
 
-	-- If dual-mode, extract the appropriate mode based on background
+	-- If dual-mode, extract the appropriate mode
 	if M.is_dual_mode_palette(palette) then
-		local mode = vim.o.background == "light" and "light" or "dark"
+		-- Use explicit mode if provided, otherwise auto-detect from background
+		local mode = explicit_mode or (vim.o.background == "light" and "light" or "dark")
 		return palette[mode], nil
 	end
 
@@ -192,6 +225,57 @@ function M.deepcopy(orig)
 		copy = orig
 	end
 	return copy
+end
+
+--- Iterate over all palette modes (handles both legacy and dual-mode palettes)
+--- Calls callback function for each palette variant
+--- @param callback function Function(name, palette, mode) called for each palette variant
+---                        - name: base palette name (e.g., "lagoon")
+---                        - palette: extracted palette table
+---                        - mode: "dark", "light", or nil for legacy palettes
+--- @return number, number Success count, error count
+function M.for_each_palette_mode(callback)
+	local palette_names = M.get_palette_names()
+	local success_count = 0
+	local error_count = 0
+
+	for _, name in ipairs(palette_names) do
+		-- Load raw palette to check if dual-mode
+		local ok, raw_palette = pcall(require, "oasis.color_palettes.oasis_" .. name)
+		if not ok then
+			print(string.format("✗ Failed to load palette: %s", name))
+			error_count = error_count + 1
+			goto continue
+		end
+
+		-- Check if dual-mode palette
+		if M.is_dual_mode_palette(raw_palette) then
+			-- Call callback for both dark and light variants
+			for _, mode in ipairs({ "dark", "light" }) do
+				local palette = raw_palette[mode]
+				local ok_cb, err = pcall(callback, name, palette, mode)
+				if ok_cb then
+					success_count = success_count + 1
+				else
+					print(string.format("✗ Error processing %s.%s: %s", name, mode, err or "unknown error"))
+					error_count = error_count + 1
+				end
+			end
+		else
+			-- Legacy flat palette - call callback once
+			local ok_cb, err = pcall(callback, name, raw_palette, nil)
+			if ok_cb then
+				success_count = success_count + 1
+			else
+				print(string.format("✗ Error processing %s: %s", name, err or "unknown error"))
+				error_count = error_count + 1
+			end
+		end
+
+		::continue::
+	end
+
+	return success_count, error_count
 end
 
 return M
