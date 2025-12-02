@@ -26,9 +26,9 @@ end
 -- Default configuration
 -- stylua: ignore start
 M.defaults = {
-	style = nil,                  -- Shorthand palette name (e.g., "lagoon" -> "oasis_lagoon")
-	dark_style = "lagoon",        -- Shorthand palette name for dark mode
-	light_style = "lagoon",       -- Shorthand palette name for light mode
+	style = "lagoon",             -- Primary style choice (default palette)
+	dark_style = "auto",          -- "auto" uses `style`, or specify a dark theme (e.g., "sol", "canyon")
+	light_style = "auto",         -- "auto" uses `style`, or specify a light theme (e.g., "day")
 	use_legacy_comments = false,
 	themed_syntax = true,         -- Use theme primary color for statements/keywords (dark themes only)
 	light_intensity = 2,          -- Light background intensity (1-5): 1=subtle, 5=saturated
@@ -85,22 +85,36 @@ function M.get()
 end
 
 --- Get the full palette name from the configured style
----@return string palette_name Full palette name (e.g., "oasis_lagoon"), always returns a valid palette
+---@return string|nil palette_name Full palette name (e.g., "oasis_lagoon")
 function M.get_palette_name()
-	if M.options.style then
-		return "oasis_" .. M.options.style
-	end
-
-	-- If style is not set, use dark_style/light_style based on background
 	local bg = get_background()
-	if bg == "light" and M.options.light_style then
-		return "oasis_" .. M.options.light_style
-	elseif M.options.dark_style then
-		return "oasis_" .. M.options.dark_style
+
+	-- Use dark_style/light_style based on background
+	local style_option = bg == "light" and M.options.light_style or M.options.dark_style
+
+	-- Default to main `style` if `light_style`/`dark_style` is "auto"
+	if style_option == "auto" then
+		style_option = M.options.style
+
+		-- Check if the configured style is compatible with current background
+		-- If not, use sensible defaults
+		local utils = require("oasis.utils")
+		local palette_name = "oasis_" .. style_option
+		local mode = utils.get_palette_mode(palette_name)
+
+		if mode and mode ~= "dual" and mode ~= bg then
+			-- Style is incompatible, use default for this background
+			style_option = bg == "light" and "day" or "lagoon"
+		end
 	end
 
-	-- Final fallback: check background and return appropriate default
-	return bg == "light" and "oasis_dawn" or "oasis_lagoon"
+	if not style_option then
+		return "oasis_lagoon"
+	end
+
+	-- Otherwise return the parsed palette
+	local palette_name = "oasis_" .. style_option
+	return palette_name
 end
 
 --- Apply palette overrides to a loaded palette
