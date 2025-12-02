@@ -72,7 +72,7 @@ return function(c)
     LineNr                     = { fg=c.fg.muted, bg=(c.bg.gutter or "NONE") }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
     LineNrAbove                = "LineNr", -- Line number for when the 'relativenumber' option is set, above the cursor line
     LineNrBelow                = "LineNr", -- Line number for when the 'relativenumber' option is set, below the cursor line
-    CursorLineNr               = { fg=c.ui.lineNumber, bg=(c.bg.gutter or c.bg.core), bold=true }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+    CursorLineNr               = { fg=c.ui.lineNumber, bg=(c.bg.gutter or "NONE"), bold=true }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     CursorLineFold             = { bg=c.bg.core }, -- Like FoldColumn when 'cursorline' is set for the cursor line
     CursorLineSign             = { bg=c.bg.core }, -- Like SignColumn when 'cursorline' is set for the cursor line
     MatchParen                 = { fg=c.ui.lineNumber, bg=c.ui.search.bg, bold=true }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
@@ -208,9 +208,10 @@ return function(c)
 
     -- Tree-Sitter syntax groups.
     -- See :h treesitter-highlight-groups, some groups may not be listed,
+    ["@parameter"]            = { fg=c.syntax.parameter }, -- Identifier
     ["@variable"]             = { fg=c.fg.core }, -- Identifier
     ["@variable.builtin"]     = { fg=c.syntax.builtinVar }, -- Identifier
-    ["@variable.parameter"]   = { fg=c.syntax.parameter }, -- Identifier
+    ["@variable.parameter"]   = "@parameter", -- Identifier
     ["@variable.member"]      = { fg=c.syntax.identifier }, -- Identifier
 
     -- ["@text.literal"]         = "Comment", -- Comment
@@ -248,11 +249,10 @@ return function(c)
     -- ["@function"]             = "Function", -- Function
     ["@function.builtin"]     = { fg=c.syntax.builtinFunc }, -- Special
     -- ["@function.macro"]       = "Macro", -- Macro
-    ["@parameter"]            = { fg=c.syntax.parameter }, -- Identifier
     -- ["@method"]               = "Function", -- Function
     -- ["@field"]                = "Identifier", -- Identifier
     -- ["@property"]             = "Identifier", -- Identifier
-    ["@constructor"]          = { fg=c.syntax.conditional }, -- Special (e.g. 'Map', 'Set', 'Error')
+    ["@constructor"]          = "Conditional", -- Special (e.g. 'Map', 'Set', 'Error')
     -- ["@conditional"]          = "Conditional", -- Conditional
     -- ["@repeat"]               = "Repeat", -- Repeat
     -- ["@label"]                = "Label", -- Label
@@ -266,7 +266,7 @@ return function(c)
     ["@keyword.exception"]    = "Exception", -- Keyword (e.g. `throw`, `catch`)
     ["@keyword.luap"]         = "Exception", -- Keyword
     ["@keyword.repeat"]       = "Repeat", -- Keyword
-    ["@keyword.function"]     = { fg=c.syntax.statement  }, -- Keyword
+    ["@keyword.function"]     = { fg=c.syntax.statement }, -- Keyword
     ["@keyword.conditional"]  = "Conditional", -- Keyword
 
     -- ["@exception"]            = "Exception", -- Exception 
@@ -301,16 +301,26 @@ return function(c)
 
   -- Light mode overrides
   if LIGHT_MODE then
-    highlights.MatchParen     = { fg=c.ui.match.fg, bg=c.ui.match.bg, bold=true }
-    -- inline diff
-    highlights.DiffAdd        = { fg=c.fg.core,     bg="#DDEDDC" }
-    highlights.DiffChange     = { fg=c.fg.core,     bg=c.bg.surface }
-    highlights.DiffDelete     = { fg=c.fg.core,     bg="#F3D8D6" }
+    -- Emphasize syntax
+    highlights.MatchParen           = { fg=c.ui.match.fg, bg=c.ui.match.bg, bold=true }
+    highlights.Number               = { fg=c.syntax.constant, bold=true }
+    highlights.Conditional          = { fg=c.syntax.conditional, bold=true }
+    highlights.Type                 = { fg=c.syntax.type, bold = true }
+    highlights["@parameter"]        = { fg=c.syntax.parameter, bold=true }
+    highlights["@keyword.return"]   = { fg=c.syntax.exception, bold=true, italic=true }
+    highlights["@string.regexp"]    = { fg=c.syntax.regex, bold=true }
+    highlights["@variable.builtin"] = { fg=c.syntax.builtinVar, bold=true }
 
-    highlights.Pmenu          = { fg=c.fg.core,     bg=c.bg.mantle }
-    highlights.PmenuSel       = { fg=c.bg.core,     bg=c.syntax.statement, bold=true }
-    highlights.PmenuSbar      = { bg=c.bg.mantle }
-    highlights.PmenuThumb     = { bg=c.bg.surface }
+    -- Inline diff
+    highlights.DiffAdd              = { fg=c.fg.core,     bg="#DDEDDC" }
+    highlights.DiffChange           = { fg=c.fg.core,     bg=c.bg.surface }
+    highlights.DiffDelete           = { fg=c.fg.core,     bg="#F3D8D6" }
+
+    -- Popup menu
+    highlights.Pmenu                = { fg=c.fg.core,     bg=c.bg.mantle }
+    highlights.PmenuSel             = { fg=c.bg.core,     bg=c.syntax.statement, bold=true }
+    highlights.PmenuSbar            = { bg=c.bg.mantle }
+    highlights.PmenuThumb           = { bg=c.bg.surface }
   end
 	-- stylua: ignore end
 
