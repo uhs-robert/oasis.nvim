@@ -60,11 +60,40 @@ function M.get_palette_names()
 	return files
 end
 
+--- Detect if a palette uses dual-mode structure (has .dark and .light keys)
+--- @param palette table Palette table
+--- @return boolean True if dual-mode palette
+function M.is_dual_mode_palette(palette)
+	return palette.dark ~= nil and palette.light ~= nil and type(palette.dark) == "table" and type(palette.light) == "table"
+end
+
+--- Load and extract palette based on current background mode
+--- Handles both legacy flat palettes and dual-mode palettes automatically
+--- @param palette_name string Palette module name (e.g., "oasis_lagoon")
+--- @return table|nil, string|nil Extracted palette or nil, error message
+function M.load_and_extract_palette(palette_name)
+	-- Load the palette module
+	local ok, palette = pcall(require, palette_name)
+	if not ok then
+		return nil, "Failed to load palette: " .. palette
+	end
+
+	-- If dual-mode, extract the appropriate mode based on background
+	if M.is_dual_mode_palette(palette) then
+		local mode = vim.o.background == "light" and "light" or "dark"
+		return palette[mode], nil
+	end
+
+	-- Legacy flat palette - return as-is
+	return palette, nil
+end
+
 --- Load a palette module by name
 --- Accepts name with or without "oasis_" prefix
 --- @param name string Palette name (e.g., "lagoon" or "oasis_lagoon")
+--- @param mode string|nil "dark" or "light" (only used for dual-mode palettes, auto-detects if nil)
 --- @return table|nil, string|nil Palette table or nil, error message
-function M.load_palette(name)
+function M.load_palette(name, mode)
 	-- Add project root to package path
 	package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 
@@ -80,7 +109,14 @@ function M.load_palette(name)
 		return nil, "Failed to load palette: " .. palette
 	end
 
-	return palette
+	-- If dual-mode palette, extract requested mode
+	if M.is_dual_mode_palette(palette) then
+		local selected_mode = mode or "dark" -- Default to dark if not specified
+		return palette[selected_mode], nil
+	end
+
+	-- Legacy flat palette - return as-is
+	return palette, nil
 end
 
 --- Write content to file

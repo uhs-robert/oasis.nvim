@@ -124,7 +124,7 @@ return function(c)
     -- Commented-out groups should chain up to their preferred (*) group
     -- by default.
     -- See :h group-name
-    Comment                    = { fg=(c.syntax.comment or c.fg.comment), italic=true }, -- Any comment
+    Comment                    = { fg=c.syntax.comment, italic=true }, -- Any comment
 
     Constant                   = { fg=c.syntax.constant }, -- (*) Any constant
     String                     = { fg=c.syntax.string }, --   A string constant: "this is a string"
