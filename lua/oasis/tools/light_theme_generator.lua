@@ -493,6 +493,73 @@ function M.generate_light_ui(dark_ui, light_bg, intensity_level, contrast_target
 	return result
 end
 
+--- Generate light-mode ANSI terminal palette from dark terminal colors
+--- Applies hue-aware softening and enforces minimum contrast on light backgrounds
+--- @param dark_terminal table Dark mode terminal colors (ansi keys and color0..15)
+--- @param light_bg_core string Light background core color
+--- @param intensity_level number Intensity level (1-5)
+--- @param opts? table Optional { force_aaa = boolean, chroma_target = number, neutral_target = number }
+--- @return table Light mode terminal colors
+function M.generate_light_terminal(dark_terminal, light_bg_core, intensity_level, opts)
+	if not dark_terminal or not light_bg_core then
+		return {}
+	end
+
+	opts = opts or {}
+	intensity_level = math.max(1, math.min(5, intensity_level or 3))
+
+	-- Contrast targets
+	local default_chroma_target = 5.8
+	local default_neutral_target = 7.0
+	local chroma_target = opts.chroma_target or default_chroma_target
+	local neutral_target = opts.neutral_target or default_neutral_target
+	if opts.force_aaa then
+		chroma_target = 7.0
+		neutral_target = 7.0
+	end
+
+	-- Neutrals vs chromatics
+	local neutral_keys = {
+		black = true,
+		bright_black = true,
+		white = true,
+		bright_white = true,
+		color0 = true,
+		color8 = true,
+		color7 = true,
+		color15 = true,
+	}
+
+	local result = {}
+
+	for key, value in pairs(dark_terminal) do
+		if type(value) == "string" then
+			local h, s, l = color_utils.rgb_to_hsl(value)
+
+			-- Base lightness: pull colors darker for light bg; small bias by intensity
+			local base_l = (l * 0.55)
+			base_l = base_l - ((3 - intensity_level) * 2) -- lighter intensities → darker terminal text
+			base_l = math.max(16, math.min(55, base_l))
+
+			-- Hue-aware softening to avoid neon spikes
+			local new_s = s
+			new_s, _ = soften_light_hue(h, new_s, base_l)
+
+			local color = color_utils.hsl_to_rgb(h, new_s, base_l)
+
+			-- Choose contrast target by slot type
+			local target = neutral_keys[key] and neutral_target or chroma_target
+			color = color_utils.darken_to_contrast(color, light_bg_core, target)
+
+			result[key] = color
+		else
+			result[key] = value
+		end
+	end
+
+	return result
+end
+
 --- Generate light mode theme colors from dark mode (vibrant, decorative)
 --- Note: These colors are decorative and intentionally may not meet WCAG compliance
 --- These colors can fail WCAG compliance as they're decorative only

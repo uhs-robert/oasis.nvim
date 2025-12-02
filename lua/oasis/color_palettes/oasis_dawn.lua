@@ -2,6 +2,7 @@
 
 local p = require("oasis.palette")
 local theme = p.theme.dawn
+local light_gen = require("oasis.tools.light_theme_generator")
 
 -- General Reusable Colors
 local ui = {
@@ -34,7 +35,7 @@ local c = {
 	bg = ui.bg,
 	fg = ui.fg,
 	theme = ui.theme,
-	terminal = p.light_terminal,
+	terminal = light_gen.generate_light_terminal(p.terminal, ui.bg.core, 3),
 	light_mode = true,
 
 	-- Syntax
@@ -76,7 +77,7 @@ local c = {
 	-- UI
 	ui = {
 		lineNumber = "#753a00",
-		match = { bg= "#FFD87C", fg = "#753a00" },
+		match = { bg = "#FFD87C", fg = "#753a00" },
 		visual = { bg = ui.bg.surface, fg = "none" },
 		search = { bg = "#FFD87C", fg = "#462E23" },
 		curSearch = { bg = p.sunshine[600], fg = "#2C1810" },

@@ -112,7 +112,7 @@ local light = {
 	bg = light_bg,
 	fg = light_gen.generate_light_foregrounds(ui.fg, light_bg.core, opts.light_intensity),
 	theme = light_gen.generate_light_theme(ui.theme, opts.light_intensity),
-	terminal = p.light_terminal,
+	terminal = light_gen.generate_light_terminal(p.terminal, light_bg.core, opts.light_intensity),
 	light_mode = true,
 
 	-- Syntax
