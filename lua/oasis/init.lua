@@ -106,19 +106,27 @@ function M.apply(palette_name)
 
 		-- Background change detected
 		if is_current_theme and palette_name ~= last_theme_for_this_bg then
-			-- Check if user has configured a specific style for this background
+			-- Determine what the configured theme was for the OLD background
+			local old_bg = bg == "light" and "dark" or "light"
 			local cfg = config.get()
-			local style_option = bg == "light" and cfg.light_style or cfg.dark_style
-			local has_explicit_style = style_option and style_option ~= "auto"
+			local old_style_option = old_bg == "light" and cfg.light_style or cfg.dark_style
 
-			if has_explicit_style then
-				-- User has explicit preference, use configured theme
+			-- Resolve "auto" for old background
+			if old_style_option == "auto" then
+				old_style_option = cfg.style
+			end
+
+			local old_configured_palette = "oasis_" .. old_style_option
+
+			-- Check if user was on their configured theme for the old background
+			if palette_name == old_configured_palette then
+				-- User was on configured theme, switch to configured theme for new bg
 				palette_name = config.get_palette_name()
 			else
-				-- No explicit preference, check if current theme is compatible
+				-- User manually picked a different theme, try to maintain their choice
 				local mode = utils.get_palette_mode(palette_name)
 				if not (mode == "dual" or mode == bg) then
-					-- Current theme incompatible, get configured theme for this background
+					-- Current theme incompatible, fall back to configured theme
 					palette_name = config.get_palette_name()
 				end
 				-- else: keep current theme (it's compatible with the new background)
@@ -126,20 +134,20 @@ function M.apply(palette_name)
 		end
 	end
 
-	-- Check for theme compatibility
+	-- Check for theme compatibility and auto-adjust background if needed
 	local mode = utils.get_palette_mode(palette_name)
 	if not mode then
 		vim.notify(string.format('Oasis: Palette "%s" not found.', palette_name), vim.log.levels.ERROR)
 		return
 	end
 
+	-- Auto-adjust background to match theme mode
 	if mode ~= "dual" and mode ~= bg then
-		local msg = string.format('Oasis: Cannot use %s theme "%s" with background=%s', mode, palette_name, bg)
-		vim.notify(msg, vim.log.levels.ERROR)
-		return
+		vim.o.background = mode
+		bg = mode
 	end
 
-	-- 3. Remember and apply
+	-- Remember and apply
 	M.styles.current = palette_name
 	M.styles[bg] = palette_name
 
