@@ -476,7 +476,7 @@ function M.check_palette(palette_name, target_ratio, custom_targets)
 	end
 
 	local palette, _ = M.load_palette(palette_name)
-	local background = palette.bg and palette.bg.core or "#000000"
+	local background = (palette and palette.bg and palette.bg.core) or "#000000"
 
 	M.print_results(results, background, "WCAG AAA: Actual Calculations for `" .. palette_name .. "`")
 end
@@ -528,7 +528,7 @@ function M.check_palette_with_config(palette_name, config_opts, target_ratio, cu
 	end
 
 	local palette, _ = M.load_palette_with_config(palette_name, config_opts)
-	local background = palette.bg and palette.bg.core or "#000000"
+	local background = (palette and palette.bg and palette.bg.core) or "#000000"
 
 	-- Build title with config options
 	local title = "WCAG AAA: Actual Calculations for `" .. palette_name .. "`"
@@ -664,7 +664,7 @@ function M.discover_palettes()
 
 	-- Load each palette and check if it's light or dark
 	for _, palette_name in ipairs(palette_files) do
-		local palette, err = M.load_palette(palette_name)
+		local palette, _ = M.load_palette(palette_name)
 		if palette then
 			if palette.light_mode then
 				light_palettes[#light_palettes + 1] = palette_name
@@ -714,7 +714,7 @@ function M.check_all_presets()
 
 		for _, palette_name in ipairs(light_palettes) do
 			local results, err, background = M.check_preset_theme(palette_name, M.PRESETS.LIGHT_COLORS)
-			if results then
+			if results and background then
 				M.print_results(results, background, palette_name .. " - " .. background)
 			else
 				print("Error loading " .. palette_name .. ": " .. (err or "unknown error"))
@@ -729,7 +729,7 @@ function M.check_all_presets()
 
 		for _, palette_name in ipairs(dark_palettes) do
 			local results, err, background = M.check_preset_theme(palette_name, M.PRESETS.DARK_COLORS)
-			if results then
+			if results and background then
 				M.print_results(results, background, palette_name .. " - " .. background)
 			else
 				print("Error loading " .. palette_name .. ": " .. (err or "unknown error"))
@@ -741,5 +741,8 @@ function M.check_all_presets()
 		print("\nWarning: No palettes found. Make sure you're running from the project root.")
 	end
 end
+
+-- Export Color class for external use
+M.Color = Color
 
 return M
