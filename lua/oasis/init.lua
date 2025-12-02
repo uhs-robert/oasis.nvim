@@ -88,97 +88,135 @@ function M.cycle_intensity(show_picker)
 	end
 end
 
+--- Resolve palette name based on config and background changes
+---@param palette_name string|nil User-provided palette name
+---@param bg string Current background ("light" or "dark")
+---@return string resolved_palette The palette name to use
+local function resolve_palette_name(palette_name, bg)
+	local utils = require("oasis.utils")
+	local resolved_palette = palette_name or config.get_palette_name() or "oasis_lagoon"
+	local is_current_theme = (resolved_palette == M.styles.current)
+	local last_theme_for_this_bg = M.styles[bg]
+
+	-- Background change detected - handle theme switching logic
+	if is_current_theme and resolved_palette ~= last_theme_for_this_bg then
+		local old_bg = bg == "light" and "dark" or "light"
+		local cfg = config.get()
+		local old_style_option = old_bg == "light" and cfg.light_style or cfg.dark_style
+
+		-- Resolve "auto" for old background
+		if old_style_option == "auto" then
+			old_style_option = cfg.style
+		end
+
+		-- Check if user was on their configured theme for the old background
+		local old_configured_palette = "oasis_" .. old_style_option
+		local should_use_config = resolved_palette == old_configured_palette
+		if should_use_config then
+			return config.get_palette_name() or "oasis_lagoon"
+		else
+			local mode = utils.get_palette_mode(resolved_palette)
+			if not (mode == "dual" or mode == bg) then
+				return config.get_palette_name() or "oasis_lagoon" -- error: fallback to configured theme
+			end
+			-- else: keep current theme
+		end
+	end
+
+	return resolved_palette
+end
+
+--- Ensure palette is compatible with background and auto-adjust if needed
+---@param palette_name string Palette name to check
+---@return string|nil mode The palette mode ("light", "dark", or "dual"), or nil if not found
+---@return string bg The (possibly adjusted) background
+local function ensure_palette_compatibility(palette_name)
+	local utils = require("oasis.utils")
+	local bg = vim.o.background
+
+	local mode = utils.get_palette_mode(palette_name)
+	if not mode then
+		vim.notify(string.format('Oasis: Palette "%s" not found.', palette_name), vim.log.levels.ERROR)
+		return nil, bg
+	end
+
+	-- Auto-adjust background to match theme mode (for legacy light themes without dual mode)
+	if mode ~= "dual" and mode ~= bg then
+		vim.o.background = mode
+		bg = mode
+	end
+
+	return mode, bg
+end
+
+--- Remember current style choices for light/dark switching
+---@param palette_name string Palette to remember
+---@param bg string Current background
+local function remember_style(palette_name, bg)
+	M.styles.current = palette_name
+	M.styles[bg] = palette_name
+end
+
+--- Reset existing highlights
+local function reset_highlights()
+	vim.cmd("highlight clear")
+	if vim.fn.exists("syntax_on") then
+		vim.cmd("syntax reset")
+	end
+end
+
+--- Load palette module with overrides applied
+---@param palette_name string Palette name to load
+---@return table palette The loaded palette (errors if not found)
+local function load_palette_module(palette_name)
+	local utils = require("oasis.utils")
+
+	-- Use a fresh palette load
+	package.loaded["oasis.color_palettes." .. palette_name] = nil
+
+	-- Load and extract palette
+	local palette, err = utils.load_and_extract_palette("oasis.color_palettes." .. palette_name, nil)
+	if not palette then
+		error(('Oasis: palette "%s" not found: %s'):format(palette_name, err))
+	end
+
+	vim.g.colors_name = palette_name:gsub("_", "-")
+
+	return config.apply_palette_overrides(palette, palette_name)
+end
+
+--- Apply theme and refresh plugin integrations
+---@param palette table The color palette to apply
+local function apply_theme(palette)
+	local build = require("oasis.theme_generator")
+	build(palette)
+
+	-- Load and refresh plugin integrations
+	pcall(require, "oasis.integrations.lualine")
+	pcall(require, "oasis.integrations.tabby")
+	require("oasis.integrations").refresh_all()
+end
+
 --- Apply Oasis using a palette module name (no prefix).
 --- Examples:
 ---   require('oasis').apply('oasis_midnight')
 ---   require('oasis').apply('oasis')
 ---@param palette_name string|nil
 function M.apply(palette_name)
-	local utils = require("oasis.utils")
 	local bg = vim.o.background
 
-	-- Use the provided `palette_name` or get one from the configuration
-	if not palette_name then
-		palette_name = config.get_palette_name()
-	else
-		local is_current_theme = (palette_name == M.styles.current)
-		local last_theme_for_this_bg = M.styles[bg]
+	palette_name = resolve_palette_name(palette_name, bg)
 
-		-- Background change detected
-		if is_current_theme and palette_name ~= last_theme_for_this_bg then
-			-- Determine what the configured theme was for the OLD background
-			local old_bg = bg == "light" and "dark" or "light"
-			local cfg = config.get()
-			local old_style_option = old_bg == "light" and cfg.light_style or cfg.dark_style
-
-			-- Resolve "auto" for old background
-			if old_style_option == "auto" then
-				old_style_option = cfg.style
-			end
-
-			local old_configured_palette = "oasis_" .. old_style_option
-
-			-- Check if user was on their configured theme for the old background
-			if palette_name == old_configured_palette then
-				-- User was on configured theme, switch to configured theme for new bg
-				palette_name = config.get_palette_name()
-			else
-				-- User manually picked a different theme, try to maintain their choice
-				local mode = utils.get_palette_mode(palette_name)
-				if not (mode == "dual" or mode == bg) then
-					-- Current theme incompatible, fall back to configured theme
-					palette_name = config.get_palette_name()
-				end
-				-- else: keep current theme (it's compatible with the new background)
-			end
-		end
-	end
-
-	-- Check for theme compatibility and auto-adjust background if needed
-	local mode = utils.get_palette_mode(palette_name)
+	local mode, adjusted_bg = ensure_palette_compatibility(palette_name)
 	if not mode then
-		vim.notify(string.format('Oasis: Palette "%s" not found.', palette_name), vim.log.levels.ERROR)
-		return
+		return -- Error already notified
 	end
+	bg = adjusted_bg
 
-	-- Auto-adjust background to match theme mode
-	if mode ~= "dual" and mode ~= bg then
-		vim.o.background = mode
-		bg = mode
-	end
-
-	-- Remember and apply
-	M.styles.current = palette_name
-	M.styles[bg] = palette_name
-
-	-- Reset
-	vim.cmd("highlight clear")
-	if vim.fn.exists("syntax_on") then
-		vim.cmd("syntax reset")
-	end
-
-	-- Use a fresh palette load
-	package.loaded["oasis.color_palettes." .. palette_name] = nil
-
-	-- Load and extract palette.
-	local c, err = utils.load_and_extract_palette("oasis.color_palettes." .. palette_name, nil)
-	if not c then
-		error(('Oasis: palette "%s" not found: %s'):format(palette_name, err))
-	end
-
-	vim.g.colors_name = palette_name:gsub("_", "-") -- Convert to hyphen for colorscheme file convention
-
-	-- Apply palette overrides from config
-	c = config.apply_palette_overrides(c, palette_name)
-
-	-- Build and apply the colorscheme
-	local build = require("oasis.theme_generator")
-	build(c)
-
-	-- Load and refresh plugin integrations
-	pcall(require, "oasis.integrations.lualine")
-	pcall(require, "oasis.integrations.tabby")
-	require("oasis.integrations").refresh_all()
+	remember_style(palette_name, bg)
+	reset_highlights()
+	local palette = load_palette_module(palette_name)
+	apply_theme(palette)
 end
 
 -- :Oasis <palette> command with completion from lua/oasis/color_palettes/*.lua
