@@ -2,6 +2,8 @@
 -- WCAG Contrast Checker for Oasis Palettes
 -- Analyzes color contrast ratios and WCAG compliance
 
+local wcag_calc = require("oasis.tools.wcag_color_calculator")
+
 local M = {}
 
 -- Configuration: Number of color pairs that are intentionally designed to fail WCAG AAA
@@ -9,83 +11,22 @@ local M = {}
 -- AAA Target = Total Checks - NUMBER_OF_ACCEPTABLE_FAILS
 local NUMBER_OF_ACCEPTABLE_FAILS = 4
 
---- Convert hex color to RGB values (0-255)
----@param hex string Hex color like "#1a1a1a" or "1a1a1a"
----@return number, number, number RGB values
-local function hex_to_rgb(hex)
-	if not hex or type(hex) ~= "string" then
-		return 0, 0, 0
-	end
-	hex = hex:gsub("#", "")
-	return tonumber(hex:sub(1, 2), 16), tonumber(hex:sub(3, 4), 16), tonumber(hex:sub(5, 6), 16)
-end
-
---- Calculate relative luminance per WCAG formula
----@param r number Red (0-255)
----@param g number Green (0-255)
----@param b number Blue (0-255)
----@return number Relative luminance (0-1)
-local function get_relative_luminance(r, g, b)
-	-- Normalize to 0-1
-	local rs, gs, bs = r / 255, g / 255, b / 255
-
-	-- Apply gamma correction
-	local function adjust(c)
-		if c <= 0.03928 then
-			return c / 12.92
-		else
-			return math.pow((c + 0.055) / 1.055, 2.4)
-		end
-	end
-
-	local r_adj = adjust(rs)
-	local g_adj = adjust(gs)
-	local b_adj = adjust(bs)
-
-	-- Calculate luminance using WCAG coefficients
-	return 0.2126 * r_adj + 0.7152 * g_adj + 0.0722 * b_adj
-end
-
 --- Calculate contrast ratio between two colors
+--- Delegates to wcag_color_calculator for consistency
 ---@param color1 string Hex color
 ---@param color2 string Hex color
 ---@return number Contrast ratio (1-21)
 function M.get_contrast_ratio(color1, color2)
-	local r1, g1, b1 = hex_to_rgb(color1)
-	local r2, g2, b2 = hex_to_rgb(color2)
-
-	local l1 = get_relative_luminance(r1, g1, b1)
-	local l2 = get_relative_luminance(r2, g2, b2)
-
-	-- Ensure L1 is the lighter color
-	local lighter = math.max(l1, l2)
-	local darker = math.min(l1, l2)
-
-	return (lighter + 0.05) / (darker + 0.05)
+	return wcag_calc.contrast_ratio(color1, color2)
 end
 
 --- Get WCAG compliance level for a contrast ratio
+--- Delegates to wcag_color_calculator for consistency
 ---@param ratio number Contrast ratio
 ---@param large_text boolean Whether this is large text (18pt+/14pt+ bold)
----@return string Compliance level: "AAA", "AA", "AA Large", "Fail"
+---@return string Compliance level: "AAA", "AA", "Fail"
 function M.get_compliance_level(ratio, large_text)
-	if large_text then
-		if ratio >= 4.5 then
-			return "AAA"
-		elseif ratio >= 3.0 then
-			return "AA"
-		else
-			return "Fail"
-		end
-	else
-		if ratio >= 7.0 then
-			return "AAA"
-		elseif ratio >= 4.5 then
-			return "AA"
-		else
-			return "Fail"
-		end
-	end
+	return wcag_calc.get_compliance_level(ratio, large_text)
 end
 
 --- Format contrast ratio with color coding

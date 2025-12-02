@@ -3,6 +3,7 @@
 local p = require("oasis.palette")
 local config = require("oasis.config")
 local color_utils = require("oasis.tools.color_utils")
+local light_gen = require("oasis.tools.light_theme_generator")
 local opts = config.get()
 local theme = p.theme.abyss
 
@@ -107,16 +108,16 @@ local dark = {
 }
 
 -- Light mode configuration
-local light_bg = color_utils.generate_light_backgrounds(ui.fg.core, opts.light_intensity)
+local light_bg = light_gen.generate_light_backgrounds(ui.fg.core, opts.light_intensity)
 local light = {
 	bg = light_bg,
-	fg = color_utils.generate_light_foregrounds(ui.fg, light_bg.core, opts.light_intensity),
-	theme = color_utils.generate_light_theme(ui.theme, opts.light_intensity),
+	fg = light_gen.generate_light_foregrounds(ui.fg, light_bg.core, opts.light_intensity),
+	theme = light_gen.generate_light_theme(ui.theme, opts.light_intensity),
 	terminal = p.light_terminal,
 	light_mode = true,
 
 	-- Syntax
-	syntax = color_utils.generate_light_syntax(dark.syntax, light_bg.core, opts.light_intensity),
+	syntax = light_gen.generate_light_syntax(dark.syntax, light_bg.core, opts.light_intensity),
 
 	-- Diff
 	diff = {
@@ -126,7 +127,7 @@ local light = {
 	},
 
 	-- UI
-	ui = color_utils.generate_light_ui(dark.ui, light_bg, opts.light_intensity),
+	ui = light_gen.generate_light_ui(dark.ui, light_bg, opts.light_intensity),
 }
 
 -- Return dual-mode palette
