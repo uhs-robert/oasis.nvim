@@ -2,6 +2,7 @@
 
 local p = require("oasis.palette")
 local config = require("oasis.config")
+local color_utils = require("oasis.tools.color_utils")
 local opts = config.get()
 local theme = p.theme.mirage
 
@@ -20,7 +21,6 @@ local ui = {
 		strong = theme.fg.strong,
 		muted = theme.fg.muted,
 		dim = theme.fg.dim,
-		comment = theme.fg.comment,
 	},
 	-- General colors
 	theme = {
@@ -34,8 +34,8 @@ local ui = {
 	},
 }
 
--- Colorscheme
-local c = {
+-- Dark mode palette
+local dark = {
 	bg = ui.bg,
 	fg = ui.fg,
 	theme = ui.theme,
@@ -67,7 +67,7 @@ local c = {
 
 		-- Neutral: (Connections / Info)
 		bracket = p.slate[400], -- (bracket punctuation)
-		comment = ui.theme.comment, -- (comments)
+		comment = theme.fg.comment, -- (comments)
 	},
 
 	-- Diff
@@ -82,7 +82,7 @@ local c = {
 		lineNumber = p.sunset[500],
 		match = { bg = p.sunset[500], fg = ui.bg.core },
 		visual = { bg = p.visual.orange, fg = "none" },
-		search = { bg = p.visual.orange, fg = ui.fg.core },
+		search = { bg = p.visual.orange, fg = ui.bg.core },
 		curSearch = { bg = p.sunshine[500], fg = ui.bg.core },
 		dir = p.sky[500],
 
@@ -105,4 +105,32 @@ local c = {
 		},
 	},
 }
-return c
+
+-- Light mode configuration
+local light_bg = color_utils.generate_light_backgrounds(ui.fg.core, opts.light_intensity)
+local light = {
+	bg = light_bg,
+	fg = color_utils.generate_light_foregrounds(ui.fg, light_bg.core, opts.light_intensity),
+	theme = color_utils.generate_light_theme(ui.theme, opts.light_intensity),
+	terminal = p.light_terminal,
+	light_mode = true,
+
+	-- Syntax
+	syntax = color_utils.generate_light_syntax(dark.syntax, light_bg.core, opts.light_intensity),
+
+	-- Diff
+	diff = {
+		add = color_utils.darken_to_contrast(dark.diff.add, light_bg.core, 7.0),
+		change = color_utils.darken_to_contrast(dark.diff.change, light_bg.core, 7.0),
+		delete = color_utils.darken_to_contrast(dark.diff.delete, light_bg.core, 7.0),
+	},
+
+	-- UI
+	ui = color_utils.generate_light_ui(dark.ui, light_bg, opts.light_intensity),
+}
+
+-- Return dual-mode palette
+return {
+	dark = dark,
+	light = light,
+}

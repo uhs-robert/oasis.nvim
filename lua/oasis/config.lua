@@ -24,28 +24,31 @@ local function get_background()
 end
 
 -- Default configuration
+-- stylua: ignore start
 M.defaults = {
-	style = nil, -- Shorthand palette name (e.g., "lagoon" -> "oasis_lagoon")
-	dark_style = "lagoon", -- Shorthand palette name for dark mode
-	light_style = "dawn", -- Shorthand palette name for light mode
+	style = nil,                  -- Shorthand palette name (e.g., "lagoon" -> "oasis_lagoon")
+	dark_style = "lagoon",        -- Shorthand palette name for dark mode
+	light_style = "lagoon",       -- Shorthand palette name for light mode
 	use_legacy_comments = false,
-	themed_syntax = true, -- Use theme primary color for statements/keywords (dark themes only)
+	themed_syntax = true,         -- Use theme primary color for statements/keywords (dark themes only)
+	light_intensity = 2,          -- Light background intensity (1-5): 1=subtle, 5=saturated
 	palette_overrides = {},
 	highlight_overrides = {},
 
 	-- Text styling toggles
 	styles = {
-		bold = true,          -- Enable/disable bold text
-		italic = true,        -- Enable/disable italic text
-		underline = true,     -- Enable/disable underline
-		undercurl = true,     -- Enable/disable undercurl (diagnostics, spell)
-		strikethrough = true, -- Enable/disable strikethrough
+		bold = true,                -- Enable/disable bold text
+		italic = true,              -- Enable/disable italic text
+		underline = true,           -- Enable/disable underline
+		undercurl = true,           -- Enable/disable undercurl (diagnostics, spell)
+		strikethrough = true,       -- Enable/disable strikethrough
 	},
 
 	-- Additional toggles
-	terminal_colors = true,   -- Enable/disable terminal color setting
-	transparent = false,      -- Make backgrounds transparent (NONE)
+	terminal_colors = true,       -- Enable/disable terminal color setting
+	transparent = false,          -- Make backgrounds transparent (NONE)
 }
+-- stylua: ignore end
 
 -- Current active configuration
 M.options = deepcopy(M.defaults)
