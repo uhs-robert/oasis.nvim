@@ -51,7 +51,7 @@ end
 ---   require('oasis').cycle_intensity(true|nil) -- Shows UI picker
 ---   require('oasis').cycle_intensity(false)    -- Cycles intensity
 ---   :OasisIntensity                            -- Shows UI picker
----@param show_picker boolean|nil If true or nil, shows a UI picker; else if false, cycles
+---@param show_picker boolean|nil
 function M.cycle_intensity(show_picker)
 	local cfg = config.get()
 
