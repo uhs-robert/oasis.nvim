@@ -6,6 +6,116 @@ local color_utils = require("oasis.tools.color_utils")
 
 local M = {}
 
+--- Adjust saturation and lightness for problematic hues in light backgrounds
+--- @param h number Hue (0-360)
+--- @param s number Saturation (0-100)
+--- @param l number Lightness (0-100)
+--- @return number, number Adjusted saturation and lightness
+local function adjust_background_outliers(h, s, l)
+	-- Normalize hue so negative shifts still fall inside expected ranges
+	local hue = h % 360
+	local new_s, new_l = s, l
+	local very_light = l >= 88
+
+	-- If the input is effectively neutral, leave it untouched to avoid tinting greys
+	if s < 10 then
+		return new_s, new_l
+	end
+
+	-- Yellow‑greens need aggressive desat in light mode
+	if hue >= 60 and hue <= 170 then
+		local sat_factor = very_light and 0.35 or 0.45
+		new_s = s * sat_factor
+		new_l = math.min(100, l + (very_light and 1 or 2))
+
+	-- Warm yellows
+	elseif hue >= 40 and hue < 60 then
+		new_s = s * 0.50
+		new_l = math.min(100, l + 1)
+
+	-- Cyans/teals: still vivid on light bg, soften slightly
+	elseif hue > 170 and hue <= 210 then
+		local sat_factor = very_light and 0.55 or 0.65
+		new_s = s * sat_factor
+		new_l = math.min(100, l + 1)
+
+	-- Blues: can appear inky; gentle desat and a small lift
+	elseif hue > 210 and hue <= 240 then
+		local sat_factor = very_light and 0.65 or 0.75
+		new_s = s * sat_factor
+		new_l = math.min(100, l + 1)
+
+	-- Purples: can look inky; desaturate and lift a touch
+	elseif hue > 240 and hue <= 320 then
+		local sat_factor = very_light and 0.50 or 0.60
+		new_s = s * sat_factor
+		new_l = math.min(100, l + 1)
+
+	-- Pinks/magentas: clip intensity to avoid neon glare
+	elseif hue > 320 and hue <= 350 then
+		local sat_factor = very_light and 0.45 or 0.55
+		new_s = s * sat_factor
+		new_l = math.min(100, l + (very_light and 1 or 2))
+
+	-- Warm reds/oranges
+	elseif (hue >= 0 and hue < 40) or (hue > 340) then
+		new_s = s * 0.70
+	end
+
+	-- Extra guard: if background is already very light, cap saturation further
+	if very_light and new_s > 70 then
+		new_s = 70 + ((new_s - 70) * 0.5)
+	end
+
+	-- Prevent chalky glow on extremely bright backgrounds
+	if l > 92 then
+		new_s = math.min(new_s, 55)
+	end
+
+	return new_s, new_l
+end
+
+--- Softer hue-aware desaturation for foreground/UI accents
+--- Keeps contrast targets intact while taming neon-prone hues
+--- @param h number Hue (0-360)
+--- @param s number Saturation (0-100)
+--- @param l number Lightness (0-100)
+--- @return number, number Adjusted saturation and lightness
+local function soften_light_hue(h, s, l)
+	local hue = h % 360
+	local new_s, new_l = s, l
+	local very_light = l >= 90
+
+	-- Preserve neutrals
+	if s < 10 then
+		return new_s, new_l
+	end
+
+	-- Moderated factors (gentler than background handling)
+	if hue >= 60 and hue <= 170 then -- yellow-greens
+		new_s = s * (very_light and 0.55 or 0.65)
+	elseif hue >= 40 and hue < 60 then -- warm yellows
+		new_s = s * 0.65
+	elseif hue > 170 and hue <= 210 then -- cyans/teals
+		new_s = s * (very_light and 0.70 or 0.78)
+	elseif hue > 210 and hue <= 240 then -- blues
+		new_s = s * (very_light and 0.72 or 0.80)
+	elseif hue > 240 and hue <= 320 then -- purples/indigos
+		new_s = s * (very_light and 0.65 or 0.72)
+	elseif hue > 320 and hue <= 350 then -- pinks/magentas
+		new_s = s * (very_light and 0.60 or 0.68)
+	elseif (hue >= 0 and hue < 40) or (hue > 350) then -- warm reds/oranges wrap
+		new_s = s * 0.82
+	end
+
+	-- Cap saturation on extremely bright values to avoid chalky glow
+	if l > 92 then
+		new_s = math.min(new_s, 60)
+	end
+
+	return new_s, new_l
+end
+
 --- Apply light intensity transformation to a background color
 --- @param base_color string Base color (typically dark mode fg.core)
 --- @param intensity_level number Intensity level (1-5)
@@ -45,6 +155,9 @@ function M.apply_light_intensity(base_color, intensity_level)
 		new_sat = 100
 		new_light = 84
 	end
+
+	-- Apply outlier adjustments for problematic hues
+	new_sat, new_light = adjust_background_outliers(new_hue, new_sat, new_light)
 
 	return color_utils.hsl_to_rgb(new_hue, new_sat, new_light)
 end
@@ -113,6 +226,7 @@ function M.generate_light_foregrounds(dark_fg, light_bg_core, intensity_level, c
 			local h, s, _ = color_utils.rgb_to_hsl(source_color)
 			-- Reduce saturation for subtlety (50% of original)
 			local new_s = s * 0.5
+			new_s, target_l = soften_light_hue(h, new_s, target_l)
 			result[key] = color_utils.hsl_to_rgb(h, new_s, target_l)
 
 			-- Apply contrast target if specified
@@ -291,7 +405,9 @@ function M.generate_light_ui(dark_ui, light_bg, intensity_level, contrast_target
 		if dark_ui[key] and type(dark_ui[key]) == "string" then
 			local h, s, _ = color_utils.rgb_to_hsl(dark_ui[key])
 			local base_l = 30 - ((intensity_level - 1) * 2)
-			result[key] = color_utils.hsl_to_rgb(h, s * 0.75, base_l)
+			local new_s = s * 0.75
+			new_s, base_l = soften_light_hue(h, new_s, base_l)
+			result[key] = color_utils.hsl_to_rgb(h, new_s, base_l)
 
 			-- Apply contrast target
 			local target_ratio = contrast_targets[key] or default_targets[key] or 7.0
@@ -311,7 +427,8 @@ function M.generate_light_ui(dark_ui, light_bg, intensity_level, contrast_target
 	if dark_ui.match then
 		local h, _, _ = color_utils.rgb_to_hsl(dark_ui.match.bg or "#000000")
 		-- Create a saturated mid-tone background
-		local match_bg = color_utils.hsl_to_rgb(h, 70, 70)
+		local match_s, match_l = soften_light_hue(h, 70, 70)
+		local match_bg = color_utils.hsl_to_rgb(h, match_s, match_l)
 		local match_fg = color_utils.hsl_to_rgb(h, 80, 15)
 		result.match = { bg = match_bg, fg = match_fg }
 	end
@@ -319,18 +436,22 @@ function M.generate_light_ui(dark_ui, light_bg, intensity_level, contrast_target
 	-- Search colors
 	if dark_ui.search then
 		local h, _, _ = color_utils.rgb_to_hsl(dark_ui.search.bg or "#000000")
+		local s1, l1 = soften_light_hue(h, 65, 75)
+		local s2, l2 = soften_light_hue(h, 85, 18)
 		result.search = {
-			bg = color_utils.hsl_to_rgb(h, 65, 75),
-			fg = color_utils.hsl_to_rgb(h, 85, 18),
+			bg = color_utils.hsl_to_rgb(h, s1, l1),
+			fg = color_utils.hsl_to_rgb(h, s2, l2),
 		}
 	end
 
 	-- Current search (more prominent)
 	if dark_ui.curSearch then
 		local h, _, _ = color_utils.rgb_to_hsl(dark_ui.curSearch.bg or "#000000")
+		local s1, l1 = soften_light_hue(h, 75, 65)
+		local s2, l2 = soften_light_hue(h, 90, 12)
 		result.curSearch = {
-			bg = color_utils.hsl_to_rgb(h, 75, 65),
-			fg = color_utils.hsl_to_rgb(h, 90, 12),
+			bg = color_utils.hsl_to_rgb(h, s1, l1),
+			fg = color_utils.hsl_to_rgb(h, s2, l2),
 		}
 	end
 
@@ -354,7 +475,8 @@ function M.generate_light_ui(dark_ui, light_bg, intensity_level, contrast_target
 			if type(colors) == "table" and colors.fg then
 				local h, _, _ = color_utils.rgb_to_hsl(colors.fg)
 				-- Create vibrant, darker background (higher saturation, lower lightness)
-				local diag_bg = color_utils.hsl_to_rgb(h, 55, 70)
+				local adj_s, adj_l = soften_light_hue(h, 55, 70)
+				local diag_bg = color_utils.hsl_to_rgb(h, adj_s, adj_l)
 				-- Generate dark foreground from the same hue for AAA contrast
 				local diag_fg = color_utils.hsl_to_rgb(h, 80, 15)
 				-- Ensure AAA contrast (7.0:1) against the background
