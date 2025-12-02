@@ -31,7 +31,7 @@ M.defaults = {
 	dark_style = "auto",          -- "auto" uses `style`, or specify a dark theme (e.g., "sol", "canyon")
 	light_style = "auto",         -- "auto" uses `style`, or specify a light theme (e.g., "day")
 	use_legacy_comments = false,  -- Applies to `desert` only. Uses vibrant skyblue for comments
-	themed_syntax = true,         -- Use theme primary color for statements/keywords (dark themes only)
+	themed_syntax = true,         -- Use theme primary color for statements/conditionals
 	light_intensity = 2,          -- Light background intensity (1-5): 1=subtle, 5=saturated
 	palette_overrides = {},
 	highlight_overrides = {},

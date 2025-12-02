@@ -143,7 +143,7 @@ function M.generate_light_syntax(dark_syntax, light_bg_core, intensity_level, co
 		type = 7.5,
 		string = 7.5,
 		func = 7.5,
-		keyword = 7.5,
+		conditional = 7.5,
 
 		-- Standard AAA
 		identifier = 7.0,
@@ -191,7 +191,7 @@ function M.generate_light_syntax(dark_syntax, light_bg_core, intensity_level, co
 			"builtinFunc",
 			"statement",
 			"exception",
-			"keyword",
+			"conditional",
 			"special",
 			"operator",
 			"punctuation",

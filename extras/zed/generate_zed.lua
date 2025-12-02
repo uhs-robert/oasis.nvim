@@ -55,9 +55,9 @@ local function generate_zed_theme(name, palette)
 			selection = color_utils.with_alpha(palette.syntax.constant, "3d"),
 		},
 		{
-			cursor = palette.syntax.keyword,
-			background = palette.syntax.keyword,
-			selection = color_utils.with_alpha(palette.syntax.keyword, "3d"),
+			cursor = palette.syntax.conditional,
+			background = palette.syntax.conditional,
+			selection = color_utils.with_alpha(palette.syntax.conditional, "3d"),
 		},
 	}
 
@@ -309,7 +309,7 @@ local function generate_zed_theme(name, palette)
 
 						-- Constructor
 						constructor = {
-							color = palette.syntax.keyword,
+							color = palette.syntax.conditional,
 							font_style = nil,
 							font_weight = nil,
 						},
@@ -328,7 +328,7 @@ local function generate_zed_theme(name, palette)
 							font_weight = nil,
 						},
 						["emphasis.strong"] = {
-							color = palette.syntax.keyword,
+							color = palette.syntax.conditional,
 							font_style = nil,
 							font_weight = 700,
 						},
@@ -356,14 +356,14 @@ local function generate_zed_theme(name, palette)
 
 						-- Keywords
 						keyword = {
-							color = palette.syntax.keyword,
+							color = palette.syntax.statement,
 							font_style = nil,
 							font_weight = nil,
 						},
 
 						-- Labels
 						label = {
-							color = palette.syntax.keyword,
+							color = palette.syntax.statement,
 							font_style = nil,
 							font_weight = nil,
 						},

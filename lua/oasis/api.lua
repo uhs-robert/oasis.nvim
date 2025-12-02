@@ -78,7 +78,7 @@ local function create_themed_syntax_command(oasis_module)
 	vim.api.nvim_create_user_command("OasisThemedSyntax", function()
 		oasis_module.toggle_themed_syntax()
 	end, {
-		desc = "Toggle themed syntax using primary color for statements/keywords (dark themes only)",
+		desc = "Toggle themed syntax using primary color for statements/conditionals (dark themes only)",
 	})
 end
 

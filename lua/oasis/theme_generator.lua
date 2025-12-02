@@ -138,7 +138,7 @@ return function(c)
 
     Statement                  = { fg=c.syntax.statement }, -- (*) Any statement
     Keyword                    = { fg=c.syntax.statement }, --   any other keyword
-    Conditional                = { fg=c.syntax.keyword }, --   if, then, else, endif, switch, etc. //FIX: keyword is actually going to conditonal
+    Conditional                = { fg=c.syntax.conditional }, --   if, then, else, endif, switch, etc.
     Repeat                     = "Conditional", --   for, do, while, etc.
     Label                      = "Conditional", --   case, default, etc.
     Operator                   = { fg=c.syntax.operator }, --   "sizeof", "+", "*", etc.
@@ -252,14 +252,14 @@ return function(c)
     -- ["@method"]               = "Function", -- Function
     -- ["@field"]                = "Identifier", -- Identifier
     -- ["@property"]             = "Identifier", -- Identifier
-    ["@constructor"]          = { fg=c.syntax.keyword }, -- Special (e.g. 'Map', 'Set', 'Error')
+    ["@constructor"]          = { fg=c.syntax.conditional }, -- Special (e.g. 'Map', 'Set', 'Error')
     -- ["@conditional"]          = "Conditional", -- Conditional
     -- ["@repeat"]               = "Repeat", -- Repeat
     -- ["@label"]                = "Label", -- Label
     ["@operator"]             = { fg=c.syntax.operator, bold=true }, -- Operator
 
     ["@keyword"]              = "Statement", --  Keyword misc not fitting into specific categories
-    -- ["@keyword.coroutine"]    = { fg=c.syntax.keyword }, -- Keyword coroutines (e.g. `go` in Go, `async/await` in Python)
+    -- ["@keyword.coroutine"]    = { fg=c.syntax.conditional }, -- Keyword coroutines (e.g. `go` in Go, `async/await` in Python)
     ["@keyword.operator"]     = { fg=c.syntax.operator, bold=true }, -- Keyword English words (e.g. `and`, `or`)
     ["@keyword.import"]       = "PreProc", -- Keyword  (e.g. `import`, `from` in Python)
     ["@keyword.return"]       = { fg=c.syntax.exception, italic=true }, -- Keyword -- `return` and `yield`
