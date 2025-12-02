@@ -126,39 +126,27 @@ local function main()
 
 	print(string.format("Found %d palette(s)\n", #palette_names))
 
-	local success_count = 0
-	local error_count = 0
+	local success_count, error_count = utils.for_each_palette_mode(function(name, palette, mode)
+		-- Build variant name (append mode suffix for dual-mode palettes)
+		local variant_name = mode and (name .. "_" .. mode) or name
 
-	for _, name in ipairs(palette_names) do
-		local success, err = pcall(function()
-			local palette = utils.load_palette(name)
+		-- Generate merged theme file
+		local merged = generate_merged_theme(variant_name, palette)
 
-			-- Generate merged theme file
-			local merged = generate_merged_theme(name, palette)
+		-- Create flavor directory and write flavor.toml file
+		-- Use hyphen format for directory name (oasis-lagoon.yazi)
+		local flavor_dir = string.format("extras/yazi/flavors/oasis-%s.yazi", variant_name:gsub("_", "-"))
+		local output_path = string.format("%s/flavor.toml", flavor_dir)
 
-			-- Create flavor directory and write flavor.toml file
-			-- Use hyphen format for directory name (oasis-lagoon.yazi)
-			local flavor_dir = string.format("extras/yazi/flavors/oasis-%s.yazi", name)
-			local output_path = string.format("%s/flavor.toml", flavor_dir)
+		-- Create directory first
+		os.execute(string.format('mkdir -p "%s"', flavor_dir))
 
-			-- Create directory first
-			os.execute(string.format('mkdir -p "%s"', flavor_dir))
-
-			utils.write_file(output_path, merged)
-
-			print(string.format("✓ Generated: %s", output_path))
-
-			success_count = success_count + 1
-		end)
-
-		if not success then
-			print(string.format("✗ Failed: %s - %s", name, err))
-			error_count = error_count + 1
-		end
-	end
+		utils.write_file(output_path, merged)
+		print(string.format("✓ Generated: %s", output_path))
+	end)
 
 	print(string.format("\n=== Summary ==="))
-	print(string.format("Success: %d palettes", success_count))
+	print(string.format("Success: %d", success_count))
 	print(string.format("Errors: %d\n", error_count))
 end
 

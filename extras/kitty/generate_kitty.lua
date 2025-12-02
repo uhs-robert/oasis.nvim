@@ -69,17 +69,16 @@ local function main()
 
 	print(string.format("Found %d palette(s)\n", #palette_names))
 
-	local success_count = 0
-	local error_count = 0
+	local success_count, error_count = utils.for_each_palette_mode(function(name, palette, mode)
+		-- Build variant name (append mode suffix for dual-mode palettes)
+		local variant_name = mode and (name .. "_" .. mode) or name
+		local output_path = string.format("extras/kitty/oasis_%s.conf", variant_name)
 
-	for _, name in ipairs(palette_names) do
-		local palette = utils.load_palette(name)
-		local theme = generate_kitty_theme(name, palette)
-		local kitty_path = string.format("extras/kitty/oasis_%s.conf", name)
-		utils.write_file(kitty_path, theme)
-		print(string.format("✓ Generated: %s", kitty_path))
-		success_count = success_count + 1
-	end
+		-- Generate and write theme
+		local theme = generate_kitty_theme(variant_name, palette)
+		utils.write_file(output_path, theme)
+		print(string.format("✓ Generated: %s", output_path))
+	end)
 
 	print(string.format("\n=== Summary ==="))
 	print(string.format("Success: %d", success_count))
