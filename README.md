@@ -31,6 +31,11 @@ Oasis follows a warm/cool color split philosophy (**warm = action/flow**, **cool
 
 ### Dark Styles
 
+> [!TIP]
+> Click any card below to view the full preview and syntax sample.
+>
+> [↓ Or click here to view all full previews](#view-all-theme-styles)
+
 <table>
   <tr>
     <td align="center"><a href="#night-dark"><img src="assets/screenshots/night-dark-dashboard.png" alt="Night (dark)" width="auto"></a><br><strong>Night</strong><br><em>Night Sky</em></td>
@@ -57,6 +62,24 @@ Oasis follows a warm/cool color split philosophy (**warm = action/flow**, **cool
 
 ### Light Styles
 
+The light styles use an intensity scale from 1-5 set via `:OasisIntensity` or `config` which control background saturation.
+
+#### Light theme intensity scale (Lagoon example)
+
+<table>
+  <tr>
+    <td align="center"><img src="assets/screenshots/lagoon-light-1-dashboard.png" alt="Lagoon light intensity 1" width="auto"><br><strong>1</strong></td>
+    <td align="center"><img src="assets/screenshots/lagoon-light-2-dashboard.png" alt="Lagoon light intensity 2" width="auto"><br><strong>2</strong></td>
+    <td align="center"><img src="assets/screenshots/lagoon-light-3-dashboard.png" alt="Lagoon light intensity 3" width="auto"><br><strong>3</strong></td>
+    <td align="center"><img src="assets/screenshots/lagoon-light-4-dashboard.png" alt="Lagoon light intensity 4" width="auto"><br><strong>4</strong></td>
+    <td align="center"><img src="assets/screenshots/lagoon-light-5-dashboard.png" alt="Lagoon light intensity 5" width="auto"><br><strong>5</strong></td>
+  </tr>
+</table>
+
+<p align="center"><small>Use <code>:OasisIntensity</code> to step through intensity levels 1 → 5 in light mode.</small></p>
+
+The examples below use the default intensity of level 3.
+
 <table>
   <tr>
     <td align="center"><a href="#night-light"><img src="assets/screenshots/night-light-3-dashboard.png" alt="Night (light)" width="auto"></a><br><strong>Night · Light</strong></td>
@@ -80,27 +103,6 @@ Oasis follows a warm/cool color split philosophy (**warm = action/flow**, **cool
     <td align="center"><a href="#rose-light"><img src="assets/screenshots/rose-light-3-dashboard.png" alt="Rose (light)" width="auto"></a><br><strong>Rose · Light</strong></td>
   </tr>
 </table>
-
-<p align="center">
-<small>Light intensity legend: 1 = subtle, 2 = warm, 3 = balanced, 4 = bright, 5 = vivid. Adjust on the fly with <code>:OasisIntensity</code>.</small>
-</p>
-
-> [!TIP]
-> Click any card above to view the full preview and syntax sample.
->
-> [↓ Click here to view all full previews](#view-all-theme-styles)
-
-### Light intensity scale (Lagoon Light example)
-
-<p align="center">
-  <img src="assets/screenshots/lagoon-light-1-dashboard.png" alt="Lagoon light intensity 1" width="150">
-  <img src="assets/screenshots/lagoon-light-2-dashboard.png" alt="Lagoon light intensity 2" width="150">
-  <img src="assets/screenshots/lagoon-light-3-dashboard.png" alt="Lagoon light intensity 3" width="150">
-  <img src="assets/screenshots/lagoon-light-4-dashboard.png" alt="Lagoon light intensity 4" width="150">
-  <img src="assets/screenshots/lagoon-light-5-dashboard.png" alt="Lagoon light intensity 5" width="150">
-</p>
-
-<p align="center"><small>Use <code>:OasisIntensity</code> to step through intensity options 1 → 5 in light mode.</small></p>
 
 ## ✨ Features
 
