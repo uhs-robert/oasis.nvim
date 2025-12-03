@@ -8,7 +8,7 @@ local opts = config.get()
 local seed_dark = require("oasis.color_palettes.oasis_canyon").dark
 local bg_seed = p.theme.night.fg.core
 local light_intensity = 2
-local target_l = 82
+local target_l = { [2] = 82 }
 local contrast_opts = opts.contrast or { min_ratio = 5.8, force_aaa = false }
 local light_bg = light_gen.generate_light_backgrounds(bg_seed, light_intensity, { target_l_core = target_l })
 
@@ -43,7 +43,7 @@ local c = {
 if vim and vim.notify and not vim.g.oasis_deprecated_dawnlight then
 	vim.g.oasis_deprecated_dawnlight = true
 	vim.notify(
-		"Oasis: 'dawnlight' is deprecated and will be removed in a future release. Please migrate to 'day'.",
+		"Oasis: 'dawnlight' is deprecated and will be removed in a future release. Please migrate to 'night' with light_intensity = 2.",
 		vim.log.levels.WARN
 	)
 end

@@ -166,7 +166,7 @@ end
 --- Derives all backgrounds (core, mantle, shadow, surface) from dark fg.core
 --- @param dark_fg_core string Dark mode fg.core color (source of truth)
 --- @param intensity_level number Light intensity (1-5)
---- @param opts? table Optional overrides { target_l_core = number, l_step = number }
+--- @param opts? table Optional overrides { target_l_core = number|table, l_step = number }
 --- @return table Background colors {core, mantle, shadow, surface}
 function M.generate_light_backgrounds(dark_fg_core, intensity_level, opts)
 	-- Generate base bg.core using intensity formula
@@ -177,7 +177,13 @@ function M.generate_light_backgrounds(dark_fg_core, intensity_level, opts)
 
 	-- Optional lightness override for palettes that want a specific band
 	if opts and opts.target_l_core then
-		l = opts.target_l_core
+		local override = opts.target_l_core
+		if type(override) == "table" then
+			override = override[intensity_level]
+		end
+		if override then
+			l = override
+		end
 		core = color_utils.hsl_to_rgb(h, s, l)
 	end
 
