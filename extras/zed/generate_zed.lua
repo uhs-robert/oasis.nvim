@@ -8,7 +8,7 @@ local utils = require("oasis.utils")
 local color_utils = require("oasis.tools.color_utils")
 
 local function generate_zed_theme(name, palette)
-	local display_name = utils.capitalize(name)
+	local display_name = utils.format_display_name(name)
 	local is_light = palette.light_mode or false
 
 	-- Calculate adjusted colors for UI states
@@ -63,11 +63,12 @@ local function generate_zed_theme(name, palette)
 
 	local theme = {
 		["$schema"] = "https://zed.dev/schema/themes/v0.2.0.json",
-		name = "Oasis " .. display_name,
+		name = display_name,
 		author = "sjoeboo",
+		coauthor = "uhs-robert",
 		themes = {
 			{
-				name = "Oasis " .. display_name,
+				name = display_name,
 				appearance = is_light and "light" or "dark",
 				style = {
 					-- Border colors
@@ -543,10 +544,9 @@ local function main()
 
 	print(string.format("Found %d palette(s)\n", #palette_names))
 
-	local success_count, error_count = utils.for_each_palette_mode(function(name, palette, mode)
-		-- Build variant name (append mode suffix for dual-mode palettes)
-		local variant_name = mode and (name .. "_" .. mode) or name
-		local output_path = string.format("extras/zed/oasis_%s.json", variant_name)
+	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
+		-- Build output path using shared utility
+		local output_path, variant_name = utils.build_variant_path("extras/zed", "json", name, mode, intensity)
 
 		-- Generate and write theme
 		local theme = generate_zed_theme(variant_name, palette)
