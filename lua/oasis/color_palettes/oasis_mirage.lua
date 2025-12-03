@@ -6,6 +6,7 @@ local color_utils = require("oasis.tools.color_utils")
 local light_gen = require("oasis.tools.light_theme_generator")
 local opts = config.get()
 local theme = p.theme.mirage
+local force_aaa = opts.contrast and opts.contrast.force_aaa or opts.contrast.min_ratio > 5.8
 
 -- General Reusable Colors
 local ui = {
@@ -35,6 +36,8 @@ local ui = {
 	},
 }
 
+local primary = ui.theme.palette.primary
+
 -- Dark mode palette
 local dark = {
 	bg = ui.bg,
@@ -58,9 +61,9 @@ local dark = {
 		-- Warm: (Control / Flow)
 		func = p.sunset[300],
 		builtinFunc = p.sundown[400], -- (eg. parseInst, Array, Object etc) -- TODO: Sundown could be darker, check cactus too
-		statement = opts.themed_syntax and ui.theme.palette.primary[400] or p.khaki[500], -- (general statement (i.e. var, const))
+		statement = opts.themed_syntax and primary[400] or p.khaki[500], -- (general statement (i.e. var, const))
 		exception = p.red[200], -- (try/catch, return)
-		conditional = opts.themed_syntax and ui.theme.palette.primary[600] or p.khaki[700], -- (Conditionals, Loops)
+		conditional = opts.themed_syntax and force_aaa and primary[600] or primary[700] or p.khaki[700], -- (Conditionals, Loops)
 		special = p.sunset[400], -- (Statement not covered above)
 		operator = p.rose[400],
 		punctuation = p.coral[300],
