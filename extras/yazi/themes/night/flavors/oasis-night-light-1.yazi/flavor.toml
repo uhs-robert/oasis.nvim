@@ -6,8 +6,8 @@
 [mgr]
 cwd = { fg = "#ab5807" }
 
-hovered = { fg = "#4d4d99", bg = "#dddde9" }
-preview_hovered = { fg = "#4d4d99", bg = "#f0f0f5" }
+hovered = { fg = "#524e90", bg = "#dddde9" }
+preview_hovered = { fg = "#524e90", bg = "#f0f0f5" }
 
 find_keyword = { fg = "#deb287", bold = true, italic = true, underline = true }
 find_position = { fg = "#6e631a", bg = "reset", bold = true, italic = true }
@@ -82,7 +82,7 @@ hovered = { fg = "#ab5807", underline = true }
 [which]
 mask = { bg = "#f0f0f5" }
 cand = { fg = "#ab5807" }
-rest = { fg = "#544d94" }
+rest = { fg = "#525086" }
 desc = { fg = "#083142" }
 separator = "  "
 separator_style = { fg = "{{fg_muted}}" }
@@ -92,7 +92,7 @@ separator_style = { fg = "{{fg_muted}}" }
 on = { fg = "#7d2b2b" }
 run = { fg = "#083142" }
 hovered = { reversed = true, bold = true }
-footer = { fg = "#544d94", bg = "#dddde9" }
+footer = { fg = "#525086", bg = "#dddde9" }
 
 # NOTIFY
 [notify]
@@ -115,7 +115,7 @@ rules = [
   { mime = "application/{pdf,doc,rtf,txt,md}", fg = "#306d4d" },
 
   # Fallback
-  { name = "*", fg = "#544d94" },
+  { name = "*", fg = "#525086" },
   { name = "*/", fg = "#083142" },
 ]
 
