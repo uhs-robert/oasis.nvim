@@ -149,6 +149,7 @@ To use the extras, refer to their respective documentation.
 | FZF         | [extras/fzf](extras/fzf)                               |
 | Gemini CLI  | [extras/gemini-cli](extras/gemini-cli)                 |
 | Ghostty     | [extras/ghostty](extras/ghostty)                       |
+| iTerm       | [extras/iterm](extras/iterm)                           |
 | Kitty       | [extras/kitty](extras/kitty)                           |
 | Konsole     | [extras/konsole](extras/konsole)                       |
 | LazyGit     | [extras/lazygit](extras/lazygit)                       |
