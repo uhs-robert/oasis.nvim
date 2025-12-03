@@ -11,8 +11,8 @@ PROJECT_ROOT = File.expand_path('../..', __dir__)
 OUTPUT_DIR = File.join(PROJECT_ROOT, 'assets/screenshots')
 TEMP_DIR = '/tmp/oasis-screenshots'
 
-# All 18 variants in order (dark themes, then light themes)
-VARIANTS = %w[
+# Dual-mode themes (have both dark and light variants)
+DUAL_MODE_THEMES = %w[
   night
   midnight
   abyss
@@ -26,6 +26,10 @@ VARIANTS = %w[
   lagoon
   twilight
   rose
+].freeze
+
+# Single-mode themes (light-only variants)
+SINGLE_MODE_THEMES = %w[
   dawn
   dawnlight
   day
@@ -33,8 +37,14 @@ VARIANTS = %w[
   dust
 ].freeze
 
+# Generate all variants (dual-mode get both dark and light, single-mode as-is)
+VARIANTS = (
+  DUAL_MODE_THEMES.flat_map { |theme| ["#{theme}_dark", "#{theme}_light"] } +
+  SINGLE_MODE_THEMES
+).freeze
+
 # Testing single variant
-# VARIANTS = %w[canyon]
+# VARIANTS = %w[canyon_dark canyon_light]
 
 # Tmux configuration manager for screenshot generation
 module TmuxConfigManager
@@ -60,8 +70,9 @@ module TmuxConfigManager
 
   def update_flavor(variant)
     content = File.read(TMUX_CONFIG)
+    # Match word characters and underscores for dual-mode variants (e.g., canyon_dark)
     updated = content.gsub(
-      /set -g @oasis_flavor ["']?\w+["']?/,
+      /set -g @oasis_flavor ["']?[\w_]+["']?/,
       "set -g @oasis_flavor \"#{variant}\""
     )
 
@@ -93,6 +104,11 @@ class ScreenshotWorkflow
     @instance_name = "oasis-screenshot-#{variant}"
     @kitty = KittyController.new(@instance_name)
     @screenshot_capture = screenshot_capture
+
+    # Parse variant to extract base name and mode
+    # e.g., "canyon_dark" -> base="canyon", mode="dark"
+    #       "dawn" -> base="dawn", mode=nil
+    @base_name, @mode = parse_variant(variant)
   end
 
   def run
@@ -104,6 +120,16 @@ class ScreenshotWorkflow
 
   private
 
+  def parse_variant(variant)
+    if variant.end_with?('_dark')
+      [variant.gsub(/_dark$/, ''), 'dark']
+    elsif variant.end_with?('_light')
+      [variant.gsub(/_light$/, ''), 'light']
+    else
+      [variant, nil]
+    end
+  end
+
   def launch_terminal
     puts '  Launching Kitty terminal...'
     @kitty.launch
@@ -114,7 +140,14 @@ class ScreenshotWorkflow
     @kitty.send_keys("cd #{PROJECT_ROOT}")
     @kitty.send_keys('nvim')
     sleep 1
-    @kitty.send_keys(":set termguicolors | colorscheme oasis-#{@variant}")
+
+    # For dual-mode themes, set background before applying colorscheme
+    if @mode
+      @kitty.send_keys(":set termguicolors | set background=#{@mode} | colorscheme oasis-#{@base_name}")
+    else
+      @kitty.send_keys(":set termguicolors | colorscheme oasis-#{@base_name}")
+    end
+
     @screenshot_capture.capture(@instance_name, @variant, 'dashboard')
   end
 
@@ -143,12 +176,14 @@ class ScreenshotCapture
   end
 
   def capture(instance_name, variant, type)
-    temp_file = File.join(@temp_dir, "#{variant}-#{type}.png")
-    final_file = File.join(@output_dir, "#{variant}-#{type}.png")
+    # Convert underscore to hyphen for filename (e.g., canyon_dark -> canyon-dark)
+    filename_variant = variant.gsub('_', '-')
+    temp_file = File.join(@temp_dir, "#{filename_variant}-#{type}.png")
+    final_file = File.join(@output_dir, "#{filename_variant}-#{type}.png")
 
     puts "  Capturing #{type} screenshot..."
     focus_window(instance_name)
-    take_screenshot(variant, type, temp_file)
+    take_screenshot(filename_variant, type, temp_file)
     move_to_final_location(temp_file, final_file)
 
     puts "  Saved: #{final_file}"
@@ -353,7 +388,8 @@ class ScreenshotGenerator
     puts "\n#{'=' * 60}"
 
     if @errors.empty?
-      puts "SUCCESS! All #{VARIANTS.count * 2} screenshots generated"
+      total_screenshots = VARIANTS.count * 2  # 2 screenshots per variant (dashboard + code)
+      puts "SUCCESS! All #{total_screenshots} screenshots generated (#{VARIANTS.count} variants)"
       puts "Output directory: #{OUTPUT_DIR}"
     else
       puts "Completed with #{@errors.count} error(s):"
