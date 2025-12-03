@@ -115,7 +115,7 @@ local theme = {
 	-- Dark themes
 	desert = {
 		bg = { shadow = "#303030", core = "#333333", mantle = "#444444", surface = "#555555" },
-		fg = { core = "#F9F8F7", strong = "#E5D9CE", dim = "#857262", muted = "#566B76", comment = "#6D90A8" },
+		fg = { core = "#F7EDE1", strong = "#E5D9CE", dim = "#857262", muted = "#566B76", comment = "#6D90A8" },
 	},
 	abyss = {
 		bg = { shadow = "#050505", core = "#000000", mantle = "#080808", surface = "#1A1A1A" },
