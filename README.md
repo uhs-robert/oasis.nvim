@@ -31,10 +31,9 @@ Oasis follows a warm/cool color split philosophy (**warm = action/flow**, **cool
 
 ### Dark Styles
 
-> [!TIP]
-> Click any card below to view the full preview and syntax sample.
->
-> [↓ Or click here to view all full previews](#view-all-theme-styles)
+Click any card below to view the full preview and syntax sample. [↓ Or click here to view all full previews](#view-all-theme-styles)
+
+#### Dark Previews
 
 <table>
   <tr>
@@ -77,6 +76,8 @@ The light styles use an intensity scale from 1-5 set via `:OasisIntensity` or `c
 </table>
 
 <p align="center"><small>Use <code>:OasisIntensity</code> to step through intensity levels 1 → 5 in light mode.</small></p>
+
+#### Light Previews
 
 The examples below use the default intensity of level 3.
 
@@ -232,7 +233,7 @@ With so many options to choose from why settle for just one? Use the right theme
 
 - A custom theme for when **root** and/or **sudoedit**
 - A custom theme for when **remote**
-- A custom theme for **ANY COMBINATION**
+- A custom theme for **any combination**
 
 Use this example config to have a custom theme for each situation above:
 
@@ -532,7 +533,7 @@ Want to help shape **Oasis.nvim**?
 ![night-dark-code](./assets/screenshots/night-dark-code.png)
 
 <p align="center">
-  <a href="#dark-styles">↑ Back to Dark Styles</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
 <a id="midnight-dark"></a>
@@ -542,7 +543,7 @@ Want to help shape **Oasis.nvim**?
 ![midnight-dark-code](./assets/screenshots/midnight-dark-code.png)
 
 <p align="center">
-  <a href="#dark-styles">↑ Back to Dark Styles</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
 <a id="abyss-dark"></a>
@@ -552,7 +553,7 @@ Want to help shape **Oasis.nvim**?
 ![abyss-dark-code](./assets/screenshots/abyss-dark-code.png)
 
 <p align="center">
-  <a href="#dark-styles">↑ Back to Dark Styles</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
 <a id="starlight-dark"></a>
@@ -562,7 +563,7 @@ Want to help shape **Oasis.nvim**?
 ![starlight-dark-code](./assets/screenshots/starlight-dark-code.png)
 
 <p align="center">
-  <a href="#dark-styles">↑ Back to Dark Styles</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
 <a id="desert-dark"></a>
@@ -572,7 +573,7 @@ Want to help shape **Oasis.nvim**?
 ![desert-dark-code](./assets/screenshots/desert-dark-code.png)
 
 <p align="center">
-  <a href="#dark-styles">↑ Back to Dark Styles</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
 <a id="sol-dark"></a>
@@ -582,7 +583,7 @@ Want to help shape **Oasis.nvim**?
 ![sol-dark-code](./assets/screenshots/sol-dark-code.png)
 
 <p align="center">
-  <a href="#dark-styles">↑ Back to Dark Styles</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
 <a id="canyon-dark"></a>
@@ -592,7 +593,7 @@ Want to help shape **Oasis.nvim**?
 ![canyon-dark-code](./assets/screenshots/canyon-dark-code.png)
 
 <p align="center">
-  <a href="#dark-styles">↑ Back to Dark Styles</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
 <a id="dune-dark"></a>
@@ -602,7 +603,7 @@ Want to help shape **Oasis.nvim**?
 ![dune-dark-code](./assets/screenshots/dune-dark-code.png)
 
 <p align="center">
-  <a href="#dark-styles">↑ Back to Dark Styles</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
 <a id="cactus-dark"></a>
@@ -612,7 +613,7 @@ Want to help shape **Oasis.nvim**?
 ![cactus-dark-code](./assets/screenshots/cactus-dark-code.png)
 
 <p align="center">
-  <a href="#dark-styles">↑ Back to Dark Styles</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
 <a id="mirage-dark"></a>
@@ -622,7 +623,7 @@ Want to help shape **Oasis.nvim**?
 ![mirage-dark-code](./assets/screenshots/mirage-dark-code.png)
 
 <p align="center">
-  <a href="#dark-styles">↑ Back to Dark Styles</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
 <a id="lagoon-dark"></a>
@@ -632,7 +633,7 @@ Want to help shape **Oasis.nvim**?
 ![lagoon-dark-code](./assets/screenshots/lagoon-dark-code.png)
 
 <p align="center">
-  <a href="#dark-styles">↑ Back to Dark Styles</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
 <a id="twilight-dark"></a>
@@ -642,7 +643,7 @@ Want to help shape **Oasis.nvim**?
 ![twilight-dark-code](./assets/screenshots/twilight-dark-code.png)
 
 <p align="center">
-  <a href="#dark-styles">↑ Back to Dark Styles</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
 <a id="rose-dark"></a>
@@ -652,7 +653,7 @@ Want to help shape **Oasis.nvim**?
 ![rose-dark-code](./assets/screenshots/rose-dark-code.png)
 
 <p align="center">
-  <a href="#dark-styles">↑ Back to Dark Styles</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
 ### Light previews
@@ -664,7 +665,7 @@ Want to help shape **Oasis.nvim**?
 ![night-light-3-code](./assets/screenshots/night-light-3-code.png)
 
 <p align="center">
-  <a href="#light-styles">↑ Back to Light Styles</a>
+  <a href="#light-previews">↑ Back to Light Styles</a>
 </p>
 
 <a id="midnight-light"></a>
@@ -674,7 +675,7 @@ Want to help shape **Oasis.nvim**?
 ![midnight-light-3-code](./assets/screenshots/midnight-light-3-code.png)
 
 <p align="center">
-  <a href="#light-styles">↑ Back to Light Styles</a>
+  <a href="#light-previews">↑ Back to Light Styles</a>
 </p>
 
 <a id="abyss-light"></a>
@@ -684,7 +685,7 @@ Want to help shape **Oasis.nvim**?
 ![abyss-light-3-code](./assets/screenshots/abyss-light-3-code.png)
 
 <p align="center">
-  <a href="#light-styles">↑ Back to Light Styles</a>
+  <a href="#light-previews">↑ Back to Light Styles</a>
 </p>
 
 <a id="starlight-3-light"></a>
@@ -694,7 +695,7 @@ Want to help shape **Oasis.nvim**?
 ![starlight-light-3-code](./assets/screenshots/starlight-light-3-code.png)
 
 <p align="center">
-  <a href="#light-styles">↑ Back to Light Styles</a>
+  <a href="#light-previews">↑ Back to Light Styles</a>
 </p>
 
 <a id="desert-light"></a>
@@ -704,7 +705,7 @@ Want to help shape **Oasis.nvim**?
 ![desert-light-3-code](./assets/screenshots/desert-light-3-code.png)
 
 <p align="center">
-  <a href="#light-styles">↑ Back to Light Styles</a>
+  <a href="#light-previews">↑ Back to Light Styles</a>
 </p>
 
 <a id="sol-light"></a>
@@ -714,7 +715,7 @@ Want to help shape **Oasis.nvim**?
 ![sol-light-3-code](./assets/screenshots/sol-light-3-code.png)
 
 <p align="center">
-  <a href="#light-styles">↑ Back to Light Styles</a>
+  <a href="#light-previews">↑ Back to Light Styles</a>
 </p>
 
 <a id="canyon-light"></a>
@@ -724,7 +725,7 @@ Want to help shape **Oasis.nvim**?
 ![canyon-light-3-code](./assets/screenshots/canyon-light-3-code.png)
 
 <p align="center">
-  <a href="#light-styles">↑ Back to Light Styles</a>
+  <a href="#light-previews">↑ Back to Light Styles</a>
 </p>
 
 <a id="dune-light"></a>
@@ -734,7 +735,7 @@ Want to help shape **Oasis.nvim**?
 ![dune-light-3-code](./assets/screenshots/dune-light-3-code.png)
 
 <p align="center">
-  <a href="#light-styles">↑ Back to Light Styles</a>
+  <a href="#light-previews">↑ Back to Light Styles</a>
 </p>
 
 <a id="cactus-light"></a>
@@ -744,7 +745,7 @@ Want to help shape **Oasis.nvim**?
 ![cactus-light-3-code](./assets/screenshots/cactus-light-3-code.png)
 
 <p align="center">
-  <a href="#light-styles">↑ Back to Light Styles</a>
+  <a href="#light-previews">↑ Back to Light Styles</a>
 </p>
 
 <a id="mirage-light"></a>
@@ -754,7 +755,7 @@ Want to help shape **Oasis.nvim**?
 ![mirage-light-3-code](./assets/screenshots/mirage-light-3-code.png)
 
 <p align="center">
-  <a href="#light-styles">↑ Back to Light Styles</a>
+  <a href="#light-previews">↑ Back to Light Styles</a>
 </p>
 
 <a id="lagoon-light"></a>
@@ -764,7 +765,7 @@ Want to help shape **Oasis.nvim**?
 ![lagoon-light-3-code](./assets/screenshots/lagoon-light-3-code.png)
 
 <p align="center">
-  <a href="#light-styles">↑ Back to Light Styles</a>
+  <a href="#light-previews">↑ Back to Light Styles</a>
 </p>
 
 <a id="twilight-3-light"></a>
@@ -774,7 +775,7 @@ Want to help shape **Oasis.nvim**?
 ![twilight-light-3-code](./assets/screenshots/twilight-light-3-code.png)
 
 <p align="center">
-  <a href="#light-styles">↑ Back to Light Styles</a>
+  <a href="#light-previews">↑ Back to Light Styles</a>
 </p>
 
 <a id="rose-light"></a>
@@ -784,7 +785,7 @@ Want to help shape **Oasis.nvim**?
 ![rose-light-3-code](./assets/screenshots/rose-light-3-code.png)
 
 <p align="center">
-  <a href="#light-styles">↑ Back to Light Styles</a>
+  <a href="#light-previews">↑ Back to Light Styles</a>
 </p>
 
   <!-- all-styles:end -->
