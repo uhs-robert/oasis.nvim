@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_dust.toml
+## name: Oasis Dust
+## author: uhs-robert
+
+[colors]
+foreground = "#181309"
+background= "#D4B165"
+cursor_bg= "#2e2a06"
+cursor_border= "#2e2a06"
+cursor_fg= "#C9A55A"
+selection_bg= "#C39E4F"
+selection_fg= "#C9A55A"
+split= "#752424"
+compose_cursor= "#432100"
+scrollbar_thumb= "#C39E4F"
+visual_bell= "#C9A55A"
+
+ansi = [
+  '#2a2a2a',
+  '#5f2525',
+  '#1c3e2c',
+  '#3c3814',
+  '#0c366e',
+  '#4b1688',
+  '#1f3c39',
+  '#2c2a26',
+]
+
+brights = [
+  '#2a2a2a',
+  '#720c0c',
+  '#1f3f17',
+  '#542e08',
+  '#163c4b',
+  '#4a1789',
+  '#1f3c38',
+  '#3f2406',
+]
+
+[colors.indexed]
+16 = '#432100'
+17 = '#570b0b'
+
+[colors.tab_bar]
+background = '#C9A55A'
+inactive_tab_edge = '#CFA955'
+
+[colors.tab_bar.active_tab]
+bg_color = '#752424'
+fg_color = '#D4B165'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#C39E4F'
+fg_color = '#D4B165'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#C9A55A'
+fg_color = '#D4B165'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#11426e'
+fg_color = '#D4B165'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#11426e'
+fg_color = '#D4B165'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Dust'

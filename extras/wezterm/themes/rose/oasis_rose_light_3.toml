@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_rose_light_3.toml
+## name: Oasis Rose Light 3
+## author: uhs-robert
+
+[colors]
+foreground = "#594353"
+background= "#f4ddee"
+cursor_bg= "#ab1318"
+cursor_border= "#ab1318"
+cursor_fg= "#f0d1e8"
+selection_bg= "#e9badd"
+selection_fg= "#f0d1e8"
+split= "#8b2222"
+compose_cursor= "#5e451b"
+scrollbar_thumb= "#e9badd"
+visual_bell= "#f0d1e8"
+
+ansi = [
+  '#494949',
+  '#903939',
+  '#2b5f43',
+  '#5d561f',
+  '#1253a9',
+  '#7122cf',
+  '#305d57',
+  '#4c4942',
+]
+
+brights = [
+  '#494949',
+  '#ab1111',
+  '#306023',
+  '#81470d',
+  '#215c73',
+  '#7022d0',
+  '#2f5d57',
+  '#6c3f0b',
+]
+
+[colors.indexed]
+16 = '#5e451b'
+17 = '#605617'
+
+[colors.tab_bar]
+background = '#f0d1e8'
+inactive_tab_edge = '#edc6e2'
+
+[colors.tab_bar.active_tab]
+bg_color = '#910303'
+fg_color = '#f4ddee'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#e9badd'
+fg_color = '#f4ddee'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#f0d1e8'
+fg_color = '#f4ddee'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#90800e'
+fg_color = '#f4ddee'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#196685'
+fg_color = '#f4ddee'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Rose Light 3'

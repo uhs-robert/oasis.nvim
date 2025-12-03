@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_abyss_light_4.toml
+## name: Oasis Abyss Light 4
+## author: uhs-robert
+
+[colors]
+foreground = "#4a403c"
+background= "#f5cfc7"
+cursor_bg= "#971e22"
+cursor_border= "#971e22"
+cursor_fg= "#f3c4ba"
+selection_bg= "#eeaea0"
+selection_fg= "#f3c4ba"
+split= "#663333"
+compose_cursor= "#5f3917"
+scrollbar_thumb= "#eeaea0"
+visual_bell= "#f3c4ba"
+
+ansi = [
+  '#424242',
+  '#843434',
+  '#27573e',
+  '#554f1c',
+  '#114c9b',
+  '#681fbe',
+  '#2c5550',
+  '#44423b',
+]
+
+brights = [
+  '#424242',
+  '#9e0f0f',
+  '#2c5820',
+  '#76400c',
+  '#1e5469',
+  '#671fbf',
+  '#2b554f',
+  '#61390a',
+]
+
+[colors.indexed]
+16 = '#5f3917'
+17 = '#544f26'
+
+[colors.tab_bar]
+background = '#f3c4ba'
+inactive_tab_edge = '#f0b9ad'
+
+[colors.tab_bar.active_tab]
+bg_color = '#692121'
+fg_color = '#f5cfc7'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#eeaea0'
+fg_color = '#f5cfc7'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#f3c4ba'
+fg_color = '#f5cfc7'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#924901'
+fg_color = '#f5cfc7'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#32625a'
+fg_color = '#f5cfc7'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Abyss Light 4'

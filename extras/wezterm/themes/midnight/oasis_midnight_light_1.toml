@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_midnight_light_1.toml
+## name: Oasis Midnight Light 1
+## author: uhs-robert
+
+[colors]
+foreground = "#5c534c"
+background= "#f9f6f5"
+cursor_bg= "#b7292e"
+cursor_border= "#b7292e"
+cursor_fg= "#f3edeb"
+selection_bg= "#e8dcd8"
+selection_fg= "#f3edeb"
+split= "#814242"
+compose_cursor= "#784a1c"
+scrollbar_thumb= "#e8dcd8"
+visual_bell= "#f3edeb"
+
+ansi = [
+  '#545454',
+  '#a44040',
+  '#2f6c4c',
+  '#696223',
+  '#155dc0',
+  '#7f30dd',
+  '#376962',
+  '#57544c',
+]
+
+brights = [
+  '#545454',
+  '#c11313',
+  '#366d27',
+  '#92500e',
+  '#266783',
+  '#7e30dd',
+  '#356a61',
+  '#7c480c',
+]
+
+[colors.indexed]
+16 = '#784a1c'
+17 = '#6c6119'
+
+[colors.tab_bar]
+background = '#f3edeb'
+inactive_tab_edge = '#eee5e2'
+
+[colors.tab_bar.active_tab]
+bg_color = '#7d2b2b'
+fg_color = '#f9f6f5'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#e8dcd8'
+fg_color = '#f9f6f5'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#f3edeb'
+fg_color = '#f9f6f5'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#ab5907'
+fg_color = '#f9f6f5'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#3e756c'
+fg_color = '#f9f6f5'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Midnight Light 1'

@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_twilight_light_5.toml
+## name: Oasis Twilight Light 5
+## author: uhs-robert
+
+[colors]
+foreground = "#3b3351"
+background= "#cac2f0"
+cursor_bg= "#6012a9"
+cursor_border= "#6012a9"
+cursor_fg= "#bfb6ed"
+selection_bg= "#aa9de7"
+selection_fg= "#bfb6ed"
+split= "#492375"
+compose_cursor= "#4f3113"
+scrollbar_thumb= "#aa9de7"
+visual_bell= "#bfb6ed"
+
+ansi = [
+  '#383838',
+  '#732d2d',
+  '#224c36',
+  '#4a4518',
+  '#0f4288',
+  '#5c1ba6',
+  '#264a46',
+  '#393832',
+]
+
+brights = [
+  '#383838',
+  '#8a0d0d',
+  '#264d1c',
+  '#67380a',
+  '#1a495c',
+  '#5a1ba6',
+  '#264a45',
+  '#523008',
+]
+
+[colors.indexed]
+16 = '#4f3113'
+17 = '#821d21'
+
+[colors.tab_bar]
+background = '#bfb6ed'
+inactive_tab_edge = '#b5a9ea'
+
+[colors.tab_bar.active_tab]
+bg_color = '#3b0080'
+fg_color = '#cac2f0'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#aa9de7'
+fg_color = '#cac2f0'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#bfb6ed'
+fg_color = '#cac2f0'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#7a6f0f'
+fg_color = '#cac2f0'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#1c6e44'
+fg_color = '#cac2f0'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Twilight Light 5'

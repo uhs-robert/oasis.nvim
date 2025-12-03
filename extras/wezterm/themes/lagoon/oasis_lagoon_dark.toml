@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_lagoon_dark.toml
+## name: Oasis Lagoon Dark
+## author: uhs-robert
+
+[colors]
+foreground = "#D9E6FA"
+background= "#101825"
+cursor_bg= "#58B8FD"
+cursor_border= "#58B8FD"
+cursor_fg= "#1A283F"
+selection_bg= "#5A3824"
+selection_fg= "#1A283F"
+split= "#1CA0FD"
+compose_cursor= "#FF8A1F"
+scrollbar_thumb= "#22385C"
+visual_bell= "#1A283F"
+
+ansi = [
+  '#000000',
+  '#D06666',
+  '#53D390',
+  '#F0E68C',
+  '#519BFF',
+  '#C28EFF',
+  '#5ABAAE',
+  '#DDDBD5',
+]
+
+brights = [
+  '#666666',
+  '#FFA0A0',
+  '#96EA7F',
+  '#FFA247',
+  '#87CEEB',
+  '#D2ADFF',
+  '#8FD1C7',
+  '#FFF9F2',
+]
+
+[colors.indexed]
+16 = '#FF8A1F'
+17 = '#F58888'
+
+[colors.tab_bar]
+background = '#1A283F'
+inactive_tab_edge = '#0F1522'
+
+[colors.tab_bar.active_tab]
+bg_color = '#1CA0FD'
+fg_color = '#101825'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#22385C'
+fg_color = '#101825'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#1A283F'
+fg_color = '#101825'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#FFA247'
+fg_color = '#101825'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#FFA0A0'
+fg_color = '#101825'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Lagoon Dark'

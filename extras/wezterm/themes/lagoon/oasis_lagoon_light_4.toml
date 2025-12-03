@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_lagoon_light_4.toml
+## name: Oasis Lagoon Light 4
+## author: uhs-robert
+
+[colors]
+foreground = "#334561"
+background= "#c9dcf7"
+cursor_bg= "#11528a"
+cursor_border= "#11528a"
+cursor_fg= "#bcd3f5"
+selection_bg= "#a1c2f1"
+selection_fg= "#bcd3f5"
+split= "#1c4766"
+compose_cursor= "#613b18"
+scrollbar_thumb= "#a1c2f1"
+visual_bell= "#bcd3f5"
+
+ansi = [
+  '#444444',
+  '#873535',
+  '#28593f',
+  '#57511d',
+  '#114e9f',
+  '#6a20c2',
+  '#2d5751',
+  '#46443d',
+]
+
+brights = [
+  '#444444',
+  '#a11010',
+  '#2d5a21',
+  '#79420c',
+  '#1f566c',
+  '#691fc3',
+  '#2c5751',
+  '#643a0a',
+]
+
+[colors.indexed]
+16 = '#613b18'
+17 = '#9a1f23'
+
+[colors.tab_bar]
+background = '#bcd3f5'
+inactive_tab_edge = '#aecbf3'
+
+[colors.tab_bar.active_tab]
+bg_color = '#035087'
+fg_color = '#c9dcf7'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#a1c2f1'
+fg_color = '#c9dcf7'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#bcd3f5'
+fg_color = '#c9dcf7'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#924901'
+fg_color = '#c9dcf7'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#920101'
+fg_color = '#c9dcf7'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Lagoon Light 4'

@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_starlight_light_2.toml
+## name: Oasis Starlight Light 2
+## author: uhs-robert
+
+[colors]
+foreground = "#5b5341"
+background= "#f9f5ec"
+cursor_bg= "#1462a7"
+cursor_border= "#1462a7"
+cursor_fg= "#f5efe0"
+selection_bg= "#eee3c9"
+selection_fg= "#f5efe0"
+split= "#23587e"
+compose_cursor= "#77491c"
+scrollbar_thumb= "#eee3c9"
+visual_bell= "#f5efe0"
+
+ansi = [
+  '#545454',
+  '#a23f3f',
+  '#306b4b',
+  '#686123',
+  '#145dbd',
+  '#7e2edd',
+  '#366863',
+  '#56544b',
+]
+
+brights = [
+  '#545454',
+  '#bf1313',
+  '#366c27',
+  '#914f0e',
+  '#256781',
+  '#7d2fdd',
+  '#356961',
+  '#7a470c',
+]
+
+[colors.indexed]
+16 = '#77491c'
+17 = '#b42c2f'
+
+[colors.tab_bar]
+background = '#f5efe0'
+inactive_tab_edge = '#f2e9d5'
+
+[colors.tab_bar.active_tab]
+bg_color = '#075b98'
+fg_color = '#f9f5ec'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#eee3c9'
+fg_color = '#f9f5ec'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#f5efe0'
+fg_color = '#f9f5ec'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#928417'
+fg_color = '#f9f5ec'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#9c540c'
+fg_color = '#f9f5ec'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Starlight Light 2'
