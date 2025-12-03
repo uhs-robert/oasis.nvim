@@ -77,6 +77,11 @@ The light styles use an intensity scale from 1-5 set via `:OasisIntensity` or `c
 
 <p align="center"><small>Use <code>:OasisIntensity</code> to step through intensity levels 1 → 5 in light mode.</small></p>
 
+> [!NOTE]
+> The **Night** variant uses the darkest light backgrounds (lightness 78-84%) compared to the rest.
+>
+> This provides a middle ground between traditional light and dark modes.
+
 #### Light Previews
 
 The examples below use the default intensity of level 3.
