@@ -43,7 +43,7 @@ end
 
 -- Generate manifest.json content
 local function generate_manifest(name, palette)
-	local display_name = utils.capitalize(name)
+	local display_name = utils.format_display_name(name)
 	local theme_name = "oasis-" .. name
 
 	-- Build the manifest structure
@@ -57,7 +57,7 @@ local function generate_manifest(name, palette)
 				strict_min_version = "60.0",
 			},
 		},
-		description = string.format("Soothing desert theme for Thunderbird - Oasis %s", display_name),
+		description = string.format("%s", display_name),
 		icons = {
 			["16"] = "images/icon16.png",
 			["48"] = "images/icon48.png",
@@ -178,7 +178,12 @@ end
 -- Create .xpi file
 local function create_xpi(name, manifest_json)
 	local temp_dir = "/tmp/oasis_thunderbird_" .. name
-	local themes_dir = "extras/thunderbird/themes"
+
+	-- Extract base palette name (e.g., "lagoon" from "lagoon_dark" or "lagoon_light_3")
+	local base_name = name:match("^(.-)_") or name
+	local themes_dir = "extras/thunderbird/themes/" .. base_name
+	os.execute("mkdir -p " .. themes_dir)
+
 	local xpi_path = themes_dir .. "/oasis_" .. name .. ".xpi"
 
 	-- Create temp directory structure
@@ -241,9 +246,18 @@ local function main()
 	local dark_themes = {}
 	local light_themes = {}
 
-	local success_count, error_count = utils.for_each_palette_mode(function(name, palette, mode)
-		-- Build variant name (append mode suffix for dual-mode palettes)
-		local variant_name = mode and (name .. "_" .. mode) or name
+	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
+		-- Build variant name with mode and optional intensity suffix
+		local variant_name
+		if mode then
+			if mode == "dark" then
+				variant_name = name .. "_dark"
+			else
+				variant_name = name .. "_light_" .. intensity
+			end
+		else
+			variant_name = name
+		end
 
 		local manifest = generate_manifest(variant_name, palette)
 		local success = create_xpi(variant_name, manifest)
@@ -252,7 +266,7 @@ local function main()
 			print(string.format("✓ Generated: extras/thunderbird/themes/oasis_%s.xpi", variant_name))
 
 			-- Track for README generation
-			local display_name = utils.capitalize(variant_name)
+			local display_name = utils.format_display_name(variant_name)
 			if palette.light_mode then
 				table.insert(light_themes, { name = variant_name, display = display_name })
 			else
