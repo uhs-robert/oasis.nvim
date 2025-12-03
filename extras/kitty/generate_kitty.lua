@@ -7,11 +7,11 @@ package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local utils = require("oasis.utils")
 
 local function generate_kitty_theme(name, palette)
-	local display_name = utils.capitalize(name)
+	local display_name = utils.format_display_name(name)
 
 	local lines = {
 		"# extras/kitty/oasis_" .. name .. ".conf",
-		"## name: Oasis " .. display_name,
+		"## name: " .. display_name,
 		"## author: uhs-robert",
 		"",
 		"# Palette",
@@ -69,10 +69,9 @@ local function main()
 
 	print(string.format("Found %d palette(s)\n", #palette_names))
 
-	local success_count, error_count = utils.for_each_palette_mode(function(name, palette, mode)
-		-- Build variant name (append mode suffix for dual-mode palettes)
-		local variant_name = mode and (name .. "_" .. mode) or name
-		local output_path = string.format("extras/kitty/oasis_%s.conf", variant_name)
+	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
+		-- Build output path using shared utility
+		local output_path, variant_name = utils.build_variant_path("extras/kitty", "conf", name, mode, intensity)
 
 		-- Generate and write theme
 		local theme = generate_kitty_theme(variant_name, palette)
