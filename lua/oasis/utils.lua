@@ -3,35 +3,66 @@
 
 local M = {}
 
+-- Internal helpers
+--- Build a palette module name from a bare name or fully-qualified string
+--- @param name string Bare palette name (e.g., "lagoon") or module path ("oasis.color_palettes.oasis_lagoon")
+--- @return string module_name Fully-qualified module name
+local function build_palette_module_name(name)
+	-- Accept either a fully qualified module path or a bare palette name
+	if name:match("^oasis%.color_palettes%.") then
+		return name
+	end
+
+	local palette_name = name
+	if not palette_name:match("^oasis_") then
+		palette_name = "oasis_" .. palette_name
+	end
+
+	return "oasis.color_palettes." .. palette_name
+end
+
+--- Require a palette module safely
+--- @param module_name string Fully-qualified module name
+--- @return table|nil palette Loaded palette or nil on failure
+--- @return string|nil err Error message when palette is nil
+local function require_palette(module_name)
+	local ok, palette = pcall(require, module_name)
+	if not ok then
+		return nil, "Failed to load palette: " .. palette
+	end
+	return palette, nil
+end
+
+--- Extract a specific variant from a palette, handling dual-mode automatically
+--- @param palette table Palette table
+--- @param mode string|nil Explicit mode to select ("dark" or "light")
+--- @param fallback_mode string|nil Mode used when mode is nil (defaults to "dark")
+--- @return table|nil extracted Palette variant or original palette for legacy tables
+--- @return string|nil err Error message (currently nil, reserved for parity)
+local function extract_palette_variant(palette, mode, fallback_mode)
+	if M.is_dual_mode_palette(palette) then
+		local selected_mode = mode or fallback_mode or "dark"
+		return palette[selected_mode], nil
+	end
+	return palette, nil
+end
+
 --- Detect project root directory by looking for lua/oasis/color_palettes/
 --- @return string|nil Project root path or nil if not found
 function M.find_project_root()
-	-- Try current directory first
-	local handle = assert(io.popen("test -d lua/oasis/color_palettes && pwd"))
-	local result = handle:read("*l")
-	handle:close()
-
-	if result and result ~= "" then
-		return result
-	end
-
-	-- Walk up directory tree
-	handle = assert(io.popen("pwd"))
+	local handle = assert(io.popen("pwd"))
 	local current = handle:read("*l")
 	handle:close()
 
-	-- Try up to 3 levels up
-	for _ = 1, 3 do
-		local test_path = current .. "/lua/oasis/color_palettes"
-		local test_handle = assert(io.popen("test -d '" .. test_path .. "' && echo 'found'"))
-		local test_result = test_handle:read("*l")
+	for _ = 1, 4 do -- current dir + 3 parents
+		local test_handle = assert(io.popen("test -d '" .. current .. "/lua/oasis/color_palettes' && echo found"))
+		local found = test_handle:read("*l")
 		test_handle:close()
 
-		if test_result == "found" then
+		if found == "found" then
 			return current
 		end
 
-		-- Go up one level
 		current = current:match("(.+)/[^/]+$")
 		if not current then
 			break
@@ -73,20 +104,12 @@ end
 --- Get the mode of a palette ('light', 'dark', or 'dual') by inspecting it.
 --- @param palette_name string Palette name (e.g., "oasis_lagoon")
 --- @return string|nil mode ('light', 'dark', 'dual') or nil if palette not found
+--- @return string|nil err Error message when mode is nil
 function M.get_palette_mode(palette_name)
-	local palette_module = "oasis.color_palettes." .. palette_name
-
-	-- Use a fresh require to inspect the module without affecting the main load
-	local original_module = package.loaded[palette_module]
-	package.loaded[palette_module] = nil
-
-	local ok, palette = pcall(require, palette_module)
-
-	-- Restore the original cache state
-	package.loaded[palette_module] = original_module
-
-	if not ok then
-		return nil
+	local palette_module = build_palette_module_name(palette_name)
+	local palette, err = require_palette(palette_module)
+	if not palette then
+		return nil, err
 	end
 
 	if M.is_dual_mode_palette(palette) then
@@ -104,21 +127,13 @@ end
 --- @param explicit_mode string|nil Force a specific mode ("dark" or "light"), overrides background detection
 --- @return table|nil, string|nil Extracted palette or nil, error message
 function M.load_and_extract_palette(palette_name, explicit_mode)
-	-- Load the palette module
-	local ok, palette = pcall(require, palette_name)
-	if not ok then
-		return nil, "Failed to load palette: " .. palette
+	local palette, err = require_palette(palette_name)
+	if not palette then
+		return nil, err
 	end
 
-	-- If dual-mode, extract the appropriate mode
-	if M.is_dual_mode_palette(palette) then
-		-- Use explicit mode if provided, otherwise auto-detect from background
-		local mode = explicit_mode or (vim.o.background == "light" and "light" or "dark")
-		return palette[mode], nil
-	end
-
-	-- Legacy flat palette - return as-is
-	return palette, nil
+	local auto_mode = (vim.o.background == "light" and "light" or "dark")
+	return extract_palette_variant(palette, explicit_mode, auto_mode)
 end
 
 --- Load a palette module by name
@@ -130,26 +145,13 @@ function M.load_palette(name, mode)
 	-- Add project root to package path
 	package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 
-	-- Normalize name - add "oasis_" prefix if missing
-	local palette_name = name
-	if not name:match("^oasis_") then
-		palette_name = "oasis_" .. name
+	local module_name = build_palette_module_name(name)
+	local palette, err = require_palette(module_name)
+	if not palette then
+		return nil, err
 	end
 
-	local ok, palette = pcall(require, "oasis.color_palettes." .. palette_name)
-
-	if not ok then
-		return nil, "Failed to load palette: " .. palette
-	end
-
-	-- If dual-mode palette, extract requested mode
-	if M.is_dual_mode_palette(palette) then
-		local selected_mode = mode or "dark" -- Default to dark if not specified
-		return palette[selected_mode], nil
-	end
-
-	-- Legacy flat palette - return as-is
-	return palette, nil
+	return extract_palette_variant(palette, mode, "dark")
 end
 
 --- Write content to file
@@ -175,7 +177,8 @@ end
 --- @param str string Input string
 --- @return string String with first letter capitalized
 function M.capitalize(str)
-	return str:gsub("^%l", string.upper)
+	local capitalized = str:gsub("^%l", string.upper)
+	return capitalized
 end
 
 --- Format variant name for display (e.g., "lagoon_dark" -> "Oasis Lagoon Dark")
@@ -183,10 +186,10 @@ end
 --- @return string Formatted display name
 function M.format_display_name(variant_name)
 	-- Extract parts: base_name, mode (dark/light), intensity (1-5)
-	local base_name, mode, intensity
+	local base_name, intensity
 
 	-- Try to match dark variant
-	base_name, mode = variant_name:match("^(.+)_(dark)$")
+	base_name, _ = variant_name:match("^(.+)_(dark)$")
 	if base_name then
 		-- Capitalize base name
 		local display_base = M.capitalize(base_name)
@@ -194,7 +197,7 @@ function M.format_display_name(variant_name)
 	end
 
 	-- Try to match light variant with intensity
-	base_name, mode, intensity = variant_name:match("^(.+)_(light)_(%d+)$")
+	base_name, _, intensity = variant_name:match("^(.+)_(light)_(%d+)$")
 	if base_name then
 		-- Capitalize base name
 		local display_base = M.capitalize(base_name)
@@ -213,9 +216,8 @@ end
 function M.find_files(pattern, directory)
 	directory = directory or "."
 	local cmd = string.format("find %s -type f -name '%s' 2>/dev/null | sort", directory, pattern)
-	local handle = assert(io.popen(cmd), "Failed to execute find command")
-	local result = handle:read("*a")
-	handle:close()
+	local result = M.execute_command(cmd)
+	result = type(result) == "string" and result or ""
 
 	local files = {}
 	for path in result:gmatch("[^\n]+") do
@@ -229,12 +231,13 @@ end
 
 --- Execute a shell command and capture output
 --- @param command string Command to execute
---- @return string, boolean Output string, success boolean
+--- @return string output Command output (stdout + stderr)
+--- @return boolean success True when exit code is zero, false otherwise
 function M.execute_command(command)
 	local handle = assert(io.popen(command .. " 2>&1"), "Failed to execute command: " .. command)
 	local output = handle:read("*a")
-	local success = handle:close()
-	return output, success
+	local ok = handle:close()
+	return output, ok == true
 end
 
 --- Deep copy a table (recursive)
@@ -255,20 +258,17 @@ function M.deepcopy(orig)
 	return copy
 end
 
---- Iterate over all palette modes (handles both legacy and dual-mode palettes)
---- Calls callback function for each palette variant
---- @param callback function Function(name, palette, mode) called for each palette variant
----                        - name: base palette name (e.g., "lagoon")
----                        - palette: extracted palette table
----                        - mode: "dark", "light", or nil for legacy palettes
---- @return number, number Success count, error count
-function M.for_each_palette_mode(callback)
+--- Internal iterator over palettes with optional light intensity sweep
+--- @param callback function Function(name, palette, mode, intensity) invoked per variant
+--- @param include_light_intensity boolean When true, generate 5 light intensity variants; otherwise single light
+--- @return number success_count
+--- @return number error_count
+local function iterate_palettes(callback, include_light_intensity)
 	local palette_names = M.get_palette_names()
 	local success_count = 0
 	local error_count = 0
 
 	for _, name in ipairs(palette_names) do
-		-- Load raw palette to check if dual-mode
 		local ok, raw_palette = pcall(require, "oasis.color_palettes.oasis_" .. name)
 		if not ok then
 			print(string.format("✗ Failed to load palette: %s", name))
@@ -276,22 +276,55 @@ function M.for_each_palette_mode(callback)
 			goto continue
 		end
 
-		-- Check if dual-mode palette
 		if M.is_dual_mode_palette(raw_palette) then
-			-- Call callback for both dark and light variants
-			for _, mode in ipairs({ "dark", "light" }) do
-				local palette = raw_palette[mode]
-				local ok_cb, err = pcall(callback, name, palette, mode)
-				if ok_cb then
+			local ok_cb, err = pcall(callback, name, raw_palette.dark, "dark", nil)
+			if ok_cb then
+				success_count = success_count + 1
+			else
+				print(string.format("✗ Error processing %s.dark: %s", name, err or "unknown error"))
+				error_count = error_count + 1
+			end
+
+			if include_light_intensity then
+				for intensity = 1, 5 do
+					local light_palette = M.generate_light_palette_at_intensity(name, intensity)
+					if light_palette then
+						ok_cb, err = pcall(callback, name, light_palette, "light", intensity)
+						if ok_cb then
+							success_count = success_count + 1
+						else
+							print(
+								string.format(
+									"✗ Error processing %s.light_%d: %s",
+									name,
+									intensity,
+									err or "unknown error"
+								)
+							)
+							error_count = error_count + 1
+						end
+					else
+						print(
+							string.format(
+								"✗ Failed to generate light palette for %s at intensity %d",
+								name,
+								intensity
+							)
+						)
+						error_count = error_count + 1
+					end
+				end
+			else
+				local ok_light, err_light = pcall(callback, name, raw_palette.light, "light", nil)
+				if ok_light then
 					success_count = success_count + 1
 				else
-					print(string.format("✗ Error processing %s.%s: %s", name, mode, err or "unknown error"))
+					print(string.format("✗ Error processing %s.light: %s", name, err_light or "unknown error"))
 					error_count = error_count + 1
 				end
 			end
 		else
-			-- Legacy flat palette - call callback once
-			local ok_cb, err = pcall(callback, name, raw_palette, nil)
+			local ok_cb, err = pcall(callback, name, raw_palette, nil, nil)
 			if ok_cb then
 				success_count = success_count + 1
 			else
@@ -304,6 +337,14 @@ function M.for_each_palette_mode(callback)
 	end
 
 	return success_count, error_count
+end
+
+--- Iterate over palette modes (dark + light for dual-mode; single call for legacy)
+--- @param callback function Function(name, palette, mode) called per variant
+--- @return number success_count
+--- @return number error_count
+function M.for_each_palette_mode(callback)
+	return iterate_palettes(callback, false)
 end
 
 --- Generate light palette at specific intensity level
@@ -354,68 +395,7 @@ end
 ---                        - intensity: 1-5 for light mode, nil for dark mode or legacy palettes
 --- @return number, number Success count, error count
 function M.for_each_palette_variant(callback)
-	local palette_names = M.get_palette_names()
-	local success_count = 0
-	local error_count = 0
-
-	for _, name in ipairs(palette_names) do
-		-- Load raw palette to check if dual-mode
-		local ok, raw_palette = pcall(require, "oasis.color_palettes.oasis_" .. name)
-		if not ok then
-			print(string.format("✗ Failed to load palette: %s", name))
-			error_count = error_count + 1
-			goto continue
-		end
-
-		-- Check if dual-mode palette
-		if M.is_dual_mode_palette(raw_palette) then
-			-- Generate dark variant
-			local ok_cb, err = pcall(callback, name, raw_palette.dark, "dark", nil)
-			if ok_cb then
-				success_count = success_count + 1
-			else
-				print(string.format("✗ Error processing %s.dark: %s", name, err or "unknown error"))
-				error_count = error_count + 1
-			end
-
-			-- Generate 5 light intensity variants
-			for intensity = 1, 5 do
-				local light_palette = M.generate_light_palette_at_intensity(name, intensity)
-				if light_palette then
-					ok_cb, err = pcall(callback, name, light_palette, "light", intensity)
-					if ok_cb then
-						success_count = success_count + 1
-					else
-						print(
-							string.format(
-								"✗ Error processing %s.light_%d: %s",
-								name,
-								intensity,
-								err or "unknown error"
-							)
-						)
-						error_count = error_count + 1
-					end
-				else
-					print(string.format("✗ Failed to generate light palette for %s at intensity %d", name, intensity))
-					error_count = error_count + 1
-				end
-			end
-		else
-			-- Legacy flat palette - call callback once
-			local ok_cb, err = pcall(callback, name, raw_palette, nil, nil)
-			if ok_cb then
-				success_count = success_count + 1
-			else
-				print(string.format("✗ Error processing %s: %s", name, err or "unknown error"))
-				error_count = error_count + 1
-			end
-		end
-
-		::continue::
-	end
-
-	return success_count, error_count
+	return iterate_palettes(callback, true)
 end
 
 --- Build output path for a palette variant
