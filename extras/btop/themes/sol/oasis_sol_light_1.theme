@@ -1,0 +1,87 @@
+# extras/btop/oasis_sol_light_1.theme
+# Btop theme for Oasis Sol Light 1
+# Author: uhs-robert
+
+# Main background, empty for terminal default, need to be empty if you want transparent background
+theme[main_bg]="#f9f5f5"
+
+# Main text color
+theme[main_fg]="#814236"
+
+# Title color for boxes
+theme[title]="#814236"
+
+# Highlight color for keyboard shortcuts
+theme[hi_fg]="#8c1c1c"
+
+# Background color of selected item in processes box
+theme[selected_bg]="#e8d8d8"
+
+# Foreground color of selected item in processes box
+theme[selected_fg]="#8c1c1c"
+
+# Color of inactive/disabled text
+theme[inactive_fg]="#806d6a"
+
+# Color of text appearing on top of graphs, i.e uptime and current network graph scaling
+theme[graph_text]="#814236"
+
+# Background color of the percentage meters
+theme[meter_bg]="#f3ebeb"
+
+# Misc colors for processes box including mini cpu graphs, details memory graph and details status text
+theme[proc_misc]="#814236"
+
+# CPU, Memory, Network, Proc box outline colors
+theme[cpu_box]="#2f6b4c"
+theme[mem_box]="#686223"
+theme[net_box]="#7f2fdd"
+theme[proc_box]="#a33f3f"
+
+# Box divider line and small boxes line color
+theme[div_line]="#e8d8d8"
+
+# Temperature graph color (Blue -> Bright Blue -> Magenta)
+theme[temp_start]="#155dbf"
+theme[temp_mid]="#256782"
+theme[temp_end]="#7e2fdd"
+
+# CPU graph colors (Green -> Orange -> Bright Red)
+theme[cpu_start]="#2f6b4c"
+theme[cpu_mid]="#914f0e"
+theme[cpu_end]="#c01313"
+
+# Mem/Disk used meter (Bright Red -> Red)
+theme[used_start]="#c01313"
+theme[used_mid]=""
+theme[used_end]="#a33f3f"
+
+# Mem/Disk available meter (Yellow ->  orange)
+theme[available_start]="#686223"
+theme[available_mid]=""
+theme[available_end]="#914f0e"
+
+# Mem/Disk cached meter (Blue -> Bright Blue)
+theme[cached_start]="#155dbf"
+theme[cached_mid]=""
+theme[cached_end]="#256782"
+
+# Mem/Disk free meter (Green -> Bright Green)
+theme[free_start]="#2f6b4c"
+theme[free_mid]=""
+theme[free_end]="#366c27"
+
+# Download graph colors (Blue -> Bright Blue)
+theme[download_start]="#155dbf"
+theme[download_mid]=""
+theme[download_end]="#256782"
+
+# Upload graph colors (Magenta -> Bright Magenta)
+theme[upload_start]="#7f2fdd"
+theme[upload_mid]=""
+theme[upload_end]="#7e2fdd"
+
+# Process box color gradient for threads, mem and cpu usage (Green -> Orange -> Red)
+theme[process_start]="#2f6b4c"
+theme[process_mid]="#914f0e"
+theme[process_end]="#a33f3f"
