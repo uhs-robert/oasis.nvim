@@ -127,7 +127,7 @@ local theme = {
 	},
 	night = {
 		bg = { shadow = "#0C0C18", core = "#0D0D1A", mantle = "#06060E", surface = "#262633" },
-		fg = { core = "#E3E3FC", strong = "#D7D3FC", dim = "#60584D", muted = "#4B4A61", comment = "#6A6E8B" },
+		fg = { core = "#E4E3FC", strong = "#D3D2F7", dim = "#60584D", muted = "#4B4A61", comment = "#6A6E8B" },
 	},
 	sol = {
 		bg = { shadow = "#2C1512", core = "#2F1815", mantle = "#3A2521", surface = "#4F312B" },
@@ -139,7 +139,7 @@ local theme = {
 	},
 	dune = {
 		bg = { shadow = "#2B231E", core = "#2E2620", mantle = "#3C332C", surface = "#534A3F" },
-		fg = { core = "#ECE6DF", strong = "#E6DAC9", dim = "#636363", muted = "#6B5A4A", comment = "#8A7663" },
+		fg = { core = "#F0EDCE", strong = "#EDE8AF", dim = "#636363", muted = "#6B5A4A", comment = "#8A7663" },
 	},
 	mirage = {
 		bg = { shadow = "#172328", core = "#18252A", mantle = "#1A2D33", surface = "#2A3F46" },
