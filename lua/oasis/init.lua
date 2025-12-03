@@ -71,7 +71,11 @@ function M.cycle_intensity(show_picker)
 				end
 				cfg.light_intensity = selected_intensity_number
 				M.apply(M.styles.current)
-				vim.notify(string.format("Oasis light intensity: %d/5", cfg.light_intensity), vim.log.levels.INFO)
+				local indicator = string.rep("●", cfg.light_intensity) .. string.rep("○", 5 - cfg.light_intensity)
+				vim.notify(
+					string.format("Oasis light intensity: %d/5 %s", cfg.light_intensity, indicator),
+					vim.log.levels.INFO
+				)
 			else
 				vim.notify("Oasis light intensity selection cancelled", vim.log.levels.INFO)
 			end
@@ -84,7 +88,8 @@ function M.cycle_intensity(show_picker)
 
 		cfg.light_intensity = next_intensity
 		M.apply(M.styles.current)
-		vim.notify(string.format("Oasis light intensity: %d/5", next_intensity), vim.log.levels.INFO)
+		local indicator = string.rep("●", next_intensity) .. string.rep("○", 5 - next_intensity)
+		vim.notify(string.format("Oasis light intensity: %d/5 %s", next_intensity, indicator), vim.log.levels.INFO)
 	end
 end
 
