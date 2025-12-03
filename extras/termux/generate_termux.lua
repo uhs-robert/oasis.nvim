@@ -7,12 +7,12 @@ package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local utils = require("oasis.utils")
 
 local function generate_termux_theme(name, palette)
-	local display_name = utils.capitalize(name)
+	local display_name = utils.format_display_name(name)
 
 	-- Termux uses a properties file format
 	local lines = {
 		"# extras/termux/oasis_" .. name .. ".properties",
-		"# name: Oasis " .. display_name,
+		"# name: " .. display_name,
 		"# author: uhs-robert",
 		"",
 		"background: " .. palette.bg.core,
@@ -53,10 +53,9 @@ local function main()
 
 	print(string.format("Found %d palette(s)\n", #palette_names))
 
-	local success_count, error_count = utils.for_each_palette_mode(function(name, palette, mode)
-		-- Build variant name (append mode suffix for dual-mode palettes)
-		local variant_name = mode and (name .. "_" .. mode) or name
-		local output_path = string.format("extras/termux/oasis_%s.properties", variant_name)
+	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
+		-- Build output path using shared utility
+		local output_path, variant_name = utils.build_variant_path("extras/termux", "properties", name, mode, intensity)
 
 		-- Generate and write theme
 		local theme = generate_termux_theme(variant_name, palette)
