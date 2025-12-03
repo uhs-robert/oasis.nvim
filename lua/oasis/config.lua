@@ -5,15 +5,7 @@ local M = {}
 local default_dark = "lagoon"
 local default_light = "dawn"
 local utils = require("oasis.utils")
-
--- Helper to get deepcopy function (use vim.deepcopy if available, otherwise utils.deepcopy)
-local function deepcopy(orig)
-	if vim and vim.deepcopy then
-		return vim.deepcopy(orig)
-	else
-		return utils.deepcopy(orig)
-	end
-end
+local deepcopy = vim.deepcopy
 
 -- Helper to get background setting (use vim.o.background if available, otherwise default to "dark" for standalone lua)
 local function get_background()
