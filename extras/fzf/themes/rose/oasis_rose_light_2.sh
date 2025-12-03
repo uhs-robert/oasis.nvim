@@ -1,0 +1,11 @@
+#!/bin/bash
+# extras/fzf/oasis_rose_light_2.sh
+# Oasis Rose Light 2 theme for FZF
+# Author: uhs-robert
+
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#f5e0ef,bg:#f9ecf5,spinner:#1c6c8d,hl:#990505 \
+--color=fg:#61495c,header:#675d19,info:#990505,pointer:#1c6c8d \
+--color=marker:#988710,fg+:#61495c,prompt:#990505,hl+:#debd87 \
+--color=selected-bg:#eec9e3 \
+--color=border:#982424,label:#61495c"
