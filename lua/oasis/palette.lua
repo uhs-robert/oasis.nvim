@@ -119,7 +119,7 @@ local theme = {
 	},
 	abyss = {
 		bg = { shadow = "#050505", core = "#000000", mantle = "#080808", surface = "#1A1A1A" },
-		fg = { core = "#F0E8E6", strong = "#FFDACC", dim = "#5E5148", muted = "#39494F", comment = "#546D79" },
+		fg = { core = "#F0EBE6", strong = "#FFDACC", dim = "#5E5148", muted = "#39494F", comment = "#546D79" },
 	},
 	midnight = {
 		bg = { shadow = "#0C1014", core = "#101418", mantle = "#14181C", surface = "#1C242C" },
@@ -127,7 +127,7 @@ local theme = {
 	},
 	night = {
 		bg = { shadow = "#0C0C18", core = "#0D0D1A", mantle = "#06060E", surface = "#262633" },
-		fg = { core = "#E4E3FC", strong = "#D3D2F7", dim = "#60584D", muted = "#4B4A61", comment = "#6A6E8B" },
+		fg = { core = "#F7F4E9", strong = "#F2E8D8", dim = "#60584D", muted = "#4B4A61", comment = "#6A6E8B" },
 	},
 	sol = {
 		bg = { shadow = "#2C1512", core = "#2F1815", mantle = "#3A2521", surface = "#4F312B" },
@@ -139,7 +139,7 @@ local theme = {
 	},
 	dune = {
 		bg = { shadow = "#2B231E", core = "#2E2620", mantle = "#3C332C", surface = "#534A3F" },
-		fg = { core = "#F0EDCE", strong = "#EDE8AF", dim = "#636363", muted = "#6B5A4A", comment = "#8A7663" },
+		fg = { core = "#E8E5DA", strong = "#EDE8AF", dim = "#636363", muted = "#6B5A4A", comment = "#8A7663" },
 	},
 	mirage = {
 		bg = { shadow = "#172328", core = "#18252A", mantle = "#1A2D33", surface = "#2A3F46" },
@@ -168,7 +168,7 @@ local theme = {
 	-- Light themes
 	dawn = {
 		bg = { shadow = "#E9E0AE", core = "#EFE5B6", mantle = "#E3D8A4", surface = "#D7CC97" },
-		fg = { core = "#443725", strong = "#261E12", dim = "#54523A", muted = "#4E4D39", comment = "#456B80" },
+		fg = { core = "#443725", strong = "#261E12", dim = "#54523A", muted = "#4E4D39", comment = "#456B80" }, -- #F0E7CE or #F2ECD3
 	},
 	dawnlight = {
 		bg = { shadow = "#E3D396", core = "#ECDFA3", mantle = "#DDD091", surface = "#D1C085" },
