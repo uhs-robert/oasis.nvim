@@ -6,6 +6,8 @@ local color_utils = require("oasis.tools.color_utils")
 local light_gen = require("oasis.tools.light_theme_generator")
 local opts = config.get()
 local theme = p.theme.night
+local light_seed = require("oasis.color_palettes.oasis_canyon").dark
+local target_lightness = 80
 
 -- General Reusable Colors
 local ui = {
@@ -106,17 +108,39 @@ local dark = {
 	},
 }
 
--- Light mode configuration
-local light_bg = light_gen.generate_light_backgrounds(ui.fg.core, opts.light_intensity)
+-- Light mode configuration (backgrounds/ui/theme from night fg, syntax from canyon)
+local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
+	title = p.red[600],
+	border = p.red[600],
+})
+
+local light_theme = vim.tbl_deep_extend("force", {}, dark.theme, {
+	primary = p.red[600],
+	light_primary = p.red[400],
+})
+
+local light_bg =
+	light_gen.generate_light_backgrounds(ui.fg.core, opts.light_intensity, { target_l_core = target_lightness })
 local light = {
 	bg = light_bg,
-	fg = light_gen.generate_light_foregrounds(ui.fg, light_bg.core, opts.light_intensity),
-	theme = light_gen.generate_light_theme(ui.theme, opts.light_intensity),
-	terminal = light_gen.generate_light_terminal(p.terminal, light_bg.core, opts.light_intensity, opts.contrast),
+	fg = light_gen.generate_light_foregrounds(light_seed.fg, light_bg.core, opts.light_intensity, opts.contrast),
+	theme = light_gen.generate_light_theme(light_theme, opts.light_intensity),
+	terminal = light_gen.generate_light_terminal(
+		light_seed.terminal,
+		light_bg.core,
+		opts.light_intensity,
+		opts.contrast
+	),
 	light_mode = true,
 
 	-- Syntax
-	syntax = light_gen.generate_light_syntax(dark.syntax, light_bg.core, opts.light_intensity, nil, opts.contrast),
+	syntax = light_gen.generate_light_syntax(
+		light_seed.syntax,
+		light_bg.core,
+		opts.light_intensity,
+		nil,
+		opts.contrast
+	),
 
 	-- Diff
 	diff = {
@@ -126,7 +150,7 @@ local light = {
 	},
 
 	-- UI
-	ui = light_gen.generate_light_ui(dark.ui, light_bg, opts.light_intensity),
+	ui = light_gen.generate_light_ui(light_ui, light_bg, opts.light_intensity, opts.contrast),
 }
 
 -- Return dual-mode palette

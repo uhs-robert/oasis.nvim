@@ -166,19 +166,27 @@ end
 --- Derives all backgrounds (core, mantle, shadow, surface) from dark fg.core
 --- @param dark_fg_core string Dark mode fg.core color (source of truth)
 --- @param intensity_level number Light intensity (1-5)
+--- @param opts? table Optional overrides { target_l_core = number, l_step = number }
 --- @return table Background colors {core, mantle, shadow, surface}
-function M.generate_light_backgrounds(dark_fg_core, intensity_level)
+function M.generate_light_backgrounds(dark_fg_core, intensity_level, opts)
 	-- Generate base bg.core using intensity formula
 	local core = M.apply_light_intensity(dark_fg_core, intensity_level)
 
 	-- Get HSL of core to derive related backgrounds
 	local h, s, l = color_utils.rgb_to_hsl(core)
 
+	-- Optional lightness override for palettes that want a specific band
+	if opts and opts.target_l_core then
+		l = opts.target_l_core
+		core = color_utils.hsl_to_rgb(h, s, l)
+	end
+
 	-- Progressive darkening: core (lightest) → mantle → shadow → surface (darkest)
-	-- Each step is 3% darker in lightness
-	local mantle = color_utils.hsl_to_rgb(h, s, l - 3) -- 3% darker
-	local shadow = color_utils.hsl_to_rgb(h, s, l - 6) -- 6% darker
-	local surface = color_utils.hsl_to_rgb(h, s, l - 9) -- 9% darker
+	-- Each step is 3% darker in lightness by default
+	local step = (opts and opts.l_step) or 3
+	local mantle = color_utils.hsl_to_rgb(h, s, l - step)
+	local shadow = color_utils.hsl_to_rgb(h, s, l - (step * 2))
+	local surface = color_utils.hsl_to_rgb(h, s, l - (step * 3))
 
 	return {
 		core = core,
@@ -390,17 +398,34 @@ end
 --- @param light_bg table Light mode background colors {core, mantle, shadow, surface}
 --- @param intensity_level number Intensity level (1-5)
 --- @param contrast_targets? table Optional contrast ratio targets per UI element
+--- @param opts? table Optional { min_ratio = number, force_aaa = boolean }
 --- @return table Light mode UI colors
-function M.generate_light_ui(dark_ui, light_bg, intensity_level, contrast_targets)
+function M.generate_light_ui(dark_ui, light_bg, intensity_level, contrast_targets, opts)
+	-- Contrast floor control
+	opts = opts or {}
+	local min_ratio = math.min(7.0, math.max(3.0, opts.min_ratio or 7.0))
+	local aa_compliant = math.max(4.5, min_ratio)
+	local force_aaa = opts.force_aaa or false
+
 	-- Default contrast targets for UI elements
 	local default_targets = {
-		lineNumber = 7.0,
-		dir = 7.0,
-		title = 7.0,
-		border = 7.0,
+		lineNumber = min_ratio,
+		dir = min_ratio,
+		title = aa_compliant,
+		border = aa_compliant,
 		nontext = 3.0,
 	}
 	contrast_targets = contrast_targets or default_targets
+
+	-- Override with force AAA if specified
+	if force_aaa then
+		for key, _ in pairs(default_targets) do
+			if key ~= "nontext" and key ~= "title" and key ~= "border" then
+				local base_target = contrast_targets[key] or default_targets[key]
+				contrast_targets[key] = math.max(7.0, base_target)
+			end
+		end
+	end
 
 	local result = {}
 
