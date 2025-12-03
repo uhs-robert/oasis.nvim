@@ -7,16 +7,16 @@ package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local utils = require("oasis.utils")
 
 local function generate_tmux_theme(name, palette)
-	local display_name = utils.capitalize(name:gsub("_", " "))
+	local display_name = utils.format_display_name(name)
 
 	local lines = {
 		"# vim:set ft=tmux:",
 		"",
-		"# --> Oasis " .. display_name,
+		"# --> " .. display_name,
 		string.format('set -ogq @thm_fg "%s"', palette.fg.core),
 		string.format('set -ogq @thm_primary "%s"', palette.theme.primary),
 		string.format('set -ogq @thm_secondary "%s"', palette.theme.secondary),
-		string.format('set -ogq @thm_prefix "%s"', palette.terminal.bright_blue),
+		string.format('set -ogq @thm_prefix "%s"', palette.theme.accent),
 		"",
 		"# Surfaces and overlays",
 		string.format('set -ogq @thm_core "%s"', palette.bg.core),
@@ -24,15 +24,15 @@ local function generate_tmux_theme(name, palette)
 		string.format('set -ogq @thm_surface "%s"', palette.bg.surface),
 		"",
 		"# General",
-		string.format('set -ogq @thm_red "%s"', palette.terminal.bright_red),
+		string.format('set -ogq @thm_red "%s"', palette.terminal.red),
 		string.format('set -ogq @thm_orange "%s"', palette.terminal.bright_yellow),
 		string.format('set -ogq @thm_yellow "%s"', palette.terminal.yellow),
 		string.format('set -ogq @thm_darkyellow "%s"', palette.syntax.statement),
 		string.format('set -ogq @thm_green "%s"', palette.syntax.string),
 		string.format('set -ogq @thm_teal "%s"', palette.terminal.bright_cyan),
 		string.format('set -ogq @thm_darkteal "%s"', palette.syntax.identifier),
-		string.format('set -ogq @thm_blue "%s"', palette.terminal.bright_blue),
-		string.format('set -ogq @thm_indigo "%s"', palette.terminal.bright_magenta),
+		string.format('set -ogq @thm_blue "%s"', palette.terminal.blue),
+		string.format('set -ogq @thm_indigo "%s"', palette.terminal.magenta),
 		"",
 	}
 
@@ -51,10 +51,9 @@ local function main()
 
 	print(string.format("Found %d palette(s)\n", #palette_names))
 
-	local success_count, error_count = utils.for_each_palette_mode(function(name, palette, mode)
-		-- Build variant name (append mode suffix for dual-mode palettes)
-		local variant_name = mode and (name .. "_" .. mode) or name
-		local output_path = string.format("extras/tmux/themes/oasis_%s.conf", variant_name)
+	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
+		-- Build output path using shared utility
+		local output_path, variant_name = utils.build_variant_path("extras/tmux", "conf", name, mode, intensity)
 
 		-- Generate and write theme
 		local theme = generate_tmux_theme(variant_name, palette)
