@@ -8,7 +8,7 @@ local utils = require("oasis.utils")
 local color_utils = require("oasis.tools.color_utils")
 
 local function generate_konsole_theme(name, palette)
-	local display_name = utils.capitalize(name)
+	local display_name = utils.format_display_name(name)
 
 	local lines = {
 		"[Background]",
@@ -58,7 +58,7 @@ local function generate_konsole_theme(name, palette)
 	lines[#lines + 1] = "[General]"
 	lines[#lines + 1] = "Blur=false"
 	lines[#lines + 1] = "ColorRandomization=false"
-	lines[#lines + 1] = string.format("Description=Oasis %s", display_name)
+	lines[#lines + 1] = string.format("Description=%s", display_name)
 	lines[#lines + 1] = "Opacity=1"
 	lines[#lines + 1] = "Wallpaper="
 
@@ -77,10 +77,9 @@ local function main()
 
 	print(string.format("Found %d palette(s)\n", #palette_names))
 
-	local success_count, error_count = utils.for_each_palette_mode(function(name, palette, mode)
-		-- Build variant name (append mode suffix for dual-mode palettes)
-		local variant_name = mode and (name .. "_" .. mode) or name
-		local output_path = string.format("extras/konsole/oasis_%s.colorscheme", variant_name)
+	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
+		-- Build output path using shared utility
+		local output_path, variant_name = utils.build_variant_path("extras/konsole", "colorscheme", name, mode, intensity)
 
 		-- Generate and write theme
 		local theme = generate_konsole_theme(variant_name, palette)
