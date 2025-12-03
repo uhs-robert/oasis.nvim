@@ -23,7 +23,7 @@ end
 
 -- Generate Firefox Color theme object
 local function generate_firefox_color_theme(name, palette)
-	local display_name = utils.capitalize(name)
+	local display_name = utils.format_display_name(name)
 
 	return {
 		colors = {
@@ -83,7 +83,7 @@ local function generate_firefox_color_theme(name, palette)
 		images = {
 			additional_backgrounds = {},
 		},
-		title = "Oasis " .. display_name,
+		title = display_name,
 	}
 end
 
@@ -136,50 +136,76 @@ local function generate_readme(palette_data)
 		"",
 		'<img src="/assets/screenshots/extras/firefox.png" alt="Firefox" width="2534" height="1518">',
 		"",
-		"## Themes",
-		"",
 	}
 
-	-- Dynamically categorize palettes by light/dark mode
-	local dark_palettes = {}
-	local light_palettes = {}
+	-- Organize by base palette name
+	local palettes = {} -- { palette_name = { dark = data, light = {data1, data2...} } }
 
-	for name, data in pairs(palette_data) do
+	for variant_name, data in pairs(palette_data) do
+		-- Extract base palette name (e.g., "lagoon" from "lagoon_dark" or "lagoon_light_3")
+		local base_name = variant_name:match("^(.+)_dark$") or variant_name:match("^(.+)_light_%d+$") or variant_name
+
+		-- Initialize palette group
+		if not palettes[base_name] then
+			palettes[base_name] = { dark = nil, light = {} }
+		end
+
+		-- Categorize
 		if data.is_light then
-			table.insert(light_palettes, name)
+			table.insert(palettes[base_name].light, { name = variant_name, data = data })
 		else
-			table.insert(dark_palettes, name)
+			palettes[base_name].dark = { name = variant_name, data = data }
 		end
 	end
 
-	-- Sort alphabetically
-	table.sort(dark_palettes)
-	table.sort(light_palettes)
+	-- Sort palette names alphabetically
+	local palette_names = {}
+	for palette_name in pairs(palettes) do
+		table.insert(palette_names, palette_name)
+	end
+	table.sort(palette_names)
 
-	-- Generate dark themes section
-	if #dark_palettes > 0 then
-		table.insert(lines, "### Dark Themes")
+	-- Generate table of contents
+	table.insert(lines, "## Table of Contents")
+	table.insert(lines, "")
+	for _, palette_name in ipairs(palette_names) do
+		local display = utils.capitalize(palette_name)
+		table.insert(lines, string.format("- [%s](#%s)", display, palette_name:lower()))
+	end
+	table.insert(lines, "")
+	table.insert(lines, "---")
+	table.insert(lines, "")
+
+	-- Generate themes grouped by palette
+	for _, palette_name in ipairs(palette_names) do
+		local group = palettes[palette_name]
+		local display = utils.capitalize(palette_name)
+
+		-- Palette header
+		table.insert(lines, string.format("## %s", display))
 		table.insert(lines, "")
 
-		for _, name in ipairs(dark_palettes) do
-			local data = palette_data[name]
-			local display_name = utils.capitalize(name)
-			local link = string.format("- [**Oasis %s**](https://color.firefox.com/?theme=%s)", display_name, data.url)
+		-- Dark variant first
+		if group.dark then
+			local display_name = utils.format_display_name(group.dark.name)
+			local link = string.format("- [**%s**](https://color.firefox.com/?theme=%s)", display_name, group.dark.data.url)
 			table.insert(lines, link)
 		end
 
-		table.insert(lines, "")
-	end
+		-- Sort light variants by intensity (1-5)
+		table.sort(group.light, function(a, b)
+			local a_intensity = a.name:match("_light_(%d+)$")
+			local b_intensity = b.name:match("_light_(%d+)$")
+			if a_intensity and b_intensity then
+				return tonumber(a_intensity) < tonumber(b_intensity)
+			end
+			return a.name < b.name
+		end)
 
-	-- Generate light themes section
-	if #light_palettes > 0 then
-		table.insert(lines, "### Light Themes")
-		table.insert(lines, "")
-
-		for _, name in ipairs(light_palettes) do
-			local data = palette_data[name]
-			local display_name = utils.capitalize(name)
-			local link = string.format("- [**Oasis %s**](https://color.firefox.com/?theme=%s)", display_name, data.url)
+		-- Light variants underneath
+		for _, theme in ipairs(group.light) do
+			local display_name = utils.format_display_name(theme.name)
+			local link = string.format("- [**%s**](https://color.firefox.com/?theme=%s)", display_name, theme.data.url)
 			table.insert(lines, link)
 		end
 
@@ -233,9 +259,18 @@ local function main()
 
 	local palette_data = {}
 
-	local success_count, error_count = utils.for_each_palette_mode(function(name, palette, mode)
-		-- Build variant name (append mode suffix for dual-mode palettes)
-		local variant_name = mode and (name .. "_" .. mode) or name
+	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
+		-- Build variant name with mode and optional intensity suffix
+		local variant_name
+		if mode then
+			if mode == "dark" then
+				variant_name = name .. "_dark"
+			else
+				variant_name = name .. "_light_" .. intensity
+			end
+		else
+			variant_name = name
+		end
 
 		local theme = generate_firefox_color_theme(variant_name, palette)
 
