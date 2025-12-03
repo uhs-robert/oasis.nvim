@@ -16,13 +16,8 @@ Custom Slack color themes for all Oasis palette variants.
 - [Abyss](#abyss)
 - [Cactus](#cactus)
 - [Canyon](#canyon)
-- [Dawn](#dawn)
-- [Dawnlight](#dawnlight)
-- [Day](#day)
 - [Desert](#desert)
 - [Dune](#dune)
-- [Dusk](#dusk)
-- [Dust](#dust)
 - [Lagoon](#lagoon)
 - [Midnight](#midnight)
 - [Mirage](#mirage)
@@ -38,32 +33,32 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Abyss Dark**
 ```
-#1A1A1A,#080808,#D06666,#1A1A1A,#080808,#F0E8E6,#FFA247,#81C0B6,#000000,#F0E8E6
+#1A1A1A,#080808,#D06666,#1A1A1A,#080808,#F0EBE6,#FFA247,#81C0B6,#000000,#F0EBE6
 ```
 
 **Oasis Abyss Light 1**
 ```
-#e8d8d8,#f3ebeb,#7d2b2b,#e8d8d8,#f3ebeb,#5f514e,#ab5807,#3e756c,#f9f5f5,#5f514e
+#e8e0d8,#f3efeb,#7d2b2b,#e8e0d8,#f3efeb,#5c534b,#ab5807,#3e756c,#f9f7f5,#5c534b
 ```
 
 **Oasis Abyss Light 2**
 ```
-#eecdc3,#f5e1db,#762828,#eecdc3,#f5e1db,#5a4c4a,#a35305,#3a6f66,#f8ebe7,#5a4c4a
+#eedac3,#f5e9db,#762828,#eedac3,#f5e9db,#585048,#a35305,#3a6f66,#f8f0e7,#585048
 ```
 
 **Oasis Abyss Light 3**
 ```
-#f0bbad,#f5d0c7,#702424,#f0bbad,#f5d0c7,#514542,#9b4e03,#366860,#f7dbd4,#514542
+#f0cead,#f5ddc7,#702424,#f0cead,#f5ddc7,#524b43,#9b4e03,#366860,#f7e5d4,#524b43
 ```
 
 **Oasis Abyss Light 4**
 ```
-#eeaea0,#f3c4ba,#692121,#eeaea0,#f3c4ba,#4a403c,#924901,#32625a,#f5cfc7,#4a403c
+#eec5a0,#f3d5ba,#692121,#eec5a0,#f3d5ba,#4e473f,#924901,#32625a,#f5ddc7,#4e473f
 ```
 
 **Oasis Abyss Light 5**
 ```
-#ec9e93,#f1b5ad,#621e1e,#ec9e93,#f1b5ad,#433936,#8a4400,#2e5c55,#f3c1ba,#433936
+#ecb893,#f1c9ad,#621e1e,#ecb893,#f1c9ad,#48413b,#8a4400,#2e5c55,#f3d2ba,#48413b
 ```
 
 ## Cactus
@@ -130,103 +125,68 @@ Custom Slack color themes for all Oasis palette variants.
 #ecbd93,#f1cdad,#803f00,#ecbd93,#f1cdad,#52412d,#145a76,#1c6e44,#f3d5ba,#52412d
 ```
 
-## Dawn
-
-**Oasis Dawn**
-```
-#D7CC97,#E3D8A4,#A63333,#D7CC97,#E3D8A4,#443725,#134c7d,#134c7d,#EFE5B6,#443725
-```
-
-## Dawnlight
-
-**Oasis Dawnlight**
-```
-#D1C085,#DDD091,#9B3030,#D1C085,#DDD091,#403423,#124977,#124977,#ECDFA3,#403423
-```
-
-## Day
-
-**Oasis Day**
-```
-#D3BA68,#DFC47A,#9B3030,#D3BA68,#DFC47A,#392E1D,#11426e,#11426e,#E5D68B,#392E1D
-```
-
 ## Desert
 
 **Oasis Desert Dark**
 ```
-#555555,#444444,#D06666,#555555,#444444,#F9F8F7,#F0E68C,#87CEEB,#333333,#F9F8F7
+#555555,#444444,#D06666,#555555,#444444,#F7EDE1,#F0E68C,#87CEEB,#333333,#F7EDE1
 ```
 
 **Oasis Desert Light 1**
 ```
-#e8e0d8,#f3efeb,#7d2b2b,#e8e0d8,#f3efeb,#5a534e,#988c1a,#1f7294,#f9f7f5,#5a534e
+#e8e0d8,#f3efeb,#7d2b2b,#e8e0d8,#f3efeb,#63523d,#988c1a,#1f7294,#f9f7f5,#63523d
 ```
 
 **Oasis Desert Light 2**
 ```
-#eedac3,#f5e9db,#762828,#eedac3,#f5e9db,#56504b,#918517,#1c6c8d,#f8f0e7,#56504b
+#eedac3,#f5e9db,#762828,#eedac3,#f5e9db,#5f4e3b,#918517,#1c6c8d,#f8f0e7,#5f4e3b
 ```
 
 **Oasis Desert Light 3**
 ```
-#f0d0ad,#f5dfc7,#702424,#f0d0ad,#f5dfc7,#514c47,#897e15,#196685,#f7e6d4,#514c47
+#f0d1ad,#f5e0c7,#702424,#f0d1ad,#f5e0c7,#5a4a38,#897e15,#196685,#f7e7d4,#5a4a38
 ```
 
 **Oasis Desert Light 4**
 ```
-#eec5a0,#f3d5ba,#692121,#eec5a0,#f3d5ba,#4c4742,#827712,#16607e,#f5ddc7,#4c4742
+#eec9a0,#f3d8ba,#692121,#eec9a0,#f3d8ba,#564634,#827712,#16607e,#f5dfc7,#564634
 ```
 
 **Oasis Desert Light 5**
 ```
-#ecb893,#f1c9ad,#621e1e,#ecb893,#f1c9ad,#46423d,#7a6f10,#145a76,#f3d2ba,#46423d
+#ecbd93,#f1cdad,#621e1e,#ecbd93,#f1cdad,#504132,#7a6f10,#145a76,#f3d5ba,#504132
 ```
 
 ## Dune
 
 **Oasis Dune Dark**
 ```
-#534A3F,#3C332C,#BDB76B,#534A3F,#3C332C,#F0EDCE,#A7D3A9,#53D390,#2E2620,#F0EDCE
+#534A3F,#3C332C,#BDB76B,#534A3F,#3C332C,#E8E5DA,#A7D3A9,#53D390,#2E2620,#E8E5DA
 ```
 
 **Oasis Dune Light 1**
 ```
-#e9e3dd,#f5f2f0,#726d36,#e9e3dd,#f5f2f0,#5a5740,#3e7540,#298a57,#fbfaf9,#5a5740
+#e8e4d8,#f3f1eb,#726d36,#e8e4d8,#f3f1eb,#58554c,#3e7540,#298a57,#f9f8f5,#58554c
 ```
 
 **Oasis Dune Light 2**
 ```
-#eeebc9,#f5f4e0,#6c6733,#eeebc9,#f5f4e0,#58563e,#3a6f3c,#258352,#f9f8ec,#58563e
+#eee5c9,#f5f0e0,#6c6733,#eee5c9,#f5f0e0,#57544b,#3a6f3c,#258352,#f9f6ec,#57544b
 ```
 
 **Oasis Dune Light 3**
 ```
-#e9e5ba,#f0eed1,#65612f,#e9e5ba,#f0eed1,#54523b,#366838,#227c4d,#f4f2dd,#54523b
+#e9dfba,#f0ead1,#65612f,#e9dfba,#f0ead1,#525047,#366838,#227c4d,#f4efdd,#525047
 ```
 
 **Oasis Dune Light 4**
 ```
-#e5deae,#ece7c5,#5f5b2b,#e5deae,#ece7c5,#514e39,#326234,#1f7548,#f0ecd1,#514e39
+#e5d8ae,#ece3c5,#5f5b2b,#e5d8ae,#ece3c5,#4f4d44,#326234,#1f7548,#f0e9d1,#4f4d44
 ```
 
 **Oasis Dune Light 5**
 ```
-#e1d7a4,#e8e1bb,#585527,#e1d7a4,#e8e1bb,#4e4b36,#2e5c30,#1c6e43,#ece6c6,#4e4b36
-```
-
-## Dusk
-
-**Oasis Dusk**
-```
-#CEAC5F,#D5B36A,#8A2A2A,#CEAC5F,#D5B36A,#251C10,#11426E,#11426E,#DCBA75,#251C10
-```
-
-## Dust
-
-**Oasis Dust**
-```
-#C39E4F,#C9A55A,#752424,#C39E4F,#C9A55A,#181309,#11426e,#11426e,#D4B165,#181309
+#e1cfa4,#e8dbbb,#585527,#e1cfa4,#e8dbbb,#4a4940,#2e5c30,#1c6e43,#ece1c6,#4a4940
 ```
 
 ## Lagoon
@@ -329,32 +289,32 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Night Dark**
 ```
-#262633,#06060E,#D06666,#262633,#06060E,#E4E3FC,#FFA247,#58B8FD,#0D0D1A,#E4E3FC
+#262633,#06060E,#D06666,#262633,#06060E,#F7F4E9,#FFA247,#58B8FD,#0D0D1A,#F7F4E9
 ```
 
 **Oasis Night Light 1**
 ```
-#dddde9,#f0f0f5,#7d2b2b,#dddde9,#f0f0f5,#524e90,#ab5807,#0966a9,#f9f9fb,#524e90
+#cfc7af,#dbd5c2,#8c1c1c,#cfc7af,#dbd5c2,#52422d,#ab5807,#0966a9,#e0dbcc,#52422d
 ```
 
 **Oasis Night Light 2**
 ```
-#c9c9ee,#e0e0f5,#762828,#c9c9ee,#e0e0f5,#4a4883,#a35305,#0761a1,#ececf9,#4a4883
+#decd96,#e5d8ae,#851a1a,#decd96,#e5d8ae,#54432d,#a35305,#0761a1,#e9deb9,#54432d
 ```
 
 **Oasis Night Light 3**
 ```
-#babae9,#d1d1f0,#702424,#babae9,#d1d1f0,#424175,#9b4e03,#055b99,#ddddf4,#424175
+#dbca8f,#e2d5a6,#7d1717,#dbca8f,#e2d5a6,#52412d,#9b4e03,#055b99,#e6dbb2,#52412d
 ```
 
 **Oasis Night Light 4**
 ```
-#aba9ea,#c3c2f0,#692121,#aba9ea,#c3c2f0,#3b3968,#924901,#035691,#cfcef3,#3b3968
+#d8c688,#e0d19f,#751414,#d8c688,#e0d19f,#4f3f2b,#924901,#035691,#e3d7aa,#4f3f2b
 ```
 
 **Oasis Night Light 5**
 ```
-#9497ef,#afb1f3,#621e1e,#9497ef,#afb1f3,#313057,#8a4400,#025088,#bcbef5,#313057
+#d5bd81,#ddc998,#6e1212,#d5bd81,#ddc998,#4b3b28,#8a4400,#025088,#e0cfa3,#4b3b28
 ```
 
 ## Rose
