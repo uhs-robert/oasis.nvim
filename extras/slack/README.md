@@ -187,32 +187,32 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Dune Dark**
 ```
-#534A3F,#3C332C,#BDB76B,#534A3F,#3C332C,#ECE6DF,#A7D3A9,#53D390,#2E2620,#ECE6DF
+#534A3F,#3C332C,#BDB76B,#534A3F,#3C332C,#F0EDCE,#A7D3A9,#53D390,#2E2620,#F0EDCE
 ```
 
 **Oasis Dune Light 1**
 ```
-#e8e0d8,#f3efeb,#726d36,#e8e0d8,#f3efeb,#5c544a,#3e7540,#298a57,#f9f7f5,#5c544a
+#e9e3dd,#f5f2f0,#726d36,#e9e3dd,#f5f2f0,#5a5740,#3e7540,#298a57,#fbfaf9,#5a5740
 ```
 
 **Oasis Dune Light 2**
 ```
-#eedac3,#f5e9db,#6c6733,#eedac3,#f5e9db,#575147,#3a6f3c,#258352,#f8f0e7,#575147
+#eeebc9,#f5f4e0,#6c6733,#eeebc9,#f5f4e0,#58563e,#3a6f3c,#258352,#f9f8ec,#58563e
 ```
 
 **Oasis Dune Light 3**
 ```
-#f0d1ad,#f5e0c7,#65612f,#f0d1ad,#f5e0c7,#524c43,#366838,#227c4d,#f7e7d4,#524c43
+#e9e5ba,#f0eed1,#65612f,#e9e5ba,#f0eed1,#54523b,#366838,#227c4d,#f4f2dd,#54523b
 ```
 
 **Oasis Dune Light 4**
 ```
-#eec9a0,#f3d8ba,#5f5b2b,#eec9a0,#f3d8ba,#4e483f,#326234,#1f7548,#f5dfc7,#4e483f
+#e5deae,#ece7c5,#5f5b2b,#e5deae,#ece7c5,#514e39,#326234,#1f7548,#f0ecd1,#514e39
 ```
 
 **Oasis Dune Light 5**
 ```
-#ecbd93,#f1cdad,#585527,#ecbd93,#f1cdad,#49433b,#2e5c30,#1c6e43,#f3d5ba,#49433b
+#e1d7a4,#e8e1bb,#585527,#e1d7a4,#e8e1bb,#4e4b36,#2e5c30,#1c6e43,#ece6c6,#4e4b36
 ```
 
 ## Dusk
@@ -329,32 +329,32 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Night Dark**
 ```
-#262633,#06060E,#D06666,#262633,#06060E,#E3E3FC,#FFA247,#58B8FD,#0D0D1A,#E3E3FC
+#262633,#06060E,#D06666,#262633,#06060E,#E4E3FC,#FFA247,#58B8FD,#0D0D1A,#E4E3FC
 ```
 
 **Oasis Night Light 1**
 ```
-#dddde9,#f0f0f5,#7d2b2b,#dddde9,#f0f0f5,#4d4d99,#ab5807,#0966a9,#f9f9fb,#4d4d99
+#dddde9,#f0f0f5,#7d2b2b,#dddde9,#f0f0f5,#524e90,#ab5807,#0966a9,#f9f9fb,#524e90
 ```
 
 **Oasis Night Light 2**
 ```
-#c8c8ee,#dfdff5,#762828,#c8c8ee,#dfdff5,#47478b,#a35305,#0761a1,#ebebf9,#47478b
+#c9c9ee,#e0e0f5,#762828,#c9c9ee,#e0e0f5,#4a4883,#a35305,#0761a1,#ececf9,#4a4883
 ```
 
 **Oasis Night Light 3**
 ```
-#b3b3ef,#ccccf4,#702424,#b3b3ef,#ccccf4,#3e3e79,#9b4e03,#055b99,#d9d9f7,#3e3e79
+#babae9,#d1d1f0,#702424,#babae9,#d1d1f0,#424175,#9b4e03,#055b99,#ddddf4,#424175
 ```
 
 **Oasis Night Light 4**
 ```
-#a1a3f1,#bcbdf5,#692121,#a1a3f1,#bcbdf5,#36366b,#924901,#035691,#c9caf7,#36366b
+#aba9ea,#c3c2f0,#692121,#aba9ea,#c3c2f0,#3b3968,#924901,#035691,#cfcef3,#3b3968
 ```
 
 **Oasis Night Light 5**
 ```
-#949aef,#afb3f3,#621e1e,#949aef,#afb3f3,#30305e,#8a4400,#025088,#bcc0f5,#30305e
+#9497ef,#afb1f3,#621e1e,#9497ef,#afb1f3,#313057,#8a4400,#025088,#bcbef5,#313057
 ```
 
 ## Rose
