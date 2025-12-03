@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_dusk.toml
+## name: Oasis Dusk
+## author: uhs-robert
+
+[colors]
+foreground = "#251C10"
+background= "#DCBA75"
+cursor_bg= "#363107"
+cursor_border= "#363107"
+cursor_fg= "#D5B36A"
+selection_bg= "#CEAC5F"
+selection_fg= "#D5B36A"
+split= "#8A2A2A"
+compose_cursor= "#4e2600"
+scrollbar_thumb= "#CEAC5F"
+visual_bell= "#D5B36A"
+
+ansi = [
+  '#313131',
+  '#692929',
+  '#1f4530',
+  '#433f17',
+  '#0d3c7b',
+  '#531998',
+  '#234340',
+  '#33312c',
+]
+
+brights = [
+  '#313131',
+  '#7e0d0d',
+  '#234519',
+  '#5d3309',
+  '#184254',
+  '#521998',
+  '#22433e',
+  '#492a07',
+]
+
+[colors.indexed]
+16 = '#4e2600'
+17 = '#640d0d'
+
+[colors.tab_bar]
+background = '#D5B36A'
+inactive_tab_edge = '#E0C480'
+
+[colors.tab_bar.active_tab]
+bg_color = '#8A2A2A'
+fg_color = '#DCBA75'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#CEAC5F'
+fg_color = '#DCBA75'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#D5B36A'
+fg_color = '#DCBA75'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#11426E'
+fg_color = '#DCBA75'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#11426E'
+fg_color = '#DCBA75'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Dusk'

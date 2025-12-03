@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_mirage_dark.toml
+## name: Oasis Mirage Dark
+## author: uhs-robert
+
+[colors]
+foreground = "#DDEFEF"
+background= "#18252A"
+cursor_bg= "#96D4CB"
+cursor_border= "#96D4CB"
+cursor_fg= "#1A2D33"
+selection_bg= "#5A3824"
+selection_fg= "#1A2D33"
+split= "#5ABAAE"
+compose_cursor= "#FFA247"
+scrollbar_thumb= "#2A3F46"
+visual_bell= "#1A2D33"
+
+ansi = [
+  '#000000',
+  '#D06666',
+  '#53D390',
+  '#F0E68C',
+  '#519BFF',
+  '#C28EFF',
+  '#5ABAAE',
+  '#DDDBD5',
+]
+
+brights = [
+  '#666666',
+  '#FFA0A0',
+  '#96EA7F',
+  '#FFA247',
+  '#87CEEB',
+  '#D2ADFF',
+  '#8FD1C7',
+  '#FFF9F2',
+]
+
+[colors.indexed]
+16 = '#FFA247'
+17 = '#F39493'
+
+[colors.tab_bar]
+background = '#1A2D33'
+inactive_tab_edge = '#172328'
+
+[colors.tab_bar.active_tab]
+bg_color = '#5ABAAE'
+fg_color = '#18252A'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#2A3F46'
+fg_color = '#18252A'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#1A2D33'
+fg_color = '#18252A'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#FFA247'
+fg_color = '#18252A'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#C28EFF'
+fg_color = '#18252A'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Mirage Dark'

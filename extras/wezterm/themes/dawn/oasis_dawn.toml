@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_dawn.toml
+## name: Oasis Dawn
+## author: uhs-robert
+
+[colors]
+foreground = "#443725"
+background= "#EFE5B6"
+cursor_bg= "#514a0b"
+cursor_border= "#514a0b"
+cursor_fg= "#E3D8A4"
+selection_bg= "#D7CC97"
+selection_fg= "#E3D8A4"
+split= "#A63333"
+compose_cursor= "#753a00"
+scrollbar_thumb= "#D7CC97"
+visual_bell= "#E3D8A4"
+
+ansi = [
+  '#4a4a4a',
+  '#913939',
+  '#2b6044',
+  '#5d571f',
+  '#1253aa',
+  '#7222d0',
+  '#305e59',
+  '#4c4a42',
+]
+
+brights = [
+  '#4a4a4a',
+  '#ac1111',
+  '#306123',
+  '#82470d',
+  '#215c74',
+  '#7122d1',
+  '#305e57',
+  '#6c3f0b',
+]
+
+[colors.indexed]
+16 = '#753a00'
+17 = '#931313'
+
+[colors.tab_bar]
+background = '#E3D8A4'
+inactive_tab_edge = '#E9E0AE'
+
+[colors.tab_bar.active_tab]
+bg_color = '#A63333'
+fg_color = '#EFE5B6'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#D7CC97'
+fg_color = '#EFE5B6'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#E3D8A4'
+fg_color = '#EFE5B6'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#134c7d'
+fg_color = '#EFE5B6'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#134c7d'
+fg_color = '#EFE5B6'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Dawn'

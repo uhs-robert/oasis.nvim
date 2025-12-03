@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_sol_light_5.toml
+## name: Oasis Sol Light 5
+## author: uhs-robert
+
+[colors]
+foreground = "#5b2e26"
+background= "#f3bfba"
+cursor_bg= "#871f20"
+cursor_border= "#871f20"
+cursor_fg= "#f1b3ad"
+selection_bg= "#ec9b93"
+selection_fg= "#f1b3ad"
+split= "#642626"
+compose_cursor= "#4b3715"
+scrollbar_thumb= "#ec9b93"
+visual_bell= "#f1b3ad"
+
+ansi = [
+  '#3a3a3a',
+  '#772f2f',
+  '#234f38',
+  '#4c4719',
+  '#10448c',
+  '#5f1cac',
+  '#284d48',
+  '#3c3a34',
+]
+
+brights = [
+  '#3a3a3a',
+  '#8f0e0e',
+  '#274f1d',
+  '#6b3a0b',
+  '#1b4b5f',
+  '#5d1cac',
+  '#274d47',
+  '#563209',
+]
+
+[colors.indexed]
+16 = '#4b3715'
+17 = '#4e4713'
+
+[colors.tab_bar]
+background = '#f1b3ad'
+inactive_tab_edge = '#eea7a0'
+
+[colors.tab_bar.active_tab]
+bg_color = '#6e1212'
+fg_color = '#f3bfba'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#ec9b93'
+fg_color = '#f3bfba'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#f1b3ad'
+fg_color = '#f3bfba'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#8a4400'
+fg_color = '#f3bfba'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#025088'
+fg_color = '#f3bfba'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Sol Light 5'

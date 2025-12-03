@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_dawnlight.toml
+## name: Oasis Dawnlight
+## author: uhs-robert
+
+[colors]
+foreground = "#403423"
+background= "#ECDFA3"
+cursor_bg= "#4d470a"
+cursor_border= "#4d470a"
+cursor_fg= "#DDD091"
+selection_bg= "#D1C085"
+selection_fg= "#DDD091"
+split= "#9B3030"
+compose_cursor= "#6f3700"
+scrollbar_thumb= "#D1C085"
+visual_bell= "#DDD091"
+
+ansi = [
+  '#464646',
+  '#8c3737',
+  '#295c41',
+  '#59531e',
+  '#1250a3',
+  '#6d20c8',
+  '#2e5a55',
+  '#49463f',
+]
+
+brights = [
+  '#464646',
+  '#a61111',
+  '#2e5d22',
+  '#7c440c',
+  '#20586f',
+  '#6d21c9',
+  '#2e5a53',
+  '#673c0a',
+]
+
+[colors.indexed]
+16 = '#6f3700'
+17 = '#8c1313'
+
+[colors.tab_bar]
+background = '#DDD091'
+inactive_tab_edge = '#E3D396'
+
+[colors.tab_bar.active_tab]
+bg_color = '#9B3030'
+fg_color = '#ECDFA3'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#D1C085'
+fg_color = '#ECDFA3'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#DDD091'
+fg_color = '#ECDFA3'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#124977'
+fg_color = '#ECDFA3'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#124977'
+fg_color = '#ECDFA3'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Dawnlight'
