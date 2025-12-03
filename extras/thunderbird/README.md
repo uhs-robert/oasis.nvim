@@ -47,9 +47,6 @@ Oasis color themes for Mozilla Thunderbird, packaged as WebExtension themes.
 - **Oasis Oasis Canyon Light 3** - `themes/oasis_canyon_light_3.xpi`
 - **Oasis Oasis Canyon Light 4** - `themes/oasis_canyon_light_4.xpi`
 - **Oasis Oasis Canyon Light 5** - `themes/oasis_canyon_light_5.xpi`
-- **Oasis Oasis Dawn** - `themes/oasis_dawn.xpi`
-- **Oasis Oasis Dawnlight** - `themes/oasis_dawnlight.xpi`
-- **Oasis Oasis Day** - `themes/oasis_day.xpi`
 - **Oasis Oasis Desert Light 1** - `themes/oasis_desert_light_1.xpi`
 - **Oasis Oasis Desert Light 2** - `themes/oasis_desert_light_2.xpi`
 - **Oasis Oasis Desert Light 3** - `themes/oasis_desert_light_3.xpi`
@@ -60,8 +57,6 @@ Oasis color themes for Mozilla Thunderbird, packaged as WebExtension themes.
 - **Oasis Oasis Dune Light 3** - `themes/oasis_dune_light_3.xpi`
 - **Oasis Oasis Dune Light 4** - `themes/oasis_dune_light_4.xpi`
 - **Oasis Oasis Dune Light 5** - `themes/oasis_dune_light_5.xpi`
-- **Oasis Oasis Dusk** - `themes/oasis_dusk.xpi`
-- **Oasis Oasis Dust** - `themes/oasis_dust.xpi`
 - **Oasis Oasis Lagoon Light 1** - `themes/oasis_lagoon_light_1.xpi`
 - **Oasis Oasis Lagoon Light 2** - `themes/oasis_lagoon_light_2.xpi`
 - **Oasis Oasis Lagoon Light 3** - `themes/oasis_lagoon_light_3.xpi`
