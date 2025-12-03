@@ -1,6 +1,6 @@
 #!/usr/bin/env lua
--- extras/iterm2/generate_iterm2.lua
--- Generates iTerm2 color schemes from Oasis palettes
+-- extras/iterm/generate_iterm.lua
+-- Generates iTerm color schemes from Oasis palettes
 
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
@@ -46,14 +46,14 @@ local function add_color_block(lines, label, hex, alpha)
 	end
 end
 
-local function generate_iterm2_colors(name, palette)
+local function generate_iterm_colors(name, palette)
 	local display_name = utils.format_display_name(name)
 
 	local lines = {
 		'<?xml version="1.0" encoding="UTF-8"?>',
 		'<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">',
 		'<plist version="1.0">',
-		'<dict>',
+		"<dict>",
 		"\t<!-- name: " .. display_name .. " -->",
 		"\t<!-- author: uhs-robert -->",
 	}
@@ -103,7 +103,7 @@ local function generate_iterm2_colors(name, palette)
 end
 
 local function main()
-	print("\n=== Oasis iTerm2 Theme Generator ===\n")
+	print("\n=== Oasis iTerm Theme Generator ===\n")
 
 	local palette_names = utils.get_palette_names()
 
@@ -115,9 +115,9 @@ local function main()
 	print(string.format("Found %d palette(s)\n", #palette_names))
 
 	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
-		local output_path, variant_name = utils.build_variant_path("extras/iterm2", "itermcolors", name, mode, intensity)
+		local output_path, variant_name = utils.build_variant_path("extras/iterm", "itermcolors", name, mode, intensity)
 
-		local theme = generate_iterm2_colors(variant_name, palette)
+		local theme = generate_iterm_colors(variant_name, palette)
 		utils.write_file(output_path, theme)
 		print(string.format("✓ Generated: %s", output_path))
 	end)
