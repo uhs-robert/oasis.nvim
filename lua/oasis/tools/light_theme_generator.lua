@@ -246,32 +246,37 @@ end
 --- @param intensity_level number Intensity level (1-5)
 --- @param contrast_targets? table Optional contrast ratio targets per syntax element
 --- @return table Light mode syntax colors
-function M.generate_light_syntax(dark_syntax, light_bg_core, intensity_level, contrast_targets)
-	-- Default contrast targets for syntax elements
+function M.generate_light_syntax(dark_syntax, light_bg_core, intensity_level, contrast_targets, opts)
+	-- Contrast floor control
+	opts = opts or {}
+	local min_ratio = math.min(7.0, math.max(4.5, opts.min_ratio or 7.0))
+	local force_aaa = opts.force_aaa or false
+
+	-- Default contrast targets for syntax elements (base values)
 	local default_targets = {
 		-- Highest Contract (AAA++)
-		constant = 10.0,
-		parameter = 8.5,
+		constant = min_ratio + 3.0,
+		parameter = min_ratio + 1.5,
 
 		-- High contrast (AAA+)
-		type = 7.5,
-		string = 7.5,
-		func = 7.5,
-		conditional = 7.5,
+		type = min_ratio + 0.5,
+		string = min_ratio + 0.5,
+		func = min_ratio + 0.5,
+		conditional = min_ratio + 0.5,
 
 		-- Standard AAA
-		identifier = 7.0,
-		builtinVar = 7.0,
-		regex = 7.0,
-		builtinConst = 7.0,
-		builtinFunc = 7.0,
-		statement = 7.0,
-		exception = 7.0,
-		special = 7.0,
-		operator = 7.0,
-		punctuation = 7.0,
-		preproc = 7.0,
-		delimiter = 7.0,
+		identifier = min_ratio,
+		builtinVar = min_ratio,
+		regex = min_ratio,
+		builtinConst = min_ratio,
+		builtinFunc = min_ratio,
+		statement = min_ratio,
+		exception = min_ratio,
+		special = min_ratio,
+		operator = min_ratio,
+		punctuation = min_ratio,
+		preproc = min_ratio,
+		delimiter = min_ratio,
 
 		-- Muted (AA) - blend with background
 		bracket = 4.5,
@@ -364,7 +369,14 @@ function M.generate_light_syntax(dark_syntax, light_bg_core, intensity_level, co
 				result[key] = color_utils.hsl_to_rgb(new_h, new_s, target_l)
 
 				-- Apply contrast target
-				local target_ratio = contrast_targets[key] or default_targets[key] or 7.0
+				local base_target = contrast_targets[key] or default_targets[key] or 7.0
+				local target_ratio
+				if force_aaa then
+					target_ratio = math.max(7.0, base_target)
+				else
+					target_ratio = base_target
+				end
+
 				result[key] = color_utils.darken_to_contrast(result[key], light_bg_core, target_ratio)
 			end
 		end
@@ -498,7 +510,7 @@ end
 --- @param dark_terminal table Dark mode terminal colors (ansi keys and color0..15)
 --- @param light_bg_core string Light background core color
 --- @param intensity_level number Intensity level (1-5)
---- @param opts? table Optional { force_aaa = boolean, chroma_target = number, neutral_target = number }
+--- @param opts? table Optional { force_aaa = boolean, chroma_target = number, neutral_target = number, min_ratio = number }
 --- @return table Light mode terminal colors
 function M.generate_light_terminal(dark_terminal, light_bg_core, intensity_level, opts)
 	if not dark_terminal or not light_bg_core then
@@ -513,6 +525,8 @@ function M.generate_light_terminal(dark_terminal, light_bg_core, intensity_level
 	local default_neutral_target = 7.0
 	local chroma_target = opts.chroma_target or default_chroma_target
 	local neutral_target = opts.neutral_target or default_neutral_target
+	local min_ratio = math.min(7.0, math.max(4.5, opts.min_ratio or chroma_target))
+	chroma_target = math.max(chroma_target, min_ratio)
 	if opts.force_aaa then
 		chroma_target = 7.0
 		neutral_target = 7.0

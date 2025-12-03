@@ -36,6 +36,12 @@ M.defaults = {
 	palette_overrides = {},
 	highlight_overrides = {},
 
+	-- Contrast controls
+	contrast = {
+		min_ratio = 5.8,            -- Minimum WCAG contrast ratio for syntax/terminal chroma slots (clamped 4.5-7.0)
+		force_aaa = false,          -- Force all relevant contrast targets to AAA (7.0). Overrides min_ratio.
+	},
+
 	-- Text styling toggles
 	styles = {
 		bold = true,                -- Enable/disable bold text
