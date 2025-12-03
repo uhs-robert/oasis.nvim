@@ -623,8 +623,8 @@ Want to help shape **Oasis.nvim**?
 <a id="starlight-3-light"></a>
 **Starlight (Light)**
 
-![starlight-3-light-3-dashboard](./assets/screenshots/starlight-3-light-3-dashboard.png)
-![starlight-3-light-3-code](./assets/screenshots/starlight-3-light-3-code.png)
+![starlight-light-3-dashboard](./assets/screenshots/starlight-light-3-dashboard.png)
+![starlight-light-3-code](./assets/screenshots/starlight-light-3-code.png)
 
 <a id="desert-light"></a>
 **Desert (Light)**
@@ -671,8 +671,8 @@ Want to help shape **Oasis.nvim**?
 <a id="twilight-3-light"></a>
 **Twilight (Light)**
 
-![twilight-light-3-dashboard](./assets/screenshots/twilight-3-light-3-dashboard.png)
-![twilight-light-3-code](./assets/screenshots/twilight-3-light-3-code.png)
+![twilight-light-3-dashboard](./assets/screenshots/twilight-light-3-dashboard.png)
+![twilight-light-3-code](./assets/screenshots/twilight-light-3-code.png)
 
 <a id="rose-light"></a>
 **Rose (Light)**
