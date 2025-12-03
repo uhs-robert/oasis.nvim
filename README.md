@@ -13,46 +13,45 @@
 </p>
 
 <p align="center">
-A collection of <strong>13</strong> desert-inspired Neovim colorschemes; warm, readable, and configurable.
-Now with matching light variants and adjustable light intensity (1–5).
+A collection of <strong>13</strong> desert-inspired Neovim colorschemes; warm, readable, and highly configurable.
 </p>
 
 ## 🌅 Overview
 
 Born from the classic [desert.vim](https://github.com/fugalh/desert.vim), transformed and modernized into something new entirely.
 
-Oasis follows Melange's warm/cool split philosophy (**warm = action/flow**, **cool = structure/data**).
+Oasis follows a warm/cool color split philosophy (**warm = action/flow**, **cool = structure/data**).
 
-**All themes are fully AAA WCAG compliant**. Light themes use warm beige-to-peachy tones to minimize blue light exposure and support eye health during extended coding sessions.
+**All themes meet AAA WCAG compliance standards**. Light themes allow contrast ratio to be customized.
 
 > [!NOTE]
-> **✨ NEW in v3.0: Themed Syntax is Now Default** - Each variant uses its signature color for statements and keywords (blue in lagoon, teal in mirage, orange in canyon, etc.) creating more distinct visual personalities. Prefer classic yellow syntax? [See how to opt-out under API Commands ↓](#-usage)
-
-<p align="center"><strong>What’s new</strong>: matching light variants for EVERY theme with an intensity slider (1–5) for light backgrounds to control the vibrancy, and a new command <code>:OasisIntensity</code>.</p>
+> **✨ NEW in v3.0: Themed Syntax** - Each variant uses its signature color for statements and keywords.
+>
+> Prefer classic yellow syntax? [See how to opt-out under API Commands ↓](#-usage)
 
 ### Dark Styles
 
 <table>
   <tr>
-    <td align="center"><a href="#night-dark"><img src="assets/screenshots/night-dark-dashboard.png" alt="Night (dark)" width="165"></a><br><strong>Night</strong><br><em>Night Sky</em></td>
-    <td align="center"><a href="#midnight-dark"><img src="assets/screenshots/midnight-dark-dashboard.png" alt="Midnight (dark)" width="165"></a><br><strong>Midnight</strong><br><em>Off Black</em></td>
-    <td align="center"><a href="#abyss-dark"><img src="assets/screenshots/abyss-dark-dashboard.png" alt="Abyss (dark)" width="165"></a><br><strong>Abyss</strong><br><em>Black</em></td>
-    <td align="center"><a href="#starlight-dark"><img src="assets/screenshots/starlight-dark-dashboard.png" alt="Starlight (dark)" width="165"></a><br><strong>Starlight</strong><br><em>Black Vivid</em></td>
+    <td align="center"><a href="#night-dark"><img src="assets/screenshots/night-dark-dashboard.png" alt="Night (dark)" width="auto"></a><br><strong>Night</strong><br><em>Night Sky</em></td>
+    <td align="center"><a href="#midnight-dark"><img src="assets/screenshots/midnight-dark-dashboard.png" alt="Midnight (dark)" width="auto"></a><br><strong>Midnight</strong><br><em>Off Black</em></td>
+    <td align="center"><a href="#abyss-dark"><img src="assets/screenshots/abyss-dark-dashboard.png" alt="Abyss (dark)" width="auto"></a><br><strong>Abyss</strong><br><em>Black</em></td>
+    <td align="center"><a href="#starlight-dark"><img src="assets/screenshots/starlight-dark-dashboard.png" alt="Starlight (dark)" width="auto"></a><br><strong>Starlight</strong><br><em>Black Vivid</em></td>
   </tr>
   <tr>
-    <td align="center"><a href="#desert-dark"><img src="assets/screenshots/desert-dark-dashboard.png" alt="Desert (dark)" width="165"></a><br><strong>Desert</strong><br><em>Grey</em></td>
-    <td align="center"><a href="#sol-dark"><img src="assets/screenshots/sol-dark-dashboard.png" alt="Sol (dark)" width="165"></a><br><strong>Sol</strong><br><em>Red</em></td>
-    <td align="center"><a href="#canyon-dark"><img src="assets/screenshots/canyon-dark-dashboard.png" alt="Canyon (dark)" width="165"></a><br><strong>Canyon</strong><br><em>Orange</em></td>
-    <td align="center"><a href="#dune-dark"><img src="assets/screenshots/dune-dark-dashboard.png" alt="Dune (dark)" width="165"></a><br><strong>Dune</strong><br><em>Yellow</em></td>
+    <td align="center"><a href="#desert-dark"><img src="assets/screenshots/desert-dark-dashboard.png" alt="Desert (dark)" width="auto"></a><br><strong>Desert</strong><br><em>Grey</em></td>
+    <td align="center"><a href="#sol-dark"><img src="assets/screenshots/sol-dark-dashboard.png" alt="Sol (dark)" width="auto"></a><br><strong>Sol</strong><br><em>Red</em></td>
+    <td align="center"><a href="#canyon-dark"><img src="assets/screenshots/canyon-dark-dashboard.png" alt="Canyon (dark)" width="auto"></a><br><strong>Canyon</strong><br><em>Orange</em></td>
+    <td align="center"><a href="#dune-dark"><img src="assets/screenshots/dune-dark-dashboard.png" alt="Dune (dark)" width="auto"></a><br><strong>Dune</strong><br><em>Yellow</em></td>
   </tr>
   <tr>
-    <td align="center"><a href="#cactus-dark"><img src="assets/screenshots/cactus-dark-dashboard.png" alt="Cactus (dark)" width="165"></a><br><strong>Cactus</strong><br><em>Green</em></td>
-    <td align="center"><a href="#mirage-dark"><img src="assets/screenshots/mirage-dark-dashboard.png" alt="Mirage (dark)" width="165"></a><br><strong>Mirage</strong><br><em>Teal</em></td>
-    <td align="center"><a href="#lagoon-dark"><img src="assets/screenshots/lagoon-dark-dashboard.png" alt="Lagoon (dark)" width="165"></a><br><strong>Lagoon (Default Dark)</strong><br><em>Blue</em></td>
-    <td align="center"><a href="#twilight-dark"><img src="assets/screenshots/twilight-dark-dashboard.png" alt="Twilight (dark)" width="165"></a><br><strong>Twilight</strong><br><em>Purple</em></td>
+    <td align="center"><a href="#cactus-dark"><img src="assets/screenshots/cactus-dark-dashboard.png" alt="Cactus (dark)" width="auto"></a><br><strong>Cactus</strong><br><em>Green</em></td>
+    <td align="center"><a href="#mirage-dark"><img src="assets/screenshots/mirage-dark-dashboard.png" alt="Mirage (dark)" width="auto"></a><br><strong>Mirage</strong><br><em>Teal</em></td>
+    <td align="center"><a href="#lagoon-dark"><img src="assets/screenshots/lagoon-dark-dashboard.png" alt="Lagoon (dark)" width="auto"></a><br><strong>Lagoon (Default Dark)</strong><br><em>Blue</em></td>
+    <td align="center"><a href="#twilight-dark"><img src="assets/screenshots/twilight-dark-dashboard.png" alt="Twilight (dark)" width="auto"></a><br><strong>Twilight</strong><br><em>Purple</em></td>
   </tr>
   <tr>
-    <td align="center"><a href="#rose-dark"><img src="assets/screenshots/rose-dark-dashboard.png" alt="Rose (dark)" width="165"></a><br><strong>Rose</strong><br><em>Pink</em></td>
+    <td align="center"><a href="#rose-dark"><img src="assets/screenshots/rose-dark-dashboard.png" alt="Rose (dark)" width="auto"></a><br><strong>Rose</strong><br><em>Pink</em></td>
   </tr>
 </table>
 
@@ -60,25 +59,25 @@ Oasis follows Melange's warm/cool split philosophy (**warm = action/flow**, **co
 
 <table>
   <tr>
-    <td align="center"><a href="#night-light"><img src="assets/screenshots/night-light-3-dashboard.png" alt="Night (light)" width="165"></a><br><strong>Night · Light</strong></td>
-    <td align="center"><a href="#midnight-light"><img src="assets/screenshots/midnight-light-3-dashboard.png" alt="Midnight (light)" width="165"></a><br><strong>Midnight · Light</strong></td>
-    <td align="center"><a href="#abyss-light"><img src="assets/screenshots/abyss-light-3-dashboard.png" alt="Abyss (light)" width="165"></a><br><strong>Abyss · Light</strong></td>
-    <td align="center"><a href="#starlight-light"><img src="assets/screenshots/starlight-light-3-dashboard.png" alt="Starlight (light)" width="165"></a><br><strong>Starlight · Light</strong></td>
+    <td align="center"><a href="#night-light"><img src="assets/screenshots/night-light-3-dashboard.png" alt="Night (light)" width="auto"></a><br><strong>Night · Light</strong></td>
+    <td align="center"><a href="#midnight-light"><img src="assets/screenshots/midnight-light-3-dashboard.png" alt="Midnight (light)" width="auto"></a><br><strong>Midnight · Light</strong></td>
+    <td align="center"><a href="#abyss-light"><img src="assets/screenshots/abyss-light-3-dashboard.png" alt="Abyss (light)" width="auto"></a><br><strong>Abyss · Light</strong></td>
+    <td align="center"><a href="#starlight-light"><img src="assets/screenshots/starlight-light-3-dashboard.png" alt="Starlight (light)" width="auto"></a><br><strong>Starlight · Light</strong></td>
   </tr>
   <tr>
-    <td align="center"><a href="#desert-light"><img src="assets/screenshots/desert-light-3-dashboard.png" alt="Desert (light)" width="165"></a><br><strong>Desert · Light</strong></td>
-    <td align="center"><a href="#sol-light"><img src="assets/screenshots/sol-light-3-dashboard.png" alt="Sol (light)" width="165"></a><br><strong>Sol · Light</strong></td>
-    <td align="center"><a href="#canyon-light"><img src="assets/screenshots/canyon-light-3-dashboard.png" alt="Canyon (light)" width="165"></a><br><strong>Canyon · Light</strong></td>
-    <td align="center"><a href="#dune-light"><img src="assets/screenshots/dune-light-3-dashboard.png" alt="Dune (light)" width="165"></a><br><strong>Dune · Light</strong></td>
+    <td align="center"><a href="#desert-light"><img src="assets/screenshots/desert-light-3-dashboard.png" alt="Desert (light)" width="auto"></a><br><strong>Desert · Light</strong></td>
+    <td align="center"><a href="#sol-light"><img src="assets/screenshots/sol-light-3-dashboard.png" alt="Sol (light)" width="auto"></a><br><strong>Sol · Light</strong></td>
+    <td align="center"><a href="#canyon-light"><img src="assets/screenshots/canyon-light-3-dashboard.png" alt="Canyon (light)" width="auto"></a><br><strong>Canyon · Light</strong></td>
+    <td align="center"><a href="#dune-light"><img src="assets/screenshots/dune-light-3-dashboard.png" alt="Dune (light)" width="auto"></a><br><strong>Dune · Light</strong></td>
   </tr>
   <tr>
-    <td align="center"><a href="#cactus-light"><img src="assets/screenshots/cactus-light-3-dashboard.png" alt="Cactus (light)" width="165"></a><br><strong>Cactus · Light</strong></td>
-    <td align="center"><a href="#mirage-light"><img src="assets/screenshots/mirage-light-3-dashboard.png" alt="Mirage (light)" width="165"></a><br><strong>Mirage · Light</strong></td>
-    <td align="center"><a href="#lagoon-light"><img src="assets/screenshots/lagoon-light-3-dashboard.png" alt="Lagoon (light)" width="165"></a><br><strong>Lagoon · Light</strong></td>
-    <td align="center"><a href="#twilight-light"><img src="assets/screenshots/twilight-light-3-dashboard.png" alt="Twilight (light)" width="165"></a><br><strong>Twilight · Light</strong></td>
+    <td align="center"><a href="#cactus-light"><img src="assets/screenshots/cactus-light-3-dashboard.png" alt="Cactus (light)" width="auto"></a><br><strong>Cactus · Light</strong></td>
+    <td align="center"><a href="#mirage-light"><img src="assets/screenshots/mirage-light-3-dashboard.png" alt="Mirage (light)" width="auto"></a><br><strong>Mirage · Light</strong></td>
+    <td align="center"><a href="#lagoon-light"><img src="assets/screenshots/lagoon-light-3-dashboard.png" alt="Lagoon (light)" width="auto"></a><br><strong>Lagoon · Light</strong></td>
+    <td align="center"><a href="#twilight-light"><img src="assets/screenshots/twilight-light-3-dashboard.png" alt="Twilight (light)" width="auto"></a><br><strong>Twilight · Light</strong></td>
   </tr>
   <tr>
-    <td align="center"><a href="#rose-light"><img src="assets/screenshots/rose-light-3-dashboard.png" alt="Rose (light)" width="165"></a><br><strong>Rose · Light</strong></td>
+    <td align="center"><a href="#rose-light"><img src="assets/screenshots/rose-light-3-dashboard.png" alt="Rose (light)" width="auto"></a><br><strong>Rose · Light</strong></td>
   </tr>
 </table>
 
