@@ -3,6 +3,51 @@
 
 local M = {}
 
+-- Provide minimal `vim` compatibility when running outside Neovim (e.g., plain lua extras)
+-- Only fills missing pieces and never overrides an existing `vim` table/functions.
+local function ensure_vim_compat()
+	if _G.vim == nil then
+		_G.vim = {}
+	end
+
+	local function extend_tables(behavior, deep, ...)
+		local result = {}
+		for i = 1, select("#", ...) do
+			local t = select(i, ...)
+			if type(t) == "table" then
+				for k, v in pairs(t) do
+					local has_key = result[k] ~= nil
+
+					if has_key and behavior == "error" then
+						error("key already present: " .. k)
+					end
+
+					if deep and type(result[k]) == "table" and type(v) == "table" then
+						result[k] = extend_tables(behavior, true, result[k], v)
+					elseif not has_key or behavior == "force" then
+						result[k] = v
+					end
+				end
+			end
+		end
+		return result
+	end
+
+	_G.vim.tbl_extend = _G.vim.tbl_extend
+		or function(behavior, ...)
+			return extend_tables(behavior, false, ...)
+		end
+
+	_G.vim.tbl_deep_extend = _G.vim.tbl_deep_extend
+		or function(behavior, ...)
+			return extend_tables(behavior, true, ...)
+		end
+
+	_G.vim.deepcopy = _G.vim.deepcopy or M.deepcopy
+	_G.vim.g = _G.vim.g or {}
+	_G.vim.o = _G.vim.o or {}
+end
+
 -- Internal helpers
 --- Build a palette module name from a bare name or fully-qualified string
 --- @param name string Bare palette name (e.g., "lagoon") or module path ("oasis.color_palettes.oasis_lagoon")
@@ -257,6 +302,9 @@ function M.deepcopy(orig)
 	end
 	return copy
 end
+
+-- Initialize compatibility shims once utilities are defined
+ensure_vim_compat()
 
 --- Internal iterator over palettes with optional light intensity sweep
 --- @param callback function Function(name, palette, mode, intensity) invoked per variant
