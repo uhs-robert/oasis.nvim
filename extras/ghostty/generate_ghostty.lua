@@ -52,10 +52,10 @@ local function main()
 
 	print(string.format("Found %d palette(s)\n", #palette_names))
 
-	local success_count, error_count = utils.for_each_palette_mode(function(name, palette, mode)
-		-- Build variant name (append mode suffix for dual-mode palettes)
-		local variant_name = mode and (name .. "_" .. mode) or name
-		local output_path = string.format("extras/ghostty/oasis_%s", variant_name)
+	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
+		-- Build output path using shared utility (ghostty has no extension)
+		local output_path, variant_name = utils.build_variant_path("extras/ghostty", "", name, mode, intensity)
+		output_path = output_path:gsub("%.$", "") -- Remove trailing dot from empty extension
 
 		-- Generate and write theme
 		local theme = generate_ghostty_theme(variant_name, palette)
