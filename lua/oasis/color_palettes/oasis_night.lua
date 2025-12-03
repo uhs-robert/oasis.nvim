@@ -7,7 +7,7 @@ local light_gen = require("oasis.tools.light_theme_generator")
 local opts = config.get()
 local theme = p.theme.night
 local light_seed = require("oasis.color_palettes.oasis_canyon").dark
-local target_lightness = 80
+local target_lightness = { [1] = 84, [2] = 82, [3] = 80, [4] = 78, [5] = 76 }
 
 -- General Reusable Colors
 local ui = {
