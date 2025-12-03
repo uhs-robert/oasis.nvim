@@ -140,9 +140,8 @@ local function ensure_palette_compatibility(palette_name)
 		return nil, bg
 	end
 
-	-- Auto-adjust background to match theme mode (for legacy light themes without dual mode)
+	-- TODO: LEGACY: Auto-adjust background to match theme mode (for legacy light themes without dual mode)
 	if mode ~= "dual" and mode ~= bg then
-		vim.o.background = mode
 		bg = mode
 	end
 
