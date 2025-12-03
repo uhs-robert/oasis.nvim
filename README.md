@@ -528,11 +528,19 @@ Want to help shape **Oasis.nvim**?
 ![night-dark-dashboard](./assets/screenshots/night-dark-dashboard.png)
 ![night-dark-code](./assets/screenshots/night-dark-code.png)
 
+<p align="center">
+  <a href="#dark-styles">↑ Back to Dark Styles</a>
+</p>
+
 <a id="midnight-dark"></a>
 **Midnight (Dark · Off Black)**
 
 ![midnight-dark-dashboard](./assets/screenshots/midnight-dark-dashboard.png)
 ![midnight-dark-code](./assets/screenshots/midnight-dark-code.png)
+
+<p align="center">
+  <a href="#dark-styles">↑ Back to Dark Styles</a>
+</p>
 
 <a id="abyss-dark"></a>
 **Abyss (Dark · Black)**
@@ -540,11 +548,19 @@ Want to help shape **Oasis.nvim**?
 ![abyss-dark-dashboard](./assets/screenshots/abyss-dark-dashboard.png)
 ![abyss-dark-code](./assets/screenshots/abyss-dark-code.png)
 
+<p align="center">
+  <a href="#dark-styles">↑ Back to Dark Styles</a>
+</p>
+
 <a id="starlight-dark"></a>
 **Starlight (Dark · Black Vivid)**
 
 ![starlight-dark-dashboard](./assets/screenshots/starlight-dark-dashboard.png)
 ![starlight-dark-code](./assets/screenshots/starlight-dark-code.png)
+
+<p align="center">
+  <a href="#dark-styles">↑ Back to Dark Styles</a>
+</p>
 
 <a id="desert-dark"></a>
 **Desert (Dark · Grey)**
@@ -552,11 +568,19 @@ Want to help shape **Oasis.nvim**?
 ![desert-dark-dashboard](./assets/screenshots/desert-dark-dashboard.png)
 ![desert-dark-code](./assets/screenshots/desert-dark-code.png)
 
+<p align="center">
+  <a href="#dark-styles">↑ Back to Dark Styles</a>
+</p>
+
 <a id="sol-dark"></a>
 **Sol (Dark · Red)**
 
 ![sol-dark-dashboard](./assets/screenshots/sol-dark-dashboard.png)
 ![sol-dark-code](./assets/screenshots/sol-dark-code.png)
+
+<p align="center">
+  <a href="#dark-styles">↑ Back to Dark Styles</a>
+</p>
 
 <a id="canyon-dark"></a>
 **Canyon (Dark · Orange)**
@@ -564,11 +588,19 @@ Want to help shape **Oasis.nvim**?
 ![canyon-dark-dashboard](./assets/screenshots/canyon-dark-dashboard.png)
 ![canyon-dark-code](./assets/screenshots/canyon-dark-code.png)
 
+<p align="center">
+  <a href="#dark-styles">↑ Back to Dark Styles</a>
+</p>
+
 <a id="dune-dark"></a>
 **Dune (Dark · Yellow)**
 
 ![dune-dark-dashboard](./assets/screenshots/dune-dark-dashboard.png)
 ![dune-dark-code](./assets/screenshots/dune-dark-code.png)
+
+<p align="center">
+  <a href="#dark-styles">↑ Back to Dark Styles</a>
+</p>
 
 <a id="cactus-dark"></a>
 **Cactus (Dark · Green)**
@@ -576,11 +608,19 @@ Want to help shape **Oasis.nvim**?
 ![cactus-dark-dashboard](./assets/screenshots/cactus-dark-dashboard.png)
 ![cactus-dark-code](./assets/screenshots/cactus-dark-code.png)
 
+<p align="center">
+  <a href="#dark-styles">↑ Back to Dark Styles</a>
+</p>
+
 <a id="mirage-dark"></a>
 **Mirage (Dark · Teal)**
 
 ![mirage-dark-dashboard](./assets/screenshots/mirage-dark-dashboard.png)
 ![mirage-dark-code](./assets/screenshots/mirage-dark-code.png)
+
+<p align="center">
+  <a href="#dark-styles">↑ Back to Dark Styles</a>
+</p>
 
 <a id="lagoon-dark"></a>
 **Lagoon (Dark · Default)**
@@ -588,17 +628,29 @@ Want to help shape **Oasis.nvim**?
 ![lagoon-dark-dashboard](./assets/screenshots/lagoon-dark-dashboard.png)
 ![lagoon-dark-code](./assets/screenshots/lagoon-dark-code.png)
 
+<p align="center">
+  <a href="#dark-styles">↑ Back to Dark Styles</a>
+</p>
+
 <a id="twilight-dark"></a>
 **Twilight (Dark · Purple)**
 
 ![twilight-dark-dashboard](./assets/screenshots/twilight-dark-dashboard.png)
 ![twilight-dark-code](./assets/screenshots/twilight-dark-code.png)
 
+<p align="center">
+  <a href="#dark-styles">↑ Back to Dark Styles</a>
+</p>
+
 <a id="rose-dark"></a>
 **Rose (Dark · Pink)**
 
 ![rose-dark-dashboard](./assets/screenshots/rose-dark-dashboard.png)
 ![rose-dark-code](./assets/screenshots/rose-dark-code.png)
+
+<p align="center">
+  <a href="#dark-styles">↑ Back to Dark Styles</a>
+</p>
 
 ### Light previews
 
@@ -608,11 +660,19 @@ Want to help shape **Oasis.nvim**?
 ![night-light-3-dashboard](./assets/screenshots/night-light-3-dashboard.png)
 ![night-light-3-code](./assets/screenshots/night-light-3-code.png)
 
+<p align="center">
+  <a href="#light-styles">↑ Back to Light Styles</a>
+</p>
+
 <a id="midnight-light"></a>
 **Midnight (Light)**
 
 ![midnight-light-3-dashboard](./assets/screenshots/midnight-light-3-dashboard.png)
 ![midnight-light-3-code](./assets/screenshots/midnight-light-3-code.png)
+
+<p align="center">
+  <a href="#light-styles">↑ Back to Light Styles</a>
+</p>
 
 <a id="abyss-light"></a>
 **Abyss (Light)**
@@ -620,11 +680,19 @@ Want to help shape **Oasis.nvim**?
 ![abyss-light-3-dashboard](./assets/screenshots/abyss-light-3-dashboard.png)
 ![abyss-light-3-code](./assets/screenshots/abyss-light-3-code.png)
 
+<p align="center">
+  <a href="#light-styles">↑ Back to Light Styles</a>
+</p>
+
 <a id="starlight-3-light"></a>
 **Starlight (Light)**
 
 ![starlight-light-3-dashboard](./assets/screenshots/starlight-light-3-dashboard.png)
 ![starlight-light-3-code](./assets/screenshots/starlight-light-3-code.png)
+
+<p align="center">
+  <a href="#light-styles">↑ Back to Light Styles</a>
+</p>
 
 <a id="desert-light"></a>
 **Desert (Light)**
@@ -632,11 +700,19 @@ Want to help shape **Oasis.nvim**?
 ![desert-light-3-dashboard](./assets/screenshots/desert-light-3-dashboard.png)
 ![desert-light-3-code](./assets/screenshots/desert-light-3-code.png)
 
+<p align="center">
+  <a href="#light-styles">↑ Back to Light Styles</a>
+</p>
+
 <a id="sol-light"></a>
 **Sol (Light)**
 
 ![sol-light-3-dashboard](./assets/screenshots/sol-light-3-dashboard.png)
 ![sol-light-3-code](./assets/screenshots/sol-light-3-code.png)
+
+<p align="center">
+  <a href="#light-styles">↑ Back to Light Styles</a>
+</p>
 
 <a id="canyon-light"></a>
 **Canyon (Light)**
@@ -644,11 +720,19 @@ Want to help shape **Oasis.nvim**?
 ![canyon-light-3-dashboard](./assets/screenshots/canyon-light-3-dashboard.png)
 ![canyon-light-3-code](./assets/screenshots/canyon-light-3-code.png)
 
+<p align="center">
+  <a href="#light-styles">↑ Back to Light Styles</a>
+</p>
+
 <a id="dune-light"></a>
 **Dune (Light)**
 
 ![dune-light-3-dashboard](./assets/screenshots/dune-light-3-dashboard.png)
 ![dune-light-3-code](./assets/screenshots/dune-light-3-code.png)
+
+<p align="center">
+  <a href="#light-styles">↑ Back to Light Styles</a>
+</p>
 
 <a id="cactus-light"></a>
 **Cactus (Light)**
@@ -656,11 +740,19 @@ Want to help shape **Oasis.nvim**?
 ![cactus-light-3-dashboard](./assets/screenshots/cactus-light-3-dashboard.png)
 ![cactus-light-3-code](./assets/screenshots/cactus-light-3-code.png)
 
+<p align="center">
+  <a href="#light-styles">↑ Back to Light Styles</a>
+</p>
+
 <a id="mirage-light"></a>
 **Mirage (Light)**
 
 ![mirage-light-3-dashboard](./assets/screenshots/mirage-light-3-dashboard.png)
 ![mirage-light-3-code](./assets/screenshots/mirage-light-3-code.png)
+
+<p align="center">
+  <a href="#light-styles">↑ Back to Light Styles</a>
+</p>
 
 <a id="lagoon-light"></a>
 **Lagoon (Light)**
@@ -668,17 +760,29 @@ Want to help shape **Oasis.nvim**?
 ![lagoon-light-3-dashboard](./assets/screenshots/lagoon-light-3-dashboard.png)
 ![lagoon-light-3-code](./assets/screenshots/lagoon-light-3-code.png)
 
+<p align="center">
+  <a href="#light-styles">↑ Back to Light Styles</a>
+</p>
+
 <a id="twilight-3-light"></a>
 **Twilight (Light)**
 
 ![twilight-light-3-dashboard](./assets/screenshots/twilight-light-3-dashboard.png)
 ![twilight-light-3-code](./assets/screenshots/twilight-light-3-code.png)
 
+<p align="center">
+  <a href="#light-styles">↑ Back to Light Styles</a>
+</p>
+
 <a id="rose-light"></a>
 **Rose (Light)**
 
 ![rose-light-3-dashboard](./assets/screenshots/rose-light-3-dashboard.png)
 ![rose-light-3-code](./assets/screenshots/rose-light-3-code.png)
+
+<p align="center">
+  <a href="#light-styles">↑ Back to Light Styles</a>
+</p>
 
   <!-- all-styles:end -->
 </details>
