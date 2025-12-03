@@ -3,6 +3,7 @@
 local p = require("oasis.palette")
 local theme = p.theme.dawn
 local light_gen = require("oasis.tools.light_theme_generator")
+local contrast_opts = { min_ratio = 5.8, force_aaa = false }
 
 -- General Reusable Colors
 local ui = {
@@ -35,7 +36,7 @@ local c = {
 	bg = ui.bg,
 	fg = ui.fg,
 	theme = ui.theme,
-	terminal = light_gen.generate_light_terminal(p.terminal, ui.bg.core, 3),
+	terminal = light_gen.generate_light_terminal(p.terminal, ui.bg.core, 2, contrast_opts),
 	light_mode = true,
 
 	-- Syntax
