@@ -3,6 +3,7 @@
 -- Analyzes color contrast ratios and WCAG compliance
 
 local wcag_calc = require("oasis.tools.wcag_color_calculator")
+local utils = require("oasis.utils")
 
 local M = {}
 
@@ -236,61 +237,17 @@ function M.print_palette_results(results)
 	end
 end
 
---- Dynamically discover all available Oasis palette variants (including dual-mode)
----@return table Array of palette variant names (e.g., "oasis_lagoon.dark", "oasis_lagoon.light", "oasis_desert")
+--- Dynamically discover all available Oasis palette variants (excluding deprecated)
+---@return table Array of palette variant names (e.g., "oasis_lagoon.dark", "oasis_lagoon.light")
 local function discover_palettes()
 	local palettes = {}
-	local script_path = debug.getinfo(1, "S").source:sub(2)
-	local script_dir = script_path:match("(.*[/\\])")
-	local palette_dir = script_dir:gsub("tools[/\\]?$", "") .. "color_palettes/"
-	local files = {}
 
-	-- Method 1: Try to get files via vim.fn.glob if available (Neovim)
-	if vim and vim.fn and vim.fn.glob then
-		files = vim.fn.glob(palette_dir .. "*.lua", false, true)
-		if files and #files > 0 then
-			for _, file in ipairs(files) do
-				local filename = vim.fn.fnamemodify(file, ":t:r")
-				-- Load and check if dual-mode
-				local ok, palette = pcall(require, "oasis.color_palettes." .. filename)
-				if ok then
-					if palette.dark and palette.light then
-						-- Dual-mode: add both variants
-						table.insert(palettes, filename .. ".dark")
-						table.insert(palettes, filename .. ".light")
-					else
-						-- Legacy: add as-is
-						table.insert(palettes, filename)
-					end
-				end
-			end
-		end
-	end
-
-	-- Method 2: Fallback to io.popen for standalone Lua
-	if #palettes == 0 then
-		local handle = io.popen('ls "' .. palette_dir .. '" 2>/dev/null | grep "\\.lua$"')
-		if handle then
-			local result = handle:read("*a")
-			handle:close()
-
-			for filename in result:gmatch("[^\r\n]+") do
-				if filename:match("%.lua$") then
-					local theme_name = filename:gsub("%.lua$", "")
-					-- Load and check if dual-mode
-					local ok, palette = pcall(require, "oasis.color_palettes." .. theme_name)
-					if ok then
-						if palette.dark and palette.light then
-							-- Dual-mode: add both variants
-							table.insert(palettes, theme_name .. ".dark")
-							table.insert(palettes, theme_name .. ".light")
-						else
-							-- Legacy: add as-is
-							table.insert(palettes, theme_name)
-						end
-					end
-				end
-			end
+	for _, name in ipairs(utils.get_palette_names()) do
+		local module_name = "oasis_" .. name
+		local ok, palette = pcall(require, "oasis.color_palettes." .. module_name)
+		if ok and utils.is_dual_mode_palette(palette) then
+			table.insert(palettes, module_name .. ".dark")
+			table.insert(palettes, module_name .. ".light")
 		end
 	end
 

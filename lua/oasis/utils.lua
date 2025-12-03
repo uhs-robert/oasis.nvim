@@ -3,6 +3,14 @@
 
 local M = {}
 
+local DEPRECATED_PALETTES = {
+	dawn = true,
+	dawnlight = true,
+	day = true,
+	dusk = true,
+	dust = true,
+}
+
 -- Provide minimal `vim` compatibility when running outside Neovim (e.g., plain lua extras)
 -- Only fills missing pieces and never overrides an existing `vim` table/functions.
 local function ensure_vim_compat()
@@ -119,7 +127,19 @@ end
 
 --- Get list of available palette names from filesystem
 --- @return table List of palette names without "oasis_" prefix, sorted alphabetically
-function M.get_palette_names()
+--- Check if a palette is deprecated
+--- @param name string Palette name with or without "oasis_" prefix
+--- @return boolean
+function M.is_palette_deprecated(name)
+	local bare = name:gsub("^oasis_", "")
+	return DEPRECATED_PALETTES[bare] == true
+end
+
+--- Get list of available palette names from filesystem
+--- @param include_deprecated boolean|nil Include deprecated palettes when true
+--- @return table List of palette names without "oasis_" prefix, sorted alphabetically
+function M.get_palette_names(include_deprecated)
+	local allow_deprecated = include_deprecated == true
 	local handle = assert(io.popen("ls lua/oasis/color_palettes/oasis_*.lua 2>/dev/null"))
 	local result = handle:read("*a")
 	handle:close()
@@ -127,7 +147,7 @@ function M.get_palette_names()
 	local files = {}
 	for file in result:gmatch("[^\n]+") do
 		local name = file:match("oasis_(%w+)%.lua")
-		if name then
+		if name and (allow_deprecated or not M.is_palette_deprecated(name)) then
 			table.insert(files, name)
 		end
 	end
@@ -311,8 +331,12 @@ ensure_vim_compat()
 --- @param include_light_intensity boolean When true, generate 5 light intensity variants; otherwise single light
 --- @return number success_count
 --- @return number error_count
-local function iterate_palettes(callback, include_light_intensity)
-	local palette_names = M.get_palette_names()
+local function iterate_palettes(callback, include_light_intensity, opts)
+	opts = opts or {}
+	local include_deprecated = opts.include_deprecated == true
+	local allow_legacy = opts.allow_legacy == true
+
+	local palette_names = M.get_palette_names(include_deprecated)
 	local success_count = 0
 	local error_count = 0
 
@@ -372,12 +396,16 @@ local function iterate_palettes(callback, include_light_intensity)
 				end
 			end
 		else
-			local ok_cb, err = pcall(callback, name, raw_palette, nil, nil)
-			if ok_cb then
-				success_count = success_count + 1
+			if allow_legacy then
+				local ok_cb, err = pcall(callback, name, raw_palette, nil, nil)
+				if ok_cb then
+					success_count = success_count + 1
+				else
+					print(string.format("✗ Error processing %s: %s", name, err or "unknown error"))
+					error_count = error_count + 1
+				end
 			else
-				print(string.format("✗ Error processing %s: %s", name, err or "unknown error"))
-				error_count = error_count + 1
+				print(string.format("↷ Skipping legacy palette (deprecated): %s", name))
 			end
 		end
 
@@ -389,10 +417,11 @@ end
 
 --- Iterate over palette modes (dark + light for dual-mode; single call for legacy)
 --- @param callback function Function(name, palette, mode) called per variant
+--- @param opts table|nil Options: include_deprecated (bool), allow_legacy (bool)
 --- @return number success_count
 --- @return number error_count
-function M.for_each_palette_mode(callback)
-	return iterate_palettes(callback, false)
+function M.for_each_palette_mode(callback, opts)
+	return iterate_palettes(callback, false, opts)
 end
 
 --- Generate light palette at specific intensity level
@@ -441,9 +470,10 @@ end
 ---                        - palette: extracted palette table
 ---                        - mode: "dark", "light", or nil for legacy palettes
 ---                        - intensity: 1-5 for light mode, nil for dark mode or legacy palettes
+--- @param opts table|nil Options: include_deprecated (bool), allow_legacy (bool)
 --- @return number, number Success count, error count
-function M.for_each_palette_variant(callback)
-	return iterate_palettes(callback, true)
+function M.for_each_palette_variant(callback, opts)
+	return iterate_palettes(callback, true, opts)
 end
 
 --- Build output path for a palette variant
