@@ -13,7 +13,8 @@
 </p>
 
 <p align="center">
-A collection of <strong>18</strong> desert-inspired Neovim colorschemes; warm, readable, and configurable.
+A collection of <strong>13</strong> desert-inspired Neovim colorschemes; warm, readable, and configurable.
+Now with matching light variants and adjustable light intensity (1–5).
 </p>
 
 ## 🌅 Overview
@@ -25,101 +26,86 @@ Oasis follows Melange's warm/cool split philosophy (**warm = action/flow**, **co
 **All themes are fully AAA WCAG compliant**. Light themes use warm beige-to-peachy tones to minimize blue light exposure and support eye health during extended coding sessions.
 
 > [!NOTE]
-> **✨ NEW in v3.0: Themed Syntax is Now Default** - Each variant now uses its signature color for statements and keywords (blue in lagoon, teal in mirage, orange in canyon, etc.) creating more distinct visual personalities. Prefer classic yellow syntax? [See how to opt-out under API Commands ↓](#-usage)
+> **✨ NEW in v3.0: Themed Syntax is Now Default** - Each variant uses its signature color for statements and keywords (blue in lagoon, teal in mirage, orange in canyon, etc.) creating more distinct visual personalities. Prefer classic yellow syntax? [See how to opt-out under API Commands ↓](#-usage)
+
+<p align="center"><strong>What’s new</strong>: matching light variants for EVERY theme with an intensity slider (1–5) for light backgrounds to control the vibrancy, and a new command <code>:OasisIntensity</code>.</p>
+
+### Dark Styles
 
 <table>
   <tr>
-    <td align="center">
-      <a href="#night-night-sky"><img src="assets/screenshots/night-dashboard.png" alt="Night" width="180"></a><br>
-      <strong>Night</strong><br><em>Night Sky</em>
-    </td>
-    <td align="center">
-      <a href="#midnight-off-black"><img src="assets/screenshots/midnight-dashboard.png" alt="Midnight" width="180"></a><br>
-      <strong>Midnight</strong><br><em>Off Black</em>
-    </td>
-    <td align="center">
-      <a href="#abyss-black"><img src="assets/screenshots/abyss-dashboard.png" alt="Abyss" width="180"></a><br>
-      <strong>Abyss</strong><br><em>Black</em>
-    </td>
-    <td align="center">
-      <a href="#starlight-black-vivid"><img src="assets/screenshots/starlight-dashboard.png" alt="Starlight" width="180"></a><br>
-      <strong>Starlight</strong><br><em>Black Vivid</em>
-    </td>
+    <td align="center"><a href="#night-dark"><img src="assets/screenshots/night-dark-dashboard.png" alt="Night (dark)" width="165"></a><br><strong>Night</strong><br><em>Night Sky</em></td>
+    <td align="center"><a href="#midnight-dark"><img src="assets/screenshots/midnight-dark-dashboard.png" alt="Midnight (dark)" width="165"></a><br><strong>Midnight</strong><br><em>Off Black</em></td>
+    <td align="center"><a href="#abyss-dark"><img src="assets/screenshots/abyss-dark-dashboard.png" alt="Abyss (dark)" width="165"></a><br><strong>Abyss</strong><br><em>Black</em></td>
+    <td align="center"><a href="#starlight-dark"><img src="assets/screenshots/starlight-dark-dashboard.png" alt="Starlight (dark)" width="165"></a><br><strong>Starlight</strong><br><em>Black Vivid</em></td>
   </tr>
   <tr>
-    <td align="center">
-      <a href="#desert-grey"><img src="assets/screenshots/desert-dashboard.png" alt="Desert" width="180"></a><br>
-      <strong>Desert</strong><br><em>Grey</em>
-    </td>
-    <td align="center">
-      <a href="#sol-red"><img src="assets/screenshots/sol-dashboard.png" alt="Sol" width="180"></a><br>
-      <strong>Sol</strong><br><em>Red</em>
-    </td>
-    <td align="center">
-      <a href="#canyon-orange"><img src="assets/screenshots/canyon-dashboard.png" alt="Canyon" width="180"></a><br>
-      <strong>Canyon</strong><br><em>Orange</em>
-    </td>
-    <td align="center">
-      <a href="#dune-yellow"><img src="assets/screenshots/dune-dashboard.png" alt="Dune" width="180"></a><br>
-      <strong>Dune</strong><br><em>Yellow</em>
-    </td>
+    <td align="center"><a href="#desert-dark"><img src="assets/screenshots/desert-dark-dashboard.png" alt="Desert (dark)" width="165"></a><br><strong>Desert</strong><br><em>Grey</em></td>
+    <td align="center"><a href="#sol-dark"><img src="assets/screenshots/sol-dark-dashboard.png" alt="Sol (dark)" width="165"></a><br><strong>Sol</strong><br><em>Red</em></td>
+    <td align="center"><a href="#canyon-dark"><img src="assets/screenshots/canyon-dark-dashboard.png" alt="Canyon (dark)" width="165"></a><br><strong>Canyon</strong><br><em>Orange</em></td>
+    <td align="center"><a href="#dune-dark"><img src="assets/screenshots/dune-dark-dashboard.png" alt="Dune (dark)" width="165"></a><br><strong>Dune</strong><br><em>Yellow</em></td>
   </tr>
   <tr>
-    <td align="center">
-      <a href="#cactus-green"><img src="assets/screenshots/cactus-dashboard.png" alt="Cactus" width="180"></a><br>
-      <strong>Cactus</strong><br><em>Green</em>
-    </td>
-    <td align="center">
-      <a href="#mirage-teal"><img src="assets/screenshots/mirage-dashboard.png" alt="Mirage" width="180"></a><br>
-      <strong>Mirage</strong><br><em>Teal</em>
-    </td>
-    <td align="center">
-      <a href="#lagoon-blue"><img src="assets/screenshots/lagoon-dashboard.png" alt="Lagoon" width="180"></a><br>
-      <strong>Lagoon (Default Dark)</strong><br><em>Blue</em>
-    </td>
-    <td align="center">
-      <a href="#twilight-purple"><img src="assets/screenshots/twilight-dashboard.png" alt="Twilight" width="180"></a><br>
-      <strong>Twilight</strong><br><em>Purple</em>
-    </td>
+    <td align="center"><a href="#cactus-dark"><img src="assets/screenshots/cactus-dark-dashboard.png" alt="Cactus (dark)" width="165"></a><br><strong>Cactus</strong><br><em>Green</em></td>
+    <td align="center"><a href="#mirage-dark"><img src="assets/screenshots/mirage-dark-dashboard.png" alt="Mirage (dark)" width="165"></a><br><strong>Mirage</strong><br><em>Teal</em></td>
+    <td align="center"><a href="#lagoon-dark"><img src="assets/screenshots/lagoon-dark-dashboard.png" alt="Lagoon (dark)" width="165"></a><br><strong>Lagoon (Default Dark)</strong><br><em>Blue</em></td>
+    <td align="center"><a href="#twilight-dark"><img src="assets/screenshots/twilight-dark-dashboard.png" alt="Twilight (dark)" width="165"></a><br><strong>Twilight</strong><br><em>Purple</em></td>
   </tr>
   <tr>
-    <td align="center">
-      <a href="#rose-pink"><img src="assets/screenshots/rose-dashboard.png" alt="Rose" width="180"></a><br>
-      <strong>Rose</strong><br><em>Pink</em>
-    </td>
-    <td align="center">
-      <a href="#dawn-beige"><img src="assets/screenshots/dawn-dashboard.png" alt="Dawn" width="180"></a><br>
-      <strong>Dawn (Default Light)</strong><br><em>Beige</em>
-    </td>
-    <td align="center">
-      <a href="#dawnlight-golden-beige"><img src="assets/screenshots/dawnlight-dashboard.png" alt="Dawnlight" width="180"></a><br>
-      <strong>Dawnlight</strong><br><em>Golden Beige</em>
-    </td>
-    <td align="center">
-      <a href="#day-gold"><img src="assets/screenshots/day-dashboard.png" alt="Day" width="180"></a><br>
-      <strong>Day</strong><br><em>Gold</em>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <a href="#dusk-peach-gold"><img src="assets/screenshots/dusk-dashboard.png" alt="Dusk" width="180"></a><br>
-      <strong>Dusk</strong><br><em>Peach Gold</em>
-    </td>
-    <td align="center">
-      <a href="#dust-golden-sand"><img src="assets/screenshots/dust-dashboard.png" alt="Dust" width="180"></a><br>
-      <strong>Dust</strong><br><em>Golden Sand</em>
-    </td>
+    <td align="center"><a href="#rose-dark"><img src="assets/screenshots/rose-dark-dashboard.png" alt="Rose (dark)" width="165"></a><br><strong>Rose</strong><br><em>Pink</em></td>
   </tr>
 </table>
+
+### Light Styles
+
+<table>
+  <tr>
+    <td align="center"><a href="#night-light"><img src="assets/screenshots/night-light-3-dashboard.png" alt="Night (light)" width="165"></a><br><strong>Night · Light</strong></td>
+    <td align="center"><a href="#midnight-light"><img src="assets/screenshots/midnight-light-3-dashboard.png" alt="Midnight (light)" width="165"></a><br><strong>Midnight · Light</strong></td>
+    <td align="center"><a href="#abyss-light"><img src="assets/screenshots/abyss-light-3-dashboard.png" alt="Abyss (light)" width="165"></a><br><strong>Abyss · Light</strong></td>
+    <td align="center"><a href="#starlight-light"><img src="assets/screenshots/starlight-light-3-dashboard.png" alt="Starlight (light)" width="165"></a><br><strong>Starlight · Light</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="#desert-light"><img src="assets/screenshots/desert-light-3-dashboard.png" alt="Desert (light)" width="165"></a><br><strong>Desert · Light</strong></td>
+    <td align="center"><a href="#sol-light"><img src="assets/screenshots/sol-light-3-dashboard.png" alt="Sol (light)" width="165"></a><br><strong>Sol · Light</strong></td>
+    <td align="center"><a href="#canyon-light"><img src="assets/screenshots/canyon-light-3-dashboard.png" alt="Canyon (light)" width="165"></a><br><strong>Canyon · Light</strong></td>
+    <td align="center"><a href="#dune-light"><img src="assets/screenshots/dune-light-3-dashboard.png" alt="Dune (light)" width="165"></a><br><strong>Dune · Light</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="#cactus-light"><img src="assets/screenshots/cactus-light-3-dashboard.png" alt="Cactus (light)" width="165"></a><br><strong>Cactus · Light</strong></td>
+    <td align="center"><a href="#mirage-light"><img src="assets/screenshots/mirage-light-3-dashboard.png" alt="Mirage (light)" width="165"></a><br><strong>Mirage · Light</strong></td>
+    <td align="center"><a href="#lagoon-light"><img src="assets/screenshots/lagoon-light-3-dashboard.png" alt="Lagoon (light)" width="165"></a><br><strong>Lagoon · Light</strong></td>
+    <td align="center"><a href="#twilight-light"><img src="assets/screenshots/twilight-light-3-dashboard.png" alt="Twilight (light)" width="165"></a><br><strong>Twilight · Light</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="#rose-light"><img src="assets/screenshots/rose-light-3-dashboard.png" alt="Rose (light)" width="165"></a><br><strong>Rose · Light</strong></td>
+  </tr>
+</table>
+
+<p align="center">
+<small>Light intensity legend: 1 = subtle, 2 = warm, 3 = balanced, 4 = bright, 5 = vivid. Adjust on the fly with <code>:OasisIntensity</code>.</small>
+</p>
 
 > [!TIP]
 > Click any card above to view the full preview and syntax sample.
 >
 > [↓ Click here to view all full previews](#view-all-theme-styles)
 
+### Light intensity scale (Lagoon Light example)
+
+<p align="center">
+  <img src="assets/screenshots/lagoon-light-1-dashboard.png" alt="Lagoon light intensity 1" width="150">
+  <img src="assets/screenshots/lagoon-light-2-dashboard.png" alt="Lagoon light intensity 2" width="150">
+  <img src="assets/screenshots/lagoon-light-3-dashboard.png" alt="Lagoon light intensity 3" width="150">
+  <img src="assets/screenshots/lagoon-light-4-dashboard.png" alt="Lagoon light intensity 4" width="150">
+  <img src="assets/screenshots/lagoon-light-5-dashboard.png" alt="Lagoon light intensity 5" width="150">
+</p>
+
+<p align="center"><small>Use <code>:OasisIntensity</code> to step through intensity options 1 → 5 in light mode.</small></p>
+
 ## ✨ Features
 
-- **18 theme styles**: A rainbow of desert-inspired options; with an emphasis on warmth and readability.
+- **13 theme styles**: A rainbow of desert-inspired options; with an emphasis on warmth and readability.
 - **Dark/Light Modes**: Automatic switching based on your system theme or `vim.o.background`.
 - **Comprehensive highlighting** - LSP, Tree-sitter, and plugin support
 - **Fast loading** - Direct highlight application for optimal performance based on the plugins in your config
@@ -230,11 +216,6 @@ colorscheme oasis-mirage
 colorscheme oasis-lagoon
 colorscheme oasis-twilight
 colorscheme oasis-rose
-colorscheme oasis-dawn
-colorscheme oasis-dawnlight
-colorscheme oasis-day
-colorscheme oasis-dusk
-colorscheme oasis-dust
 ```
 
 <!-- colorscheme-commands:end -->
@@ -245,11 +226,11 @@ colorscheme oasis-dust
 <br>
 <!-- user-themes:start -->
 
-Hmm... with so many options to choose from why settle for one. Use the right theme for the right occasion to differentiate between your environments. Here are some examples:
+With so many options to choose from why settle for just one? Use the right theme for the right occasion to differentiate between your environments. Here are some examples:
 
-- A custom theme for when **root** or **sudoedit**
+- A custom theme for when **root** and/or **sudoedit**
 - A custom theme for when **remote**
-- A custom theme for when **BOTH**
+- A custom theme for **ANY COMBINATION**
 
 Use this example config to have a custom theme for each situation above:
 
@@ -413,6 +394,22 @@ local level = wcag.get_compliance_level(ratio, false)  -- Returns: "AAA"
 
 Reference: [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)
 
+### Cycle Light Intensity
+
+Cycle the light background intensity (1–5) without reloading:
+
+```vim
+:OasisIntensity
+```
+
+```lua
+-- Or use the Lua API
+require("oasis").cycle_intensity()
+```
+
+- Applies to light palettes only (dark palettes ignore intensity).
+- Default intensity is configurable via `light_intensity` in `setup()`.
+
 <!-- api:end -->
 </details>
 
@@ -427,67 +424,42 @@ Oasis offers _many_ different styles to choose from. Have fun customizing with `
 
 ```lua
 -- Oasis.nvim
--- Styles: "night", "midnight", "abyss", "starlight", "desert", "sol", "canyon", "dune", "cactus", "mirage", "lagoon", "twilight", "rose", "dawn", "dawnlight", "day", "dusk", "dust"
+-- Styles: "night", "midnight", "abyss", "starlight", "desert", "sol", "canyon", "dune", "cactus", "mirage", "lagoon", "twilight", "rose"
 require("oasis").setup({
-  dark_style = "lagoon",                -- Style to use when vim.o.background is "dark"
-  light_style = "dawn",                 -- Style to use when vim.o.background is "light"
-  style = nil,                          -- Optional: Set a single style to disable auto-switching (e.g., "lagoon", "desert")
+  style = "lagoon",                     -- Primary style, default used when colorscheme is set to "oasis"
+  dark_style = "auto",                  -- Applies to your primary style only: "auto" uses `style`. Or override with another dark theme (e.g., "abyss")
+  light_style = "auto",                 -- Applies to your primary style only: "auto" uses `style`. Or override with another light theme (e.g., "dune")
+  light_intensity = 3,                  -- Light background intensity (1-5): 1=subtle, 5=saturated
   use_legacy_comments = false,          -- Uses the legacy comment color from desert.vim for the "desert" style only (a bright sky blue)
-  themed_syntax = true,    -- Use theme primary color for statements/keywords - set to false for classic yellow syntax (dark themes only)
+  themed_syntax = true,                 -- Use theme primary color for statements/keywords - set to false for classic yellow syntax
 
   -- Text styling - disable individual styles if you like
   styles = {
-    bold = true,                 -- Enable bold text (keywords, functions, etc.)
-    italic = true,               -- Enable italics (comments, certain keywords)
-    underline = true,            -- Enable underlined text (matching words)
-    undercurl = true,            -- Enable undercurl for diagnostics/spelling
-    strikethrough = true,        -- Enable strikethrough text (deprecations)
+    bold = true,                        -- Enable bold text (keywords, functions, etc.)
+    italic = true,                      -- Enable italics (comments, certain keywords)
+    underline = true,                   -- Enable underlined text (matching words)
+    undercurl = true,                   -- Enable undercurl for diagnostics/spelling
+    strikethrough = true,               -- Enable strikethrough text (deprecations)
   },
 
   -- Display options
-  transparent = false,           -- Set to true for transparent backgrounds (bye bye theme backgrounds)
-  terminal_colors = true,        -- Apply Oasis colors to Neovim's built-in terminal
+  transparent = false,                  -- Set to true for transparent backgrounds (bye-bye theme backgrounds)
+  terminal_colors = true,               -- Apply Oasis colors to Neovim's built-in terminal
 
-  palette_overrides = {},        -- Override colors in specific palettes
-  highlight_overrides = {},      -- Override specific highlight groups
+  -- Contrast controls (WCAG: AA = 4.5, AAA = 7.0)
+  contrast = {
+    -- Note: Light themes obey the targets below. All dark themes target 7.0 by default with very few exceptions.
+    min_ratio = 5.8,                    -- Clamp 4.5–7.0; target contrast for syntax/terminal colors. Increase for more contrast, decrease for more pop.
+    force_aaa = false,                  -- When true, forces AAA (7.0) wherever possible; as a result some colors may appear muddy.
+  },
+
+  palette_overrides = {},               -- Override colors in specific palettes
+  highlight_overrides = {},             -- Override specific highlight groups
 })
 ```
 
 <!-- config:end -->
 </details>
-
-## 🌗 Automatic Light/Dark Mode Switching
-
-Oasis automatically switches between your config's `light_style` and `dark_style` based on `vim.o.background`.
-
-<details>
-  <summary>☀️ Configure Light / Dark Styles</summary>
-  <br>
-<!-- light-dark:start -->
-
-```lua
-require("oasis").setup({
-  dark_style = "lagoon",      -- Style when background is dark
-  light_style = "dawn"        -- Style when background is light
-})
-vim.cmd.colorscheme("oasis")  -- Apply the theme
-```
-
-<!-- light-dark:end -->
-</details>
-
-> [!TIP]
-> You may use _any_ style for light or dark mode. No restrictions apply. (e.g. use 'desert' in light_style)
-
-### 🕶️ Choosing a Light Theme
-
-Light styles vary in brightness to adapt to your workspace lighting. The right lightness keeps your eyes comfortable, reduces strain and headaches, and helps maintain focus throughout the day.
-
-- Dawn (91%) - brightest for well-lit spaces
-- Dawnlight (88%) - a tad softer with golden tones
-- Day (85%) - balanced for everyday use
-- Dusk (77%) - warmer for extended sessions
-- Dust (70%) - warmest for dim lighting
 
 ## 🪓 Overriding Colors & Highlight Groups
 
@@ -549,203 +521,165 @@ Want to help shape **Oasis.nvim**?
   <summary><b>All styles (click to collapse)</b></summary>
   <!-- all-styles:start -->
 
-### Night (Night Sky)
+### Dark previews
 
-Deep desert night sky with indigo undertones, for those who prefer a soft darkness
+<a id="night-dark"></a>
+**Night (Dark · Night Sky)**
 
-![night-dashboard](./assets/screenshots/night-dashboard.png)
-![night-code](./assets/screenshots/night-code.png)
+![night-dark-dashboard](./assets/screenshots/night-dark-dashboard.png)
+![night-dark-code](./assets/screenshots/night-dark-code.png)
 
-<p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
-</p>
+<a id="midnight-dark"></a>
+**Midnight (Dark · Off Black)**
 
-### Midnight (Off Black)
+![midnight-dark-dashboard](./assets/screenshots/midnight-dark-dashboard.png)
+![midnight-dark-code](./assets/screenshots/midnight-dark-code.png)
 
-Deep slate and navy tones of the desert at midnight, a tinted-black lighter than abyss
+<a id="abyss-dark"></a>
+**Abyss (Dark · Black)**
 
-![midnight-dashboard](./assets/screenshots/midnight-dashboard.png)
-![midnight-code](./assets/screenshots/midnight-code.png)
+![abyss-dark-dashboard](./assets/screenshots/abyss-dark-dashboard.png)
+![abyss-dark-code](./assets/screenshots/abyss-dark-code.png)
 
-<p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
-</p>
+<a id="starlight-dark"></a>
+**Starlight (Dark · Black Vivid)**
 
-### Abyss (Black)
+![starlight-dark-dashboard](./assets/screenshots/starlight-dark-dashboard.png)
+![starlight-dark-code](./assets/screenshots/starlight-dark-code.png)
 
-Deep, dark style with mysterious depths
+<a id="desert-dark"></a>
+**Desert (Dark · Grey)**
 
-![abyss-dashboard](./assets/screenshots/abyss-dashboard.png)
-![abyss-code](./assets/screenshots/abyss-code.png)
+![desert-dark-dashboard](./assets/screenshots/desert-dark-dashboard.png)
+![desert-dark-code](./assets/screenshots/desert-dark-code.png)
 
-<p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
-</p>
+<a id="sol-dark"></a>
+**Sol (Dark · Red)**
 
-### Starlight (Black Vivid)
+![sol-dark-dashboard](./assets/screenshots/sol-dark-dashboard.png)
+![sol-dark-code](./assets/screenshots/sol-dark-code.png)
 
-The abyss illuminated by brilliant starlight with vivid high-contrast colors
+<a id="canyon-dark"></a>
+**Canyon (Dark · Orange)**
 
-![starlight-dashboard](./assets/screenshots/starlight-dashboard.png)
-![starlight-code](./assets/screenshots/starlight-code.png)
+![canyon-dark-dashboard](./assets/screenshots/canyon-dark-dashboard.png)
+![canyon-dark-code](./assets/screenshots/canyon-dark-code.png)
 
-<p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
-</p>
+<a id="dune-dark"></a>
+**Dune (Dark · Yellow)**
 
-### Desert (Grey)
+![dune-dark-dashboard](./assets/screenshots/dune-dark-dashboard.png)
+![dune-dark-code](./assets/screenshots/dune-dark-code.png)
 
-The original inspiration, the classic vim desert theme reborn with neutral sand and earth tones
+<a id="cactus-dark"></a>
+**Cactus (Dark · Green)**
 
-![desert-dashboard](./assets/screenshots/desert-dashboard.png)
-![desert-code](./assets/screenshots/desert-code.png)
+![cactus-dark-dashboard](./assets/screenshots/cactus-dark-dashboard.png)
+![cactus-dark-code](./assets/screenshots/cactus-dark-code.png)
 
-<p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
-</p>
+<a id="mirage-dark"></a>
+**Mirage (Dark · Teal)**
 
-### Sol (Red)
+![mirage-dark-dashboard](./assets/screenshots/mirage-dark-dashboard.png)
+![mirage-dark-code](./assets/screenshots/mirage-dark-code.png)
 
-Hot, scorching desert sun with intense red tones (my go-to for `sudoedit` or `sudo nvim`)
+<a id="lagoon-dark"></a>
+**Lagoon (Dark · Default)**
 
-![sol-dashboard](./assets/screenshots/sol-dashboard.png)
-![sol-code](./assets/screenshots/sol-code.png)
+![lagoon-dark-dashboard](./assets/screenshots/lagoon-dark-dashboard.png)
+![lagoon-dark-code](./assets/screenshots/lagoon-dark-code.png)
 
-<p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
-</p>
+<a id="twilight-dark"></a>
+**Twilight (Dark · Purple)**
 
-### Canyon (Orange)
+![twilight-dark-dashboard](./assets/screenshots/twilight-dark-dashboard.png)
+![twilight-dark-code](./assets/screenshots/twilight-dark-code.png)
 
-Rich oranges of desert canyon walls
+<a id="rose-dark"></a>
+**Rose (Dark · Pink)**
 
-![canyon-dashboard](./assets/screenshots/canyon-dashboard.png)
-![canyon-code](./assets/screenshots/canyon-code.png)
+![rose-dark-dashboard](./assets/screenshots/rose-dark-dashboard.png)
+![rose-dark-code](./assets/screenshots/rose-dark-code.png)
 
-<p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
-</p>
+### Light previews
 
-### Dune (Yellow)
+<a id="night-light"></a>
+**Night (Light)**
 
-Sandy beiges and warm yellow earth tones
+![night-light-3-dashboard](./assets/screenshots/night-light-3-dashboard.png)
+![night-light-3-code](./assets/screenshots/night-light-3-code.png)
 
-![dune-dashboard](./assets/screenshots/dune-dashboard.png)
-![dune-code](./assets/screenshots/dune-code.png)
+<a id="midnight-light"></a>
+**Midnight (Light)**
 
-<p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
-</p>
+![midnight-light-3-dashboard](./assets/screenshots/midnight-light-3-dashboard.png)
+![midnight-light-3-code](./assets/screenshots/midnight-light-3-code.png)
 
-### Cactus (Green)
+<a id="abyss-light"></a>
+**Abyss (Light)**
 
-Fresh greens of desert vegetation
+![abyss-light-3-dashboard](./assets/screenshots/abyss-light-3-dashboard.png)
+![abyss-light-3-code](./assets/screenshots/abyss-light-3-code.png)
 
-![cactus-dashboard](./assets/screenshots/cactus-dashboard.png)
-![cactus-code](./assets/screenshots/cactus-code.png)
+<a id="starlight-3-light"></a>
+**Starlight (Light)**
 
-<p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
-</p>
+![starlight-3-light-3-dashboard](./assets/screenshots/starlight-3-light-3-dashboard.png)
+![starlight-3-light-3-code](./assets/screenshots/starlight-3-light-3-code.png)
 
-### Mirage (Teal)
+<a id="desert-light"></a>
+**Desert (Light)**
 
-Cool teals of shimmering desert mirages
+![desert-light-3-dashboard](./assets/screenshots/desert-light-3-dashboard.png)
+![desert-light-3-code](./assets/screenshots/desert-light-3-code.png)
 
-![mirage-dashboard](./assets/screenshots/mirage-dashboard.png)
-![mirage-code](./assets/screenshots/mirage-code.png)
+<a id="sol-light"></a>
+**Sol (Light)**
 
-<p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
-</p>
+![sol-light-3-dashboard](./assets/screenshots/sol-light-3-dashboard.png)
+![sol-light-3-code](./assets/screenshots/sol-light-3-code.png)
 
-### Lagoon (Blue)
+<a id="canyon-light"></a>
+**Canyon (Light)**
 
-The original and default Oasis theme, featuring cool blues of the desert lagoon
+![canyon-light-3-dashboard](./assets/screenshots/canyon-light-3-dashboard.png)
+![canyon-light-3-code](./assets/screenshots/canyon-light-3-code.png)
 
-![lagoon-dashboard](./assets/screenshots/lagoon-dashboard.png)
-![lagoon-code](./assets/screenshots/lagoon-code.png)
+<a id="dune-light"></a>
+**Dune (Light)**
 
-<p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
-</p>
+![dune-light-3-dashboard](./assets/screenshots/dune-light-3-dashboard.png)
+![dune-light-3-code](./assets/screenshots/dune-light-3-code.png)
 
-### Twilight (Purple)
+<a id="cactus-light"></a>
+**Cactus (Light)**
 
-Evening in the desert with purple hues
+![cactus-light-3-dashboard](./assets/screenshots/cactus-light-3-dashboard.png)
+![cactus-light-3-code](./assets/screenshots/cactus-light-3-code.png)
 
-![twilight-dashboard](./assets/screenshots/twilight-dashboard.png)
-![twilight-code](./assets/screenshots/twilight-code.png)
+<a id="mirage-light"></a>
+**Mirage (Light)**
 
-<p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
-</p>
+![mirage-light-3-dashboard](./assets/screenshots/mirage-light-3-dashboard.png)
+![mirage-light-3-code](./assets/screenshots/mirage-light-3-code.png)
 
-### Rose (Pink)
+<a id="lagoon-light"></a>
+**Lagoon (Light)**
 
-Soft pinks of the warm desert rose
+![lagoon-light-3-dashboard](./assets/screenshots/lagoon-light-3-dashboard.png)
+![lagoon-light-3-code](./assets/screenshots/lagoon-light-3-code.png)
 
-![rose-dashboard](./assets/screenshots/rose-dashboard.png)
-![rose-code](./assets/screenshots/rose-code.png)
+<a id="twilight-3-light"></a>
+**Twilight (Light)**
 
-<p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
-</p>
+![twilight-light-3-dashboard](./assets/screenshots/twilight-3-light-3-dashboard.png)
+![twilight-light-3-code](./assets/screenshots/twilight-3-light-3-code.png)
 
-### Dawn (Beige)
+<a id="rose-light"></a>
+**Rose (Light)**
 
-The default light style - the bright morning sun (`Lightness = 91`)
-
-![dawn-dashboard](./assets/screenshots/dawn-dashboard.png)
-![dawn-code](./assets/screenshots/dawn-code.png)
-
-<p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
-</p>
-
-### Dawnlight (Golden Beige)
-
-Slightly warmer than dawn, a golden morning glow (`Lightness = 88`)
-
-![dawnlight-dashboard](./assets/screenshots/dawnlight-dashboard.png)
-![dawnlight-code](./assets/screenshots/dawnlight-code.png)
-
-<p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
-</p>
-
-### Day (Gold)
-
-Full daylight warmth with rich golden saturation (`Lightness = 85`)
-
-![day-dashboard](./assets/screenshots/day-dashboard.png)
-![day-code](./assets/screenshots/day-code.png)
-
-<p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
-</p>
-
-### Dusk (Peach Gold)
-
-Warm sky at sunset, peachy-golden tones (`Lightness = 77`)
-
-![dusk-dashboard](./assets/screenshots/dusk-dashboard.png)
-![dusk-code](./assets/screenshots/dusk-code.png)
-
-<p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
-</p>
-
-### Dust (Golden Sand)
-
-Warmest peachy-golden tones (`Lightness = 70`)
-
-![dust-dashboard](./assets/screenshots/dust-dashboard.png)
-![dust-code](./assets/screenshots/dust-code.png)
-
-<p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
-</p>
+![rose-light-3-dashboard](./assets/screenshots/rose-light-3-dashboard.png)
+![rose-light-3-code](./assets/screenshots/rose-light-3-code.png)
 
   <!-- all-styles:end -->
 </details>
