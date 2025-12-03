@@ -29,11 +29,11 @@ Oasis follows a warm/cool color split philosophy (**warm = action/flow**, **cool
 >
 > Prefer classic yellow syntax? [See how to opt-out under API Commands ↓](#-usage)
 
-### Dark Styles
+## 🌙 Dark Styles
 
 Click any card below to view the full preview and syntax sample. [↓ Or click here to view all full previews](#view-all-theme-styles)
 
-#### Dark Previews
+### Dark Previews
 
 <table>
   <tr>
@@ -59,7 +59,7 @@ Click any card below to view the full preview and syntax sample. [↓ Or click h
   </tr>
 </table>
 
-### Light Styles
+## ☀️ Light Styles
 
 The light styles use an intensity scale from 1-5 set via `:OasisIntensity` or `config` which control background saturation.
 
@@ -82,7 +82,7 @@ The light styles use an intensity scale from 1-5 set via `:OasisIntensity` or `c
 >
 > This provides a middle ground between traditional light and dark modes.
 
-#### Light Previews
+### Light Previews
 
 The examples below use the default intensity of level 3.
 
