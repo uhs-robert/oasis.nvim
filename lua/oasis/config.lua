@@ -3,7 +3,7 @@
 local M = {}
 
 local default_dark = "lagoon"
-local default_light = "dawn"
+local default_light = "lagoon"
 local utils = require("oasis.utils")
 local deepcopy = vim.deepcopy
 
@@ -21,7 +21,7 @@ end
 M.defaults = {
 	style = default_dark,         -- Primary style choice (default palette)
 	dark_style = "auto",          -- "auto" uses `style`, or specify a dark theme (e.g., "sol", "canyon")
-	light_style = "auto",         -- "auto" uses `style`, or specify a light theme (e.g., "day")
+	light_style = "auto",         -- "auto" uses `style`, or specify a light theme (e.g., "night", "canyon")
 	use_legacy_comments = false,  -- Applies to `desert` only. Uses vibrant skyblue for comments
 	themed_syntax = true,         -- Use theme primary color for statements/conditionals
 	light_intensity = 3,          -- Light background intensity (1-5): 1=subtle, 5=saturated

@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-A collection of <strong>13</strong> desert-inspired Neovim colorschemes; warm, readable, and highly configurable.
+A collection of <strong>13</strong> desert-inspired Neovim colorschemes with <strong>dual light/dark modes</strong>; warm, readable, and highly configurable.
 </p>
 
 ## 🌅 Overview
@@ -112,7 +112,7 @@ The examples below use the default intensity of level 3.
 
 ## ✨ Features
 
-- **13 theme styles**: A rainbow of desert-inspired options; with an emphasis on warmth and readability.
+- **13 theme styles with dual modes**: Each theme offers both dark and light variants with 5 adjustable intensity levels.
 - **Dark/Light Modes**: Automatic switching based on your system theme or `vim.o.background`.
 - **Comprehensive highlighting** - LSP, Tree-sitter, and plugin support
 - **Fast loading** - Direct highlight application for optimal performance based on the plugins in your config
@@ -362,6 +362,35 @@ This option controls how statement/keyword colors are rendered:
 
 - **Enabled** (default): Statements and keywords use the theme's primary color (e.g., blue in lagoon, teal in mirage, orange in canyon)
 - **Disabled**: Statements and keywords use traditional yellow/khaki tones across all variants
+
+### Deprecated Light Theme Migration
+
+The following standalone light themes have been deprecated in favor of the dual-mode system:
+
+| Deprecated  | Replacement                          |
+| ----------- | ------------------------------------ |
+| `dawn`      | Any theme with `light_intensity = 1` |
+| `dawnlight` | Any theme with `light_intensity = 2` |
+| `day`       | Any theme with `light_intensity = 3` |
+| `dusk`      | Any theme with `light_intensity = 4` |
+| `dust`      | Any theme with `light_intensity = 5` |
+
+**Migration Example:**
+
+```lua
+-- Old (deprecated)
+vim.cmd.colorscheme("oasis-day")
+
+-- New (recommended)
+require("oasis").setup({
+  style = "night",  -- or any theme: "canyon", "lagoon", etc.
+  light_intensity = 3,
+})
+vim.o.background = "light"
+vim.cmd.colorscheme("oasis")
+```
+
+Deprecated themes will display a warning and will be removed in v4.0.
 
 ### WCAG Accessibility Checker
 
