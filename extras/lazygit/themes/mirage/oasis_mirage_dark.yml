@@ -1,0 +1,27 @@
+# extras/lazygit/oasis_mirage_dark.yml
+# name: Oasis Mirage Dark
+# author: uhs-robert
+
+theme:
+  activeBorderColor:
+    - '#FFA247'
+    - bold
+  inactiveBorderColor:
+    - '#5ABAAE'
+  optionsTextColor:
+    - '#F0E68C'
+  selectedLineBgColor:
+    - '#1A2D33'
+  cherryPickedCommitBgColor:
+    - '#2A3F46'
+  cherryPickedCommitFgColor:
+    - '#5ABAAE'
+  unstagedChangesColor:
+    - '#D06666'
+  defaultFgColor:
+    - '#DDEFEF'
+  searchingActiveBorderColor:
+    - '#F0E68C'
+
+authorColors:
+  '*': '#FFA247'
