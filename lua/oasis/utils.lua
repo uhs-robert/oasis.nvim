@@ -178,6 +178,34 @@ function M.capitalize(str)
 	return str:gsub("^%l", string.upper)
 end
 
+--- Format variant name for display (e.g., "lagoon_dark" -> "Oasis Lagoon Dark")
+--- @param variant_name string Variant name (e.g., "lagoon_dark", "lagoon_light_3", "dawn")
+--- @return string Formatted display name
+function M.format_display_name(variant_name)
+	-- Extract parts: base_name, mode (dark/light), intensity (1-5)
+	local base_name, mode, intensity
+
+	-- Try to match dark variant
+	base_name, mode = variant_name:match("^(.+)_(dark)$")
+	if base_name then
+		-- Capitalize base name
+		local display_base = M.capitalize(base_name)
+		return "Oasis " .. display_base .. " Dark"
+	end
+
+	-- Try to match light variant with intensity
+	base_name, mode, intensity = variant_name:match("^(.+)_(light)_(%d+)$")
+	if base_name then
+		-- Capitalize base name
+		local display_base = M.capitalize(base_name)
+		return "Oasis " .. display_base .. " Light " .. intensity
+	end
+
+	-- Standalone palette (no suffix)
+	local display_base = M.capitalize(variant_name)
+	return "Oasis " .. display_base
+end
+
 --- Find files matching a pattern using find command
 --- @param pattern string Pattern to search for (e.g., "generate_*.lua")
 --- @param directory? string Directory to search in (default: current directory)
@@ -276,6 +304,151 @@ function M.for_each_palette_mode(callback)
 	end
 
 	return success_count, error_count
+end
+
+--- Generate light palette at specific intensity level
+--- @param name string Base palette name (e.g., "lagoon")
+--- @param intensity number Intensity level (1-5)
+--- @return table|nil Palette with light mode at specified intensity, or nil on error
+function M.generate_light_palette_at_intensity(name, intensity)
+	local config = require("oasis.config")
+
+	-- Load the raw palette module
+	local ok, raw_palette = pcall(require, "oasis.color_palettes.oasis_" .. name)
+	if not ok then
+		return nil
+	end
+
+	-- Only works for dual-mode palettes
+	if not M.is_dual_mode_palette(raw_palette) then
+		return nil
+	end
+
+	-- Save original intensity and set new one
+	-- Must modify config.options (not defaults) since palettes call config.get()
+	local original_intensity = config.options.light_intensity
+	config.options.light_intensity = intensity
+
+	-- Clear the palette from cache and reload with new intensity
+	package.loaded["oasis.color_palettes.oasis_" .. name] = nil
+	ok, raw_palette = pcall(require, "oasis.color_palettes.oasis_" .. name)
+
+	-- Restore original intensity and clear cache again
+	config.options.light_intensity = original_intensity
+	package.loaded["oasis.color_palettes.oasis_" .. name] = nil
+
+	if not ok then
+		return nil
+	end
+
+	return raw_palette.light
+end
+
+--- Iterate over all palette modes with intensity variants for dual-mode palettes
+--- For dual-mode palettes, generates 1 dark variant + 5 light intensity variants
+--- For legacy palettes, calls callback once as before
+--- @param callback function Function(name, palette, mode, intensity) called for each variant
+---                        - name: base palette name (e.g., "lagoon")
+---                        - palette: extracted palette table
+---                        - mode: "dark", "light", or nil for legacy palettes
+---                        - intensity: 1-5 for light mode, nil for dark mode or legacy palettes
+--- @return number, number Success count, error count
+function M.for_each_palette_variant(callback)
+	local palette_names = M.get_palette_names()
+	local success_count = 0
+	local error_count = 0
+
+	for _, name in ipairs(palette_names) do
+		-- Load raw palette to check if dual-mode
+		local ok, raw_palette = pcall(require, "oasis.color_palettes.oasis_" .. name)
+		if not ok then
+			print(string.format("✗ Failed to load palette: %s", name))
+			error_count = error_count + 1
+			goto continue
+		end
+
+		-- Check if dual-mode palette
+		if M.is_dual_mode_palette(raw_palette) then
+			-- Generate dark variant
+			local ok_cb, err = pcall(callback, name, raw_palette.dark, "dark", nil)
+			if ok_cb then
+				success_count = success_count + 1
+			else
+				print(string.format("✗ Error processing %s.dark: %s", name, err or "unknown error"))
+				error_count = error_count + 1
+			end
+
+			-- Generate 5 light intensity variants
+			for intensity = 1, 5 do
+				local light_palette = M.generate_light_palette_at_intensity(name, intensity)
+				if light_palette then
+					ok_cb, err = pcall(callback, name, light_palette, "light", intensity)
+					if ok_cb then
+						success_count = success_count + 1
+					else
+						print(
+							string.format(
+								"✗ Error processing %s.light_%d: %s",
+								name,
+								intensity,
+								err or "unknown error"
+							)
+						)
+						error_count = error_count + 1
+					end
+				else
+					print(string.format("✗ Failed to generate light palette for %s at intensity %d", name, intensity))
+					error_count = error_count + 1
+				end
+			end
+		else
+			-- Legacy flat palette - call callback once
+			local ok_cb, err = pcall(callback, name, raw_palette, nil, nil)
+			if ok_cb then
+				success_count = success_count + 1
+			else
+				print(string.format("✗ Error processing %s: %s", name, err or "unknown error"))
+				error_count = error_count + 1
+			end
+		end
+
+		::continue::
+	end
+
+	return success_count, error_count
+end
+
+--- Build output path for a palette variant
+--- All themes go in themes/<palette>/ folders for consistent organization
+--- @param base_dir string Base directory (e.g., "extras/alacritty")
+--- @param extension string File extension (e.g., "toml", "conf")
+--- @param name string Palette name (e.g., "lagoon", "dawn")
+--- @param mode string|nil "dark", "light", or nil for standalone palettes
+--- @param intensity number|nil Intensity level 1-5 for light mode
+--- @return string output_path Full path to output file
+--- @return string variant_name Name used in the file (e.g., "lagoon_dark", "dawn")
+function M.build_variant_path(base_dir, extension, name, mode, intensity)
+	local variant_name
+	local output_path
+
+	if mode then
+		-- Dual-mode palette
+		if mode == "dark" then
+			variant_name = name .. "_dark"
+		else
+			variant_name = name .. "_light_" .. intensity
+		end
+	else
+		-- Standalone palette (e.g., dawn, day, desert)
+		variant_name = name
+	end
+
+	-- All themes go in themes/<palette>/ folder for consistent organization
+	local output_dir = string.format("%s/themes/%s", base_dir, name)
+	os.execute("mkdir -p " .. output_dir)
+	output_path = string.format("%s/oasis_%s.%s", output_dir, variant_name, extension)
+
+	return output_path, variant_name
 end
 
 return M
