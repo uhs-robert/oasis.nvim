@@ -109,6 +109,11 @@ local dark = {
 
 -- Light mode configuration
 local light_bg = light_gen.generate_light_backgrounds(ui.fg.core, opts.light_intensity)
+local light_ui = vim.tbl_extend("force", {}, dark.ui)
+light_ui.title = p.sunrise[700]
+light_ui.primary = p.sunrise[700]
+light_ui.light_primary = p.sunrise[500]
+
 local light = {
 	bg = light_bg,
 	fg = light_gen.generate_light_foregrounds(ui.fg, light_bg.core, opts.light_intensity),
@@ -127,7 +132,7 @@ local light = {
 	},
 
 	-- UI
-	ui = light_gen.generate_light_ui(dark.ui, light_bg, opts.light_intensity),
+	ui = light_gen.generate_light_ui(light_ui, light_bg, opts.light_intensity),
 }
 
 -- Return dual-mode palette
