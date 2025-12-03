@@ -3,6 +3,7 @@
 # frozen_string_literal: true
 
 require 'fileutils'
+require 'shellwords'
 
 # Configuration
 TMUX_CONFIG = File.expand_path('~/dotfiles/tmux/.tmux.conf')
@@ -10,6 +11,7 @@ TMUX_CONFIG_BACKUP = "#{TMUX_CONFIG}.backup"
 PROJECT_ROOT = File.expand_path('../..', __dir__)
 OUTPUT_DIR = File.join(PROJECT_ROOT, 'assets/screenshots')
 TEMP_DIR = '/tmp/oasis-screenshots'
+LIGHT_INTENSITY = 3
 
 # Dual-mode themes (have both dark and light variants)
 DUAL_MODE_THEMES = %w[
@@ -37,10 +39,18 @@ SINGLE_MODE_THEMES = %w[
   dust
 ].freeze
 
+# Special palettes that should capture all light intensity levels (1-5)
+SPECIAL_LIGHT_INTENSITY_THEMES = {
+  'lagoon' => (1..5).to_a
+}.freeze
+
 # Generate all variants (dual-mode get both dark and light, single-mode as-is)
 VARIANTS = (
-  DUAL_MODE_THEMES.flat_map { |theme| ["#{theme}_dark", "#{theme}_light"] } +
-  SINGLE_MODE_THEMES
+  DUAL_MODE_THEMES.flat_map { |theme| ["#{theme}_dark", "#{theme}_light_#{LIGHT_INTENSITY}"] } +
+  SINGLE_MODE_THEMES +
+  SPECIAL_LIGHT_INTENSITY_THEMES.flat_map do |theme, intensities|
+    intensities.map { |i| "#{theme}_light_#{i}" }
+  end
 ).freeze
 
 # Testing single variant
@@ -105,10 +115,11 @@ class ScreenshotWorkflow
     @kitty = KittyController.new(@instance_name)
     @screenshot_capture = screenshot_capture
 
-    # Parse variant to extract base name and mode
-    # e.g., "canyon_dark" -> base="canyon", mode="dark"
-    #       "dawn" -> base="dawn", mode=nil
-    @base_name, @mode = parse_variant(variant)
+    # Parse variant to extract base name, mode, and optional light intensity
+    # e.g., "canyon_dark" -> base="canyon", mode="dark", intensity=nil
+    #       "lagoon_light_3" -> base="lagoon", mode="light", intensity=3
+    #       "dawn" -> base="dawn", mode=nil, intensity=nil
+    @base_name, @mode, @intensity = parse_variant(variant)
   end
 
   def run
@@ -121,13 +132,11 @@ class ScreenshotWorkflow
   private
 
   def parse_variant(variant)
-    if variant.end_with?('_dark')
-      [variant.gsub(/_dark$/, ''), 'dark']
-    elsif variant.end_with?('_light')
-      [variant.gsub(/_light$/, ''), 'light']
-    else
-      [variant, nil]
-    end
+    match = variant.match(/^(?<base>.+?)(?:_(?<mode>dark|light)(?:_(?<intensity>\d))?)?$/)
+    base = match[:base]
+    mode = match[:mode]
+    intensity = match[:intensity]&.to_i
+    [base, mode, intensity]
   end
 
   def launch_terminal
@@ -140,14 +149,12 @@ class ScreenshotWorkflow
     @kitty.send_keys("cd #{PROJECT_ROOT}")
     @kitty.send_keys('nvim')
     sleep 1
-
-    # For dual-mode themes, set background before applying colorscheme
-    if @mode
-      @kitty.send_keys(":set termguicolors | set background=#{@mode} | colorscheme oasis-#{@base_name}")
-    else
-      @kitty.send_keys(":set termguicolors | colorscheme oasis-#{@base_name}")
-    end
-
+    # Run lua first, can't chain the pipe | with lua
+    @kitty.send_keys(":lua local cfg=require('oasis.config').get(); cfg.light_intensity=#{@intensity}") if @intensity
+    command_chain = ['set termguicolors']
+    command_chain << "set background=#{@mode}" if @mode
+    command_chain << "colorscheme oasis-#{@base_name}"
+    @kitty.send_keys(":#{command_chain.join(' | ')}")
     @screenshot_capture.capture(@instance_name, @variant, 'dashboard')
   end
 
@@ -289,11 +296,8 @@ class KittyController
 
   def send_keys(text, enter: true)
     command = "kitten @ --to unix:#{@socket_path} send-text"
-    if enter
-      system("#{command} '#{text}\n'")
-    else
-      system("#{command} --no-newline '#{text}'")
-    end
+    payload = enter ? "#{text}\n" : text
+    system("#{command} #{Shellwords.escape(payload)}")
     sleep 0.5
   end
 
@@ -388,7 +392,7 @@ class ScreenshotGenerator
     puts "\n#{'=' * 60}"
 
     if @errors.empty?
-      total_screenshots = VARIANTS.count * 2  # 2 screenshots per variant (dashboard + code)
+      total_screenshots = VARIANTS.count * 2 # 2 screenshots per variant (dashboard + code)
       puts "SUCCESS! All #{total_screenshots} screenshots generated (#{VARIANTS.count} variants)"
       puts "Output directory: #{OUTPUT_DIR}"
     else
