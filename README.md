@@ -1,17 +1,15 @@
 <p align="center">
   <img
-    src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f3dd.svg"
-    width="128" height="128" alt="Oasis emoji" />
+    src="./assets/logo.png"
+    width="auto" height="128" alt="logo" />
 </p>
-<h1 align="center">Oasis.nvim</h1>
-
+<hr/>
 <p align="center">
   <a href="https://github.com/uhs-robert/oasis.nvim/stargazers"><img src="https://img.shields.io/github/stars/uhs-robert/oasis.nvim?colorA=192330&colorB=skyblue&style=for-the-badge&cacheSeconds=4300"></a>
   <a href="https://github.com/uhs-robert/oasis.nvim/issues"><img src="https://img.shields.io/github/issues/uhs-robert/oasis.nvim?colorA=192330&colorB=khaki&style=for-the-badge&cacheSeconds=4300"></a>
   <a href="https://github.com/uhs-robert/oasis.nvim/contributors"><img src="https://img.shields.io/github/contributors/uhs-robert/oasis.nvim?colorA=192330&colorB=8FD1C7&style=for-the-badge&cacheSeconds=4300"></a>
   <a href="https://github.com/uhs-robert/oasis.nvim/network/members"><img src="https://img.shields.io/github/forks/uhs-robert/oasis.nvim?colorA=192330&colorB=C799FF&style=for-the-badge&cacheSeconds=4300"></a>
 </p>
-
 <p align="center">
 A collection of <strong>13</strong> desert-inspired Neovim colorschemes; warm, readable, and highly configurable.
 </p>
