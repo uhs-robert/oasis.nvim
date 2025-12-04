@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_twilight_light_3.toml
+## name: Oasis Twilight Light 3
+## author: uhs-robert
+
+[colors]
+foreground = "#4a4268"
+background= "#e2ddf4"
+cursor_bg= "#7416cd"
+cursor_border= "#7416cd"
+cursor_fg= "#d8d1f0"
+selection_bg= "#c4bae9"
+selection_fg= "#d8d1f0"
+split= "#5d2c96"
+compose_cursor= "#653f19"
+scrollbar_thumb= "#c4bae9"
+visual_bell= "#d8d1f0"
+
+ansi = [
+  '#474747',
+  '#8d3737',
+  '#2a5d42',
+  '#5b541e',
+  '#1251a5',
+  '#6f21ca',
+  '#2f5b55',
+  '#4a4740',
+]
+
+brights = [
+  '#474747',
+  '#a71111',
+  '#2f5e22',
+  '#7e450c',
+  '#205970',
+  '#6d21cb',
+  '#2e5b54',
+  '#693d0a',
+]
+
+[colors.indexed]
+16 = '#653f19'
+17 = '#9f2328'
+
+[colors.tab_bar]
+background = '#d8d1f0'
+inactive_tab_edge = '#cec6ed'
+
+[colors.tab_bar.active_tab]
+bg_color = '#440391'
+fg_color = '#e2ddf4'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#c4bae9'
+fg_color = '#e2ddf4'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#d8d1f0'
+fg_color = '#e2ddf4'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#8a7d14'
+fg_color = '#e2ddf4'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#227c4e'
+fg_color = '#e2ddf4'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Twilight Light 3'

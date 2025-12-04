@@ -8,7 +8,7 @@ local utils = require("oasis.utils")
 local color_utils = require("oasis.tools.color_utils")
 
 local function generate_gemini_cli_theme(name, palette)
-	local display_name = "Oasis " .. utils.capitalize(name)
+	local display_name = utils.format_display_name(name)
 
 	-- Build JSON theme structure
 	local theme = {
@@ -50,17 +50,15 @@ local function main()
 
 	print(string.format("Found %d palette(s)\n", #palette_names))
 
-	local success_count = 0
-	local error_count = 0
+	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
+		-- Build output path using shared utility
+		local output_path, variant_name = utils.build_variant_path("extras/gemini-cli", "json", name, mode, intensity)
 
-	for _, name in ipairs(palette_names) do
-		local palette = utils.load_palette(name)
-		local theme = generate_gemini_cli_theme(name, palette)
-		local gemini_cli_path = string.format("extras/gemini-cli/oasis_%s.json", name)
-		utils.write_file(gemini_cli_path, theme)
-		print(string.format("✓ Generated: %s", gemini_cli_path))
-		success_count = success_count + 1
-	end
+		-- Generate and write theme
+		local theme = generate_gemini_cli_theme(variant_name, palette)
+		utils.write_file(output_path, theme)
+		print(string.format("✓ Generated: %s", output_path))
+	end)
 
 	print(string.format("\n=== Summary ==="))
 	print(string.format("Success: %d", success_count))

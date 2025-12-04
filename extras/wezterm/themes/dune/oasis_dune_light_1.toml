@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_dune_light_1.toml
+## name: Oasis Dune Light 1
+## author: uhs-robert
+
+[colors]
+foreground = "#58554c"
+background= "#f9f8f5"
+cursor_bg= "#6d6219"
+cursor_border= "#6d6219"
+cursor_fg= "#f3f1eb"
+selection_bg= "#e8e4d8"
+selection_fg= "#f3f1eb"
+split= "#58563c"
+compose_cursor= "#794a1c"
+scrollbar_thumb= "#e8e4d8"
+visual_bell= "#f3f1eb"
+
+ansi = [
+  '#555555',
+  '#a54040',
+  '#306d4d',
+  '#696323',
+  '#155ec1',
+  '#8031dd',
+  '#376a63',
+  '#58554d',
+]
+
+brights = [
+  '#555555',
+  '#c21414',
+  '#366e27',
+  '#93500e',
+  '#266884',
+  '#7f32de',
+  '#366a62',
+  '#7d490c',
+]
+
+[colors.indexed]
+16 = '#794a1c'
+17 = '#b72b30'
+
+[colors.tab_bar]
+background = '#f3f1eb'
+inactive_tab_edge = '#eeebe2'
+
+[colors.tab_bar.active_tab]
+bg_color = '#726d36'
+fg_color = '#f9f8f5'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#e8e4d8'
+fg_color = '#f9f8f5'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#f3f1eb'
+fg_color = '#f9f8f5'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#3e7540'
+fg_color = '#f9f8f5'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#298a57'
+fg_color = '#f9f8f5'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Dune Light 1'

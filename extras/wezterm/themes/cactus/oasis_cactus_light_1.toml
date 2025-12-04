@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_cactus_light_1.toml
+## name: Oasis Cactus Light 1
+## author: uhs-robert
+
+[colors]
+foreground = "#465b4f"
+background= "#f9fbfa"
+cursor_bg= "#406d42"
+cursor_border= "#406d42"
+cursor_fg= "#f0f5f2"
+selection_bg= "#dde9e3"
+selection_fg= "#f0f5f2"
+split= "#445d45"
+compose_cursor= "#7b4b1d"
+scrollbar_thumb= "#dde9e3"
+visual_bell= "#f0f5f2"
+
+ansi = [
+  '#575757',
+  '#a74141',
+  '#306e4e',
+  '#6b6424',
+  '#155fc4',
+  '#8234de',
+  '#386c64',
+  '#59564e',
+]
+
+brights = [
+  '#575757',
+  '#c51414',
+  '#376f28',
+  '#95510e',
+  '#266a86',
+  '#8134de',
+  '#366c63',
+  '#7f4a0d',
+]
+
+[colors.indexed]
+16 = '#7b4b1d'
+17 = '#bb292d'
+
+[colors.tab_bar]
+background = '#f0f5f2'
+inactive_tab_edge = '#e7efeb'
+
+[colors.tab_bar.active_tab]
+bg_color = '#3c6c3f'
+fg_color = '#f9fbfa'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#dde9e3'
+fg_color = '#f9fbfa'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#f0f5f2'
+fg_color = '#f9fbfa'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#ab0707'
+fg_color = '#f9fbfa'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#ab0707'
+fg_color = '#f9fbfa'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Cactus Light 1'

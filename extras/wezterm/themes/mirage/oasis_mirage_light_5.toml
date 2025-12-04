@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_mirage_light_5.toml
+## name: Oasis Mirage Light 5
+## author: uhs-robert
+
+[colors]
+foreground = "#3c5050"
+background= "#c0f2ee"
+cursor_bg= "#31605a"
+cursor_border= "#31605a"
+cursor_fg= "#b3efeb"
+selection_bg= "#9aeae4"
+selection_fg= "#b3efeb"
+split= "#32524d"
+compose_cursor= "#6c431a"
+scrollbar_thumb= "#9aeae4"
+visual_bell= "#b3efeb"
+
+ansi = [
+  '#4c4c4c',
+  '#953b3b',
+  '#2c6346',
+  '#605a20',
+  '#1455af',
+  '#7622d5',
+  '#32605a',
+  '#4e4c44',
+]
+
+brights = [
+  '#4c4c4c',
+  '#b11111',
+  '#316424',
+  '#86490d',
+  '#225f77',
+  '#7423d6',
+  '#316159',
+  '#70410b',
+]
+
+[colors.indexed]
+16 = '#6c431a'
+17 = '#a82628'
+
+[colors.tab_bar]
+background = '#b3efeb'
+inactive_tab_edge = '#a7ede7'
+
+[colors.tab_bar.active_tab]
+bg_color = '#265a53'
+fg_color = '#c0f2ee'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#9aeae4'
+fg_color = '#c0f2ee'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#b3efeb'
+fg_color = '#c0f2ee'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#8a4400'
+fg_color = '#c0f2ee'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#3f008a'
+fg_color = '#c0f2ee'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Mirage Light 5'

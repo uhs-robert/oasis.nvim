@@ -2,6 +2,8 @@
 
 local p = require("oasis.palette")
 local config = require("oasis.config")
+local color_utils = require("oasis.tools.color_utils")
+local light_gen = require("oasis.tools.light_theme_generator")
 local opts = config.get()
 local theme = p.theme.dune
 
@@ -20,7 +22,6 @@ local ui = {
 		strong = theme.fg.strong,
 		muted = theme.fg.muted,
 		dim = theme.fg.dim,
-		comment = theme.fg.comment,
 	},
 	-- General colors
 	theme = {
@@ -34,8 +35,8 @@ local ui = {
 	},
 }
 
--- Colorscheme
-local c = {
+-- Dark mode palette
+local dark = {
 	bg = ui.bg,
 	fg = ui.fg,
 	theme = ui.theme,
@@ -59,7 +60,7 @@ local c = {
 		builtinFunc = p.sundown[400], -- (eg. parseInst, Array, Object etc)
 		statement = opts.themed_syntax and ui.theme.palette.primary[500] or p.khaki[500], -- (general statement (i.e. var, const))
 		exception = p.red[100], -- (try/catch, return)
-		keyword = opts.themed_syntax and ui.theme.palette.primary[700] or p.khaki[700], -- (Conditionals, Loops)
+		conditional = opts.themed_syntax and ui.theme.palette.primary[700] or p.khaki[700], -- (Conditionals, Loops)
 		special = p.sunset[500], -- (Statement not covered above)
 		operator = p.rose[300],
 		punctuation = p.coral[300],
@@ -67,7 +68,7 @@ local c = {
 
 		-- Neutral: (Connections / Info)
 		bracket = p.slate[400], -- (bracket punctuation)
-		comment = ui.fg.comment, -- (comments)
+		comment = theme.fg.comment, -- (comments)
 	},
 
 	-- Diff
@@ -105,4 +106,37 @@ local c = {
 		},
 	},
 }
-return c
+
+-- Light mode configuration
+local light_bg = light_gen.generate_light_backgrounds(ui.fg.core, opts.light_intensity)
+local light_ui = vim.tbl_extend("force", {}, dark.ui)
+light_ui.title = p.sunrise[700]
+light_ui.primary = p.sunrise[700]
+light_ui.light_primary = p.sunrise[500]
+
+local light = {
+	bg = light_bg,
+	fg = light_gen.generate_light_foregrounds(ui.fg, light_bg.core, opts.light_intensity),
+	theme = light_gen.generate_light_theme(ui.theme, opts.light_intensity),
+	terminal = light_gen.generate_light_terminal(p.terminal, light_bg.core, opts.light_intensity, opts.contrast),
+	light_mode = true,
+
+	-- Syntax
+	syntax = light_gen.generate_light_syntax(dark.syntax, light_bg.core, opts.light_intensity, nil, opts.contrast),
+
+	-- Diff
+	diff = {
+		add = color_utils.darken_to_contrast(dark.diff.add, light_bg.core, 7.0),
+		change = color_utils.darken_to_contrast(dark.diff.change, light_bg.core, 7.0),
+		delete = color_utils.darken_to_contrast(dark.diff.delete, light_bg.core, 7.0),
+	},
+
+	-- UI
+	ui = light_gen.generate_light_ui(light_ui, light_bg, opts.light_intensity),
+}
+
+-- Return dual-mode palette
+return {
+	dark = dark,
+	light = light,
+}

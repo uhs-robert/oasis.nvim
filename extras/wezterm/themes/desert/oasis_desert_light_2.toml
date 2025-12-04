@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_desert_light_2.toml
+## name: Oasis Desert Light 2
+## author: uhs-robert
+
+[colors]
+foreground = "#5f4e3b"
+background= "#f8f0e7"
+cursor_bg= "#695e19"
+cursor_border= "#695e19"
+cursor_fg= "#f5e9db"
+selection_bg= "#eedac3"
+selection_fg= "#f5e9db"
+split= "#873838"
+compose_cursor= "#73471b"
+scrollbar_thumb= "#eedac3"
+visual_bell= "#f5e9db"
+
+ansi = [
+  '#515151',
+  '#9e3e3e',
+  '#2f6849',
+  '#655f22',
+  '#145bb9',
+  '#7c29dc',
+  '#356660',
+  '#545149',
+]
+
+brights = [
+  '#515151',
+  '#bb1313',
+  '#356926',
+  '#8d4d0e',
+  '#24647e',
+  '#7a2bdc',
+  '#34665f',
+  '#77450c',
+]
+
+[colors.indexed]
+16 = '#73471b'
+17 = '#b81c14'
+
+[colors.tab_bar]
+background = '#f5e9db'
+inactive_tab_edge = '#f1e1cf'
+
+[colors.tab_bar.active_tab]
+bg_color = '#762828'
+fg_color = '#f8f0e7'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#eedac3'
+fg_color = '#f8f0e7'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#f5e9db'
+fg_color = '#f8f0e7'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#918517'
+fg_color = '#f8f0e7'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#1c6c8d'
+fg_color = '#f8f0e7'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Desert Light 2'

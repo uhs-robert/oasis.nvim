@@ -2,6 +2,9 @@
 -- WCAG Contrast Checker for Oasis Palettes
 -- Analyzes color contrast ratios and WCAG compliance
 
+local wcag_calc = require("oasis.tools.wcag_color_calculator")
+local utils = require("oasis.utils")
+
 local M = {}
 
 -- Configuration: Number of color pairs that are intentionally designed to fail WCAG AAA
@@ -9,83 +12,22 @@ local M = {}
 -- AAA Target = Total Checks - NUMBER_OF_ACCEPTABLE_FAILS
 local NUMBER_OF_ACCEPTABLE_FAILS = 4
 
---- Convert hex color to RGB values (0-255)
----@param hex string Hex color like "#1a1a1a" or "1a1a1a"
----@return number, number, number RGB values
-local function hex_to_rgb(hex)
-	if not hex or type(hex) ~= "string" then
-		return 0, 0, 0
-	end
-	hex = hex:gsub("#", "")
-	return tonumber(hex:sub(1, 2), 16), tonumber(hex:sub(3, 4), 16), tonumber(hex:sub(5, 6), 16)
-end
-
---- Calculate relative luminance per WCAG formula
----@param r number Red (0-255)
----@param g number Green (0-255)
----@param b number Blue (0-255)
----@return number Relative luminance (0-1)
-local function get_relative_luminance(r, g, b)
-	-- Normalize to 0-1
-	local rs, gs, bs = r / 255, g / 255, b / 255
-
-	-- Apply gamma correction
-	local function adjust(c)
-		if c <= 0.03928 then
-			return c / 12.92
-		else
-			return math.pow((c + 0.055) / 1.055, 2.4)
-		end
-	end
-
-	local r_adj = adjust(rs)
-	local g_adj = adjust(gs)
-	local b_adj = adjust(bs)
-
-	-- Calculate luminance using WCAG coefficients
-	return 0.2126 * r_adj + 0.7152 * g_adj + 0.0722 * b_adj
-end
-
 --- Calculate contrast ratio between two colors
+--- Delegates to wcag_color_calculator for consistency
 ---@param color1 string Hex color
 ---@param color2 string Hex color
 ---@return number Contrast ratio (1-21)
 function M.get_contrast_ratio(color1, color2)
-	local r1, g1, b1 = hex_to_rgb(color1)
-	local r2, g2, b2 = hex_to_rgb(color2)
-
-	local l1 = get_relative_luminance(r1, g1, b1)
-	local l2 = get_relative_luminance(r2, g2, b2)
-
-	-- Ensure L1 is the lighter color
-	local lighter = math.max(l1, l2)
-	local darker = math.min(l1, l2)
-
-	return (lighter + 0.05) / (darker + 0.05)
+	return wcag_calc.contrast_ratio(color1, color2)
 end
 
 --- Get WCAG compliance level for a contrast ratio
+--- Delegates to wcag_color_calculator for consistency
 ---@param ratio number Contrast ratio
 ---@param large_text boolean Whether this is large text (18pt+/14pt+ bold)
----@return string Compliance level: "AAA", "AA", "AA Large", "Fail"
+---@return string Compliance level: "AAA", "AA", "Fail"
 function M.get_compliance_level(ratio, large_text)
-	if large_text then
-		if ratio >= 4.5 then
-			return "AAA"
-		elseif ratio >= 3.0 then
-			return "AA"
-		else
-			return "Fail"
-		end
-	else
-		if ratio >= 7.0 then
-			return "AAA"
-		elseif ratio >= 4.5 then
-			return "AA"
-		else
-			return "Fail"
-		end
-	end
+	return wcag_calc.get_compliance_level(ratio, large_text)
 end
 
 --- Format contrast ratio with color coding
@@ -103,13 +45,31 @@ local function format_ratio(ratio, level)
 end
 
 --- Analyze a single palette for WCAG compliance
----@param palette_name string Name of the palette (e.g., "oasis_lagoon")
+---@param palette_name string Name of the palette (e.g., "oasis_lagoon" or "oasis_lagoon.dark")
 ---@return table Analysis results
 function M.analyze_palette(palette_name)
-	-- Load the palette
-	local ok, palette = pcall(require, "oasis.color_palettes." .. palette_name)
-	if not ok then
-		return { error = "Failed to load palette: " .. palette_name }
+	-- Check if palette_name has mode suffix (e.g., "oasis_lagoon.dark")
+	local base_name, mode = palette_name:match("^(.+)%.(.+)$")
+	local palette
+
+	if base_name and (mode == "dark" or mode == "light") then
+		-- Load dual-mode palette and extract specific mode
+		local ok, raw_palette = pcall(require, "oasis.color_palettes." .. base_name)
+		if not ok then
+			return { error = "Failed to load palette: " .. palette_name }
+		end
+		if raw_palette[mode] then
+			palette = raw_palette[mode]
+		else
+			return { error = "Mode " .. mode .. " not found in palette: " .. base_name }
+		end
+	else
+		-- Load legacy flat palette
+		local ok, loaded_palette = pcall(require, "oasis.color_palettes." .. palette_name)
+		if not ok then
+			return { error = "Failed to load palette: " .. palette_name }
+		end
+		palette = loaded_palette
 	end
 
 	local results = {
@@ -166,7 +126,7 @@ function M.analyze_palette(palette_name)
 	-- Syntax highlighting (Warm colors - Control)
 	check("Functions (func on bg.core)", palette.syntax.func, palette.bg.core)
 	check("Builtin Functions (builtinFunc on bg.core)", palette.syntax.builtinFunc, palette.bg.core)
-	check("Keywords (keyword on bg.core)", palette.syntax.keyword, palette.bg.core)
+	check("Conditionals (conditional on bg.core)", palette.syntax.conditional, palette.bg.core)
 	check("Statements (statement on bg.core)", palette.syntax.statement, palette.bg.core)
 	check("Exceptions (exception on bg.core)", palette.syntax.exception, palette.bg.core)
 	check("Special (special on bg.core)", palette.syntax.special, palette.bg.core)
@@ -277,39 +237,17 @@ function M.print_palette_results(results)
 	end
 end
 
---- Dynamically discover all available Oasis palettes
----@return table Array of palette names
+--- Dynamically discover all available Oasis palette variants (excluding deprecated)
+---@return table Array of palette variant names (e.g., "oasis_lagoon.dark", "oasis_lagoon.light")
 local function discover_palettes()
 	local palettes = {}
-	local script_path = debug.getinfo(1, "S").source:sub(2)
-	local script_dir = script_path:match("(.*[/\\])")
-	local palette_dir = script_dir:gsub("tools[/\\]?$", "") .. "color_palettes/"
-	local files = {}
 
-	-- Method 1: Try to get files via vim.fn.glob if available (Neovim)
-	if vim and vim.fn and vim.fn.glob then
-		files = vim.fn.glob(palette_dir .. "*.lua", false, true)
-		if files and #files > 0 then
-			for _, file in ipairs(files) do
-				local filename = vim.fn.fnamemodify(file, ":t:r")
-				table.insert(palettes, filename)
-			end
-		end
-	end
-
-	-- Method 2: Fallback to io.popen for standalone Lua
-	if #palettes == 0 then
-		local handle = io.popen('ls "' .. palette_dir .. '" 2>/dev/null | grep "\\.lua$"')
-		if handle then
-			local result = handle:read("*a")
-			handle:close()
-
-			for filename in result:gmatch("[^\r\n]+") do
-				if filename:match("%.lua$") then
-					local theme_name = filename:gsub("%.lua$", "")
-					table.insert(palettes, theme_name)
-				end
-			end
+	for _, name in ipairs(utils.get_palette_names()) do
+		local module_name = "oasis_" .. name
+		local ok, palette = pcall(require, "oasis.color_palettes." .. module_name)
+		if ok and utils.is_dual_mode_palette(palette) then
+			table.insert(palettes, module_name .. ".dark")
+			table.insert(palettes, module_name .. ".light")
 		end
 	end
 

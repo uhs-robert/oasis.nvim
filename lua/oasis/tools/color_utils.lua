@@ -1,6 +1,8 @@
 -- lua/oasis/tools/color_utils.lua
 -- Color manipulation utilities for theme generation
 
+local wcag_calc = require("oasis.tools.wcag_color_calculator")
+
 local M = {}
 
 --- Add alpha channel to hex color
@@ -74,7 +76,7 @@ function M.json_escape(str)
 	if type(str) ~= "string" then
 		return str
 	end
-	return str:gsub("\\", "\\\\"):gsub('"', '\\"'):gsub("\n", "\\n"):gsub("\r", "\\r"):gsub("\t", "\\t")
+	return (str:gsub("\\", "\\\\"):gsub('"', '\\"'):gsub("\n", "\\n"):gsub("\r", "\\r"):gsub("\t", "\\t"))
 end
 
 --- Simple JSON encoder for theme generation
@@ -142,5 +144,64 @@ function M.encode_json(obj, indent)
 
 	return "null"
 end
+
+--- Convert RGB hex color to HSL
+--- Wrapper around wcag_color_calculator's Color class
+--- Returns (degrees 0-360, percent 0-100, percent 0-100) for compatibility
+--- @param hex string Hex color (e.g., "#D9E6FA")
+--- @return number, number, number Hue (0-360), Saturation (0-100), Lightness (0-100)
+function M.rgb_to_hsl(hex)
+	if not hex or hex == "NONE" then
+		return 0, 0, 0
+	end
+
+	-- Use wcag_color_calculator's Color class (returns 0-1 range)
+	local color = wcag_calc.Color.from_hex(hex)
+	local h, s, l = color:to_hsl()
+
+	-- Convert from 0-1 range to degrees/percentages
+	return h * 360, s * 100, l * 100
+end
+
+--- Convert HSL to RGB hex color
+--- Wrapper around wcag_color_calculator's Color class
+--- Takes (degrees 0-360, percent 0-100, percent 0-100) for compatibility
+--- @param h number Hue (0-360 degrees)
+--- @param s number Saturation (0-100 percent)
+--- @param l number Lightness (0-100 percent)
+--- @return string Hex color (e.g., "#D9E6FA")
+function M.hsl_to_rgb(h, s, l)
+	-- Convert from degrees/percentages to 0-1 range
+	h = (h % 360) / 360
+	s = s / 100
+	l = l / 100
+
+	-- Use wcag_color_calculator's Color class
+	local color = wcag_calc.Color.from_hsl(h, s, l)
+	return color:to_hex()
+end
+
+
+--- Calculate WCAG contrast ratio between two colors
+--- Delegates to wcag_color_calculator for consistency
+--- @param color1 string First hex color
+--- @param color2 string Second hex color
+--- @return number Contrast ratio (1-21)
+function M.get_contrast_ratio(color1, color2)
+	return wcag_calc.contrast_ratio(color1, color2)
+end
+
+--- Darken a color to meet target WCAG contrast ratio on light background
+--- Delegates to wcag_color_calculator which handles both lightening and darkening
+--- @param color string Source hex color
+--- @param bg_color string Background hex color
+--- @param target_ratio number Target contrast ratio (e.g., 7.0 for AAA)
+--- @param max_iterations? number Maximum adjustment iterations (default: 50)
+--- @return string Adjusted hex color meeting target ratio
+function M.darken_to_contrast(color, bg_color, target_ratio, max_iterations)
+	local adjusted_color, _ = wcag_calc.adjust_for_target(color, bg_color, target_ratio, max_iterations)
+	return adjusted_color
+end
+
 
 return M

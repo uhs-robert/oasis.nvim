@@ -7,11 +7,11 @@ package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local utils = require("oasis.utils")
 
 local function generate_darkreader_theme(name, palette)
-	local display_name = utils.capitalize(name)
+	local display_name = utils.format_display_name(name)
 
 	local lines = {
 		"# extras/dark-reader/oasis_" .. name .. ".txt",
-		"# Dark Reader theme for Oasis " .. display_name,
+		"# Dark Reader theme for " .. display_name,
 		"# Author: uhs-robert",
 		"#",
 		"# Enable the new Dark Reader design prototype (skip if already enabled)",
@@ -47,17 +47,15 @@ local function main()
 
 	print(string.format("Found %d palette(s)\n", #palette_names))
 
-	local success_count = 0
-	local error_count = 0
+	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
+		-- Build output path using shared utility
+		local output_path, variant_name = utils.build_variant_path("extras/dark-reader", "txt", name, mode, intensity)
 
-	for _, name in ipairs(palette_names) do
-		local palette = utils.load_palette(name)
-		local theme = generate_darkreader_theme(name, palette)
-		local darkreader_path = string.format("extras/dark-reader/oasis_%s.txt", name)
-		utils.write_file(darkreader_path, theme)
-		print(string.format("✓ Generated: %s", darkreader_path))
-		success_count = success_count + 1
-	end
+		-- Generate and write theme
+		local theme = generate_darkreader_theme(variant_name, palette)
+		utils.write_file(output_path, theme)
+		print(string.format("✓ Generated: %s", output_path))
+	end)
 
 	print(string.format("\n=== Summary ==="))
 	print(string.format("Success: %d", success_count))
