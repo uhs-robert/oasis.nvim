@@ -568,11 +568,6 @@ require("oasis").setup({
 <!-- highlight-overrides:end -->
 </details>
 
-## 🗳️ Vote for Your Favorite Style
-
-Want to help shape **Oasis.nvim**?
-**[👉 Join the Discussion and Vote Here](https://github.com/uhs-robert/oasis.nvim/discussions/2)**
-
 ## 👀 View All Theme Styles
 
 <a id="view-all-theme-styles"></a>
