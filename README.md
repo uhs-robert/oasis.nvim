@@ -578,7 +578,7 @@ require("oasis").setup({
   <!-- all-styles:start -->
   <a id="dark-previews"></a>
   <details open>
-    <summary><b>Dark Previews</b></summary>
+    <summary><b>🌕️ Dark Previews</b></summary>
     <!-- dark-styles:start -->
     <a id="night-dark"></a>
     <h3>Night (Dark · Night Sky)</h3>
@@ -674,7 +674,7 @@ require("oasis").setup({
     <!-- dark-styles:end -->
 </details>
   <details open>
-  <summary><b>Light Previews</b></summary>
+  <summary><b>🌞 Light Previews</b></summary>
   <!-- light-styles:start -->
   <a id="light-previews"></a>
     <a id="night-light"></a>
