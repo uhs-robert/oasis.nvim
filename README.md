@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-A collection of <strong>13</strong> desert-inspired Neovim colorschemes with <strong>dual light/dark modes</strong>; warm, readable, and highly configurable.
+A collection of <strong>13</strong> desert-inspired Neovim colorschemes; warm, readable, and highly configurable.
 </p>
 
 ## 🌅 Overview
