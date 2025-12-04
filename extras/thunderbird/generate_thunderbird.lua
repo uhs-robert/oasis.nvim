@@ -41,19 +41,19 @@ local function generate_stylesheet()
 ]]
 end
 
--- Generate manifest.json content
 local function generate_manifest(name, palette)
 	local display_name = utils.format_display_name(name)
-	local theme_name = "oasis-" .. name
+	-- Keep a stable slug for IDs, but present a readable name in Thunderbird
+	local theme_id = "oasis-" .. name
 
 	-- Build the manifest structure
 	local manifest = {
 		manifest_version = 2,
-		name = theme_name,
+		name = display_name,
 		version = "1.0.0",
 		applications = {
 			gecko = {
-				id = "{" .. generate_uuid(theme_name) .. "}",
+				id = "{" .. generate_uuid(theme_id) .. "}",
 				strict_min_version = "60.0",
 			},
 		},
