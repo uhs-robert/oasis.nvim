@@ -24,10 +24,62 @@ Oasis follows a warm/cool color split philosophy (**warm = action/flow**, **cool
 
 **All themes meet AAA WCAG compliance standards**. Light themes allow contrast ratio to be customized.
 
-> [!NOTE]
-> **✨ NEW in v3.0: Themed Syntax** - Each variant uses its signature color for statements and keywords.
->
-> Prefer classic yellow syntax? [See how to opt-out under API Commands ↓](#-usage)
+<details>
+<summary>✨ What's New / 🚨 Breaking Changes</summary>
+<br/>
+<!-- whats-new:start -->
+
+  <details>
+    <summary>🚨 v4.0: Dual Style Themes / Deprecated Themes</summary>
+    <!-- v4:start -->
+    <h3>✨ Dual Style Themes</h3>
+    Each style now has <strong>5 light theme variants</strong>.
+    <ul>
+      <li>Check out the <a href="#%EF%B8%8F-light-styles">new light theme screenshots</a>.</li>
+      <li><a href="#%EF%B8%8F-configuration">Config options have been updated</a> with new <code>contrast</code> and <code>light_intensity</code> settings and <code>light/dark_style</code> updates.</li>
+      <li><a href="#-usage">New API command :OasisIntensity under usage</a> to cycle intensity. Also available via lua for keymap.</li>
+    </ul>
+    <h3>🚨 BREAKING CHANGE: Deprecated Light Theme Migration</h3>
+    The following standalone <strong>light themes have been deprecated</strong> in favor of the dual-mode system:
+    <table>
+      <tr>
+        <td>Dawn</td>
+        <td>Replaced with <code>light_intensity = 1</code></td>
+      </tr>
+      <tr>
+        <td>Dawnlight</td>
+        <td>Replaced with <code>light_intensity = 2</code></td>
+      </tr>
+      <tr>
+        <td>Day</td>
+        <td>Replaced with <code>light_intensity = 3</code></td>
+      </tr>
+      <tr>
+        <td>Dusk</td>
+        <td>Replaced with <code>light_intensity = 4</code></td>
+      </tr>
+      <tr>
+        <td>Dust</td>
+        <td>Replaced with <code>light_intensity = 5</code></td>
+      </tr>
+    </table>
+    > The best match for the old light themes is <code>night</code> which also resolves accessibility issues.
+    <br/>
+    <strong>Deprecated themes will be completely removed around January 1st of 2026.</strong>
+    <!-- v4:end -->
+  </details>
+
+  <details>
+    <summary>🚨 v3.0: Themed Syntax</summary>
+    <!-- v3:start -->
+    <h3>✨ Dual style themes</h3>
+    Each style now uses its signature color for statements and keywords.
+    <br>
+    Prefer the classic yellow syntax? <a href="#-usage">See how to opt-out under API Commands ↓</a>
+    <!-- v3:end -->
+  </details>
+<!-- whats-new:end -->
+</details>
 
 ## 🌙 Dark Styles
 
@@ -61,9 +113,9 @@ Click any card below to view the full preview and syntax sample. [↓ Or click h
 
 ## ☀️ Light Styles
 
-The light styles use an intensity scale from 1-5 set via `:OasisIntensity` or `config` which control background saturation.
+All light styles use a saturation intensity scale from 1-5: set from `config` or via `:OasisIntensity`.
 
-#### Light theme intensity scale (Lagoon example)
+### Light theme intensity scale (Lagoon example)
 
 <table>
   <tr>
@@ -78,7 +130,7 @@ The light styles use an intensity scale from 1-5 set via `:OasisIntensity` or `c
 <p align="center"><small>Use <code>:OasisIntensity</code> to step through intensity levels 1 → 5 in light mode.</small></p>
 
 > [!NOTE]
-> The **Night** variant uses the darkest light backgrounds (lightness 78-84%) compared to the rest.
+> The **Night** style uses the darkest light backgrounds (lightness 78-84%) compared to the rest.
 >
 > This provides a middle ground between traditional light and dark modes.
 
@@ -354,43 +406,30 @@ vim.keymap.set('n', '<leader>ts', require('oasis').toggle_themed_syntax, { desc 
 >
 > ```lua
 > require("oasis").setup({
->   themed_syntax = false,  -- Use traditional yellow/khaki for all variants
+>   themed_syntax = false,  -- Use traditional yellow/khaki for all styles
 > })
 > ```
 
 This option controls how statement/keyword colors are rendered:
 
 - **Enabled** (default): Statements and keywords use the theme's primary color (e.g., blue in lagoon, teal in mirage, orange in canyon)
-- **Disabled**: Statements and keywords use traditional yellow/khaki tones across all variants
+- **Disabled**: Statements and keywords use traditional yellow/khaki tones across all styles
 
-### Deprecated Light Theme Migration
+### Cycle Light Intensity
 
-The following standalone light themes have been deprecated in favor of the dual-mode system:
+Cycle the light background intensity (1–5) without reloading to test the waters:
 
-| Deprecated  | Replacement                          |
-| ----------- | ------------------------------------ |
-| `dawn`      | Any theme with `light_intensity = 1` |
-| `dawnlight` | Any theme with `light_intensity = 2` |
-| `day`       | Any theme with `light_intensity = 3` |
-| `dusk`      | Any theme with `light_intensity = 4` |
-| `dust`      | Any theme with `light_intensity = 5` |
-
-**Migration Example:**
-
-```lua
--- Old (deprecated)
-vim.cmd.colorscheme("oasis-day")
-
--- New (recommended)
-require("oasis").setup({
-  style = "night",  -- or any theme: "canyon", "lagoon", etc.
-  light_intensity = 3,
-})
-vim.o.background = "light"
-vim.cmd.colorscheme("oasis")
+```vim
+:OasisIntensity
 ```
 
-Deprecated themes will display a warning and will be removed in v4.0.
+```lua
+-- Or use the Lua API
+require("oasis").cycle_intensity()
+```
+
+- Applies to light palettes only (dark palettes ignore intensity).
+- Default intensity is configurable via `light_intensity` in `setup()`.
 
 ### WCAG Accessibility Checker
 
@@ -430,22 +469,6 @@ local level = wcag.get_compliance_level(ratio, false)  -- Returns: "AAA"
 - **AA Large (3.0:1)**: Minimum for large text (18pt+ or 14pt+ bold)
 
 Reference: [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)
-
-### Cycle Light Intensity
-
-Cycle the light background intensity (1–5) without reloading:
-
-```vim
-:OasisIntensity
-```
-
-```lua
--- Or use the Lua API
-require("oasis").cycle_intensity()
-```
-
-- Applies to light palettes only (dark palettes ignore intensity).
-- Default intensity is configurable via `light_intensity` in `setup()`.
 
 <!-- api:end -->
 </details>
