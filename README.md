@@ -111,7 +111,7 @@ Click any card below to view the full preview and syntax sample. [↓ Or click h
 
 ## ☀️ Light Styles
 
-All light styles use a saturation intensity scale from 1-5: set from `config` or via `:OasisIntensity`.
+Light styles use a saturation intensity scale from 1-5: set from `config` or via `:OasisIntensity`.
 
 ### Light theme intensity scale (Lagoon example)
 
@@ -284,13 +284,11 @@ colorscheme oasis-rose
 <br>
 <!-- user-themes:start -->
 
-With so many options to choose from why settle for just one? Use the right theme for the right occasion to differentiate between your environments. Here are some examples:
+Don't just pick a favorite. Assign themes based on variables like `sudo` to easily differentiate between your NeoVim environments. For example:
 
-- A custom theme for when **root** and/or **sudoedit**
-- A custom theme for when **remote**
-- A custom theme for **any combination**
-
-Use this example config to have a custom theme for each situation above:
+- Use `sol` when **root** and/or doing a **sudoedit**
+- Use `mirage` when **remote**
+- And/or use **any theme** for **any combination above**, the only limit is your imagination
 
 ```lua
 local uid = (vim.uv or vim.loop).getuid()
@@ -330,7 +328,7 @@ return {
 To override the tokyonight default and start fresh in the oasis:
 
 ```lua
--- No need to apply vim.cmd.colorscheme(), just use this instead.
+-- No need to apply vim.cmd.colorscheme(), just use this instead! Also works with the different themes for different environments example above.
   {
   "LazyVim/LazyVim",
   opts = {
@@ -378,10 +376,10 @@ Toggle transparency on-the-fly without restarting:
 
 ```lua
 -- Or use the Lua API
-require('oasis').toggle_transparency()
+require("oasis").toggle_transparency()
 
 -- Example: bind to a keymap
-vim.keymap.set('n', '<leader>tt', require('oasis').toggle_transparency, { desc = 'Toggle transparency' })
+vim.keymap.set("n", "<leader>tt", require("oasis").toggle_transparency, { desc = "Toggle transparency" })
 ```
 
 ### Toggle Themed Syntax
@@ -394,10 +392,10 @@ Toggle the `themed_syntax` option on-the-fly to switch between themed and classi
 
 ```lua
 -- Or use the Lua API
-require('oasis').toggle_themed_syntax()
+require("oasis").toggle_themed_syntax()
 
 -- Example: bind to a keymap
-vim.keymap.set('n', '<leader>ts', require('oasis').toggle_themed_syntax, { desc = 'Toggle themed syntax' })
+vim.keymap.set("n", "<leader>ts", require("oasis").toggle_themed_syntax, { desc = "Toggle themed syntax" })
 ```
 
 > **⚠️ v3.0 Breaking Change**: Themed syntax is now enabled by default. To restore classic syntax highlighting, disable it:
@@ -424,6 +422,11 @@ Cycle the light background intensity (1–5) without reloading to test the water
 ```lua
 -- Or use the Lua API
 require("oasis").cycle_intensity()
+
+-- Example: bind to a keymap
+vim.keymap.set("n", "<leader>uB", function()
+  require("oasis").cycle_intensity() -- nil|true shows ui picker, false will cycle
+end, { desc = "Select light mode intensity" })
 ```
 
 - Applies to light palettes only (dark palettes ignore intensity).
@@ -468,6 +471,11 @@ local level = wcag.get_compliance_level(ratio, false)  -- Returns: "AAA"
 
 Reference: [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)
 
+> [!NOTE]
+> Light themes can appear muddy and make syntax hard to distinguish when everything is AAA.
+>
+> If you need AAA compliance then set `force_aaa = true` otherwise tune the `min_ratio` to meet your needs.
+
 <!-- api:end -->
 </details>
 
@@ -488,10 +496,10 @@ require("oasis").setup({
   dark_style = "auto",                  -- Applies to your primary style only: "auto" uses `style`. Or override with another dark theme (e.g., "abyss")
   light_style = "auto",                 -- Applies to your primary style only: "auto" uses `style`. Or override with another light theme (e.g., "dune")
   light_intensity = 3,                  -- Light background intensity (1-5): 1=subtle, 5=saturated
-  use_legacy_comments = false,          -- Uses the legacy comment color from desert.vim for the "desert" style only (a bright sky blue)
-  themed_syntax = true,                 -- Use theme primary color for statements/keywords - set to false for classic yellow syntax
+  use_legacy_comments = false,          -- For "desert" style only, uses the loud skyblue comment color from desert.vim for a more retro experience
+  themed_syntax = true,                 -- Uses the theme's primary color for statements/keywords. Set to false for the classic yellow syntax from desert.vim for a more retro experience
 
-  -- Text styling - disable individual styles if you like
+  -- Text styling - toggle individual styles
   styles = {
     bold = true,                        -- Enable bold text (keywords, functions, etc.)
     italic = true,                      -- Enable italics (comments, certain keywords)
@@ -506,9 +514,9 @@ require("oasis").setup({
 
   -- Contrast controls (WCAG: AA = 4.5, AAA = 7.0)
   contrast = {
-    -- Note: Light themes obey the targets below. All dark themes target 7.0 by default with very few exceptions.
+    -- Note: Light themes obey the targets below. All dark themes target 7.0 by default with only a couple of exceptions that dip to 6.5.
     min_ratio = 5.8,                    -- Clamp 4.5–7.0; target contrast for syntax/terminal colors. Increase for more contrast, decrease for more pop.
-    force_aaa = false,                  -- When true, forces AAA (7.0) wherever possible; as a result some colors may appear muddy.
+    force_aaa = false,                  -- When true, forces AAA (7.0) wherever possible; as a result some colors will appear muddy (bye bye non-primary colors).
   },
 
   palette_overrides = {},               -- Override colors in specific palettes
