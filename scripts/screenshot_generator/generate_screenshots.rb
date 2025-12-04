@@ -30,24 +30,14 @@ DUAL_MODE_THEMES = %w[
   rose
 ].freeze
 
-# Single-mode themes (light-only variants)
-SINGLE_MODE_THEMES = %w[
-  dawn
-  dawnlight
-  day
-  dusk
-  dust
-].freeze
-
 # Special palettes that should capture all light intensity levels (1-5)
 SPECIAL_LIGHT_INTENSITY_THEMES = {
   'lagoon' => (1..5).to_a
 }.freeze
 
-# Generate all variants (dual-mode get both dark and light, single-mode as-is)
+# Generate all variants (dual-mode get both dark and light)
 VARIANTS = (
   DUAL_MODE_THEMES.flat_map { |theme| ["#{theme}_dark", "#{theme}_light_#{LIGHT_INTENSITY}"] } +
-  SINGLE_MODE_THEMES +
   SPECIAL_LIGHT_INTENSITY_THEMES.flat_map do |theme, intensities|
     intensities.map { |i| "#{theme}_light_#{i}" }
   end
