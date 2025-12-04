@@ -36,13 +36,30 @@ local function list_palettes()
 	local dark_themes = {}
 
 	for _, name in ipairs(palette_names) do
-		local palette = utils.load_palette(name)
-		local display_name = get_display_name(name)
-		if palette.light_mode then
-			table.insert(light_themes, { name = name, display = display_name })
-		else
-			table.insert(dark_themes, { name = name, display = display_name })
+		-- Load raw palette to check if dual-mode
+		local ok, raw_palette = pcall(require, "oasis.color_palettes.oasis_" .. name)
+		if not ok then
+			goto continue
 		end
+
+		-- Check if dual-mode palette
+		if utils.is_dual_mode_palette(raw_palette) then
+			-- Add both modes to respective lists
+			local dark_display = get_display_name(name) .. " (Dark)"
+			local light_display = get_display_name(name) .. " (Light)"
+			table.insert(dark_themes, { name = name .. ".dark", display = dark_display })
+			table.insert(light_themes, { name = name .. ".light", display = light_display })
+		else
+			-- Legacy palette - categorize by light_mode flag
+			local display_name = get_display_name(name)
+			if raw_palette.light_mode then
+				table.insert(light_themes, { name = name, display = display_name })
+			else
+				table.insert(dark_themes, { name = name, display = display_name })
+			end
+		end
+
+		::continue::
 	end
 
 	return light_themes, dark_themes
@@ -220,19 +237,37 @@ Examples:
 		end
 	end
 
-	-- Load palettes
-	local day_palette = utils.load_palette(day_name)
-	local night_palette = utils.load_palette(night_name)
+	-- Load palettes (handle dual-mode suffix if present)
+	local function load_palette_with_mode(name)
+		-- Check if name has mode suffix (e.g., "lagoon.dark")
+		local base_name, mode = name:match("^(.+)%.(.+)$")
+		if base_name and (mode == "dark" or mode == "light") then
+			-- Load raw palette and extract mode
+			local ok, raw_palette = pcall(require, "oasis.color_palettes.oasis_" .. base_name)
+			if ok and utils.is_dual_mode_palette(raw_palette) then
+				return raw_palette[mode]
+			end
+		end
+		-- Legacy palette or no suffix - use standard loader
+		return utils.load_palette(name)
+	end
+
+	local day_palette = load_palette_with_mode(day_name)
+	local night_palette = load_palette_with_mode(night_name)
+
+	-- Strip mode suffix for display/file names (e.g., "lagoon.dark" -> "lagoon")
+	local clean_day_name = day_name:match("^(.+)%..+$") or day_name
+	local clean_night_name = night_name:match("^(.+)%..+$") or night_name
 
 	-- Generate CSS
-	local css = generate_vimiumc_css(day_name, night_name, day_palette, night_palette)
+	local css = generate_vimiumc_css(clean_day_name, clean_night_name, day_palette, night_palette)
 
 	-- Write to file
-	local output_path = string.format("extras/vimium-c/output/vimiumc-%s-%s.css", night_name, day_name)
+	local output_path = string.format("extras/vimium-c/output/vimiumc-%s-%s.css", clean_night_name, clean_day_name)
 	utils.write_file(output_path, css)
 	print(string.format("\n✓ Generated: %s", output_path))
-	print(string.format("  Day theme: Oasis %s", get_display_name(day_name)))
-	print(string.format("  Night theme: Oasis %s\n", get_display_name(night_name)))
+	print(string.format("  Day theme: Oasis %s", get_display_name(clean_day_name)))
+	print(string.format("  Night theme: Oasis %s\n", get_display_name(clean_night_name)))
 end
 
 -- Run the generator

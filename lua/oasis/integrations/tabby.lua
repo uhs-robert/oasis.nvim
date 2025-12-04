@@ -15,10 +15,11 @@ function M.get_theme()
 		current_palette = "oasis_lagoon"
 	end
 
-	-- Load the current palette
-	local ok, c = pcall(require, "oasis.color_palettes." .. current_palette)
-	if not ok then
-		c = require("oasis.color_palettes.oasis_lagoon")
+	-- Load and extract the current palette (handles both legacy and dual-mode)
+	local utils = require("oasis.utils")
+	local c, err = utils.load_and_extract_palette("oasis.color_palettes." .. current_palette)
+	if not c then
+		c, err = utils.load_and_extract_palette("oasis.color_palettes.oasis_lagoon")
 	end
 
 	return {

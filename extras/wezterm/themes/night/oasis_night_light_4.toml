@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_night_light_4.toml
+## name: Oasis Night Light 4
+## author: uhs-robert
+
+[colors]
+foreground = "#4f3f2b"
+background= "#e3d7aa"
+cursor_bg= "#773f0d"
+cursor_border= "#773f0d"
+cursor_fg= "#e0d19f"
+selection_bg= "#d8c688"
+selection_fg= "#e0d19f"
+split= "#702b2b"
+compose_cursor= "#5d3a17"
+scrollbar_thumb= "#d8c688"
+visual_bell= "#e0d19f"
+
+ansi = [
+  '#424242',
+  '#843434',
+  '#27573d',
+  '#544f1c',
+  '#114c9b',
+  '#681fbd',
+  '#2c554f',
+  '#44423b',
+]
+
+brights = [
+  '#424242',
+  '#9d0f0f',
+  '#2c5820',
+  '#76400c',
+  '#1e5369',
+  '#671fbe',
+  '#2b554e',
+  '#60380a',
+]
+
+[colors.indexed]
+16 = '#5d3a17'
+17 = '#942225'
+
+[colors.tab_bar]
+background = '#e0d19f'
+inactive_tab_edge = '#dccb93'
+
+[colors.tab_bar.active_tab]
+bg_color = '#751414'
+fg_color = '#e3d7aa'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#d8c688'
+fg_color = '#e3d7aa'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#e0d19f'
+fg_color = '#e3d7aa'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#924901'
+fg_color = '#e3d7aa'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#035691'
+fg_color = '#e3d7aa'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Night Light 4'

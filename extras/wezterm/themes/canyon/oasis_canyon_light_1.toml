@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_canyon_light_1.toml
+## name: Oasis Canyon Light 1
+## author: uhs-robert
+
+[colors]
+foreground = "#665137"
+background= "#f9f7f5"
+cursor_bg= "#954f10"
+cursor_border= "#954f10"
+cursor_fg= "#f3efeb"
+selection_bg= "#e8e0d8"
+selection_fg= "#f3efeb"
+split= "#794a1c"
+compose_cursor= "#5f5521"
+scrollbar_thumb= "#e8e0d8"
+visual_bell= "#f3efeb"
+
+ansi = [
+  '#555555',
+  '#a44040',
+  '#306c4c',
+  '#696223',
+  '#155ec0',
+  '#7f30dd',
+  '#376a62',
+  '#58554c',
+]
+
+brights = [
+  '#555555',
+  '#c21313',
+  '#366d27',
+  '#93500e',
+  '#266884',
+  '#7f31de',
+  '#356a62',
+  '#7d490c',
+]
+
+[colors.indexed]
+16 = '#5f5521'
+17 = '#b8292e'
+
+[colors.tab_bar]
+background = '#f3efeb'
+inactive_tab_edge = '#eee8e2'
+
+[colors.tab_bar.active_tab]
+bg_color = '#a25307'
+fg_color = '#f9f7f5'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#e8e0d8'
+fg_color = '#f9f7f5'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#f3efeb'
+fg_color = '#f9f7f5'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#1f7294'
+fg_color = '#f9f7f5'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#298a58'
+fg_color = '#f9f7f5'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Canyon Light 1'

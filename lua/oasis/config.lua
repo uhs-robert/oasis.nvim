@@ -2,50 +2,52 @@
 
 local M = {}
 
--- Import utils for deepcopy fallback when running in standalone Lua
+local default_dark = "lagoon"
+local default_light = "lagoon"
 local utils = require("oasis.utils")
+local deepcopy = vim.deepcopy
 
--- Helper to get deepcopy function (use vim.deepcopy if available, otherwise utils.deepcopy)
-local function deepcopy(orig)
-	if vim and vim.deepcopy then
-		return vim.deepcopy(orig)
-	else
-		return utils.deepcopy(orig)
-	end
-end
-
--- Helper to get background setting (use vim.o.background if available, otherwise default to "dark")
+-- Helper to get background setting (use vim.o.background if available, otherwise default to "dark" for standalone lua)
 local function get_background()
 	if vim and vim.o and vim.o.background then
 		return vim.o.background
 	else
-		return "dark" -- Default for standalone Lua
+		return "dark"
 	end
 end
 
 -- Default configuration
+-- stylua: ignore start
 M.defaults = {
-	style = nil, -- Shorthand palette name (e.g., "lagoon" -> "oasis_lagoon")
-	dark_style = "lagoon", -- Shorthand palette name for dark mode
-	light_style = "dawn", -- Shorthand palette name for light mode
-	use_legacy_comments = false,
-	themed_syntax = true, -- Use theme primary color for statements/keywords (dark themes only)
+	style = default_dark,         -- Primary style choice (default palette)
+	dark_style = "auto",          -- "auto" uses `style`, or specify a dark theme (e.g., "sol", "canyon")
+	light_style = "auto",         -- "auto" uses `style`, or specify a light theme (e.g., "night", "canyon")
+	use_legacy_comments = false,  -- Applies to `desert` only. Uses vibrant skyblue for comments
+	themed_syntax = true,         -- Use theme primary color for statements/conditionals
+	light_intensity = 3,          -- Light background intensity (1-5): 1=subtle, 5=saturated
 	palette_overrides = {},
 	highlight_overrides = {},
 
+	-- Contrast controls
+	contrast = {
+		min_ratio = 5.8,            -- Minimum WCAG contrast ratio for syntax/terminal chroma slots (clamped 4.5-7.0)
+		force_aaa = false,          -- Force all relevant contrast targets to AAA (7.0). Overrides min_ratio.
+	},
+
 	-- Text styling toggles
 	styles = {
-		bold = true,          -- Enable/disable bold text
-		italic = true,        -- Enable/disable italic text
-		underline = true,     -- Enable/disable underline
-		undercurl = true,     -- Enable/disable undercurl (diagnostics, spell)
-		strikethrough = true, -- Enable/disable strikethrough
+		bold = true,                -- Enable/disable bold text
+		italic = true,              -- Enable/disable italic text
+		underline = true,           -- Enable/disable underline
+		undercurl = true,           -- Enable/disable undercurl (diagnostics, spell)
+		strikethrough = true,       -- Enable/disable strikethrough
 	},
 
 	-- Additional toggles
-	terminal_colors = true,   -- Enable/disable terminal color setting
-	transparent = false,      -- Make backgrounds transparent (NONE)
+	terminal_colors = true,       -- Enable/disable terminal color setting
+	transparent = false,          -- Make backgrounds transparent (NONE)
 }
+-- stylua: ignore end
 
 -- Current active configuration
 M.options = deepcopy(M.defaults)
@@ -82,22 +84,33 @@ function M.get()
 end
 
 --- Get the full palette name from the configured style
----@return string palette_name Full palette name (e.g., "oasis_lagoon"), always returns a valid palette
+--- Guaranteed to return a usable palette name string (falls back to defaults).
+---@return string palette_name Full palette name (e.g., "oasis_lagoon")
 function M.get_palette_name()
-	if M.options.style then
-		return "oasis_" .. M.options.style
-	end
-
-	-- If style is not set, use dark_style/light_style based on background
 	local bg = get_background()
-	if bg == "light" and M.options.light_style then
-		return "oasis_" .. M.options.light_style
-	elseif M.options.dark_style then
-		return "oasis_" .. M.options.dark_style
+
+	-- Use dark_style/light_style based on background
+	local style_option = bg == "light" and M.options.light_style or M.options.dark_style
+
+	-- Default to main `style` if `light_style`/`dark_style` is "auto"
+	if style_option == "auto" then
+		style_option = M.options.style
+
+		-- Check if the configured style is compatible with current background or use defaults
+		local palette_name = "oasis_" .. style_option
+		local mode = utils.get_palette_mode(palette_name)
+		if mode and mode ~= "dual" and mode ~= bg then
+			style_option = bg == "light" and default_light or default_dark
+		end
 	end
 
-	-- Final fallback: check background and return appropriate default
-	return bg == "light" and "oasis_dawn" or "oasis_lagoon"
+	if not style_option then
+		return "oasis_" .. default_dark
+	end
+
+	-- Otherwise return the parsed palette
+	local palette_name = "oasis_" .. style_option
+	return palette_name
 end
 
 --- Apply palette overrides to a loaded palette
@@ -107,7 +120,6 @@ end
 function M.apply_palette_overrides(palette, palette_name)
 	local result = deepcopy(palette)
 
-	-- Apply user palette overrides
 	if M.options.palette_overrides[palette_name] then
 		result = deep_merge(result, M.options.palette_overrides[palette_name])
 	end

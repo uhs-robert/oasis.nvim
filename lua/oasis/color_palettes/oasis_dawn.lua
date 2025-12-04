@@ -1,104 +1,51 @@
 -- lua/oasis/color_palettes/oasis_dawn.lua
 
 local p = require("oasis.palette")
-local theme = p.theme.dawn
-
--- General Reusable Colors
-local ui = {
-	-- Backgrounds
-	bg = {
-		core = theme.bg.core,
-		shadow = theme.bg.shadow,
-		mantle = theme.bg.mantle,
-		surface = theme.bg.surface,
-	},
-	-- Foregrounds
-	fg = {
-		core = theme.fg.core,
-		strong = theme.fg.strong,
-		muted = theme.fg.muted,
-		dim = theme.fg.dim,
-		comment = theme.fg.comment,
-	},
-	-- General colors
-	theme = {
-		primary = "#A63333",
-		light_primary = "#753826",
-		secondary = "#134c7d",
-		accent = "#134c7d",
-	},
-}
+local config = require("oasis.config")
+local color_utils = require("oasis.tools.color_utils")
+local light_gen = require("oasis.tools.light_theme_generator")
+local opts = config.get()
+local seed_dark = require("oasis.color_palettes.oasis_canyon").dark
+local bg_seed = p.theme.night.fg.core
+local light_intensity = 1
+local target_l = { [1] = 84 }
+local contrast_opts = opts.contrast or { min_ratio = 5.8, force_aaa = false }
+local light_bg = light_gen.generate_light_backgrounds(bg_seed, light_intensity, { target_l_core = target_l })
 
 -- Colorscheme
 local c = {
-	bg = ui.bg,
-	fg = ui.fg,
-	theme = ui.theme,
-	terminal = p.light_terminal,
+	bg = light_bg,
+	fg = light_gen.generate_light_foregrounds(seed_dark.fg, light_bg.core, light_intensity, contrast_opts),
+	theme = light_gen.generate_light_theme(seed_dark.theme, light_intensity),
+	terminal = light_gen.generate_light_terminal(
+		seed_dark.terminal or p.terminal,
+		light_bg.core,
+		light_intensity,
+		contrast_opts
+	),
 	light_mode = true,
 
 	-- Syntax
-	syntax = {
-		-- Cold: (Data)
-		parameter = "#5e00cd",
-		identifier = "#424A54",
-		delimiter = ui.theme.primary,
-		type = "#28504a",
-		builtinVar = "#004f72", -- (this, document, window, etc)
-		string = "#155433",
-		regex = "#1d550e",
-		builtinConst = "#22514B", -- (constant: number, float, boolean, or const not string/character)
-		constant = "#7a3605",
-
-		-- Warm: (Control / Flow)
-		func = "#723B06",
-		builtinFunc = "#89270b", -- (eg. parseInt, Array, Object etc)
-		statement = "#514a0b", -- (general statement (i.e. var, const))
-		exception = "#931313", -- (try/catch, return)
-		keyword = "#45421F", -- (Conditionals, Loops)
-		special = "#753a00", -- (Statement not covered above)
-		operator = "#900000",
-		punctuation = "#7E1B1B",
-		preproc = "#085160", -- (imports)
-
-		-- Neutral: (Connections / Info)
-		bracket = "#50493E",
-		comment = ui.fg.comment,
-	},
+	syntax = light_gen.generate_light_syntax(seed_dark.syntax, light_bg.core, light_intensity, nil, contrast_opts),
 
 	-- Diff
 	diff = {
-		add = "#2F7D32",
-		change = "#4c4c00",
-		delete = "#862929",
+		add = color_utils.darken_to_contrast(seed_dark.diff.add, light_bg.core, 7.0),
+		change = color_utils.darken_to_contrast(seed_dark.diff.change, light_bg.core, 7.0),
+		delete = color_utils.darken_to_contrast(seed_dark.diff.delete, light_bg.core, 7.0),
 	},
 
 	-- UI
-	ui = {
-		lineNumber = "#753a00",
-		match = { bg= "#FFD87C", fg = "#753a00" },
-		visual = { bg = ui.bg.surface, fg = "none" },
-		search = { bg = "#FFD87C", fg = "#462E23" },
-		curSearch = { bg = p.sunshine[600], fg = "#2C1810" },
-		dir = "#114f68",
-
-		title = ui.theme.primary,
-		border = ui.theme.primary,
-		cursorLine = ui.bg.mantle,
-		nontext = ui.fg.dim,
-		float = {
-			title = ui.theme.light_primary,
-			fg = ui.fg.core,
-			bg = ui.bg.surface,
-			border = { fg = ui.theme.primary, bg = ui.bg.mantle },
-		},
-		diag = {
-			error = { fg = "#862929", bg = ui.bg.core },
-			warn = { fg = "#4c4c00", bg = ui.bg.core },
-			info = { fg = "#114f68", bg = ui.bg.core },
-			hint = { fg = "#21514a", bg = ui.bg.core },
-			ok = { fg = "#2F7D32", bg = "none" },
-		},
-	},
+	ui = light_gen.generate_light_ui(seed_dark.ui, light_bg, light_intensity),
 }
+
+-- Deprecation notice (once per session)
+if vim and vim.notify and not vim.g.oasis_deprecated_dawn then
+	vim.g.oasis_deprecated_dawn = true
+	vim.notify(
+		"Oasis: 'dawn' is deprecated and will be removed in a future release. Please migrate to 'night' with light_intensity = 1.",
+		vim.log.levels.WARN
+	)
+end
+
 return c

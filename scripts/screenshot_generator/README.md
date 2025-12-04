@@ -1,6 +1,8 @@
 # Screenshot Generator
 
-Automated screenshot generation for all 18 Oasis theme variants using Kitty terminal and hyprshot.
+Automated screenshot generation for all Oasis theme variants using Kitty terminal and hyprshot.
+
+Supports both single-mode (light-only) and dual-mode (dark + light) theme variants.
 
 ## Overview
 
@@ -52,8 +54,8 @@ The generator uses real terminal rendering in Kitty for authentic, high-quality 
    ```
 
 2. **tmux config** at `~/dotfiles/tmux/.tmux.conf` (update script path if different):
-   - Config should contain a line like: `set -g @oasis_flavor "lagoon"`
-   - **tmux-oasis theme** must be installed and configured
+   - Config should contain a line like: `set -g @oasis_flavor "lagoon"` (or `"canyon_dark"` for dual-mode)
+   - **tmux-oasis theme** must be installed and configured with dual-mode support
 
 3. **Hyprland** window manager running (required for hyprshot)
 
@@ -68,11 +70,13 @@ Run the generator from the project root:
 ### What It Does
 
 1. **Backs up** your current tmux config
-2. **For each variant**:
+2. **For each variant** (31 total: 13 dual-mode × 2 + 5 single-mode):
    - Kills any existing tmux server
-   - Updates tmux config to use that variant
+   - Updates tmux config to use that variant (e.g., `canyon_dark`, `dawn`)
    - Launches Kitty terminal with tmux
    - Opens Neovim with the variant colorscheme
+     - For dual-mode: sets `background` before applying colorscheme
+     - For single-mode: applies colorscheme directly
    - Captures dashboard screenshot using hyprshot
    - Opens example code file (navigates to line 19)
    - Captures code screenshot using hyprshot
@@ -96,13 +100,23 @@ The script uses Kitty's remote control API to automate terminal interactions:
 Screenshots are saved in `assets/screenshots/`:
 
 ```
-night-dashboard.png
-night-code.png
-midnight-dashboard.png
-midnight-code.png
+# Dual-mode themes (both dark and light variants)
+night_dark-dashboard.png
+night_dark-code.png
+night_light-dashboard.png
+night_light-code.png
+canyon_dark-dashboard.png
+canyon_dark-code.png
+canyon_light-dashboard.png
+canyon_light-code.png
 ...
-dust-dashboard.png
-dust-code.png
+
+# Single-mode themes (light-only)
+dawn-dashboard.png
+dawn-code.png
+day-dashboard.png
+day-code.png
+...
 ```
 
 **Note**: These are full-size terminal screenshots. Window sizing is determined by Hyprland based on your monitor and workspace rules. Cropped versions for social media are created separately in `assets/socials/` following the instructions in `assets/socials/README.md`.
@@ -178,7 +192,8 @@ sleep 0.5  # Increase if window focusing needs more time
 
 - Update `TMUX_CONFIG` path in the script
 - Ensure your tmux config has a line matching: `set -g @oasis_flavor "variant"`
-- Script uses regex to find and replace: `/set -g @oasis_flavor ["']?\w+["']?/`
+- Script uses regex to find and replace: `/set -g @oasis_flavor ["']?[\w_]+["']?/`
+- Regex now supports underscores for dual-mode variants (e.g., `canyon_dark`)
 - If you see "WARNING: tmux config was not modified", check your flavor line format
 - Script verifies the change was applied and raises an error if not
 
@@ -209,17 +224,13 @@ The script orchestrates:
 
 ### Testing Single Variant
 
-To test with one variant before running all 18:
+To test with one variant before running all 31:
 
 ```ruby
-# Edit generate_screenshots.rb around line 15-34 (replace VARIANTS array)
-VARIANTS = %w[lagoon]  # Test with just one variant
-```
-
-Or uncomment line 37:
-
-```ruby
-# VARIANTS = %w[canyon]
+# Edit generate_screenshots.rb around line 46-47 (uncomment and modify)
+VARIANTS = %w[canyon_dark canyon_light]  # Test dual-mode variant
+# or
+VARIANTS = %w[dawn]  # Test single-mode variant
 ```
 
 Then run normally: `./scripts/screenshot_generator/generate_screenshots.rb`
@@ -246,10 +257,11 @@ To see what's happening in real-time:
 ## Notes
 
 - Each variant takes ~5-10 seconds to process (tmux kill + Kitty launch + screenshots + cleanup)
-- **Total runtime**: ~2-4 minutes for all 18 variants
+- **Total runtime**: ~3-6 minutes for all 31 variants (13 dual-mode × 2 + 5 single-mode)
 - Screenshots are overwritten if they already exist
 - Original tmux config is always restored, even on error
 - Kitty windows and sockets are automatically cleaned up after each variant
 - tmux server is killed between variants to ensure clean theme switching
 - Window dimensions determined by Hyprland (no manual sizing needed)
 - Uses `kitten @` (not `kitty @`) for remote control commands
+- Dual-mode variants set `vim.o.background` before applying colorscheme to select correct mode

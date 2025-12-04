@@ -8,7 +8,7 @@ local utils = require("oasis.utils")
 local color_utils = require("oasis.tools.color_utils")
 
 local function generate_zed_theme(name, palette)
-	local display_name = utils.capitalize(name)
+	local display_name = utils.format_display_name(name)
 	local is_light = palette.light_mode or false
 
 	-- Calculate adjusted colors for UI states
@@ -55,19 +55,20 @@ local function generate_zed_theme(name, palette)
 			selection = color_utils.with_alpha(palette.syntax.constant, "3d"),
 		},
 		{
-			cursor = palette.syntax.keyword,
-			background = palette.syntax.keyword,
-			selection = color_utils.with_alpha(palette.syntax.keyword, "3d"),
+			cursor = palette.syntax.conditional,
+			background = palette.syntax.conditional,
+			selection = color_utils.with_alpha(palette.syntax.conditional, "3d"),
 		},
 	}
 
 	local theme = {
 		["$schema"] = "https://zed.dev/schema/themes/v0.2.0.json",
-		name = "Oasis " .. display_name,
+		name = display_name,
 		author = "sjoeboo",
+		coauthor = "uhs-robert",
 		themes = {
 			{
-				name = "Oasis " .. display_name,
+				name = display_name,
 				appearance = is_light and "light" or "dark",
 				style = {
 					-- Border colors
@@ -309,7 +310,7 @@ local function generate_zed_theme(name, palette)
 
 						-- Constructor
 						constructor = {
-							color = palette.syntax.keyword,
+							color = palette.syntax.conditional,
 							font_style = nil,
 							font_weight = nil,
 						},
@@ -328,7 +329,7 @@ local function generate_zed_theme(name, palette)
 							font_weight = nil,
 						},
 						["emphasis.strong"] = {
-							color = palette.syntax.keyword,
+							color = palette.syntax.conditional,
 							font_style = nil,
 							font_weight = 700,
 						},
@@ -356,14 +357,14 @@ local function generate_zed_theme(name, palette)
 
 						-- Keywords
 						keyword = {
-							color = palette.syntax.keyword,
+							color = palette.syntax.statement,
 							font_style = nil,
 							font_weight = nil,
 						},
 
 						-- Labels
 						label = {
-							color = palette.syntax.keyword,
+							color = palette.syntax.statement,
 							font_style = nil,
 							font_weight = nil,
 						},
@@ -543,18 +544,16 @@ local function main()
 
 	print(string.format("Found %d palette(s)\n", #palette_names))
 
-	local success_count = 0
-	local error_count = 0
+	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
+		-- Build output path using shared utility
+		local output_path, variant_name = utils.build_variant_path("extras/zed", "json", name, mode, intensity)
 
-	for _, name in ipairs(palette_names) do
-		local palette = utils.load_palette(name)
-		local theme = generate_zed_theme(name, palette)
+		-- Generate and write theme
+		local theme = generate_zed_theme(variant_name, palette)
 		local json = color_utils.encode_json(theme, 0)
-		local zed_path = string.format("extras/zed/oasis_%s.json", name)
-		utils.write_file(zed_path, json)
-		print(string.format("✓ Generated: %s", zed_path))
-		success_count = success_count + 1
-	end
+		utils.write_file(output_path, json)
+		print(string.format("✓ Generated: %s", output_path))
+	end)
 
 	print(string.format("\n=== Summary ==="))
 	print(string.format("Success: %d", success_count))

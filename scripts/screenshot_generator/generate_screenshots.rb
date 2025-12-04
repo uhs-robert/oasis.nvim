@@ -3,6 +3,7 @@
 # frozen_string_literal: true
 
 require 'fileutils'
+require 'shellwords'
 
 # Configuration
 TMUX_CONFIG = File.expand_path('~/dotfiles/tmux/.tmux.conf')
@@ -10,9 +11,10 @@ TMUX_CONFIG_BACKUP = "#{TMUX_CONFIG}.backup"
 PROJECT_ROOT = File.expand_path('../..', __dir__)
 OUTPUT_DIR = File.join(PROJECT_ROOT, 'assets/screenshots')
 TEMP_DIR = '/tmp/oasis-screenshots'
+LIGHT_INTENSITY = 3
 
-# All 18 variants in order (dark themes, then light themes)
-VARIANTS = %w[
+# Dual-mode themes (have both dark and light variants)
+DUAL_MODE_THEMES = %w[
   night
   midnight
   abyss
@@ -26,15 +28,23 @@ VARIANTS = %w[
   lagoon
   twilight
   rose
-  dawn
-  dawnlight
-  day
-  dusk
-  dust
 ].freeze
 
+# Special palettes that should capture all light intensity levels (1-5)
+SPECIAL_LIGHT_INTENSITY_THEMES = {
+  'lagoon' => (1..5).to_a
+}.freeze
+
+# Generate all variants (dual-mode get both dark and light)
+VARIANTS = (
+  DUAL_MODE_THEMES.flat_map { |theme| ["#{theme}_dark", "#{theme}_light_#{LIGHT_INTENSITY}"] } +
+  SPECIAL_LIGHT_INTENSITY_THEMES.flat_map do |theme, intensities|
+    intensities.map { |i| "#{theme}_light_#{i}" }
+  end
+).freeze
+
 # Testing single variant
-# VARIANTS = %w[canyon]
+# VARIANTS = %w[canyon_dark canyon_light]
 
 # Tmux configuration manager for screenshot generation
 module TmuxConfigManager
@@ -60,8 +70,9 @@ module TmuxConfigManager
 
   def update_flavor(variant)
     content = File.read(TMUX_CONFIG)
+    # Match word characters and underscores for dual-mode variants (e.g., canyon_dark)
     updated = content.gsub(
-      /set -g @oasis_flavor ["']?\w+["']?/,
+      /set -g @oasis_flavor ["']?[\w_]+["']?/,
       "set -g @oasis_flavor \"#{variant}\""
     )
 
@@ -93,6 +104,12 @@ class ScreenshotWorkflow
     @instance_name = "oasis-screenshot-#{variant}"
     @kitty = KittyController.new(@instance_name)
     @screenshot_capture = screenshot_capture
+
+    # Parse variant to extract base name, mode, and optional light intensity
+    # e.g., "canyon_dark" -> base="canyon", mode="dark", intensity=nil
+    #       "lagoon_light_3" -> base="lagoon", mode="light", intensity=3
+    #       "dawn" -> base="dawn", mode=nil, intensity=nil
+    @base_name, @mode, @intensity = parse_variant(variant)
   end
 
   def run
@@ -104,6 +121,14 @@ class ScreenshotWorkflow
 
   private
 
+  def parse_variant(variant)
+    match = variant.match(/^(?<base>.+?)(?:_(?<mode>dark|light)(?:_(?<intensity>\d))?)?$/)
+    base = match[:base]
+    mode = match[:mode]
+    intensity = match[:intensity]&.to_i
+    [base, mode, intensity]
+  end
+
   def launch_terminal
     puts '  Launching Kitty terminal...'
     @kitty.launch
@@ -114,7 +139,12 @@ class ScreenshotWorkflow
     @kitty.send_keys("cd #{PROJECT_ROOT}")
     @kitty.send_keys('nvim')
     sleep 1
-    @kitty.send_keys(":set termguicolors | colorscheme oasis-#{@variant}")
+    # Run lua first, can't chain the pipe | with lua
+    @kitty.send_keys(":lua local cfg=require('oasis.config').get(); cfg.light_intensity=#{@intensity}") if @intensity
+    command_chain = ['set termguicolors']
+    command_chain << "set background=#{@mode}" if @mode
+    command_chain << "colorscheme oasis-#{@base_name}"
+    @kitty.send_keys(":#{command_chain.join(' | ')}")
     @screenshot_capture.capture(@instance_name, @variant, 'dashboard')
   end
 
@@ -143,12 +173,14 @@ class ScreenshotCapture
   end
 
   def capture(instance_name, variant, type)
-    temp_file = File.join(@temp_dir, "#{variant}-#{type}.png")
-    final_file = File.join(@output_dir, "#{variant}-#{type}.png")
+    # Convert underscore to hyphen for filename (e.g., canyon_dark -> canyon-dark)
+    filename_variant = variant.gsub('_', '-')
+    temp_file = File.join(@temp_dir, "#{filename_variant}-#{type}.png")
+    final_file = File.join(@output_dir, "#{filename_variant}-#{type}.png")
 
     puts "  Capturing #{type} screenshot..."
     focus_window(instance_name)
-    take_screenshot(variant, type, temp_file)
+    take_screenshot(filename_variant, type, temp_file)
     move_to_final_location(temp_file, final_file)
 
     puts "  Saved: #{final_file}"
@@ -254,11 +286,8 @@ class KittyController
 
   def send_keys(text, enter: true)
     command = "kitten @ --to unix:#{@socket_path} send-text"
-    if enter
-      system("#{command} '#{text}\n'")
-    else
-      system("#{command} --no-newline '#{text}'")
-    end
+    payload = enter ? "#{text}\n" : text
+    system("#{command} #{Shellwords.escape(payload)}")
     sleep 0.5
   end
 
@@ -353,7 +382,8 @@ class ScreenshotGenerator
     puts "\n#{'=' * 60}"
 
     if @errors.empty?
-      puts "SUCCESS! All #{VARIANTS.count * 2} screenshots generated"
+      total_screenshots = VARIANTS.count * 2 # 2 screenshots per variant (dashboard + code)
+      puts "SUCCESS! All #{total_screenshots} screenshots generated (#{VARIANTS.count} variants)"
       puts "Output directory: #{OUTPUT_DIR}"
     else
       puts "Completed with #{@errors.count} error(s):"
