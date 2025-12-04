@@ -568,277 +568,207 @@ require("oasis").setup({
 <!-- highlight-overrides:end -->
 </details>
 
-## 👀 View All Theme Styles
+# 👀 View All Theme Styles
 
 <a id="view-all-theme-styles"></a>
 
 <details open>
   <summary><b>All styles (click to collapse)</b></summary>
+  <br/>
   <!-- all-styles:start -->
-
-### Dark previews
-
-<a id="night-dark"></a>
-**Night (Dark · Night Sky)**
-
-![night-dark-dashboard](./assets/screenshots/night-dark-dashboard.png)
-![night-dark-code](./assets/screenshots/night-dark-code.png)
-
-<p align="center">
-  <a href="#dark-previews">↑ Back to Dark Styles</a>
-</p>
-
-<a id="midnight-dark"></a>
-**Midnight (Dark · Off Black)**
-
-![midnight-dark-dashboard](./assets/screenshots/midnight-dark-dashboard.png)
-![midnight-dark-code](./assets/screenshots/midnight-dark-code.png)
-
-<p align="center">
-  <a href="#dark-previews">↑ Back to Dark Styles</a>
-</p>
-
-<a id="abyss-dark"></a>
-**Abyss (Dark · Black)**
-
-![abyss-dark-dashboard](./assets/screenshots/abyss-dark-dashboard.png)
-![abyss-dark-code](./assets/screenshots/abyss-dark-code.png)
-
-<p align="center">
-  <a href="#dark-previews">↑ Back to Dark Styles</a>
-</p>
-
-<a id="starlight-dark"></a>
-**Starlight (Dark · Black Vivid)**
-
-![starlight-dark-dashboard](./assets/screenshots/starlight-dark-dashboard.png)
-![starlight-dark-code](./assets/screenshots/starlight-dark-code.png)
-
-<p align="center">
-  <a href="#dark-previews">↑ Back to Dark Styles</a>
-</p>
-
-<a id="desert-dark"></a>
-**Desert (Dark · Grey)**
-
-![desert-dark-dashboard](./assets/screenshots/desert-dark-dashboard.png)
-![desert-dark-code](./assets/screenshots/desert-dark-code.png)
-
-<p align="center">
-  <a href="#dark-previews">↑ Back to Dark Styles</a>
-</p>
-
-<a id="sol-dark"></a>
-**Sol (Dark · Red)**
-
-![sol-dark-dashboard](./assets/screenshots/sol-dark-dashboard.png)
-![sol-dark-code](./assets/screenshots/sol-dark-code.png)
-
-<p align="center">
-  <a href="#dark-previews">↑ Back to Dark Styles</a>
-</p>
-
-<a id="canyon-dark"></a>
-**Canyon (Dark · Orange)**
-
-![canyon-dark-dashboard](./assets/screenshots/canyon-dark-dashboard.png)
-![canyon-dark-code](./assets/screenshots/canyon-dark-code.png)
-
-<p align="center">
-  <a href="#dark-previews">↑ Back to Dark Styles</a>
-</p>
-
-<a id="dune-dark"></a>
-**Dune (Dark · Yellow)**
-
-![dune-dark-dashboard](./assets/screenshots/dune-dark-dashboard.png)
-![dune-dark-code](./assets/screenshots/dune-dark-code.png)
-
-<p align="center">
-  <a href="#dark-previews">↑ Back to Dark Styles</a>
-</p>
-
-<a id="cactus-dark"></a>
-**Cactus (Dark · Green)**
-
-![cactus-dark-dashboard](./assets/screenshots/cactus-dark-dashboard.png)
-![cactus-dark-code](./assets/screenshots/cactus-dark-code.png)
-
-<p align="center">
-  <a href="#dark-previews">↑ Back to Dark Styles</a>
-</p>
-
-<a id="mirage-dark"></a>
-**Mirage (Dark · Teal)**
-
-![mirage-dark-dashboard](./assets/screenshots/mirage-dark-dashboard.png)
-![mirage-dark-code](./assets/screenshots/mirage-dark-code.png)
-
-<p align="center">
-  <a href="#dark-previews">↑ Back to Dark Styles</a>
-</p>
-
-<a id="lagoon-dark"></a>
-**Lagoon (Dark · Default)**
-
-![lagoon-dark-dashboard](./assets/screenshots/lagoon-dark-dashboard.png)
-![lagoon-dark-code](./assets/screenshots/lagoon-dark-code.png)
-
-<p align="center">
-  <a href="#dark-previews">↑ Back to Dark Styles</a>
-</p>
-
-<a id="twilight-dark"></a>
-**Twilight (Dark · Purple)**
-
-![twilight-dark-dashboard](./assets/screenshots/twilight-dark-dashboard.png)
-![twilight-dark-code](./assets/screenshots/twilight-dark-code.png)
-
-<p align="center">
-  <a href="#dark-previews">↑ Back to Dark Styles</a>
-</p>
-
-<a id="rose-dark"></a>
-**Rose (Dark · Pink)**
-
-![rose-dark-dashboard](./assets/screenshots/rose-dark-dashboard.png)
-![rose-dark-code](./assets/screenshots/rose-dark-code.png)
-
-<p align="center">
-  <a href="#dark-previews">↑ Back to Dark Styles</a>
-</p>
-
-### Light previews
-
-<a id="night-light"></a>
-**Night (Light)**
-
-![night-light-3-dashboard](./assets/screenshots/night-light-3-dashboard.png)
-![night-light-3-code](./assets/screenshots/night-light-3-code.png)
-
-<p align="center">
-  <a href="#light-previews">↑ Back to Light Styles</a>
-</p>
-
-<a id="midnight-light"></a>
-**Midnight (Light)**
-
-![midnight-light-3-dashboard](./assets/screenshots/midnight-light-3-dashboard.png)
-![midnight-light-3-code](./assets/screenshots/midnight-light-3-code.png)
-
-<p align="center">
-  <a href="#light-previews">↑ Back to Light Styles</a>
-</p>
-
-<a id="abyss-light"></a>
-**Abyss (Light)**
-
-![abyss-light-3-dashboard](./assets/screenshots/abyss-light-3-dashboard.png)
-![abyss-light-3-code](./assets/screenshots/abyss-light-3-code.png)
-
-<p align="center">
-  <a href="#light-previews">↑ Back to Light Styles</a>
-</p>
-
-<a id="starlight-3-light"></a>
-**Starlight (Light)**
-
-![starlight-light-3-dashboard](./assets/screenshots/starlight-light-3-dashboard.png)
-![starlight-light-3-code](./assets/screenshots/starlight-light-3-code.png)
-
-<p align="center">
-  <a href="#light-previews">↑ Back to Light Styles</a>
-</p>
-
-<a id="desert-light"></a>
-**Desert (Light)**
-
-![desert-light-3-dashboard](./assets/screenshots/desert-light-3-dashboard.png)
-![desert-light-3-code](./assets/screenshots/desert-light-3-code.png)
-
-<p align="center">
-  <a href="#light-previews">↑ Back to Light Styles</a>
-</p>
-
-<a id="sol-light"></a>
-**Sol (Light)**
-
-![sol-light-3-dashboard](./assets/screenshots/sol-light-3-dashboard.png)
-![sol-light-3-code](./assets/screenshots/sol-light-3-code.png)
-
-<p align="center">
-  <a href="#light-previews">↑ Back to Light Styles</a>
-</p>
-
-<a id="canyon-light"></a>
-**Canyon (Light)**
-
-![canyon-light-3-dashboard](./assets/screenshots/canyon-light-3-dashboard.png)
-![canyon-light-3-code](./assets/screenshots/canyon-light-3-code.png)
-
-<p align="center">
-  <a href="#light-previews">↑ Back to Light Styles</a>
-</p>
-
-<a id="dune-light"></a>
-**Dune (Light)**
-
-![dune-light-3-dashboard](./assets/screenshots/dune-light-3-dashboard.png)
-![dune-light-3-code](./assets/screenshots/dune-light-3-code.png)
-
-<p align="center">
-  <a href="#light-previews">↑ Back to Light Styles</a>
-</p>
-
-<a id="cactus-light"></a>
-**Cactus (Light)**
-
-![cactus-light-3-dashboard](./assets/screenshots/cactus-light-3-dashboard.png)
-![cactus-light-3-code](./assets/screenshots/cactus-light-3-code.png)
-
-<p align="center">
-  <a href="#light-previews">↑ Back to Light Styles</a>
-</p>
-
-<a id="mirage-light"></a>
-**Mirage (Light)**
-
-![mirage-light-3-dashboard](./assets/screenshots/mirage-light-3-dashboard.png)
-![mirage-light-3-code](./assets/screenshots/mirage-light-3-code.png)
-
-<p align="center">
-  <a href="#light-previews">↑ Back to Light Styles</a>
-</p>
-
-<a id="lagoon-light"></a>
-**Lagoon (Light)**
-
-![lagoon-light-3-dashboard](./assets/screenshots/lagoon-light-3-dashboard.png)
-![lagoon-light-3-code](./assets/screenshots/lagoon-light-3-code.png)
-
-<p align="center">
-  <a href="#light-previews">↑ Back to Light Styles</a>
-</p>
-
-<a id="twilight-3-light"></a>
-**Twilight (Light)**
-
-![twilight-light-3-dashboard](./assets/screenshots/twilight-light-3-dashboard.png)
-![twilight-light-3-code](./assets/screenshots/twilight-light-3-code.png)
-
-<p align="center">
-  <a href="#light-previews">↑ Back to Light Styles</a>
-</p>
-
-<a id="rose-light"></a>
-**Rose (Light)**
-
-![rose-light-3-dashboard](./assets/screenshots/rose-light-3-dashboard.png)
-![rose-light-3-code](./assets/screenshots/rose-light-3-code.png)
-
-<p align="center">
-  <a href="#light-previews">↑ Back to Light Styles</a>
-</p>
-
+  <a id="dark-previews"></a>
+  <details open>
+    <summary><b>Dark Previews</b></summary>
+    <!-- dark-styles:start -->
+    <a id="night-dark"></a>
+    <h3>Night (Dark · Night Sky)</h3>
+    <img src="./assets/screenshots/night-dark-dashboard.png"></img>
+    <img src="./assets/screenshots/night-dark-code.png"></img>
+    <p align="center">
+      <a href="#dark-previews">↑ Back to Dark Styles</a>
+    </p>
+    <a id="midnight-dark"></a>
+    <h3>Midnight (Dark · Off Black)</h3>
+    <img src="./assets/screenshots/midnight-dark-dashboard.png"></img>
+    <img src="./assets/screenshots/midnight-dark-code.png"></img>
+    <p align="center">
+      <a href="#dark-previews">↑ Back to Dark Styles</a>
+    </p>
+    <a id="abyss-dark"></a>
+    <h3>Abyss (Dark · Black)</h3>
+    <img src="./assets/screenshots/abyss-dark-dashboard.png"></img>
+    <img src="./assets/screenshots/abyss-dark-code.png"></img>
+    <p align="center">
+      <a href="#dark-previews">↑ Back to Dark Styles</a>
+    </p>
+    <a id="starlight-dark"></a>
+    <h3>Starlight (Dark · Black Vivid)</h3>
+    <img src="./assets/screenshots/starlight-dark-dashboard.png"></img>
+    <img src="./assets/screenshots/starlight-dark-code.png"></img>
+    <p align="center">
+      <a href="#dark-previews">↑ Back to Dark Styles</a>
+    </p>
+    <a id="desert-dark"></a>
+    <h3>Desert (Dark · Grey)</h3>
+    <img src="./assets/screenshots/desert-dark-dashboard.png"></img>
+    <img src="./assets/screenshots/desert-dark-code.png"></img>
+    <p align="center">
+      <a href="#dark-previews">↑ Back to Dark Styles</a>
+    </p>
+    <a id="sol-dark"></a>
+    <h3>Sol (Dark · Red)</h3>
+    <img src="./assets/screenshots/sol-dark-dashboard.png"></img>
+    <img src="./assets/screenshots/sol-dark-code.png"></img>
+    <p align="center">
+      <a href="#dark-previews">↑ Back to Dark Styles</a>
+    </p>
+    <a id="canyon-dark"></a>
+    <h3>Canyon (Dark · Orange)</h3>
+    <img src="./assets/screenshots/canyon-dark-dashboard.png"></img>
+    <img src="./assets/screenshots/canyon-dark-code.png"></img>
+    <p align="center">
+      <a href="#dark-previews">↑ Back to Dark Styles</a>
+    </p>
+    <a id="dune-dark"></a>
+    <h3>Dune (Dark · Yellow)</h3>
+    <img src="./assets/screenshots/dune-dark-dashboard.png"></img>
+    <img src="./assets/screenshots/dune-dark-code.png"></img>
+    <p align="center">
+      <a href="#dark-previews">↑ Back to Dark Styles</a>
+    </p>
+    <a id="cactus-dark"></a>
+    <h3>Cactus (Dark · Green)</h3>
+    <img src="./assets/screenshots/cactus-dark-dashboard.png"></img>
+    <img src="./assets/screenshots/cactus-dark-code.png"></img>
+    <p align="center">
+      <a href="#dark-previews">↑ Back to Dark Styles</a>
+    </p>
+    <a id="mirage-dark"></a>
+    <h3>Mirage (Dark · Teal)</h3>
+    <img src="./assets/screenshots/mirage-dark-dashboard.png"></img>
+    <img src="./assets/screenshots/mirage-dark-code.png"></img>
+    <p align="center">
+      <a href="#dark-previews">↑ Back to Dark Styles</a>
+    </p>
+    <a id="lagoon-dark"></a>
+    <h3>Lagoon (Dark · Default)</h3>
+    <img src="./assets/screenshots/lagoon-dark-dashboard.png"></img>
+    <img src="./assets/screenshots/lagoon-dark-code.png"></img>
+    <p align="center">
+      <a href="#dark-previews">↑ Back to Dark Styles</a>
+    </p>
+    <a id="twilight-dark"></a>
+    <h3>Twilight (Dark · Purple)</h3>
+    <img src="./assets/screenshots/twilight-dark-dashboard.png"></img>
+    <img src="./assets/screenshots/twilight-dark-code.png"></img>
+    <p align="center">
+      <a href="#dark-previews">↑ Back to Dark Styles</a>
+    </p>
+    <a id="rose-dark"></a>
+    <h3>Rose (Dark · Pink)</h3>
+    <img src="./assets/screenshots/rose-dark-dashboard.png"></img>
+    <img src="./assets/screenshots/rose-dark-code.png"></img>
+    <p align="center">
+      <a href="#dark-previews">↑ Back to Dark Styles</a>
+    </p>
+    <!-- dark-styles:end -->
+</details>
+  <details open>
+  <summary><b>Light Previews</b></summary>
+  <!-- light-styles:start -->
+  <a id="light-previews"></a>
+    <a id="night-light"></a>
+    <h3>Night (Light)</h3>
+    <img src="./assets/screenshots/night-light-3-dashboard.png"></img>
+    <img src="./assets/screenshots/night-light-3-code.png"></img>
+    <p align="center">
+      <a href="#light-previews">↑ Back to Light Styles</a>
+    </p>
+    <a id="midnight-light"></a>
+    <h3>Midnight (Light)</h3>
+    <img src="./assets/screenshots/midnight-light-3-dashboard.png"></img>
+    <img src="./assets/screenshots/midnight-light-3-code.png"></img>
+    <p align="center">
+      <a href="#light-previews">↑ Back to Light Styles</a>
+    </p>
+    <a id="abyss-light"></a>
+    <h3>Abyss (Light)</h3>
+    <img src="./assets/screenshots/abyss-light-3-dashboard.png"></img>
+    <img src="./assets/screenshots/abyss-light-3-code.png"></img>
+    <p align="center">
+      <a href="#light-previews">↑ Back to Light Styles</a>
+    </p>
+    <a id="starlight-light"></a>
+    <h3>Starlight (Light)</h3>
+    <img src="./assets/screenshots/starlight-light-3-dashboard.png"></img>
+    <img src="./assets/screenshots/starlight-light-3-code.png"></img>
+    <p align="center">
+      <a href="#light-previews">↑ Back to Light Styles</a>
+    </p>
+    <a id="desert-light"></a>
+    <h3>Desert (Light)</h3>
+    <img src="./assets/screenshots/desert-light-3-dashboard.png"></img>
+    <img src="./assets/screenshots/desert-light-3-code.png"></img>
+    <p align="center">
+      <a href="#light-previews">↑ Back to Light Styles</a>
+    </p>
+    <a id="sol-light"></a>
+    <h3>Sol (Light)</h3>
+    <img src="./assets/screenshots/sol-light-3-dashboard.png"></img>
+    <img src="./assets/screenshots/sol-light-3-code.png"></img>
+    <p align="center">
+      <a href="#light-previews">↑ Back to Light Styles</a>
+    </p>
+    <a id="canyon-light"></a>
+    <h3>Canyon (Light)</h3>
+    <img src="./assets/screenshots/canyon-light-3-dashboard.png"></img>
+    <img src="./assets/screenshots/canyon-light-3-code.png"></img>
+    <p align="center">
+      <a href="#light-previews">↑ Back to Light Styles</a>
+    </p>
+    <a id="dune-light"></a>
+    <h3>Dune (Light)</h3>
+    <img src="./assets/screenshots/dune-light-3-dashboard.png"></img>
+    <img src="./assets/screenshots/dune-light-3-code.png"></img>
+    <p align="center">
+      <a href="#light-previews">↑ Back to Light Styles</a>
+    </p>
+    <a id="cactus-light"></a>
+    <h3>Cactus (Light)</h3>
+    <img src="./assets/screenshots/cactus-light-3-dashboard.png"></img>
+    <img src="./assets/screenshots/cactus-light-3-code.png"></img>
+    <p align="center">
+      <a href="#light-previews">↑ Back to Light Styles</a>
+    </p>
+    <a id="mirage-light"></a>
+    <h3>Mirage (Light)</h3>
+    <img src="./assets/screenshots/mirage-light-3-dashboard.png"></img>
+    <img src="./assets/screenshots/mirage-light-3-code.png"></img>
+    <p align="center">
+      <a href="#light-previews">↑ Back to Light Styles</a>
+    </p>
+    <a id="lagoon-light"></a>
+    <h3>Lagoon (Light)</h3>
+    <img src="./assets/screenshots/lagoon-light-3-dashboard.png"></img>
+    <img src="./assets/screenshots/lagoon-light-3-code.png"></img>
+    <p align="center">
+      <a href="#light-previews">↑ Back to Light Styles</a>
+    </p>
+    <a id="twilight-light"></a>
+    <h3>Twilight (Light)</h3>
+    <img src="./assets/screenshots/twilight-light-3-dashboard.png"></img>
+    <img src="./assets/screenshots/twilight-light-3-code.png"></img>
+    <p align="center">
+      <a href="#light-previews">↑ Back to Light Styles</a>
+    </p>
+    <a id="rose-light"></a>
+    <h3>Rose (Light)</h3>
+    <img src="./assets/screenshots/rose-light-3-dashboard.png"></img>
+    <img src="./assets/screenshots/rose-light-3-code.png"></img>
+    <p align="center">
+      <a href="#light-previews">↑ Back to Light Styles</a>
+    </p>
+  <!-- light-styles:end -->
+  </details>
   <!-- all-styles:end -->
 </details>
