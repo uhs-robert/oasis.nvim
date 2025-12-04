@@ -46,9 +46,7 @@ local function add_color_block(lines, label, hex, alpha)
 	end
 end
 
-local function generate_iterm_colors(name, palette)
-	local display_name = utils.format_display_name(name)
-
+local function generate_iterm_colors(display_name, palette)
 	local lines = {
 		'<?xml version="1.0" encoding="UTF-8"?>',
 		'<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">',
@@ -116,10 +114,22 @@ local function main()
 
 	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
 		local output_path, variant_name = utils.build_variant_path("extras/iterm", "itermcolors", name, mode, intensity)
+		local display_name = utils.format_display_name(variant_name)
 
-		local theme = generate_iterm_colors(variant_name, palette)
-		utils.write_file(output_path, theme)
-		print(string.format("✓ Generated: %s", output_path))
+		-- iTerm uses the filename as the preset name; save with the friendly display name
+		local output_dir = output_path:match("(.+)/[^/]+$") or "extras/iterm/themes/" .. name
+		local safe_display = display_name:gsub("/", "-")
+		local friendly_output_path = string.format("%s/%s.itermcolors", output_dir, safe_display)
+
+		local theme = generate_iterm_colors(display_name, palette)
+		utils.write_file(friendly_output_path, theme)
+
+		-- Clean up the old slugged filename to avoid duplicates
+		if friendly_output_path ~= output_path then
+			os.remove(output_path)
+		end
+
+		print(string.format("✓ Generated: %s", friendly_output_path))
 	end)
 
 	print("\n=== Summary ===")

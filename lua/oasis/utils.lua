@@ -250,27 +250,38 @@ end
 --- @param variant_name string Variant name (e.g., "lagoon_dark", "lagoon_light_3", "dawn")
 --- @return string Formatted display name
 function M.format_display_name(variant_name)
+	-- Strip optional oasis_ prefix to keep display names clean
+	local function normalize_base(base)
+		base = base:gsub("^oasis_", "")
+
+		-- Title-case underscore-delimited words (e.g., "sea_breeze" -> "Sea Breeze")
+		local words = {}
+		for word in base:gmatch("[^_]+") do
+			table.insert(words, M.capitalize(word))
+		end
+
+		return table.concat(words, " ")
+	end
+
 	-- Extract parts: base_name, mode (dark/light), intensity (1-5)
 	local base_name, intensity
 
 	-- Try to match dark variant
-	base_name, _ = variant_name:match("^(.+)_(dark)$")
+	base_name, _ = variant_name:match("^(.-)_(dark)$")
 	if base_name then
-		-- Capitalize base name
-		local display_base = M.capitalize(base_name)
+		local display_base = normalize_base(base_name)
 		return "Oasis " .. display_base .. " Dark"
 	end
 
 	-- Try to match light variant with intensity
-	base_name, _, intensity = variant_name:match("^(.+)_(light)_(%d+)$")
+	base_name, _, intensity = variant_name:match("^(.-)_(light)_(%d+)$")
 	if base_name then
-		-- Capitalize base name
-		local display_base = M.capitalize(base_name)
+		local display_base = normalize_base(base_name)
 		return "Oasis " .. display_base .. " Light " .. intensity
 	end
 
 	-- Standalone palette (no suffix)
-	local display_base = M.capitalize(variant_name)
+	local display_base = normalize_base(variant_name)
 	return "Oasis " .. display_base
 end
 
