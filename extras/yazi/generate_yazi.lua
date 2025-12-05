@@ -16,7 +16,7 @@ local function extract_yazi_theme_colors(palette)
 		accent = palette.theme.accent,
 		fg_core = palette.fg.core,
 		fg_strong = palette.fg.strong,
-		fg_muted = palette.fg.comment,
+		fg_muted = palette.syntax.comment,
 		hover_bg = palette.bg.surface,
 		hover_bg_alt = palette.ui.visual.bg,
 		bg_core = palette.bg.core,
@@ -139,11 +139,8 @@ local function main()
 
 		-- Build directory structure: themes/<mode>/[intensity/]flavors/oasis-<variant>.yazi/
 		local _, _, subdir = utils.build_variant_path("extras/yazi", "", name, mode, intensity)
-		local flavor_dir = string.format(
-			"extras/yazi/themes/%s/flavors/oasis-%s.yazi",
-			subdir,
-			variant_name:gsub("_", "-")
-		)
+		local flavor_dir =
+			string.format("extras/yazi/themes/%s/flavors/oasis-%s.yazi", subdir, variant_name:gsub("_", "-"))
 		local output_path = string.format("%s/flavor.toml", flavor_dir)
 
 		-- Create directory structure
