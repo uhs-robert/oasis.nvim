@@ -61,7 +61,7 @@ local function build_selectors(variant_name)
 	}, ",\n")
 end
 
-local function generate_css_theme(base_name, variant_name, palette, mode, intensity)
+local function generate_css_theme(variant_name, palette, mode, intensity, output_path)
 	local display_name = utils.format_display_name(variant_name)
 	local selectors = build_selectors(variant_name)
 
@@ -72,7 +72,7 @@ local function generate_css_theme(base_name, variant_name, palette, mode, intens
 		end
 	end
 
-	add("/* extras/css/themes/" .. base_name .. "/oasis_" .. variant_name .. ".css")
+	add("/* " .. (output_path or ("extras/css/themes/oasis_" .. variant_name .. ".css")))
 	add(" * name: " .. display_name)
 	add(" * author: uhs-robert")
 	add(mode and (" * mode: " .. mode) or nil)
@@ -105,7 +105,7 @@ local function main()
 	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
 		local output_path, variant_name = utils.build_variant_path("extras/css", "css", name, mode, intensity)
 
-		local css = generate_css_theme(name, variant_name, palette, mode, intensity)
+		local css = generate_css_theme(variant_name, palette, mode, intensity, output_path)
 		utils.write_file(output_path, css)
 		print(string.format("✓ Generated: %s", output_path))
 	end)

@@ -117,7 +117,11 @@ local function main()
 		local display_name = utils.format_display_name(variant_name)
 
 		-- iTerm uses the filename as the preset name; save with the friendly display name
-		local output_dir = output_path:match("(.+)/[^/]+$") or "extras/iterm/themes/" .. name
+		local output_dir = output_path:match("(.+)/[^/]+$")
+		if not output_dir then
+			local subdir = mode == "light" and string.format("light/%s", tostring(intensity)) or "dark"
+			output_dir = string.format("extras/iterm/themes/%s", subdir)
+		end
 		local safe_display = display_name:gsub("/", "-")
 		local friendly_output_path = string.format("%s/%s.itermcolors", output_dir, safe_display)
 

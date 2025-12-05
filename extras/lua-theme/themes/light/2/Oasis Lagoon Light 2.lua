@@ -1,0 +1,64 @@
+-- extras/lua-theme/themes/light/2/Oasis Lagoon Light 2.lua
+-- Generated from Oasis palettes
+
+return {
+-- Backgrounds
+	bg_core = "#ebf1f9",
+	bg_mantle = "#dfe9f5",
+	bg_shadow = "#d3e1f2",
+	bg_surface = "#c8d8ee",
+
+-- Foregrounds
+	fg_core = "#3d5273",
+	fg_strong = "#415361",
+	fg_muted = "#5d717e",
+	fg_dim = "#908a86",
+
+-- Accents
+	theme_primary = "#065c98",
+	theme_secondary = "#a35305",
+	theme_accent = "#a30505",
+
+-- Status
+	error = "#340606",
+	warning = "#3c3c07",
+	info = "#083142",
+	hint = "#073e36",
+	ok = "#073c21",
+
+-- ANSI Semnatic Colors
+	black = "#515151",
+	red = "#9d3d3d",
+	green = "#2f6849",
+	yellow = "#655e22",
+	blue = "#145ab8",
+	magenta = "#7b28dc",
+	cyan = "#346560",
+	white = "#535148",
+	bright_black = "#515151",
+	bright_red = "#ba1313",
+	bright_green = "#346926",
+	bright_yellow = "#8d4d0e",
+	bright_blue = "#24647e",
+	bright_magenta = "#7a2adc",
+	bright_cyan = "#34655e",
+	bright_white = "#77450c",
+
+-- ANSI Terminal Colors
+	color0 = "#515151",
+	color1 = "#9d3d3d",
+	color2 = "#2f6849",
+	color3 = "#655e22",
+	color4 = "#145ab8",
+	color5 = "#7b28dc",
+	color6 = "#346560",
+	color7 = "#535148",
+	color8 = "#515151",
+	color9 = "#ba1313",
+	color10 = "#346926",
+	color11 = "#8d4d0e",
+	color12 = "#24647e",
+	color13 = "#7a2adc",
+	color14 = "#34655e",
+	color15 = "#77450c",
+}

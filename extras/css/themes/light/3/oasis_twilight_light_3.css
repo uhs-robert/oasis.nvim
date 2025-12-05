@@ -1,0 +1,120 @@
+/* extras/css/themes/light/3/oasis_twilight_light_3.css
+ * name: Oasis Twilight Light 3
+ * author: uhs-robert
+ * mode: light
+ * light intensity: 3
+ */
+
+:root,
+[data-oasis-theme="twilight_light_3"],
+.oasis-twilight_light_3 {
+	--oasis-name: "Oasis Twilight Light 3";
+	--oasis-mode: "light";
+	--oasis-light-intensity: 3;
+	--oasis-bg-core: #e2ddf4;
+	--oasis-bg-mantle: #d8d1f0;
+	--oasis-bg-shadow: #cec6ed;
+	--oasis-bg-surface: #c4bae9;
+	--oasis-diff-add: #2a4f3d;
+	--oasis-diff-change: #4d4167;
+	--oasis-diff-delete: #693a3a;
+	--oasis-fg-core: #4a4268;
+	--oasis-fg-dim: #887e77;
+	--oasis-fg-muted: #676173;
+	--oasis-fg-strong: #503b7d;
+	--oasis-syntax-bracket: #636177;
+	--oasis-syntax-builtinConst: #4f535e;
+	--oasis-syntax-builtinFunc: #84400e;
+	--oasis-syntax-builtinVar: #525355;
+	--oasis-syntax-comment: #695f7b;
+	--oasis-syntax-conditional: #6d15c1;
+	--oasis-syntax-constant: #393938;
+	--oasis-syntax-delimiter: #7327bb;
+	--oasis-syntax-exception: #9f2328;
+	--oasis-syntax-func: #783f0d;
+	--oasis-syntax-identifier: #2e5b54;
+	--oasis-syntax-operator: #a71217;
+	--oasis-syntax-parameter: #454543;
+	--oasis-syntax-preproc: #1f5970;
+	--oasis-syntax-punctuation: #9c262b;
+	--oasis-syntax-regex: #2a5f1c;
+	--oasis-syntax-special: #80430e;
+	--oasis-syntax-statement: #7416cd;
+	--oasis-syntax-string: #22583b;
+	--oasis-syntax-type: #33544f;
+	--oasis-terminal-black: #474747;
+	--oasis-terminal-blue: #1251a5;
+	--oasis-terminal-bright-black: #474747;
+	--oasis-terminal-bright-blue: #205970;
+	--oasis-terminal-bright-cyan: #2e5b54;
+	--oasis-terminal-bright-green: #2f5e22;
+	--oasis-terminal-bright-magenta: #6d21cb;
+	--oasis-terminal-bright-red: #a71111;
+	--oasis-terminal-bright-white: #693d0a;
+	--oasis-terminal-bright-yellow: #7e450c;
+	--oasis-terminal-color0: #474747;
+	--oasis-terminal-color1: #8d3737;
+	--oasis-terminal-color10: #2f5e22;
+	--oasis-terminal-color11: #7e450c;
+	--oasis-terminal-color12: #205970;
+	--oasis-terminal-color13: #6d21cb;
+	--oasis-terminal-color14: #2e5b54;
+	--oasis-terminal-color15: #693d0a;
+	--oasis-terminal-color2: #2a5d42;
+	--oasis-terminal-color3: #5b541e;
+	--oasis-terminal-color4: #1251a5;
+	--oasis-terminal-color5: #6f21ca;
+	--oasis-terminal-color6: #2f5b55;
+	--oasis-terminal-color7: #4a4740;
+	--oasis-terminal-color8: #474747;
+	--oasis-terminal-color9: #a71111;
+	--oasis-terminal-cyan: #2f5b55;
+	--oasis-terminal-green: #2a5d42;
+	--oasis-terminal-magenta: #6f21ca;
+	--oasis-terminal-red: #8d3737;
+	--oasis-terminal-white: #4a4740;
+	--oasis-terminal-yellow: #5b541e;
+	--oasis-theme-accent: #227c4e;
+	--oasis-theme-light-primary: #380278;
+	--oasis-theme-palette-primary-50: #F4EEFF;
+	--oasis-theme-palette-primary-100: #EEDDFF;
+	--oasis-theme-palette-primary-200: #DEC2FF;
+	--oasis-theme-palette-primary-300: #D8B7FF;
+	--oasis-theme-palette-primary-400: #C695FF;
+	--oasis-theme-palette-primary-500: #C28EFF;
+	--oasis-theme-palette-primary-600: #A870F0;
+	--oasis-theme-palette-primary-700: #9C5FEB;
+	--oasis-theme-palette-primary-800: #8F4FE6;
+	--oasis-theme-palette-primary-900: #7033CC;
+	--oasis-theme-primary: #440391;
+	--oasis-theme-secondary: #8a7d14;
+	--oasis-ui-border: #5d2c96;
+	--oasis-ui-curSearch-bg: #ddb26f;
+	--oasis-ui-curSearch-fg: #352408;
+	--oasis-ui-cursorLine: #d8d1f0;
+	--oasis-ui-diag-error-bg: #d59090;
+	--oasis-ui-diag-error-fg: #340606;
+	--oasis-ui-diag-hint-bg: #92d3c9;
+	--oasis-ui-diag-hint-fg: #073e36;
+	--oasis-ui-diag-info-bg: #92c0d3;
+	--oasis-ui-diag-info-fg: #083142;
+	--oasis-ui-diag-ok-bg: #97ceb2;
+	--oasis-ui-diag-ok-fg: #073c21;
+	--oasis-ui-diag-warn-bg: #cece97;
+	--oasis-ui-diag-warn-fg: #3c3c07;
+	--oasis-ui-dir: #264c5c;
+	--oasis-ui-float-bg: #c4bae9;
+	--oasis-ui-float-border-bg: #d8d1f0;
+	--oasis-ui-float-border-fg: #5d2c96;
+	--oasis-ui-float-fg: #5d2c96;
+	--oasis-ui-float-title: #5d2c96;
+	--oasis-ui-lineNumber: #653f19;
+	--oasis-ui-match-bg: #deb287;
+	--oasis-ui-match-fg: #452608;
+	--oasis-ui-nontext: #8c7d73;
+	--oasis-ui-search-bg: #e1b69d;
+	--oasis-ui-search-fg: #4e260e;
+	--oasis-ui-title: #5d2c96;
+	--oasis-ui-visual-bg: #c4bae9;
+	--oasis-ui-visual-fg: none;
+}

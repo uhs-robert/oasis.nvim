@@ -1,0 +1,118 @@
+/* extras/css/themes/dark/oasis_canyon_dark.css
+ * name: Oasis Canyon Dark
+ * author: uhs-robert
+ * mode: dark
+ */
+
+:root,
+[data-oasis-theme="canyon_dark"],
+.oasis-canyon_dark {
+	--oasis-name: "Oasis Canyon Dark";
+	--oasis-mode: "dark";
+	--oasis-bg-core: #2F1A05;
+	--oasis-bg-mantle: #402412;
+	--oasis-bg-shadow: #2B1804;
+	--oasis-bg-surface: #624020;
+	--oasis-diff-add: #1F3A2D;
+	--oasis-diff-change: #624020;
+	--oasis-diff-delete: #532E2E;
+	--oasis-fg-core: #F8E7D3;
+	--oasis-fg-dim: #636363;
+	--oasis-fg-muted: #714F37;
+	--oasis-fg-strong: #FFD8BC;
+	--oasis-syntax-bracket: #A3ABB8;
+	--oasis-syntax-builtinConst: #A3ABB8;
+	--oasis-syntax-builtinFunc: #FFD082;
+	--oasis-syntax-builtinVar: #76C4FD;
+	--oasis-syntax-comment: #9F7051;
+	--oasis-syntax-conditional: #FFA852;
+	--oasis-syntax-constant: #F4E36B;
+	--oasis-syntax-delimiter: #FFA247;
+	--oasis-syntax-exception: #F28D8D;
+	--oasis-syntax-func: #FFDCA4;
+	--oasis-syntax-identifier: #96D4CB;
+	--oasis-syntax-operator: #FFA0A0;
+	--oasis-syntax-parameter: #C695FF;
+	--oasis-syntax-preproc: #87CEEB;
+	--oasis-syntax-punctuation: #F09595;
+	--oasis-syntax-regex: #A6EE93;
+	--oasis-syntax-special: #FFA852;
+	--oasis-syntax-statement: #FFB870;
+	--oasis-syntax-string: #34CB7D;
+	--oasis-syntax-type: #81C0B6;
+	--oasis-terminal-black: #000000;
+	--oasis-terminal-blue: #519BFF;
+	--oasis-terminal-bright-black: #666666;
+	--oasis-terminal-bright-blue: #87CEEB;
+	--oasis-terminal-bright-cyan: #8FD1C7;
+	--oasis-terminal-bright-green: #96EA7F;
+	--oasis-terminal-bright-magenta: #D2ADFF;
+	--oasis-terminal-bright-red: #FFA0A0;
+	--oasis-terminal-bright-white: #FFF9F2;
+	--oasis-terminal-bright-yellow: #FFA247;
+	--oasis-terminal-color0: #000000;
+	--oasis-terminal-color1: #D06666;
+	--oasis-terminal-color10: #96EA7F;
+	--oasis-terminal-color11: #FFA247;
+	--oasis-terminal-color12: #87CEEB;
+	--oasis-terminal-color13: #D2ADFF;
+	--oasis-terminal-color14: #8FD1C7;
+	--oasis-terminal-color15: #FFF9F2;
+	--oasis-terminal-color2: #53D390;
+	--oasis-terminal-color3: #F0E68C;
+	--oasis-terminal-color4: #519BFF;
+	--oasis-terminal-color5: #C28EFF;
+	--oasis-terminal-color6: #5ABAAE;
+	--oasis-terminal-color7: #DDDBD5;
+	--oasis-terminal-color8: #666666;
+	--oasis-terminal-color9: #FFA0A0;
+	--oasis-terminal-cyan: #5ABAAE;
+	--oasis-terminal-green: #53D390;
+	--oasis-terminal-magenta: #C28EFF;
+	--oasis-terminal-red: #D06666;
+	--oasis-terminal-white: #DDDBD5;
+	--oasis-terminal-yellow: #F0E68C;
+	--oasis-theme-accent: #34CB7D;
+	--oasis-theme-light-primary: #F9C97B;
+	--oasis-theme-palette-primary-50: #FFE7CC;
+	--oasis-theme-palette-primary-100: #FFD7AD;
+	--oasis-theme-palette-primary-200: #FFC78F;
+	--oasis-theme-palette-primary-300: #FFB870;
+	--oasis-theme-palette-primary-400: #FFA852;
+	--oasis-theme-palette-primary-500: #FFA247;
+	--oasis-theme-palette-primary-600: #FF8A1F;
+	--oasis-theme-palette-primary-700: #E67200;
+	--oasis-theme-palette-primary-800: #B35A00;
+	--oasis-theme-palette-primary-900: #804000;
+	--oasis-theme-primary: #FFA247;
+	--oasis-theme-secondary: #87CEEB;
+	--oasis-ui-border: #FFA247;
+	--oasis-ui-curSearch-bg: #F5A72C;
+	--oasis-ui-curSearch-fg: #2F1A05;
+	--oasis-ui-cursorLine: #402412;
+	--oasis-ui-diag-error-bg: #322639;
+	--oasis-ui-diag-error-fg: #FFA0A0;
+	--oasis-ui-diag-hint-bg: #273644;
+	--oasis-ui-diag-hint-fg: #8FD1C7;
+	--oasis-ui-diag-info-bg: #203346;
+	--oasis-ui-diag-info-fg: #87CEEB;
+	--oasis-ui-diag-ok-bg: none;
+	--oasis-ui-diag-ok-fg: #00FF7F;
+	--oasis-ui-diag-warn-bg: #38343D;
+	--oasis-ui-diag-warn-fg: #EEEE00;
+	--oasis-ui-dir: #92D3ED;
+	--oasis-ui-float-bg: #624020;
+	--oasis-ui-float-border-bg: #402412;
+	--oasis-ui-float-border-fg: #FFA247;
+	--oasis-ui-float-fg: #F8E7D3;
+	--oasis-ui-float-title: #FFA247;
+	--oasis-ui-lineNumber: #FFD700;
+	--oasis-ui-match-bg: #FFD700;
+	--oasis-ui-match-fg: #2F1A05;
+	--oasis-ui-nontext: #636363;
+	--oasis-ui-search-bg: #5A3824;
+	--oasis-ui-search-fg: #F8E7D3;
+	--oasis-ui-title: #FFA247;
+	--oasis-ui-visual-bg: #335668;
+	--oasis-ui-visual-fg: none;
+}

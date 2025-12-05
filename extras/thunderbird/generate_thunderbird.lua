@@ -176,15 +176,11 @@ local function generate_manifest(name, palette)
 end
 
 -- Create .xpi file
-local function create_xpi(name, manifest_json)
-	local temp_dir = "/tmp/oasis_thunderbird_" .. name
+local function create_xpi(variant_name, output_path, manifest_json)
+	local temp_dir = "/tmp/oasis_thunderbird_" .. variant_name
 
-	-- Extract base palette name (e.g., "lagoon" from "lagoon_dark" or "lagoon_light_3")
-	local base_name = name:match("^(.-)_") or name
-	local themes_dir = "extras/thunderbird/themes/" .. base_name
-	os.execute("mkdir -p " .. themes_dir)
-
-	local xpi_path = themes_dir .. "/oasis_" .. name .. ".xpi"
+	local output_dir = output_path:match("(.+)/[^/]+$") or "extras/thunderbird/themes/dark"
+	os.execute("mkdir -p " .. output_dir)
 
 	-- Create temp directory structure
 	os.execute("rm -rf " .. temp_dir)
@@ -201,9 +197,6 @@ local function create_xpi(name, manifest_json)
 	os.execute("cp extras/thunderbird/assets/icon48.png " .. temp_dir .. "/images/")
 	os.execute("cp extras/thunderbird/assets/icon128.png " .. temp_dir .. "/images/")
 
-	-- Create themes directory if it doesn't exist
-	os.execute("mkdir -p " .. themes_dir)
-
 	-- Create .xpi (zip archive)
 	-- Get absolute path to project root
 	local handle = io.popen("pwd")
@@ -214,7 +207,8 @@ local function create_xpi(name, manifest_json)
 	local cwd = handle:read("*l")
 	handle:close()
 
-	local zip_cmd = string.format("cd %s && zip -q -r %s/%s . && cd - >/dev/null", temp_dir, cwd, xpi_path)
+	local abs_output_path = string.format("%s/%s", cwd, output_path)
+	local zip_cmd = string.format('cd "%s" && zip -q -r "%s" . && cd - >/dev/null', temp_dir, abs_output_path)
 
 	local success = os.execute(zip_cmd)
 
@@ -245,32 +239,26 @@ local function main()
 
 	local dark_themes = {}
 	local light_themes = {}
+	local palette_set = {}
 
 	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
-		-- Build variant name with mode and optional intensity suffix
-		local variant_name
-		if mode then
-			if mode == "dark" then
-				variant_name = name .. "_dark"
-			else
-				variant_name = name .. "_light_" .. intensity
-			end
-		else
-			variant_name = name
-		end
+		local output_path, variant_name, subdir =
+			utils.build_variant_path("extras/thunderbird", "xpi", name, mode, intensity)
 
 		local manifest = generate_manifest(variant_name, palette)
-		local success = create_xpi(variant_name, manifest)
+		local success = create_xpi(variant_name, output_path, manifest)
 
 		if success then
-			print(string.format("✓ Generated: extras/thunderbird/themes/oasis_%s.xpi", variant_name))
+			print(string.format("✓ Generated: %s", output_path))
 
 			-- Track for README generation
 			local display_name = utils.format_display_name(variant_name)
-			if palette.light_mode then
-				table.insert(light_themes, { name = variant_name, display = display_name })
+			local relative_path = string.format("themes/%s/oasis_%s.xpi", subdir, variant_name)
+			palette_set[name] = true
+			if mode == "light" then
+				table.insert(light_themes, { name = variant_name, display = display_name, path = relative_path })
 			else
-				table.insert(dark_themes, { name = variant_name, display = display_name })
+				table.insert(dark_themes, { name = variant_name, display = display_name, path = relative_path })
 			end
 		else
 			error("Failed to create xpi for " .. variant_name)
@@ -298,29 +286,25 @@ local function main()
 			"",
 		}
 
-		if #dark_themes > 0 then
-			table.insert(readme_lines, "### Dark Themes")
-			table.insert(readme_lines, "")
-			for _, theme in ipairs(dark_themes) do
-				table.insert(
-					readme_lines,
-					string.format("- **Oasis %s** - `themes/oasis_%s.xpi`", theme.display, theme.name)
-				)
-			end
-			table.insert(readme_lines, "")
+		local palette_list = {}
+		for palette_name, _ in pairs(palette_set) do
+			table.insert(palette_list, palette_name)
 		end
+		table.sort(palette_list)
 
-		if #light_themes > 0 then
-			table.insert(readme_lines, "### Light Themes")
-			table.insert(readme_lines, "")
-			for _, theme in ipairs(light_themes) do
-				table.insert(
-					readme_lines,
-					string.format("- **Oasis %s** - `themes/oasis_%s.xpi`", theme.display, theme.name)
-				)
-			end
-			table.insert(readme_lines, "")
-		end
+		table.insert(
+			readme_lines,
+			"- Dark variants live in `themes/dark/` as `oasis_<palette>_dark.xpi`."
+		)
+		table.insert(
+			readme_lines,
+			"- Light variants are grouped under `themes/light/<1-5>/` as `oasis_<palette>_light_<intensity>.xpi`."
+		)
+		table.insert(
+			readme_lines,
+			"- Palettes: " .. table.concat(palette_list, ", ")
+		)
+		table.insert(readme_lines, "")
 
 		table.insert(readme_lines, "## Uninstallation")
 		table.insert(readme_lines, "")
