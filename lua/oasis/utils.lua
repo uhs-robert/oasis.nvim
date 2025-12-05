@@ -520,4 +520,28 @@ function M.build_variant_path(base_dir, extension, name, mode, intensity)
 	return output_path, variant_name
 end
 
+--- Build a human-friendly output path using the display name (spaces, title case)
+--- Keeps directory layout the same but drops underscores from the file name.
+--- @param base_dir string Base directory (e.g., "extras/lua-theme")
+--- @param extension string File extension (e.g., "lua", "json")
+--- @param name string Palette name (e.g., "lagoon")
+--- @param mode string|nil "dark", "light", or nil for standalone palettes
+--- @param intensity number|nil Intensity level 1-5 for light mode
+--- @return string output_path Full path to output file with display name
+--- @return string variant_name Internal variant name (e.g., "lagoon_dark")
+--- @return string display_name Human-friendly name (e.g., "Oasis Lagoon Dark")
+function M.build_display_variant_path(base_dir, extension, name, mode, intensity)
+	-- Reuse build_variant_path for variant naming and directory creation
+	local _, variant_name = M.build_variant_path(base_dir, extension, name, mode, intensity)
+	local display_name = M.format_display_name(variant_name)
+
+	local output_dir = string.format("%s/themes/%s", base_dir, name)
+	os.execute("mkdir -p " .. output_dir)
+
+	local filename = extension ~= "" and string.format("%s.%s", display_name, extension) or display_name
+	local output_path = string.format("%s/%s", output_dir, filename)
+
+	return output_path, variant_name, display_name
+end
+
 return M

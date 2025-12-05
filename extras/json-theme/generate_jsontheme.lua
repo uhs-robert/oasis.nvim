@@ -115,7 +115,8 @@ local function main()
 	print(string.format("Found %d palette(s)\n", #palette_names))
 
 	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
-		local output_path, variant_name = utils.build_variant_path("extras/json-theme", "json", name, mode, intensity)
+		local output_path, variant_name, display_name =
+			utils.build_display_variant_path("extras/json-theme", "json", name, mode, intensity)
 		local content = generate_json_palette(variant_name, palette)
 		utils.write_file(output_path, content)
 		print(string.format("✓ Generated: %s", output_path))
