@@ -1,0 +1,64 @@
+-- extras/lua-theme/themes/cactus/Oasis Cactus Light 3.lua
+-- Generated from Oasis palettes
+
+return {
+-- Backgrounds
+	bg_core = "#e0f0e7",
+	bg_mantle = "#d6ebdf",
+	bg_shadow = "#cbe6d7",
+	bg_surface = "#c1e1cf",
+
+-- Foregrounds
+	fg_core = "#405348",
+	fg_strong = "#3c5441",
+	fg_muted = "#626e64",
+	fg_dim = "#90867e",
+
+-- Accents
+	theme_primary = "#346036",
+	theme_secondary = "#9b0303",
+	theme_accent = "#9b0303",
+
+-- Status
+	error = "#340606",
+	warning = "#3c3c07",
+	info = "#083142",
+	hint = "#073e36",
+	ok = "#073c21",
+
+-- ANSI Semnatic Colors
+	black = "#4e4e4e",
+	red = "#993c3c",
+	green = "#2d6547",
+	yellow = "#625c21",
+	blue = "#1358b4",
+	magenta = "#7824da",
+	cyan = "#33635d",
+	white = "#514e47",
+	bright_black = "#4e4e4e",
+	bright_red = "#b51212",
+	bright_green = "#336625",
+	bright_yellow = "#894b0d",
+	bright_blue = "#23617a",
+	bright_magenta = "#7725db",
+	bright_cyan = "#32635c",
+	bright_white = "#73430b",
+
+-- ANSI Terminal Colors
+	color0 = "#4e4e4e",
+	color1 = "#993c3c",
+	color2 = "#2d6547",
+	color3 = "#625c21",
+	color4 = "#1358b4",
+	color5 = "#7824da",
+	color6 = "#33635d",
+	color7 = "#514e47",
+	color8 = "#4e4e4e",
+	color9 = "#b51212",
+	color10 = "#336625",
+	color11 = "#894b0d",
+	color12 = "#23617a",
+	color13 = "#7725db",
+	color14 = "#32635c",
+	color15 = "#73430b",
+}
