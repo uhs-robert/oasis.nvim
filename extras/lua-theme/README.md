@@ -1,7 +1,7 @@
 # Lua Palette Output
 
-1. Run `lua extras/lua/generate_lua.lua` to build theme files (or use the pre-generated ones in `extras/lua/themes`).
-2. Copy the desired file from `extras/lua/themes/<palette>/oasis_<variant>.lua` into your project, or add that path to `package.path`.
+1. Run `lua extras/lua-theme/generate_luatheme.lua` to build theme files (or use the pre-generated ones in `extras/lua-theme/themes`).
+2. Copy the desired file from `extras/lua-theme/themes/dark/oasis_<palette>_dark.lua` or `extras/lua-theme/themes/light/<1-5>/oasis_<palette>_light_<intensity>.lua` into your project, or add that path to `package.path`.
 3. Require it like a normal Lua module to get a single flat table of colors.
 
 ### Example

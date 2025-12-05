@@ -6,11 +6,11 @@
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local utils = require("oasis.utils")
 
-local function generate_alacritty_theme(name, palette)
+local function generate_alacritty_theme(name, palette, output_path)
 	local display_name = utils.format_display_name(name)
 
 	local lines = {
-		"# extras/alacritty/themes/" .. name .. "/oasis_" .. name .. ".toml",
+		"# " .. (output_path or ("extras/alacritty/themes/oasis_" .. name .. ".toml")),
 		"## name: " .. display_name,
 		"## author: uhs-robert",
 		"",
@@ -71,7 +71,7 @@ local function main()
 		local output_path, variant_name = utils.build_variant_path("extras/alacritty", "toml", name, mode, intensity)
 
 		-- Generate and write theme
-		local theme = generate_alacritty_theme(variant_name, palette)
+		local theme = generate_alacritty_theme(variant_name, palette, output_path)
 		utils.write_file(output_path, theme)
 		print(string.format("✓ Generated: %s", output_path))
 	end)

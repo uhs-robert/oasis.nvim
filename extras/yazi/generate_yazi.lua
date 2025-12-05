@@ -63,7 +63,7 @@ local function extract_yazi_icon_colors(palette)
 end
 
 -- Generate merged Yazi theme TOML combining theme and icons templates
-local function generate_merged_theme(name, palette)
+local function generate_merged_theme(name, palette, output_path)
 	local display_name = utils.format_display_name(name)
 	local theme_template = utils.read_file("extras/yazi/theme.toml.template")
 	local icons_template = utils.read_file("extras/yazi/icons.toml.template")
@@ -90,11 +90,7 @@ local function generate_merged_theme(name, palette)
 	end
 
 	-- Add header comment
-	local output = string.format(
-		"# extras/yazi/flavors/oasis-%s.yazi/flavor.toml\n## name: Oasis %s\n## author: uhs-robert\n\n",
-		name,
-		display_name
-	)
+	local output = string.format("# %s\n## name: Oasis %s\n## author: uhs-robert\n\n", output_path or "", display_name)
 
 	-- Process theme template
 	local processed_theme = theme_template
@@ -141,21 +137,20 @@ local function main()
 			variant_name = name
 		end
 
-		-- Generate merged theme file
-		local merged = generate_merged_theme(variant_name, palette)
-
-		-- Extract base palette name (e.g., "lagoon" from "lagoon_dark" or "lagoon_light_3")
-		local base_name = name
-
-		-- Create nested directory structure: themes/<palette>/flavors/oasis-<variant>.yazi/
-		-- Use hyphen format for flavor directory name (oasis-lagoon-dark.yazi)
-		local theme_dir = string.format("extras/yazi/themes/%s/flavors", base_name)
-		local flavor_dir = string.format("%s/oasis-%s.yazi", theme_dir, variant_name:gsub("_", "-"))
+		-- Build directory structure: themes/<mode>/[intensity/]flavors/oasis-<variant>.yazi/
+		local _, _, subdir = utils.build_variant_path("extras/yazi", "", name, mode, intensity)
+		local flavor_dir = string.format(
+			"extras/yazi/themes/%s/flavors/oasis-%s.yazi",
+			subdir,
+			variant_name:gsub("_", "-")
+		)
 		local output_path = string.format("%s/flavor.toml", flavor_dir)
 
 		-- Create directory structure
 		os.execute(string.format('mkdir -p "%s"', flavor_dir))
 
+		-- Generate merged theme file
+		local merged = generate_merged_theme(variant_name, palette, output_path)
 		utils.write_file(output_path, merged)
 		print(string.format("✓ Generated: %s", output_path))
 	end)
