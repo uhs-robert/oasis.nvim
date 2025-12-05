@@ -208,9 +208,11 @@ To use the extras, refer to their respective documentation.
 | Gemini CLI  | [extras/gemini-cli](extras/gemini-cli)                 |
 | Ghostty     | [extras/ghostty](extras/ghostty)                       |
 | iTerm       | [extras/iterm](extras/iterm)                           |
+| JSON-theme  | [extras/json-theme](/extras/json-theme)                |
 | Kitty       | [extras/kitty](extras/kitty)                           |
 | Konsole     | [extras/konsole](extras/konsole)                       |
 | LazyGit     | [extras/lazygit](extras/lazygit)                       |
+| Lua-theme   | [extras/lua-theme](/extras/lua-theme)                  |
 | Slack       | [extras/slack](extras/slack)                           |
 | Termux      | [extras/termux](extras/termux)                         |
 | Thunderbird | [extras/thunderbird](extras/thunderbird)               |
