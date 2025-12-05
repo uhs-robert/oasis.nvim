@@ -50,11 +50,11 @@ local function get_diag_fg(diag, key)
 	return target.fg or target.fg_light or ""
 end
 
-local function generate_lua_palette(name, palette)
+local function generate_lua_palette(base_name, display_name, palette)
 	local diag = (palette.ui and palette.ui.diag) or {}
 
 	local lines = {
-		"-- extras/lua-theme/themes/" .. name .. "/oasis_" .. name .. ".lua",
+		string.format("-- extras/lua-theme/themes/%s/%s.lua", base_name, display_name),
 		"-- Generated from Oasis palettes",
 		"",
 		"return {",
@@ -111,8 +111,9 @@ local function main()
 	print(string.format("Found %d palette(s)\n", #palette_names))
 
 	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
-		local output_path, variant_name = utils.build_variant_path("extras/lua-theme", "lua", name, mode, intensity)
-		local content = generate_lua_palette(variant_name, palette)
+		local output_path, _, display_name =
+			utils.build_display_variant_path("extras/lua-theme", "lua", name, mode, intensity)
+		local content = generate_lua_palette(name, display_name, palette)
 		utils.write_file(output_path, content)
 		print(string.format("✓ Generated: %s", output_path))
 	end)
