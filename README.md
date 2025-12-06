@@ -2,6 +2,8 @@
   <img
     src="./assets/logo.png"
     width="auto" height="128" alt="logo" />
+  <img src="./assets/socials/Oasis Logo Social 3.png"
+    width="auto" height="256" alt="preview" />
 </p>
 <hr/>
 <p align="center">
