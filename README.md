@@ -2,8 +2,6 @@
   <img
     src="./assets/logo.png"
     width="auto" height="128" alt="logo" />
-  <img src="./assets/socials/Oasis Logo Social 3.png"
-    width="auto" height="256" alt="preview" />
 </p>
 <hr/>
 <p align="center">
@@ -11,9 +9,6 @@
   <a href="https://github.com/uhs-robert/oasis.nvim/issues"><img src="https://img.shields.io/github/issues/uhs-robert/oasis.nvim?colorA=192330&colorB=skyblue&style=for-the-badge&cacheSeconds=4300"></a>
   <a href="https://github.com/uhs-robert/oasis.nvim/contributors"><img src="https://img.shields.io/github/contributors/uhs-robert/oasis.nvim?colorA=192330&colorB=8FD1C7&style=for-the-badge&cacheSeconds=4300"></a>
   <a href="https://github.com/uhs-robert/oasis.nvim/network/members"><img src="https://img.shields.io/github/forks/uhs-robert/oasis.nvim?colorA=192330&colorB=C799FF&style=for-the-badge&cacheSeconds=4300"></a>
-</p>
-<p align="center">
-A collection of <strong>13</strong> desert-inspired Neovim colorschemes; warm, readable, and highly configurable.
 </p>
 
 ## 🌅 Overview
@@ -23,6 +18,11 @@ Born from the classic [desert.vim](https://github.com/fugalh/desert.vim), transf
 Oasis follows a warm/cool color split philosophy (**warm = action/flow**, **cool = structure/data**).
 
 **All themes meet AAA WCAG compliance standards**. Light themes allow contrast ratio to be customized.
+
+<p align="center">
+  <img src="./assets/socials/Oasis Logo Social - 3 Fit.png"
+  width="auto" height="auto" alt="preview" />
+</p>
 
 <details>
 <summary>✨ What's New / 🚨 Breaking Changes</summary>
