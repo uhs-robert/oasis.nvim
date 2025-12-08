@@ -103,14 +103,14 @@ local function generate_zed_theme(name, palette)
 
           -- Text colors
           text = palette.fg.core,
-          ["text.muted"] = palette.fg.core, -- Improved readability in sidebars
+          ["text.muted"] = palette.fg.core, -- High contrast for sidebar readability
           ["text.placeholder"] = palette.fg.muted,
           ["text.disabled"] = palette.fg.dim,
           ["text.accent"] = palette.theme.primary,
 
           -- Icon colors
           icon = palette.fg.core,
-          ["icon.muted"] = palette.fg.core, -- Improved visibility in file browser/git panels
+          ["icon.muted"] = palette.fg.core, -- High contrast in file browser/git panels
           ["icon.disabled"] = palette.fg.dim,
           ["icon.placeholder"] = palette.fg.muted,
           ["icon.accent"] = palette.theme.primary,
@@ -196,9 +196,9 @@ local function generate_zed_theme(name, palette)
           ["link_text.hover"] = palette.theme.primary,
 
           -- Version control
-          ["version_control.added"] = palette.diff.add,
-          ["version_control.modified"] = palette.diff.change,
-          ["version_control.deleted"] = palette.diff.delete,
+          ["version_control.added"] = palette.terminal.green,
+          ["version_control.modified"] = palette.terminal.yellow,
+          ["version_control.deleted"] = palette.terminal.red,
 
           -- Conflict
           conflict = palette.ui.diag.error.fg,
@@ -206,14 +206,14 @@ local function generate_zed_theme(name, palette)
           ["conflict.border"] = palette.ui.diag.error.fg,
 
           -- Created
-          created = palette.diff.add,
-          ["created.background"] = color_utils.with_alpha(palette.diff.add, "1a"),
-          ["created.border"] = palette.diff.add,
+          created = palette.terminal.green,
+          ["created.background"] = color_utils.with_alpha(palette.terminal.green, "1a"),
+          ["created.border"] = palette.terminal.green,
 
           -- Deleted
-          deleted = palette.diff.delete,
-          ["deleted.background"] = color_utils.with_alpha(palette.diff.delete, "1a"),
-          ["deleted.border"] = palette.diff.delete,
+          deleted = palette.terminal.red,
+          ["deleted.background"] = color_utils.with_alpha(palette.terminal.red, "1a"),
+          ["deleted.border"] = palette.terminal.red,
 
           -- Error
           error = palette.ui.diag.error.fg,
@@ -241,9 +241,9 @@ local function generate_zed_theme(name, palette)
           ["info.border"] = palette.ui.diag.info.fg,
 
           -- Modified
-          modified = palette.diff.change,
-          ["modified.background"] = color_utils.with_alpha(palette.diff.change, "1a"),
-          ["modified.border"] = palette.diff.change,
+          modified = palette.terminal.yellow,
+          ["modified.background"] = color_utils.with_alpha(palette.terminal.yellow, "1a"),
+          ["modified.border"] = palette.terminal.yellow,
 
           -- Predictive
           predictive = palette.fg.dim,
