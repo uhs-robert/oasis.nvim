@@ -41,10 +41,9 @@ local function ensure_vim_compat()
 		return result
 	end
 
-	_G.vim.tbl_extend = _G.vim.tbl_extend
-		or function(behavior, ...)
-			return extend_tables(behavior, false, ...)
-		end
+	_G.vim.tbl_extend = _G.vim.tbl_extend or function(behavior, ...)
+		return extend_tables(behavior, false, ...)
+	end
 
 	_G.vim.tbl_deep_extend = _G.vim.tbl_deep_extend
 		or function(behavior, ...)
@@ -125,8 +124,6 @@ function M.find_project_root()
 	return nil
 end
 
---- Get list of available palette names from filesystem
---- @return table List of palette names without "oasis_" prefix, sorted alphabetically
 --- Check if a palette is deprecated
 --- @param name string Palette name with or without "oasis_" prefix
 --- @return boolean
