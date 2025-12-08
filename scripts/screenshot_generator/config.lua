@@ -8,13 +8,13 @@ package.path = PROJECT_ROOT .. "/lua/?.lua;" .. PROJECT_ROOT .. "/lua/?/init.lua
 
 -- Load utils and set external file paths
 local System = require("oasis.lib.system")
-local TMUX_CONFIG = System.get_home_dir() .. "/.config/tmux/.tmux.conf"
+local TMUX_CONFIG = System.get_home_dir() .. "/.tmux.conf"
 
 -- Module export, configuration table with all values
 local Config = {
 	-- Path configuration
 	TMUX_CONFIG = TMUX_CONFIG,
-	TMUX_CONFIG_BACKUP = TMUX_CONFIG .. ".backup",
+	TMUX_BACKUP_FLAVOR = "/tmp/tmux-oasis-original-flavor",
 	PROJECT_ROOT = PROJECT_ROOT,
 	OUTPUT_DIR = PROJECT_ROOT .. "/assets/screenshots",
 	TEMP_DIR = "/tmp/oasis-screenshots",

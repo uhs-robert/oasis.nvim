@@ -6,10 +6,12 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
-# Tmux config paths (should match Config.lua)
-TMUX_CONFIG="$HOME/.config/tmux/tmux.conf"
-TMUX_BACKUP="$TMUX_CONFIG.backup"
+# Temp directory path (should match Config.lua)
 TEMP_DIR="/tmp/oasis-screenshots"
+FLAVOR_BACKUP="/tmp/tmux-oasis-original-flavor"
+
+# Tmux config path
+TMUX_CONFIG="$HOME/.tmux.conf"
 
 # Track the Lua process PID
 LUA_PID=""
@@ -28,11 +30,21 @@ cleanup() {
     wait "$LUA_PID" 2>/dev/null || true
   fi
 
-  # Restore tmux config if backup exists
-  if [[ -f "$TMUX_BACKUP" ]]; then
-    echo "Restoring tmux config from backup..."
-    mv "$TMUX_BACKUP" "$TMUX_CONFIG"
-    echo "Tmux config restored"
+  # Restore original tmux flavor if backup exists
+  if [[ -f "$FLAVOR_BACKUP" ]]; then
+    local original_flavor=$(cat "$FLAVOR_BACKUP")
+    echo "Restoring tmux flavor to: $original_flavor"
+
+    # Update the flavor in tmux config
+    if [[ -f "$TMUX_CONFIG" ]]; then
+      # Use a simpler pattern that matches the flavor value more broadly
+      # --follow-symlinks ensures we edit the target file, not replace the symlink
+      sed -i --follow-symlinks "s|set -g @oasis_flavor .*|set -g @oasis_flavor \"$original_flavor\"|" "$TMUX_CONFIG"
+      echo "Tmux flavor restored"
+    fi
+
+    # Remove the backup file
+    rm -f "$FLAVOR_BACKUP"
   fi
 
   # Remove temp directory if it exists
@@ -43,7 +55,7 @@ cleanup() {
   fi
 
   echo "Cleanup complete"
-  exit $exit_code
+  return 0
 }
 
 # Handle interrupts by killing the Lua process and cleaning up

@@ -3,23 +3,34 @@
 
 local Config = require("scripts.screenshot_generator.config")
 local File = require("oasis.lib.file")
-local FileSystem = require("oasis.lib.filesystem")
 local System = require("oasis.lib.system")
 
 local Tmux = {}
 
---- Backup tmux configuration
-function Tmux.backup_config()
-	print("\nBacking up tmux config...")
-	FileSystem.copy(Config.TMUX_CONFIG, Config.TMUX_CONFIG_BACKUP)
-	print("Backup created at: " .. Config.TMUX_CONFIG_BACKUP)
+--- Extract current @oasis_flavor value from tmux config
+--- @return string|nil Current flavor value or nil if not found
+function Tmux.get_current_flavor()
+	local content = File.read(Config.TMUX_CONFIG)
+	if not content then
+		return nil
+	end
+
+	-- Match the flavor value (with or without quotes)
+	local flavor = content:match("set %-g @oasis_flavor [\"']?([%w_]+)[\"']?")
+	return flavor
 end
 
---- Restore original tmux configuration
-function Tmux.restore_config()
-	print("\nRestoring original tmux config...")
-	FileSystem.move(Config.TMUX_CONFIG_BACKUP, Config.TMUX_CONFIG)
-	print("Config restored")
+--- Save current tmux flavor to file for bash cleanup
+--- The bash wrapper (run_with_cleanup.sh) reads this file and restores the flavor on exit
+function Tmux.backup_config()
+	print("\nSaving current tmux flavor...")
+	local original_flavor = Tmux.get_current_flavor()
+	if original_flavor then
+		File.write(Config.TMUX_BACKUP_FLAVOR, original_flavor)
+		print("Original flavor saved: " .. original_flavor)
+	else
+		print("WARNING: Could not detect current flavor in tmux config")
+	end
 end
 
 --- Kill tmux server

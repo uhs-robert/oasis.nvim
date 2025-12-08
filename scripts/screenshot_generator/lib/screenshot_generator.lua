@@ -24,14 +24,10 @@ function ScreenshotGenerator.new()
 	return self
 end
 
---- Cleanup resources (restore tmux config and remove temp directory)
+--- Cleanup resources (remove temp directory)
+--- Note: Tmux flavor restoration is handled by the bash wrapper's EXIT trap
 function ScreenshotGenerator:cleanup()
 	print("\nPerforming cleanup...")
-	-- Restore tmux config if backup exists
-	if File.exists(Config.TMUX_CONFIG_BACKUP) then
-		Tmux.restore_config()
-	end
-	-- Remove temp directory if it exists
 	if File.exists(Config.TEMP_DIR) then
 		Directory.remove(Config.TEMP_DIR)
 	end
