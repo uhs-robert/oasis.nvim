@@ -24,17 +24,37 @@ function ScreenshotGenerator.new()
 	return self
 end
 
+--- Cleanup resources (restore tmux config and remove temp directory)
+function ScreenshotGenerator:cleanup()
+	print("\nPerforming cleanup...")
+	-- Restore tmux config if backup exists
+	if File.exists(Config.TMUX_CONFIG_BACKUP) then
+		Tmux.restore_config()
+	end
+	-- Remove temp directory if it exists
+	if File.exists(Config.TEMP_DIR) then
+		Directory.remove(Config.TEMP_DIR)
+	end
+end
+
 --- Run the full screenshot generation process
 function ScreenshotGenerator:run()
 	DependencyChecker.check_all()
 	Directory.create(Config.TEMP_DIR)
 	Tmux.backup_config()
-	self:generate_all_screenshots()
-	Tmux.restore_config()
-	if File.exists(Config.TEMP_DIR) then
-		Directory.remove(Config.TEMP_DIR)
-	end
+
+	-- Wrap main logic in pcall to ensure cleanup happens even on errors
+	local success, err = pcall(function()
+		self:generate_all_screenshots()
+	end)
+
+	self:cleanup()
 	self:report_results()
+
+	-- Re-throw error if generation failed
+	if not success then
+		error(err)
+	end
 end
 
 --- Generate screenshots for all variants

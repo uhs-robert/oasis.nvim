@@ -8,7 +8,7 @@ package.path = PROJECT_ROOT .. "/lua/?.lua;" .. PROJECT_ROOT .. "/lua/?/init.lua
 
 -- Load utils and set external file paths
 local System = require("oasis.lib.system")
-local TMUX_CONFIG = System.get_home_dir() .. "/dotfiles/tmux/.tmux.conf" -- NOTE: Hey you! Yes, you! You may want to update this to `.config/` as my setup is abnormal
+local TMUX_CONFIG = System.get_home_dir() .. "/.config/tmux/.tmux.conf"
 
 -- Module export, configuration table with all values
 local Config = {
