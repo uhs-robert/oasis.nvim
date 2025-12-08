@@ -18,8 +18,6 @@ LUA_PID=""
 
 # Cleanup function
 cleanup() {
-  local exit_code=$?
-
   echo ""
   echo "Performing cleanup..."
 
@@ -32,7 +30,8 @@ cleanup() {
 
   # Restore original tmux flavor if backup exists
   if [[ -f "$FLAVOR_BACKUP" ]]; then
-    local original_flavor=$(cat "$FLAVOR_BACKUP")
+    local original_flavor
+    original_flavor=$(cat "$FLAVOR_BACKUP")
     echo "Restoring tmux flavor to: $original_flavor"
 
     # Update the flavor in tmux config
