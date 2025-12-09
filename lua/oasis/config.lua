@@ -1,10 +1,9 @@
 -- lua/oasis/config.lua
 
-local M = {}
-
-local default_dark = "lagoon"
-local default_light = "lagoon"
-local utils = require("oasis.utils")
+local Config = {}
+local Utils = require("oasis.utils")
+local DEFAULT_DARK = "lagoon"
+local DEFAULT_LIGHT = "lagoon"
 local deepcopy = vim.deepcopy
 
 -- Helper to get background setting (use vim.o.background if available, otherwise default to "dark" for standalone lua)
@@ -18,8 +17,8 @@ end
 
 -- Default configuration
 -- stylua: ignore start
-M.defaults = {
-	style = default_dark,         -- Primary style choice (default palette)
+Config.defaults = {
+	style = DEFAULT_DARK,         -- Primary style choice (default palette)
 	dark_style = "auto",          -- "auto" uses `style`, or specify a dark theme (e.g., "sol", "canyon")
 	light_style = "auto",         -- "auto" uses `style`, or specify a light theme (e.g., "night", "canyon")
 	use_legacy_comments = false,  -- Applies to `desert` only. Uses vibrant skyblue for comments
@@ -50,7 +49,7 @@ M.defaults = {
 -- stylua: ignore end
 
 -- Current active configuration
-M.options = deepcopy(M.defaults)
+Config.options = deepcopy(Config.defaults)
 
 --- Deep merge two tables
 ---@param base table The base table
@@ -72,40 +71,40 @@ end
 
 --- Setup configuration
 ---@param user_config table|nil User configuration to merge with defaults
-function M.setup(user_config)
+function Config.setup(user_config)
 	user_config = user_config or {}
-	M.options = deep_merge(M.defaults, user_config)
+	Config.options = deep_merge(Config.defaults, user_config)
 end
 
 --- Get current configuration
 ---@return table config The current configuration
-function M.get()
-	return M.options
+function Config.get()
+	return Config.options
 end
 
 --- Get the full palette name from the configured style
 --- Guaranteed to return a usable palette name string (falls back to defaults).
 ---@return string palette_name Full palette name (e.g., "oasis_lagoon")
-function M.get_palette_name()
+function Config.get_palette_name()
 	local bg = get_background()
 
 	-- Use dark_style/light_style based on background
-	local style_option = bg == "light" and M.options.light_style or M.options.dark_style
+	local style_option = bg == "light" and Config.options.light_style or Config.options.dark_style
 
 	-- Default to main `style` if `light_style`/`dark_style` is "auto"
 	if style_option == "auto" then
-		style_option = M.options.style
+		style_option = Config.options.style
 
 		-- Check if the configured style is compatible with current background or use defaults
 		local palette_name = "oasis_" .. style_option
-		local mode = utils.get_palette_mode(palette_name)
+		local mode = Utils.get_palette_mode(palette_name)
 		if mode and mode ~= "dual" and mode ~= bg then
-			style_option = bg == "light" and default_light or default_dark
+			style_option = bg == "light" and DEFAULT_LIGHT or DEFAULT_DARK
 		end
 	end
 
 	if not style_option then
-		return "oasis_" .. default_dark
+		return "oasis_" .. DEFAULT_DARK
 	end
 
 	-- Otherwise return the parsed palette
@@ -117,14 +116,14 @@ end
 ---@param palette table The base palette
 ---@param palette_name string The name of the palette (e.g., "oasis_desert")
 ---@return table palette The palette with overrides applied
-function M.apply_palette_overrides(palette, palette_name)
+function Config.apply_palette_overrides(palette, palette_name)
 	local result = deepcopy(palette)
 
-	if M.options.palette_overrides[palette_name] then
-		result = deep_merge(result, M.options.palette_overrides[palette_name])
+	if Config.options.palette_overrides[palette_name] then
+		result = deep_merge(result, Config.options.palette_overrides[palette_name])
 	end
 
 	return result
 end
 
-return M
+return Config
