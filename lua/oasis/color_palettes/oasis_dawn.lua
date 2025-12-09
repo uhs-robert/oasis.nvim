@@ -1,10 +1,10 @@
 -- lua/oasis/color_palettes/oasis_dawn.lua
 
 local p = require("oasis.palette")
-local config = require("oasis.config")
+local Config = require("oasis.config")
 local ColorUtils = require("oasis.tools.color_utils")
 local LightTheme = require("oasis.tools.light_theme_generator")
-local opts = config.get()
+local opts = Config.get()
 local seed_dark = require("oasis.color_palettes.oasis_canyon").dark
 local bg_seed = p.theme.night.fg.core
 local light_intensity = 1
