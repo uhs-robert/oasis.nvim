@@ -2,8 +2,8 @@
 
 local p = require("oasis.palette")
 local config = require("oasis.config")
-local color_Utils = require("oasis.tools.color_utils")
-local light_gen = require("oasis.tools.light_theme_generator")
+local ColorUtils = require("oasis.tools.color_utils")
+local LightTheme = require("oasis.tools.light_theme_generator")
 local opts = config.get()
 local theme = p.theme.night
 local light_seed = require("oasis.color_palettes.oasis_canyon").dark
@@ -120,12 +120,12 @@ local light_theme = vim.tbl_deep_extend("force", {}, dark.theme, {
 })
 
 local light_bg =
-	light_gen.generate_backgrounds(ui.fg.core, opts.light_intensity, { target_l_core = target_lightness })
+	LightTheme.generate_backgrounds(ui.fg.core, opts.light_intensity, { target_l_core = target_lightness })
 local light = {
 	bg = light_bg,
-	fg = light_gen.generate_foregrounds(light_seed.fg, light_bg.core, opts.light_intensity, opts.contrast),
-	theme = light_gen.generate_theme(light_theme, opts.light_intensity),
-	terminal = light_gen.generate_terminal(
+	fg = LightTheme.generate_foregrounds(light_seed.fg, light_bg.core, opts.light_intensity, opts.contrast),
+	theme = LightTheme.generate_theme(light_theme, opts.light_intensity),
+	terminal = LightTheme.generate_terminal(
 		light_seed.terminal,
 		light_bg.core,
 		opts.light_intensity,
@@ -134,7 +134,7 @@ local light = {
 	light_mode = true,
 
 	-- Syntax
-	syntax = light_gen.generate_syntax(
+	syntax = LightTheme.generate_syntax(
 		light_seed.syntax,
 		light_bg.core,
 		opts.light_intensity,
@@ -144,13 +144,13 @@ local light = {
 
 	-- Diff
 	diff = {
-		add = color_Utils.darken_to_contrast(dark.diff.add, light_bg.core, 7.0),
-		change = color_Utils.darken_to_contrast(dark.diff.change, light_bg.core, 7.0),
-		delete = color_Utils.darken_to_contrast(dark.diff.delete, light_bg.core, 7.0),
+		add = ColorUtils.darken_to_contrast(dark.diff.add, light_bg.core, 7.0),
+		change = ColorUtils.darken_to_contrast(dark.diff.change, light_bg.core, 7.0),
+		delete = ColorUtils.darken_to_contrast(dark.diff.delete, light_bg.core, 7.0),
 	},
 
 	-- UI
-	ui = light_gen.generate_ui(light_ui, light_bg, opts.light_intensity, opts.contrast),
+	ui = LightTheme.generate_ui(light_ui, light_bg, opts.light_intensity, opts.contrast),
 }
 
 -- Return dual-mode palette

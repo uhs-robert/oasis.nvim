@@ -2,22 +2,22 @@
 
 local p = require("oasis.palette")
 local config = require("oasis.config")
-local color_Utils = require("oasis.tools.color_utils")
-local light_gen = require("oasis.tools.light_theme_generator")
+local ColorUtils = require("oasis.tools.color_utils")
+local LightTheme = require("oasis.tools.light_theme_generator")
 local opts = config.get()
 local seed_dark = require("oasis.color_palettes.oasis_canyon").dark
 local bg_seed = p.theme.night.fg.core
 local light_intensity = 4
 local target_l = { [4] = 78 }
 local contrast_opts = opts.contrast or { min_ratio = 5.8, force_aaa = false }
-local light_bg = light_gen.generate_backgrounds(bg_seed, light_intensity, { target_l_core = target_l })
+local light_bg = LightTheme.generate_backgrounds(bg_seed, light_intensity, { target_l_core = target_l })
 
 -- Colorscheme
 local c = {
 	bg = light_bg,
-	fg = light_gen.generate_foregrounds(seed_dark.fg, light_bg.core, light_intensity, contrast_opts),
-	theme = light_gen.generate_theme(seed_dark.theme, light_intensity),
-	terminal = light_gen.generate_terminal(
+	fg = LightTheme.generate_foregrounds(seed_dark.fg, light_bg.core, light_intensity, contrast_opts),
+	theme = LightTheme.generate_theme(seed_dark.theme, light_intensity),
+	terminal = LightTheme.generate_terminal(
 		seed_dark.terminal or p.terminal,
 		light_bg.core,
 		light_intensity,
@@ -26,17 +26,17 @@ local c = {
 	light_mode = true,
 
 	-- Syntax
-	syntax = light_gen.generate_syntax(seed_dark.syntax, light_bg.core, light_intensity, nil, contrast_opts),
+	syntax = LightTheme.generate_syntax(seed_dark.syntax, light_bg.core, light_intensity, nil, contrast_opts),
 
 	-- Diff
 	diff = {
-		add = color_Utils.darken_to_contrast(seed_dark.diff.add, light_bg.core, 7.0),
-		change = color_Utils.darken_to_contrast(seed_dark.diff.change, light_bg.core, 7.0),
-		delete = color_Utils.darken_to_contrast(seed_dark.diff.delete, light_bg.core, 7.0),
+		add = ColorUtils.darken_to_contrast(seed_dark.diff.add, light_bg.core, 7.0),
+		change = ColorUtils.darken_to_contrast(seed_dark.diff.change, light_bg.core, 7.0),
+		delete = ColorUtils.darken_to_contrast(seed_dark.diff.delete, light_bg.core, 7.0),
 	},
 
 	-- UI
-	ui = light_gen.generate_ui(seed_dark.ui, light_bg, light_intensity),
+	ui = LightTheme.generate_ui(seed_dark.ui, light_bg, light_intensity),
 }
 
 -- Deprecation notice (once per session)

@@ -6,7 +6,7 @@
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
-local color_Utils = require("oasis.tools.color_utils")
+local ColorUtils = require("oasis.tools.color_utils")
 
 local function generate_gemini_cli_theme(name, palette)
 	local display_name = Utils.format_display_name(name)
@@ -36,7 +36,7 @@ local function generate_gemini_cli_theme(name, palette)
 		},
 	}
 
-	return color_Utils.encode_json(theme, 2)
+	return ColorUtils.encode_json(theme, 2)
 end
 
 local function main()

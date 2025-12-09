@@ -6,20 +6,20 @@
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
-local color_Utils = require("oasis.tools.color_utils")
+local ColorUtils = require("oasis.tools.color_utils")
 
 local function generate_konsole_theme(name, palette)
 	local display_name = Utils.format_display_name(name)
 
 	local lines = {
 		"[Background]",
-		string.format("Color=%s", color_Utils.hex_to_rgb(palette.bg.core)),
+		string.format("Color=%s", ColorUtils.hex_to_rgb(palette.bg.core)),
 		"",
 		"[BackgroundFaint]",
-		string.format("Color=%s", color_Utils.hex_to_rgb(palette.bg.shadow)),
+		string.format("Color=%s", ColorUtils.hex_to_rgb(palette.bg.shadow)),
 		"",
 		"[BackgroundIntense]",
-		string.format("Color=%s", color_Utils.hex_to_rgb(palette.bg.surface)),
+		string.format("Color=%s", ColorUtils.hex_to_rgb(palette.bg.surface)),
 		"",
 	}
 
@@ -29,30 +29,30 @@ local function generate_konsole_theme(name, palette)
 		local intense_color = palette.terminal["color" .. (i + 8)]
 
 		lines[#lines + 1] = string.format("[Color%d]", i)
-		lines[#lines + 1] = string.format("Color=%s", color_Utils.hex_to_rgb(normal_color))
+		lines[#lines + 1] = string.format("Color=%s", ColorUtils.hex_to_rgb(normal_color))
 		lines[#lines + 1] = ""
 
 		lines[#lines + 1] = string.format("[Color%dFaint]", i)
 		lines[#lines + 1] =
-			string.format("Color=%s", color_Utils.hex_to_rgb(color_Utils.adjust_brightness(normal_color, 0.7))) -- TODO: Is this the right number to adjust brightness by?
+			string.format("Color=%s", ColorUtils.hex_to_rgb(ColorUtils.adjust_brightness(normal_color, 0.7))) -- TODO: Is this the right number to adjust brightness by?
 		lines[#lines + 1] = ""
 
 		lines[#lines + 1] = string.format("[Color%dIntense]", i)
-		lines[#lines + 1] = string.format("Color=%s", color_Utils.hex_to_rgb(intense_color))
+		lines[#lines + 1] = string.format("Color=%s", ColorUtils.hex_to_rgb(intense_color))
 		lines[#lines + 1] = ""
 	end
 
 	-- Foreground colors
 	lines[#lines + 1] = "[Foreground]"
-	lines[#lines + 1] = string.format("Color=%s", color_Utils.hex_to_rgb(palette.fg.core))
+	lines[#lines + 1] = string.format("Color=%s", ColorUtils.hex_to_rgb(palette.fg.core))
 	lines[#lines + 1] = ""
 
 	lines[#lines + 1] = "[ForegroundFaint]"
-	lines[#lines + 1] = string.format("Color=%s", color_Utils.hex_to_rgb(palette.fg.muted))
+	lines[#lines + 1] = string.format("Color=%s", ColorUtils.hex_to_rgb(palette.fg.muted))
 	lines[#lines + 1] = ""
 
 	lines[#lines + 1] = "[ForegroundIntense]"
-	lines[#lines + 1] = string.format("Color=%s", color_Utils.hex_to_rgb(palette.fg.strong))
+	lines[#lines + 1] = string.format("Color=%s", ColorUtils.hex_to_rgb(palette.fg.strong))
 	lines[#lines + 1] = ""
 
 	-- General metadata section

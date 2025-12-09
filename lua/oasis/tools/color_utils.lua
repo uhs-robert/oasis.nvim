@@ -1,4 +1,4 @@
--- lua/oasis/tools/color_Utils.lua
+-- lua/oasis/tools/color_utils.lua
 -- Color manipulation utilities for theme generation
 
 local WcagCalculator = require("oasis.tools.wcag_color_calculator")
