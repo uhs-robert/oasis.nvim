@@ -19,11 +19,11 @@ local function generate_wezterm_theme(name, palette)
 		"[colors]",
 		'foreground = "' .. palette.fg.core .. '"',
 		'background= "' .. palette.bg.core .. '"',
-		'cursor_bg= "' .. palette.syntax.statement .. '"',
-		'cursor_border= "' .. palette.syntax.statement .. '"',
-		'cursor_fg= "' .. palette.bg.mantle .. '"',
-		'selection_bg= "' .. palette.ui.visual.bg .. '"',
-		'selection_fg= "' .. palette.bg.mantle .. '"',
+		string.format('cursor_bg = "%s"', is_light and palette.syntax.statement or palette.terminal.yellow),
+		string.format('cursor_border = "%s"', is_light and palette.syntax.statement or palette.terminal.yellow),
+		'cursor_fg= "' .. palette.bg.core .. '"',
+		'selection_bg= "' .. palette.ui.search.bg .. '"',
+		'selection_fg= "' .. palette.ui.search.fg .. '"',
 		'split= "' .. palette.ui.border .. '"',
 		'compose_cursor= "' .. palette.ui.lineNumber .. '"',
 		'scrollbar_thumb= "' .. palette.bg.surface .. '"',
@@ -72,7 +72,7 @@ local function generate_wezterm_theme(name, palette)
 	-- Tab Bar Inactive Tab
 	lines[#lines + 1] = "[colors.tab_bar.inactive_tab]"
 	lines[#lines + 1] = string.format("bg_color = '%s'", palette.bg.surface)
-	lines[#lines + 1] = string.format("fg_color = '%s'", is_light and palette.fg.core or palette.bg.core)
+	lines[#lines + 1] = string.format("fg_color = '%s'", palette.theme.primary)
 	lines[#lines + 1] = "intensity = 'Normal'"
 	lines[#lines + 1] = "italic = false"
 	lines[#lines + 1] = "strikethrough = false"
@@ -81,8 +81,8 @@ local function generate_wezterm_theme(name, palette)
 
 	-- Tab Bar Inactive Tab Hover
 	lines[#lines + 1] = "[colors.tab_bar.inactive_tab_hover]"
-	lines[#lines + 1] = string.format("bg_color = '%s'", palette.bg.mantle)
-	lines[#lines + 1] = string.format("fg_color = '%s'", is_light and palette.fg.core or palette.bg.core)
+	lines[#lines + 1] = string.format("bg_color = '%s'", palette.bg.surface)
+	lines[#lines + 1] = string.format("fg_color = '%s'", palette.theme.secondary)
 	lines[#lines + 1] = "intensity = 'Normal'"
 	lines[#lines + 1] = "italic = false"
 	lines[#lines + 1] = "strikethrough = false"
