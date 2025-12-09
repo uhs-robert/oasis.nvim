@@ -9,6 +9,7 @@ local File = require("oasis.lib.file")
 
 local function generate_kitty_theme(name, palette)
 	local display_name = Utils.format_display_name(name)
+	local is_light = palette.light_mode or false
 
 	local lines = {
 		"# extras/kitty/oasis_" .. name .. ".conf",
@@ -32,21 +33,21 @@ local function generate_kitty_theme(name, palette)
 		string.format("%-24s %s", "background", palette.bg.core),
 		"",
 		"# Selection",
-		string.format("%-24s %s", "selection_background", palette.ui.visual.bg),
-		string.format("%-24s %s", "selection_foreground", palette.fg.core),
+		string.format("%-24s %s", "selection_background", palette.ui.search.bg),
+		string.format("%-24s %s", "selection_foreground", palette.ui.search.fg),
 		"",
 		"# Cursor",
-		string.format("%-24s %s", "cursor", palette.terminal.yellow),
-		string.format("%-24s %s", "cursor_text_color", palette.terminal.black),
+		string.format("%-24s %s", "cursor", is_light and palette.syntax.statement or palette.terminal.yellow),
+		string.format("%-24s %s", "cursor_text_color", palette.bg.core),
 		"",
 		"# Borders (panes)",
-		string.format("%-24s %s", "active_border_color", palette.terminal.red),
-		string.format("%-24s %s", "inactive_border_color", palette.terminal.bright_black),
+		string.format("%-24s %s", "active_border_color", palette.ui.border),
+		string.format("%-24s %s", "inactive_border_color", palette.ui.float.border.bg),
 		"",
 		"# Tabs",
-		string.format("%-24s %s", "active_tab_foreground", palette.terminal.black),
-		string.format("%-24s %s", "active_tab_background", palette.terminal.yellow),
-		string.format("%-24s %s", "inactive_tab_foreground", palette.fg.muted),
+		string.format("%-24s %s", "active_tab_foreground", palette.bg.core),
+		string.format("%-24s %s", "active_tab_background", palette.theme.primary),
+		string.format("%-24s %s", "inactive_tab_foreground", palette.theme.primary),
 		string.format("%-24s %s", "inactive_tab_background", palette.bg.mantle),
 		"",
 	}
