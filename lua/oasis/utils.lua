@@ -400,7 +400,7 @@ function Utils.generate_light_palette_at_intensity(name, intensity)
 
 	-- Save original intensity and set new one
 	-- Must modify config.options (not defaults) since palettes call config.get()
-	local original_intensity = config.options.light_intensity
+	local original_intensity = Config.options.light_intensity
 	Config.options.light_intensity = intensity
 
 	-- Clear the palette from cache and reload with new intensity

@@ -10,14 +10,14 @@ local bg_seed = p.theme.night.fg.core
 local light_intensity = 1
 local target_l = { [1] = 84 }
 local contrast_opts = opts.contrast or { min_ratio = 5.8, force_aaa = false }
-local light_bg = light_gen.generate_light_backgrounds(bg_seed, light_intensity, { target_l_core = target_l })
+local light_bg = light_gen.generate_backgrounds(bg_seed, light_intensity, { target_l_core = target_l })
 
 -- Colorscheme
 local c = {
 	bg = light_bg,
-	fg = light_gen.generate_light_foregrounds(seed_dark.fg, light_bg.core, light_intensity, contrast_opts),
-	theme = light_gen.generate_light_theme(seed_dark.theme, light_intensity),
-	terminal = light_gen.generate_light_terminal(
+	fg = light_gen.generate_foregrounds(seed_dark.fg, light_bg.core, light_intensity, contrast_opts),
+	theme = light_gen.generate_theme(seed_dark.theme, light_intensity),
+	terminal = light_gen.generate_terminal(
 		seed_dark.terminal or p.terminal,
 		light_bg.core,
 		light_intensity,
@@ -26,7 +26,7 @@ local c = {
 	light_mode = true,
 
 	-- Syntax
-	syntax = light_gen.generate_light_syntax(seed_dark.syntax, light_bg.core, light_intensity, nil, contrast_opts),
+	syntax = light_gen.generate_syntax(seed_dark.syntax, light_bg.core, light_intensity, nil, contrast_opts),
 
 	-- Diff
 	diff = {
@@ -36,7 +36,7 @@ local c = {
 	},
 
 	-- UI
-	ui = light_gen.generate_light_ui(seed_dark.ui, light_bg, light_intensity),
+	ui = light_gen.generate_ui(seed_dark.ui, light_bg, light_intensity),
 }
 
 -- Deprecation notice (once per session)

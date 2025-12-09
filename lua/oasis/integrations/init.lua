@@ -1,21 +1,21 @@
 -- lua/oasis/integrations/init.lua
 -- Plugin integration manager for oasis colorscheme
 
-local M = {}
+local Plugin = {}
 
 -- Registry of active integrations (lualine, tabby, etc.)
-M._integrations = {}
+Plugin._integrations = {}
 
 --- Register an integration
 ---@param name string Integration name
 ---@param integration table Integration object with refresh() method
-function M.register(name, integration)
-	M._integrations[name] = integration
+function Plugin.register(name, integration)
+	Plugin._integrations[name] = integration
 end
 
 --- Refresh all registered integrations
-function M.refresh_all()
-	for name, integration in pairs(M._integrations) do
+function Plugin.refresh_all()
+	for name, integration in pairs(Plugin._integrations) do
 		if integration.refresh then
 			local ok, err = pcall(integration.refresh)
 			if not ok then
@@ -27,8 +27,8 @@ end
 
 --- Refresh a specific integration
 ---@param name string Integration name
-function M.refresh(name)
-	local integration = M._integrations[name]
+function Plugin.refresh(name)
+	local integration = Plugin._integrations[name]
 	if integration and integration.refresh then
 		local ok, err = pcall(integration.refresh)
 		if not ok then
@@ -39,9 +39,9 @@ end
 
 --- List all registered integrations
 ---@return string[] List of integration names
-function M.list()
+function Plugin.list()
 	local names = {}
-	for name, _ in pairs(M._integrations) do
+	for name, _ in pairs(Plugin._integrations) do
 		table.insert(names, name)
 	end
 	return names
@@ -68,7 +68,7 @@ end
 --- Load highlights for all detected plugins
 ---@param c table Color palette
 ---@return table highlights Plugin highlight groups
-function M.get_plugin_highlights(c)
+function Plugin.get_plugin_highlights(c)
 	local highlights = {}
 
 	for plugin_name, module_path in pairs(PLUGIN_MODULES) do
@@ -87,4 +87,4 @@ function M.get_plugin_highlights(c)
 	return highlights
 end
 
-return M
+return Plugin

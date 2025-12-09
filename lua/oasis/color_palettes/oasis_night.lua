@@ -120,12 +120,12 @@ local light_theme = vim.tbl_deep_extend("force", {}, dark.theme, {
 })
 
 local light_bg =
-	light_gen.generate_light_backgrounds(ui.fg.core, opts.light_intensity, { target_l_core = target_lightness })
+	light_gen.generate_backgrounds(ui.fg.core, opts.light_intensity, { target_l_core = target_lightness })
 local light = {
 	bg = light_bg,
-	fg = light_gen.generate_light_foregrounds(light_seed.fg, light_bg.core, opts.light_intensity, opts.contrast),
-	theme = light_gen.generate_light_theme(light_theme, opts.light_intensity),
-	terminal = light_gen.generate_light_terminal(
+	fg = light_gen.generate_foregrounds(light_seed.fg, light_bg.core, opts.light_intensity, opts.contrast),
+	theme = light_gen.generate_theme(light_theme, opts.light_intensity),
+	terminal = light_gen.generate_terminal(
 		light_seed.terminal,
 		light_bg.core,
 		opts.light_intensity,
@@ -134,7 +134,7 @@ local light = {
 	light_mode = true,
 
 	-- Syntax
-	syntax = light_gen.generate_light_syntax(
+	syntax = light_gen.generate_syntax(
 		light_seed.syntax,
 		light_bg.core,
 		opts.light_intensity,
@@ -150,7 +150,7 @@ local light = {
 	},
 
 	-- UI
-	ui = light_gen.generate_light_ui(light_ui, light_bg, opts.light_intensity, opts.contrast),
+	ui = light_gen.generate_ui(light_ui, light_bg, opts.light_intensity, opts.contrast),
 }
 
 -- Return dual-mode palette

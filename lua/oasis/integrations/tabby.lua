@@ -1,10 +1,10 @@
 -- lua/oasis/integrations/tabby.lua
 
-local M = {}
+local Tabby = {}
 
 --- Get current oasis palette for tabby theme
 ---@return table
-function M.get_theme()
+function Tabby.get_theme()
 	local current_palette = vim.g.colors_name or "oasis_lagoon"
 
 	-- Convert hyphen format to underscore format for module loading
@@ -35,7 +35,7 @@ end
 --- Setup tabby with dynamic oasis theme using presets
 ---@param preset? string Tabby preset to use (default: 'active_wins_at_tail')
 ---@param options? table Additional options for tabby
-function M.setup(preset, options)
+function Tabby.setup(preset, options)
 	if not package.loaded["tabby"] then
 		return
 	end
@@ -47,7 +47,7 @@ function M.setup(preset, options)
 	local config = vim.tbl_deep_extend("force", {
 		preset = preset,
 		option = vim.tbl_deep_extend("force", {
-			theme = M.get_theme(),
+			theme = Tabby.get_theme(),
 			nerdfont = true,
 		}, options),
 	}, {})
@@ -56,25 +56,25 @@ function M.setup(preset, options)
 end
 
 --- Update existing tabby config with oasis theme
-function M.apply_to_existing_config(opts)
+function Tabby.apply_to_existing_config(opts)
 	if not opts.option then
 		opts.option = {}
 	end
 
-	opts.option.theme = M.get_theme()
+	opts.option.theme = Tabby.get_theme()
 
 	return opts
 end
 
 --- Refresh tabby theme
-function M.refresh()
+function Tabby.refresh()
 	if package.loaded["tabby"] then
-		M.force_apply()
+		Tabby.force_apply()
 	end
 end
 
 --- Force apply oasis theme to existing tabby setup
-function M.force_apply()
+function Tabby.force_apply()
 	if not package.loaded["tabby"] then
 		return
 	end
@@ -82,17 +82,17 @@ function M.force_apply()
 	local tabby = require("tabby")
 	local current_config = tabby._config or {}
 	current_config.option = current_config.option or {}
-	current_config.option.theme = M.get_theme()
+	current_config.option.theme = Tabby.get_theme()
 	tabby.setup(current_config)
 	vim.cmd("redrawtabline")
 end
 
 -- Auto-register this integration
-require("oasis.integrations").register("tabby", M)
+require("oasis.integrations").register("tabby", Tabby)
 
 -- Call force_apply when oasis loads
 vim.schedule(function()
-	M.force_apply()
+	Tabby.force_apply()
 end)
 
-return M
+return Tabby
