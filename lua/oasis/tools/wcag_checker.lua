@@ -2,10 +2,10 @@
 -- WCAG Contrast Checker for Oasis Palettes
 -- Analyzes color contrast ratios and WCAG compliance
 
-local wcag_calc = require("oasis.tools.wcag_color_calculator")
-local utils = require("oasis.utils")
+local WcagCalculator = require("oasis.tools.wcag_color_calculator")
+local Utils = require("oasis.utils")
 
-local M = {}
+local WcagChecker = {}
 
 -- Configuration: Number of color pairs that are intentionally designed to fail WCAG AAA
 -- (e.g., muted, dim, comments, and nontext)
@@ -17,8 +17,8 @@ local NUMBER_OF_ACCEPTABLE_FAILS = 4
 ---@param color1 string Hex color
 ---@param color2 string Hex color
 ---@return number Contrast ratio (1-21)
-function M.get_contrast_ratio(color1, color2)
-	return wcag_calc.contrast_ratio(color1, color2)
+function WcagChecker.get_contrast_ratio(color1, color2)
+	return WcagCalculator.contrast_ratio(color1, color2)
 end
 
 --- Get WCAG compliance level for a contrast ratio
@@ -26,8 +26,8 @@ end
 ---@param ratio number Contrast ratio
 ---@param large_text boolean Whether this is large text (18pt+/14pt+ bold)
 ---@return string Compliance level: "AAA", "AA", "Fail"
-function M.get_compliance_level(ratio, large_text)
-	return wcag_calc.get_compliance_level(ratio, large_text)
+function WcagChecker.get_compliance_level(ratio, large_text)
+	return WcagCalculator.get_compliance_level(ratio, large_text)
 end
 
 --- Format contrast ratio with color coding
@@ -47,7 +47,7 @@ end
 --- Analyze a single palette for WCAG compliance
 ---@param palette_name string Name of the palette (e.g., "oasis_lagoon" or "oasis_lagoon.dark")
 ---@return table Analysis results
-function M.analyze_palette(palette_name)
+function WcagChecker.analyze_palette(palette_name)
 	-- Check if palette_name has mode suffix (e.g., "oasis_lagoon.dark")
 	local base_name, mode = palette_name:match("^(.+)%.(.+)$")
 	local palette
@@ -87,8 +87,8 @@ function M.analyze_palette(palette_name)
 			return
 		end
 
-		local ratio = M.get_contrast_ratio(fg, bg)
-		local level = M.get_compliance_level(ratio, large_text or false)
+		local ratio = WcagChecker.get_contrast_ratio(fg, bg)
+		local level = WcagChecker.get_compliance_level(ratio, large_text or false)
 		table.insert(results.checks, {
 			label = label,
 			fg = fg,
@@ -181,7 +181,7 @@ end
 
 --- Print analysis results for a single palette
 ---@param results table Analysis results
-function M.print_palette_results(results)
+function WcagChecker.print_palette_results(results)
 	if results.error then
 		print("Error: " .. results.error)
 		return
@@ -242,10 +242,10 @@ end
 local function discover_palettes()
 	local palettes = {}
 
-	for _, name in ipairs(utils.get_palette_names()) do
+	for _, name in ipairs(Utils.get_palette_names()) do
 		local module_name = "oasis_" .. name
 		local ok, palette = pcall(require, "oasis.color_palettes." .. module_name)
-		if ok and utils.is_dual_mode_palette(palette) then
+		if ok and Utils.is_dual_mode_palette(palette) then
 			table.insert(palettes, module_name .. ".dark")
 			table.insert(palettes, module_name .. ".light")
 		end
@@ -257,12 +257,12 @@ end
 
 --- Analyze all Oasis palettes
 ---@return table Array of analysis results
-function M.analyze_all()
+function WcagChecker.analyze_all()
 	local palettes = discover_palettes()
 
 	local all_results = {}
 	for _, palette_name in ipairs(palettes) do
-		table.insert(all_results, M.analyze_palette(palette_name))
+		table.insert(all_results, WcagChecker.analyze_palette(palette_name))
 	end
 
 	return all_results
@@ -270,7 +270,7 @@ end
 
 --- Print comparison table of all palettes
 ---@param all_results table Array of analysis results
-function M.print_comparison_table(all_results)
+function WcagChecker.print_comparison_table(all_results)
 	-- Sort results by AAA count (descending)
 	local sorted_results = {}
 	for _, results in ipairs(all_results) do
@@ -317,13 +317,13 @@ function M.print_comparison_table(all_results)
 end
 
 --- Main function to check all palettes and print report
-function M.check_all()
+function WcagChecker.check_all()
 	print("\n🔍 Analyzing WCAG Contrast Compliance for Oasis Palettes...")
 
-	local all_results = M.analyze_all()
+	local all_results = WcagChecker.analyze_all()
 
 	-- Print comparison table first
-	M.print_comparison_table(all_results)
+	WcagChecker.print_comparison_table(all_results)
 
 	-- Coach user on getting detailed results
 	print("\n" .. string.rep("=", 80))
@@ -335,9 +335,9 @@ end
 
 --- Check a specific palette
 ---@param palette_name string Name of the palette
-function M.check_palette(palette_name)
-	local results = M.analyze_palette(palette_name)
-	M.print_palette_results(results)
+function WcagChecker.check_palette(palette_name)
+	local results = WcagChecker.analyze_palette(palette_name)
+	WcagChecker.print_palette_results(results)
 end
 
-return M
+return WcagChecker

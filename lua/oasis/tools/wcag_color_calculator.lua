@@ -2,15 +2,100 @@
 -- WCAG Color Calculator for Oasis Theme
 -- Calculates AAA-compliant colors while maintaining hue and saturation
 
-local M = {}
+local WcagCalculator = {}
 
 -- WCAG contrast ratio standards
-M.STANDARDS = {
+local STANDARDS = {
 	AAA_NORMAL = 7.05, -- With a little wiggle room!
 	AAA_LARGE = 4.5,
 	AA_NORMAL = 4.5,
 	AA_LARGE = 3.0,
 }
+STANDARDS = STANDARDS
+
+-- Preset color collections for Oasis themes (reference colors to test)
+PRESETS = {
+	-- Custom target overrides for light themes
+	LIGHT_TARGETS = {
+		["fg.core"] = STANDARDS.AAA_NORMAL + 2,
+		["syntax.punctuation"] = STANDARDS.AAA_NORMAL + 1,
+		["syntax.operator"] = STANDARDS.AAA_NORMAL + 0.5,
+		["syntax.conditional"] = STANDARDS.AAA_NORMAL + 1,
+		["fg.comment"] = STANDARDS.AA_NORMAL,
+		["syntax.comment"] = STANDARDS.AA_NORMAL,
+		["fg.dim"] = STANDARDS.AA_NORMAL + 1.75,
+		["ui.nontext"] = STANDARDS.AA_NORMAL + 1.75,
+		["fg.muted"] = STANDARDS.AA_NORMAL + 2.25,
+	},
+
+	-- Custom target overrides for dark themes
+	DARK_TARGETS = {
+		["fg.comment"] = STANDARDS.AA_NORMAL - 0.64,
+		["syntax.comment"] = STANDARDS.AA_NORMAL - 0.65,
+		["fg.dim"] = STANDARDS.AA_NORMAL - 1.75,
+		["ui.nontext"] = STANDARDS.AA_NORMAL - 1.75,
+		["fg.muted"] = STANDARDS.AA_NORMAL - 2.25,
+	},
+
+	-- Base "typical" colors - reference palette for testing
+	BASE_COLORS = {
+		-- Syntax - Cold (Data)
+		parameter = "#C28EFF",
+		identifier = "#FFD393",
+		type = "#81C0B6",
+		builtinVar = "#61AEFF",
+		string = "#53D390",
+		regex = "#96EA7F",
+		builtinConst = "#5ABAAE",
+
+		-- Syntax - Warm (Control/Flow)
+		constant = "#F8944D",
+		func = "#F8B471",
+		builtinFunc = "#F49F15",
+		builtinFuncAlt = "#E67451",
+		statement = "#F0E68C",
+		exception = "#ED7777",
+		conditional = "#BDB76B",
+		special = "#FFA852",
+		operator = "#FFA0A0",
+		punctuation = "#F09595",
+		preproc = "#38D0EF",
+
+		-- Syntax - Neutral
+		bracket = "#B5ADA0",
+
+		-- UI
+		theme_primary = "#CD5C5C",
+		match = "#FFA247",
+		dir = "#87CEEB",
+
+		-- Diagnostics
+		error = "#D06666",
+		warn = "#EEEE00",
+		info = "#87CEEB",
+		hint = "#8FD1C7",
+	},
+}
+WcagCalculator.PRESETS = PRESETS
+
+-- Light palette = base + light-only tweaks
+PRESETS.LIGHT_COLORS = {}
+for k, v in pairs(PRESETS.BASE_COLORS) do
+	PRESETS.LIGHT_COLORS[k] = v
+end
+PRESETS.LIGHT_COLORS.identifier = "#6E7D8D"
+PRESETS.LIGHT_COLORS.theme_primary = { hex = PRESETS.BASE_COLORS.theme_primary, target = 5.0 }
+PRESETS.LIGHT_COLORS.operator = { hex = PRESETS.BASE_COLORS.operator, target = 9.0 }
+PRESETS.LIGHT_COLORS.punctuation = { hex = PRESETS.BASE_COLORS.punctuation, target = 8.0 }
+
+-- Dark palette = base + dark-only tweaks
+PRESETS.DARK_COLORS = {}
+for k, v in pairs(PRESETS.BASE_COLORS) do
+	PRESETS.DARK_COLORS[k] = v
+end
+PRESETS.DARK_COLORS.theme_primary = { hex = PRESETS.BASE_COLORS.theme_primary, target = 5.0 }
+PRESETS.DARK_COLORS.operator = { hex = PRESETS.BASE_COLORS.operator, target = 9.0 }
+PRESETS.DARK_COLORS.punctuation = { hex = PRESETS.BASE_COLORS.punctuation, target = 8.0 }
 
 ---@class Color
 ---@field r number Red component (0-1)
@@ -158,7 +243,7 @@ end
 ---@param color1 Color|string First color (Color object or hex string)
 ---@param color2 Color|string Second color (Color object or hex string)
 ---@return number Contrast ratio
-function M.contrast_ratio(color1, color2)
+function WcagCalculator.contrast_ratio(color1, color2)
 	if type(color1) == "string" then
 		color1 = Color.from_hex(color1)
 	end
@@ -177,12 +262,12 @@ end
 ---@param ratio number Contrast ratio
 ---@param large_text? boolean Whether text is large (18pt+ or 14pt+ bold)
 ---@return string Compliance level: "AAA", "AA", "Fail"
-function M.get_compliance_level(ratio, large_text)
-	local threshold = large_text and M.STANDARDS.AAA_LARGE or M.STANDARDS.AAA_NORMAL
+function WcagCalculator.get_compliance_level(ratio, large_text)
+	local threshold = large_text and STANDARDS.AAA_LARGE or STANDARDS.AAA_NORMAL
 	if ratio >= threshold then
 		return "AAA"
 	end
-	threshold = large_text and M.STANDARDS.AA_LARGE or M.STANDARDS.AA_NORMAL
+	threshold = large_text and STANDARDS.AA_LARGE or STANDARDS.AA_NORMAL
 	if ratio >= threshold then
 		return "AA"
 	end
@@ -195,8 +280,8 @@ end
 ---@param target_ratio number Target contrast ratio (default: AAA_NORMAL)
 ---@param max_iterations? number Maximum iterations for binary search (default: 100)
 ---@return string, number Adjusted hex color and achieved contrast ratio
-function M.adjust_for_target(hex_color, background_hex, target_ratio, max_iterations)
-	target_ratio = target_ratio or M.STANDARDS.AAA_NORMAL
+function WcagCalculator.adjust_for_target(hex_color, background_hex, target_ratio, max_iterations)
+	target_ratio = target_ratio or STANDARDS.AAA_NORMAL
 	max_iterations = max_iterations or 100
 
 	local color = Color.from_hex(hex_color)
@@ -211,7 +296,7 @@ function M.adjust_for_target(hex_color, background_hex, target_ratio, max_iterat
 	local min_l = 0.0
 	local max_l = 1.0
 	local best_color = hex_color
-	local best_ratio = M.contrast_ratio(color, background)
+	local best_ratio = WcagCalculator.contrast_ratio(color, background)
 
 	for _ = 1, max_iterations do
 		-- Check if search range is valid
@@ -222,7 +307,7 @@ function M.adjust_for_target(hex_color, background_hex, target_ratio, max_iterat
 		local test_l = (min_l + max_l) / 2
 		local test_color = Color.from_hsl(hue, saturation, test_l)
 		local test_hex = test_color:to_hex()
-		local test_ratio = M.contrast_ratio(test_color, background)
+		local test_ratio = WcagCalculator.contrast_ratio(test_color, background)
 
 		-- Found target within tolerance
 		if math.abs(test_ratio - target_ratio) < 0.01 then
@@ -251,21 +336,21 @@ end
 ---@param colors table<string, string|table> Map of color names to hex strings or {hex, target}
 ---@param background_hex string Background color
 ---@return table Results with original, new, current_ratio, new_ratio for each color
-function M.calculate_batch(colors, background_hex)
+function WcagCalculator.calculate_batch(colors, background_hex)
 	local results = {}
 
 	for name, color_data in pairs(colors) do
 		local original_hex, target
 		if type(color_data) == "table" then
 			original_hex = color_data.hex or color_data[1]
-			target = color_data.target or color_data[2] or M.STANDARDS.AAA_NORMAL
+			target = color_data.target or color_data[2] or STANDARDS.AAA_NORMAL
 		else
 			original_hex = color_data
-			target = M.STANDARDS.AAA_NORMAL
+			target = STANDARDS.AAA_NORMAL
 		end
 
-		local current_ratio = M.contrast_ratio(original_hex, background_hex)
-		local new_hex, new_ratio = M.adjust_for_target(original_hex, background_hex, target)
+		local current_ratio = WcagCalculator.contrast_ratio(original_hex, background_hex)
+		local new_hex, new_ratio = WcagCalculator.adjust_for_target(original_hex, background_hex, target)
 
 		results[name] = {
 			original = original_hex,
@@ -283,7 +368,7 @@ end
 ---@param results table Results from calculate_batch
 ---@param background_hex string Background color used
 ---@param title? string Optional title
-function M.print_results(results, background_hex, title)
+function WcagCalculator.print_results(results, background_hex, title)
 	print("\n" .. string.rep("=", 80))
 	print(title or ("AAA Color Calculations for background: " .. background_hex))
 	print(string.rep("=", 80) .. "\n")
@@ -325,7 +410,7 @@ end
 --- Load a palette and extract colors for WCAG checking
 ---@param palette_name string Palette name like "oasis_lagoon"
 ---@return table|nil, string|nil Palette colors or nil, error message
-function M.load_palette(palette_name)
+function WcagCalculator.load_palette(palette_name)
 	-- Ensure palette name has oasis_ prefix
 	if not palette_name:match("^oasis_") then
 		palette_name = "oasis_" .. palette_name
@@ -343,7 +428,7 @@ end
 ---@param palette_name string Palette name like "oasis_lagoon"
 ---@param temp_config table Temporary config options to apply
 ---@return table|nil, string|nil Palette colors or nil, error message
-function M.load_palette_with_config(palette_name, temp_config)
+function WcagCalculator.load_palette_with_config(palette_name, temp_config)
 	-- Ensure palette name has oasis_ prefix
 	if not palette_name:match("^oasis_") then
 		palette_name = "oasis_" .. palette_name
@@ -380,7 +465,7 @@ end
 --- Extract colors from palette for WCAG testing
 ---@param palette table Loaded palette
 ---@return table Colors map for batch processing
-function M.extract_colors_from_palette(palette)
+function WcagCalculator.extract_colors_from_palette(palette)
 	local colors = {}
 
 	-- Syntax colors
@@ -436,17 +521,17 @@ end
 ---@param target_ratio? number Default target contrast ratio (default: AAA_NORMAL)
 ---@param custom_targets? table<string, number> Custom targets for specific colors (e.g., { ["fg.comment"] = 4.5 })
 ---@return table|nil, string|nil Results or nil, error message
-function M.analyze_palette(palette_name, target_ratio, custom_targets)
-	target_ratio = target_ratio or M.STANDARDS.AAA_NORMAL
+function WcagCalculator.analyze_palette(palette_name, target_ratio, custom_targets)
+	target_ratio = target_ratio or STANDARDS.AAA_NORMAL
 	custom_targets = custom_targets or {}
 
-	local palette, err = M.load_palette(palette_name)
+	local palette, err = WcagCalculator.load_palette(palette_name)
 	if not palette then
 		return nil, err
 	end
 
 	local background = palette.bg and palette.bg.core or "#000000"
-	local colors = M.extract_colors_from_palette(palette)
+	local colors = WcagCalculator.extract_colors_from_palette(palette)
 
 	if next(colors) == nil then
 		return nil, "No colors found in palette"
@@ -460,7 +545,7 @@ function M.analyze_palette(palette_name, target_ratio, custom_targets)
 		end
 	end
 
-	local results = M.calculate_batch(colors, background)
+	local results = WcagCalculator.calculate_batch(colors, background)
 	return results, nil
 end
 
@@ -468,17 +553,17 @@ end
 ---@param palette_name string Palette name
 ---@param target_ratio? number Default target contrast ratio
 ---@param custom_targets? table<string, number> Custom targets for specific colors
-function M.check_palette(palette_name, target_ratio, custom_targets)
-	local results, err = M.analyze_palette(palette_name, target_ratio, custom_targets)
+function WcagCalculator.check_palette(palette_name, target_ratio, custom_targets)
+	local results, err = WcagCalculator.analyze_palette(palette_name, target_ratio, custom_targets)
 	if not results then
 		print("Error: " .. err)
 		return
 	end
 
-	local palette, _ = M.load_palette(palette_name)
+	local palette, _ = WcagCalculator.load_palette(palette_name)
 	local background = (palette and palette.bg and palette.bg.core) or "#000000"
 
-	M.print_results(results, background, "WCAG AAA: Actual Calculations for `" .. palette_name .. "`")
+	WcagCalculator.print_results(results, background, "WCAG AAA: Actual Calculations for `" .. palette_name .. "`")
 end
 
 --- Analyze a palette with specific config options (e.g., themed_syntax)
@@ -487,17 +572,17 @@ end
 ---@param target_ratio? number Default target contrast ratio (default: AAA_NORMAL)
 ---@param custom_targets? table<string, number> Custom targets for specific colors
 ---@return table|nil, string|nil Results or nil, error message
-function M.analyze_palette_with_config(palette_name, config_opts, target_ratio, custom_targets)
-	target_ratio = target_ratio or M.STANDARDS.AAA_NORMAL
+function WcagCalculator.analyze_palette_with_config(palette_name, config_opts, target_ratio, custom_targets)
+	target_ratio = target_ratio or STANDARDS.AAA_NORMAL
 	custom_targets = custom_targets or {}
 
-	local palette, err = M.load_palette_with_config(palette_name, config_opts)
+	local palette, err = WcagCalculator.load_palette_with_config(palette_name, config_opts)
 	if not palette then
 		return nil, err
 	end
 
 	local background = palette.bg and palette.bg.core or "#000000"
-	local colors = M.extract_colors_from_palette(palette)
+	local colors = WcagCalculator.extract_colors_from_palette(palette)
 
 	if next(colors) == nil then
 		return nil, "No colors found in palette"
@@ -511,7 +596,7 @@ function M.analyze_palette_with_config(palette_name, config_opts, target_ratio, 
 		end
 	end
 
-	local results = M.calculate_batch(colors, background)
+	local results = WcagCalculator.calculate_batch(colors, background)
 	return results, nil
 end
 
@@ -520,14 +605,15 @@ end
 ---@param config_opts table Config options (e.g., {themed_syntax = true})
 ---@param target_ratio? number Default target contrast ratio
 ---@param custom_targets? table<string, number> Custom targets for specific colors
-function M.check_palette_with_config(palette_name, config_opts, target_ratio, custom_targets)
-	local results, err = M.analyze_palette_with_config(palette_name, config_opts, target_ratio, custom_targets)
+function WcagCalculator.check_palette_with_config(palette_name, config_opts, target_ratio, custom_targets)
+	local results, err =
+		WcagCalculator.analyze_palette_with_config(palette_name, config_opts, target_ratio, custom_targets)
 	if not results then
 		print("Error: " .. err)
 		return
 	end
 
-	local palette, _ = M.load_palette_with_config(palette_name, config_opts)
+	local palette, _ = WcagCalculator.load_palette_with_config(palette_name, config_opts)
 	local background = (palette and palette.bg and palette.bg.core) or "#000000"
 
 	-- Build title with config options
@@ -536,95 +622,12 @@ function M.check_palette_with_config(palette_name, config_opts, target_ratio, cu
 		title = title .. " (themed_syntax = true)"
 	end
 
-	M.print_results(results, background, title)
+	WcagCalculator.print_results(results, background, title)
 end
-
--- Preset color collections for Oasis themes (reference colors to test)
-M.PRESETS = {
-	-- Custom target overrides for light themes
-	LIGHT_TARGETS = {
-		["fg.core"] = M.STANDARDS.AAA_NORMAL + 2,
-		["syntax.punctuation"] = M.STANDARDS.AAA_NORMAL + 1,
-		["syntax.operator"] = M.STANDARDS.AAA_NORMAL + 0.5,
-		["syntax.conditional"] = M.STANDARDS.AAA_NORMAL + 1,
-		["fg.comment"] = M.STANDARDS.AA_NORMAL,
-		["syntax.comment"] = M.STANDARDS.AA_NORMAL,
-		["fg.dim"] = M.STANDARDS.AA_NORMAL + 1.75,
-		["ui.nontext"] = M.STANDARDS.AA_NORMAL + 1.75,
-		["fg.muted"] = M.STANDARDS.AA_NORMAL + 2.25,
-	},
-
-	-- Custom target overrides for dark themes
-	DARK_TARGETS = {
-		["fg.comment"] = M.STANDARDS.AA_NORMAL - 0.64,
-		["syntax.comment"] = M.STANDARDS.AA_NORMAL - 0.65,
-		["fg.dim"] = M.STANDARDS.AA_NORMAL - 1.75,
-		["ui.nontext"] = M.STANDARDS.AA_NORMAL - 1.75,
-		["fg.muted"] = M.STANDARDS.AA_NORMAL - 2.25,
-	},
-
-	-- Base "typical" colors - reference palette for testing
-	BASE_COLORS = {
-		-- Syntax - Cold (Data)
-		parameter = "#C28EFF",
-		identifier = "#FFD393",
-		type = "#81C0B6",
-		builtinVar = "#61AEFF",
-		string = "#53D390",
-		regex = "#96EA7F",
-		builtinConst = "#5ABAAE",
-
-		-- Syntax - Warm (Control/Flow)
-		constant = "#F8944D",
-		func = "#F8B471",
-		builtinFunc = "#F49F15",
-		builtinFuncAlt = "#E67451",
-		statement = "#F0E68C",
-		exception = "#ED7777",
-		conditional = "#BDB76B",
-		special = "#FFA852",
-		operator = "#FFA0A0",
-		punctuation = "#F09595",
-		preproc = "#38D0EF",
-
-		-- Syntax - Neutral
-		bracket = "#B5ADA0",
-
-		-- UI
-		theme_primary = "#CD5C5C",
-		match = "#FFA247",
-		dir = "#87CEEB",
-
-		-- Diagnostics
-		error = "#D06666",
-		warn = "#EEEE00",
-		info = "#87CEEB",
-		hint = "#8FD1C7",
-	},
-}
-
--- Light palette = base + light-only tweaks
-M.PRESETS.LIGHT_COLORS = {}
-for k, v in pairs(M.PRESETS.BASE_COLORS) do
-	M.PRESETS.LIGHT_COLORS[k] = v
-end
-M.PRESETS.LIGHT_COLORS.identifier = "#6E7D8D"
-M.PRESETS.LIGHT_COLORS.theme_primary = { hex = M.PRESETS.BASE_COLORS.theme_primary, target = 5.0 }
-M.PRESETS.LIGHT_COLORS.operator = { hex = M.PRESETS.BASE_COLORS.operator, target = 9.0 }
-M.PRESETS.LIGHT_COLORS.punctuation = { hex = M.PRESETS.BASE_COLORS.punctuation, target = 8.0 }
-
--- Dark palette = base + dark-only tweaks
-M.PRESETS.DARK_COLORS = {}
-for k, v in pairs(M.PRESETS.BASE_COLORS) do
-	M.PRESETS.DARK_COLORS[k] = v
-end
-M.PRESETS.DARK_COLORS.theme_primary = { hex = M.PRESETS.BASE_COLORS.theme_primary, target = 5.0 }
-M.PRESETS.DARK_COLORS.operator = { hex = M.PRESETS.BASE_COLORS.operator, target = 9.0 }
-M.PRESETS.DARK_COLORS.punctuation = { hex = M.PRESETS.BASE_COLORS.punctuation, target = 8.0 }
 
 --- Discover all available palettes dynamically from filesystem
 ---@return table, table Light palette names, Dark palette names
-function M.discover_palettes()
+function WcagCalculator.discover_palettes()
 	local light_palettes = {}
 	local dark_palettes = {}
 
@@ -664,7 +667,7 @@ function M.discover_palettes()
 
 	-- Load each palette and check if it's light or dark
 	for _, palette_name in ipairs(palette_files) do
-		local palette, _ = M.load_palette(palette_name)
+		local palette, _ = WcagCalculator.load_palette(palette_name)
 		if palette then
 			if palette.light_mode then
 				light_palettes[#light_palettes + 1] = palette_name
@@ -685,27 +688,27 @@ end
 ---@param palette_name string Full palette name like "oasis_lagoon"
 ---@param color_set table Color set to test (LIGHT_COLORS or DARK_COLORS)
 ---@return table|nil, string|nil, string|nil Results
-function M.check_preset_theme(palette_name, color_set)
+function WcagCalculator.check_preset_theme(palette_name, color_set)
 	-- Load actual palette to get real bg.core
-	local palette, err = M.load_palette(palette_name)
+	local palette, err = WcagCalculator.load_palette(palette_name)
 	if not palette then
 		return nil, err, nil
 	end
 
 	local background = palette.bg and palette.bg.core or "#000000"
-	local results = M.calculate_batch(color_set, background)
+	local results = WcagCalculator.calculate_batch(color_set, background)
 	return results, nil, background
 end
 
 --- Check all preset themes (light and dark) with actual palette backgrounds
-function M.check_all_presets()
+function WcagCalculator.check_all_presets()
 	print("\n" .. string.rep("=", 80))
 	print("WCAG AAA Preset Color Assessment for Oasis Themes")
 	print("(Testing reference colors against actual palette backgrounds)")
 	print(string.rep("=", 80))
 
 	-- Dynamically discover all palettes
-	local light_palettes, dark_palettes = M.discover_palettes()
+	local light_palettes, dark_palettes = WcagCalculator.discover_palettes()
 
 	if #light_palettes > 0 then
 		print("\n" .. string.rep("-", 80))
@@ -713,9 +716,9 @@ function M.check_all_presets()
 		print(string.rep("-", 80))
 
 		for _, palette_name in ipairs(light_palettes) do
-			local results, err, background = M.check_preset_theme(palette_name, M.PRESETS.LIGHT_COLORS)
+			local results, err, background = WcagCalculator.check_preset_theme(palette_name, PRESETS.LIGHT_COLORS)
 			if results and background then
-				M.print_results(results, background, palette_name .. " - " .. background)
+				WcagCalculator.print_results(results, background, palette_name .. " - " .. background)
 			else
 				print("Error loading " .. palette_name .. ": " .. (err or "unknown error"))
 			end
@@ -728,9 +731,9 @@ function M.check_all_presets()
 		print(string.rep("-", 80))
 
 		for _, palette_name in ipairs(dark_palettes) do
-			local results, err, background = M.check_preset_theme(palette_name, M.PRESETS.DARK_COLORS)
+			local results, err, background = WcagCalculator.check_preset_theme(palette_name, PRESETS.DARK_COLORS)
 			if results and background then
-				M.print_results(results, background, palette_name .. " - " .. background)
+				WcagCalculator.print_results(results, background, palette_name .. " - " .. background)
 			else
 				print("Error loading " .. palette_name .. ": " .. (err or "unknown error"))
 			end
@@ -743,6 +746,6 @@ function M.check_all_presets()
 end
 
 -- Export Color class for external use
-M.Color = Color
+WcagCalculator.Color = Color
 
-return M
+return WcagCalculator

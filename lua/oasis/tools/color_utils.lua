@@ -1,15 +1,15 @@
 -- lua/oasis/tools/color_utils.lua
 -- Color manipulation utilities for theme generation
 
-local wcag_calc = require("oasis.tools.wcag_color_calculator")
+local WcagCalculator = require("oasis.tools.wcag_color_calculator")
 
-local M = {}
+local ColorUtils = {}
 
 --- Add alpha channel to hex color
 --- @param color string Hex color (e.g., "#1a1a1a")
 --- @param alpha string Alpha as 2-digit hex (e.g., "3d" for ~24% opacity)
 --- @return string Hex color with alpha channel (e.g., "#1a1a1a3d")
-function M.with_alpha(color, alpha)
+function ColorUtils.with_alpha(color, alpha)
 	if not color or color == "NONE" or color == "" then
 		return "#00000000"
 	end
@@ -28,7 +28,7 @@ end
 --- @param color string Hex color (e.g., "#808080")
 --- @param factor number Multiplier (>1 for lighter, <1 for darker)
 --- @return string Adjusted hex color
-function M.adjust_brightness(color, factor)
+function ColorUtils.adjust_brightness(color, factor)
 	if not color or color == "NONE" then
 		return color
 	end
@@ -53,7 +53,7 @@ end
 --- Convert hex color to RGB decimal format "R,G,B"
 --- @param hex string Hex color (e.g., "#808080" or "808080")
 --- @return string RGB decimal string (e.g., "128,128,128")
-function M.hex_to_rgb(hex)
+function ColorUtils.hex_to_rgb(hex)
 	if not hex or hex == "NONE" then
 		return "0,0,0"
 	end
@@ -72,7 +72,7 @@ end
 --- Escape string for JSON encoding
 --- @param str string Input string
 --- @return string JSON-escaped string
-function M.json_escape(str)
+function ColorUtils.json_escape(str)
 	if type(str) ~= "string" then
 		return str
 	end
@@ -84,13 +84,13 @@ end
 --- @param obj table|string|number|boolean|nil Object to encode
 --- @param indent? number Indentation level (default: 0)
 --- @return string JSON-encoded string
-function M.encode_json(obj, indent)
+function ColorUtils.encode_json(obj, indent)
 	indent = indent or 0
 	local indent_str = string.rep("  ", indent)
 	local next_indent_str = string.rep("  ", indent + 1)
 
 	if type(obj) == "string" then
-		return '"' .. M.json_escape(obj) .. '"'
+		return '"' .. ColorUtils.json_escape(obj) .. '"'
 	elseif type(obj) == "number" or type(obj) == "boolean" then
 		return tostring(obj)
 	elseif type(obj) == "nil" then
@@ -113,7 +113,7 @@ function M.encode_json(obj, indent)
 			-- Array
 			local parts = {}
 			for i = 1, #obj do
-				table.insert(parts, next_indent_str .. M.encode_json(obj[i], indent + 1))
+				table.insert(parts, next_indent_str .. ColorUtils.encode_json(obj[i], indent + 1))
 			end
 			if #parts == 0 then
 				return "[]"
@@ -130,8 +130,8 @@ function M.encode_json(obj, indent)
 
 			for _, k in ipairs(keys) do
 				local v = obj[k]
-				local key_str = '"' .. M.json_escape(tostring(k)) .. '"'
-				local value_str = M.encode_json(v, indent + 1)
+				local key_str = '"' .. ColorUtils.json_escape(tostring(k)) .. '"'
+				local value_str = ColorUtils.encode_json(v, indent + 1)
 				table.insert(parts, next_indent_str .. key_str .. ": " .. value_str)
 			end
 
@@ -150,13 +150,13 @@ end
 --- Returns (degrees 0-360, percent 0-100, percent 0-100) for compatibility
 --- @param hex string Hex color (e.g., "#D9E6FA")
 --- @return number, number, number Hue (0-360), Saturation (0-100), Lightness (0-100)
-function M.rgb_to_hsl(hex)
+function ColorUtils.rgb_to_hsl(hex)
 	if not hex or hex == "NONE" then
 		return 0, 0, 0
 	end
 
 	-- Use wcag_color_calculator's Color class (returns 0-1 range)
-	local color = wcag_calc.Color.from_hex(hex)
+	local color = WcagCalculator.Color.from_hex(hex)
 	local h, s, l = color:to_hsl()
 
 	-- Convert from 0-1 range to degrees/percentages
@@ -170,25 +170,24 @@ end
 --- @param s number Saturation (0-100 percent)
 --- @param l number Lightness (0-100 percent)
 --- @return string Hex color (e.g., "#D9E6FA")
-function M.hsl_to_rgb(h, s, l)
+function ColorUtils.hsl_to_rgb(h, s, l)
 	-- Convert from degrees/percentages to 0-1 range
 	h = (h % 360) / 360
 	s = s / 100
 	l = l / 100
 
 	-- Use wcag_color_calculator's Color class
-	local color = wcag_calc.Color.from_hsl(h, s, l)
+	local color = WcagCalculator.Color.from_hsl(h, s, l)
 	return color:to_hex()
 end
-
 
 --- Calculate WCAG contrast ratio between two colors
 --- Delegates to wcag_color_calculator for consistency
 --- @param color1 string First hex color
 --- @param color2 string Second hex color
 --- @return number Contrast ratio (1-21)
-function M.get_contrast_ratio(color1, color2)
-	return wcag_calc.contrast_ratio(color1, color2)
+function ColorUtils.get_contrast_ratio(color1, color2)
+	return WcagCalculator.contrast_ratio(color1, color2)
 end
 
 --- Darken a color to meet target WCAG contrast ratio on light background
@@ -198,10 +197,9 @@ end
 --- @param target_ratio number Target contrast ratio (e.g., 7.0 for AAA)
 --- @param max_iterations? number Maximum adjustment iterations (default: 50)
 --- @return string Adjusted hex color meeting target ratio
-function M.darken_to_contrast(color, bg_color, target_ratio, max_iterations)
-	local adjusted_color, _ = wcag_calc.adjust_for_target(color, bg_color, target_ratio, max_iterations)
+function ColorUtils.darken_to_contrast(color, bg_color, target_ratio, max_iterations)
+	local adjusted_color, _ = WcagCalculator.adjust_for_target(color, bg_color, target_ratio, max_iterations)
 	return adjusted_color
 end
 
-
-return M
+return ColorUtils

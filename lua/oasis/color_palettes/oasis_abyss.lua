@@ -108,7 +108,7 @@ local dark = {
 }
 
 -- Light mode configuration
-local light_bg = light_gen.generate_light_backgrounds(ui.fg.core, opts.light_intensity)
+local light_bg = light_gen.generate_backgrounds(ui.fg.core, opts.light_intensity)
 local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
 	title = p.red[700],
 	border = p.red[700],
@@ -116,13 +116,13 @@ local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
 
 local light = {
 	bg = light_bg,
-	fg = light_gen.generate_light_foregrounds(ui.fg, light_bg.core, opts.light_intensity),
-	theme = light_gen.generate_light_theme(ui.theme, opts.light_intensity),
-	terminal = light_gen.generate_light_terminal(p.terminal, light_bg.core, opts.light_intensity, opts.contrast),
+	fg = light_gen.generate_foregrounds(ui.fg, light_bg.core, opts.light_intensity),
+	theme = light_gen.generate_theme(ui.theme, opts.light_intensity),
+	terminal = light_gen.generate_terminal(p.terminal, light_bg.core, opts.light_intensity, opts.contrast),
 	light_mode = true,
 
 	-- Syntax
-	syntax = light_gen.generate_light_syntax(dark.syntax, light_bg.core, opts.light_intensity, nil, opts.contrast),
+	syntax = light_gen.generate_syntax(dark.syntax, light_bg.core, opts.light_intensity, nil, opts.contrast),
 
 	-- Diff
 	diff = {
@@ -132,7 +132,7 @@ local light = {
 	},
 
 	-- UI
-	ui = light_gen.generate_light_ui(light_ui, light_bg, opts.light_intensity),
+	ui = light_gen.generate_ui(light_ui, light_bg, opts.light_intensity),
 }
 
 -- Return dual-mode palette
