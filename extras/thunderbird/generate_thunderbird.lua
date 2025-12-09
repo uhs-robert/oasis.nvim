@@ -6,7 +6,7 @@
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
-local color_Utils = require("oasis.tools.color_utils")
+local ColorUtils = require("oasis.tools.color_utils")
 
 -- Simple UUID generator (deterministic based on name)
 local function generate_uuid(name)
@@ -173,7 +173,7 @@ local function generate_manifest(name, palette)
 		},
 	}
 
-	return color_Utils.encode_json(manifest)
+	return ColorUtils.encode_json(manifest)
 end
 
 -- Create .xpi file

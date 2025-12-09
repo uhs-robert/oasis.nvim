@@ -6,7 +6,7 @@
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
-local color_Utils = require("oasis.tools.color_utils")
+local ColorUtils = require("oasis.tools.color_utils")
 
 -- Convert hex color to RGB object for Firefox Color
 local function hex_to_rgb(hex)
@@ -276,7 +276,7 @@ local function main()
 		local theme = generate_firefox_color_theme(variant_name, palette)
 
 		-- Convert to JSON
-		local json = color_Utils.encode_json(theme)
+		local json = ColorUtils.encode_json(theme)
 
 		-- Compress for Firefox Color using json-url LZMA
 		local compressed = compress_for_firefox(json)

@@ -2,8 +2,8 @@
 
 local p = require("oasis.palette")
 local config = require("oasis.config")
-local color_Utils = require("oasis.tools.color_utils")
-local light_gen = require("oasis.tools.light_theme_generator")
+local ColorUtils = require("oasis.tools.color_utils")
+local LightTheme = require("oasis.tools.light_theme_generator")
 local opts = config.get()
 local theme = p.theme.starlight
 
@@ -108,26 +108,26 @@ local dark = {
 }
 
 -- Light mode configuration
-local light_bg = light_gen.generate_backgrounds(ui.fg.core, opts.light_intensity)
+local light_bg = LightTheme.generate_backgrounds(ui.fg.core, opts.light_intensity)
 local light = {
 	bg = light_bg,
-	fg = light_gen.generate_foregrounds(ui.fg, light_bg.core, opts.light_intensity),
-	theme = light_gen.generate_theme(ui.theme, opts.light_intensity),
-	terminal = light_gen.generate_terminal(p.terminal, light_bg.core, opts.light_intensity, opts.contrast),
+	fg = LightTheme.generate_foregrounds(ui.fg, light_bg.core, opts.light_intensity),
+	theme = LightTheme.generate_theme(ui.theme, opts.light_intensity),
+	terminal = LightTheme.generate_terminal(p.terminal, light_bg.core, opts.light_intensity, opts.contrast),
 	light_mode = true,
 
 	-- Syntax
-	syntax = light_gen.generate_syntax(dark.syntax, light_bg.core, opts.light_intensity, nil, opts.contrast),
+	syntax = LightTheme.generate_syntax(dark.syntax, light_bg.core, opts.light_intensity, nil, opts.contrast),
 
 	-- Diff
 	diff = {
-		add = color_Utils.darken_to_contrast(dark.diff.add, light_bg.core, 7.0),
-		change = color_Utils.darken_to_contrast(dark.diff.change, light_bg.core, 7.0),
-		delete = color_Utils.darken_to_contrast(dark.diff.delete, light_bg.core, 7.0),
+		add = ColorUtils.darken_to_contrast(dark.diff.add, light_bg.core, 7.0),
+		change = ColorUtils.darken_to_contrast(dark.diff.change, light_bg.core, 7.0),
+		delete = ColorUtils.darken_to_contrast(dark.diff.delete, light_bg.core, 7.0),
 	},
 
 	-- UI
-	ui = light_gen.generate_ui(dark.ui, light_bg, opts.light_intensity),
+	ui = LightTheme.generate_ui(dark.ui, light_bg, opts.light_intensity),
 }
 
 -- Return dual-mode palette
