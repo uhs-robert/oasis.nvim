@@ -40,8 +40,8 @@ local function generate_firefox_color_theme(name, palette)
 			toolbar_field_border = hex_to_rgb(palette.bg.surface),
 			toolbar_field_focus = hex_to_rgb(palette.bg.core),
 			toolbar_field_border_focus = hex_to_rgb(palette.theme.primary),
-			toolbar_field_highlight = hex_to_rgb(palette.syntax.exception),
-			toolbar_field_highlight_text = hex_to_rgb(palette.bg.core),
+			toolbar_field_highlight = hex_to_rgb(palette.ui.search.bg),
+			toolbar_field_highlight_text = hex_to_rgb(palette.ui.search.fg),
 
 			-- Tabs
 			tab_line = hex_to_rgb(palette.theme.secondary),
@@ -54,8 +54,8 @@ local function generate_firefox_color_theme(name, palette)
 			popup = hex_to_rgb(palette.bg.core),
 			popup_text = hex_to_rgb(palette.fg.core),
 			popup_border = hex_to_rgb(palette.bg.surface),
-			popup_highlight = hex_to_rgb(palette.ui.visual.bg),
-			popup_highlight_text = hex_to_rgb(palette.fg.core),
+			popup_highlight = hex_to_rgb(palette.ui.search.bg),
+			popup_highlight_text = hex_to_rgb(palette.ui.search.fg),
 
 			-- Buttons
 			button_background_active = hex_to_rgb(palette.ui.visual.bg),
@@ -64,19 +64,19 @@ local function generate_firefox_color_theme(name, palette)
 			sidebar = hex_to_rgb(palette.bg.core),
 			sidebar_text = hex_to_rgb(palette.fg.core),
 			sidebar_border = hex_to_rgb(palette.theme.primary),
-			sidebar_highlight = hex_to_rgb(palette.theme.accent),
-			sidebar_highlight_text = hex_to_rgb(palette.bg.crust),
+			sidebar_highlight = hex_to_rgb(palette.ui.search.bg),
+			sidebar_highlight_text = hex_to_rgb(palette.ui.search.fg),
 
 			-- Icons and accents
 			icons = hex_to_rgb(palette.theme.primary),
 			icons_attention = hex_to_rgb(palette.syntax.exception),
 
 			-- New tab page
-			ntp_background = hex_to_rgb(palette.bg.crust),
+			ntp_background = hex_to_rgb(palette.bg.mantle),
 			ntp_text = hex_to_rgb(palette.fg.core),
 
 			-- Misc
-			frame_inactive = hex_to_rgb(palette.bg.crust),
+			frame_inactive = hex_to_rgb(palette.bg.shadow),
 			toolbar_bottom_separator = hex_to_rgb(palette.bg.core),
 			toolbar_field_separator = hex_to_rgb(palette.theme.accent),
 			toolbar_vertical_separator = hex_to_rgb(palette.theme.accent),
@@ -189,7 +189,8 @@ local function generate_readme(palette_data)
 		-- Dark variant first
 		if group.dark then
 			local display_name = Utils.format_display_name(group.dark.name)
-			local link = string.format("- [**%s**](https://color.firefox.com/?theme=%s)", display_name, group.dark.data.url)
+			local link =
+				string.format("- [**%s**](https://color.firefox.com/?theme=%s)", display_name, group.dark.data.url)
 			table.insert(lines, link)
 		end
 
