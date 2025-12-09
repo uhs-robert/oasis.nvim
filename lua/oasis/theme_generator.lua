@@ -214,52 +214,52 @@ return function(c)
     ["@variable.parameter"]   = "@parameter", -- Identifier
     ["@variable.member"]      = { fg=c.syntax.identifier }, -- Identifier
 
-    -- ["@text.literal"]         = "Comment", -- Comment
-    -- ["@text.reference"]       = "Identifier", -- Identifier
-    -- ["@text.title"]           = "Title", -- Title
-    -- ["@text.uri"]             = "Underlined", -- Underlined
-    -- ["@text.underline"]       = "Underlined", -- Underlined
-    -- ["@text.todo"]            = "Todo", -- Todo
-    -- ["@comment"]              = "Comment", -- Comment
+    ["@text.literal"]         = "Comment", -- Comment
+    ["@text.reference"]       = "Identifier", -- Identifier
+    ["@text.title"]           = "Title", -- Title
+    ["@text.uri"]             = "Underlined", -- Underlined
+    ["@text.underline"]       = "Underlined", -- Underlined
+    ["@text.todo"]            = "Todo", -- Todo
+    ["@comment"]              = "Comment", -- Comment
     ["@comment.error"]        = { fg=c.ui.diag.error.fg, bg=c.ui.diag.error.bg, bold=true }, -- Comment (e.g. `WARNING`, `FIX`, `HACK`)
     ["@comment.warning"]      = { fg=c.ui.diag.warn.fg, bg=c.ui.diag.warn.bg, bold=true }, -- Comment (e.g. `WARNING`, `FIX`, `HACK`)
     -- ["@comment.todo"]         = {} -- Comment todo-type comments (e.g. `TODO`, `WIP`)
     ["@comment.note"]         = { fg=c.ui.diag.info.fg, bg=c.ui.diag.info.bg, bold=true }, -- Comment (e.g. `NOTE`, `INFO`, `XXX`)
     ["@punctuation"]          = { fg=c.syntax.punctuation }, -- Delimiter
-    -- ["@punctuation.delimiter"]  = { fg=c.syntax.punctuation }, -- Delimiter (e.g. `;`, `.`, `,`)
+    ["@punctuation.delimiter"]  = { fg=c.syntax.punctuation }, -- Delimiter (e.g. `;`, `.`, `,`)
     ["@punctuation.bracket"]  = { fg=c.syntax.bracket }, -- Delimiter (e.g. `()`, `{}`, `[]`)
     ["@punctuation.special"]  = { fg=c.syntax.operator }, -- Delimiter (e.g. `{}` in string interpolation)
-    -- ["@constant"]             = "Constant", -- Constant
+    ["@constant"]             = "Constant", -- Constant
     ["@constant.builtin"]     = { fg=c.syntax.builtinConst, italic=true }, -- Special
-    -- ["@constant.macro"]       = "Define", -- Define
+    ["@constant.macro"]       = "Define", -- Define
 
-    -- ["@define"]               = "Define", -- Define
-    -- ["@macro"]                = "Macro", -- Macro
-    -- ["@string"]               = "String", -- String
+    ["@define"]               = "Define", -- Define
+    ["@macro"]                = "Macro", -- Macro
+    ["@string"]               = "String", -- String
     ["@string.regexp"]        = { fg=c.syntax.regex }, -- SpecialChar
     ["@string.escape"]        = { fg=c.syntax.regex, bold=true }, -- SpecialChar
-    -- ["@string.special"]       = "SpecialChar", -- 
+    ["@string.special"]       = "SpecialChar", -- (e.g., dates)
     ["@string.special.symbol"]  = { fg=c.syntax.identifier },
     ["@string.special.url"]   = { fg=c.syntax.special, undercurl=true },
-    -- ["@character"]            = "Character", -- Character
-    -- ["@character.special"]    = "SpecialChar", -- SpecialChar
-    -- ["@number"]               = "Number", -- Number
-    -- ["@boolean"]              = "Boolean", -- Boolean
-    -- ["@float"]                = "Float", -- Float
-    -- ["@function"]             = "Function", -- Function
+    ["@character"]            = "Character", -- Character
+    ["@character.special"]    = "SpecialChar", -- SpecialChar
+    ["@number"]               = "Number", -- Number
+    ["@boolean"]              = "Boolean", -- Boolean
+    ["@float"]                = "Float", -- Float
+    ["@function"]             = "Function", -- Function
     ["@function.builtin"]     = { fg=c.syntax.builtinFunc }, -- Special
-    -- ["@function.macro"]       = "Macro", -- Macro
-    -- ["@method"]               = "Function", -- Function
-    -- ["@field"]                = "Identifier", -- Identifier
-    -- ["@property"]             = "Identifier", -- Identifier
+    ["@function.macro"]       = "Macro", -- Macro
+    ["@method"]               = "Function", -- Function
+    ["@field"]                = "Identifier", -- Identifier
+    ["@property"]             = "Identifier", -- Identifier
     ["@constructor"]          = "Conditional", -- Special (e.g. 'Map', 'Set', 'Error')
-    -- ["@conditional"]          = "Conditional", -- Conditional
-    -- ["@repeat"]               = "Repeat", -- Repeat
-    -- ["@label"]                = "Label", -- Label
+    ["@conditional"]          = "Conditional", -- Conditional
+    ["@repeat"]               = "Repeat", -- Repeat
+    ["@label"]                = "Label", -- Label
     ["@operator"]             = { fg=c.syntax.operator, bold=true }, -- Operator
 
     ["@keyword"]              = "Statement", --  Keyword misc not fitting into specific categories
-    -- ["@keyword.coroutine"]    = { fg=c.syntax.conditional }, -- Keyword coroutines (e.g. `go` in Go, `async/await` in Python)
+    ["@keyword.coroutine"]    = { fg=c.syntax.conditional }, -- Keyword coroutines (e.g. `go` in Go, `async/await` in Python)
     ["@keyword.operator"]     = { fg=c.syntax.operator, bold=true }, -- Keyword English words (e.g. `and`, `or`)
     ["@keyword.import"]       = "PreProc", -- Keyword  (e.g. `import`, `from` in Python)
     ["@keyword.return"]       = { fg=c.syntax.exception, italic=true }, -- Keyword -- `return` and `yield`
@@ -269,16 +269,16 @@ return function(c)
     ["@keyword.function"]     = { fg=c.syntax.statement }, -- Keyword
     ["@keyword.conditional"]  = "Conditional", -- Keyword
 
-    -- ["@exception"]            = "Exception", -- Exception 
+    ["@exception"]            = "Exception", -- Exception 
 
-    -- ["@type"]                 = "Type", -- Type
-    -- ["@type.definition"]      = "Typedef", -- Typedef
-    -- ["@storageclass"]         = "StorageClass", -- StorageClass
-    -- ["@structure"]            = "Structure", -- Structure
-    -- ["@namespace"]            = "Identifier", -- Identifier
-    -- ["@include"]              = "Include", -- Include
-    -- ["@preproc"]              = "PreProc", -- PreProc
-    -- ["@debug"]                = "Debug", -- Debug
+    ["@type"]                 = "Type", -- Type
+    ["@type.definition"]      = "Typedef", -- Typedef
+    ["@storageclass"]         = "StorageClass", -- StorageClass
+    ["@structure"]            = "Structure", -- Structure
+    ["@namespace"]            = "Identifier", -- Identifier
+    ["@include"]              = "Include", -- Include
+    ["@preproc"]              = "PreProc", -- PreProc
+    ["@debug"]                = "Debug", -- Debug
     ["@tag.attribute"]        = "Identifier", -- Tag
     ["@tag.delimiter"]        = { fg=c.syntax.punctuation }, -- Tag
 
