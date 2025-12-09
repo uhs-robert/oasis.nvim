@@ -151,11 +151,11 @@ local function generate_manifest(name, palette)
 				spaces_bg = palette.bg.mantle,
 				spaces_bg_active = palette.theme.primary,
 				spaces_button = palette.bg.core,
-				tree_view_bg = palette.bg.crust,
+				tree_view_bg = palette.bg.surface,
 				bg_color = palette.bg.core,
 				button_primary_bg = palette.theme.primary,
 				button_text = palette.bg.core,
-				tree_pane_bg = palette.bg.crust,
+				tree_pane_bg = palette.bg.surface,
 				tree_card_bg = palette.bg.mantle,
 				layout_bg_0 = palette.bg.core,
 				layout_bg_1 = palette.bg.core,
@@ -293,18 +293,12 @@ local function main()
 		end
 		table.sort(palette_list)
 
-		table.insert(
-			readme_lines,
-			"- Dark variants live in `themes/dark/` as `oasis_<palette>_dark.xpi`."
-		)
+		table.insert(readme_lines, "- Dark variants live in `themes/dark/` as `oasis_<palette>_dark.xpi`.")
 		table.insert(
 			readme_lines,
 			"- Light variants are grouped under `themes/light/<1-5>/` as `oasis_<palette>_light_<intensity>.xpi`."
 		)
-		table.insert(
-			readme_lines,
-			"- Palettes: " .. table.concat(palette_list, ", ")
-		)
+		table.insert(readme_lines, "- Palettes: " .. table.concat(palette_list, ", "))
 		table.insert(readme_lines, "")
 
 		table.insert(readme_lines, "## Uninstallation")
