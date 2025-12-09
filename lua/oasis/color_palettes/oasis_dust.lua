@@ -2,7 +2,7 @@
 
 local p = require("oasis.palette")
 local config = require("oasis.config")
-local color_utils = require("oasis.tools.color_utils")
+local color_Utils = require("oasis.tools.color_utils")
 local light_gen = require("oasis.tools.light_theme_generator")
 local opts = config.get()
 local seed_dark = require("oasis.color_palettes.oasis_canyon").dark
@@ -34,9 +34,9 @@ local c = {
 
 	-- Diff
 	diff = {
-		add = color_utils.darken_to_contrast(seed_dark.diff.add, light_bg.core, 7.0),
-		change = color_utils.darken_to_contrast(seed_dark.diff.change, light_bg.core, 7.0),
-		delete = color_utils.darken_to_contrast(seed_dark.diff.delete, light_bg.core, 7.0),
+		add = color_Utils.darken_to_contrast(seed_dark.diff.add, light_bg.core, 7.0),
+		change = color_Utils.darken_to_contrast(seed_dark.diff.change, light_bg.core, 7.0),
+		delete = color_Utils.darken_to_contrast(seed_dark.diff.delete, light_bg.core, 7.0),
 	},
 
 	-- UI

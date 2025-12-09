@@ -33,7 +33,7 @@ local function create_oasis_command(oasis_module, utils)
 		complete = function()
 			local bg = vim.o.background
 			return list_palettes(function(name)
-				local mode = utils.get_palette_mode(name)
+				local mode = Utils.get_palette_mode(name)
 				return mode == "dual" or mode == bg
 			end)
 		end,

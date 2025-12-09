@@ -33,12 +33,12 @@ function Config.get_themes()
 	-- Add project root to package path for utils
 	package.path = Config.PROJECT_ROOT .. "/lua/?.lua;" .. Config.PROJECT_ROOT .. "/lua/?/init.lua;" .. package.path
 
-	local utils = require("oasis.utils")
-	local all_palettes = utils.get_palette_names() -- excludes deprecated
+	local Utils = require("oasis.utils")
+	local all_palettes = Utils.get_palette_names() -- excludes deprecated
 	local themes = {}
 
 	for _, name in ipairs(all_palettes) do
-		local mode = utils.get_palette_mode("oasis_" .. name)
+		local mode = Utils.get_palette_mode("oasis_" .. name)
 		if mode == "dual" then
 			table.insert(themes, name)
 		end

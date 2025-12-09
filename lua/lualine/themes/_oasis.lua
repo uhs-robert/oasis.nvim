@@ -8,10 +8,10 @@ function M.get(style)
 	local palette_name = (style and ("oasis_" .. style)) or "oasis_lagoon"
 
 	-- Load and extract the specified palette (handles both legacy and dual-mode)
-	local utils = require("oasis.utils")
-	local c, err = utils.load_and_extract_palette("oasis.color_palettes." .. palette_name)
+	local Utils = require("oasis.utils")
+	local c, err = Utils.load_and_extract_palette("oasis.color_palettes." .. palette_name)
 	if not c then
-		c, err = utils.load_and_extract_palette("oasis.color_palettes.oasis_lagoon")
+		c, err = Utils.load_and_extract_palette("oasis.color_palettes.oasis_lagoon")
 	end
 
 	local hl = {}

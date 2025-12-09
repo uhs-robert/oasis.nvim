@@ -4,11 +4,11 @@
 
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
-local utils = require("oasis.utils")
+local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
 
 local function generate_slack_theme(name, palette)
-	local display_name = utils.format_display_name(name)
+	local display_name = Utils.format_display_name(name)
 
 	-- Map Oasis colors to Slack theme components
 	-- Format: Column BG, Menu BG Hover, Active Item, Active Item Text, Hover Item,
@@ -33,7 +33,7 @@ end
 local function main()
 	print("\n=== Oasis Slack Theme Generator ===\n")
 
-	local palette_names = utils.get_palette_names()
+	local palette_names = Utils.get_palette_names()
 
 	if #palette_names == 0 then
 		print("Error: No palette files found in lua/oasis/color_palettes/")
@@ -62,7 +62,7 @@ local function main()
 	-- Organize themes by base palette name
 	local palettes = {} -- { palette_name = { dark = theme, light = {theme1, theme2...} } }
 
-	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
+	local success_count, error_count = Utils.for_each_palette_variant(function(name, palette, mode, intensity)
 		-- Build variant name with mode and optional intensity suffix
 		local variant_name
 		if mode then
@@ -101,7 +101,7 @@ local function main()
 	table.insert(readme_lines, "## Table of Contents")
 	table.insert(readme_lines, "")
 	for _, palette_name in ipairs(palette_names) do
-		local display = utils.capitalize(palette_name)
+		local display = Utils.capitalize(palette_name)
 		table.insert(readme_lines, string.format("- [%s](#%s)", display, palette_name:lower()))
 	end
 	table.insert(readme_lines, "")
@@ -111,7 +111,7 @@ local function main()
 	-- Generate themes grouped by palette
 	for _, palette_name in ipairs(palette_names) do
 		local group = palettes[palette_name]
-		local display = utils.capitalize(palette_name)
+		local display = Utils.capitalize(palette_name)
 
 		-- Palette header
 		table.insert(readme_lines, string.format("## %s", display))

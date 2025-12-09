@@ -4,7 +4,7 @@
 
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
-local utils = require("oasis.utils")
+local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
 
 -- Extract Yazi theme colors from Oasis palette
@@ -65,7 +65,7 @@ end
 
 -- Generate merged Yazi theme TOML combining theme and icons templates
 local function generate_merged_theme(name, palette, output_path)
-	local display_name = utils.format_display_name(name)
+	local display_name = Utils.format_display_name(name)
 	local theme_template = File.read("extras/yazi/theme.toml.template")
 	local icons_template = File.read("extras/yazi/icons.toml.template")
 
@@ -114,7 +114,7 @@ end
 local function main()
 	print("\n=== Oasis Yazi Theme Generator ===\n")
 
-	local palette_names = utils.get_palette_names()
+	local palette_names = Utils.get_palette_names()
 
 	if #palette_names == 0 then
 		print("Error: No palette files found in lua/oasis/color_palettes/")
@@ -123,7 +123,7 @@ local function main()
 
 	print(string.format("Found %d palette(s)\n", #palette_names))
 
-	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
+	local success_count, error_count = Utils.for_each_palette_variant(function(name, palette, mode, intensity)
 		-- Build variant name with mode and optional intensity suffix
 		local variant_name
 		if mode then
@@ -139,7 +139,7 @@ local function main()
 		end
 
 		-- Build directory structure: themes/<mode>/[intensity/]flavors/oasis-<variant>.yazi/
-		local _, _, subdir = utils.build_variant_path("extras/yazi", "", name, mode, intensity)
+		local _, _, subdir = Utils.build_variant_path("extras/yazi", "", name, mode, intensity)
 		local flavor_dir =
 			string.format("extras/yazi/themes/%s/flavors/oasis-%s.yazi", subdir, variant_name:gsub("_", "-"))
 		local output_path = string.format("%s/flavor.toml", flavor_dir)

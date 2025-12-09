@@ -4,22 +4,22 @@
 
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
-local utils = require("oasis.utils")
+local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
-local color_utils = require("oasis.tools.color_utils")
+local color_Utils = require("oasis.tools.color_utils")
 
 local function generate_konsole_theme(name, palette)
-	local display_name = utils.format_display_name(name)
+	local display_name = Utils.format_display_name(name)
 
 	local lines = {
 		"[Background]",
-		string.format("Color=%s", color_utils.hex_to_rgb(palette.bg.core)),
+		string.format("Color=%s", color_Utils.hex_to_rgb(palette.bg.core)),
 		"",
 		"[BackgroundFaint]",
-		string.format("Color=%s", color_utils.hex_to_rgb(palette.bg.shadow)),
+		string.format("Color=%s", color_Utils.hex_to_rgb(palette.bg.shadow)),
 		"",
 		"[BackgroundIntense]",
-		string.format("Color=%s", color_utils.hex_to_rgb(palette.bg.surface)),
+		string.format("Color=%s", color_Utils.hex_to_rgb(palette.bg.surface)),
 		"",
 	}
 
@@ -29,30 +29,30 @@ local function generate_konsole_theme(name, palette)
 		local intense_color = palette.terminal["color" .. (i + 8)]
 
 		lines[#lines + 1] = string.format("[Color%d]", i)
-		lines[#lines + 1] = string.format("Color=%s", color_utils.hex_to_rgb(normal_color))
+		lines[#lines + 1] = string.format("Color=%s", color_Utils.hex_to_rgb(normal_color))
 		lines[#lines + 1] = ""
 
 		lines[#lines + 1] = string.format("[Color%dFaint]", i)
 		lines[#lines + 1] =
-			string.format("Color=%s", color_utils.hex_to_rgb(color_utils.adjust_brightness(normal_color, 0.7))) -- TODO: Is this the right number to adjust brightness by?
+			string.format("Color=%s", color_Utils.hex_to_rgb(color_Utils.adjust_brightness(normal_color, 0.7))) -- TODO: Is this the right number to adjust brightness by?
 		lines[#lines + 1] = ""
 
 		lines[#lines + 1] = string.format("[Color%dIntense]", i)
-		lines[#lines + 1] = string.format("Color=%s", color_utils.hex_to_rgb(intense_color))
+		lines[#lines + 1] = string.format("Color=%s", color_Utils.hex_to_rgb(intense_color))
 		lines[#lines + 1] = ""
 	end
 
 	-- Foreground colors
 	lines[#lines + 1] = "[Foreground]"
-	lines[#lines + 1] = string.format("Color=%s", color_utils.hex_to_rgb(palette.fg.core))
+	lines[#lines + 1] = string.format("Color=%s", color_Utils.hex_to_rgb(palette.fg.core))
 	lines[#lines + 1] = ""
 
 	lines[#lines + 1] = "[ForegroundFaint]"
-	lines[#lines + 1] = string.format("Color=%s", color_utils.hex_to_rgb(palette.fg.muted))
+	lines[#lines + 1] = string.format("Color=%s", color_Utils.hex_to_rgb(palette.fg.muted))
 	lines[#lines + 1] = ""
 
 	lines[#lines + 1] = "[ForegroundIntense]"
-	lines[#lines + 1] = string.format("Color=%s", color_utils.hex_to_rgb(palette.fg.strong))
+	lines[#lines + 1] = string.format("Color=%s", color_Utils.hex_to_rgb(palette.fg.strong))
 	lines[#lines + 1] = ""
 
 	-- General metadata section
@@ -69,7 +69,7 @@ end
 local function main()
 	print("\n=== Oasis Konsole Theme Generator ===\n")
 
-	local palette_names = utils.get_palette_names()
+	local palette_names = Utils.get_palette_names()
 
 	if #palette_names == 0 then
 		print("Error: No palette files found in lua/oasis/color_palettes/")
@@ -78,9 +78,9 @@ local function main()
 
 	print(string.format("Found %d palette(s)\n", #palette_names))
 
-	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
+	local success_count, error_count = Utils.for_each_palette_variant(function(name, palette, mode, intensity)
 		-- Build output path using shared utility
-		local output_path, variant_name = utils.build_variant_path("extras/konsole", "colorscheme", name, mode, intensity)
+		local output_path, variant_name = Utils.build_variant_path("extras/konsole", "colorscheme", name, mode, intensity)
 
 		-- Generate and write theme
 		local theme = generate_konsole_theme(variant_name, palette)

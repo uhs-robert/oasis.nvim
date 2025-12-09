@@ -1,4 +1,4 @@
--- lua/oasis/utils.lua
+-- lua/oasis/Utils.lua
 -- Common utilities for Oasis generator scripts
 
 local Directory = require("oasis.lib.directory")

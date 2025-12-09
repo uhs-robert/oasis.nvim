@@ -4,7 +4,7 @@
 
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
-local utils = require("oasis.utils")
+local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
 
 -- Convert a key into kebab-case for CSS custom properties
@@ -63,7 +63,7 @@ local function build_selectors(variant_name)
 end
 
 local function generate_css_theme(variant_name, palette, mode, intensity, output_path)
-	local display_name = utils.format_display_name(variant_name)
+	local display_name = Utils.format_display_name(variant_name)
 	local selectors = build_selectors(variant_name)
 
 	local lines = {}
@@ -94,7 +94,7 @@ end
 local function main()
 	print("\n=== Oasis CSS Theme Generator ===\n")
 
-	local palette_names = utils.get_palette_names()
+	local palette_names = Utils.get_palette_names()
 
 	if #palette_names == 0 then
 		print("Error: No palette files found in lua/oasis/color_palettes/")
@@ -103,8 +103,8 @@ local function main()
 
 	print(string.format("Found %d palette(s)\n", #palette_names))
 
-	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
-		local output_path, variant_name = utils.build_variant_path("extras/css", "css", name, mode, intensity)
+	local success_count, error_count = Utils.for_each_palette_variant(function(name, palette, mode, intensity)
+		local output_path, variant_name = Utils.build_variant_path("extras/css", "css", name, mode, intensity)
 
 		local css = generate_css_theme(variant_name, palette, mode, intensity, output_path)
 		File.write(output_path, css)
