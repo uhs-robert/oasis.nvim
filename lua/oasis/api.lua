@@ -1,7 +1,7 @@
 -- lua/oasis/api.lua
 -- User command definitions for Oasis colorscheme
 
-local M = {}
+local Api = {}
 
 --- Return sorted palette names on runtimepath, optionally filtered
 ---@param filter? fun(name: string): boolean
@@ -45,11 +45,11 @@ end
 ---@return nil
 local function create_wcag_command()
 	vim.api.nvim_create_user_command("OasisWCAG", function(opts)
-		local wcag = require("oasis.tools.wcag_checker")
+		local Wcag = require("oasis.tools.wcag_checker")
 		if opts.args ~= "" then
-			wcag.check_palette(opts.args)
+			Wcag.check_palette(opts.args)
 		else
-			wcag.check_all()
+			Wcag.check_all()
 		end
 	end, {
 		nargs = "?",
@@ -96,14 +96,14 @@ end
 --- Setup all user commands
 ---@param oasis_module table The oasis module with apply, toggle_transparency, etc. functions
 ---@return nil
-function M.setup(oasis_module)
-	local utils = require("oasis.utils")
+function Api.setup(oasis_module)
+	local Utils = require("oasis.utils")
 
-	create_oasis_command(oasis_module, utils)
+	create_oasis_command(oasis_module, Utils)
 	create_wcag_command()
 	create_transparency_command(oasis_module)
 	create_themed_syntax_command(oasis_module)
 	create_intensity_command(oasis_module)
 end
 
-return M
+return Api
