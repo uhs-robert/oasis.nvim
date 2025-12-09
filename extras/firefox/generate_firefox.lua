@@ -4,9 +4,9 @@
 
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
-local utils = require("oasis.utils")
+local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
-local color_utils = require("oasis.tools.color_utils")
+local color_Utils = require("oasis.tools.color_utils")
 
 -- Convert hex color to RGB object for Firefox Color
 local function hex_to_rgb(hex)
@@ -24,7 +24,7 @@ end
 
 -- Generate Firefox Color theme object
 local function generate_firefox_color_theme(name, palette)
-	local display_name = utils.format_display_name(name)
+	local display_name = Utils.format_display_name(name)
 
 	return {
 		colors = {
@@ -170,7 +170,7 @@ local function generate_readme(palette_data)
 	table.insert(lines, "## Table of Contents")
 	table.insert(lines, "")
 	for _, palette_name in ipairs(palette_names) do
-		local display = utils.capitalize(palette_name)
+		local display = Utils.capitalize(palette_name)
 		table.insert(lines, string.format("- [%s](#%s)", display, palette_name:lower()))
 	end
 	table.insert(lines, "")
@@ -180,7 +180,7 @@ local function generate_readme(palette_data)
 	-- Generate themes grouped by palette
 	for _, palette_name in ipairs(palette_names) do
 		local group = palettes[palette_name]
-		local display = utils.capitalize(palette_name)
+		local display = Utils.capitalize(palette_name)
 
 		-- Palette header
 		table.insert(lines, string.format("## %s", display))
@@ -188,7 +188,7 @@ local function generate_readme(palette_data)
 
 		-- Dark variant first
 		if group.dark then
-			local display_name = utils.format_display_name(group.dark.name)
+			local display_name = Utils.format_display_name(group.dark.name)
 			local link = string.format("- [**%s**](https://color.firefox.com/?theme=%s)", display_name, group.dark.data.url)
 			table.insert(lines, link)
 		end
@@ -205,7 +205,7 @@ local function generate_readme(palette_data)
 
 		-- Light variants underneath
 		for _, theme in ipairs(group.light) do
-			local display_name = utils.format_display_name(theme.name)
+			local display_name = Utils.format_display_name(theme.name)
 			local link = string.format("- [**%s**](https://color.firefox.com/?theme=%s)", display_name, theme.data.url)
 			table.insert(lines, link)
 		end
@@ -249,7 +249,7 @@ end
 local function main()
 	print("\n=== Oasis Firefox Color Theme Generator ===\n")
 
-	local palette_names = utils.get_palette_names()
+	local palette_names = Utils.get_palette_names()
 
 	if #palette_names == 0 then
 		print("Error: No palette files found in lua/oasis/color_palettes/")
@@ -260,7 +260,7 @@ local function main()
 
 	local palette_data = {}
 
-	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
+	local success_count, error_count = Utils.for_each_palette_variant(function(name, palette, mode, intensity)
 		-- Build variant name with mode and optional intensity suffix
 		local variant_name
 		if mode then
@@ -276,7 +276,7 @@ local function main()
 		local theme = generate_firefox_color_theme(variant_name, palette)
 
 		-- Convert to JSON
-		local json = color_utils.encode_json(theme)
+		local json = color_Utils.encode_json(theme)
 
 		-- Compress for Firefox Color using json-url LZMA
 		local compressed = compress_for_firefox(json)

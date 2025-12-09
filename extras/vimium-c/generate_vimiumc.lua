@@ -4,11 +4,11 @@
 
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
-local utils = require("oasis.utils")
+local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
 
 local function get_display_name(name)
-	return utils.capitalize(name)
+	return Utils.capitalize(name)
 end
 
 local function extract_vimiumc_colors(palette)
@@ -30,7 +30,7 @@ local function extract_vimiumc_colors(palette)
 end
 
 local function list_palettes()
-	local palette_names = utils.get_palette_names()
+	local palette_names = Utils.get_palette_names()
 	assert(#palette_names > 0, "No palettes found")
 
 	local light_themes = {}
@@ -44,7 +44,7 @@ local function list_palettes()
 		end
 
 		-- Check if dual-mode palette
-		if utils.is_dual_mode_palette(raw_palette) then
+		if Utils.is_dual_mode_palette(raw_palette) then
 			-- Add both modes to respective lists
 			local dark_display = get_display_name(name) .. " (Dark)"
 			local light_display = get_display_name(name) .. " (Light)"
@@ -245,12 +245,12 @@ Examples:
 		if base_name and (mode == "dark" or mode == "light") then
 			-- Load raw palette and extract mode
 			local ok, raw_palette = pcall(require, "oasis.color_palettes.oasis_" .. base_name)
-			if ok and utils.is_dual_mode_palette(raw_palette) then
+			if ok and Utils.is_dual_mode_palette(raw_palette) then
 				return raw_palette[mode]
 			end
 		end
 		-- Legacy palette or no suffix - use standard loader
-		return utils.load_palette(name)
+		return Utils.load_palette(name)
 	end
 
 	local day_palette = load_palette_with_mode(day_name)

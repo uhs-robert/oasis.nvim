@@ -16,10 +16,10 @@ function Tabby.get_theme()
 	end
 
 	-- Load and extract the current palette (handles both legacy and dual-mode)
-	local utils = require("oasis.utils")
-	local c, err = utils.load_and_extract_palette("oasis.color_palettes." .. current_palette)
+	local Utils = require("oasis.utils")
+	local c, err = Utils.load_and_extract_palette("oasis.color_palettes." .. current_palette)
 	if not c then
-		c, err = utils.load_and_extract_palette("oasis.color_palettes.oasis_lagoon")
+		c, err = Utils.load_and_extract_palette("oasis.color_palettes.oasis_lagoon")
 	end
 
 	return {

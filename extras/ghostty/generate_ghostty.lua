@@ -4,12 +4,12 @@
 
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
-local utils = require("oasis.utils")
+local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
 
 local function generate_ghostty_theme(name, palette)
 	local lines = {
-		"# Oasis " .. utils.capitalize(name),
+		"# Oasis " .. Utils.capitalize(name),
 		"# Author: uhs-robert",
 		"",
 	}
@@ -44,7 +44,7 @@ end
 local function main()
 	print("\n=== Oasis Ghostty Theme Generator ===\n")
 
-	local palette_names = utils.get_palette_names()
+	local palette_names = Utils.get_palette_names()
 
 	if #palette_names == 0 then
 		print("Error: No palette files found in lua/oasis/color_palettes/")
@@ -53,9 +53,9 @@ local function main()
 
 	print(string.format("Found %d palette(s)\n", #palette_names))
 
-	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
+	local success_count, error_count = Utils.for_each_palette_variant(function(name, palette, mode, intensity)
 		-- Build output path using shared utility (ghostty has no extension)
-		local output_path, variant_name = utils.build_variant_path("extras/ghostty", "", name, mode, intensity)
+		local output_path, variant_name = Utils.build_variant_path("extras/ghostty", "", name, mode, intensity)
 		output_path = output_path:gsub("%.$", "") -- Remove trailing dot from empty extension
 
 		-- Generate and write theme

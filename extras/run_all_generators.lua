@@ -5,7 +5,7 @@
 
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
-local utils = require("oasis.utils")
+local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
 local System = require("oasis.lib.system")
 
@@ -25,7 +25,7 @@ local function find_generators()
 			local dir = path:match("extras/([^/]+)/")
 			if dir then
 				table.insert(generators, {
-					name = utils.capitalize(dir),
+					name = Utils.capitalize(dir),
 					script = path,
 				})
 			end

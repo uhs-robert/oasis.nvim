@@ -4,7 +4,7 @@
 
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
-local utils = require("oasis.utils")
+local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
 
 local terminal_semantic_keys = {
@@ -106,7 +106,7 @@ end
 local function main()
 	print("\n=== Oasis JSON Theme Generator ===\n")
 
-	local palette_names = utils.get_palette_names()
+	local palette_names = Utils.get_palette_names()
 
 	if #palette_names == 0 then
 		print("Error: No palette files found in lua/oasis/color_palettes/")
@@ -115,9 +115,9 @@ local function main()
 
 	print(string.format("Found %d palette(s)\n", #palette_names))
 
-	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
+	local success_count, error_count = Utils.for_each_palette_variant(function(name, palette, mode, intensity)
 		local output_path, variant_name, display_name =
-			utils.build_display_variant_path("extras/json-theme", "json", name, mode, intensity)
+			Utils.build_display_variant_path("extras/json-theme", "json", name, mode, intensity)
 		local content = generate_json_palette(variant_name, palette)
 		File.write(output_path, content)
 		print(string.format("✓ Generated: %s", output_path))

@@ -4,61 +4,61 @@
 
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
-local utils = require("oasis.utils")
+local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
-local color_utils = require("oasis.tools.color_utils")
+local color_Utils = require("oasis.tools.color_utils")
 
 local function generate_zed_theme(name, palette)
-  local display_name = utils.format_display_name(name)
+  local display_name = Utils.format_display_name(name)
   local is_light = palette.light_mode or false
 
   -- Calculate adjusted colors for UI states
-  local hover_bg = is_light and color_utils.adjust_brightness(palette.bg.mantle, 0.95)
-      or color_utils.adjust_brightness(palette.bg.surface, 1.1)
-  local active_bg = is_light and color_utils.adjust_brightness(palette.bg.mantle, 0.9)
-      or color_utils.adjust_brightness(palette.bg.surface, 1.2)
+  local hover_bg = is_light and color_Utils.adjust_brightness(palette.bg.mantle, 0.95)
+      or color_Utils.adjust_brightness(palette.bg.surface, 1.1)
+  local active_bg = is_light and color_Utils.adjust_brightness(palette.bg.mantle, 0.9)
+      or color_Utils.adjust_brightness(palette.bg.surface, 1.2)
 
   -- Generate player colors from theme accents
   local player_colors = {
     {
       cursor = palette.theme.primary,
       background = palette.theme.primary,
-      selection = color_utils.with_alpha(palette.theme.primary, "3d"),
+      selection = color_Utils.with_alpha(palette.theme.primary, "3d"),
     },
     {
       cursor = palette.theme.secondary,
       background = palette.theme.secondary,
-      selection = color_utils.with_alpha(palette.theme.secondary, "3d"),
+      selection = color_Utils.with_alpha(palette.theme.secondary, "3d"),
     },
     {
       cursor = palette.theme.accent,
       background = palette.theme.accent,
-      selection = color_utils.with_alpha(palette.theme.accent, "3d"),
+      selection = color_Utils.with_alpha(palette.theme.accent, "3d"),
     },
     {
       cursor = palette.syntax.func,
       background = palette.syntax.func,
-      selection = color_utils.with_alpha(palette.syntax.func, "3d"),
+      selection = color_Utils.with_alpha(palette.syntax.func, "3d"),
     },
     {
       cursor = palette.syntax.string,
       background = palette.syntax.string,
-      selection = color_utils.with_alpha(palette.syntax.string, "3d"),
+      selection = color_Utils.with_alpha(palette.syntax.string, "3d"),
     },
     {
       cursor = palette.syntax.type,
       background = palette.syntax.type,
-      selection = color_utils.with_alpha(palette.syntax.type, "3d"),
+      selection = color_Utils.with_alpha(palette.syntax.type, "3d"),
     },
     {
       cursor = palette.syntax.constant,
       background = palette.syntax.constant,
-      selection = color_utils.with_alpha(palette.syntax.constant, "3d"),
+      selection = color_Utils.with_alpha(palette.syntax.constant, "3d"),
     },
     {
       cursor = palette.syntax.conditional,
       background = palette.syntax.conditional,
-      selection = color_utils.with_alpha(palette.syntax.conditional, "3d"),
+      selection = color_Utils.with_alpha(palette.syntax.conditional, "3d"),
     },
   }
 
@@ -93,7 +93,7 @@ local function generate_zed_theme(name, palette)
           ["element.disabled"] = palette.bg.shadow,
 
           -- Drop target
-          ["drop_target.background"] = color_utils.with_alpha(palette.theme.primary, "40"),
+          ["drop_target.background"] = color_Utils.with_alpha(palette.theme.primary, "40"),
 
           -- Ghost elements
           ["ghost_element.background"] = "#00000000",
@@ -132,7 +132,7 @@ local function generate_zed_theme(name, palette)
           ["tab.active_background"] = palette.bg.core,
 
           -- Search
-          ["search.match_background"] = color_utils.with_alpha(palette.ui.search.bg, "66"),
+          ["search.match_background"] = color_Utils.with_alpha(palette.ui.search.bg, "66"),
 
           -- Panel
           ["panel.background"] = palette.bg.mantle,
@@ -142,7 +142,7 @@ local function generate_zed_theme(name, palette)
           ["pane.focused_border"] = nil,
 
           -- Scrollbar
-          ["scrollbar.thumb.background"] = color_utils.with_alpha(palette.fg.dim, "4c"),
+          ["scrollbar.thumb.background"] = color_Utils.with_alpha(palette.fg.dim, "4c"),
           ["scrollbar.thumb.hover_background"] = palette.bg.surface,
           ["scrollbar.thumb.border"] = palette.bg.surface,
           ["scrollbar.track.background"] = "#00000000",
@@ -153,15 +153,15 @@ local function generate_zed_theme(name, palette)
           ["editor.background"] = palette.bg.core,
           ["editor.gutter.background"] = palette.bg.core,
           ["editor.subheader.background"] = palette.bg.mantle,
-          ["editor.active_line.background"] = color_utils.with_alpha(palette.ui.cursorLine, "bf"),
+          ["editor.active_line.background"] = color_Utils.with_alpha(palette.ui.cursorLine, "bf"),
           ["editor.highlighted_line.background"] = palette.ui.cursorLine,
           ["editor.line_number"] = palette.fg.muted,
           ["editor.active_line_number"] = palette.ui.lineNumber,
           ["editor.invisible"] = palette.ui.nontext or palette.fg.dim,
-          ["editor.wrap_guide"] = color_utils.with_alpha(palette.fg.dim, "0d"),
-          ["editor.active_wrap_guide"] = color_utils.with_alpha(palette.fg.dim, "1a"),
-          ["editor.document_highlight.read_background"] = color_utils.with_alpha(palette.theme.primary, "1a"),
-          ["editor.document_highlight.write_background"] = color_utils.with_alpha(palette.fg.muted, "33"),
+          ["editor.wrap_guide"] = color_Utils.with_alpha(palette.fg.dim, "0d"),
+          ["editor.active_wrap_guide"] = color_Utils.with_alpha(palette.fg.dim, "1a"),
+          ["editor.document_highlight.read_background"] = color_Utils.with_alpha(palette.theme.primary, "1a"),
+          ["editor.document_highlight.write_background"] = color_Utils.with_alpha(palette.fg.muted, "33"),
 
           -- Terminal
           ["terminal.background"] = palette.bg.core,
@@ -173,25 +173,25 @@ local function generate_zed_theme(name, palette)
           ["terminal.ansi.dim_black"] = palette.fg.dim,
           ["terminal.ansi.red"] = palette.terminal.red,
           ["terminal.ansi.bright_red"] = palette.terminal.bright_red,
-          ["terminal.ansi.dim_red"] = color_utils.adjust_brightness(palette.terminal.red, 0.7),
+          ["terminal.ansi.dim_red"] = color_Utils.adjust_brightness(palette.terminal.red, 0.7),
           ["terminal.ansi.green"] = palette.terminal.green,
           ["terminal.ansi.bright_green"] = palette.terminal.bright_green,
-          ["terminal.ansi.dim_green"] = color_utils.adjust_brightness(palette.terminal.green, 0.7),
+          ["terminal.ansi.dim_green"] = color_Utils.adjust_brightness(palette.terminal.green, 0.7),
           ["terminal.ansi.yellow"] = palette.terminal.yellow,
           ["terminal.ansi.bright_yellow"] = palette.terminal.bright_yellow,
-          ["terminal.ansi.dim_yellow"] = color_utils.adjust_brightness(palette.terminal.yellow, 0.7),
+          ["terminal.ansi.dim_yellow"] = color_Utils.adjust_brightness(palette.terminal.yellow, 0.7),
           ["terminal.ansi.blue"] = palette.terminal.blue,
           ["terminal.ansi.bright_blue"] = palette.terminal.bright_blue,
-          ["terminal.ansi.dim_blue"] = color_utils.adjust_brightness(palette.terminal.blue, 0.7),
+          ["terminal.ansi.dim_blue"] = color_Utils.adjust_brightness(palette.terminal.blue, 0.7),
           ["terminal.ansi.magenta"] = palette.terminal.magenta,
           ["terminal.ansi.bright_magenta"] = palette.terminal.bright_magenta,
-          ["terminal.ansi.dim_magenta"] = color_utils.adjust_brightness(palette.terminal.magenta, 0.7),
+          ["terminal.ansi.dim_magenta"] = color_Utils.adjust_brightness(palette.terminal.magenta, 0.7),
           ["terminal.ansi.cyan"] = palette.terminal.cyan,
           ["terminal.ansi.bright_cyan"] = palette.terminal.bright_cyan,
-          ["terminal.ansi.dim_cyan"] = color_utils.adjust_brightness(palette.terminal.cyan, 0.7),
+          ["terminal.ansi.dim_cyan"] = color_Utils.adjust_brightness(palette.terminal.cyan, 0.7),
           ["terminal.ansi.white"] = palette.terminal.white,
           ["terminal.ansi.bright_white"] = palette.terminal.bright_white,
-          ["terminal.ansi.dim_white"] = color_utils.adjust_brightness(palette.terminal.white, 0.7),
+          ["terminal.ansi.dim_white"] = color_Utils.adjust_brightness(palette.terminal.white, 0.7),
 
           -- Link
           ["link_text.hover"] = palette.theme.primary,
@@ -203,72 +203,72 @@ local function generate_zed_theme(name, palette)
 
           -- Conflict
           conflict = palette.ui.diag.error.fg,
-          ["conflict.background"] = color_utils.with_alpha(palette.ui.diag.error.bg, "1a"),
+          ["conflict.background"] = color_Utils.with_alpha(palette.ui.diag.error.bg, "1a"),
           ["conflict.border"] = palette.ui.diag.error.fg,
 
           -- Created
           created = palette.terminal.green,
-          ["created.background"] = color_utils.with_alpha(palette.terminal.green, "1a"),
+          ["created.background"] = color_Utils.with_alpha(palette.terminal.green, "1a"),
           ["created.border"] = palette.terminal.green,
 
           -- Deleted
           deleted = palette.terminal.red,
-          ["deleted.background"] = color_utils.with_alpha(palette.terminal.red, "1a"),
+          ["deleted.background"] = color_Utils.with_alpha(palette.terminal.red, "1a"),
           ["deleted.border"] = palette.terminal.red,
 
           -- Error
           error = palette.ui.diag.error.fg,
-          ["error.background"] = color_utils.with_alpha(palette.ui.diag.error.bg, "1a"),
+          ["error.background"] = color_Utils.with_alpha(palette.ui.diag.error.bg, "1a"),
           ["error.border"] = palette.ui.diag.error.fg,
 
           -- Hidden
           hidden = palette.fg.dim,
-          ["hidden.background"] = color_utils.with_alpha(palette.fg.dim, "1a"),
+          ["hidden.background"] = color_Utils.with_alpha(palette.fg.dim, "1a"),
           ["hidden.border"] = palette.fg.dim,
 
           -- Hint
           hint = palette.ui.diag.hint.fg,
-          ["hint.background"] = color_utils.with_alpha(palette.ui.diag.hint.bg, "1a"),
+          ["hint.background"] = color_Utils.with_alpha(palette.ui.diag.hint.bg, "1a"),
           ["hint.border"] = palette.ui.diag.hint.fg,
 
           -- Ignored
           ignored = palette.fg.dim,
-          ["ignored.background"] = color_utils.with_alpha(palette.fg.dim, "1a"),
+          ["ignored.background"] = color_Utils.with_alpha(palette.fg.dim, "1a"),
           ["ignored.border"] = palette.fg.muted,
 
           -- Info
           info = palette.ui.diag.info.fg,
-          ["info.background"] = color_utils.with_alpha(palette.ui.diag.info.bg, "1a"),
+          ["info.background"] = color_Utils.with_alpha(palette.ui.diag.info.bg, "1a"),
           ["info.border"] = palette.ui.diag.info.fg,
 
           -- Modified
           modified = palette.terminal.yellow,
-          ["modified.background"] = color_utils.with_alpha(palette.terminal.yellow, "1a"),
+          ["modified.background"] = color_Utils.with_alpha(palette.terminal.yellow, "1a"),
           ["modified.border"] = palette.terminal.yellow,
 
           -- Predictive
           predictive = palette.fg.dim,
-          ["predictive.background"] = color_utils.with_alpha(palette.bg.shadow, "1a"),
+          ["predictive.background"] = color_Utils.with_alpha(palette.bg.shadow, "1a"),
           ["predictive.border"] = palette.fg.dim,
 
           -- Renamed
           renamed = palette.ui.diag.info.fg,
-          ["renamed.background"] = color_utils.with_alpha(palette.ui.diag.info.bg, "1a"),
+          ["renamed.background"] = color_Utils.with_alpha(palette.ui.diag.info.bg, "1a"),
           ["renamed.border"] = palette.ui.diag.info.fg,
 
           -- Success
           success = palette.ui.diag.ok.fg,
-          ["success.background"] = color_utils.with_alpha(palette.ui.diag.ok.bg, "1a"),
+          ["success.background"] = color_Utils.with_alpha(palette.ui.diag.ok.bg, "1a"),
           ["success.border"] = palette.ui.diag.ok.fg,
 
           -- Unreachable
           unreachable = palette.fg.muted,
-          ["unreachable.background"] = color_utils.with_alpha(palette.fg.muted, "1a"),
+          ["unreachable.background"] = color_Utils.with_alpha(palette.fg.muted, "1a"),
           ["unreachable.border"] = palette.fg.muted,
 
           -- Warning
           warning = palette.ui.diag.warn.fg,
-          ["warning.background"] = color_utils.with_alpha(palette.ui.diag.warn.bg, "1a"),
+          ["warning.background"] = color_Utils.with_alpha(palette.ui.diag.warn.bg, "1a"),
           ["warning.border"] = palette.ui.diag.warn.fg,
 
           -- Players (multiplayer cursors)
@@ -536,7 +536,7 @@ end
 local function main()
   print("\n=== Oasis Zed Theme Generator ===\n")
 
-  local palette_names = utils.get_palette_names()
+  local palette_names = Utils.get_palette_names()
 
   if #palette_names == 0 then
     print("Error: No palette files found in lua/oasis/color_palettes/")
@@ -545,13 +545,13 @@ local function main()
 
   print(string.format("Found %d palette(s)\n", #palette_names))
 
-  local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
+  local success_count, error_count = Utils.for_each_palette_variant(function(name, palette, mode, intensity)
     -- Build output path using shared utility
-    local output_path, variant_name = utils.build_variant_path("extras/zed", "json", name, mode, intensity)
+    local output_path, variant_name = Utils.build_variant_path("extras/zed", "json", name, mode, intensity)
 
     -- Generate and write theme
     local theme = generate_zed_theme(variant_name, palette)
-    local json = color_utils.encode_json(theme, 0)
+    local json = color_Utils.encode_json(theme, 0)
     File.write(output_path, json)
     print(string.format("✓ Generated: %s", output_path))
   end)

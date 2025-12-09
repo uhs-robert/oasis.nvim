@@ -4,9 +4,9 @@
 
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
-local utils = require("oasis.utils")
+local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
-local color_utils = require("oasis.tools.color_utils")
+local color_Utils = require("oasis.tools.color_utils")
 
 -- Simple UUID generator (deterministic based on name)
 local function generate_uuid(name)
@@ -43,7 +43,7 @@ local function generate_stylesheet()
 end
 
 local function generate_manifest(name, palette)
-	local display_name = utils.format_display_name(name)
+	local display_name = Utils.format_display_name(name)
 	-- Keep a stable slug for IDs, but present a readable name in Thunderbird
 	local theme_id = "oasis-" .. name
 
@@ -173,7 +173,7 @@ local function generate_manifest(name, palette)
 		},
 	}
 
-	return color_utils.encode_json(manifest)
+	return color_Utils.encode_json(manifest)
 end
 
 -- Create .xpi file
@@ -229,7 +229,7 @@ local function main()
 		return
 	end
 
-	local palette_names = utils.get_palette_names()
+	local palette_names = Utils.get_palette_names()
 
 	if #palette_names == 0 then
 		print("Error: No palette files found in lua/oasis/color_palettes/")
@@ -242,9 +242,9 @@ local function main()
 	local light_themes = {}
 	local palette_set = {}
 
-	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
+	local success_count, error_count = Utils.for_each_palette_variant(function(name, palette, mode, intensity)
 		local output_path, variant_name, subdir =
-			utils.build_variant_path("extras/thunderbird", "xpi", name, mode, intensity)
+			Utils.build_variant_path("extras/thunderbird", "xpi", name, mode, intensity)
 
 		local manifest = generate_manifest(variant_name, palette)
 		local success = create_xpi(variant_name, output_path, manifest)
@@ -253,7 +253,7 @@ local function main()
 			print(string.format("✓ Generated: %s", output_path))
 
 			-- Track for README generation
-			local display_name = utils.format_display_name(variant_name)
+			local display_name = Utils.format_display_name(variant_name)
 			local relative_path = string.format("themes/%s/oasis_%s.xpi", subdir, variant_name)
 			palette_set[name] = true
 			if mode == "light" then

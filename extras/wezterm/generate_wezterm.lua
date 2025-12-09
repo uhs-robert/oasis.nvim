@@ -4,11 +4,11 @@
 
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
-local utils = require("oasis.utils")
+local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
 
 local function generate_wezterm_theme(name, palette)
-	local display_name = utils.format_display_name(name)
+	local display_name = Utils.format_display_name(name)
 
 	local lines = {
 		"# extras/wezterm/oasis_" .. name .. ".toml",
@@ -120,7 +120,7 @@ end
 local function main()
 	print("\n=== Oasis Wezterm Theme Generator ===\n")
 
-	local palette_names = utils.get_palette_names()
+	local palette_names = Utils.get_palette_names()
 
 	if #palette_names == 0 then
 		print("Error: No palette files found in lua/oasis/color_palettes/")
@@ -129,9 +129,9 @@ local function main()
 
 	print(string.format("Found %d palette(s)\n", #palette_names))
 
-	local success_count, error_count = utils.for_each_palette_variant(function(name, palette, mode, intensity)
+	local success_count, error_count = Utils.for_each_palette_variant(function(name, palette, mode, intensity)
 		-- Build output path using shared utility
-		local output_path, variant_name = utils.build_variant_path("extras/wezterm", "toml", name, mode, intensity)
+		local output_path, variant_name = Utils.build_variant_path("extras/wezterm", "toml", name, mode, intensity)
 
 		-- Generate and write theme
 		local theme = generate_wezterm_theme(variant_name, palette)
