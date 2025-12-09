@@ -7,8 +7,9 @@ package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
 
-local function generate_wezterm_theme(name, palette, mode)
+local function generate_wezterm_theme(name, palette)
 	local display_name = Utils.format_display_name(name)
+	local is_light = palette.light_mode or false
 
 	local lines = {
 		"# extras/wezterm/oasis_" .. name .. ".toml",
@@ -71,7 +72,7 @@ local function generate_wezterm_theme(name, palette, mode)
 	-- Tab Bar Inactive Tab
 	lines[#lines + 1] = "[colors.tab_bar.inactive_tab]"
 	lines[#lines + 1] = string.format("bg_color = '%s'", palette.bg.surface)
-	lines[#lines + 1] = string.format("fg_color = '%s'", mode == "dark" and palette.bg.core or palette.fg.core)
+	lines[#lines + 1] = string.format("fg_color = '%s'", is_light and palette.fg.core or palette.bg.core)
 	lines[#lines + 1] = "intensity = 'Normal'"
 	lines[#lines + 1] = "italic = false"
 	lines[#lines + 1] = "strikethrough = false"
@@ -81,7 +82,7 @@ local function generate_wezterm_theme(name, palette, mode)
 	-- Tab Bar Inactive Tab Hover
 	lines[#lines + 1] = "[colors.tab_bar.inactive_tab_hover]"
 	lines[#lines + 1] = string.format("bg_color = '%s'", palette.bg.mantle)
-	lines[#lines + 1] = string.format("fg_color = '%s'", mode == "dark" and palette.bg.core or palette.fg.core)
+	lines[#lines + 1] = string.format("fg_color = '%s'", is_light and palette.fg.core or palette.bg.core)
 	lines[#lines + 1] = "intensity = 'Normal'"
 	lines[#lines + 1] = "italic = false"
 	lines[#lines + 1] = "strikethrough = false"
@@ -133,7 +134,7 @@ local function main()
 		local output_path, variant_name = Utils.build_variant_path("extras/wezterm", "toml", name, mode, intensity)
 
 		-- Generate and write theme
-		local theme = generate_wezterm_theme(variant_name, palette, mode)
+		local theme = generate_wezterm_theme(variant_name, palette)
 		File.write(output_path, theme)
 		print(string.format("✓ Generated: %s", output_path))
 	end)
