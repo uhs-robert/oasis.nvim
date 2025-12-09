@@ -2,7 +2,7 @@
 
 return function(c)
 	local LIGHT_MODE = c.light_mode or false
-	local config = require("oasis.config").get()
+	local Config = require("oasis.config").get()
 
 	-- Helper function to conditionally apply text styles based on config
 	local function apply_styles(attrs)
@@ -11,7 +11,7 @@ return function(c)
 		end
 
 		local result = vim.deepcopy(attrs)
-		local styles = config.styles or {}
+		local styles = Config.styles or {}
 
 		-- Remove styles if disabled in config
 		if not styles.bold then
@@ -375,7 +375,7 @@ return function(c)
 	end
 
 	-- Apply transparency if enabled
-	if config.transparent then
+	if Config.transparent then
 		local transparent_groups = {
 			"Normal",
 			"NormalNC",
@@ -410,7 +410,7 @@ return function(c)
 	end
 
 	-- Apply user highlight overrides last (they take precedence)
-	for name, attrs in pairs(config.highlight_overrides or {}) do
+	for name, attrs in pairs(Config.highlight_overrides or {}) do
 		if type(attrs) == "table" then
 			vim.api.nvim_set_hl(0, name, apply_styles(attrs))
 		else
@@ -420,7 +420,7 @@ return function(c)
 
 	-- Apply terminal colors
 	vim.o.termguicolors = true
-	if config.terminal_colors and c.terminal then
+	if Config.terminal_colors and c.terminal then
 		for i = 0, 15 do
 			local key = ("color%d"):format(i)
 			local val = c.terminal[key]
