@@ -385,7 +385,7 @@ end
 --- @param intensity number Intensity level (1-5)
 --- @return table|nil Palette with light mode at specified intensity, or nil on error
 function Utils.generate_light_palette_at_intensity(name, intensity)
-	local config = require("oasis.config")
+	local Config = require("oasis.config")
 
 	-- Load the raw palette module
 	local ok, raw_palette = pcall(require, "oasis.color_palettes.oasis_" .. name)
@@ -401,14 +401,14 @@ function Utils.generate_light_palette_at_intensity(name, intensity)
 	-- Save original intensity and set new one
 	-- Must modify config.options (not defaults) since palettes call config.get()
 	local original_intensity = config.options.light_intensity
-	config.options.light_intensity = intensity
+	Config.options.light_intensity = intensity
 
 	-- Clear the palette from cache and reload with new intensity
 	package.loaded["oasis.color_palettes.oasis_" .. name] = nil
 	ok, raw_palette = pcall(require, "oasis.color_palettes.oasis_" .. name)
 
 	-- Restore original intensity and clear cache again
-	config.options.light_intensity = original_intensity
+	Config.options.light_intensity = original_intensity
 	package.loaded["oasis.color_palettes.oasis_" .. name] = nil
 
 	if not ok then
