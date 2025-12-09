@@ -49,4 +49,29 @@ function File.size(path)
 	return tonumber(size) or 0
 end
 
+--- Find files matching a pattern
+--- @param pattern string Pattern to search for (e.g., "generate_*.lua")
+--- @param directory string|nil Directory to search (default: current working directory)
+--- @return table List of file paths
+function File.find(pattern, directory)
+	directory = directory or "."
+	local cmd = string.format("find %s -type f -name '%s' 2>/dev/null | sort", directory, pattern)
+	local handle = io.popen(cmd)
+	if not handle then
+		return {}
+	end
+
+	local result = handle:read("*a")
+	handle:close()
+
+	local files = {}
+	for path in result:gmatch("[^\n]+") do
+		if path ~= "" then
+			table.insert(files, path)
+		end
+	end
+
+	return files
+end
+
 return File

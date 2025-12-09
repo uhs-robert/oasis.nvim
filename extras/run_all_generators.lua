@@ -6,6 +6,8 @@
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local utils = require("oasis.utils")
+local File = require("oasis.lib.file")
+local System = require("oasis.lib.system")
 
 -- Generators to skip (require interactive input or special handling)
 local skip_list = {
@@ -13,7 +15,7 @@ local skip_list = {
 }
 
 local function find_generators()
-	local files = utils.find_files("generate_*.lua", "extras")
+	local files = File.find("generate_*.lua", "extras")
 
 	local generators = {}
 	for _, path in ipairs(files) do
@@ -50,7 +52,7 @@ local results = {}
 
 for _, gen in ipairs(generators) do
 	print(string.format("Running %s generator...", gen.name))
-	local output = utils.execute_command("lua " .. gen.script)
+	local output = System.capture("lua " .. gen.script)
 
 	-- Extract success/error counts from output
 	local success_count = output:match("Success: (%d+)")

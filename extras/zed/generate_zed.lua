@@ -5,6 +5,7 @@
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local utils = require("oasis.utils")
+local File = require("oasis.lib.file")
 local color_utils = require("oasis.tools.color_utils")
 
 local function generate_zed_theme(name, palette)
@@ -551,7 +552,7 @@ local function main()
     -- Generate and write theme
     local theme = generate_zed_theme(variant_name, palette)
     local json = color_utils.encode_json(theme, 0)
-    utils.write_file(output_path, json)
+    File.write(output_path, json)
     print(string.format("✓ Generated: %s", output_path))
   end)
 

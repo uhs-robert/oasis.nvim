@@ -5,6 +5,7 @@
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local utils = require("oasis.utils")
+local File = require("oasis.lib.file")
 
 local function generate_ghostty_theme(name, palette)
 	local lines = {
@@ -59,7 +60,7 @@ local function main()
 
 		-- Generate and write theme
 		local theme = generate_ghostty_theme(variant_name, palette)
-		utils.write_file(output_path, theme)
+		File.write(output_path, theme)
 		print(string.format("✓ Generated: %s", output_path))
 	end)
 

@@ -5,6 +5,7 @@
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local utils = require("oasis.utils")
+local File = require("oasis.lib.file")
 
 local function generate_slack_theme(name, palette)
 	local display_name = utils.format_display_name(name)
@@ -147,7 +148,7 @@ local function main()
 
 	-- Write README
 	local readme_content = table.concat(readme_lines, "\n")
-	utils.write_file("extras/slack/README.md", readme_content)
+	File.write("extras/slack/README.md", readme_content)
 	print("✓ Generated: extras/slack/README.md")
 
 	-- Count totals

@@ -5,6 +5,7 @@
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local utils = require("oasis.utils")
+local File = require("oasis.lib.file")
 
 -- Extract Yazi theme colors from Oasis palette
 local function extract_yazi_theme_colors(palette)
@@ -65,8 +66,8 @@ end
 -- Generate merged Yazi theme TOML combining theme and icons templates
 local function generate_merged_theme(name, palette, output_path)
 	local display_name = utils.format_display_name(name)
-	local theme_template = utils.read_file("extras/yazi/theme.toml.template")
-	local icons_template = utils.read_file("extras/yazi/icons.toml.template")
+	local theme_template = File.read("extras/yazi/theme.toml.template")
+	local icons_template = File.read("extras/yazi/icons.toml.template")
 
 	if not theme_template then
 		error("Failed to read theme.toml.template")
@@ -148,7 +149,7 @@ local function main()
 
 		-- Generate merged theme file
 		local merged = generate_merged_theme(variant_name, palette, output_path)
-		utils.write_file(output_path, merged)
+		File.write(output_path, merged)
 		print(string.format("✓ Generated: %s", output_path))
 	end)
 
