@@ -5,6 +5,7 @@
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local utils = require("oasis.utils")
+local File = require("oasis.lib.file")
 
 local function get_display_name(name)
 	return utils.capitalize(name)
@@ -93,7 +94,7 @@ local function generate_vimiumc_css(day_name, night_name, day_palette, night_pal
 	local night_colors = extract_vimiumc_colors(night_palette)
 
 	-- Read the CSS template
-	local template = utils.read_file("./extras/vimium-c/vimium-c.css.erb")
+	local template = assert(File.read("./extras/vimium-c/vimium-c.css.erb"), "Missing vimium-c CSS template")
 
 	local replacements = {
 		["{{day_name}}"] = get_display_name(day_name),
@@ -264,7 +265,7 @@ Examples:
 
 	-- Write to file
 	local output_path = string.format("extras/vimium-c/output/vimiumc-%s-%s.css", clean_night_name, clean_day_name)
-	utils.write_file(output_path, css)
+	File.write(output_path, css)
 	print(string.format("\n✓ Generated: %s", output_path))
 	print(string.format("  Day theme: Oasis %s", get_display_name(clean_day_name)))
 	print(string.format("  Night theme: Oasis %s\n", get_display_name(clean_night_name)))

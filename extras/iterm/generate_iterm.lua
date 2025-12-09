@@ -5,6 +5,7 @@
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local utils = require("oasis.utils")
+local File = require("oasis.lib.file")
 
 -- Convert hex color to normalized RGB components (0-1)
 local function hex_to_components(hex)
@@ -126,7 +127,7 @@ local function main()
 		local friendly_output_path = string.format("%s/%s.itermcolors", output_dir, safe_display)
 
 		local theme = generate_iterm_colors(display_name, palette)
-		utils.write_file(friendly_output_path, theme)
+		File.write(friendly_output_path, theme)
 
 		-- Clean up the old slugged filename to avoid duplicates
 		if friendly_output_path ~= output_path then

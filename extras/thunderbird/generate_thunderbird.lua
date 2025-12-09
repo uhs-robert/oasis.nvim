@@ -5,6 +5,7 @@
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local utils = require("oasis.utils")
+local File = require("oasis.lib.file")
 local color_utils = require("oasis.tools.color_utils")
 
 -- Simple UUID generator (deterministic based on name)
@@ -187,10 +188,10 @@ local function create_xpi(variant_name, output_path, manifest_json)
 	os.execute("mkdir -p " .. temp_dir .. "/images")
 
 	-- Write manifest.json
-	utils.write_file(temp_dir .. "/manifest.json", manifest_json)
+	File.write(temp_dir .. "/manifest.json", manifest_json)
 
 	-- Write styles.css
-	utils.write_file(temp_dir .. "/styles.css", generate_stylesheet())
+	File.write(temp_dir .. "/styles.css", generate_stylesheet())
 
 	-- Copy icon files
 	os.execute("cp extras/thunderbird/assets/icon16.png " .. temp_dir .. "/images/")
@@ -322,7 +323,7 @@ local function main()
 		table.insert(readme_lines, "")
 
 		local readme_content = table.concat(readme_lines, "\n")
-		utils.write_file("extras/thunderbird/README.md", readme_content)
+		File.write("extras/thunderbird/README.md", readme_content)
 		print("\n✓ Generated: extras/thunderbird/README.md")
 	end
 

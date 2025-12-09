@@ -5,6 +5,7 @@
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local utils = require("oasis.utils")
+local File = require("oasis.lib.file")
 
 local function generate_alacritty_theme(name, palette, output_path)
 	local display_name = utils.format_display_name(name)
@@ -72,7 +73,7 @@ local function main()
 
 		-- Generate and write theme
 		local theme = generate_alacritty_theme(variant_name, palette, output_path)
-		utils.write_file(output_path, theme)
+		File.write(output_path, theme)
 		print(string.format("✓ Generated: %s", output_path))
 	end)
 

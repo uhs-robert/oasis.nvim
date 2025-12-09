@@ -1,7 +1,9 @@
 -- lua/oasis/utils.lua
 -- Common utilities for Oasis generator scripts
 
-local M = {}
+local Directory = require("oasis.lib.directory")
+local File = require("oasis.lib.file")
+local Utils = {}
 
 local DEPRECATED_PALETTES = {
 	dawn = true,
@@ -50,7 +52,7 @@ local function ensure_vim_compat()
 			return extend_tables(behavior, true, ...)
 		end
 
-	_G.vim.deepcopy = _G.vim.deepcopy or M.deepcopy
+	_G.vim.deepcopy = _G.vim.deepcopy or Utils.deepcopy
 	_G.vim.g = _G.vim.g or {}
 	_G.vim.o = _G.vim.o or {}
 end
@@ -92,7 +94,7 @@ end
 --- @return table|nil extracted Palette variant or original palette for legacy tables
 --- @return string|nil err Error message (currently nil, reserved for parity)
 local function extract_palette_variant(palette, mode, fallback_mode)
-	if M.is_dual_mode_palette(palette) then
+	if Utils.is_dual_mode_palette(palette) then
 		local selected_mode = mode or fallback_mode or "dark"
 		return palette[selected_mode], nil
 	end
@@ -101,17 +103,13 @@ end
 
 --- Detect project root directory by looking for lua/oasis/color_palettes/
 --- @return string|nil Project root path or nil if not found
-function M.find_project_root()
+function Utils.find_project_root()
 	local handle = assert(io.popen("pwd"))
 	local current = handle:read("*l")
 	handle:close()
 
 	for _ = 1, 4 do -- current dir + 3 parents
-		local test_handle = assert(io.popen("test -d '" .. current .. "/lua/oasis/color_palettes' && echo found"))
-		local found = test_handle:read("*l")
-		test_handle:close()
-
-		if found == "found" then
+		if File.exists(current .. "/lua/oasis/color_palettes") then
 			return current
 		end
 
@@ -127,7 +125,7 @@ end
 --- Check if a palette is deprecated
 --- @param name string Palette name with or without "oasis_" prefix
 --- @return boolean
-function M.is_palette_deprecated(name)
+function Utils.is_palette_deprecated(name)
 	local bare = name:gsub("^oasis_", "")
 	return DEPRECATED_PALETTES[bare] == true
 end
@@ -135,7 +133,7 @@ end
 --- Get list of available palette names from filesystem
 --- @param include_deprecated boolean|nil Include deprecated palettes when true
 --- @return table List of palette names without "oasis_" prefix, sorted alphabetically
-function M.get_palette_names(include_deprecated)
+function Utils.get_palette_names(include_deprecated)
 	local allow_deprecated = include_deprecated == true
 	local handle = assert(io.popen("ls lua/oasis/color_palettes/oasis_*.lua 2>/dev/null"))
 	local result = handle:read("*a")
@@ -144,7 +142,7 @@ function M.get_palette_names(include_deprecated)
 	local files = {}
 	for file in result:gmatch("[^\n]+") do
 		local name = file:match("oasis_(%w+)%.lua")
-		if name and (allow_deprecated or not M.is_palette_deprecated(name)) then
+		if name and (allow_deprecated or not Utils.is_palette_deprecated(name)) then
 			table.insert(files, name)
 		end
 	end
@@ -156,7 +154,7 @@ end
 --- Detect if a palette uses dual-mode structure (has .dark and .light keys)
 --- @param palette table Palette table
 --- @return boolean True if dual-mode palette
-function M.is_dual_mode_palette(palette)
+function Utils.is_dual_mode_palette(palette)
 	return palette.dark ~= nil
 		and palette.light ~= nil
 		and type(palette.dark) == "table"
@@ -167,14 +165,14 @@ end
 --- @param palette_name string Palette name (e.g., "oasis_lagoon")
 --- @return string|nil mode ('light', 'dark', 'dual') or nil if palette not found
 --- @return string|nil err Error message when mode is nil
-function M.get_palette_mode(palette_name)
+function Utils.get_palette_mode(palette_name)
 	local palette_module = build_palette_module_name(palette_name)
 	local palette, err = require_palette(palette_module)
 	if not palette then
 		return nil, err
 	end
 
-	if M.is_dual_mode_palette(palette) then
+	if Utils.is_dual_mode_palette(palette) then
 		return "dual"
 	elseif palette.light_mode == true then
 		return "light"
@@ -188,7 +186,7 @@ end
 --- @param palette_name string Palette module name (e.g., "oasis_lagoon")
 --- @param explicit_mode string|nil Force a specific mode ("dark" or "light"), overrides background detection
 --- @return table|nil, string|nil Extracted palette or nil, error message
-function M.load_and_extract_palette(palette_name, explicit_mode)
+function Utils.load_and_extract_palette(palette_name, explicit_mode)
 	local palette, err = require_palette(palette_name)
 	if not palette then
 		return nil, err
@@ -203,7 +201,7 @@ end
 --- @param name string Palette name (e.g., "lagoon" or "oasis_lagoon")
 --- @param mode string|nil "dark" or "light" (only used for dual-mode palettes, auto-detects if nil)
 --- @return table|nil, string|nil Palette table or nil, error message
-function M.load_palette(name, mode)
+function Utils.load_palette(name, mode)
 	-- Add project root to package path
 	package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 
@@ -216,29 +214,10 @@ function M.load_palette(name, mode)
 	return extract_palette_variant(palette, mode, "dark")
 end
 
---- Write content to file
---- @param path string File path
---- @param content string Content to write
-function M.write_file(path, content)
-	local file = assert(io.open(path, "w"), "Could not open file for writing: " .. path)
-	file:write(content)
-	file:close()
-end
-
---- Read file content
---- @param path string File path
---- @return string File content
-function M.read_file(path)
-	local file = assert(io.open(path, "r"), "Could not open file for reading: " .. path)
-	local content = file:read("*a")
-	file:close()
-	return content
-end
-
 --- Capitalize first letter of string
 --- @param str string Input string
 --- @return string String with first letter capitalized
-function M.capitalize(str)
+function Utils.capitalize(str)
 	local capitalized = str:gsub("^%l", string.upper)
 	return capitalized
 end
@@ -246,7 +225,7 @@ end
 --- Format variant name for display (e.g., "lagoon_dark" -> "Oasis Lagoon Dark")
 --- @param variant_name string Variant name (e.g., "lagoon_dark", "lagoon_light_3", "dawn")
 --- @return string Formatted display name
-function M.format_display_name(variant_name)
+function Utils.format_display_name(variant_name)
 	-- Strip optional oasis_ prefix to keep display names clean
 	local function normalize_base(base)
 		base = base:gsub("^oasis_", "")
@@ -254,7 +233,7 @@ function M.format_display_name(variant_name)
 		-- Title-case underscore-delimited words (e.g., "sea_breeze" -> "Sea Breeze")
 		local words = {}
 		for word in base:gmatch("[^_]+") do
-			table.insert(words, M.capitalize(word))
+			table.insert(words, Utils.capitalize(word))
 		end
 
 		return table.concat(words, " ")
@@ -282,49 +261,18 @@ function M.format_display_name(variant_name)
 	return "Oasis " .. display_base
 end
 
---- Find files matching a pattern using find command
---- @param pattern string Pattern to search for (e.g., "generate_*.lua")
---- @param directory? string Directory to search in (default: current directory)
---- @return table List of file paths
-function M.find_files(pattern, directory)
-	directory = directory or "."
-	local cmd = string.format("find %s -type f -name '%s' 2>/dev/null | sort", directory, pattern)
-	local result = M.execute_command(cmd)
-	result = type(result) == "string" and result or ""
-
-	local files = {}
-	for path in result:gmatch("[^\n]+") do
-		if path ~= "" then
-			table.insert(files, path)
-		end
-	end
-
-	return files
-end
-
---- Execute a shell command and capture output
---- @param command string Command to execute
---- @return string output Command output (stdout + stderr)
---- @return boolean success True when exit code is zero, false otherwise
-function M.execute_command(command)
-	local handle = assert(io.popen(command .. " 2>&1"), "Failed to execute command: " .. command)
-	local output = handle:read("*a")
-	local ok = handle:close()
-	return output, ok == true
-end
-
 --- Deep copy a table (recursive)
 --- @param orig any Value to copy
 --- @return any Deep copy of the value
-function M.deepcopy(orig)
+function Utils.deepcopy(orig)
 	local orig_type = type(orig)
 	local copy
 	if orig_type == "table" then
 		copy = {}
 		for orig_key, orig_value in next, orig, nil do
-			copy[M.deepcopy(orig_key)] = M.deepcopy(orig_value)
+			copy[Utils.deepcopy(orig_key)] = Utils.deepcopy(orig_value)
 		end
-		setmetatable(copy, M.deepcopy(getmetatable(orig)))
+		setmetatable(copy, Utils.deepcopy(getmetatable(orig)))
 	else
 		copy = orig
 	end
@@ -344,7 +292,7 @@ local function iterate_palettes(callback, include_light_intensity, opts)
 	local include_deprecated = opts.include_deprecated == true
 	local allow_legacy = opts.allow_legacy == true
 
-	local palette_names = M.get_palette_names(include_deprecated)
+	local palette_names = Utils.get_palette_names(include_deprecated)
 	local success_count = 0
 	local error_count = 0
 
@@ -356,7 +304,7 @@ local function iterate_palettes(callback, include_light_intensity, opts)
 			goto continue
 		end
 
-		if M.is_dual_mode_palette(raw_palette) then
+		if Utils.is_dual_mode_palette(raw_palette) then
 			local ok_cb, err = pcall(callback, name, raw_palette.dark, "dark", nil)
 			if ok_cb then
 				success_count = success_count + 1
@@ -367,7 +315,7 @@ local function iterate_palettes(callback, include_light_intensity, opts)
 
 			if include_light_intensity then
 				for intensity = 1, 5 do
-					local light_palette = M.generate_light_palette_at_intensity(name, intensity)
+					local light_palette = Utils.generate_light_palette_at_intensity(name, intensity)
 					if light_palette then
 						ok_cb, err = pcall(callback, name, light_palette, "light", intensity)
 						if ok_cb then
@@ -428,7 +376,7 @@ end
 --- @param opts table|nil Options: include_deprecated (bool), allow_legacy (bool)
 --- @return number success_count
 --- @return number error_count
-function M.for_each_palette_mode(callback, opts)
+function Utils.for_each_palette_mode(callback, opts)
 	return iterate_palettes(callback, false, opts)
 end
 
@@ -436,7 +384,7 @@ end
 --- @param name string Base palette name (e.g., "lagoon")
 --- @param intensity number Intensity level (1-5)
 --- @return table|nil Palette with light mode at specified intensity, or nil on error
-function M.generate_light_palette_at_intensity(name, intensity)
+function Utils.generate_light_palette_at_intensity(name, intensity)
 	local config = require("oasis.config")
 
 	-- Load the raw palette module
@@ -446,7 +394,7 @@ function M.generate_light_palette_at_intensity(name, intensity)
 	end
 
 	-- Only works for dual-mode palettes
-	if not M.is_dual_mode_palette(raw_palette) then
+	if not Utils.is_dual_mode_palette(raw_palette) then
 		return nil
 	end
 
@@ -480,7 +428,7 @@ end
 ---                        - intensity: 1-5 for light mode, nil for dark mode or legacy palettes
 --- @param opts table|nil Options: include_deprecated (bool), allow_legacy (bool)
 --- @return number, number Success count, error count
-function M.for_each_palette_variant(callback, opts)
+function Utils.for_each_palette_variant(callback, opts)
 	return iterate_palettes(callback, true, opts)
 end
 
@@ -494,7 +442,7 @@ end
 --- @return string output_path Full path to output file
 --- @return string variant_name Name used in the file (e.g., "lagoon_dark", "dawn")
 --- @return string subdir Relative directory under themes/ (e.g., "dark", "light/3")
-function M.build_variant_path(base_dir, extension, name, mode, intensity)
+function Utils.build_variant_path(base_dir, extension, name, mode, intensity)
 	local variant_name
 	local subdir
 
@@ -518,7 +466,7 @@ function M.build_variant_path(base_dir, extension, name, mode, intensity)
 
 	-- All themes go in themes/<mode>/ (or light/<intensity>) for consistent organization
 	local output_dir = string.format("%s/themes/%s", base_dir, subdir)
-	os.execute("mkdir -p " .. output_dir)
+	Directory.create(output_dir)
 
 	local filename
 	if extension ~= nil and extension ~= "" then
@@ -542,13 +490,13 @@ end
 --- @return string output_path Full path to output file with display name
 --- @return string variant_name Internal variant name (e.g., "lagoon_dark")
 --- @return string display_name Human-friendly name (e.g., "Oasis Lagoon Dark")
-function M.build_display_variant_path(base_dir, extension, name, mode, intensity)
+function Utils.build_display_variant_path(base_dir, extension, name, mode, intensity)
 	-- Reuse build_variant_path for variant naming and directory creation
-	local _, variant_name, subdir = M.build_variant_path(base_dir, extension, name, mode, intensity)
-	local display_name = M.format_display_name(variant_name)
+	local _, variant_name, subdir = Utils.build_variant_path(base_dir, extension, name, mode, intensity)
+	local display_name = Utils.format_display_name(variant_name)
 
 	local output_dir = string.format("%s/themes/%s", base_dir, subdir)
-	os.execute("mkdir -p " .. output_dir)
+	Directory.create(output_dir)
 
 	local filename
 	if extension ~= nil and extension ~= "" then
@@ -561,4 +509,4 @@ function M.build_display_variant_path(base_dir, extension, name, mode, intensity
 	return output_path, variant_name, display_name
 end
 
-return M
+return Utils

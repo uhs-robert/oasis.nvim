@@ -5,6 +5,7 @@
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local utils = require("oasis.utils")
+local File = require("oasis.lib.file")
 
 -- Convert a key into kebab-case for CSS custom properties
 local function to_kebab(key)
@@ -106,7 +107,7 @@ local function main()
 		local output_path, variant_name = utils.build_variant_path("extras/css", "css", name, mode, intensity)
 
 		local css = generate_css_theme(variant_name, palette, mode, intensity, output_path)
-		utils.write_file(output_path, css)
+		File.write(output_path, css)
 		print(string.format("✓ Generated: %s", output_path))
 	end)
 

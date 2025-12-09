@@ -5,6 +5,7 @@
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local utils = require("oasis.utils")
+local File = require("oasis.lib.file")
 local color_utils = require("oasis.tools.color_utils")
 
 -- Convert hex color to RGB object for Firefox Color
@@ -295,7 +296,7 @@ local function main()
 	-- Generate README
 	if success_count > 0 then
 		local readme = generate_readme(palette_data)
-		utils.write_file("extras/firefox/README.md", readme)
+		File.write("extras/firefox/README.md", readme)
 		print(string.format("\n✓ Generated: extras/firefox/README.md"))
 	end
 

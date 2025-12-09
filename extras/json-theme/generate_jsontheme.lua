@@ -5,6 +5,7 @@
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local utils = require("oasis.utils")
+local File = require("oasis.lib.file")
 
 local terminal_semantic_keys = {
 	"black",
@@ -118,7 +119,7 @@ local function main()
 		local output_path, variant_name, display_name =
 			utils.build_display_variant_path("extras/json-theme", "json", name, mode, intensity)
 		local content = generate_json_palette(variant_name, palette)
-		utils.write_file(output_path, content)
+		File.write(output_path, content)
 		print(string.format("✓ Generated: %s", output_path))
 	end)
 

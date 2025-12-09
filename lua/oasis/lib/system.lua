@@ -11,6 +11,20 @@ function System.execute(cmd)
 	return success == 0 or success == true
 end
 
+--- Execute a shell command and capture combined stdout/stderr
+--- @param cmd string Command to run
+--- @return string output Command output
+--- @return boolean success True when exit code is zero
+function System.capture(cmd)
+	local handle = io.popen(cmd .. " 2>&1")
+	if not handle then
+		return "", false
+	end
+	local output = handle:read("*a")
+	local ok = handle:close()
+	return output, ok == true
+end
+
 --- Sleep for specified seconds
 --- @param seconds number Number of seconds to sleep (can be fractional)
 function System.sleep(seconds)

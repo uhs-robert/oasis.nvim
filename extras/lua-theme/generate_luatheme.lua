@@ -6,6 +6,7 @@
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local utils = require("oasis.utils")
+local File = require("oasis.lib.file")
 
 local terminal_semantic_keys = {
 	"black",
@@ -114,7 +115,7 @@ local function main()
 		local output_path, _, display_name =
 			utils.build_display_variant_path("extras/lua-theme", "lua", name, mode, intensity)
 		local content = generate_lua_palette(display_name, palette, output_path)
-		utils.write_file(output_path, content)
+		File.write(output_path, content)
 		print(string.format("✓ Generated: %s", output_path))
 	end)
 
