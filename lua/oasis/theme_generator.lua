@@ -237,7 +237,7 @@ return function(c)
     ["@macro"]                = "Macro", -- Macro
     ["@string"]               = "String", -- String
     ["@string.regexp"]        = { fg=c.syntax.regex }, -- SpecialChar
-    ["@string.escape"]        = { fg=c.syntax.regex, bold=true }, -- SpecialChar
+    ["@string.escape"]        = { fg=c.syntax.builtinVar, bold=true }, -- SpecialChar
     ["@string.special"]       = "SpecialChar", -- (e.g., dates)
     ["@string.special.symbol"]  = { fg=c.syntax.identifier },
     ["@string.special.url"]   = { fg=c.syntax.special, undercurl=true },
