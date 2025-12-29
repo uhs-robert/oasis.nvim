@@ -2,9 +2,6 @@
 [mgr]
 cwd = { fg = "{{secondary}}" }
 
-hovered = { fg = "{{fg_core}}", bg = "{{bg_surface}}" }
-preview_hovered = { fg = "{{fg_core}}", bg = "{{bg_mantle}}" }
-
 find_keyword = { fg = "{{search}}", bold = true, italic = true, underline = true }
 find_position = { fg = "{{error}}", bg = "reset", bold = true, italic = true }
 
@@ -101,18 +98,28 @@ title_error = { fg = "{{error}}" }
 rules = [
   # Media
   { mime = "image/*", fg = "{{ft_image}}" },
-  { mime = "{audio,video}/*", fg = "{{ft_media}}" },
+  { mime = "video/*", fg = "{{ft_video}}" },
+  { mime = "audio/*", fg = "{{ft_audio}}" },
 
   # Archives
   { mime = "application/*zip", fg = "{{ft_archive}}" },
   { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", fg = "{{ft_archive}}" },
 
   # Documents
-  { mime = "application/{pdf,doc,rtf,txt,md}", fg = "{{ft_document}}" },
+  { mime = "application/{pdf,doc,rtf,txt,md,vnd.oasis.opendocument.text*}", fg = "{{ft_document}}" },
+  { mime = "text/{richtext,markdown}", fg = "{{ft_document}}" },
+  { mime = "text/{csv}", fg = "{{ft_spreadsheet}}" },
+  { mime = "application/{vnd.ms-excel*,vnd.oasis.opendocument.spreadsheet*,vnd.openxmlformats-officedocument.spreadsheet*}", fg = "{{ft_spreadsheet}}" },
 
-  # Fallback
-  { name = "*", fg = "{{fg_strong}}" },
-  { name = "*/", fg = "{{info}}" },
+  # Orphans / Empty
+  { mime = "inode/empty", fg = "{{ft_empty}}"},
+  { url = "*", is = "orphan", fg = "{{ft_orphan}}"},
+
+  # Executables
+  { url = "*", is = "exec", fg = "{{ft_exec}}"},
+
+  # Directory
+  { url = "*/", fg = "{{ft_directory}}" },
 ]
 
 # SPOT

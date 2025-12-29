@@ -34,7 +34,7 @@ local function extract_yazi_theme_colors(palette)
 
 		-- Tab/mode colors
 		tab_active = palette.theme.primary,
-		mode_normal = palette.terminal.yellow,
+		mode_normal = palette.theme.primary,
 		mode_select = palette.terminal.bright_yellow,
 		mode_unset = palette.ui.diag.error.fg,
 
@@ -42,10 +42,16 @@ local function extract_yazi_theme_colors(palette)
 		spot_border = palette.ui.diag.error.fg,
 
 		-- File type colors (used in theme rules)
-		ft_image = palette.terminal.bright_cyan,
-		ft_media = palette.terminal.yellow,
+		ft_image = palette.terminal.yellow,
+		ft_video = palette.terminal.bright_yellow,
+		ft_audio = palette.terminal.bright_cyan,
 		ft_archive = palette.terminal.bright_magenta,
 		ft_document = palette.terminal.green,
+		ft_spreadsheet = palette.terminal.bright_green,
+		ft_empty = palette.terminal.bright_red,
+		ft_orphan = palette.terminal.red,
+		ft_exec = palette.theme.primary,
+		ft_directory = palette.theme.light_primary or palette.theme.primary,
 	}
 end
 
