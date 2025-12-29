@@ -220,6 +220,7 @@ To use the extras, refer to their respective documentation.
 | Thunderbird | [extras/thunderbird](extras/thunderbird)               |
 | TMUX        | [tmux-oasis](https://github.com/uhs-robert/tmux-oasis) |
 | Vimium C    | [extras/vimium-c](extras/vimium-c)                     |
+| Warp        | [extras/warp](extras/warp)                             |
 | WezTerm     | [extras/wezterm](extras/wezterm)                       |
 | Yazi        | [extras/yazi](extras/yazi)                             |
 | Zed         | [extras/zed](extras/zed)                               |
