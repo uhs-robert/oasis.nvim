@@ -6,9 +6,6 @@
 [mgr]
 cwd = { fg = "#a35305" }
 
-hovered = { fg = "#425858", bg = "#c8eeee" }
-preview_hovered = { fg = "#425858", bg = "#dff5f5" }
-
 find_keyword = { fg = "#deb287", bold = true, italic = true, underline = true }
 find_position = { fg = "#b7282c", bg = "reset", bold = true, italic = true }
 
@@ -31,8 +28,8 @@ inactive = { fg = "#316e66", bg = "#dff5f5" }
 
 # MODE
 [mode]
-normal_main = { fg = "#ebf9f9", bg = "#686123", bold = true }
-normal_alt = { fg = "#686123", bg = "#ebf9f9" }
+normal_main = { fg = "#ebf9f9", bg = "#316e66", bold = true }
+normal_alt = { fg = "#316e66", bg = "#ebf9f9" }
 
 select_main = { fg = "#ebf9f9", bg = "#924f0e", bold = true }
 select_alt = { fg = "#924f0e", bg = "#ebf9f9" }
@@ -104,19 +101,29 @@ title_error = { fg = "#b7282c" }
 [filetype]
 rules = [
   # Media
-  { mime = "image/*", fg = "#356961" },
-  { mime = "{audio,video}/*", fg = "#686123" },
+  { mime = "image/*", fg = "#686123" },
+  { mime = "video/*", fg = "#924f0e" },
+  { mime = "audio/*", fg = "#356961" },
 
   # Archives
   { mime = "application/*zip", fg = "#7e30dd" },
   { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", fg = "#7e30dd" },
 
   # Documents
-  { mime = "application/{pdf,doc,rtf,txt,md}", fg = "#306b4c" },
+  { mime = "application/{pdf,doc,rtf,txt,md,vnd.oasis.opendocument.text*}", fg = "#306b4c" },
+  { mime = "text/{richtext,markdown}", fg = "#306b4c" },
+  { mime = "text/{csv}", fg = "#366d27" },
+  { mime = "application/{vnd.ms-excel*,vnd.oasis.opendocument.spreadsheet*,vnd.openxmlformats-officedocument.spreadsheet*}", fg = "#366d27" },
 
-  # Fallback
-  { name = "*", fg = "#3f5954" },
-  { name = "*/", fg = "#083142" },
+  # Orphans / Empty
+  { mime = "inode/empty", fg = "#c01313"},
+  { url = "*", is = "orphan", fg = "#a34040"},
+
+  # Executables
+  { url = "*", is = "exec", fg = "#316e66"},
+
+  # Directory
+  { url = "*/", fg = "#285c54" },
 ]
 
 # SPOT
