@@ -4,8 +4,8 @@
 -- Terminal
 -- stylua: ignore start
 local terminal = {
-	black =               "#000000",
-	bright_black =        "#666666",
+	black =               "#101010",
+	bright_black =        "#504641",
 	red =                 "#D06666",
 	bright_red =          "#FFA0A0",
 	green =               "#53D390",
@@ -396,16 +396,16 @@ local colors = {
 	},
 
 	soil = {
-		[900] = "#58503E",
-		[800] = "#97886A",
-		[700] = "#BBA593",
-		[600] = "#CCB7A4",
-		[500] = "#DDC8B4",
-		[400] = "#E3D1C1",
-		[300] = "#E9DACE",
-		[200] = "#EFE3DB",
-		[100] = "#F5ECE8",
-		[50] = "#FAF5F3",
+		[900] = "#504641",
+		[800] = "#877A6F",
+		[700] = "#AFA296",
+		[600] = "#C4B6AA",
+		[500] = "#D5CAB9",
+		[400] = "#E0D7C9",
+		[300] = "#E8E2D7",
+		[200] = "#EFE9E2",
+		[100] = "#F5F1ED",
+		[50] = "#FAF8F5",
 	},
 
 	-- Greens
