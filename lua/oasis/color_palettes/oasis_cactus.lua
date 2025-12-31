@@ -27,8 +27,8 @@ local ui = {
 	theme = {
 		primary = p.aloe[700],
 		light_primary = p.aloe[500],
-		secondary = p.rose[700],
-		accent = p.rose[500],
+		secondary = p.rose[500],
+		accent = p.rose[300],
 		palette = {
 			primary = p.aloe,
 		},
@@ -84,7 +84,7 @@ local dark = {
 		match = { bg = p.sunset[500], fg = ui.bg.core },
 		visual = { bg = p.visual.orange, fg = "none" },
 		search = { bg = p.visual.orange, fg = ui.fg.core },
-		curSearch = { bg = p.sunshine[500], fg = ui.bg.core },
+		curSearch = { bg = p.sunrise[500], fg = ui.bg.core },
 		dir = p.sky[500],
 
 		title = ui.theme.primary,
