@@ -25,9 +25,10 @@ local ui = {
 	},
 	-- General colors
 	theme = {
-		primary = p.red[800],
-		light_primary = p.rose[500],
-		secondary = p.sunset[400],
+		strong_primary = p.red[800],
+		primary = p.red[500],
+		light_primary = p.red[100],
+		secondary = p.sunrise[500],
 		accent = p.teal[600],
 		palette = {
 			primary = p.red,
@@ -47,7 +48,7 @@ local dark = {
 		-- Cold: (Data)
 		parameter = p.lavender[500],
 		identifier = p.teal[500],
-		delimiter = ui.theme.primary,
+		delimiter = ui.theme.strong_primary,
 		type = p.teal[700],
 		builtinVar = p.lagoon[500], -- (this, document, window, etc)
 		string = p.cactus[500],
@@ -60,7 +61,7 @@ local dark = {
 		builtinFunc = p.sundown[400], -- (eg. parseInt, Array, Object etc)
 		statement = opts.themed_syntax and ui.theme.palette.primary[300] or p.khaki[500], -- (general statement (i.e. var, const))
 		exception = opts.themed_syntax and p.khaki[500] or p.red[400], -- (try/catch, return)
-		conditional = opts.themed_syntax and p.rose[700] or p.khaki[700], -- (Conditionals, Loops)
+		conditional = opts.themed_syntax and p.red[500] or p.khaki[700], -- (Conditionals, Loops)
 		special = p.sunset[500], -- (Statement not covered above)
 		operator = p.peach[300],
 		punctuation = p.coral[400],
@@ -82,19 +83,19 @@ local dark = {
 	ui = {
 		lineNumber = p.sunset[500],
 		match = { bg = p.sunset[500], fg = ui.bg.core },
-		visual = { bg = p.visual.orange, fg = "none" },
-		search = { bg = p.visual.orange, fg = ui.fg.core },
-		curSearch = { bg = p.sunshine[500], fg = ui.bg.core },
+		visual = { bg = p.visual.red, fg = "none" },
+		search = { bg = p.visual.red, fg = ui.bg.core },
+		curSearch = { bg = p.red[400], fg = ui.bg.core },
 
 		title = ui.theme.primary,
-		border = ui.theme.primary,
+		border = ui.theme.strong_primary,
 		cursorLine = ui.bg.surface,
 		nontext = ui.fg.dim,
 		float = {
 			title = ui.theme.primary,
 			fg = ui.fg.core,
 			bg = ui.bg.surface,
-			border = { fg = ui.theme.primary, bg = ui.bg.mantle },
+			border = { fg = ui.theme.strong_primary, bg = ui.bg.mantle },
 		},
 		diag = {
 			error = { fg = p.diag.error.fg_light, bg = p.diag.error.bg },

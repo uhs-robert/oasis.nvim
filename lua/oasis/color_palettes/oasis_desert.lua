@@ -25,8 +25,9 @@ local ui = {
 	},
 	-- General colors
 	theme = {
-		primary = p.red[800],
-		light_primary = p.rose[300],
+		strong_primary = p.red[800],
+		primary = p.red[500],
+		light_primary = p.rose[500],
 		secondary = p.khaki[500],
 		accent = p.sky[500],
 		palette = {
@@ -47,7 +48,7 @@ local dark = {
 		-- Cold: (Data)
 		parameter = p.lavender[300],
 		identifier = p.teal[300],
-		delimiter = ui.theme.palette.primary[800],
+		delimiter = ui.theme.strong_primary,
 		type = p.teal[500],
 		builtinVar = p.lagoon[300], -- (this, document, window, etc)
 		string = p.cactus[400],
@@ -88,14 +89,14 @@ local dark = {
 		dir = p.sky[500],
 
 		title = ui.theme.primary,
-		border = ui.theme.primary,
+		border = ui.theme.strong_primary,
 		cursorLine = ui.bg.mantle,
 		nontext = ui.fg.dim,
 		float = {
 			title = ui.theme.light_primary,
 			fg = ui.fg.core,
 			bg = ui.bg.surface,
-			border = { fg = ui.theme.primary, bg = ui.bg.mantle },
+			border = { fg = ui.theme.strong_primary, bg = ui.bg.mantle },
 		},
 		diag = {
 			error = { fg = p.rose[400], bg = p.diag.error.bg },

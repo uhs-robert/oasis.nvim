@@ -37,6 +37,7 @@ return function(c)
   -- stylua: ignore start
   local highlights = {
     -- Main Theme Colors (Highlights for plugins)
+    OasisStrongPrimary         = { fg=(c.theme.strong_primary or c.theme.primary), bg="none" },
     OasisPrimary               = { fg=c.theme.primary, bg="none" },
     OasisLightPrimary          = { fg=(c.theme.light_primary or c.theme.primary), bg="none" },
     OasisFloatPrimary          = { fg=c.theme.primary, bg=c.ui.float.border.bg },
@@ -75,7 +76,7 @@ return function(c)
     CursorLineNr               = { fg=c.ui.lineNumber, bg=(c.bg.gutter or "NONE"), bold=true }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     CursorLineFold             = { bg=c.bg.core }, -- Like FoldColumn when 'cursorline' is set for the cursor line
     CursorLineSign             = { bg=c.bg.core }, -- Like SignColumn when 'cursorline' is set for the cursor line
-    MatchParen                 = { fg=c.ui.lineNumber, bg=c.ui.search.bg, bold=true }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+    MatchParen                 = { fg=c.ui.curSearch.bg, bg=c.ui.search.bg, bold=true }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     ModeMsg                    = { fg=c.syntax.statement, bold=true }, -- 'showmode' message (e.g., "-- INSERT -- ")
     MsgArea                    = { fg=c.syntax.statement }, -- Area for messages and cmdline
     MoreMsg                    = { fg=c.syntax.type, bold=true }, -- |more-prompt|

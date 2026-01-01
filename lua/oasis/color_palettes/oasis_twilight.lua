@@ -25,6 +25,7 @@ local ui = {
 	},
 	-- General colors
 	theme = {
+		strong_primary = p.lavender[600],
 		primary = p.lavender[500],
 		light_primary = p.lavender[300],
 		secondary = p.khaki[400],
@@ -47,7 +48,7 @@ local dark = {
 		-- Cold: (Data)
 		parameter = opts.themed_syntax and p.khaki[500] or p.lavender[500],
 		identifier = p.teal[300],
-		delimiter = ui.theme.palette.primary[500],
+		delimiter = ui.theme.strong_primary,
 		type = p.teal[600],
 		builtinVar = p.lagoon[500], -- (this, document, window, etc)
 		string = p.cactus[700],
@@ -82,20 +83,20 @@ local dark = {
 	ui = {
 		lineNumber = p.sunset[500],
 		match = { bg = p.sunset[500], fg = ui.bg.core },
-		visual = { bg = p.visual.orange, fg = "none" },
-		search = { bg = p.visual.orange, fg = ui.fg.core },
-		curSearch = { bg = p.sunshine[500], fg = ui.bg.core },
+		visual = { bg = p.visual.violet, fg = "none" },
+		search = { bg = p.visual.yellow, fg = ui.fg.core },
+		curSearch = { bg = p.khaki[500], fg = ui.bg.core },
 		dir = p.sky[500],
 
 		title = ui.theme.primary,
-		border = ui.theme.primary,
+		border = ui.theme.strong_primary,
 		cursorLine = ui.bg.mantle,
 		nontext = ui.fg.dim,
 		float = {
 			title = ui.theme.primary,
 			fg = ui.fg.core,
 			bg = ui.bg.surface,
-			border = { fg = ui.theme.primary, bg = ui.bg.mantle },
+			border = { fg = ui.theme.strong_primary, bg = ui.bg.mantle },
 		},
 		diag = {
 			error = { fg = p.diag.error.fg_light, bg = p.diag.error.bg },

@@ -25,7 +25,8 @@ local ui = {
 	},
 	-- General colors
 	theme = {
-		primary = p.sunset[500],
+		strong_primary = p.sunset[500],
+		primary = p.sunset[400],
 		light_primary = p.sunshine[200],
 		secondary = p.sky[500],
 		accent = p.cactus[700],
@@ -47,7 +48,7 @@ local dark = {
 		-- Cold: (Data)
 		parameter = p.lavender[400],
 		identifier = p.teal[400],
-		delimiter = ui.theme.primary,
+		delimiter = ui.theme.strong_primary,
 		type = p.teal[600],
 		builtinVar = p.lagoon[400], -- (this, document, window, etc)
 		string = p.cactus[700],
@@ -82,9 +83,9 @@ local dark = {
 	ui = {
 		lineNumber = p.gold[500],
 		match = { bg = p.gold[500], fg = ui.bg.core },
-		visual = { bg = p.visual.blue, fg = "none" },
-		search = { bg = p.visual.orange, fg = ui.fg.core },
-		curSearch = { bg = p.sunshine[500], fg = ui.bg.core },
+		visual = { bg = p.visual.orange, fg = "none" },
+		search = { bg = p.visual.blue, fg = ui.fg.core },
+		curSearch = { bg = p.lagoon[400], fg = ui.bg.core },
 		dir = p.sky[400],
 
 		title = ui.theme.primary,
