@@ -25,6 +25,7 @@ local ui = {
 	},
 	-- General colors
 	theme = {
+		strong_primary = p.lagoon[700],
 		primary = p.lagoon[500],
 		light_primary = p.sky[500],
 		secondary = p.khaki[400],
@@ -83,19 +84,19 @@ local dark = {
 		lineNumber = p.sunset[500],
 		match = { bg = p.sunset[500], fg = ui.bg.core },
 		visual = { bg = p.visual.yellow, fg = "none" },
-		search = { bg = p.visual.orange, fg = ui.fg.core },
-		curSearch = { bg = p.sunshine[500], fg = ui.bg.core },
+		search = { bg = p.visual.yellow, fg = ui.fg.core },
+		curSearch = { bg = p.khaki[400], fg = ui.bg.core },
 		dir = p.sky[500],
 
 		title = ui.theme.primary,
-		border = ui.theme.primary,
+		border = ui.theme.strong_primary,
 		cursorLine = p.theme.lagoon.bg.mantle, -- NOTE: Uses another theme's mantle
 		nontext = ui.fg.dim,
 		float = {
 			title = ui.theme.primary,
 			fg = ui.fg.core,
 			bg = ui.bg.surface,
-			border = { fg = ui.theme.primary, bg = ui.bg.mantle },
+			border = { fg = ui.theme.strong_primary, bg = ui.bg.mantle },
 		},
 		diag = {
 			error = { fg = p.diag.error.fg_light, bg = p.diag.error.bg },

@@ -27,8 +27,9 @@ local ui = {
 	},
 	-- General colors
 	theme = {
-		primary = p.red[800],
-		light_primary = p.rose[500],
+		strong_primary = p.red[800],
+		primary = p.red[500],
+		light_primary = p.red[100],
 		secondary = p.sunrise[500],
 		accent = p.lagoon[500],
 		palette = {
@@ -49,7 +50,7 @@ local dark = {
 		-- Cold: (Data)
 		parameter = p.lavender[500],
 		identifier = p.teal[400],
-		delimiter = ui.theme.primary,
+		delimiter = ui.theme.strong_primary,
 		type = p.teal[700],
 		builtinVar = p.lagoon[500], -- (this, document, window, etc)
 		string = p.cactus[500],
@@ -60,9 +61,9 @@ local dark = {
 		-- Warm: (Control / Flow)
 		func = p.sunset[300],
 		builtinFunc = p.sundown[400], -- (eg. parseInt, Array, Object etc)
-		statement = opts.themed_syntax and ui.theme.palette.primary[400] or p.khaki[500], -- (general statement (i.e. var, const))
+		statement = opts.themed_syntax and ui.theme.palette.primary[300] or p.khaki[500], -- (general statement (i.e. var, const))
 		exception = opts.themed_syntax and p.khaki[500] or p.red[400], -- (try/catch, return)
-		conditional = opts.themed_syntax and p.rose[700] or p.khaki[700], -- (Conditionals, Loops)
+		conditional = opts.themed_syntax and p.red[500] or p.khaki[700], -- (Conditionals, Loops)
 		special = p.sunset[500], -- (Statement not covered above)
 		operator = p.peach[300],
 		punctuation = p.coral[500],
@@ -85,18 +86,18 @@ local dark = {
 		lineNumber = p.sunset[500],
 		match = { bg = p.sunset[500], fg = ui.bg.core },
 		visual = { bg = p.visual.indigo, fg = "none" },
-		search = { bg = p.visual.orange, fg = ui.fg.core },
-		curSearch = { bg = p.sunshine[500], fg = ui.bg.core },
+		search = { bg = p.visual.violet, fg = ui.fg.core },
+		curSearch = { bg = p.lavender[300], fg = ui.bg.core },
 
 		title = ui.theme.primary,
-		border = ui.theme.primary,
+		border = ui.theme.strong_primary,
 		cursorLine = ui.bg.surface,
 		nontext = ui.fg.dim,
 		float = {
 			title = ui.theme.primary,
 			fg = ui.fg.core,
 			bg = ui.bg.surface,
-			border = { fg = ui.theme.primary, bg = ui.bg.mantle },
+			border = { fg = ui.theme.strong_primary, bg = ui.bg.mantle },
 		},
 		diag = {
 			error = { fg = p.diag.error.fg_light, bg = p.diag.error.bg },
@@ -119,28 +120,16 @@ local light_theme = vim.tbl_deep_extend("force", {}, dark.theme, {
 	light_primary = p.red[400],
 })
 
-local light_bg =
-	LightTheme.generate_backgrounds(ui.fg.core, opts.light_intensity, { target_l_core = target_lightness })
+local light_bg = LightTheme.generate_backgrounds(ui.fg.core, opts.light_intensity, { target_l_core = target_lightness })
 local light = {
 	bg = light_bg,
 	fg = LightTheme.generate_foregrounds(light_seed.fg, light_bg.core, opts.light_intensity, opts.contrast),
 	theme = LightTheme.generate_theme(light_theme, opts.light_intensity),
-	terminal = LightTheme.generate_terminal(
-		light_seed.terminal,
-		light_bg.core,
-		opts.light_intensity,
-		opts.contrast
-	),
+	terminal = LightTheme.generate_terminal(light_seed.terminal, light_bg.core, opts.light_intensity, opts.contrast),
 	light_mode = true,
 
 	-- Syntax
-	syntax = LightTheme.generate_syntax(
-		light_seed.syntax,
-		light_bg.core,
-		opts.light_intensity,
-		nil,
-		opts.contrast
-	),
+	syntax = LightTheme.generate_syntax(light_seed.syntax, light_bg.core, opts.light_intensity, nil, opts.contrast),
 
 	-- Diff
 	diff = {

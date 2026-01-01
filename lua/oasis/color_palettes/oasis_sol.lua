@@ -26,8 +26,9 @@ local ui = {
 	},
 	-- General colors
 	theme = {
-		primary = p.red[600],
-		light_primary = p.rose[500],
+		strong_primary = p.red[700],
+		primary = p.red[500],
+		light_primary = p.red[100],
 		secondary = p.sunrise[500],
 		accent = p.lagoon[500],
 		palette = {
@@ -85,20 +86,20 @@ local dark = {
 	ui = {
 		lineNumber = p.sunshine[600],
 		match = { bg = p.sunshine[600], fg = ui.bg.core },
-		visual = { bg = p.visual.blue, fg = "none" },
-		search = { bg = p.visual.orange, fg = ui.fg.core },
-		curSearch = { bg = p.sunshine[500], fg = ui.bg.core },
+		visual = { bg = p.visual.red, fg = "none" },
+		search = { bg = p.visual.teal, fg = ui.fg.core },
+		curSearch = { bg = p.teal[500], fg = ui.bg.core },
 		dir = p.sky[500],
 
 		title = ui.theme.primary,
-		border = ui.theme.primary,
+		border = ui.theme.strong_primary,
 		cursorLine = ui.bg.mantle,
 		nontext = ui.fg.dim,
 		float = {
 			title = ui.theme.primary,
 			fg = ui.fg.core,
 			bg = ui.bg.surface,
-			border = { fg = ui.theme.primary, bg = ui.bg.mantle },
+			border = { fg = ui.theme.strong_primary, bg = ui.bg.mantle },
 		},
 		diag = {
 			error = { fg = p.diag.error.fg_light, bg = p.diag.error.bg },
