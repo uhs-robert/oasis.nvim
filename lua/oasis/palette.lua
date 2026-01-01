@@ -79,7 +79,7 @@ local visual = {
 	light_violet = "#DDBAE8",
 	pink = "#5A324B",
 	light_pink = "#E8BAD6",
-	grey = "#1B242B",
+	grey = "#666666",
 	light_grey = "#BCD4E6",
 }
 
