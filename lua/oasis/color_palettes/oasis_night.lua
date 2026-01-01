@@ -87,7 +87,7 @@ local dark = {
 		match = { bg = p.sunset[500], fg = ui.bg.core },
 		visual = { bg = p.visual.indigo, fg = "none" },
 		search = { bg = p.visual.violet, fg = ui.fg.core },
-		curSearch = { bg = p.lavender[300], fg = ui.bg.core },
+		curSearch = { bg = p.khaki[600], fg = ui.bg.core },
 
 		title = ui.theme.primary,
 		border = ui.theme.strong_primary,

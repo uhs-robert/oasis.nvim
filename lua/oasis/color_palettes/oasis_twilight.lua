@@ -83,7 +83,7 @@ local dark = {
 	ui = {
 		lineNumber = p.sunset[500],
 		match = { bg = p.sunset[500], fg = ui.bg.core },
-		visual = { bg = p.visual.violet, fg = "none" },
+		visual = { bg = ui.bg.surface, fg = "none" },
 		search = { bg = p.visual.yellow, fg = ui.fg.core },
 		curSearch = { bg = p.khaki[500], fg = ui.bg.core },
 		dir = p.sky[500],

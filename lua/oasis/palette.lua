@@ -163,7 +163,7 @@ local theme = {
 	},
 	starlight = {
 		bg = { shadow = "#050505", core = "#000000", mantle = "#080808", surface = "#1A1A1A" },
-		fg = { core = "#FAF7F0", strong = "#DCD9D2", dim = "#6A5448", muted = "#4E5A6A", comment = "#7FA5CC" },
+		fg = { core = "#FAF7F0", strong = "#DCD9D2", dim = "#816658", muted = "#4E5A6A", comment = "#7FA5CC" },
 	},
 	-- Light themes
 	dawn = {

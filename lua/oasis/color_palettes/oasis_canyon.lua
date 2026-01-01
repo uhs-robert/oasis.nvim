@@ -83,9 +83,9 @@ local dark = {
 	ui = {
 		lineNumber = p.gold[500],
 		match = { bg = p.gold[500], fg = ui.bg.core },
-		visual = { bg = p.visual.orange, fg = "none" },
-		search = { bg = p.visual.blue, fg = ui.fg.core },
-		curSearch = { bg = p.lagoon[400], fg = ui.bg.core },
+		visual = { bg = ui.bg.surface, fg = "none" },
+		search = { bg = p.visual.teal, fg = ui.fg.core },
+		curSearch = { bg = p.lagoon[500], fg = ui.bg.core },
 		dir = p.sky[400],
 
 		title = ui.theme.primary,
