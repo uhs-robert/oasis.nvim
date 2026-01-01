@@ -46,8 +46,21 @@ end
 local function create_wcag_command()
 	vim.api.nvim_create_user_command("OasisWCAG", function(opts)
 		local Wcag = require("oasis.tools.wcag_checker")
+		local Utils = require("oasis.utils")
+
 		if opts.args ~= "" then
-			Wcag.check_palette(opts.args)
+			local palette_name = opts.args
+			-- Check if it's a dual-mode palette without .dark/.light suffix
+			if not palette_name:match("%.dark$") and not palette_name:match("%.light$") then
+				local ok, palette = pcall(require, "oasis.color_palettes." .. palette_name)
+				if ok and Utils.is_dual_mode_palette(palette) then
+					-- Check both dark and light modes for dual-mode palettes
+					Wcag.check_palette(palette_name .. ".dark")
+					Wcag.check_palette(palette_name .. ".light")
+					return
+				end
+			end
+			Wcag.check_palette(palette_name)
 		else
 			Wcag.check_all()
 		end
