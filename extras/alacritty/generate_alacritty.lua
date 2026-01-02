@@ -9,6 +9,7 @@ local File = require("oasis.lib.file")
 
 local function generate_alacritty_theme(name, palette, output_path)
 	local display_name = Utils.format_display_name(name)
+	local is_light = palette.light_mode or false
 
 	local lines = {
 		"# " .. (output_path or ("extras/alacritty/themes/oasis_" .. name .. ".toml")),
@@ -24,12 +25,12 @@ local function generate_alacritty_theme(name, palette, output_path)
 		string.format("text = '%s'", palette.fg.core),
 		"",
 		"[colors.cursor]",
-		string.format("cursor = '%s'", palette.terminal.yellow),
-		string.format("text = '%s'", palette.terminal.black),
+		string.format("cursor = '%s'", is_light and palette.syntax.statement or palette.terminal.yellow),
+		string.format("text = '%s'", palette.bg.core),
 		"",
 		"[colors.vi_mode_cursor]",
 		string.format("cursor = '%s'", palette.terminal.bright_yellow),
-		string.format("text = '%s'", palette.terminal.black),
+		string.format("text = '%s'", palette.bg.core),
 		"",
 		"[colors.normal]",
 		string.format("black   = '%s'", palette.terminal.black),
