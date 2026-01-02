@@ -48,6 +48,7 @@ local function add_color_block(lines, label, hex, alpha)
 end
 
 local function generate_iterm_colors(display_name, palette)
+	local is_light = palette.light_mode or false
 	local lines = {
 		'<?xml version="1.0" encoding="UTF-8"?>',
 		'<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">',
@@ -84,8 +85,8 @@ local function generate_iterm_colors(display_name, palette)
 	-- Core UI colors
 	add_color_block(lines, "Background Color", palette.bg.core)
 	add_color_block(lines, "Foreground Color", palette.fg.core)
-	add_color_block(lines, "Cursor Color", palette.terminal.yellow)
-	add_color_block(lines, "Cursor Text Color", palette.terminal.black)
+	add_color_block(lines, "Cursor Color", is_light and palette.syntax.statement or palette.terminal.yellow)
+	add_color_block(lines, "Cursor Text Color", palette.bg.core)
 	add_color_block(lines, "Bold Color", palette.fg.strong)
 	add_color_block(lines, "Link Color", palette.terminal.blue)
 	add_color_block(lines, "Selection Color", palette.ui.visual.bg)
