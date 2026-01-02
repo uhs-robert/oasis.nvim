@@ -110,21 +110,16 @@ local dark = {
 }
 
 -- Light mode configuration (backgrounds/ui/theme from night fg, syntax from canyon)
-local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
-	title = p.red[600],
-	border = p.red[600],
-})
-
-local light_theme = vim.tbl_deep_extend("force", {}, dark.theme, {
-	primary = p.red[600],
-	light_primary = p.red[400],
-})
-
 local light_bg = LightTheme.generate_backgrounds(ui.fg.core, opts.light_intensity, { target_l_core = target_lightness })
+local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
+	search = { bg = p.visual.orange, fg = ui.fg.core },
+	curSearch = { bg = p.visual.red, fg = ui.fg.core },
+})
+
 local light = {
 	bg = light_bg,
 	fg = LightTheme.generate_foregrounds(light_seed.fg, light_bg.core, opts.light_intensity, opts.contrast),
-	theme = LightTheme.generate_theme(light_theme, opts.light_intensity),
+	theme = LightTheme.generate_theme(dark.theme, opts.light_intensity),
 	terminal = LightTheme.generate_terminal(light_seed.terminal, light_bg.core, opts.light_intensity, opts.contrast),
 	light_mode = true,
 
