@@ -202,6 +202,7 @@ To use the extras, refer to their respective documentation.
 | Tool        | Extra                                                  |
 | ----------- | ------------------------------------------------------ |
 | Alacritty   | [extras/alacritty](extras/alacritty)                   |
+| Bat         | [extras/bat](extras/bat)                               |
 | Btop        | [extras/btop](extras/btop)                             |
 | Dark Reader | [extras/dark-reader](/extras/dark-reader)              |
 | Firefox     | [extras/firefox](extras/firefox)                       |
