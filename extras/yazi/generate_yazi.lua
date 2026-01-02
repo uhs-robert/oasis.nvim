@@ -24,7 +24,7 @@ local function extract_yazi_theme_colors(palette)
 		bg_mantle = palette.bg.mantle,
 		bg_surface = palette.bg.surface,
 		border = palette.ui.border,
-		search = palette.ui.match.bg,
+		search = palette.ui.curSearch.bg,
 
 		-- Status/diagnostic colors
 		error = palette.syntax.exception,
