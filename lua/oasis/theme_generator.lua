@@ -347,7 +347,7 @@ return function(c)
   -- Light mode overrides
   if LIGHT_MODE then
     -- Emphasize syntax
-    highlights.MatchParen           = { fg=c.ui.match.fg, bg=c.ui.match.bg, bold=true }
+    highlights.MatchParen           = { fg=c.fg.core, bg=c.ui.search.bg, bold=true }
     highlights.Number               = { fg=c.syntax.constant, bold=true }
     highlights.Conditional          = { fg=c.syntax.conditional, bold=true }
     highlights.Type                 = { fg=c.syntax.type, bold = true }

@@ -89,14 +89,14 @@ local dark = {
 		dir = p.sky[500],
 
 		title = ui.theme.primary,
-		border = ui.theme.primary,
+		border = ui.theme.strong_primary,
 		cursorLine = ui.bg.surface,
 		nontext = ui.fg.dim,
 		float = {
 			title = ui.theme.primary,
 			fg = ui.fg.core,
 			bg = ui.bg.surface,
-			border = { fg = ui.theme.primary, bg = ui.bg.mantle },
+			border = { fg = ui.theme.strong_primary, bg = ui.bg.mantle },
 		},
 		diag = {
 			error = { fg = p.diag.error.fg_light, bg = p.diag.error.bg },
@@ -111,8 +111,8 @@ local dark = {
 -- Light mode configuration
 local light_bg = LightTheme.generate_backgrounds(ui.fg.core, opts.light_intensity)
 local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
-	title = p.red[700],
-	border = p.red[700],
+	search = { bg = p.visual.red, fg = ui.fg.core },
+	curSearch = { bg = p.cactus[400], fg = ui.fg.core },
 })
 
 local light = {

@@ -466,16 +466,6 @@ function M.generate_ui(dark_ui, light_bg, intensity_level, contrast_targets, opt
 		result.visual = { bg = light_bg.surface, fg = "none" }
 	end
 
-	-- Match (high contrast bg with dark fg)
-	if dark_ui.match then
-		local h, _, _ = ColorUtils.rgb_to_hsl(dark_ui.match.bg or "#000000")
-		-- Create a saturated mid-tone background
-		local match_s, match_l = soften_light_hue(h, 70, 70)
-		local match_bg = ColorUtils.hsl_to_rgb(h, match_s, match_l)
-		local match_fg = ColorUtils.hsl_to_rgb(h, 80, 15)
-		result.match = { bg = match_bg, fg = match_fg }
-	end
-
 	-- Search colors
 	if dark_ui.search then
 		local h, _, _ = ColorUtils.rgb_to_hsl(dark_ui.search.bg or "#000000")
@@ -608,7 +598,7 @@ end
 --- Generate light mode theme colors from dark mode (vibrant, decorative)
 --- Note: These colors are decorative and intentionally may not meet WCAG compliance
 --- These colors can fail WCAG compliance as they're decorative only
---- @param dark_theme table Dark mode theme colors {primary, light_primary, secondary, accent}
+--- @param dark_theme table Dark mode theme colors {strong_primary, primary, light_primary, secondary, accent}
 --- @param intensity_level number Intensity level (1-5)
 --- @return table Light mode theme colors (vibrant)
 function M.generate_theme(dark_theme, intensity_level)
@@ -619,13 +609,19 @@ function M.generate_theme(dark_theme, intensity_level)
 	local sat_factor = 0.9 + (intensity_level * 0.02) -- 0.92 to 1.0
 	local light_base = 35 - (intensity_level * 2) -- 33% to 25%
 
-	-- Primary color (most important, darkest, most saturated)
+	-- Strong primary (for large text only)
+	if dark_theme.strong_primary then
+		local h, s, _ = ColorUtils.rgb_to_hsl(dark_theme.strong_primary)
+		result.strong_primary = ColorUtils.hsl_to_rgb(h, s * sat_factor, light_base + 3)
+	end
+
+	-- Primary color (base primary color)
 	if dark_theme.primary then
 		local h, s, _ = ColorUtils.rgb_to_hsl(dark_theme.primary)
 		result.primary = ColorUtils.hsl_to_rgb(h, s * sat_factor, light_base)
 	end
 
-	-- Light primary (slightly lighter variant)
+	-- Light primary (lighter variant)
 	if dark_theme.light_primary then
 		local h, s, _ = ColorUtils.rgb_to_hsl(dark_theme.light_primary)
 		result.light_primary = ColorUtils.hsl_to_rgb(h, s * sat_factor, light_base - 5)

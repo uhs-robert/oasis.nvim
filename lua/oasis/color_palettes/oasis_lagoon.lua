@@ -110,6 +110,11 @@ local dark = {
 
 -- Light mode configuration
 local light_bg = LightTheme.generate_backgrounds(ui.fg.core, opts.light_intensity)
+local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
+	search = { bg = p.visual.blue, fg = ui.fg.core },
+	curSearch = { bg = p.visual.orange, fg = ui.fg.core },
+})
+
 local light = {
 	bg = light_bg,
 	fg = LightTheme.generate_foregrounds(ui.fg, light_bg.core, opts.light_intensity),
@@ -128,7 +133,7 @@ local light = {
 	},
 
 	-- UI
-	ui = LightTheme.generate_ui(dark.ui, light_bg, opts.light_intensity),
+	ui = LightTheme.generate_ui(light_ui, light_bg, opts.light_intensity),
 }
 
 -- Return dual-mode palette

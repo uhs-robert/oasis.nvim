@@ -89,14 +89,14 @@ local dark = {
 		dir = p.sky[400],
 
 		title = ui.theme.primary,
-		border = ui.theme.primary,
+		border = ui.theme.strong_primary,
 		cursorLine = ui.bg.mantle,
 		nontext = ui.fg.dim,
 		float = {
 			title = ui.theme.primary,
 			fg = ui.fg.core,
 			bg = ui.bg.surface,
-			border = { fg = ui.theme.primary, bg = ui.bg.mantle },
+			border = { fg = ui.theme.strong_primary, bg = ui.bg.mantle },
 		},
 		diag = {
 			error = { fg = p.diag.error.fg_light, bg = p.diag.error.bg },
@@ -110,6 +110,10 @@ local dark = {
 
 -- Light mode configuration
 local light_bg = LightTheme.generate_backgrounds(ui.fg.core, opts.light_intensity)
+local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
+	search = { bg = p.visual.orange, fg = ui.fg.core },
+	curSearch = { bg = p.lagoon[500], fg = ui.fg.core },
+})
 local light = {
 	bg = light_bg,
 	fg = LightTheme.generate_foregrounds(ui.fg, light_bg.core, opts.light_intensity),
@@ -128,7 +132,7 @@ local light = {
 	},
 
 	-- UI
-	ui = LightTheme.generate_ui(dark.ui, light_bg, opts.light_intensity),
+	ui = LightTheme.generate_ui(light_ui, light_bg, opts.light_intensity),
 }
 
 -- Return dual-mode palette

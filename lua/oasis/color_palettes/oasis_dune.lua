@@ -110,10 +110,10 @@ local dark = {
 
 -- Light mode configuration
 local light_bg = LightTheme.generate_backgrounds(ui.fg.core, opts.light_intensity)
-local light_ui = vim.tbl_extend("force", {}, dark.ui)
-light_ui.title = p.sunrise[700]
-light_ui.primary = p.sunrise[700]
-light_ui.light_primary = p.sunrise[500]
+local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
+	search = { bg = p.visual.yellow, fg = ui.fg.core },
+	curSearch = { bg = p.visual.indigo, fg = ui.fg.core },
+})
 
 local light = {
 	bg = light_bg,
