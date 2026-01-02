@@ -50,7 +50,7 @@ return function(c)
     -- See :h highlight-groups
     ColorColumn                = { fg=c.fg.core, bg=c.bg.mantle }, -- Columns set with 'colorcolumn'
     Conceal                    = { fg=c.fg.muted }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
-    Cursor                     = { fg=c.ui.search.fg, bg=c.ui.search.bg }, -- Character under the cursor
+    Cursor                     = { fg=c.bg.core, bg=(LIGHT_MODE and c.syntax.statement or c.terminal.yellow) }, -- Character under the cursor
     CurSearch                  = { fg=c.ui.curSearch.fg, bg=c.ui.curSearch.bg, bold=true }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
     lCursor                    = { fg=c.bg.core, bg=c.syntax.exception }, -- Character under the cursor when |language-mapping| is used (see 'guicursor')
     CursorIM                   = "Cursor", -- Like Cursor, but used when in IME mode |CursorIM|

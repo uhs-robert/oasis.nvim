@@ -8,6 +8,7 @@ local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
 
 local function generate_ghostty_theme(name, palette)
+	local is_light = palette.light_mode or false
 	local lines = {
 		"# Oasis " .. Utils.capitalize(name),
 		"# Author: uhs-robert",
@@ -29,8 +30,8 @@ local function generate_ghostty_theme(name, palette)
 		"selection-background = " .. palette.ui.visual.bg,
 		"selection-foreground = " .. palette.fg.core,
 		"",
-		"cursor-color = " .. palette.terminal.yellow,
-		"cursor-text = " .. palette.terminal.black,
+		"cursor-color = " .. (is_light and palette.syntax.statement or palette.terminal.yellow),
+		"cursor-text = " .. palette.bg.core,
 		"",
 	}
 

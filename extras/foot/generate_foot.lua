@@ -9,6 +9,7 @@ local File = require("oasis.lib.file")
 
 local function generate_foot_theme(name, palette)
 	local display_name = Utils.format_display_name(name)
+	local is_light = palette.light_mode or false
 
 	local lines = {
 		"; extras/foot/oasis_" .. name .. ".ini",
@@ -16,7 +17,11 @@ local function generate_foot_theme(name, palette)
 		"; author: uhs-robert",
 		"",
 		"[colors]",
-		string.format("cursor=%s %s", palette.bg.core, palette.syntax.statement),
+		string.format(
+			"cursor=%s %s",
+			palette.bg.core,
+			is_light and palette.syntax.statement or palette.terminal.yellow
+		),
 		string.format("foreground=%s", palette.fg.core),
 		string.format("background=%s", palette.bg.core),
 		"",
@@ -24,7 +29,7 @@ local function generate_foot_theme(name, palette)
 		string.format("selection-background=%s", palette.ui.visual.bg),
 		"",
 		string.format("search-box-no-match=%s %s", palette.ui.search.fg, palette.ui.search.bg),
-		string.format("search-box-match=%s %s", palette.ui.match.fg, palette.ui.match.bg),
+		string.format("search-box-match=%s %s", palette.ui.curSearch.fg, palette.ui.curSearch.bg),
 		"",
 		string.format("urls=%s", palette.ui.dir),
 		string.format("jump-labels=%s %s", palette.ui.curSearch.fg, palette.ui.curSearch.bg),
