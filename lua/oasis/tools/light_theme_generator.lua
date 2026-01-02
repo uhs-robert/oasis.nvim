@@ -612,7 +612,7 @@ function M.generate_theme(dark_theme, intensity_level)
 	-- Strong primary (for large text only)
 	if dark_theme.strong_primary then
 		local h, s, _ = ColorUtils.rgb_to_hsl(dark_theme.strong_primary)
-		result.strong_primary = ColorUtils.hsl_to_rgb(h, s * sat_factor, light_base + 3)
+		result.strong_primary = ColorUtils.hsl_to_rgb(h, s * sat_factor, light_base + 5)
 	end
 
 	-- Primary color (base primary color)
