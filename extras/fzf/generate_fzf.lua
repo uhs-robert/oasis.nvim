@@ -53,7 +53,7 @@ local function generate_fzf_theme(name, palette)
 			palette.theme.secondary, -- marker: Multi-select marker
 			palette.fg.core, -- fg+: Current line foreground
 			palette.theme.primary, -- prompt: Prompt
-			palette.ui.match.bg -- hl+: Highlighted substrings on current line
+			palette.ui.search.bg -- hl+: Highlighted substrings on current line
 		),
 		string.format("--color=selected-bg:%s \\", palette.ui.visual.bg), -- selected-bg: Selected line background
 		string.format(
