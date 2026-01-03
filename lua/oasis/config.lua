@@ -4,7 +4,17 @@ local Config = {}
 local Utils = require("oasis.utils")
 local DEFAULT_DARK = "lagoon"
 local DEFAULT_LIGHT = "lagoon"
+local BASE_COLORS = nil
 local deepcopy = vim.deepcopy
+
+-- Get base color palette (cached)
+-- @return table colors The base color palette from palette.lua
+function Config.get_base_colors()
+	if not BASE_COLORS then
+		BASE_COLORS = require("oasis.palette")
+	end
+	return BASE_COLORS
+end
 
 -- Helper to get background setting (use vim.o.background if available, otherwise default to "dark" for standalone lua)
 local function get_background()
