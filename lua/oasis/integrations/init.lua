@@ -60,11 +60,12 @@ local PLUGIN_MODULES = {
 	["gitsigns"] = "oasis.integrations.plugins.gitsigns",
 }
 
+-- TODO: Maybe make each plugin an opt-in from config?
 -- Check if a plugin is loaded in package.loaded
-local function is_plugin_loaded(plugin_name)
-	return package.loaded[plugin_name] ~= nil
-end
-
+-- local function is_plugin_loaded(plugin_name)
+-- 	return package.loaded[plugin_name] ~= nil
+-- end
+--
 --- Load highlights for all detected plugins
 ---@param c table Color palette
 ---@return table highlights Plugin highlight groups
@@ -72,16 +73,16 @@ function Plugin.get_plugin_highlights(c)
 	local highlights = {}
 
 	for plugin_name, module_path in pairs(PLUGIN_MODULES) do
-		if is_plugin_loaded(plugin_name) then
-			local ok, apply_plugin_highlights = pcall(require, module_path)
-			if ok and type(apply_plugin_highlights) == "function" then
-				local plugin_highlights = apply_plugin_highlights(c)
-				-- Merge plugin highlights into main table
-				for name, attrs in pairs(plugin_highlights) do
-					highlights[name] = attrs
-				end
+		-- if is_plugin_loaded(plugin_name) then
+		local ok, apply_plugin_highlights = pcall(require, module_path)
+		if ok and type(apply_plugin_highlights) == "function" then
+			local plugin_highlights = apply_plugin_highlights(c)
+			-- Merge plugin highlights into main table
+			for name, attrs in pairs(plugin_highlights) do
+				highlights[name] = attrs
 			end
 		end
+		-- end
 	end
 
 	return highlights
