@@ -18,7 +18,7 @@ Oasis.styles = {}
 ---     highlight_overrides = { Comment = { fg = "#AABBCC" } }
 ---   })
 ---   vim.cmd.colorscheme('oasis')  -- Apply the theme
----@param user_config table|nil User configuration
+---@param user_config OasisConfig|nil User configuration
 function Oasis.setup(user_config)
 	Config.setup(user_config)
 end
@@ -192,9 +192,10 @@ end
 
 --- Apply theme and refresh plugin integrations
 ---@param palette table The color palette to apply
-local function apply_theme(palette)
+---@param palette_name string The palette name (e.g., "oasis_lagoon")
+local function apply_theme(palette, palette_name)
 	local build = require("oasis.theme_generator")
-	build(palette)
+	build(palette, palette_name)
 
 	-- Load and refresh plugin integrations
 	pcall(require, "oasis.integrations.lualine")
@@ -221,7 +222,7 @@ function Oasis.apply(palette_name)
 	remember_style(palette_name, bg)
 	reset_highlights()
 	local palette = load_palette_module(palette_name)
-	apply_theme(palette)
+	apply_theme(palette, palette_name)
 end
 
 -- Setup API commands

@@ -1,8 +1,9 @@
 -- lua/oasis/theme_generator.lua
 
-return function(c)
+return function(c, palette_name)
 	local LIGHT_MODE = c.light_mode or false
 	local Config = require("oasis.config").get()
+	local Overrides = require("oasis.lib.override_highlight")
 
 	-- Helper function to conditionally apply text styles based on config
 	local function apply_styles(attrs)
@@ -411,7 +412,8 @@ return function(c)
 	end
 
 	-- Apply user highlight overrides last (they take precedence)
-	for name, attrs in pairs(Config.highlight_overrides or {}) do
+	local overrides = Overrides.resolve(c, palette_name, Config)
+	for name, attrs in pairs(overrides) do
 		if type(attrs) == "table" then
 			vim.api.nvim_set_hl(0, name, apply_styles(attrs))
 		else
