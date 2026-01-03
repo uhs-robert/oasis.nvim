@@ -634,7 +634,6 @@ require("oasis").setup({
 
 **Precedence:** Global → Global light → Global light_N → Theme → Theme light → Theme light_N
 
-> [!TIP]
 > See [Color Palettes](lua/oasis/color_palettes) for each theme's palette structure and [Palette](./lua/oasis/palette.lua) for all base colors.
 
 <!-- palette-overrides:end-->
@@ -719,7 +718,6 @@ require("oasis").setup({
 
 **Precedence:** Global → Global light → Global light_N → Theme → Theme light → Theme light_N
 
-> [!TIP]
 > See [Theme Generator](lua/oasis/theme_generator.lua) for all highlight groups.
 >
 > See [Color Palettes](lua/oasis/color_palettes) for each theme's palette structure and [Palette](./lua/oasis/palette.lua) for all base colors.
