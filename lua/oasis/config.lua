@@ -127,13 +127,8 @@ end
 ---@param palette_name string The name of the palette (e.g., "oasis_desert")
 ---@return table palette The palette with overrides applied
 function Config.apply_palette_overrides(palette, palette_name)
-	local result = deepcopy(palette)
-
-	if Config.options.palette_overrides[palette_name] then
-		result = deep_merge(result, Config.options.palette_overrides[palette_name])
-	end
-
-	return result
+	local PaletteOverrides = require("oasis.lib.override_palette")
+	return PaletteOverrides.resolve(palette, palette_name, Config.options)
 end
 
 return Config

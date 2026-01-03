@@ -544,18 +544,98 @@ Thirsty for total control? You can override whatever you like.
   <br>
 <!-- palette-overrides:start -->
 
-**`palette_overrides`** - Customize colors in palettes (See [Color Palettes](lua/oasis/color_palettes) for palette structure)
+**`palette_overrides`** - Customize colors in palettes. Supports two methods for updating:
+
+### Static Table (no access to palette)
 
 ```lua
 require("oasis").setup({
   palette_overrides = {
-    oasis_lagoon = {
-      syntax = { func = "#E06C75", comment = "#5C6370" },
-      ui = { border = "#61AFEF" }
+    -- Global light overrides (applies to ALL themes)
+    light = {
+      bg = { core = "#FFF8F0" }
+    },
+
+    -- Global light intensity 3 (applies to ALL themes)
+    light_3 = {
+      bg = { core = "#FFEFE0" }
+    },
+
+    -- Per-theme overrides (use shorthand names: desert, lagoon, etc.)
+    lagoon = {
+      syntax = { string = "#FFA0A0", punctuation = "#F89D82", comment = "#665D55" },
+      ui = { border = "#FFA247" },
+
+      -- Light mode for this theme
+      light = {
+        syntax = { comment = "#404040" }
+      },
+
+      -- Specific intensity for this theme
+      light_5 = {
+        bg = { core = "#FFE8D0" }
+      }
     }
   }
 })
 ```
+
+### Function (with palette access)
+
+```lua
+require("oasis").setup({
+  palette_overrides = function(c, colors)
+    ---@type OasisPaletteOverrides
+    return {
+      -- c = current palette
+      -- colors = base palette from palette.lua (Tailwind-style colors and access to all palettes)
+
+      -- Global light overrides (applies to ALL themes)
+      light = {
+        syntax = {
+          comment = c.fg.dim,          -- Reference current palette
+          string = colors.rose[500]    -- Reference global colors
+        }
+      },
+
+      -- Global light intensity 3 (applies to ALL themes)
+      light_3 = {
+        bg = { core = "#FFEFE0" }
+      },
+
+      -- Global palette overrides
+      syntax = {
+        comment = c.fg.dim,
+        statement = colors.khaki[500],
+      },
+
+      -- Per-theme overrides (use shorthand names: desert, lagoon, etc.)
+      lagoon = {
+        syntax = {
+          string = colors.rose[500],
+          punctuation = colors.peach[500],
+          comment = c.fg.dim
+        },
+
+        -- Light mode for this theme
+        light = {
+          syntax = { string = colors.red[800] }
+        },
+
+        -- Specific intensity for this theme
+        light = {
+          syntax = { string = colors.red[800] }
+        }
+      }
+    }
+  end
+})
+```
+
+**Precedence:** Global → Global light → Global light_N → Theme → Theme light → Theme light_N
+
+> [!TIP]
+> See [Color Palettes](lua/oasis/color_palettes) for each theme's palette structure and [Palette](./lua/oasis/palette.lua) for all base colors.
 
 <!-- palette-overrides:end-->
 </details>
@@ -565,17 +645,84 @@ require("oasis").setup({
   <br>
 <!-- highlight-overrides:start -->
 
-**`highlight_overrides`** - Override or add highlight groups (See [Theme Generator](lua/oasis/theme_generator.lua) for highlight groups):
+**`highlight_overrides`** - Override or add highlight groups. Supports two methods for updating:
+
+### Static Table (no access to palette)
 
 ```lua
 require("oasis").setup({
   highlight_overrides = {
-    Comment = { fg = "#5C6370", italic = true },
+    -- Global (applies to all themes, all modes)
+    Comment = { fg = "#808080", italic = true },
     Function = { fg = "#E06C75", bold = true },
-    Identifier = "Function"  -- Link to another group
+    Identifier = "Function",  -- Link to another group
+
+    -- Global light mode (all themes, all intensities)
+    light = {
+      Comment = { fg = "#606060" },
+      Normal = { bg = "#000000" },
+    },
+
+    -- Global light intensity 3 (all themes)
+    light_3 = {
+      Normal = { bg = "#FFF8F0" }
+    },
+
+    -- Per-theme overrides (use shorthand names: desert, lagoon, etc.)
+    desert = {
+      String = { fg = "#FFA0A0" },
+
+      -- Desert light mode
+      light = {
+        String = { fg = "#6BA5C8" }
+      },
+
+      -- Desert light intensity 3
+      light_3 = {
+        Normal = { bg = "#FFF0E0" }
+      }
+    }
   }
 })
 ```
+
+### Function (with palette access)
+
+```lua
+require("oasis").setup({
+  highlight_overrides = function(c, colors)
+    ---@type OasisHighlightOverrides
+    return {
+      -- c = current palette
+      -- colors = base palette from palette.lua (Tailwind-style colors)
+
+      Comment = { fg = c.fg.dim, italic = true },
+      String = { fg = colors.red[500] },
+      Function = { fg = c.theme.primary },
+
+      -- Global light overrides
+      light = {
+        Comment = { fg = c.fg.muted }
+      },
+
+      -- Per-theme with palette access
+      desert = {
+        String = { fg = colors.sky[500] },
+        light = {
+          String = { fg = colors.sky[700] }
+        }
+      }
+    }
+  end
+})
+```
+
+**Precedence:** Global → Global light → Global light_N → Theme → Theme light → Theme light_N
+
+> [!TIP]
+> See [Theme Generator](lua/oasis/theme_generator.lua) for all highlight groups.
+>
+> See [Color Palettes](lua/oasis/color_palettes) for each theme's palette structure and [Palette](./lua/oasis/palette.lua) for all base colors.
 
 <!-- highlight-overrides:end -->
 </details>
