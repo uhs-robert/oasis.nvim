@@ -103,7 +103,7 @@ Click any card below to view the full preview and syntax sample. [↓ Or click h
   <tr>
     <td align="center"><a href="#cactus-dark"><img src="assets/screenshots/cactus-dark-dashboard.png" alt="Cactus (dark)" width="auto"></a><br><strong>Cactus</strong><br><em>Green</em></td>
     <td align="center"><a href="#mirage-dark"><img src="assets/screenshots/mirage-dark-dashboard.png" alt="Mirage (dark)" width="auto"></a><br><strong>Mirage</strong><br><em>Teal</em></td>
-    <td align="center"><a href="#lagoon-dark"><img src="assets/screenshots/lagoon-dark-dashboard.png" alt="Lagoon (dark)" width="auto"></a><br><strong>Lagoon (Default Dark)</strong><br><em>Blue</em></td>
+    <td align="center"><a href="#lagoon-dark"><img src="assets/screenshots/lagoon-dark-dashboard.png" alt="Lagoon (dark)" width="auto"></a><br><strong>Lagoon (Default)</strong><br><em>Blue</em></td>
     <td align="center"><a href="#twilight-dark"><img src="assets/screenshots/twilight-dark-dashboard.png" alt="Twilight (dark)" width="auto"></a><br><strong>Twilight</strong><br><em>Purple</em></td>
   </tr>
   <tr>
