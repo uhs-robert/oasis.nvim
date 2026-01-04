@@ -99,7 +99,7 @@ local function generate_bat_theme(display_name, palette)
 	add_scope(
 		"String quotes",
 		"punctuation.definition.string.begin, punctuation.definition.string.end, string.quoted.single punctuation, string.quoted.double punctuation",
-		palette.syntax.punctuation
+		palette.syntax.string
 	)
 	add_scope(
 		"Constants, booleans, numbers",
@@ -128,7 +128,7 @@ local function generate_bat_theme(display_name, palette)
 	add_scope(
 		"Character, escape",
 		"constant.character, constant.character.escape, constant.other.placeholder",
-		palette.syntax.exception
+		palette.syntax.builtinVar
 	)
 	add_scope("Entity name", "entity.name, entity.other.inherited-class", palette.syntax.identifier)
 	add_scope(
@@ -205,12 +205,12 @@ local function generate_bat_theme(display_name, palette)
 	add_scope(
 		"Regex escape",
 		"constant.character.escape.regexp, keyword.operator.or.regexp",
-		palette.syntax.regex,
+		palette.syntax.exception,
 		"bold"
 	)
 	add_scope("Entity Name Tag", "entity.name.tag, meta.tag", palette.syntax.special)
 	add_scope("Meta Tag", "meta.tag", palette.syntax.exception)
-	add_scope("Tag attribute", "entity.other.attribute-name, meta.attribute", palette.syntax.parameter)
+	add_scope("Tag attribute", "entity.other.attribute-name, meta.attribute", palette.syntax.identifier)
 	add_scope("Invalid", "invalid, invalid.illegal, invalid.broken", palette.ui.diag.error.fg)
 	add_scope("Deprecated", "invalid.deprecated", palette.ui.diag.warn.fg)
 
