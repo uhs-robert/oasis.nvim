@@ -6,55 +6,51 @@ local File = require("oasis.lib.file")
 local Utils = {}
 
 local DEPRECATED_PALETTES = {
-	dawn = true,
-	dawnlight = true,
-	day = true,
-	dusk = true,
-	dust = true,
+  dawn = true,
+  dawnlight = true,
+  day = true,
+  dusk = true,
+  dust = true,
 }
 
 -- Provide minimal `vim` compatibility when running outside Neovim (e.g., plain lua extras)
 -- Only fills missing pieces and never overrides an existing `vim` table/functions.
 local function ensure_vim_compat()
-	if _G.vim == nil then
-		_G.vim = {}
-	end
+  if _G.vim == nil then _G.vim = {} end
 
-	local function extend_tables(behavior, deep, ...)
-		local result = {}
-		for i = 1, select("#", ...) do
-			local t = select(i, ...)
-			if type(t) == "table" then
-				for k, v in pairs(t) do
-					local has_key = result[k] ~= nil
+  local function extend_tables(behavior, deep, ...)
+    local result = {}
+    for i = 1, select("#", ...) do
+      local t = select(i, ...)
+      if type(t) == "table" then
+        for k, v in pairs(t) do
+          local has_key = result[k] ~= nil
 
-					if has_key and behavior == "error" then
-						error("key already present: " .. k)
-					end
+          if has_key and behavior == "error" then error("key already present: " .. k) end
 
-					if deep and type(result[k]) == "table" and type(v) == "table" then
-						result[k] = extend_tables(behavior, true, result[k], v)
-					elseif not has_key or behavior == "force" then
-						result[k] = v
-					end
-				end
-			end
-		end
-		return result
-	end
+          if deep and type(result[k]) == "table" and type(v) == "table" then
+            result[k] = extend_tables(behavior, true, result[k], v)
+          elseif not has_key or behavior == "force" then
+            result[k] = v
+          end
+        end
+      end
+    end
+    return result
+  end
 
-	_G.vim.tbl_extend = _G.vim.tbl_extend or function(behavior, ...)
-		return extend_tables(behavior, false, ...)
-	end
+  _G.vim.tbl_extend = _G.vim.tbl_extend or function(behavior, ...)
+    return extend_tables(behavior, false, ...)
+  end
 
-	_G.vim.tbl_deep_extend = _G.vim.tbl_deep_extend
-		or function(behavior, ...)
-			return extend_tables(behavior, true, ...)
-		end
+  _G.vim.tbl_deep_extend = _G.vim.tbl_deep_extend
+    or function(behavior, ...)
+      return extend_tables(behavior, true, ...)
+    end
 
-	_G.vim.deepcopy = _G.vim.deepcopy or Utils.deepcopy
-	_G.vim.g = _G.vim.g or {}
-	_G.vim.o = _G.vim.o or {}
+  _G.vim.deepcopy = _G.vim.deepcopy or Utils.deepcopy
+  _G.vim.g = _G.vim.g or {}
+  _G.vim.o = _G.vim.o or {}
 end
 
 -- Internal helpers
@@ -62,17 +58,13 @@ end
 --- @param name string Bare palette name (e.g., "lagoon") or module path ("oasis.color_palettes.oasis_lagoon")
 --- @return string module_name Fully-qualified module name
 local function build_palette_module_name(name)
-	-- Accept either a fully qualified module path or a bare palette name
-	if name:match("^oasis%.color_palettes%.") then
-		return name
-	end
+  -- Accept either a fully qualified module path or a bare palette name
+  if name:match("^oasis%.color_palettes%.") then return name end
 
-	local palette_name = name
-	if not palette_name:match("^oasis_") then
-		palette_name = "oasis_" .. palette_name
-	end
+  local palette_name = name
+  if not palette_name:match("^oasis_") then palette_name = "oasis_" .. palette_name end
 
-	return "oasis.color_palettes." .. palette_name
+  return "oasis.color_palettes." .. palette_name
 end
 
 --- Require a palette module safely
@@ -80,11 +72,9 @@ end
 --- @return table|nil palette Loaded palette or nil on failure
 --- @return string|nil err Error message when palette is nil
 local function require_palette(module_name)
-	local ok, palette = pcall(require, module_name)
-	if not ok then
-		return nil, "Failed to load palette: " .. palette
-	end
-	return palette, nil
+  local ok, palette = pcall(require, module_name)
+  if not ok then return nil, "Failed to load palette: " .. palette end
+  return palette, nil
 end
 
 --- Extract a specific variant from a palette, handling dual-mode automatically
@@ -94,71 +84,65 @@ end
 --- @return table|nil extracted Palette variant or original palette for legacy tables
 --- @return string|nil err Error message (currently nil, reserved for parity)
 local function extract_palette_variant(palette, mode, fallback_mode)
-	if Utils.is_dual_mode_palette(palette) then
-		local selected_mode = mode or fallback_mode or "dark"
-		return palette[selected_mode], nil
-	end
-	return palette, nil
+  if Utils.is_dual_mode_palette(palette) then
+    local selected_mode = mode or fallback_mode or "dark"
+    return palette[selected_mode], nil
+  end
+  return palette, nil
 end
 
 --- Detect project root directory by looking for lua/oasis/color_palettes/
 --- @return string|nil Project root path or nil if not found
 function Utils.find_project_root()
-	local handle = assert(io.popen("pwd"))
-	local current = handle:read("*l")
-	handle:close()
+  local handle = assert(io.popen("pwd"))
+  local current = handle:read("*l")
+  handle:close()
 
-	for _ = 1, 4 do -- current dir + 3 parents
-		if File.exists(current .. "/lua/oasis/color_palettes") then
-			return current
-		end
+  for _ = 1, 4 do -- current dir + 3 parents
+    if File.exists(current .. "/lua/oasis/color_palettes") then return current end
 
-		current = current:match("(.+)/[^/]+$")
-		if not current then
-			break
-		end
-	end
+    current = current:match("(.+)/[^/]+$")
+    if not current then break end
+  end
 
-	return nil
+  return nil
 end
 
 --- Check if a palette is deprecated
 --- @param name string Palette name with or without "oasis_" prefix
 --- @return boolean
 function Utils.is_palette_deprecated(name)
-	local bare = name:gsub("^oasis_", "")
-	return DEPRECATED_PALETTES[bare] == true
+  local bare = name:gsub("^oasis_", "")
+  return DEPRECATED_PALETTES[bare] == true
 end
 
 --- Get list of available palette names from filesystem
 --- @param include_deprecated boolean|nil Include deprecated palettes when true
 --- @return table List of palette names without "oasis_" prefix, sorted alphabetically
 function Utils.get_palette_names(include_deprecated)
-	local allow_deprecated = include_deprecated == true
-	local handle = assert(io.popen("ls lua/oasis/color_palettes/oasis_*.lua 2>/dev/null"))
-	local result = handle:read("*a")
-	handle:close()
+  local allow_deprecated = include_deprecated == true
+  local handle = assert(io.popen("ls lua/oasis/color_palettes/oasis_*.lua 2>/dev/null"))
+  local result = handle:read("*a")
+  handle:close()
 
-	local files = {}
-	for file in result:gmatch("[^\n]+") do
-		local name = file:match("oasis_(%w+)%.lua")
-		if name and (allow_deprecated or not Utils.is_palette_deprecated(name)) then
-			table.insert(files, name)
-		end
-	end
+  local files = {}
+  for file in result:gmatch("[^\n]+") do
+    local name = file:match("oasis_(%w+)%.lua")
+    if name and (allow_deprecated or not Utils.is_palette_deprecated(name)) then table.insert(files, name) end
+  end
 
-	table.sort(files)
-	return files
+  table.sort(files)
+  return files
 end
 
 --- Detect if a palette uses dual-mode structure (has .dark and .light keys)
 --- @param palette table Palette table
 --- @return boolean True if dual-mode palette
 function Utils.is_dual_mode_palette(palette)
-	return palette.dark ~= nil
-		and palette.light ~= nil
-		and type(palette.dark) == "table"
-		and type(palette.light) == "table"
+  return palette.dark ~= nil
+    and palette.light ~= nil
+    and type(palette.dark) == "table"
+    and type(palette.light) == "table"
 end
 
 --- Get the mode of a palette ('light', 'dark', or 'dual') by inspecting it.
@@ -166,19 +150,17 @@ end
 --- @return string|nil mode ('light', 'dark', 'dual') or nil if palette not found
 --- @return string|nil err Error message when mode is nil
 function Utils.get_palette_mode(palette_name)
-	local palette_module = build_palette_module_name(palette_name)
-	local palette, err = require_palette(palette_module)
-	if not palette then
-		return nil, err
-	end
+  local palette_module = build_palette_module_name(palette_name)
+  local palette, err = require_palette(palette_module)
+  if not palette then return nil, err end
 
-	if Utils.is_dual_mode_palette(palette) then
-		return "dual"
-	elseif palette.light_mode == true then
-		return "light"
-	else
-		return "dark"
-	end
+  if Utils.is_dual_mode_palette(palette) then
+    return "dual"
+  elseif palette.light_mode == true then
+    return "light"
+  else
+    return "dark"
+  end
 end
 
 --- Load and extract palette based on current background mode
@@ -187,13 +169,11 @@ end
 --- @param explicit_mode string|nil Force a specific mode ("dark" or "light"), overrides background detection
 --- @return table|nil, string|nil Extracted palette or nil, error message
 function Utils.load_and_extract_palette(palette_name, explicit_mode)
-	local palette, err = require_palette(palette_name)
-	if not palette then
-		return nil, err
-	end
+  local palette, err = require_palette(palette_name)
+  if not palette then return nil, err end
 
-	local auto_mode = (vim.o.background == "light" and "light" or "dark")
-	return extract_palette_variant(palette, explicit_mode, auto_mode)
+  local auto_mode = (vim.o.background == "light" and "light" or "dark")
+  return extract_palette_variant(palette, explicit_mode, auto_mode)
 end
 
 --- Load a palette module by name
@@ -202,81 +182,79 @@ end
 --- @param mode string|nil "dark" or "light" (only used for dual-mode palettes, auto-detects if nil)
 --- @return table|nil, string|nil Palette table or nil, error message
 function Utils.load_palette(name, mode)
-	-- Add project root to package path
-	package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
+  -- Add project root to package path
+  package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 
-	local module_name = build_palette_module_name(name)
-	local palette, err = require_palette(module_name)
-	if not palette then
-		return nil, err
-	end
+  local module_name = build_palette_module_name(name)
+  local palette, err = require_palette(module_name)
+  if not palette then return nil, err end
 
-	return extract_palette_variant(palette, mode, "dark")
+  return extract_palette_variant(palette, mode, "dark")
 end
 
 --- Capitalize first letter of string
 --- @param str string Input string
 --- @return string String with first letter capitalized
 function Utils.capitalize(str)
-	local capitalized = str:gsub("^%l", string.upper)
-	return capitalized
+  local capitalized = str:gsub("^%l", string.upper)
+  return capitalized
 end
 
 --- Format variant name for display (e.g., "lagoon_dark" -> "Oasis Lagoon Dark")
 --- @param variant_name string Variant name (e.g., "lagoon_dark", "lagoon_light_3", "dawn")
 --- @return string Formatted display name
 function Utils.format_display_name(variant_name)
-	-- Strip optional oasis_ prefix to keep display names clean
-	local function normalize_base(base)
-		base = base:gsub("^oasis_", "")
+  -- Strip optional oasis_ prefix to keep display names clean
+  local function normalize_base(base)
+    base = base:gsub("^oasis_", "")
 
-		-- Title-case underscore-delimited words (e.g., "sea_breeze" -> "Sea Breeze")
-		local words = {}
-		for word in base:gmatch("[^_]+") do
-			table.insert(words, Utils.capitalize(word))
-		end
+    -- Title-case underscore-delimited words (e.g., "sea_breeze" -> "Sea Breeze")
+    local words = {}
+    for word in base:gmatch("[^_]+") do
+      table.insert(words, Utils.capitalize(word))
+    end
 
-		return table.concat(words, " ")
-	end
+    return table.concat(words, " ")
+  end
 
-	-- Extract parts: base_name, mode (dark/light), intensity (1-5)
-	local base_name, intensity
+  -- Extract parts: base_name, mode (dark/light), intensity (1-5)
+  local base_name, intensity
 
-	-- Try to match dark variant
-	base_name, _ = variant_name:match("^(.-)_(dark)$")
-	if base_name then
-		local display_base = normalize_base(base_name)
-		return "Oasis " .. display_base .. " Dark"
-	end
+  -- Try to match dark variant
+  base_name, _ = variant_name:match("^(.-)_(dark)$")
+  if base_name then
+    local display_base = normalize_base(base_name)
+    return "Oasis " .. display_base .. " Dark"
+  end
 
-	-- Try to match light variant with intensity
-	base_name, _, intensity = variant_name:match("^(.-)_(light)_(%d+)$")
-	if base_name then
-		local display_base = normalize_base(base_name)
-		return "Oasis " .. display_base .. " Light " .. intensity
-	end
+  -- Try to match light variant with intensity
+  base_name, _, intensity = variant_name:match("^(.-)_(light)_(%d+)$")
+  if base_name then
+    local display_base = normalize_base(base_name)
+    return "Oasis " .. display_base .. " Light " .. intensity
+  end
 
-	-- Standalone palette (no suffix)
-	local display_base = normalize_base(variant_name)
-	return "Oasis " .. display_base
+  -- Standalone palette (no suffix)
+  local display_base = normalize_base(variant_name)
+  return "Oasis " .. display_base
 end
 
 --- Deep copy a table (recursive)
 --- @param orig any Value to copy
 --- @return any Deep copy of the value
 function Utils.deepcopy(orig)
-	local orig_type = type(orig)
-	local copy
-	if orig_type == "table" then
-		copy = {}
-		for orig_key, orig_value in next, orig, nil do
-			copy[Utils.deepcopy(orig_key)] = Utils.deepcopy(orig_value)
-		end
-		setmetatable(copy, Utils.deepcopy(getmetatable(orig)))
-	else
-		copy = orig
-	end
-	return copy
+  local orig_type = type(orig)
+  local copy
+  if orig_type == "table" then
+    copy = {}
+    for orig_key, orig_value in next, orig, nil do
+      copy[Utils.deepcopy(orig_key)] = Utils.deepcopy(orig_value)
+    end
+    setmetatable(copy, Utils.deepcopy(getmetatable(orig)))
+  else
+    copy = orig
+  end
+  return copy
 end
 
 -- Initialize compatibility shims once utilities are defined
@@ -288,87 +266,74 @@ ensure_vim_compat()
 --- @return number success_count
 --- @return number error_count
 local function iterate_palettes(callback, include_light_intensity, opts)
-	opts = opts or {}
-	local include_deprecated = opts.include_deprecated == true
-	local allow_legacy = opts.allow_legacy == true
+  opts = opts or {}
+  local include_deprecated = opts.include_deprecated == true
+  local allow_legacy = opts.allow_legacy == true
 
-	local palette_names = Utils.get_palette_names(include_deprecated)
-	local success_count = 0
-	local error_count = 0
+  local palette_names = Utils.get_palette_names(include_deprecated)
+  local success_count = 0
+  local error_count = 0
 
-	for _, name in ipairs(palette_names) do
-		local ok, raw_palette = pcall(require, "oasis.color_palettes.oasis_" .. name)
-		if not ok then
-			print(string.format("✗ Failed to load palette: %s", name))
-			error_count = error_count + 1
-			goto continue
-		end
+  for _, name in ipairs(palette_names) do
+    local ok, raw_palette = pcall(require, "oasis.color_palettes.oasis_" .. name)
+    if not ok then
+      print(string.format("✗ Failed to load palette: %s", name))
+      error_count = error_count + 1
+      goto continue
+    end
 
-		if Utils.is_dual_mode_palette(raw_palette) then
-			local ok_cb, err = pcall(callback, name, raw_palette.dark, "dark", nil)
-			if ok_cb then
-				success_count = success_count + 1
-			else
-				print(string.format("✗ Error processing %s.dark: %s", name, err or "unknown error"))
-				error_count = error_count + 1
-			end
+    if Utils.is_dual_mode_palette(raw_palette) then
+      local ok_cb, err = pcall(callback, name, raw_palette.dark, "dark", nil)
+      if ok_cb then
+        success_count = success_count + 1
+      else
+        print(string.format("✗ Error processing %s.dark: %s", name, err or "unknown error"))
+        error_count = error_count + 1
+      end
 
-			if include_light_intensity then
-				for intensity = 1, 5 do
-					local light_palette = Utils.generate_light_palette_at_intensity(name, intensity)
-					if light_palette then
-						ok_cb, err = pcall(callback, name, light_palette, "light", intensity)
-						if ok_cb then
-							success_count = success_count + 1
-						else
-							print(
-								string.format(
-									"✗ Error processing %s.light_%d: %s",
-									name,
-									intensity,
-									err or "unknown error"
-								)
-							)
-							error_count = error_count + 1
-						end
-					else
-						print(
-							string.format(
-								"✗ Failed to generate light palette for %s at intensity %d",
-								name,
-								intensity
-							)
-						)
-						error_count = error_count + 1
-					end
-				end
-			else
-				local ok_light, err_light = pcall(callback, name, raw_palette.light, "light", nil)
-				if ok_light then
-					success_count = success_count + 1
-				else
-					print(string.format("✗ Error processing %s.light: %s", name, err_light or "unknown error"))
-					error_count = error_count + 1
-				end
-			end
-		else
-			if allow_legacy then
-				local ok_cb, err = pcall(callback, name, raw_palette, nil, nil)
-				if ok_cb then
-					success_count = success_count + 1
-				else
-					print(string.format("✗ Error processing %s: %s", name, err or "unknown error"))
-					error_count = error_count + 1
-				end
-			else
-				print(string.format("↷ Skipping legacy palette (deprecated): %s", name))
-			end
-		end
+      if include_light_intensity then
+        for intensity = 1, 5 do
+          local light_palette = Utils.generate_light_palette_at_intensity(name, intensity)
+          if light_palette then
+            ok_cb, err = pcall(callback, name, light_palette, "light", intensity)
+            if ok_cb then
+              success_count = success_count + 1
+            else
+              print(string.format("✗ Error processing %s.light_%d: %s", name, intensity, err or "unknown error"))
+              error_count = error_count + 1
+            end
+          else
+            print(string.format("✗ Failed to generate light palette for %s at intensity %d", name, intensity))
+            error_count = error_count + 1
+          end
+        end
+      else
+        local ok_light, err_light = pcall(callback, name, raw_palette.light, "light", nil)
+        if ok_light then
+          success_count = success_count + 1
+        else
+          print(string.format("✗ Error processing %s.light: %s", name, err_light or "unknown error"))
+          error_count = error_count + 1
+        end
+      end
+    else
+      if allow_legacy then
+        local ok_cb, err = pcall(callback, name, raw_palette, nil, nil)
+        if ok_cb then
+          success_count = success_count + 1
+        else
+          print(string.format("✗ Error processing %s: %s", name, err or "unknown error"))
+          error_count = error_count + 1
+        end
+      else
+        print(string.format("↷ Skipping legacy palette (deprecated): %s", name))
+      end
+    end
 
-		::continue::
-	end
+    ::continue::
+  end
 
-	return success_count, error_count
+  return success_count, error_count
 end
 
 --- Iterate over palette modes (dark + light for dual-mode; single call for legacy)
@@ -377,7 +342,7 @@ end
 --- @return number success_count
 --- @return number error_count
 function Utils.for_each_palette_mode(callback, opts)
-	return iterate_palettes(callback, false, opts)
+  return iterate_palettes(callback, false, opts)
 end
 
 --- Generate light palette at specific intensity level
@@ -385,37 +350,31 @@ end
 --- @param intensity number Intensity level (1-5)
 --- @return table|nil Palette with light mode at specified intensity, or nil on error
 function Utils.generate_light_palette_at_intensity(name, intensity)
-	local Config = require("oasis.config")
+  local Config = require("oasis.config")
 
-	-- Load the raw palette module
-	local ok, raw_palette = pcall(require, "oasis.color_palettes.oasis_" .. name)
-	if not ok then
-		return nil
-	end
+  -- Load the raw palette module
+  local ok, raw_palette = pcall(require, "oasis.color_palettes.oasis_" .. name)
+  if not ok then return nil end
 
-	-- Only works for dual-mode palettes
-	if not Utils.is_dual_mode_palette(raw_palette) then
-		return nil
-	end
+  -- Only works for dual-mode palettes
+  if not Utils.is_dual_mode_palette(raw_palette) then return nil end
 
-	-- Save original intensity and set new one
-	-- Must modify config.options (not defaults) since palettes call config.get()
-	local original_intensity = Config.options.light_intensity
-	Config.options.light_intensity = intensity
+  -- Save original intensity and set new one
+  -- Must modify config.options (not defaults) since palettes call config.get()
+  local original_intensity = Config.options.light_intensity
+  Config.options.light_intensity = intensity
 
-	-- Clear the palette from cache and reload with new intensity
-	package.loaded["oasis.color_palettes.oasis_" .. name] = nil
-	ok, raw_palette = pcall(require, "oasis.color_palettes.oasis_" .. name)
+  -- Clear the palette from cache and reload with new intensity
+  package.loaded["oasis.color_palettes.oasis_" .. name] = nil
+  ok, raw_palette = pcall(require, "oasis.color_palettes.oasis_" .. name)
 
-	-- Restore original intensity and clear cache again
-	Config.options.light_intensity = original_intensity
-	package.loaded["oasis.color_palettes.oasis_" .. name] = nil
+  -- Restore original intensity and clear cache again
+  Config.options.light_intensity = original_intensity
+  package.loaded["oasis.color_palettes.oasis_" .. name] = nil
 
-	if not ok then
-		return nil
-	end
+  if not ok then return nil end
 
-	return raw_palette.light
+  return raw_palette.light
 end
 
 --- Iterate over all palette modes with intensity variants for dual-mode palettes
@@ -429,7 +388,7 @@ end
 --- @param opts table|nil Options: include_deprecated (bool), allow_legacy (bool)
 --- @return number, number Success count, error count
 function Utils.for_each_palette_variant(callback, opts)
-	return iterate_palettes(callback, true, opts)
+  return iterate_palettes(callback, true, opts)
 end
 
 --- Build output path for a palette variant
@@ -443,41 +402,39 @@ end
 --- @return string variant_name Name used in the file (e.g., "lagoon_dark", "dawn")
 --- @return string subdir Relative directory under themes/ (e.g., "dark", "light/3")
 function Utils.build_variant_path(base_dir, extension, name, mode, intensity)
-	local variant_name
-	local subdir
+  local variant_name
+  local subdir
 
-	if mode then
-		-- Dual-mode palette
-		if mode == "dark" then
-			variant_name = name .. "_dark"
-			subdir = "dark"
-		else
-			if not intensity then
-				error("Light mode requires an intensity value (1-5)")
-			end
-			variant_name = name .. "_light_" .. intensity
-			subdir = string.format("light/%d", intensity)
-		end
-	else
-		-- Standalone palette (e.g., dawn, day, desert)
-		variant_name = name
-		subdir = "legacy"
-	end
+  if mode then
+    -- Dual-mode palette
+    if mode == "dark" then
+      variant_name = name .. "_dark"
+      subdir = "dark"
+    else
+      if not intensity then error("Light mode requires an intensity value (1-5)") end
+      variant_name = name .. "_light_" .. intensity
+      subdir = string.format("light/%d", intensity)
+    end
+  else
+    -- Standalone palette (e.g., dawn, day, desert)
+    variant_name = name
+    subdir = "legacy"
+  end
 
-	-- All themes go in themes/<mode>/ (or light/<intensity>) for consistent organization
-	local output_dir = string.format("%s/themes/%s", base_dir, subdir)
-	Directory.create(output_dir)
+  -- All themes go in themes/<mode>/ (or light/<intensity>) for consistent organization
+  local output_dir = string.format("%s/themes/%s", base_dir, subdir)
+  Directory.create(output_dir)
 
-	local filename
-	if extension ~= nil and extension ~= "" then
-		filename = string.format("oasis_%s.%s", variant_name, extension)
-	else
-		filename = string.format("oasis_%s", variant_name)
-	end
+  local filename
+  if extension ~= nil and extension ~= "" then
+    filename = string.format("oasis_%s.%s", variant_name, extension)
+  else
+    filename = string.format("oasis_%s", variant_name)
+  end
 
-	local output_path = string.format("%s/%s", output_dir, filename)
+  local output_path = string.format("%s/%s", output_dir, filename)
 
-	return output_path, variant_name, subdir
+  return output_path, variant_name, subdir
 end
 
 --- Build a human-friendly output path using the display name (spaces, title case)
@@ -491,22 +448,22 @@ end
 --- @return string variant_name Internal variant name (e.g., "lagoon_dark")
 --- @return string display_name Human-friendly name (e.g., "Oasis Lagoon Dark")
 function Utils.build_display_variant_path(base_dir, extension, name, mode, intensity)
-	-- Reuse build_variant_path for variant naming and directory creation
-	local _, variant_name, subdir = Utils.build_variant_path(base_dir, extension, name, mode, intensity)
-	local display_name = Utils.format_display_name(variant_name)
+  -- Reuse build_variant_path for variant naming and directory creation
+  local _, variant_name, subdir = Utils.build_variant_path(base_dir, extension, name, mode, intensity)
+  local display_name = Utils.format_display_name(variant_name)
 
-	local output_dir = string.format("%s/themes/%s", base_dir, subdir)
-	Directory.create(output_dir)
+  local output_dir = string.format("%s/themes/%s", base_dir, subdir)
+  Directory.create(output_dir)
 
-	local filename
-	if extension ~= nil and extension ~= "" then
-		filename = string.format("%s.%s", display_name, extension)
-	else
-		filename = display_name
-	end
-	local output_path = string.format("%s/%s", output_dir, filename)
+  local filename
+  if extension ~= nil and extension ~= "" then
+    filename = string.format("%s.%s", display_name, extension)
+  else
+    filename = display_name
+  end
+  local output_path = string.format("%s/%s", output_dir, filename)
 
-	return output_path, variant_name, display_name
+  return output_path, variant_name, display_name
 end
 
 return Utils

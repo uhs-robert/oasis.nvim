@@ -18,83 +18,79 @@ ScreenshotGenerator.__index = ScreenshotGenerator
 --- Create a new ScreenshotGenerator instance
 --- @return table ScreenshotGenerator instance
 function ScreenshotGenerator.new()
-	local self = setmetatable({}, ScreenshotGenerator)
-	self.errors = {}
-	self.screenshot_capture = ScreenshotCapture.new(Config.TEMP_DIR, Config.OUTPUT_DIR)
-	return self
+  local self = setmetatable({}, ScreenshotGenerator)
+  self.errors = {}
+  self.screenshot_capture = ScreenshotCapture.new(Config.TEMP_DIR, Config.OUTPUT_DIR)
+  return self
 end
 
 --- Cleanup resources (remove temp directory)
 --- Note: Tmux flavor restoration is handled by the bash wrapper's EXIT trap
 function ScreenshotGenerator:cleanup()
-	print("\nPerforming cleanup...")
-	if File.exists(Config.TEMP_DIR) then
-		Directory.remove(Config.TEMP_DIR)
-	end
+  print("\nPerforming cleanup...")
+  if File.exists(Config.TEMP_DIR) then Directory.remove(Config.TEMP_DIR) end
 end
 
 --- Run the full screenshot generation process
 function ScreenshotGenerator:run()
-	DependencyChecker.check_all()
-	Directory.create(Config.TEMP_DIR)
-	Tmux.backup_config()
+  DependencyChecker.check_all()
+  Directory.create(Config.TEMP_DIR)
+  Tmux.backup_config()
 
-	-- Wrap main logic in pcall to ensure cleanup happens even on errors
-	local success, err = pcall(function()
-		self:generate_all_screenshots()
-	end)
+  -- Wrap main logic in pcall to ensure cleanup happens even on errors
+  local success, err = pcall(function()
+    self:generate_all_screenshots()
+  end)
 
-	self:cleanup()
-	self:report_results()
+  self:cleanup()
+  self:report_results()
 
-	-- Re-throw error if generation failed
-	if not success then
-		error(err)
-	end
+  -- Re-throw error if generation failed
+  if not success then error(err) end
 end
 
 --- Generate screenshots for all variants
 function ScreenshotGenerator:generate_all_screenshots()
-	print(string.format("\nGenerating screenshots for %d variants...", #Config.VARIANTS))
-	print(string.rep("=", 60))
+  print(string.format("\nGenerating screenshots for %d variants...", #Config.VARIANTS))
+  print(string.rep("=", 60))
 
-	for index, variant in ipairs(Config.VARIANTS) do
-		print(string.format("\n[%d/%d] Processing: %s", index, #Config.VARIANTS, variant))
-		self:process_variant(variant)
-	end
+  for index, variant in ipairs(Config.VARIANTS) do
+    print(string.format("\n[%d/%d] Processing: %s", index, #Config.VARIANTS, variant))
+    self:process_variant(variant)
+  end
 end
 
 --- Process a single variant
 --- @param variant string Variant name to process
 function ScreenshotGenerator:process_variant(variant)
-	local success, err = pcall(function()
-		Tmux.kill_server()
-		Tmux.update_oasis_flavor(variant)
-		ScreenshotWorkflow.new(variant, self.screenshot_capture):run()
-		print(variant .. " complete")
-	end)
+  local success, err = pcall(function()
+    Tmux.kill_server()
+    Tmux.update_oasis_flavor(variant)
+    ScreenshotWorkflow.new(variant, self.screenshot_capture):run()
+    print(variant .. " complete")
+  end)
 
-	if not success then
-		local error_msg = string.format("Failed to process %s: %s", variant, err)
-		table.insert(self.errors, error_msg)
-		print(error_msg)
-	end
+  if not success then
+    local error_msg = string.format("Failed to process %s: %s", variant, err)
+    table.insert(self.errors, error_msg)
+    print(error_msg)
+  end
 end
 
 --- Report final results
 function ScreenshotGenerator:report_results()
-	print("\n" .. string.rep("=", 60))
+  print("\n" .. string.rep("=", 60))
 
-	if #self.errors == 0 then
-		local total_screenshots = #Config.VARIANTS * 2 -- 2 screenshots per variant
-		print(string.format("SUCCESS! All %d screenshots generated (%d variants)", total_screenshots, #Config.VARIANTS))
-		print("Output directory: " .. Config.OUTPUT_DIR)
-	else
-		print(string.format("Completed with %d error(s):", #self.errors))
-		for _, err in ipairs(self.errors) do
-			print("   - " .. err)
-		end
-	end
+  if #self.errors == 0 then
+    local total_screenshots = #Config.VARIANTS * 2 -- 2 screenshots per variant
+    print(string.format("SUCCESS! All %d screenshots generated (%d variants)", total_screenshots, #Config.VARIANTS))
+    print("Output directory: " .. Config.OUTPUT_DIR)
+  else
+    print(string.format("Completed with %d error(s):", #self.errors))
+    for _, err in ipairs(self.errors) do
+      print("   - " .. err)
+    end
+  end
 end
 
 return ScreenshotGenerator

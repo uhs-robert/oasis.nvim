@@ -10,19 +10,17 @@ local deepcopy = vim.deepcopy
 -- Get base color palette (cached)
 -- @return table colors The base color palette from palette.lua
 function Config.get_base_colors()
-	if not BASE_COLORS then
-		BASE_COLORS = require("oasis.palette")
-	end
-	return BASE_COLORS
+  if not BASE_COLORS then BASE_COLORS = require("oasis.palette") end
+  return BASE_COLORS
 end
 
 -- Helper to get background setting (use vim.o.background if available, otherwise default to "dark" for standalone lua)
 local function get_background()
-	if vim and vim.o and vim.o.background then
-		return vim.o.background
-	else
-		return "dark"
-	end
+  if vim and vim.o and vim.o.background then
+    return vim.o.background
+  else
+    return "dark"
+  end
 end
 
 -- Default configuration
@@ -66,60 +64,56 @@ Config.options = deepcopy(Config.defaults)
 ---@param override table The table to merge on top
 ---@return table merged The merged result
 local function deep_merge(base, override)
-	local result = deepcopy(base)
+  local result = deepcopy(base)
 
-	for k, v in pairs(override) do
-		if type(v) == "table" and type(result[k]) == "table" then
-			result[k] = deep_merge(result[k], v)
-		else
-			result[k] = v
-		end
-	end
+  for k, v in pairs(override) do
+    if type(v) == "table" and type(result[k]) == "table" then
+      result[k] = deep_merge(result[k], v)
+    else
+      result[k] = v
+    end
+  end
 
-	return result
+  return result
 end
 
 --- Setup configuration
 ---@param user_config table|nil User configuration to merge with defaults
 function Config.setup(user_config)
-	user_config = user_config or {}
-	Config.options = deep_merge(Config.defaults, user_config)
+  user_config = user_config or {}
+  Config.options = deep_merge(Config.defaults, user_config)
 end
 
 --- Get current configuration
 ---@return table config The current configuration
 function Config.get()
-	return Config.options
+  return Config.options
 end
 
 --- Get the full palette name from the configured style
 --- Guaranteed to return a usable palette name string (falls back to defaults).
 ---@return string palette_name Full palette name (e.g., "oasis_lagoon")
 function Config.get_palette_name()
-	local bg = get_background()
+  local bg = get_background()
 
-	-- Use dark_style/light_style based on background
-	local style_option = bg == "light" and Config.options.light_style or Config.options.dark_style
+  -- Use dark_style/light_style based on background
+  local style_option = bg == "light" and Config.options.light_style or Config.options.dark_style
 
-	-- Default to main `style` if `light_style`/`dark_style` is "auto"
-	if style_option == "auto" then
-		style_option = Config.options.style
+  -- Default to main `style` if `light_style`/`dark_style` is "auto"
+  if style_option == "auto" then
+    style_option = Config.options.style
 
-		-- Check if the configured style is compatible with current background or use defaults
-		local palette_name = "oasis_" .. style_option
-		local mode = Utils.get_palette_mode(palette_name)
-		if mode and mode ~= "dual" and mode ~= bg then
-			style_option = bg == "light" and DEFAULT_LIGHT or DEFAULT_DARK
-		end
-	end
+    -- Check if the configured style is compatible with current background or use defaults
+    local palette_name = "oasis_" .. style_option
+    local mode = Utils.get_palette_mode(palette_name)
+    if mode and mode ~= "dual" and mode ~= bg then style_option = bg == "light" and DEFAULT_LIGHT or DEFAULT_DARK end
+  end
 
-	if not style_option then
-		return "oasis_" .. DEFAULT_DARK
-	end
+  if not style_option then return "oasis_" .. DEFAULT_DARK end
 
-	-- Otherwise return the parsed palette
-	local palette_name = "oasis_" .. style_option
-	return palette_name
+  -- Otherwise return the parsed palette
+  local palette_name = "oasis_" .. style_option
+  return palette_name
 end
 
 --- Apply palette overrides to a loaded palette
@@ -127,8 +121,8 @@ end
 ---@param palette_name string The name of the palette (e.g., "oasis_desert")
 ---@return table palette The palette with overrides applied
 function Config.apply_palette_overrides(palette, palette_name)
-	local PaletteOverrides = require("oasis.lib.override_palette")
-	return PaletteOverrides.resolve(palette, palette_name, Config.options)
+  local PaletteOverrides = require("oasis.lib.override_palette")
+  return PaletteOverrides.resolve(palette, palette_name, Config.options)
 end
 
 return Config

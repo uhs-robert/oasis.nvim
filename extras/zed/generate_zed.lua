@@ -14,9 +14,9 @@ local function generate_zed_theme(name, palette)
 
   -- Calculate adjusted colors for UI states
   local hover_bg = is_light and ColorUtils.adjust_brightness(palette.bg.mantle, 0.95)
-      or ColorUtils.adjust_brightness(palette.bg.surface, 1.1)
+    or ColorUtils.adjust_brightness(palette.bg.surface, 1.1)
   local active_bg = is_light and ColorUtils.adjust_brightness(palette.bg.mantle, 0.9)
-      or ColorUtils.adjust_brightness(palette.bg.surface, 1.2)
+    or ColorUtils.adjust_brightness(palette.bg.surface, 1.2)
 
   -- Generate player colors from theme accents
   local player_colors = {
@@ -73,8 +73,8 @@ local function generate_zed_theme(name, palette)
         appearance = is_light and "light" or "dark",
         style = {
           -- Border colors
-          border = palette.bg.surface,                -- Subtle borders between panels using brightest bg
-          ["border.variant"] = palette.bg.mantle,     -- Even more subtle dividers
+          border = palette.bg.surface, -- Subtle borders between panels using brightest bg
+          ["border.variant"] = palette.bg.mantle, -- Even more subtle dividers
           ["border.focused"] = palette.theme.primary, -- Bright accent for focused
           ["border.selected"] = palette.theme.primary,
           ["border.transparent"] = "#00000000",

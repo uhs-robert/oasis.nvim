@@ -7,18 +7,16 @@ local Api = {}
 ---@param filter? fun(name: string): boolean
 ---@return string[]
 local function list_palettes(filter)
-	local paths = vim.fn.globpath(vim.o.rtp, "lua/oasis/color_palettes/*.lua", false, true)
-	local out = {}
+  local paths = vim.fn.globpath(vim.o.rtp, "lua/oasis/color_palettes/*.lua", false, true)
+  local out = {}
 
-	for _, p in ipairs(paths) do
-		local name = p:match("[\\/]color_palettes[\\/](.+)%.lua$")
-		if name and name ~= "init" and (not filter or filter(name)) then
-			table.insert(out, name)
-		end
-	end
+  for _, p in ipairs(paths) do
+    local name = p:match("[\\/]color_palettes[\\/](.+)%.lua$")
+    if name and name ~= "init" and (not filter or filter(name)) then table.insert(out, name) end
+  end
 
-	table.sort(out)
-	return out
+  table.sort(out)
+  return out
 end
 
 --- Create :Oasis command with palette completion
@@ -26,97 +24,97 @@ end
 ---@param utils table
 ---@return nil
 local function create_oasis_command(oasis_module, utils)
-	vim.api.nvim_create_user_command("Oasis", function(opts)
-		oasis_module.apply(opts.args ~= "" and opts.args or nil)
-	end, {
-		nargs = "?",
-		complete = function()
-			local bg = vim.o.background
-			return list_palettes(function(name)
-				local mode = utils.get_palette_mode(name)
-				return mode == "dual" or mode == bg
-			end)
-		end,
-		desc = "Apply Oasis palette variant",
-	})
+  vim.api.nvim_create_user_command("Oasis", function(opts)
+    oasis_module.apply(opts.args ~= "" and opts.args or nil)
+  end, {
+    nargs = "?",
+    complete = function()
+      local bg = vim.o.background
+      return list_palettes(function(name)
+        local mode = utils.get_palette_mode(name)
+        return mode == "dual" or mode == bg
+      end)
+    end,
+    desc = "Apply Oasis palette variant",
+  })
 end
 
 --- Create :OasisWCAG command to run contrast checks
 ---@return nil
 local function create_wcag_command()
-	vim.api.nvim_create_user_command("OasisWCAG", function(opts)
-		local Wcag = require("oasis.tools.wcag_checker")
-		local Utils = require("oasis.utils")
+  vim.api.nvim_create_user_command("OasisWCAG", function(opts)
+    local Wcag = require("oasis.tools.wcag_checker")
+    local Utils = require("oasis.utils")
 
-		if opts.args ~= "" then
-			local palette_name = opts.args
-			-- Check if it's a dual-mode palette without .dark/.light suffix
-			if not palette_name:match("%.dark$") and not palette_name:match("%.light$") then
-				local ok, palette = pcall(require, "oasis.color_palettes." .. palette_name)
-				if ok and Utils.is_dual_mode_palette(palette) then
-					-- Check both dark and light modes for dual-mode palettes
-					Wcag.check_palette(palette_name .. ".dark")
-					Wcag.check_palette(palette_name .. ".light")
-					return
-				end
-			end
-			Wcag.check_palette(palette_name)
-		else
-			Wcag.check_all()
-		end
-	end, {
-		nargs = "?",
-		complete = function()
-			return list_palettes()
-		end,
-		desc = "Check WCAG contrast compliance for Oasis palettes",
-	})
+    if opts.args ~= "" then
+      local palette_name = opts.args
+      -- Check if it's a dual-mode palette without .dark/.light suffix
+      if not palette_name:match("%.dark$") and not palette_name:match("%.light$") then
+        local ok, palette = pcall(require, "oasis.color_palettes." .. palette_name)
+        if ok and Utils.is_dual_mode_palette(palette) then
+          -- Check both dark and light modes for dual-mode palettes
+          Wcag.check_palette(palette_name .. ".dark")
+          Wcag.check_palette(palette_name .. ".light")
+          return
+        end
+      end
+      Wcag.check_palette(palette_name)
+    else
+      Wcag.check_all()
+    end
+  end, {
+    nargs = "?",
+    complete = function()
+      return list_palettes()
+    end,
+    desc = "Check WCAG contrast compliance for Oasis palettes",
+  })
 end
 
 --- Create :OasisTransparency toggle command
 ---@param oasis_module table
 ---@return nil
 local function create_transparency_command(oasis_module)
-	vim.api.nvim_create_user_command("OasisTransparency", function()
-		oasis_module.toggle_transparency()
-	end, {
-		desc = "Toggle transparency for Oasis theme",
-	})
+  vim.api.nvim_create_user_command("OasisTransparency", function()
+    oasis_module.toggle_transparency()
+  end, {
+    desc = "Toggle transparency for Oasis theme",
+  })
 end
 
 --- Create :OasisThemedSyntax toggle command
 ---@param oasis_module table
 ---@return nil
 local function create_themed_syntax_command(oasis_module)
-	vim.api.nvim_create_user_command("OasisThemedSyntax", function()
-		oasis_module.toggle_themed_syntax()
-	end, {
-		desc = "Toggle themed syntax using primary color for statements/conditionals (dark themes only)",
-	})
+  vim.api.nvim_create_user_command("OasisThemedSyntax", function()
+    oasis_module.toggle_themed_syntax()
+  end, {
+    desc = "Toggle themed syntax using primary color for statements/conditionals (dark themes only)",
+  })
 end
 
 --- Create :OasisIntensity cycling command
 ---@param oasis_module table
 ---@return nil
 local function create_intensity_command(oasis_module)
-	vim.api.nvim_create_user_command("OasisIntensity", function()
-		oasis_module.cycle_intensity()
-	end, {
-		desc = "Show UI picker for light background intensity (1-5)",
-	})
+  vim.api.nvim_create_user_command("OasisIntensity", function()
+    oasis_module.cycle_intensity()
+  end, {
+    desc = "Show UI picker for light background intensity (1-5)",
+  })
 end
 
 --- Setup all user commands
 ---@param oasis_module table The oasis module with apply, toggle_transparency, etc. functions
 ---@return nil
 function Api.setup(oasis_module)
-	local Utils = require("oasis.utils")
+  local Utils = require("oasis.utils")
 
-	create_oasis_command(oasis_module, Utils)
-	create_wcag_command()
-	create_transparency_command(oasis_module)
-	create_themed_syntax_command(oasis_module)
-	create_intensity_command(oasis_module)
+  create_oasis_command(oasis_module, Utils)
+  create_wcag_command()
+  create_transparency_command(oasis_module)
+  create_themed_syntax_command(oasis_module)
+  create_intensity_command(oasis_module)
 end
 
 return Api

@@ -8,67 +8,66 @@ local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
 
 local function generate_termux_theme(name, palette)
-	local display_name = Utils.format_display_name(name)
+  local display_name = Utils.format_display_name(name)
 
-	-- Termux uses a properties file format
-	local lines = {
-		"# extras/termux/oasis_" .. name .. ".properties",
-		"# name: " .. display_name,
-		"# author: uhs-robert",
-		"",
-		"background: " .. palette.bg.core,
-		"foreground: " .. palette.fg.core,
-		"",
-		"# Normal colors",
-	}
+  -- Termux uses a properties file format
+  local lines = {
+    "# extras/termux/oasis_" .. name .. ".properties",
+    "# name: " .. display_name,
+    "# author: uhs-robert",
+    "",
+    "background: " .. palette.bg.core,
+    "foreground: " .. palette.fg.core,
+    "",
+    "# Normal colors",
+  }
 
-	for i = 0, 7 do
-		lines[#lines + 1] = string.format("color%d:  %s", i, palette.terminal["color" .. i])
-	end
+  for i = 0, 7 do
+    lines[#lines + 1] = string.format("color%d:  %s", i, palette.terminal["color" .. i])
+  end
 
-	lines[#lines + 1] = ""
-	lines[#lines + 1] = "# Bright colors"
+  lines[#lines + 1] = ""
+  lines[#lines + 1] = "# Bright colors"
 
-	for i = 8, 15 do
-		-- Note: termux properties use color8, color9, etc.
-		lines[#lines + 1] = string.format("color%d: %s", i, palette.terminal["color" .. i])
-	end
+  for i = 8, 15 do
+    -- Note: termux properties use color8, color9, etc.
+    lines[#lines + 1] = string.format("color%d: %s", i, palette.terminal["color" .. i])
+  end
 
-	lines[#lines + 1] = ""
-	lines[#lines + 1] = "# Extended colors"
-	lines[#lines + 1] = string.format("color16: %s", palette.ui.lineNumber)
-	lines[#lines + 1] = string.format("color17: %s", palette.syntax.exception)
+  lines[#lines + 1] = ""
+  lines[#lines + 1] = "# Extended colors"
+  lines[#lines + 1] = string.format("color16: %s", palette.ui.lineNumber)
+  lines[#lines + 1] = string.format("color17: %s", palette.syntax.exception)
 
-	return table.concat(lines, "\n")
+  return table.concat(lines, "\n")
 end
 
 local function main()
-	print("\n=== Oasis Termux Theme Generator ===\n")
+  print("\n=== Oasis Termux Theme Generator ===\n")
 
-	local palette_names = Utils.get_palette_names()
+  local palette_names = Utils.get_palette_names()
 
-	if #palette_names == 0 then
-		print("Error: No palette files found in lua/oasis/color_palettes/")
-		return
-	end
+  if #palette_names == 0 then
+    print("Error: No palette files found in lua/oasis/color_palettes/")
+    return
+  end
 
-	print(string.format("Found %d palette(s)\n", #palette_names))
+  print(string.format("Found %d palette(s)\n", #palette_names))
 
-	local success_count, error_count = Utils.for_each_palette_variant(function(name, palette, mode, intensity)
-		-- Build output path using shared utility
-		local output_path, variant_name = Utils.build_variant_path("extras/termux", "properties", name, mode, intensity)
+  local success_count, error_count = Utils.for_each_palette_variant(function(name, palette, mode, intensity)
+    -- Build output path using shared utility
+    local output_path, variant_name = Utils.build_variant_path("extras/termux", "properties", name, mode, intensity)
 
-		-- Generate and write theme
-		local theme = generate_termux_theme(variant_name, palette)
-		File.write(output_path, theme)
-		print(string.format("✓ Generated: %s", output_path))
-	end)
+    -- Generate and write theme
+    local theme = generate_termux_theme(variant_name, palette)
+    File.write(output_path, theme)
+    print(string.format("✓ Generated: %s", output_path))
+  end)
 
-	print(string.format("\n=== Summary ==="))
-	print(string.format("Success: %d", success_count))
-	print(string.format("Errors: %d\n", error_count))
+  print(string.format("\n=== Summary ==="))
+  print(string.format("Success: %d", success_count))
+  print(string.format("Errors: %d\n", error_count))
 end
 
 -- Run the generator
 main()
-

@@ -9,17 +9,17 @@ local deepcopy = vim.deepcopy
 ---@param override table The table to merge on top
 ---@return table merged The merged result
 local function deep_merge(base, override)
-	local result = deepcopy(base)
+  local result = deepcopy(base)
 
-	for k, v in pairs(override) do
-		if type(v) == "table" and type(result[k]) == "table" then
-			result[k] = deep_merge(result[k], v)
-		else
-			result[k] = v
-		end
-	end
+  for k, v in pairs(override) do
+    if type(v) == "table" and type(result[k]) == "table" then
+      result[k] = deep_merge(result[k], v)
+    else
+      result[k] = v
+    end
+  end
 
-	return result
+  return result
 end
 
 --- Resolve function overrides into a table
@@ -27,16 +27,14 @@ end
 ---@param overrides table|function|nil
 ---@return table|nil
 local function normalize(palette, overrides)
-	if type(overrides) == "function" then
-		local colors = Config.get_base_colors()
-		return overrides(palette, colors)
-	end
+  if type(overrides) == "function" then
+    local colors = Config.get_base_colors()
+    return overrides(palette, colors)
+  end
 
-	if type(overrides) ~= "table" then
-		return nil
-	end
+  if type(overrides) ~= "table" then return nil end
 
-	return overrides
+  return overrides
 end
 
 --- Apply global light/intensity overrides to a palette
@@ -44,16 +42,12 @@ end
 ---@param overrides table
 ---@param intensity number
 local function apply_global_light(result, overrides, intensity)
-	if overrides.light then
-		result = deep_merge(result, overrides.light)
-	end
+  if overrides.light then result = deep_merge(result, overrides.light) end
 
-	local intensity_key = "light_" .. intensity
-	if overrides[intensity_key] then
-		result = deep_merge(result, overrides[intensity_key])
-	end
+  local intensity_key = "light_" .. intensity
+  if overrides[intensity_key] then result = deep_merge(result, overrides[intensity_key]) end
 
-	return result
+  return result
 end
 
 --- Apply palette-specific dark overrides
@@ -61,13 +55,11 @@ end
 ---@param palette_override table
 ---@return table
 local function apply_dark(result, palette_override)
-	local dark_overrides = {}
-	for key, value in pairs(palette_override) do
-		if key ~= "light" and not key:match("^light_%d$") then
-			dark_overrides[key] = value
-		end
-	end
-	return deep_merge(result, dark_overrides)
+  local dark_overrides = {}
+  for key, value in pairs(palette_override) do
+    if key ~= "light" and not key:match("^light_%d$") then dark_overrides[key] = value end
+  end
+  return deep_merge(result, dark_overrides)
 end
 
 --- Apply palette-specific light/intensity overrides
@@ -76,16 +68,12 @@ end
 ---@param intensity number
 ---@return table
 local function apply_light(result, palette_override, intensity)
-	if palette_override.light then
-		result = deep_merge(result, palette_override.light)
-	end
+  if palette_override.light then result = deep_merge(result, palette_override.light) end
 
-	local intensity_key = "light_" .. intensity
-	if palette_override[intensity_key] then
-		result = deep_merge(result, palette_override[intensity_key])
-	end
+  local intensity_key = "light_" .. intensity
+  if palette_override[intensity_key] then result = deep_merge(result, palette_override[intensity_key]) end
 
-	return result
+  return result
 end
 
 --- Apply palette-specific overrides for the active palette variant
@@ -96,20 +84,14 @@ end
 ---@param intensity number
 ---@return table
 local function apply_palette(result, overrides, palette_variant, is_light_mode, intensity)
-	if not palette_variant then
-		return result
-	end
+  if not palette_variant then return result end
 
-	local palette_override = overrides[palette_variant]
-	if type(palette_override) ~= "table" then
-		return result
-	end
+  local palette_override = overrides[palette_variant]
+  if type(palette_override) ~= "table" then return result end
 
-	if is_light_mode then
-		return apply_light(result, palette_override, intensity)
-	end
+  if is_light_mode then return apply_light(result, palette_override, intensity) end
 
-	return apply_dark(result, palette_override)
+  return apply_dark(result, palette_override)
 end
 
 --- Apply palette overrides to a loaded palette
@@ -119,23 +101,19 @@ end
 ---@param config table The config object
 ---@return table palette The palette with overrides applied
 function PaletteOverrides.resolve(palette, palette_name, config)
-	local result = deepcopy(palette)
-	local overrides = normalize(result, config and config.palette_overrides or {})
-	local LIGHT_MODE = palette.light_mode or false
-	local palette_variant = palette_name and palette_name:gsub("^oasis_", "") or nil
-	local intensity = palette.light_intensity or (config and config.light_intensity) or 3
+  local result = deepcopy(palette)
+  local overrides = normalize(result, config and config.palette_overrides or {})
+  local LIGHT_MODE = palette.light_mode or false
+  local palette_variant = palette_name and palette_name:gsub("^oasis_", "") or nil
+  local intensity = palette.light_intensity or (config and config.light_intensity) or 3
 
-	if not overrides then
-		return result
-	end
+  if not overrides then return result end
 
-	if LIGHT_MODE then
-		result = apply_global_light(result, overrides, intensity)
-	end
+  if LIGHT_MODE then result = apply_global_light(result, overrides, intensity) end
 
-	result = apply_palette(result, overrides, palette_variant, LIGHT_MODE, intensity)
+  result = apply_palette(result, overrides, palette_variant, LIGHT_MODE, intensity)
 
-	return result
+  return result
 end
 
 return PaletteOverrides
