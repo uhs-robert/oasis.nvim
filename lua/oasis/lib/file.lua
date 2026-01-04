@@ -7,46 +7,40 @@ local File = {}
 --- @param path string File path
 --- @return boolean True if file exists
 function File.exists(path)
-	local success = os.execute(string.format("test -e '%s'", path))
-	return success == 0 or success == true
+  local success = os.execute(string.format("test -e '%s'", path))
+  return success == 0 or success == true
 end
 
 --- Read file contents
 --- @param path string File path
 --- @return string|nil content File content or nil on error
 function File.read(path)
-	local f = io.open(path, "r")
-	if not f then
-		return nil
-	end
-	local content = f:read("*all")
-	f:close()
-	return content
+  local f = io.open(path, "r")
+  if not f then return nil end
+  local content = f:read("*all")
+  f:close()
+  return content
 end
 
 --- Write content to file
 --- @param path string File path
 --- @param content string Content to write
 function File.write(path, content)
-	local f = io.open(path, "w")
-	if not f then
-		error("Failed to write file: " .. path)
-	end
-	f:write(content)
-	f:close()
+  local f = io.open(path, "w")
+  if not f then error("Failed to write file: " .. path) end
+  f:write(content)
+  f:close()
 end
 
 --- Get file size in bytes
 --- @param path string File path
 --- @return number File size in bytes (0 if file doesn't exist)
 function File.size(path)
-	local f = io.popen("stat -c%s " .. path .. " 2>/dev/null")
-	if not f then
-		return 0
-	end
-	local size = f:read("*all")
-	f:close()
-	return tonumber(size) or 0
+  local f = io.popen("stat -c%s " .. path .. " 2>/dev/null")
+  if not f then return 0 end
+  local size = f:read("*all")
+  f:close()
+  return tonumber(size) or 0
 end
 
 --- Find files matching a pattern
@@ -54,24 +48,20 @@ end
 --- @param directory string|nil Directory to search (default: current working directory)
 --- @return table List of file paths
 function File.find(pattern, directory)
-	directory = directory or "."
-	local cmd = string.format("find %s -type f -name '%s' 2>/dev/null | sort", directory, pattern)
-	local handle = io.popen(cmd)
-	if not handle then
-		return {}
-	end
+  directory = directory or "."
+  local cmd = string.format("find %s -type f -name '%s' 2>/dev/null | sort", directory, pattern)
+  local handle = io.popen(cmd)
+  if not handle then return {} end
 
-	local result = handle:read("*a")
-	handle:close()
+  local result = handle:read("*a")
+  handle:close()
 
-	local files = {}
-	for path in result:gmatch("[^\n]+") do
-		if path ~= "" then
-			table.insert(files, path)
-		end
-	end
+  local files = {}
+  for path in result:gmatch("[^\n]+") do
+    if path ~= "" then table.insert(files, path) end
+  end
 
-	return files
+  return files
 end
 
 return File

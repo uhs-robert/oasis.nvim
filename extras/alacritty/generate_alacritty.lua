@@ -8,79 +8,79 @@ local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
 
 local function generate_alacritty_theme(name, palette, output_path)
-	local display_name = Utils.format_display_name(name)
-	local is_light = palette.light_mode or false
+  local display_name = Utils.format_display_name(name)
+  local is_light = palette.light_mode or false
 
-	local lines = {
-		"# " .. (output_path or ("extras/alacritty/themes/oasis_" .. name .. ".toml")),
-		"## name: " .. display_name,
-		"## author: uhs-robert",
-		"",
-		"[colors.primary]",
-		string.format("background = '%s'", palette.bg.core),
-		string.format("foreground = '%s'", palette.fg.core),
-		"",
-		"[colors.selection]",
-		string.format("background = '%s'", palette.ui.visual.bg),
-		string.format("text = '%s'", palette.fg.core),
-		"",
-		"[colors.cursor]",
-		string.format("cursor = '%s'", is_light and palette.syntax.statement or palette.terminal.yellow),
-		string.format("text = '%s'", palette.bg.core),
-		"",
-		"[colors.vi_mode_cursor]",
-		string.format("cursor = '%s'", palette.terminal.bright_yellow),
-		string.format("text = '%s'", palette.bg.core),
-		"",
-		"[colors.normal]",
-		string.format("black   = '%s'", palette.terminal.black),
-		string.format("red     = '%s'", palette.terminal.red),
-		string.format("green   = '%s'", palette.terminal.green),
-		string.format("yellow  = '%s'", palette.terminal.yellow),
-		string.format("blue    = '%s'", palette.terminal.blue),
-		string.format("magenta = '%s'", palette.terminal.magenta),
-		string.format("cyan    = '%s'", palette.terminal.cyan),
-		string.format("white   = '%s'", palette.terminal.white),
-		"",
-		"[colors.bright]",
-		string.format("black   = '%s'", palette.terminal.bright_black),
-		string.format("red     = '%s'", palette.terminal.bright_red),
-		string.format("green   = '%s'", palette.terminal.bright_green),
-		string.format("yellow  = '%s'", palette.terminal.bright_yellow),
-		string.format("blue    = '%s'", palette.terminal.bright_blue),
-		string.format("magenta = '%s'", palette.terminal.bright_magenta),
-		string.format("cyan    = '%s'", palette.terminal.bright_cyan),
-		string.format("white   = '%s'", palette.terminal.bright_white),
-	}
+  local lines = {
+    "# " .. (output_path or ("extras/alacritty/themes/oasis_" .. name .. ".toml")),
+    "## name: " .. display_name,
+    "## author: uhs-robert",
+    "",
+    "[colors.primary]",
+    string.format("background = '%s'", palette.bg.core),
+    string.format("foreground = '%s'", palette.fg.core),
+    "",
+    "[colors.selection]",
+    string.format("background = '%s'", palette.ui.visual.bg),
+    string.format("text = '%s'", palette.fg.core),
+    "",
+    "[colors.cursor]",
+    string.format("cursor = '%s'", is_light and palette.syntax.statement or palette.terminal.yellow),
+    string.format("text = '%s'", palette.bg.core),
+    "",
+    "[colors.vi_mode_cursor]",
+    string.format("cursor = '%s'", palette.terminal.bright_yellow),
+    string.format("text = '%s'", palette.bg.core),
+    "",
+    "[colors.normal]",
+    string.format("black   = '%s'", palette.terminal.black),
+    string.format("red     = '%s'", palette.terminal.red),
+    string.format("green   = '%s'", palette.terminal.green),
+    string.format("yellow  = '%s'", palette.terminal.yellow),
+    string.format("blue    = '%s'", palette.terminal.blue),
+    string.format("magenta = '%s'", palette.terminal.magenta),
+    string.format("cyan    = '%s'", palette.terminal.cyan),
+    string.format("white   = '%s'", palette.terminal.white),
+    "",
+    "[colors.bright]",
+    string.format("black   = '%s'", palette.terminal.bright_black),
+    string.format("red     = '%s'", palette.terminal.bright_red),
+    string.format("green   = '%s'", palette.terminal.bright_green),
+    string.format("yellow  = '%s'", palette.terminal.bright_yellow),
+    string.format("blue    = '%s'", palette.terminal.bright_blue),
+    string.format("magenta = '%s'", palette.terminal.bright_magenta),
+    string.format("cyan    = '%s'", palette.terminal.bright_cyan),
+    string.format("white   = '%s'", palette.terminal.bright_white),
+  }
 
-	return table.concat(lines, "\n")
+  return table.concat(lines, "\n")
 end
 
 local function main()
-	print("\n=== Oasis Alacritty Theme Generator ===\n")
+  print("\n=== Oasis Alacritty Theme Generator ===\n")
 
-	local palette_names = Utils.get_palette_names()
+  local palette_names = Utils.get_palette_names()
 
-	if #palette_names == 0 then
-		print("Error: No palette files found in lua/oasis/color_palettes/")
-		return
-	end
+  if #palette_names == 0 then
+    print("Error: No palette files found in lua/oasis/color_palettes/")
+    return
+  end
 
-	print(string.format("Found %d palette(s)\n", #palette_names))
+  print(string.format("Found %d palette(s)\n", #palette_names))
 
-	local success_count, error_count = Utils.for_each_palette_variant(function(name, palette, mode, intensity)
-		-- Build output path using shared utility
-		local output_path, variant_name = Utils.build_variant_path("extras/alacritty", "toml", name, mode, intensity)
+  local success_count, error_count = Utils.for_each_palette_variant(function(name, palette, mode, intensity)
+    -- Build output path using shared utility
+    local output_path, variant_name = Utils.build_variant_path("extras/alacritty", "toml", name, mode, intensity)
 
-		-- Generate and write theme
-		local theme = generate_alacritty_theme(variant_name, palette, output_path)
-		File.write(output_path, theme)
-		print(string.format("✓ Generated: %s", output_path))
-	end)
+    -- Generate and write theme
+    local theme = generate_alacritty_theme(variant_name, palette, output_path)
+    File.write(output_path, theme)
+    print(string.format("✓ Generated: %s", output_path))
+  end)
 
-	print(string.format("\n=== Summary ==="))
-	print(string.format("Success: %d", success_count))
-	print(string.format("Errors: %d\n", error_count))
+  print(string.format("\n=== Summary ==="))
+  print(string.format("Success: %d", success_count))
+  print(string.format("Errors: %d\n", error_count))
 end
 
 -- Run the generator

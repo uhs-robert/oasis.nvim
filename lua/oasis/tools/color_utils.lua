@@ -10,18 +10,12 @@ local ColorUtils = {}
 --- @param alpha string Alpha as 2-digit hex (e.g., "3d" for ~24% opacity)
 --- @return string Hex color with alpha channel (e.g., "#1a1a1a3d")
 function ColorUtils.with_alpha(color, alpha)
-	if not color or color == "NONE" or color == "" then
-		return "#00000000"
-	end
-	-- Remove any existing alpha
-	local hex = color:match("^#?(%x+)")
-	if not hex then
-		return "#00000000"
-	end
-	if #hex == 8 then
-		hex = hex:sub(1, 6)
-	end
-	return "#" .. hex .. alpha
+  if not color or color == "NONE" or color == "" then return "#00000000" end
+  -- Remove any existing alpha
+  local hex = color:match("^#?(%x+)")
+  if not hex then return "#00000000" end
+  if #hex == 8 then hex = hex:sub(1, 6) end
+  return "#" .. hex .. alpha
 end
 
 --- Adjust color brightness by multiplying RGB values
@@ -29,54 +23,46 @@ end
 --- @param factor number Multiplier (>1 for lighter, <1 for darker)
 --- @return string Adjusted hex color
 function ColorUtils.adjust_brightness(color, factor)
-	if not color or color == "NONE" then
-		return color
-	end
+  if not color or color == "NONE" then return color end
 
-	local hex = color:match("^#?(%x%x)(%x%x)(%x%x)")
-	if not hex then
-		return color
-	end
+  local hex = color:match("^#?(%x%x)(%x%x)(%x%x)")
+  if not hex then return color end
 
-	local r, g, b = color:match("^#?(%x%x)(%x%x)(%x%x)")
-	r = tonumber(r, 16)
-	g = tonumber(g, 16)
-	b = tonumber(b, 16)
+  local r, g, b = color:match("^#?(%x%x)(%x%x)(%x%x)")
+  r = tonumber(r, 16)
+  g = tonumber(g, 16)
+  b = tonumber(b, 16)
 
-	r = math.floor(math.min(255, math.max(0, r * factor)))
-	g = math.floor(math.min(255, math.max(0, g * factor)))
-	b = math.floor(math.min(255, math.max(0, b * factor)))
+  r = math.floor(math.min(255, math.max(0, r * factor)))
+  g = math.floor(math.min(255, math.max(0, g * factor)))
+  b = math.floor(math.min(255, math.max(0, b * factor)))
 
-	return string.format("#%02x%02x%02x", r, g, b)
+  return string.format("#%02x%02x%02x", r, g, b)
 end
 
 --- Convert hex color to RGB decimal format "R,G,B"
 --- @param hex string Hex color (e.g., "#808080" or "808080")
 --- @return string RGB decimal string (e.g., "128,128,128")
 function ColorUtils.hex_to_rgb(hex)
-	if not hex or hex == "NONE" then
-		return "0,0,0"
-	end
+  if not hex or hex == "NONE" then return "0,0,0" end
 
-	-- Remove # if present
-	hex = hex:gsub("#", "")
+  -- Remove # if present
+  hex = hex:gsub("#", "")
 
-	-- Convert hex to RGB
-	local r = tonumber(hex:sub(1, 2), 16)
-	local g = tonumber(hex:sub(3, 4), 16)
-	local b = tonumber(hex:sub(5, 6), 16)
+  -- Convert hex to RGB
+  local r = tonumber(hex:sub(1, 2), 16)
+  local g = tonumber(hex:sub(3, 4), 16)
+  local b = tonumber(hex:sub(5, 6), 16)
 
-	return string.format("%d,%d,%d", r, g, b)
+  return string.format("%d,%d,%d", r, g, b)
 end
 
 --- Escape string for JSON encoding
 --- @param str string Input string
 --- @return string JSON-escaped string
 function ColorUtils.json_escape(str)
-	if type(str) ~= "string" then
-		return str
-	end
-	return (str:gsub("\\", "\\\\"):gsub('"', '\\"'):gsub("\n", "\\n"):gsub("\r", "\\r"):gsub("\t", "\\t"))
+  if type(str) ~= "string" then return str end
+  return (str:gsub("\\", "\\\\"):gsub('"', '\\"'):gsub("\n", "\\n"):gsub("\r", "\\r"):gsub("\t", "\\t"))
 end
 
 --- Simple JSON encoder for theme generation
@@ -85,64 +71,60 @@ end
 --- @param indent? number Indentation level (default: 0)
 --- @return string JSON-encoded string
 function ColorUtils.encode_json(obj, indent)
-	indent = indent or 0
-	local indent_str = string.rep("  ", indent)
-	local next_indent_str = string.rep("  ", indent + 1)
+  indent = indent or 0
+  local indent_str = string.rep("  ", indent)
+  local next_indent_str = string.rep("  ", indent + 1)
 
-	if type(obj) == "string" then
-		return '"' .. ColorUtils.json_escape(obj) .. '"'
-	elseif type(obj) == "number" or type(obj) == "boolean" then
-		return tostring(obj)
-	elseif type(obj) == "nil" then
-		return "null"
-	elseif type(obj) == "table" then
-		-- Check if it's an array
-		local is_array = false
-		local max_index = 0
-		for k, _ in pairs(obj) do
-			if type(k) == "number" and k > 0 then
-				is_array = true
-				max_index = math.max(max_index, k)
-			else
-				is_array = false
-				break
-			end
-		end
+  if type(obj) == "string" then
+    return '"' .. ColorUtils.json_escape(obj) .. '"'
+  elseif type(obj) == "number" or type(obj) == "boolean" then
+    return tostring(obj)
+  elseif type(obj) == "nil" then
+    return "null"
+  elseif type(obj) == "table" then
+    -- Check if it's an array
+    local is_array = false
+    local max_index = 0
+    for k, _ in pairs(obj) do
+      if type(k) == "number" and k > 0 then
+        is_array = true
+        max_index = math.max(max_index, k)
+      else
+        is_array = false
+        break
+      end
+    end
 
-		if is_array and max_index == #obj then
-			-- Array
-			local parts = {}
-			for i = 1, #obj do
-				table.insert(parts, next_indent_str .. ColorUtils.encode_json(obj[i], indent + 1))
-			end
-			if #parts == 0 then
-				return "[]"
-			end
-			return "[\n" .. table.concat(parts, ",\n") .. "\n" .. indent_str .. "]"
-		else
-			-- Object
-			local parts = {}
-			local keys = {}
-			for k in pairs(obj) do
-				table.insert(keys, k)
-			end
-			table.sort(keys)
+    if is_array and max_index == #obj then
+      -- Array
+      local parts = {}
+      for i = 1, #obj do
+        table.insert(parts, next_indent_str .. ColorUtils.encode_json(obj[i], indent + 1))
+      end
+      if #parts == 0 then return "[]" end
+      return "[\n" .. table.concat(parts, ",\n") .. "\n" .. indent_str .. "]"
+    else
+      -- Object
+      local parts = {}
+      local keys = {}
+      for k in pairs(obj) do
+        table.insert(keys, k)
+      end
+      table.sort(keys)
 
-			for _, k in ipairs(keys) do
-				local v = obj[k]
-				local key_str = '"' .. ColorUtils.json_escape(tostring(k)) .. '"'
-				local value_str = ColorUtils.encode_json(v, indent + 1)
-				table.insert(parts, next_indent_str .. key_str .. ": " .. value_str)
-			end
+      for _, k in ipairs(keys) do
+        local v = obj[k]
+        local key_str = '"' .. ColorUtils.json_escape(tostring(k)) .. '"'
+        local value_str = ColorUtils.encode_json(v, indent + 1)
+        table.insert(parts, next_indent_str .. key_str .. ": " .. value_str)
+      end
 
-			if #parts == 0 then
-				return "{}"
-			end
-			return "{\n" .. table.concat(parts, ",\n") .. "\n" .. indent_str .. "}"
-		end
-	end
+      if #parts == 0 then return "{}" end
+      return "{\n" .. table.concat(parts, ",\n") .. "\n" .. indent_str .. "}"
+    end
+  end
 
-	return "null"
+  return "null"
 end
 
 --- Convert RGB hex color to HSL
@@ -151,16 +133,14 @@ end
 --- @param hex string Hex color (e.g., "#D9E6FA")
 --- @return number, number, number Hue (0-360), Saturation (0-100), Lightness (0-100)
 function ColorUtils.rgb_to_hsl(hex)
-	if not hex or hex == "NONE" then
-		return 0, 0, 0
-	end
+  if not hex or hex == "NONE" then return 0, 0, 0 end
 
-	-- Use wcag_color_calculator's Color class (returns 0-1 range)
-	local color = WcagCalculator.Color.from_hex(hex)
-	local h, s, l = color:to_hsl()
+  -- Use wcag_color_calculator's Color class (returns 0-1 range)
+  local color = WcagCalculator.Color.from_hex(hex)
+  local h, s, l = color:to_hsl()
 
-	-- Convert from 0-1 range to degrees/percentages
-	return h * 360, s * 100, l * 100
+  -- Convert from 0-1 range to degrees/percentages
+  return h * 360, s * 100, l * 100
 end
 
 --- Convert HSL to RGB hex color
@@ -171,14 +151,14 @@ end
 --- @param l number Lightness (0-100 percent)
 --- @return string Hex color (e.g., "#D9E6FA")
 function ColorUtils.hsl_to_rgb(h, s, l)
-	-- Convert from degrees/percentages to 0-1 range
-	h = (h % 360) / 360
-	s = s / 100
-	l = l / 100
+  -- Convert from degrees/percentages to 0-1 range
+  h = (h % 360) / 360
+  s = s / 100
+  l = l / 100
 
-	-- Use wcag_color_calculator's Color class
-	local color = WcagCalculator.Color.from_hsl(h, s, l)
-	return color:to_hex()
+  -- Use wcag_color_calculator's Color class
+  local color = WcagCalculator.Color.from_hsl(h, s, l)
+  return color:to_hex()
 end
 
 --- Calculate WCAG contrast ratio between two colors
@@ -187,7 +167,7 @@ end
 --- @param color2 string Second hex color
 --- @return number Contrast ratio (1-21)
 function ColorUtils.get_contrast_ratio(color1, color2)
-	return WcagCalculator.contrast_ratio(color1, color2)
+  return WcagCalculator.contrast_ratio(color1, color2)
 end
 
 --- Darken a color to meet target WCAG contrast ratio on light background
@@ -198,8 +178,8 @@ end
 --- @param max_iterations? number Maximum adjustment iterations (default: 50)
 --- @return string Adjusted hex color meeting target ratio
 function ColorUtils.darken_to_contrast(color, bg_color, target_ratio, max_iterations)
-	local adjusted_color, _ = WcagCalculator.adjust_for_target(color, bg_color, target_ratio, max_iterations)
-	return adjusted_color
+  local adjusted_color, _ = WcagCalculator.adjust_for_target(color, bg_color, target_ratio, max_iterations)
+  return adjusted_color
 end
 
 return ColorUtils

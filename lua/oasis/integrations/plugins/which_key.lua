@@ -3,8 +3,8 @@
 
 return function(c)
   return {
-    WhichKey      = "Statement",
-    WhichKeyDesc  = "OasisLightPrimary",
+    WhichKey = "Statement",
+    WhichKeyDesc = "OasisLightPrimary",
     WhichKeyGroup = "OasisSecondary",
   }
 end

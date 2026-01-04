@@ -2,7 +2,7 @@
 -- Highlights for snacks.nvim plugin
 
 return function(c)
-	return {
+  return {
     -- stylua: ignore start
     -- Dashboard
     SnacksDashboardHeader = "OasisStrongPrimary",
@@ -15,6 +15,6 @@ return function(c)
     SnacksPickerInputTitle = "OasisFloatSecondary",
     SnacksPickerInputBorder= "OasisFloatSecondary",
     SnacksPickerPrompt     = "Identifier",
-		-- stylua: ignore end
-	}
+    -- stylua: ignore end
+  }
 end

@@ -4,6 +4,6 @@
 return function(c)
   return {
     FzfLuaBorder = "FloatBorder",
-    FzfLuaTitle  = "OasisFloatSecondary",
+    FzfLuaTitle = "OasisFloatSecondary",
   }
 end
