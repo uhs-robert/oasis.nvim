@@ -85,7 +85,7 @@ return function(c, palette_name)
     PmenuExtraSel              = "PmenuSel", -- Popup menu: Selected item "extra text"
     PmenuSbar                  = { bg=c.bg.core }, -- Popup menu: Scrollbar.
     PmenuThumb                 = { bg=c.bg.surface }, -- Popup menu: Thumb of the scrollbar.
-    NormalFloat                = { fg=c.fg.strong, bg=c.bg.mantle }, -- Normal text in floating windows.
+    NormalFloat                = { fg=c.ui.float.fg, bg=c.ui.float.bg }, -- Normal text in floating windows.
     FloatBorder                = { fg=c.ui.float.border.fg, bg=c.ui.float.border.bg }, -- Border of floating windows.
     Question                   = { fg=c.ui.diag.ok.fg, bold=true }, -- |hit-enter| prompt and yes/no questions
     QuickFixLine               = { fg=c.bg.core, bg=c.syntax.statement }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.

@@ -95,8 +95,8 @@ local dark = {
     nontext = ui.fg.dim,
     float = {
       title = ui.theme.primary,
-      fg = ui.fg.core,
-      bg = ui.bg.surface,
+      fg = ui.fg.strong,
+      bg = ui.bg.mantle,
       border = { fg = ui.theme.strong_primary, bg = ui.bg.mantle },
     },
     diag = {
