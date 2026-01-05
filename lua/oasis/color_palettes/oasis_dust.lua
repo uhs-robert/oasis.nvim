@@ -1,9 +1,8 @@
 -- lua/oasis/color_palettes/oasis_dust.lua
 
-local p = require("oasis.palette")
 local Config = require("oasis.config")
-local ColorUtils = require("oasis.tools.color_utils")
 local LightTheme = require("oasis.tools.light_theme_generator")
+local p = require("oasis.palette")
 local opts = Config.get()
 local seed_dark = require("oasis.color_palettes.oasis_canyon").dark
 local bg_seed = p.theme.night.fg.core
@@ -12,34 +11,16 @@ local target_l = { [5] = 76 }
 local contrast_opts = opts.contrast or { min_ratio = 5.8, force_aaa = false }
 local light_bg = LightTheme.generate_bg(bg_seed, light_intensity, { target_l_core = target_l })
 
--- string       : #53D390 → #0c301d ( 1.08:1 →  7.05:1) ✗
--- type         : #81C0B6 → #172e2a ( 1.01:1 →  7.05:1) ✗
--- warn         : #EEEE00 → #2b2b00 ( 1.64:1 →  7.05:1) ✗
-
 -- Colorscheme
 local c = {
+  light_mode = true,
   bg = light_bg,
   fg = LightTheme.generate_fg(seed_dark.fg, light_bg.core, light_intensity, contrast_opts),
   theme = LightTheme.generate_theme(seed_dark.theme, light_intensity),
-  terminal = LightTheme.generate_terminal(
-    seed_dark.terminal or p.terminal,
-    light_bg.core,
-    light_intensity,
-    contrast_opts
-  ),
-  light_mode = true,
-
-  -- Syntax
+  terminal = LightTheme.generate_terminal(seed_dark.terminal, light_bg.core, light_intensity, contrast_opts),
+  diff = LightTheme.apply_contrast(seed_dark.diff, light_bg.core),
+  git = LightTheme.apply_contrast(seed_dark.git, light_bg.core),
   syntax = LightTheme.generate_syntax(seed_dark.syntax, light_bg.core, light_intensity, nil, contrast_opts),
-
-  -- Diff
-  diff = {
-    add = ColorUtils.darken_to_contrast(seed_dark.diff.add, light_bg.core, 7.0),
-    change = ColorUtils.darken_to_contrast(seed_dark.diff.change, light_bg.core, 7.0),
-    delete = ColorUtils.darken_to_contrast(seed_dark.diff.delete, light_bg.core, 7.0),
-  },
-
-  -- UI
   ui = LightTheme.generate_ui(seed_dark.ui, light_bg, light_intensity),
 }
 

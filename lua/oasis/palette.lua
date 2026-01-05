@@ -83,7 +83,7 @@ local visual = {
   light_grey = "#BCD4E6",
 }
 
--- Diagnoistics
+-- Diagnostics
 local diag = {
   error = {
     fg = "#FF0000",
@@ -108,6 +108,21 @@ local diag = {
     fg = "#00FF7F",
     bg = "#2F4F4F",
   },
+}
+
+-- Diff
+local diff = {
+  add = visual.green,
+  change = visual.yellow, -- Unused, prefer theme[name].bg.surface
+  delete = visual.red,
+  text = visual.orange,
+}
+
+-- Git
+local git = {
+  add = terminal.bright_green,
+  change = terminal.yellow,
+  delete = terminal.bright_red,
 }
 
 -- Theme specific
@@ -194,6 +209,8 @@ local colors = {
   light_terminal = light_terminal,
   visual = visual,
   diag = diag,
+  diff = diff,
+  git = git,
   theme = theme,
 
   -- Neutrals
