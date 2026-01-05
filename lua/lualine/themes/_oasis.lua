@@ -9,10 +9,9 @@ function M.get(style)
 
   -- Load and extract the specified palette (handles both legacy and dual-mode)
   local Utils = require("oasis.utils")
-  local c, err = Utils.load_and_extract_palette("oasis.color_palettes." .. palette_name)
-  if not c then
-    c, err = Utils.load_and_extract_palette("oasis.color_palettes.oasis_lagoon")
-  end
+  local c = Utils.load_and_extract_palette("oasis.color_palettes." .. palette_name)
+  if not c then c = Utils.load_and_extract_palette("oasis.color_palettes.oasis_lagoon") end
+  assert(c, "Failed to load Oasis palette for lualine")
 
   local hl = {}
 
