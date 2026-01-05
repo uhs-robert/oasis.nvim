@@ -473,7 +473,7 @@ function LightTheme.generate_ui(dark_ui, light_bg, intensity_level, contrast_tar
     result.float = {
       title = result.title or light_bg.core,
       fg = result.title or light_bg.core,
-      bg = light_bg.surface,
+      bg = light_bg.mantle,
       border = {
         fg = result.border or light_bg.core,
         bg = light_bg.mantle,
