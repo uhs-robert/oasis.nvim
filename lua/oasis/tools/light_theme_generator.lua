@@ -623,4 +623,24 @@ function LightTheme.generate_theme(dark_theme, intensity_level)
   return result
 end
 
+--- Apply contrast adjustment to all string values in a table
+--- @param dark_table table Table with color values
+--- @param light_bg_core string Light mode background core color
+--- @param target_contrast? number Target contrast ratio (default 7.0)
+--- @return table Table with adjusted colors
+function LightTheme.apply_contrast(dark_table, light_bg_core, target_contrast)
+  target_contrast = target_contrast or 7.0
+  local result = {}
+
+  for key, value in pairs(dark_table) do
+    if type(value) == "string" then
+      result[key] = ColorUtils.darken_to_contrast(value, light_bg_core, target_contrast)
+    else
+      result[key] = value -- Preserve non-string values
+    end
+  end
+
+  return result
+end
+
 return LightTheme
