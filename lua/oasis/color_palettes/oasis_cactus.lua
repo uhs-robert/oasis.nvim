@@ -1,9 +1,8 @@
 -- lua/oasis/color_palettes/oasis_cactus.lua
 
-local p = require("oasis.palette")
 local Config = require("oasis.config")
-local ColorUtils = require("oasis.tools.color_utils")
 local LightTheme = require("oasis.tools.light_theme_generator")
+local p = require("oasis.palette")
 local opts = Config.get()
 local theme = p.theme.cactus
 
@@ -30,6 +29,8 @@ local dark = {
   fg = ui.fg,
   theme = ui.theme,
   terminal = p.terminal,
+  diff = vim.tbl_extend("force", p.diff, { change = theme.bg.surface }),
+  git = p.git,
 
   -- Syntax
   syntax = {
@@ -58,13 +59,6 @@ local dark = {
     -- Neutral: (Connections / Info)
     bracket = p.slate[400], -- (bracket punctuation)
     comment = theme.fg.comment, -- (comments)
-  },
-
-  -- Diff
-  diff = {
-    add = p.visual.green,
-    change = theme.bg.surface,
-    delete = p.visual.red,
   },
 
   -- UI
@@ -103,23 +97,14 @@ local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
   curSearch = { bg = p.visual.red, fg = ui.fg.core },
 })
 local light = {
+  light_mode = true,
   bg = light_bg,
   fg = LightTheme.generate_fg(ui.fg, light_bg.core, opts.light_intensity),
   theme = LightTheme.generate_theme(ui.theme, opts.light_intensity),
   terminal = LightTheme.generate_terminal(p.terminal, light_bg.core, opts.light_intensity, opts.contrast),
-  light_mode = true,
-
-  -- Syntax
+  diff = LightTheme.apply_contrast(dark.diff, light_bg.core),
+  git = LightTheme.apply_contrast(dark.git, light_bg.core),
   syntax = LightTheme.generate_syntax(dark.syntax, light_bg.core, opts.light_intensity, nil, opts.contrast),
-
-  -- Diff
-  diff = {
-    add = ColorUtils.darken_to_contrast(dark.diff.add, light_bg.core, 7.0),
-    change = ColorUtils.darken_to_contrast(dark.diff.change, light_bg.core, 7.0),
-    delete = ColorUtils.darken_to_contrast(dark.diff.delete, light_bg.core, 7.0),
-  },
-
-  -- UI
   ui = LightTheme.generate_ui(light_ui, light_bg, opts.light_intensity),
 }
 

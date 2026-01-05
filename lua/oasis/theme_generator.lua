@@ -48,11 +48,11 @@ return function(c, palette_name)
     lCursor                    = { fg=c.bg.core, bg=c.syntax.exception }, -- Character under the cursor when |language-mapping| is used (see 'guicursor')
     CursorIM                   = "Cursor", -- Like Cursor, but used when in IME mode |CursorIM|
     CursorColumn               = { bg=c.ui.cursorLine }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
-    DiffAdd                    = { fg=c.fg.core, bg=c.diff.add }, -- Diff mode: Added line |diff.txt|
-    DiffChange                 = { fg=c.fg.core, bg=c.diff.change }, -- Diff mode: Changed line |diff.txt|
-    DiffDelete                 = { fg=c.fg.core, bg=c.diff.delete }, -- Diff mode: Deleted line |diff.txt|
-    DiffText                   = { fg=c.fg.core, bg=c.bg.surface }, -- Diff mode: Changed text within a changed line |diff.txt|
     CursorLine                 = { bg=c.ui.cursorLine }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermc.fg OR guifg) is not set.
+    DiffAdd                    = { bg=c.diff.add }, -- Diff mode: Added line |diff.txt|
+    DiffChange                 = { bg=c.diff.change }, -- Diff mode: Changed line |diff.txt|
+    DiffDelete                 = { bg=c.diff.delete }, -- Diff mode: Deleted line |diff.txt|
+    DiffText                   = { bg=c.diff.text }, -- Diff mode: Changed text within a changed line |diff.txt|
     Directory                  = { fg=c.ui.dir }, -- Directory names (and other special names in listings)
     TermCursor                 = { reverse=true }, -- Cursor in a focused terminal
     TermCursorNC               = { reverse=true }, -- Cursor in an unfocusd terminal
