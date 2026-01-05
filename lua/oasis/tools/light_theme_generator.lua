@@ -4,14 +4,14 @@
 
 local ColorUtils = require("oasis.tools.color_utils")
 
-local M = {}
+local LightTheme = {}
 
---- Adjust saturation and lightness for problematic hues in light backgrounds
+--- Adjusts saturation and lightness for problematic hues in light backgrounds
 --- @param h number Hue (0-360)
 --- @param s number Saturation (0-100)
 --- @param l number Lightness (0-100)
 --- @return number, number Adjusted saturation and lightness
-local function adjust_background_outliers(h, s, l)
+local function resolve_outliers(h, s, l)
   -- Normalize hue so negative shifts still fall inside expected ranges
   local hue = h % 360
   local new_s, new_l = s, l
@@ -75,7 +75,7 @@ end
 --- @param s number Saturation (0-100)
 --- @param l number Lightness (0-100)
 --- @return number, number Adjusted saturation and lightness
-local function soften_light_hue(h, s, l)
+local function soften_hue(h, s, l)
   local hue = h % 360
   local new_s, new_l = s, l
   local very_light = l >= 90
@@ -110,7 +110,7 @@ end
 --- @param base_color string Base color (typically dark mode fg.core)
 --- @param intensity_level number Intensity level (1-5)
 --- @return string Transformed hex color
-function M.apply_light_intensity(base_color, intensity_level)
+function LightTheme.apply_intensity(base_color, intensity_level)
   if not base_color or intensity_level < 1 or intensity_level > 5 then return base_color end
 
   local h, _, _ = ColorUtils.rgb_to_hsl(base_color)
@@ -145,7 +145,7 @@ function M.apply_light_intensity(base_color, intensity_level)
   end
 
   -- Apply outlier adjustments for problematic hues
-  new_sat, new_light = adjust_background_outliers(new_hue, new_sat, new_light)
+  new_sat, new_light = resolve_outliers(new_hue, new_sat, new_light)
 
   return ColorUtils.hsl_to_rgb(new_hue, new_sat, new_light)
 end
@@ -156,9 +156,9 @@ end
 --- @param intensity_level number Light intensity (1-5)
 --- @param opts? table Optional overrides { target_l_core = number|table, l_step = number }
 --- @return table Background colors {core, mantle, shadow, surface}
-function M.generate_backgrounds(dark_fg_core, intensity_level, opts)
+function LightTheme.generate_bg(dark_fg_core, intensity_level, opts)
   -- Generate base bg.core using intensity formula
-  local core = M.apply_light_intensity(dark_fg_core, intensity_level)
+  local core = LightTheme.apply_intensity(dark_fg_core, intensity_level)
 
   -- Get HSL of core to derive related backgrounds
   local h, s, l = ColorUtils.rgb_to_hsl(core)
@@ -192,7 +192,7 @@ end
 --- @param intensity_level number Intensity level (1-5) for subtle variations
 --- @param contrast_targets? table Optional contrast ratio targets per element {strong=7.0, core=7.0, muted=4.5, dim=3.0, comment=4.5}
 --- @return table Light mode foreground colors
-function M.generate_foregrounds(dark_fg, light_bg_core, intensity_level, contrast_targets)
+function LightTheme.generate_fg(dark_fg, light_bg_core, intensity_level, contrast_targets)
   -- Default contrast targets (can be overridden)
   local default_targets = {
     strong = 7.0, -- AAA
@@ -224,7 +224,7 @@ function M.generate_foregrounds(dark_fg, light_bg_core, intensity_level, contras
       local h, s, _ = ColorUtils.rgb_to_hsl(source_color)
       -- Reduce saturation for subtlety (50% of original)
       local new_s = s * 0.5
-      new_s, target_l = soften_light_hue(h, new_s, target_l)
+      new_s, target_l = soften_hue(h, new_s, target_l)
       result[key] = ColorUtils.hsl_to_rgb(h, new_s, target_l)
 
       -- Apply contrast target if specified
@@ -242,7 +242,7 @@ end
 --- @param intensity_level number Intensity level (1-5)
 --- @param contrast_targets? table Optional contrast ratio targets per syntax element
 --- @return table Light mode syntax colors
-function M.generate_syntax(dark_syntax, light_bg_core, intensity_level, contrast_targets, opts)
+function LightTheme.generate_syntax(dark_syntax, light_bg_core, intensity_level, contrast_targets, opts)
   -- Contrast floor control
   opts = opts or {}
   local min_ratio = math.min(7.0, math.max(4.5, opts.min_ratio or 7.0))
@@ -388,7 +388,7 @@ end
 --- @param contrast_targets? table Optional contrast ratio targets per UI element
 --- @param opts? table Optional { min_ratio = number, force_aaa = boolean }
 --- @return table Light mode UI colors
-function M.generate_ui(dark_ui, light_bg, intensity_level, contrast_targets, opts)
+function LightTheme.generate_ui(dark_ui, light_bg, intensity_level, contrast_targets, opts)
   -- Contrast floor control
   opts = opts or {}
   local min_ratio = math.min(7.0, math.max(3.0, opts.min_ratio or 7.0))
@@ -431,7 +431,7 @@ function M.generate_ui(dark_ui, light_bg, intensity_level, contrast_targets, opt
       local h, s, _ = ColorUtils.rgb_to_hsl(dark_ui[key])
       local base_l = 30 - ((intensity_level - 1) * 2)
       local new_s = s * 0.75
-      new_s, base_l = soften_light_hue(h, new_s, base_l)
+      new_s, base_l = soften_hue(h, new_s, base_l)
       result[key] = ColorUtils.hsl_to_rgb(h, new_s, base_l)
 
       -- Apply contrast target
@@ -449,8 +449,8 @@ function M.generate_ui(dark_ui, light_bg, intensity_level, contrast_targets, opt
   -- Search colors
   if dark_ui.search then
     local h, _, _ = ColorUtils.rgb_to_hsl(dark_ui.search.bg or "#000000")
-    local s1, l1 = soften_light_hue(h, 65, 75)
-    local s2, l2 = soften_light_hue(h, 85, 18)
+    local s1, l1 = soften_hue(h, 65, 75)
+    local s2, l2 = soften_hue(h, 85, 18)
     result.search = {
       bg = ColorUtils.hsl_to_rgb(h, s1, l1),
       fg = ColorUtils.hsl_to_rgb(h, s2, l2),
@@ -460,8 +460,8 @@ function M.generate_ui(dark_ui, light_bg, intensity_level, contrast_targets, opt
   -- Current search (more prominent)
   if dark_ui.curSearch then
     local h, _, _ = ColorUtils.rgb_to_hsl(dark_ui.curSearch.bg or "#000000")
-    local s1, l1 = soften_light_hue(h, 75, 65)
-    local s2, l2 = soften_light_hue(h, 90, 12)
+    local s1, l1 = soften_hue(h, 75, 65)
+    local s2, l2 = soften_hue(h, 90, 12)
     result.curSearch = {
       bg = ColorUtils.hsl_to_rgb(h, s1, l1),
       fg = ColorUtils.hsl_to_rgb(h, s2, l2),
@@ -488,7 +488,7 @@ function M.generate_ui(dark_ui, light_bg, intensity_level, contrast_targets, opt
       if type(colors) == "table" and colors.fg then
         local h, _, _ = ColorUtils.rgb_to_hsl(colors.fg)
         -- Create vibrant, darker background (higher saturation, lower lightness)
-        local adj_s, adj_l = soften_light_hue(h, 55, 70)
+        local adj_s, adj_l = soften_hue(h, 55, 70)
         local diag_bg = ColorUtils.hsl_to_rgb(h, adj_s, adj_l)
         -- Generate dark foreground from the same hue for AAA contrast
         local diag_fg = ColorUtils.hsl_to_rgb(h, 80, 15)
@@ -513,7 +513,7 @@ end
 --- @param intensity_level number Intensity level (1-5)
 --- @param opts? table Optional { force_aaa = boolean, chroma_target = number, neutral_target = number, min_ratio = number }
 --- @return table Light mode terminal colors
-function M.generate_terminal(dark_terminal, light_bg_core, intensity_level, opts)
+function LightTheme.generate_terminal(dark_terminal, light_bg_core, intensity_level, opts)
   if not dark_terminal or not light_bg_core then return {} end
 
   opts = opts or {}
@@ -556,7 +556,7 @@ function M.generate_terminal(dark_terminal, light_bg_core, intensity_level, opts
 
       -- Hue-aware softening to avoid neon spikes
       local new_s = s
-      new_s, _ = soften_light_hue(h, new_s, base_l)
+      new_s, _ = soften_hue(h, new_s, base_l)
 
       local color = ColorUtils.hsl_to_rgb(h, new_s, base_l)
 
@@ -579,7 +579,7 @@ end
 --- @param dark_theme table Dark mode theme colors {strong_primary, primary, light_primary, secondary, accent}
 --- @param intensity_level number Intensity level (1-5)
 --- @return table Light mode theme colors (vibrant)
-function M.generate_theme(dark_theme, intensity_level)
+function LightTheme.generate_theme(dark_theme, intensity_level)
   local result = {}
 
   -- Theme colors should maintain vibrancy like dark mode
@@ -623,4 +623,4 @@ function M.generate_theme(dark_theme, intensity_level)
   return result
 end
 
-return M
+return LightTheme

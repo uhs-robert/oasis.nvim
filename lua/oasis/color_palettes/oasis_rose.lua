@@ -100,7 +100,7 @@ local dark = {
 }
 
 -- Light mode configuration
-local light_bg = LightTheme.generate_backgrounds(ui.fg.core, opts.light_intensity)
+local light_bg = LightTheme.generate_bg(ui.fg.core, opts.light_intensity)
 local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
   search = { bg = p.visual.pink, fg = ui.fg.core },
   curSearch = { bg = p.visual.teal, fg = ui.fg.core },
@@ -108,7 +108,7 @@ local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
 
 local light = {
   bg = light_bg,
-  fg = LightTheme.generate_foregrounds(ui.fg, light_bg.core, opts.light_intensity),
+  fg = LightTheme.generate_fg(ui.fg, light_bg.core, opts.light_intensity),
   theme = LightTheme.generate_theme(ui.theme, opts.light_intensity),
   terminal = LightTheme.generate_terminal(p.terminal, light_bg.core, opts.light_intensity, opts.contrast),
   light_mode = true,

@@ -10,12 +10,12 @@ local bg_seed = p.theme.night.fg.core
 local light_intensity = 2
 local target_l = { [2] = 82 }
 local contrast_opts = opts.contrast or { min_ratio = 5.8, force_aaa = false }
-local light_bg = LightTheme.generate_backgrounds(bg_seed, light_intensity, { target_l_core = target_l })
+local light_bg = LightTheme.generate_bg(bg_seed, light_intensity, { target_l_core = target_l })
 
 -- Colorscheme
 local c = {
   bg = light_bg,
-  fg = LightTheme.generate_foregrounds(seed_dark.fg, light_bg.core, light_intensity, contrast_opts),
+  fg = LightTheme.generate_fg(seed_dark.fg, light_bg.core, light_intensity, contrast_opts),
   theme = LightTheme.generate_theme(seed_dark.theme, light_intensity),
   terminal = LightTheme.generate_terminal(
     seed_dark.terminal or p.terminal,
