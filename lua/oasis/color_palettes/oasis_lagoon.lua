@@ -9,21 +9,8 @@ local theme = p.theme.lagoon
 
 -- General Reusable Colors
 local ui = {
-  -- Backgrounds
-  bg = {
-    core = theme.bg.core,
-    shadow = theme.bg.shadow,
-    mantle = theme.bg.mantle,
-    surface = theme.bg.surface,
-  },
-  -- Foregrounds
-  fg = {
-    core = theme.fg.core,
-    strong = theme.fg.strong,
-    muted = theme.fg.muted,
-    dim = theme.fg.dim,
-  },
-  -- General colors
+  bg = theme.bg,
+  fg = theme.fg,
   theme = {
     strong_primary = p.lagoon[700],
     primary = p.lagoon[500],
