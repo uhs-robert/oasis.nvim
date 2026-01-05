@@ -10,20 +10,8 @@ local force_aaa = opts.contrast and opts.contrast.force_aaa or opts.contrast.min
 
 -- General Reusable Colors
 local ui = {
-  -- Backgrounds
-  bg = {
-    core = theme.bg.core,
-    shadow = theme.bg.shadow,
-    mantle = theme.bg.mantle,
-    surface = theme.bg.surface,
-  },
-  -- Foregrounds
-  fg = {
-    core = theme.fg.core,
-    strong = theme.fg.strong,
-    muted = theme.fg.muted,
-    dim = theme.fg.dim,
-  },
+  bg = theme.bg,
+  fg = theme.fg,
   -- General colors
   theme = {
     strong_primary = p.teal[700],

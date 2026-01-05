@@ -9,20 +9,8 @@ local theme = p.theme.cactus
 
 -- General Reusable Colors
 local ui = {
-  -- Backgrounds
-  bg = {
-    core = theme.bg.core,
-    shadow = theme.bg.shadow,
-    mantle = theme.bg.mantle,
-    surface = theme.bg.surface,
-  },
-  -- Foregrounds
-  fg = {
-    core = theme.fg.core,
-    strong = theme.fg.strong,
-    muted = theme.fg.muted,
-    dim = theme.fg.dim,
-  },
+  bg = theme.bg,
+  fg = theme.fg,
   -- General colors
   theme = {
     strong_primary = p.aloe[700],
