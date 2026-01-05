@@ -78,13 +78,14 @@ return function(c, palette_name)
     Normal                     = { fg=c.fg.core, bg=c.bg.core }, -- Normal text
     NormalNC                   = { fg=c.fg.muted }, -- normal text in non-current windows
     Pmenu                      = { fg=c.fg.strong, bg=c.bg.mantle }, -- Popup menu: Normal item.
-    PmenuSel                   = { fg=c.bg.core, bg=c.syntax.statement }, -- Popup menu: Selected item.
+    PmenuSel                   = { bg=c.ui.visual.bg, bold=true }, -- Popup menu: Selected item.
+    PmenuMatch                 = { fg=c.theme.accent },
     PmenuKind                  = "Pmenu", -- Popup menu: Normal item "kind"
     PmenuKindSel               = "PmenuSel", -- Popup menu: Selected item "kind"
     PmenuExtra                 = "Pmenu", -- Popup menu: Normal item "extra text"
     PmenuExtraSel              = "PmenuSel", -- Popup menu: Selected item "extra text"
-    PmenuSbar                  = { bg=c.bg.core }, -- Popup menu: Scrollbar.
-    PmenuThumb                 = { bg=c.bg.surface }, -- Popup menu: Thumb of the scrollbar.
+    PmenuSbar                  = { bg=c.bg.surface }, -- Popup menu: Scrollbar.
+    PmenuThumb                 = { bg=c.fg.muted }, -- Popup menu: Thumb of the scrollbar.
     NormalFloat                = { fg=c.ui.float.fg, bg=c.ui.float.bg }, -- Normal text in floating windows.
     FloatBorder                = { fg=c.ui.float.border.fg, bg=c.ui.float.border.bg }, -- Border of floating windows.
     Question                   = { fg=c.ui.diag.ok.fg, bold=true }, -- |hit-enter| prompt and yes/no questions
