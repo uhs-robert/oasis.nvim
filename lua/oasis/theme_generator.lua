@@ -79,7 +79,8 @@ return function(c, palette_name)
     NormalNC                   = { fg=c.fg.muted }, -- normal text in non-current windows
     NormalFloat                = { fg=c.ui.float.fg, bg=c.ui.float.bg }, -- Normal text in floating windows.
     FloatBorder                = { fg=c.ui.float.border.fg, bg=c.ui.float.border.bg }, -- Border of floating windows.
-    Pmenu                      = { fg=c.fg.strong, bg=c.bg.mantle }, -- Popup menu: Normal item.
+    FloatTitle                 = { fg=c.ui.float.title, bg=c.ui.float.border.bg, bold=true }, -- Title of floating windows.
+    Pmenu                      = "NormalFloat", -- Popup menu: Normal item.
     PmenuSel                   = { bg=c.ui.visual.bg, bold=true }, -- Popup menu: Selected item.
     PmenuMatch                 = { fg=c.theme.accent },
     PmenuKind                  = "Pmenu", -- Popup menu: Normal item "kind"
@@ -105,7 +106,6 @@ return function(c, palette_name)
     TabLineSel                 = { fg=c.bg.core, bg=c.theme.accent }, -- Tab pages line, active tab page label
     MsgSeparator               = "StatusLine", -- Separator for scrolled messages, `msgsep` flag of 'display'
     Title                      = { fg=c.ui.title, bold=true }, -- Titles for output from ":set all", ":autocmd" etc.
-    FloatTitle                 = { fg=c.ui.float.title, bg=c.ui.float.border.bg, bold=true }, -- Title of floating windows.
     VertSplit                  = { fg=c.ui.border, bg=c.bg.mantle }, -- Column separating vertically split windows
     Visual                     = { bg=c.ui.visual.bg, fg = (c.ui.fg_visual or "NONE") }, -- Visual mode selection
     VisualNOS                  = { bg=c.ui.visual.bg }, -- Visual mode selection when vim is "Not Owning the Selection".
@@ -355,12 +355,6 @@ return function(c, palette_name)
     highlights.DiffAdd              = { fg=c.fg.core,     bg="#DDEDDC" }
     highlights.DiffChange           = { fg=c.fg.core,     bg=c.bg.surface }
     highlights.DiffDelete           = { fg=c.fg.core,     bg="#F3D8D6" }
-
-    -- Popup menu
-    highlights.Pmenu                = { fg=c.fg.core,     bg=c.bg.mantle }
-    highlights.PmenuSel             = { fg=c.bg.core,     bg=c.syntax.statement, bold=true }
-    highlights.PmenuSbar            = { bg=c.bg.mantle }
-    highlights.PmenuThumb           = { bg=c.bg.surface }
   end
   -- stylua: ignore end
 
