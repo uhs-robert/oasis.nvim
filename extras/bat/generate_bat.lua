@@ -48,7 +48,7 @@ local function generate_bat_theme(display_name, palette)
     "\t\t\t\t<key>selectionForeground</key>",
     "\t\t\t\t<string>" .. palette.fg.core .. "</string>",
     "\t\t\t\t<key>findHighlight</key>",
-    "\t\t\t\t<string>" .. palette.ui.curSearch.bg .. "</string>",
+    "\t\t\t\t<string>" .. palette.ui.match.bg .. "</string>",
     "\t\t\t\t<key>findHighlightForeground</key>",
     "\t\t\t\t<string>" .. palette.bg.core .. "</string>",
     "\t\t\t</dict>",

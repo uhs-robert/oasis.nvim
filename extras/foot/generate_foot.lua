@@ -25,10 +25,10 @@ local function generate_foot_theme(name, palette)
     string.format("selection-background=%s", palette.ui.visual.bg),
     "",
     string.format("search-box-no-match=%s %s", palette.ui.search.fg, palette.ui.search.bg),
-    string.format("search-box-match=%s %s", palette.ui.curSearch.fg, palette.ui.curSearch.bg),
+    string.format("search-box-match=%s %s", palette.ui.match.fg, palette.ui.match.bg),
     "",
     string.format("urls=%s", palette.ui.dir),
-    string.format("jump-labels=%s %s", palette.ui.curSearch.fg, palette.ui.curSearch.bg),
+    string.format("jump-labels=%s %s", palette.ui.match.fg, palette.ui.match.bg),
     "",
   }
 

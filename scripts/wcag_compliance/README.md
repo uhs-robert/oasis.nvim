@@ -104,65 +104,6 @@ The logic has been tuned a bit with some AAA exceptions for artistic flair (i.e.
 
 Update the palette file `lua/oasis/color_palettes/oasis_<variant>.lua` with calculated values.
 
-**Template structure**:
-
-```lua
--- General colors
-theme = {
-    primary = "#XXXXXX", -- 7.XX:1 (was #YYYYYY)
-    -- ...
-},
-
--- Syntax
-syntax = {
-    -- Cold: (Data)
-    parameter = "#XXXXXX", -- 7.XX:1
-    identifier = "#XXXXXX", -- 7.XX:1
-    type = "#XXXXXX", -- 7.XX:1
-    builtinVar = "#XXXXXX", -- 7.XX:1
-    string = "#XXXXXX", -- 7.XX:1
-    regex = "#XXXXXX", -- 7.XX:1
-    builtinConst = "#XXXXXX", -- 7.XX:1
-    constant = "#XXXXXX", -- 7.XX:1
-
-    -- Warm: (Control / Flow)
-    func = "#XXXXXX", -- 7.XX:1
-    builtinFunc = "#XXXXXX", -- 7.XX:1
-    statement = "#XXXXXX", -- 7.XX:1
-    exception = "#XXXXXX", -- 7.XX:1
-    keyword = "#XXXXXX", -- 7.XX:1
-    special = "#XXXXXX", -- 7.XX:1
-    operator = "#XXXXXX", -- 7.XX:1
-    punctuation = "#XXXXXX", -- 7.XX:1
-    preproc = "#XXXXXX", -- 7.XX:1
-
-    -- Neutral
-    bracket = "#XXXXXX", -- 7.XX:1
-    comment = "#XXXXXX", -- 4.51:1 AA (or 7.XX:1 AAA)
-},
-
--- Diff
-diff = {
-    change = "#XXXXXX", -- 7.XX:1
-    delete = "#XXXXXX", -- 7.XX:1
-},
-
--- UI
-ui = {
-    match = "#XXXXXX", -- 7.XX:1
-    search = { bg = "#FFD87C", fg = "#XXXXXX" }, -- 9.XX:1
-    curSearch = { bg = p.orange.deepsun, fg = "#XXXXXX" }, -- 7.XX:1
-    dir = "#XXXXXX", -- 7.XX:1
-
-    diag = {
-        error = { fg = "#XXXXXX", bg = ui.bg.core }, -- 7.XX:1
-        warn = { fg = "#XXXXXX", bg = ui.bg.core },  -- 7.XX:1
-        info = { fg = "#XXXXXX", bg = ui.bg.core },  -- 7.XX:1
-        hint = { fg = "#XXXXXX", bg = ui.bg.core },  -- 7.XX:1
-    },
-},
-```
-
 ### Phase 4: Verification
 
 1. **Apply the theme**:

@@ -44,7 +44,7 @@ return function(c, palette_name)
     ColorColumn                = { fg=c.fg.core, bg=c.bg.mantle }, -- Columns set with 'colorcolumn'
     Conceal                    = { fg=c.fg.muted }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
     Cursor                     = { fg=c.bg.core, bg=(LIGHT_MODE and c.syntax.statement or c.terminal.yellow) }, -- Character under the cursor
-    CurSearch                  = { fg=c.ui.curSearch.fg, bg=c.ui.curSearch.bg, bold=true }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
+    CurSearch                  = { fg=c.ui.match.fg, bg=c.ui.match.bg, bold=true }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
     lCursor                    = { fg=c.bg.core, bg=c.syntax.exception }, -- Character under the cursor when |language-mapping| is used (see 'guicursor')
     CursorIM                   = "Cursor", -- Like Cursor, but used when in IME mode |CursorIM|
     CursorColumn               = { bg=c.ui.cursorLine }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
@@ -60,7 +60,7 @@ return function(c, palette_name)
     Folded                     = { fg=c.syntax.statement, bg=c.bg.surface }, -- Line used for closed folds
     FoldColumn                 = { fg=c.fg.muted, bg=c.bg.core }, -- 'foldcolumn'
     SignColumn                 = { fg=c.fg.muted, bg=c.bg.core }, -- Column where |signs| are displayed
-    IncSearch                  = { fg=c.ui.curSearch.fg, bg=c.ui.curSearch.bg }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+    IncSearch                  = { fg=c.ui.match.fg, bg=c.ui.match.bg }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     Search                     = { fg=c.fg.strong, bg=c.ui.search.bg }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
     Substitute                 = "Search", -- |:substitute| replacement text highlighting
     LineNr                     = { fg=c.fg.muted, bg=(c.bg.gutter or "NONE") }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
@@ -69,7 +69,7 @@ return function(c, palette_name)
     CursorLineNr               = { fg=c.ui.lineNumber, bg=(c.bg.gutter or "NONE"), bold=true }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     CursorLineFold             = { bg=c.bg.core }, -- Like FoldColumn when 'cursorline' is set for the cursor line
     CursorLineSign             = { bg=c.bg.core }, -- Like SignColumn when 'cursorline' is set for the cursor line
-    MatchParen                 = { fg=c.ui.curSearch.bg, bg=c.ui.search.bg, bold=true }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+    MatchParen                 = { fg=c.ui.match.bg, bg=c.ui.search.bg, bold=true }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     ModeMsg                    = { fg=c.syntax.statement, bold=true }, -- 'showmode' message (e.g., "-- INSERT -- ")
     MsgArea                    = { fg=c.syntax.statement }, -- Area for messages and cmdline
     MoreMsg                    = { fg=c.syntax.type, bold=true }, -- |more-prompt|
