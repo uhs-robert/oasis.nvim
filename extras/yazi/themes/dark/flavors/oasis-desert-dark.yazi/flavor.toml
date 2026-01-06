@@ -34,8 +34,8 @@ normal_alt = { fg = "#ED7777", bg = "#333333" }
 select_main = { fg = "#333333", bg = "#F8B471", bold = true }
 select_alt = { fg = "#F8B471", bg = "#333333" }
 
-unset_main = { fg = "#333333", bg = "#FFB0B0", bold = true }
-unset_alt = { fg = "#FFB0B0", bg = "#333333" }
+unset_main = { fg = "#333333", bg = "#FFA0A0", bold = true }
+unset_alt = { fg = "#FFA0A0", bg = "#333333" }
 
 # STATUS
 [status]
@@ -128,7 +128,7 @@ rules = [
 
 # SPOT
 [spot]
-border = { fg = "#FFB0B0" }
+border = { fg = "#FFA0A0" }
 title = { fg = "#F0E68C" }
 tbl_cell = { fg = "#F0E68C", reversed = true }
 tbl_col = { bold = true }
