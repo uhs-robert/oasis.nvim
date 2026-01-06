@@ -35,7 +35,7 @@ local dark = {
   -- Syntax
   syntax = {
     -- Cold: (Data)
-    parameter = opts.themed_syntax and p.khaki[500] or p.lavender[500],
+    parameter = opts.themed_syntax and p.khaki[400] or p.lavender[500],
     identifier = p.teal[300],
     delimiter = ui.theme.strong_primary,
     type = p.teal[600],
@@ -66,7 +66,7 @@ local dark = {
     lineNumber = p.sunset[500],
     visual = { bg = ui.bg.surface, fg = "none" },
     search = { bg = p.visual.yellow, fg = ui.fg.core },
-    match = { bg = p.khaki[500], fg = ui.bg.core },
+    match = { bg = p.khaki[400], fg = ui.bg.core },
     dir = p.sky[500],
 
     title = ui.theme.primary,
