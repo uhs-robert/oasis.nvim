@@ -458,11 +458,11 @@ function LightTheme.generate_ui(dark_ui, light_bg, intensity_level, contrast_tar
   end
 
   -- Current search (more prominent)
-  if dark_ui.curSearch then
-    local h, _, _ = ColorUtils.rgb_to_hsl(dark_ui.curSearch.bg or "#000000")
+  if dark_ui.match then
+    local h, _, _ = ColorUtils.rgb_to_hsl(dark_ui.match.bg or "#000000")
     local s1, l1 = soften_hue(h, 75, 65)
     local s2, l2 = soften_hue(h, 90, 12)
-    result.curSearch = {
+    result.match = {
       bg = ColorUtils.hsl_to_rgb(h, s1, l1),
       fg = ColorUtils.hsl_to_rgb(h, s2, l2),
     }

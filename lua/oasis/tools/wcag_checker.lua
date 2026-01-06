@@ -145,10 +145,10 @@ function WcagChecker.analyze_palette(palette_name)
   if palette.ui.search and palette.ui.search.fg then
     check("Search Text (search.fg on search.bg)", palette.ui.search.fg, palette.ui.search.bg)
   end
-  if palette.ui.curSearch and palette.ui.curSearch.bg then
-    check("CurSearch Text (curSearch.fg on curSearch.bg)", palette.ui.curSearch.fg, palette.ui.curSearch.bg)
+  if palette.ui.match and palette.ui.match.bg then
+    check("Match Text (match.fg on match.bg)", palette.ui.match.fg, palette.ui.match.bg)
+    check("Match (match on bg.core)", palette.ui.match.bg, palette.bg.core)
   end
-  check("Match (match on bg.core)", palette.ui.match, palette.bg.core)
 
   return results
 end

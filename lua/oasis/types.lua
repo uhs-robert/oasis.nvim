@@ -55,7 +55,7 @@
 ---@field bg string
 ---@field fg? string
 
----@class OasisPaletteUiCurSearch
+---@class OasisPaletteUiMatch
 ---@field bg string
 ---@field fg string
 
@@ -81,10 +81,9 @@
 ---@field ok OasisPaletteUiDiagEntry
 
 ---@class OasisPaletteUi
----@field match string
 ---@field visual OasisPaletteUiVisual
 ---@field search OasisPaletteUiSearch
----@field curSearch OasisPaletteUiCurSearch
+---@field match OasisPaletteUiMatch
 ---@field dir string
 ---@field title string
 ---@field border string
@@ -289,7 +288,7 @@
 ---@field bg? string
 ---@field fg? string
 
----@class OasisPaletteUiCurSearchOverrides
+---@class OasisPaletteUiMatchOverrides
 ---@field bg? string
 ---@field fg? string
 
@@ -315,10 +314,9 @@
 ---@field ok? OasisPaletteUiDiagEntryOverrides
 
 ---@class OasisPaletteUiOverrides
----@field match? string
 ---@field visual? OasisPaletteUiVisualOverrides
 ---@field search? OasisPaletteUiSearchOverrides
----@field curSearch? OasisPaletteUiCurSearchOverrides
+---@field match? OasisPaletteUiMatchOverrides
 ---@field dir? string
 ---@field title? string
 ---@field border? string

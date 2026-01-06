@@ -64,10 +64,10 @@ local dark = {
   -- UI
   ui = {
     lineNumber = p.sunset[500],
-    match = { bg = p.sunset[500], fg = ui.bg.core },
     visual = { bg = ui.bg.surface, fg = "none" },
     search = { bg = p.visual.orange, fg = ui.fg.core },
-    curSearch = { bg = p.sunrise[600], fg = ui.bg.core },
+    match = { bg = p.sunrise[600], fg = ui.bg.core },
+    dir = p.sky[500],
 
     title = ui.theme.primary,
     border = ui.theme.strong_primary,
@@ -93,7 +93,7 @@ local dark = {
 local light_bg = LightTheme.generate_bg(ui.fg.core, opts.light_intensity)
 local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
   search = { bg = p.visual.red, fg = ui.fg.core },
-  curSearch = { bg = p.cactus[400], fg = ui.fg.core },
+  match = { bg = p.cactus[400], fg = ui.fg.core },
 })
 local light = {
   light_mode = true,
