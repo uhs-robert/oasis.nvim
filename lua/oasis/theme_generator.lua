@@ -77,6 +77,8 @@ return function(c, palette_name)
     EndOfBuffer                = "NonText", -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
     Normal                     = { fg=c.fg.core, bg=c.bg.core }, -- Normal text
     NormalNC                   = { fg=c.fg.muted }, -- normal text in non-current windows
+    NormalFloat                = { fg=c.ui.float.fg, bg=c.ui.float.bg }, -- Normal text in floating windows.
+    FloatBorder                = { fg=c.ui.float.border.fg, bg=c.ui.float.border.bg }, -- Border of floating windows.
     Pmenu                      = { fg=c.fg.strong, bg=c.bg.mantle }, -- Popup menu: Normal item.
     PmenuSel                   = { bg=c.ui.visual.bg, bold=true }, -- Popup menu: Selected item.
     PmenuMatch                 = { fg=c.theme.accent },
@@ -84,10 +86,9 @@ return function(c, palette_name)
     PmenuKindSel               = "PmenuSel", -- Popup menu: Selected item "kind"
     PmenuExtra                 = "Pmenu", -- Popup menu: Normal item "extra text"
     PmenuExtraSel              = "PmenuSel", -- Popup menu: Selected item "extra text"
-    PmenuSbar                  = { bg=c.bg.surface }, -- Popup menu: Scrollbar.
+    PmenuBorder                = "FloatBorder", -- Popup menu: border of popup menu.
+    PmenuSbar                  = { bg=c.bg.core }, -- Popup menu: Scrollbar.
     PmenuThumb                 = { bg=c.fg.muted }, -- Popup menu: Thumb of the scrollbar.
-    NormalFloat                = { fg=c.ui.float.fg, bg=c.ui.float.bg }, -- Normal text in floating windows.
-    FloatBorder                = { fg=c.ui.float.border.fg, bg=c.ui.float.border.bg }, -- Border of floating windows.
     Question                   = { fg=c.ui.diag.ok.fg, bold=true }, -- |hit-enter| prompt and yes/no questions
     QuickFixLine               = { fg=c.bg.core, bg=c.syntax.statement }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
     SpecialKey                 = { fg=c.syntax.type }, -- Unprintable characters: text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
