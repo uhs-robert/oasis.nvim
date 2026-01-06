@@ -10,7 +10,7 @@ local terminal = {
 	bright_red =          "#FFA0A0",
 	green =               "#53D390",
 	bright_green =        "#96EA7F",
-	yellow =              "#F0E68C",
+	yellow =              "#F3E989",
 	bright_yellow =       "#F8B471",
 	blue =                "#61AEFF",
 	bright_blue =         "#87CEEB",
@@ -165,7 +165,7 @@ local theme = {
   -- Light themes
   dawn = {
     bg = { shadow = "#E9E0AE", core = "#EFE5B6", mantle = "#E3D8A4", surface = "#D7CC97" },
-    fg = { core = "#443725", strong = "#261E12", dim = "#54523A", muted = "#4E4D39", comment = "#456B80" }, -- #F0E7CE or #F2ECD3
+    fg = { core = "#443725", strong = "#261E12", dim = "#54523A", muted = "#4E4D39", comment = "#456B80" },
   },
   dawnlight = {
     bg = { shadow = "#E3D396", core = "#ECDFA3", mantle = "#DDD091", surface = "#D1C085" },
@@ -361,11 +361,11 @@ local colors = {
     [700] = "#BDB76B",
     [600] = "#CDC673",
     [500] = "#F0E68C",
-    [400] = "#F3EA9F",
-    [300] = "#F6EEB2",
-    [200] = "#F9F2C5",
-    [100] = "#FBF6D8",
-    [50] = "#FEFBEB",
+    [400] = "#F3E989",
+    [300] = "#F3EA9F",
+    [200] = "#F6EEB2",
+    [100] = "#F9F2C5",
+    [50] = "#FBF6D8",
   },
 
   dune = {
