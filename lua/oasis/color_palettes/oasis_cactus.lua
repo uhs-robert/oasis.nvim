@@ -80,10 +80,10 @@ local dark = {
       border = { fg = ui.theme.strong_primary, bg = ui.bg.mantle },
     },
     diag = {
-      error = { fg = p.diag.error.fg_light, bg = p.diag.error.bg },
+      error = { fg = p.diag.error.fg, bg = p.diag.error.bg },
       warn = { fg = p.diag.warn.fg, bg = p.diag.warn.bg },
-      info = { fg = p.diag.info.fg_light, bg = p.diag.info.bg },
-      hint = { fg = p.diag.hint.fg_light, bg = p.diag.hint.bg },
+      info = { fg = p.diag.info.fg, bg = p.diag.info.bg },
+      hint = { fg = p.diag.hint.fg, bg = p.diag.hint.bg },
       ok = { fg = p.diag.ok.fg, bg = "none" },
     },
   },
