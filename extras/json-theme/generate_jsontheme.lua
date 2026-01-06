@@ -45,7 +45,7 @@ local diag_key_map = {
 local function get_diag_fg(diag, key)
   local target = diag[key]
   if not target then return "" end
-  return target.fg or target.fg_light or ""
+  return target.fg or ""
 end
 
 local function generate_json_palette(name, palette)

@@ -85,29 +85,11 @@ local visual = {
 
 -- Diagnostics
 local diag = {
-  error = {
-    fg = "#FF0000",
-    fg_light = "#FFA0A0",
-    bg = "#322639",
-  },
-  warn = {
-    fg = "#EEEE00",
-    bg = "#38343D",
-  },
-  info = {
-    fg = "#75A0FF",
-    fg_light = "#87CEEB",
-    bg = "#203346",
-  },
-  hint = {
-    fg = "#62ABA0",
-    fg_light = "#8FD1C7",
-    bg = "#273644",
-  },
-  ok = {
-    fg = "#00FF7F",
-    bg = "#2F4F4F",
-  },
+  error = { fg = terminal.bright_red, bg = visual.red },
+  warn = { fg = terminal.yellow, bg = visual.yellow },
+  info = { fg = terminal.bright_blue, bg = visual.blue },
+  hint = { fg = terminal.bright_cyan, bg = visual.teal },
+  ok = { fg = terminal.bright_green, bg = visual.green },
 }
 
 -- Diff
