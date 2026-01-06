@@ -401,6 +401,7 @@ function LightTheme.generate_ui(dark_ui, light_bg, intensity_level, contrast_tar
     dir = min_ratio,
     title = aa_compliant,
     border = aa_compliant,
+    diag = 4.5,
     nontext = 3.0,
   }
   contrast_targets = contrast_targets or default_targets
@@ -490,10 +491,9 @@ function LightTheme.generate_ui(dark_ui, light_bg, intensity_level, contrast_tar
         -- Create vibrant, darker background (higher saturation, lower lightness)
         local adj_s, adj_l = soften_hue(h, 55, 70)
         local diag_bg = ColorUtils.hsl_to_rgb(h, adj_s, adj_l)
-        -- Generate dark foreground from the same hue for AAA contrast
+        -- Generate dark foreground from the same hue for AA contrast
         local diag_fg = ColorUtils.hsl_to_rgb(h, 80, 15)
-        -- Ensure AAA contrast (7.0:1) against the background
-        diag_fg = ColorUtils.darken_to_contrast(diag_fg, diag_bg, 7.0)
+        diag_fg = ColorUtils.darken_to_contrast(diag_fg, diag_bg, contrast_targets.diag)
 
         result.diag[level] = {
           fg = diag_fg,
