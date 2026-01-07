@@ -25,7 +25,7 @@ local function generate_alacritty_theme(name, palette, output_path)
     string.format("text = '%s'", palette.fg.core),
     "",
     "[colors.cursor]",
-    string.format("cursor = '%s'", is_light and palette.syntax.statement or palette.terminal.yellow),
+    string.format("cursor = '%s'", is_light and palette.syntax.statement or palette.theme.cursor),
     string.format("text = '%s'", palette.bg.core),
     "",
     "[colors.vi_mode_cursor]",

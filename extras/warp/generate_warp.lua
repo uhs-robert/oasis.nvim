@@ -22,7 +22,7 @@ local function generate_warp_theme(variant_name, palette)
     "",
     string.format("name: %s", display_name),
     string.format("accent: '%s'", palette.theme.accent),
-    string.format("cursor: '%s'", is_light and palette.syntax.statement or palette.terminal.yellow),
+    string.format("cursor: '%s'", is_light and palette.syntax.statement or palette.theme.cursor),
     string.format("background: '%s'", palette.bg.core),
     string.format("foreground: '%s'", palette.fg.core),
     string.format("details: %s", is_light and "lighter" or "darker"),

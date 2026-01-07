@@ -20,18 +20,18 @@ return {
 	theme_accent = "#0761a1",
 
 -- Status
-	error = "#340606",
-	warning = "#3d3707",
-	info = "#083142",
-	hint = "#073e36",
-	ok = "#123d07",
+	error = "#750e0e",
+	warning = "#5d550b",
+	info = "#0d506c",
+	hint = "#0b5e52",
+	ok = "#1c5d0b",
 
 -- ANSI Semnatic Colors
 	black = "#4f4f4f",
-	red = "#9a3c3c",
+	red = "#ad2727",
 	green = "#2d6548",
-	yellow = "#635c21",
-	blue = "#1358b4",
+	yellow = "#635c1f",
+	blue = "#145ca4",
 	magenta = "#7824dc",
 	cyan = "#33635e",
 	white = "#524f47",
@@ -46,10 +46,10 @@ return {
 
 -- ANSI Terminal Colors
 	color0 = "#4f4f4f",
-	color1 = "#9a3c3c",
+	color1 = "#ad2727",
 	color2 = "#2d6548",
-	color3 = "#635c21",
-	color4 = "#1358b4",
+	color3 = "#635c1f",
+	color4 = "#145ca4",
 	color5 = "#7824dc",
 	color6 = "#33635e",
 	color7 = "#524f47",

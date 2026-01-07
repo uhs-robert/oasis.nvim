@@ -21,7 +21,7 @@ theme[selected_bg]="#c4bae9"
 theme[selected_fg]="#440391"
 
 # Color of inactive/disabled text
-theme[inactive_fg]="#676173"
+theme[inactive_fg]="#666174"
 
 # Color of text appearing on top of graphs, i.e uptime and current network graph scaling
 theme[graph_text]="#503b7d"
@@ -34,15 +34,15 @@ theme[proc_misc]="#503b7d"
 
 # CPU, Memory, Network, Proc box outline colors
 theme[cpu_box]="#2a5d42"
-theme[mem_box]="#5b541e"
+theme[mem_box]="#5b551c"
 theme[net_box]="#6f21ca"
-theme[proc_box]="#8d3737"
+theme[proc_box]="#9e2424"
 
 # Box divider line and small boxes line color
 theme[div_line]="#c4bae9"
 
 # Temperature graph color (Blue -> Bright Blue -> Magenta)
-theme[temp_start]="#1251a5"
+theme[temp_start]="#125496"
 theme[temp_mid]="#205970"
 theme[temp_end]="#6d21cb"
 
@@ -54,15 +54,15 @@ theme[cpu_end]="#a71111"
 # Mem/Disk used meter (Bright Red -> Red)
 theme[used_start]="#a71111"
 theme[used_mid]=""
-theme[used_end]="#8d3737"
+theme[used_end]="#9e2424"
 
 # Mem/Disk available meter (Yellow ->  orange)
-theme[available_start]="#5b541e"
+theme[available_start]="#5b551c"
 theme[available_mid]=""
 theme[available_end]="#7b4612"
 
 # Mem/Disk cached meter (Blue -> Bright Blue)
-theme[cached_start]="#1251a5"
+theme[cached_start]="#125496"
 theme[cached_mid]=""
 theme[cached_end]="#205970"
 
@@ -72,7 +72,7 @@ theme[free_mid]=""
 theme[free_end]="#2f5e22"
 
 # Download graph colors (Blue -> Bright Blue)
-theme[download_start]="#1251a5"
+theme[download_start]="#125496"
 theme[download_mid]=""
 theme[download_end]="#205970"
 
@@ -84,4 +84,4 @@ theme[upload_end]="#6d21cb"
 # Process box color gradient for threads, mem and cpu usage (Green -> Orange -> Red)
 theme[process_start]="#2a5d42"
 theme[process_mid]="#7b4612"
-theme[process_end]="#8d3737"
+theme[process_end]="#9e2424"

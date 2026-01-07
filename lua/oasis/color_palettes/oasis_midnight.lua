@@ -17,6 +17,7 @@ local ui = {
     light_primary = p.red[100],
     secondary = p.sunrise[500],
     accent = p.teal[600],
+    cursor = p.khaki[500],
     palette = {
       primary = p.red,
     },

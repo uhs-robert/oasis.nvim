@@ -37,7 +37,7 @@ local function generate_kitty_theme(name, palette)
     string.format("%-24s %s", "selection_foreground", palette.ui.search.fg),
     "",
     "# Cursor",
-    string.format("%-24s %s", "cursor", is_light and palette.syntax.statement or palette.terminal.yellow),
+    string.format("%-24s %s", "cursor", is_light and palette.syntax.statement or palette.theme.cursor),
     string.format("%-24s %s", "cursor_text_color", palette.bg.core),
     "",
     "# Borders (panes)",

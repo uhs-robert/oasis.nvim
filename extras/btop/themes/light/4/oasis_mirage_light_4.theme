@@ -34,15 +34,15 @@ theme[proc_misc]="#3c534e"
 
 # CPU, Memory, Network, Proc box outline colors
 theme[cpu_box]="#2d6548"
-theme[mem_box]="#625c21"
+theme[mem_box]="#635c1e"
 theme[net_box]="#7824db"
-theme[proc_box]="#993c3c"
+theme[proc_box]="#ac2727"
 
 # Box divider line and small boxes line color
 theme[div_line]="#a7ecec"
 
 # Temperature graph color (Blue -> Bright Blue -> Magenta)
-theme[temp_start]="#1358b4"
+theme[temp_start]="#145ca3"
 theme[temp_mid]="#23617a"
 theme[temp_end]="#7724dc"
 
@@ -54,15 +54,15 @@ theme[cpu_end]="#b61212"
 # Mem/Disk used meter (Bright Red -> Red)
 theme[used_start]="#b61212"
 theme[used_mid]=""
-theme[used_end]="#993c3c"
+theme[used_end]="#ac2727"
 
 # Mem/Disk available meter (Yellow ->  orange)
-theme[available_start]="#625c21"
+theme[available_start]="#635c1e"
 theme[available_mid]=""
 theme[available_end]="#864d14"
 
 # Mem/Disk cached meter (Blue -> Bright Blue)
-theme[cached_start]="#1358b4"
+theme[cached_start]="#145ca3"
 theme[cached_mid]=""
 theme[cached_end]="#23617a"
 
@@ -72,7 +72,7 @@ theme[free_mid]=""
 theme[free_end]="#336625"
 
 # Download graph colors (Blue -> Bright Blue)
-theme[download_start]="#1358b4"
+theme[download_start]="#145ca3"
 theme[download_mid]=""
 theme[download_end]="#23617a"
 
@@ -84,4 +84,4 @@ theme[upload_end]="#7724dc"
 # Process box color gradient for threads, mem and cpu usage (Green -> Orange -> Red)
 theme[process_start]="#2d6548"
 theme[process_mid]="#864d14"
-theme[process_end]="#993c3c"
+theme[process_end]="#ac2727"
