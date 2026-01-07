@@ -72,14 +72,14 @@ local dark = {
     dir = p.sky[500],
 
     title = ui.theme.primary,
-    border = ui.theme.strong_primary,
+    border = ui.theme.primary,
     cursorLine = ui.bg.surface,
     nontext = ui.fg.dim,
     float = {
       title = ui.theme.primary,
       fg = ui.fg.strong,
       bg = ui.bg.mantle,
-      border = { fg = ui.theme.strong_primary, bg = ui.bg.mantle },
+      border = { fg = ui.theme.primary, bg = ui.bg.mantle },
     },
     diag = {
       error = { fg = p.diag.error.fg, bg = p.diag.error.bg },

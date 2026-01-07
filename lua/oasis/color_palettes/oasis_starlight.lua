@@ -12,7 +12,7 @@ local ui = {
   fg = theme.fg,
   -- General colors
   theme = {
-    strong_primary = p.lagoon[700],
+    strong_primary = p.lagoon[600],
     primary = p.lagoon[500],
     light_primary = p.sky[500],
     secondary = p.khaki[500],
