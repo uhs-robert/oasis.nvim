@@ -17,7 +17,7 @@ local function generate_foot_theme(name, palette)
     "; author: uhs-robert",
     "",
     "[colors]",
-    string.format("cursor=%s %s", palette.bg.core, is_light and palette.syntax.statement or palette.terminal.yellow),
+    string.format("cursor=%s %s", palette.bg.core, is_light and palette.syntax.statement or palette.theme.cursor),
     string.format("foreground=%s", palette.fg.core),
     string.format("background=%s", palette.bg.core),
     "",

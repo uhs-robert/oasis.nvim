@@ -8,4 +8,4 @@ export FZF_DEFAULT_OPTS=" \
 --color=fg:#D9E6FA,header:#F58888,info:#58B8FD,pointer:#FFA0A0 \
 --color=marker:#F8B471,fg+:#D9E6FA,prompt:#58B8FD,hl+:#5A3824 \
 --color=selected-bg:#22385C \
---color=border:#1CA0FD,label:#D9E6FA"
+--color=border:#3AACFD,label:#D9E6FA"

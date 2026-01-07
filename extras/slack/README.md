@@ -417,30 +417,30 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Twilight Dark**
 ```
-#352D47,#2B243B,#C28EFF,#352D47,#2B243B,#E6E0F8,#F3EA9F,#34CB7D,#221B2F,#E6E0F8
+#352D47,#2B243B,#C28EFF,#352D47,#2B243B,#E6E0F8,#F3E989,#34CB7D,#221B2F,#E6E0F8
 ```
 
 **Oasis Twilight Light 1**
 ```
-#dddde9,#f0f0f5,#4e07a2,#dddde9,#f0f0f5,#5b4f7e,#998b19,#298a58,#f9f9fb,#5b4f7e
+#dddde9,#f0f0f5,#4e07a2,#dddde9,#f0f0f5,#5b4f7e,#9c9016,#298a58,#f9f9fb,#5b4f7e
 ```
 
 **Oasis Twilight Light 2**
 ```
-#d2c9ee,#e5e0f5,#490599,#d2c9ee,#e5e0f5,#544975,#928417,#258353,#efecf9,#544975
+#d2c9ee,#e5e0f5,#490599,#d2c9ee,#e5e0f5,#544975,#958814,#258353,#efecf9,#544975
 ```
 
 **Oasis Twilight Light 3**
 ```
-#c4bae9,#d8d1f0,#440391,#c4bae9,#d8d1f0,#4a4268,#8a7d14,#227c4e,#e2ddf4,#4a4268
+#c4bae9,#d8d1f0,#440391,#c4bae9,#d8d1f0,#4a4268,#8d8111,#227c4e,#e2ddf4,#4a4268
 ```
 
 **Oasis Twilight Light 4**
 ```
-#b9a9ea,#cdc2f0,#3f0188,#b9a9ea,#cdc2f0,#433a5c,#827612,#1f7549,#d7cef3,#433a5c
+#b9a9ea,#cdc2f0,#3f0188,#b9a9ea,#cdc2f0,#433a5c,#857a0f,#1f7549,#d7cef3,#433a5c
 ```
 
 **Oasis Twilight Light 5**
 ```
-#aa9de7,#bfb6ed,#3b0080,#aa9de7,#bfb6ed,#3b3351,#7a6f0f,#1c6e44,#cac2f0,#3b3351
+#aa9de7,#bfb6ed,#3b0080,#aa9de7,#bfb6ed,#3b3351,#7d720d,#1c6e44,#cac2f0,#3b3351
 ```

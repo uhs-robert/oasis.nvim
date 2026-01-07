@@ -30,7 +30,7 @@ local function generate_ghostty_theme(name, palette)
     "selection-background = " .. palette.ui.visual.bg,
     "selection-foreground = " .. palette.fg.core,
     "",
-    "cursor-color = " .. (is_light and palette.syntax.statement or palette.terminal.yellow),
+    "cursor-color = " .. (is_light and palette.syntax.statement or palette.theme.cursor),
     "cursor-text = " .. palette.bg.core,
     "",
   }

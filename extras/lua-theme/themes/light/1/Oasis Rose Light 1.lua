@@ -11,8 +11,8 @@ return {
 -- Foregrounds
 	fg_core = "#694e63",
 	fg_strong = "#6f4b65",
-	fg_muted = "#806f7a",
-	fg_dim = "#98908a",
+	fg_muted = "#806f79",
+	fg_dim = "#97908a",
 
 -- Accents
 	theme_primary = "#a20707",
@@ -20,18 +20,18 @@ return {
 	theme_accent = "#1f7294",
 
 -- Status
-	error = "#340606",
-	warning = "#3d3707",
-	info = "#083142",
-	hint = "#073e36",
-	ok = "#123d07",
+	error = "#750e0e",
+	warning = "#5d550b",
+	info = "#0d506c",
+	hint = "#0b5e52",
+	ok = "#1c5d0b",
 
 -- ANSI Semnatic Colors
 	black = "#565656",
-	red = "#a64141",
+	red = "#ba2b2b",
 	green = "#306e4d",
-	yellow = "#6a6423",
-	blue = "#155fc3",
+	yellow = "#6a6421",
+	blue = "#1663b0",
 	magenta = "#8133dd",
 	cyan = "#376b64",
 	white = "#59564d",
@@ -46,10 +46,10 @@ return {
 
 -- ANSI Terminal Colors
 	color0 = "#565656",
-	color1 = "#a64141",
+	color1 = "#ba2b2b",
 	color2 = "#306e4d",
-	color3 = "#6a6423",
-	color4 = "#155fc3",
+	color3 = "#6a6421",
+	color4 = "#1663b0",
 	color5 = "#8133dd",
 	color6 = "#376b64",
 	color7 = "#59564d",
