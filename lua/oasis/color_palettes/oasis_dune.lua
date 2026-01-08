@@ -7,7 +7,7 @@ local opts = Config.get()
 local theme = p.theme.dune
 
 -- General Reusable Colors
-local ui = {
+local base = {
   bg = theme.bg,
   fg = theme.fg,
   -- General colors
@@ -26,9 +26,9 @@ local ui = {
 
 -- Dark mode palette
 local dark = {
-  bg = ui.bg,
-  fg = ui.fg,
-  theme = ui.theme,
+  bg = base.bg,
+  fg = base.fg,
+  theme = base.theme,
   terminal = p.terminal,
   diff = vim.tbl_extend("force", p.diff, { change = theme.bg.surface }),
   git = p.git,
@@ -38,7 +38,7 @@ local dark = {
     -- Cold: (Data)
     parameter = p.lavender[400],
     identifier = p.teal[400],
-    delimiter = ui.theme.strong_primary,
+    delimiter = base.theme.strong_primary,
     type = p.teal[600],
     builtinVar = p.lagoon[400], -- (this, document, window, etc)
     string = p.cactus[500],
@@ -49,9 +49,9 @@ local dark = {
     -- Warm: (Control / Flow)
     func = p.sunset[200],
     builtinFunc = p.sundown[400], -- (eg. parseInst, Array, Object etc)
-    statement = opts.themed_syntax and ui.theme.palette.primary[500] or p.khaki[500], -- (general statement (i.e. var, const))
+    statement = opts.themed_syntax and base.theme.palette.primary[500] or p.khaki[500], -- (general statement (i.e. var, const))
     exception = p.red[100], -- (try/catch, return)
-    conditional = opts.themed_syntax and ui.theme.palette.primary[700] or p.khaki[700], -- (Conditionals, Loops)
+    conditional = opts.themed_syntax and base.theme.palette.primary[700] or p.khaki[700], -- (Conditionals, Loops)
     special = p.sunset[500], -- (Statement not covered above)
     operator = p.rose[300],
     punctuation = p.coral[300],
@@ -65,20 +65,20 @@ local dark = {
   -- UI
   ui = {
     lineNumber = p.sunset[500],
-    visual = { bg = ui.bg.surface, fg = "none" },
-    search = { bg = p.visual.violet, fg = ui.fg.core },
-    match = { bg = p.lavender[400], fg = ui.bg.core },
+    visual = { bg = base.bg.surface, fg = "none" },
+    search = { bg = p.visual.violet, fg = base.fg.core },
+    match = { bg = p.lavender[400], fg = base.bg.core },
     dir = p.sky[500],
 
-    title = ui.theme.primary,
-    border = ui.theme.strong_primary,
-    cursorLine = ui.bg.mantle,
-    nontext = ui.fg.dim,
+    title = base.theme.primary,
+    border = base.theme.strong_primary,
+    cursorLine = base.bg.mantle,
+    nontext = base.fg.dim,
     float = {
-      title = ui.theme.primary,
-      fg = ui.fg.strong,
-      bg = ui.bg.mantle,
-      border = { fg = ui.theme.strong_primary, bg = ui.bg.mantle },
+      title = base.theme.primary,
+      fg = base.fg.strong,
+      bg = base.bg.mantle,
+      border = { fg = base.theme.strong_primary, bg = base.bg.mantle },
     },
     diag = {
       error = { fg = p.diag.error.fg, bg = p.diag.error.bg },
@@ -91,16 +91,16 @@ local dark = {
 }
 
 -- Light mode configuration
-local light_bg = LightTheme.generate_bg(ui.fg.core, opts.light_intensity)
+local light_bg = LightTheme.generate_bg(base.fg.core, opts.light_intensity)
 local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
-  search = { bg = p.visual.yellow, fg = ui.fg.core },
-  match = { bg = p.visual.indigo, fg = ui.fg.core },
+  search = { bg = p.visual.yellow, fg = base.fg.core },
+  match = { bg = p.visual.indigo, fg = base.fg.core },
 })
 local light = {
   light_mode = true,
   bg = light_bg,
-  fg = LightTheme.generate_fg(ui.fg, light_bg.core, opts.light_intensity),
-  theme = LightTheme.generate_theme(ui.theme, opts.light_intensity),
+  fg = LightTheme.generate_fg(base.fg, light_bg.core, opts.light_intensity),
+  theme = LightTheme.generate_theme(base.theme, opts.light_intensity),
   terminal = LightTheme.generate_terminal(p.terminal, light_bg.core, opts.light_intensity, opts.contrast),
   diff = LightTheme.apply_contrast(dark.diff, light_bg.core),
   git = LightTheme.apply_contrast(dark.git, light_bg.core),
