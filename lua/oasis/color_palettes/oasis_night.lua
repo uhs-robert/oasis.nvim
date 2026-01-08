@@ -9,7 +9,7 @@ local light_seed = require("oasis.color_palettes.oasis_canyon").dark
 local target_lightness = { [1] = 84, [2] = 82, [3] = 80, [4] = 78, [5] = 76 }
 
 -- General Reusable Colors
-local ui = {
+local base = {
   bg = theme.bg,
   fg = theme.fg,
   -- General colors
@@ -28,9 +28,9 @@ local ui = {
 
 -- Dark mode palette
 local dark = {
-  bg = ui.bg,
-  fg = ui.fg,
-  theme = ui.theme,
+  bg = base.bg,
+  fg = base.fg,
+  theme = base.theme,
   terminal = p.terminal,
   diff = vim.tbl_extend("force", p.diff, { change = theme.bg.surface }),
   git = p.git,
@@ -40,7 +40,7 @@ local dark = {
     -- Cold: (Data)
     parameter = p.lavender[500],
     identifier = p.teal[400],
-    delimiter = ui.theme.strong_primary,
+    delimiter = base.theme.strong_primary,
     type = p.teal[700],
     builtinVar = p.lagoon[500], -- (this, document, window, etc)
     string = p.cactus[500],
@@ -51,7 +51,7 @@ local dark = {
     -- Warm: (Control / Flow)
     func = p.sunset[300],
     builtinFunc = p.sundown[400], -- (eg. parseInt, Array, Object etc)
-    statement = opts.themed_syntax and ui.theme.palette.primary[300] or p.khaki[500], -- (general statement (i.e. var, const))
+    statement = opts.themed_syntax and base.theme.palette.primary[300] or p.khaki[500], -- (general statement (i.e. var, const))
     exception = opts.themed_syntax and p.khaki[500] or p.red[400], -- (try/catch, return)
     conditional = opts.themed_syntax and p.red[500] or p.khaki[700], -- (Conditionals, Loops)
     special = p.sunset[500], -- (Statement not covered above)
@@ -68,19 +68,19 @@ local dark = {
   ui = {
     lineNumber = p.sunset[500],
     visual = { bg = p.visual.indigo, fg = "none" },
-    search = { bg = p.visual.violet, fg = ui.fg.core },
-    match = { bg = p.sunrise[600], fg = ui.bg.core },
+    search = { bg = p.visual.violet, fg = base.fg.core },
+    match = { bg = p.sunrise[600], fg = base.bg.core },
     dir = p.sky[500],
 
-    title = ui.theme.primary,
-    border = ui.theme.primary,
-    cursorLine = ui.bg.surface,
-    nontext = ui.fg.dim,
+    title = base.theme.primary,
+    border = base.theme.primary,
+    cursorLine = base.bg.surface,
+    nontext = base.fg.dim,
     float = {
-      title = ui.theme.primary,
-      fg = ui.fg.strong,
-      bg = ui.bg.mantle,
-      border = { fg = ui.theme.primary, bg = ui.bg.mantle },
+      title = base.theme.primary,
+      fg = base.fg.strong,
+      bg = base.bg.mantle,
+      border = { fg = base.theme.primary, bg = base.bg.mantle },
     },
     diag = {
       error = { fg = p.diag.error.fg, bg = p.diag.error.bg },
@@ -93,10 +93,10 @@ local dark = {
 }
 
 -- Light mode configuration (backgrounds/ui/theme from night fg, syntax from canyon)
-local light_bg = LightTheme.generate_bg(ui.fg.core, opts.light_intensity, { target_l_core = target_lightness })
+local light_bg = LightTheme.generate_bg(base.fg.core, opts.light_intensity, { target_l_core = target_lightness })
 local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
-  search = { bg = p.visual.orange, fg = ui.fg.core },
-  match = { bg = p.visual.red, fg = ui.fg.core },
+  search = { bg = p.visual.orange, fg = base.fg.core },
+  match = { bg = p.visual.red, fg = base.fg.core },
 })
 local light = {
   light_mode = true,
