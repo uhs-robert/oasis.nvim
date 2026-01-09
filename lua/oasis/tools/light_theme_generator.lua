@@ -576,7 +576,7 @@ end
 --- Generate light mode theme colors from dark mode (vibrant, decorative)
 --- Note: These colors are decorative and intentionally may not meet WCAG compliance
 --- These colors can fail WCAG compliance as they're decorative only
---- @param dark_theme table Dark mode theme colors {strong_primary, primary, light_primary, secondary, accent}
+--- @param dark_theme table Dark mode theme colors {strong_primary, primary, light_primary, secondary, secondary_strong, secondary_light, accent}
 --- @param intensity_level number Intensity level (1-5)
 --- @return table Light mode theme colors (vibrant)
 function LightTheme.generate_theme(dark_theme, intensity_level)
@@ -609,6 +609,18 @@ function LightTheme.generate_theme(dark_theme, intensity_level)
   if dark_theme.secondary then
     local h, s, _ = ColorUtils.rgb_to_hsl(dark_theme.secondary)
     result.secondary = ColorUtils.hsl_to_rgb(h, s * sat_factor, light_base + 2)
+  end
+
+  -- Secondary strong (darker variant for desert theme)
+  if dark_theme.secondary_strong then
+    local h, s, _ = ColorUtils.rgb_to_hsl(dark_theme.secondary_strong)
+    result.secondary_strong = ColorUtils.hsl_to_rgb(h, s * sat_factor, light_base + 5)
+  end
+
+  -- Secondary light (lighter variant for desert theme)
+  if dark_theme.secondary_light then
+    local h, s, _ = ColorUtils.rgb_to_hsl(dark_theme.secondary_light)
+    result.secondary_light = ColorUtils.hsl_to_rgb(h, s * sat_factor, light_base - 5)
   end
 
   -- Accent color

@@ -28,7 +28,6 @@ local base = {
 local dark = {
   bg = base.bg,
   fg = base.fg,
-  palette = base.palette,
   theme = base.theme,
   terminal = p.terminal,
   diff = vim.tbl_extend("force", p.diff, { change = theme.bg.surface }),
