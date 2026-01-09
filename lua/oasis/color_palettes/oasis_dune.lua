@@ -39,7 +39,7 @@ local dark = {
   syntax = {
     -- Cold: (Data)
     parameter = p.lavender[400],
-    identifier = p.teal[400],
+    identifier = p.teal[300],
     delimiter = base.theme.strong_primary,
     type = p.teal[600],
     builtinVar = p.lagoon[400], -- (this, document, window, etc)

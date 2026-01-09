@@ -39,9 +39,9 @@ local dark = {
   syntax = {
     -- Cold: (Data)
     parameter = opts.themed_syntax and p.khaki[400] or p.lavender[500],
-    identifier = p.teal[300],
+    identifier = p.teal[400],
     delimiter = base.theme.strong_primary,
-    type = p.teal[600],
+    type = p.teal[700],
     builtinVar = p.lagoon[500], -- (this, document, window, etc)
     string = p.cactus[700],
     regex = p.palm[500],
