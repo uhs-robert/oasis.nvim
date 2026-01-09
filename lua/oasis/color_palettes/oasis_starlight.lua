@@ -13,6 +13,7 @@ local base = {
   palette = {
     primary = p.lagoon,
     secondary = p.khaki,
+    accent = p.sunrise,
   },
   theme = {
     strong_primary = p.lagoon[600],
@@ -29,6 +30,7 @@ local dark = {
   bg = base.bg,
   fg = base.fg,
   theme = base.theme,
+  palette = base.palette,
   terminal = p.terminal,
   diff = vim.tbl_extend("force", p.diff, { change = theme.bg.surface }),
   git = p.git,

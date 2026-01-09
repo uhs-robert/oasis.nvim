@@ -15,6 +15,7 @@ local base = {
   palette = {
     primary = p.red,
     secondary = p.sunrise,
+    accent = p.lagoon,
   },
   theme = {
     strong_primary = p.red[800],
@@ -31,6 +32,7 @@ local dark = {
   bg = base.bg,
   fg = base.fg,
   theme = base.theme,
+  palette = base.palette,
   terminal = p.terminal,
   diff = vim.tbl_extend("force", p.diff, { change = theme.bg.surface }),
   git = p.git,
