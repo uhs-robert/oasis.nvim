@@ -16,7 +16,7 @@ return {
 
 -- Accents
 	theme_primary = "#880101",
-	theme_secondary = "#88790c",
+	theme_secondary = "#326234",
 	theme_accent = "#16607e",
 
 -- Status

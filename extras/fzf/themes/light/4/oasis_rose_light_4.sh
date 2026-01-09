@@ -6,6 +6,6 @@
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#f0c2e5,bg:#f3ceea,spinner:#16607e,hl:#880101 \
 --color=fg:#513d4b,header:#584f15,info:#880101,pointer:#16607e \
---color=marker:#88790c,fg+:#513d4b,prompt:#880101,hl+:#dba3c6 \
+--color=marker:#326234,fg+:#513d4b,prompt:#880101,hl+:#dba3c6 \
 --color=selected-bg:#eaa9da \
 --color=border:#7f1f1f,label:#513d4b"
