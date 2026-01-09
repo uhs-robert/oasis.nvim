@@ -113,7 +113,7 @@ local theme = {
   -- fg targets: dim = 4:0:1 (shadow), muted = 3:0:1 (core), comment = 4:5:1 (core)
   desert = {
     bg = { shadow = "#303030", core = "#333333", mantle = "#444444", surface = "#555555" },
-    fg = { core = "#F7EDE1", strong = "#E5D9CE", dim = "#9E8B7C", muted = "#67808D", comment = "#809FB4" },
+    fg = { core = "#F7EDE1", strong = "#E5D9CE", dim = "#9E8B7C", muted = "#67808D", comment = "#77A4BD" },
   },
   abyss = {
     bg = { shadow = "#000000", core = "#000000", mantle = "#080808", surface = "#1A1A1A" },
