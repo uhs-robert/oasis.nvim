@@ -1,3 +1,6 @@
+> [!WARNING]
+> Come back soon! Not ready yet.
+
 # Starship Setup
 
 1. Create `~/.config/starship/themes`
