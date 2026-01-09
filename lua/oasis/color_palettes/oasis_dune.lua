@@ -13,14 +13,14 @@ local base = {
   palette = {
     primary = p.khaki,
     secondary = p.aloe,
-    accent = p.cactus,
+    accent = p.lavender,
   },
   theme = {
     strong_primary = p.khaki[700],
     primary = p.khaki[600],
     light_primary = p.khaki[300],
-    secondary = p.aloe[500],
-    accent = p.cactus[500],
+    secondary = p.aloe[400],
+    accent = p.lavender[300],
     cursor = p.khaki[500],
   },
 }
@@ -68,8 +68,8 @@ local dark = {
   ui = {
     lineNumber = p.sunset[500],
     visual = { bg = base.bg.surface, fg = "none" },
-    search = { bg = p.visual.violet, fg = base.fg.core },
-    match = { bg = p.lavender[400], fg = base.bg.core },
+    search = { bg = p.visual.violet, fg = base.bg.core },
+    match = { bg = p.lavender[300], fg = base.bg.core },
     dir = p.sky[500],
 
     title = base.theme.primary,
