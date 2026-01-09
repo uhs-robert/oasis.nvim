@@ -13,16 +13,16 @@ local base = {
   palette = {
     primary = p.khaki,
     secondary = p.red,
-    accent = p.sky,
+    accent = p.palm,
   },
   theme = {
     strong_primary = p.khaki[600],
     primary = p.khaki[500],
     light_primary = p.khaki[300],
     secondary_strong = p.red[800],
-    secondary = p.red[500],
+    secondary = p.red[400],
     secondary_light = p.red[50],
-    accent = p.sky[500],
+    accent = p.palm[500],
     cursor = p.khaki[500],
   },
 }
@@ -72,8 +72,8 @@ local dark = {
   ui = {
     lineNumber = p.sunset[400],
     visual = { bg = base.bg.surface, fg = "none" },
-    search = { bg = p.visual.grey, fg = base.fg.core },
-    match = { bg = p.khaki[500], fg = base.bg.core },
+    search = { bg = p.visual.palm, fg = base.bg.core },
+    match = { bg = p.palm[400], fg = base.bg.core },
     dir = p.sky[500],
 
     title = base.theme.secondary,
@@ -84,7 +84,7 @@ local dark = {
       title = base.theme.secondary_light,
       fg = base.fg.strong,
       bg = base.bg.mantle,
-      border = { fg = base.theme.secondary_strong, bg = base.bg.mantle },
+      border = { fg = base.theme.secondary, bg = base.bg.mantle },
     },
     diag = {
       error = { fg = p.diag.error.fg, bg = p.diag.error.bg },

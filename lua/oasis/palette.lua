@@ -60,27 +60,18 @@ map_ansi_colors(semantic_ansi_map, light_terminal)
 -- Visual BG
 local visual = {
   red = "#532E2E",
-  bright_red = "#E8BABA",
   stone = "#2D251F",
-  bright_stone = "#E5CEBD",
   orange = "#5A3824",
-  bright_orange = "#EDCAB6",
   yellow = "#4D4528",
-  bright_yellow = "#E9DFB9",
   green = "#1F3A2D",
-  bright_green = "#BAE9D2",
+  palm = "#3B6732",
   teal = "#2B4A46",
-  bright_teal = "#BBE7E2",
   blue = "#335668",
-  bright_blue = "#9BC1E6",
+  sky = "#3D6980",
   indigo = "#3E2F4A",
-  bright_indigo = "#D3BCE6",
-  bright_violet = "#DDBAE8",
   violet = "#603C6C",
   pink = "#5A324B",
-  bright_pink = "#E8BAD6",
   grey = "#666666",
-  bright_grey = "#BCD4E6",
 }
 
 -- Diagnostics
@@ -500,6 +491,19 @@ local colors = {
     [200] = "#B8E5F5",
     [100] = "#CBEEF9",
     [50] = "#DEF6FC",
+  },
+
+  iris = {
+    [900] = "#271B5C",
+    [800] = "#3E3094",
+    [700] = "#5F51CE",
+    [600] = "#736FDF",
+    [500] = "#8D8DE7",
+    [400] = "#9797E9",
+    [300] = "#A9A9ED",
+    [200] = "#BCBDF5",
+    [100] = "#CFD1F9",
+    [50] = "#E2E4FC",
   },
 
   lagoon = {

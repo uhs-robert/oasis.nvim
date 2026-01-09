@@ -20,7 +20,7 @@ local base = {
     primary = p.red[500],
     light_primary = p.red[100],
     secondary = p.sunrise[500],
-    accent = p.teal[600],
+    accent = p.teal[500],
     cursor = p.khaki[500],
   },
 }
@@ -45,8 +45,8 @@ local dark = {
     builtinVar = p.lagoon[500], -- (this, document, window, etc)
     string = p.cactus[500],
     regex = p.palm[500],
-    builtinConst = p.slate[500], -- (constant: number, float, boolean, or const not string/character)
-    constant = p.sunset[500],
+    builtinConst = p.slate[500], -- (e.g. null, undefined, Infinity, etc)
+    constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
     func = p.sunset[300],
