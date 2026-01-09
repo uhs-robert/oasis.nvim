@@ -10,7 +10,10 @@ local theme = p.theme.twilight
 local base = {
   bg = theme.bg,
   fg = theme.fg,
-  -- General colors
+  palette = {
+    primary = p.lavender,
+    secondary = p.khaki,
+  },
   theme = {
     strong_primary = p.lavender[600],
     primary = p.lavender[500],
@@ -18,9 +21,6 @@ local base = {
     secondary = p.khaki[400],
     accent = p.cactus[700],
     cursor = p.khaki[500],
-    palette = {
-      primary = p.lavender,
-    },
   },
 }
 
@@ -28,6 +28,7 @@ local base = {
 local dark = {
   bg = base.bg,
   fg = base.fg,
+  palette = base.palette,
   theme = base.theme,
   terminal = p.terminal,
   diff = vim.tbl_extend("force", p.diff, { change = theme.bg.surface }),
@@ -49,9 +50,9 @@ local dark = {
     -- Warm: (Control / Flow)
     func = p.sunset[200],
     builtinFunc = p.sundown[400], -- (eg. parseInst, Array, Object etc)
-    statement = opts.themed_syntax and base.theme.palette.primary[200] or p.khaki[500], -- (general statement (i.e. var, const))
+    statement = opts.themed_syntax and base.palette.primary[200] or p.khaki[500], -- (general statement (i.e. var, const))
     exception = p.red[300], -- (try/catch, return)
-    conditional = opts.themed_syntax and base.theme.palette.primary[400] or p.khaki[700], -- (Conditionals, Loops)
+    conditional = opts.themed_syntax and base.palette.primary[400] or p.khaki[700], -- (Conditionals, Loops)
     special = p.sunset[400], -- (Statement not covered above)
     operator = p.rose[400],
     punctuation = p.coral[400],

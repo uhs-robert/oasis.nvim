@@ -10,24 +10,28 @@ local theme = p.theme.desert
 local base = {
   bg = theme.bg,
   fg = theme.fg,
-  -- General colors
+  palette = {
+    primary = p.khaki,
+    secondary = p.red,
+  },
   theme = {
-    strong_primary = p.red[800],
-    primary = p.red[500],
-    light_primary = p.rose[400],
-    secondary = p.khaki[500],
+    strong_primary = p.khaki[600],
+    primary = p.khaki[500],
+    light_primary = p.khaki[300],
+    secondary = p.red[500],
     accent = p.sky[500],
     cursor = p.khaki[500],
-    palette = {
-      primary = p.khaki,
-    },
   },
 }
+
+local primary = base.palette.primary
+local secondary = base.palette.secondary
 
 -- Dark mode palette
 local dark = {
   bg = base.bg,
   fg = base.fg,
+  palette = base.palette,
   theme = base.theme,
   terminal = p.terminal,
   diff = vim.tbl_extend("force", p.diff, { change = theme.bg.surface }),
@@ -38,7 +42,7 @@ local dark = {
     -- Cold: (Data)
     parameter = p.lavender[300],
     identifier = p.teal[300],
-    delimiter = base.theme.strong_primary,
+    delimiter = secondary[500],
     type = p.teal[500],
     builtinVar = p.lagoon[300], -- (this, document, window, etc)
     string = p.cactus[400],
@@ -49,9 +53,9 @@ local dark = {
     -- Warm: (Control / Flow)
     func = p.sand[500],
     builtinFunc = p.sundown[400], -- (eg. parseInst, Array, Object etc)
-    statement = opts.themed_syntax and base.theme.palette.primary[500] or p.khaki[500], -- (general statement (i.e. var, const))
+    statement = opts.themed_syntax and primary[500] or p.khaki[500], -- (general statement (i.e. var, const))
     exception = opts.themed_syntax and p.red[50] or p.red[50], -- (try/catch, return)
-    conditional = opts.themed_syntax and base.theme.palette.primary[600] or p.khaki[600], -- (Conditionals, Loops)
+    conditional = opts.themed_syntax and primary[600] or p.khaki[600], -- (Conditionals, Loops)
     special = p.sunset[300], -- (Statement not covered above)
     operator = p.peach[300],
     punctuation = p.coral[200],
@@ -70,15 +74,15 @@ local dark = {
     match = { bg = p.khaki[500], fg = base.bg.core },
     dir = p.sky[500],
 
-    title = base.theme.primary,
-    border = base.theme.primary,
+    title = secondary[500],
+    border = secondary[500],
     cursorLine = base.bg.mantle,
     nontext = base.fg.dim,
     float = {
-      title = base.theme.light_primary,
+      title = secondary[50],
       fg = base.fg.strong,
       bg = base.bg.mantle,
-      border = { fg = base.theme.primary, bg = base.bg.mantle },
+      border = { fg = secondary[500], bg = base.bg.mantle },
     },
     diag = {
       error = { fg = p.diag.error.fg, bg = p.diag.error.bg },
@@ -100,6 +104,7 @@ local light = {
   light_mode = true,
   bg = light_bg,
   fg = LightTheme.generate_fg(base.fg, light_bg.core, opts.light_intensity),
+  palette = base.palette,
   theme = LightTheme.generate_theme(base.theme, opts.light_intensity),
   terminal = LightTheme.generate_terminal(p.terminal, light_bg.core, opts.light_intensity, opts.contrast),
   diff = LightTheme.apply_contrast(dark.diff, light_bg.core),

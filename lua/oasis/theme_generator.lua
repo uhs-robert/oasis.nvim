@@ -4,6 +4,7 @@ return function(c, palette_name)
   local LIGHT_MODE = c.light_mode or false
   local Config = require("oasis.config").get()
   local Overrides = require("oasis.lib.override_highlight")
+  local is_desert = palette_name and palette_name:match("desert")
 
   -- Helper function to conditionally apply text styles based on config
   local function apply_styles(attrs)
@@ -30,11 +31,11 @@ return function(c, palette_name)
   -- stylua: ignore start
   local highlights = {
     -- Main Theme Colors (Highlights for plugins)
-    OasisStrongPrimary         = { fg=(c.theme.strong_primary or c.theme.primary), bg="none" },
-    OasisPrimary               = { fg=c.theme.primary, bg="none" },
-    OasisLightPrimary          = { fg=(c.theme.light_primary or c.theme.primary), bg="none" },
+    OasisStrongPrimary         = { fg=(is_desert and c.palette.secondary[800] or c.theme.strong_primary), bg="none" },
+    OasisPrimary               = { fg=(is_desert and c.palette.secondary[500] or c.theme.primary), bg="none" },
+    OasisLightPrimary          = { fg=(is_desert and c.palette.secondary[50] or c.theme.light_primary), bg="none" },
     OasisFloatPrimary          = { fg=c.theme.primary, bg=c.ui.float.border.bg },
-    OasisSecondary             = { fg=c.theme.secondary, bg="none" },
+    OasisSecondary             = { fg=(is_desert and c.theme.primary or c.theme.secondary), bg="none" },
     OasisFloatSecondary        = { fg=c.theme.secondary, bg=c.ui.float.border.bg },
     OasisAccent                = { fg=c.theme.accent, bg="none" },
 
