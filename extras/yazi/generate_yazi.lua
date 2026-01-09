@@ -8,12 +8,17 @@ local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
 
 -- Extract Yazi theme colors from Oasis palette
-local function extract_yazi_theme_colors(palette)
+local function extract_yazi_theme_colors(name, palette)
+  -- For desert theme, swap primary and secondary
+  local is_desert = name == "oasis_desert"
+  local primary = is_desert and palette.theme.secondary or palette.theme.primary
+  local secondary = is_desert and palette.theme.primary or palette.theme.secondary
+
   -- Map Oasis palette structure to Yazi theme placeholders
   return {
     -- Basic UI colors
-    primary = palette.theme.primary,
-    secondary = palette.theme.secondary,
+    primary = primary,
+    secondary = secondary,
     accent = palette.theme.accent,
     fg_core = palette.fg.core,
     fg_strong = palette.fg.strong,
@@ -33,8 +38,8 @@ local function extract_yazi_theme_colors(palette)
     success = palette.syntax.string,
 
     -- Tab/mode colors
-    tab_active = palette.theme.primary,
-    mode_normal = palette.theme.primary,
+    tab_active = primary,
+    mode_normal = primary,
     mode_select = palette.terminal.bright_yellow,
     mode_unset = palette.ui.diag.error.fg,
 
@@ -80,7 +85,7 @@ local function generate_merged_theme(name, palette, output_path)
   if not icons_template then error("Failed to read icons.toml.template") end
 
   -- Extract all colors (theme + icons)
-  local theme_colors = extract_yazi_theme_colors(palette)
+  local theme_colors = extract_yazi_theme_colors(name, palette)
   local icon_colors = extract_yazi_icon_colors(palette)
 
   -- Merge both color tables

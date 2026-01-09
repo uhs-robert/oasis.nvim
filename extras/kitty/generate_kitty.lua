@@ -11,6 +11,11 @@ local function generate_kitty_theme(name, palette)
   local display_name = Utils.format_display_name(name)
   local is_light = palette.light_mode or false
 
+  -- For desert theme, swap primary and secondary
+  local is_desert = name == "oasis_desert"
+  local primary = is_desert and palette.theme.secondary or palette.theme.primary
+  local secondary = is_desert and palette.theme.primary or palette.theme.secondary
+
   local lines = {
     "# extras/kitty/oasis_" .. name .. ".conf",
     "## name: " .. display_name,
@@ -46,8 +51,8 @@ local function generate_kitty_theme(name, palette)
     "",
     "# Tabs",
     string.format("%-24s %s", "active_tab_foreground", palette.bg.core),
-    string.format("%-24s %s", "active_tab_background", palette.theme.primary),
-    string.format("%-24s %s", "inactive_tab_foreground", palette.theme.primary),
+    string.format("%-24s %s", "active_tab_background", primary),
+    string.format("%-24s %s", "inactive_tab_foreground", primary),
     string.format("%-24s %s", "inactive_tab_background", palette.bg.mantle),
     "",
   }

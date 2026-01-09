@@ -12,6 +12,11 @@ local function generate_zed_theme(name, palette)
   local display_name = Utils.format_display_name(name)
   local is_light = palette.light_mode or false
 
+  -- For desert theme, swap primary and secondary
+  local is_desert = name == "oasis_desert"
+  local primary = is_desert and palette.theme.secondary or palette.theme.primary
+  local secondary = is_desert and palette.theme.primary or palette.theme.secondary
+
   -- Calculate adjusted colors for UI states
   local hover_bg = is_light and ColorUtils.adjust_brightness(palette.bg.mantle, 0.95)
     or ColorUtils.adjust_brightness(palette.bg.surface, 1.1)
@@ -21,14 +26,14 @@ local function generate_zed_theme(name, palette)
   -- Generate player colors from theme accents
   local player_colors = {
     {
-      cursor = palette.theme.primary,
-      background = palette.theme.primary,
-      selection = ColorUtils.with_alpha(palette.theme.primary, "3d"),
+      cursor = primary,
+      background = primary,
+      selection = ColorUtils.with_alpha(primary, "3d"),
     },
     {
-      cursor = palette.theme.secondary,
-      background = palette.theme.secondary,
-      selection = ColorUtils.with_alpha(palette.theme.secondary, "3d"),
+      cursor = secondary,
+      background = secondary,
+      selection = ColorUtils.with_alpha(secondary, "3d"),
     },
     {
       cursor = palette.theme.accent,
@@ -75,8 +80,8 @@ local function generate_zed_theme(name, palette)
           -- Border colors
           border = palette.bg.surface, -- Subtle borders between panels using brightest bg
           ["border.variant"] = palette.bg.mantle, -- Even more subtle dividers
-          ["border.focused"] = palette.theme.primary, -- Bright accent for focused
-          ["border.selected"] = palette.theme.primary,
+          ["border.focused"] = primary, -- Bright accent for focused
+          ["border.selected"] = primary,
           ["border.transparent"] = "#00000000",
           ["border.disabled"] = palette.bg.shadow,
 
@@ -93,7 +98,7 @@ local function generate_zed_theme(name, palette)
           ["element.disabled"] = palette.bg.shadow,
 
           -- Drop target
-          ["drop_target.background"] = ColorUtils.with_alpha(palette.theme.primary, "40"),
+          ["drop_target.background"] = ColorUtils.with_alpha(primary, "40"),
 
           -- Ghost elements
           ["ghost_element.background"] = "#00000000",
@@ -107,14 +112,14 @@ local function generate_zed_theme(name, palette)
           ["text.muted"] = palette.fg.core, -- High contrast for sidebar readability
           ["text.placeholder"] = palette.fg.muted,
           ["text.disabled"] = palette.fg.dim,
-          ["text.accent"] = palette.theme.primary,
+          ["text.accent"] = primary,
 
           -- Icon colors
           icon = palette.fg.core,
           ["icon.muted"] = palette.fg.core, -- High contrast in file browser/git panels
           ["icon.disabled"] = palette.fg.dim,
           ["icon.placeholder"] = palette.fg.muted,
-          ["icon.accent"] = palette.theme.primary,
+          ["icon.accent"] = primary,
 
           -- Status bar
           ["status_bar.background"] = palette.bg.surface,
@@ -160,7 +165,7 @@ local function generate_zed_theme(name, palette)
           ["editor.invisible"] = palette.ui.nontext or palette.fg.dim,
           ["editor.wrap_guide"] = ColorUtils.with_alpha(palette.fg.dim, "0d"),
           ["editor.active_wrap_guide"] = ColorUtils.with_alpha(palette.fg.dim, "1a"),
-          ["editor.document_highlight.read_background"] = ColorUtils.with_alpha(palette.theme.primary, "1a"),
+          ["editor.document_highlight.read_background"] = ColorUtils.with_alpha(primary, "1a"),
           ["editor.document_highlight.write_background"] = ColorUtils.with_alpha(palette.fg.muted, "33"),
 
           -- Terminal
@@ -194,7 +199,7 @@ local function generate_zed_theme(name, palette)
           ["terminal.ansi.dim_white"] = ColorUtils.adjust_brightness(palette.terminal.white, 0.7),
 
           -- Link
-          ["link_text.hover"] = palette.theme.primary,
+          ["link_text.hover"] = primary,
 
           -- Version control
           ["version_control.added"] = palette.terminal.green,
@@ -325,7 +330,7 @@ local function generate_zed_theme(name, palette)
 
             -- Emphasis (markdown)
             emphasis = {
-              color = palette.theme.primary,
+              color = primary,
               font_style = "italic",
               font_weight = nil,
             },

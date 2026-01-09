@@ -21,16 +21,16 @@ return {
 
 -- Status
 	error = "#750e0e",
-	warning = "#5d550b",
+	warning = "#5c540b",
 	info = "#0d506c",
 	hint = "#0b5e52",
 	ok = "#1c5d0b",
 
 -- ANSI Semnatic Colors
 	black = "#515151",
-	red = "#b02828",
+	red = "#ba1313",
 	green = "#2f6849",
-	yellow = "#655e1f",
+	yellow = "#655e22",
 	blue = "#155ea7",
 	magenta = "#7b28dc",
 	cyan = "#346560",
@@ -46,9 +46,9 @@ return {
 
 -- ANSI Terminal Colors
 	color0 = "#515151",
-	color1 = "#b02828",
+	color1 = "#ba1313",
 	color2 = "#2f6849",
-	color3 = "#655e1f",
+	color3 = "#655e22",
 	color4 = "#155ea7",
 	color5 = "#7b28dc",
 	color6 = "#346560",

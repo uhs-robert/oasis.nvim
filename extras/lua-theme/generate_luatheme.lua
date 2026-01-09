@@ -49,7 +49,12 @@ local function get_diag_fg(diag, key)
   return target.fg or ""
 end
 
-local function generate_lua_palette(display_name, palette, output_path)
+local function generate_lua_palette(name, display_name, palette, output_path)
+  -- For desert theme, swap primary and secondary
+  local is_desert = name == "oasis_desert"
+  local primary = is_desert and palette.theme.secondary or palette.theme.primary
+  local secondary = is_desert and palette.theme.primary or palette.theme.secondary
+
   local diag = (palette.ui and palette.ui.diag) or {}
 
   local lines = {
@@ -70,8 +75,8 @@ local function generate_lua_palette(display_name, palette, output_path)
     string.format('\tfg_dim = "%s",', palette.fg.dim),
     "",
     "-- Accents",
-    string.format('\ttheme_primary = "%s",', palette.theme.primary),
-    string.format('\ttheme_secondary = "%s",', palette.theme.secondary),
+    string.format('\ttheme_primary = "%s",', primary),
+    string.format('\ttheme_secondary = "%s",', secondary),
     string.format('\ttheme_accent = "%s",', palette.theme.accent),
   }
 
@@ -110,9 +115,9 @@ local function main()
   print(string.format("Found %d palette(s)\n", #palette_names))
 
   local success_count, error_count = Utils.for_each_palette_variant(function(name, palette, mode, intensity)
-    local output_path, _, display_name =
+    local output_path, variant_name, display_name =
       Utils.build_display_variant_path("extras/lua-theme", "lua", name, mode, intensity)
-    local content = generate_lua_palette(display_name, palette, output_path)
+    local content = generate_lua_palette(variant_name, display_name, palette, output_path)
     File.write(output_path, content)
     print(string.format("✓ Generated: %s", output_path))
   end)

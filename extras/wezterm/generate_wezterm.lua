@@ -11,6 +11,11 @@ local function generate_wezterm_theme(name, palette)
   local display_name = Utils.format_display_name(name)
   local is_light = palette.light_mode or false
 
+  -- For desert theme, swap primary and secondary
+  local is_desert = name == "oasis_desert"
+  local primary = is_desert and palette.theme.secondary or palette.theme.primary
+  local secondary = is_desert and palette.theme.primary or palette.theme.secondary
+
   local lines = {
     "# extras/wezterm/oasis_" .. name .. ".toml",
     "## name: " .. display_name,
@@ -61,7 +66,7 @@ local function generate_wezterm_theme(name, palette)
 
   -- Tab Bar Active Tab
   lines[#lines + 1] = "[colors.tab_bar.active_tab]"
-  lines[#lines + 1] = string.format("bg_color = '%s'", palette.theme.primary)
+  lines[#lines + 1] = string.format("bg_color = '%s'", primary)
   lines[#lines + 1] = string.format("fg_color = '%s'", palette.bg.core)
   lines[#lines + 1] = "intensity = 'Normal'"
   lines[#lines + 1] = "italic = false"
@@ -72,7 +77,7 @@ local function generate_wezterm_theme(name, palette)
   -- Tab Bar Inactive Tab
   lines[#lines + 1] = "[colors.tab_bar.inactive_tab]"
   lines[#lines + 1] = string.format("bg_color = '%s'", palette.bg.surface)
-  lines[#lines + 1] = string.format("fg_color = '%s'", palette.theme.primary)
+  lines[#lines + 1] = string.format("fg_color = '%s'", primary)
   lines[#lines + 1] = "intensity = 'Normal'"
   lines[#lines + 1] = "italic = false"
   lines[#lines + 1] = "strikethrough = false"

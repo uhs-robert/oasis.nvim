@@ -19,7 +19,12 @@ local function xml_escape(str)
 end
 
 -- Generate a tmTheme color scheme for bat
-local function generate_bat_theme(display_name, palette)
+local function generate_bat_theme(name, display_name, palette)
+  -- For desert theme, swap primary and secondary
+  local is_desert = name == "oasis_desert"
+  local primary = is_desert and palette.theme.secondary or palette.theme.primary
+  local secondary = is_desert and palette.theme.primary or palette.theme.secondary
+
   local lines = {
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">',
@@ -40,7 +45,7 @@ local function generate_bat_theme(display_name, palette)
     "\t\t\t\t<key>foreground</key>",
     "\t\t\t\t<string>" .. palette.fg.core .. "</string>",
     "\t\t\t\t<key>caret</key>",
-    "\t\t\t\t<string>" .. palette.theme.primary .. "</string>",
+    "\t\t\t\t<string>" .. primary .. "</string>",
     "\t\t\t\t<key>lineHighlight</key>",
     "\t\t\t\t<string>" .. (palette.ui.cursorLine or palette.bg.surface) .. "</string>",
     "\t\t\t\t<key>selection</key>",
@@ -259,7 +264,7 @@ local function generate_bat_theme(display_name, palette)
   add_scope("Rust trait", "entity.name.trait.rust", palette.syntax.type, "italic")
   add_scope("Rust struct", "storage.type.source.rust", palette.syntax.type)
   add_scope("Rust union", "entity.name.union.rust", palette.syntax.type)
-  add_scope("Rust enum member", "meta.enum.rust storage.type.source.rust", palette.theme.secondary)
+  add_scope("Rust enum member", "meta.enum.rust storage.type.source.rust", secondary)
   add_scope(
     "Rust macro",
     "support.macro.rust, meta.macro.rust support.function.rust, entity.name.function.macro.rust",
@@ -296,7 +301,7 @@ local function generate_bat_theme(display_name, palette)
     palette.syntax.special,
     "italic"
   )
-  add_scope("Shell shebang command", "comment.line.shebang constant.language", palette.theme.secondary, "italic")
+  add_scope("Shell shebang command", "comment.line.shebang constant.language", secondary, "italic")
   add_scope(
     "Shell interpolated command",
     "meta.function-call.arguments.shell punctuation.definition.variable.shell, meta.function-call.arguments.shell punctuation.section.interpolation",
@@ -311,7 +316,7 @@ local function generate_bat_theme(display_name, palette)
   add_scope(
     "Shell interpolation",
     "source.shell punctuation.section.interpolation, punctuation.definition.evaluation.backticks.shell",
-    palette.theme.secondary
+    secondary
   )
   add_scope("Shell heredoc", "entity.name.tag.heredoc.shell", palette.syntax.conditional)
   add_scope("Shell quoted variable", "string.quoted.double.shell variable.other.normal.shell", palette.fg.core)
@@ -332,15 +337,15 @@ local function generate_bat_theme(display_name, palette)
   )
   add_scope("Man page commands", "markup.heading.commands.man", palette.syntax.func)
   add_scope("Man page env", "markup.heading.env.man", palette.syntax.special)
-  add_scope("Man page options", "entity.name", palette.theme.secondary)
+  add_scope("Man page options", "entity.name", secondary)
 
   lines[#lines + 1] = "\t\t<!-- Markdown -->"
   add_scope("Markdown heading 1", "markup.heading.1.markdown", palette.syntax.exception, "bold")
   add_scope("Markdown heading 2", "markup.heading.2.markdown", palette.syntax.constant, "bold")
-  add_scope("Markdown heading", "markup.heading.markdown", palette.theme.primary, "bold")
+  add_scope("Markdown heading", "markup.heading.markdown", primary, "bold")
   add_scope("Markdown bold", "markup.bold", palette.fg.strong, "bold")
   add_scope("Markdown italic", "markup.italic", palette.fg.core, "italic")
-  add_scope("Markdown link", "markup.underline.link", palette.theme.secondary)
+  add_scope("Markdown link", "markup.underline.link", secondary)
   add_scope("Markdown code", "markup.inline.raw, markup.fenced_code", palette.syntax.string)
   add_scope("Markdown quote", "markup.quote", palette.syntax.comment, "italic")
   add_scope("Markdown list", "markup.list", palette.fg.core)
@@ -377,7 +382,7 @@ local function main()
     local output_path, variant_name = Utils.build_variant_path("extras/bat", "tmTheme", name, mode, intensity)
     local display_name = Utils.format_display_name(variant_name)
 
-    local theme = generate_bat_theme(display_name, palette)
+    local theme = generate_bat_theme(name, display_name, palette)
     File.write(output_path, theme)
 
 		-- Write to Yazi theme as well

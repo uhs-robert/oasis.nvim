@@ -8,6 +8,11 @@ local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
 
 local function generate_lazygit_theme(name, palette)
+  -- For desert theme, swap primary and secondary
+  local is_desert = name:match("desert") ~= nil
+  local primary = is_desert and palette.theme.secondary or palette.theme.primary
+  local secondary = is_desert and palette.theme.primary or palette.theme.secondary
+
   local display_name = Utils.format_display_name(name)
 
   local lines = {
@@ -20,7 +25,7 @@ local function generate_lazygit_theme(name, palette)
     string.format("    - '%s'", palette.ui.lineNumber),
     "    - bold",
     "  inactiveBorderColor:",
-    string.format("    - '%s'", palette.theme.primary),
+    string.format("    - '%s'", primary),
     "  optionsTextColor:",
     string.format("    - '%s'", palette.terminal.yellow),
     "  selectedLineBgColor:",
@@ -28,7 +33,7 @@ local function generate_lazygit_theme(name, palette)
     "  cherryPickedCommitBgColor:",
     string.format("    - '%s'", palette.bg.surface),
     "  cherryPickedCommitFgColor:",
-    string.format("    - '%s'", palette.theme.primary),
+    string.format("    - '%s'", primary),
     "  unstagedChangesColor:",
     string.format("    - '%s'", palette.terminal.red),
     "  defaultFgColor:",
@@ -37,7 +42,7 @@ local function generate_lazygit_theme(name, palette)
     string.format("    - '%s'", palette.terminal.yellow),
     "",
     "authorColors:",
-    string.format("  '*': '%s'", palette.theme.secondary),
+    string.format("  '*': '%s'", secondary),
   }
 
   return table.concat(lines, "\n")
