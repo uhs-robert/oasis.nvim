@@ -17,7 +17,7 @@ return {
 -- Accents
 	theme_primary = "#880101",
 	theme_secondary = "#326234",
-	theme_accent = "#16607e",
+	theme_accent = "#2c685f",
 
 -- Status
 	error = "#750e0e",
@@ -32,8 +32,8 @@ return {
 	green = "#27583e",
 	yellow = "#56501d",
 	blue = "#11508e",
-	magenta = "#691fc0",
-	cyan = "#2c5650",
+	magenta = "#6920bf",
+	cyan = "#2d5651",
 	white = "#45433c",
 	bright_black = "#49413d",
 	bright_red = "#9f0f0f",
@@ -50,8 +50,8 @@ return {
 	color2 = "#27583e",
 	color3 = "#56501d",
 	color4 = "#11508e",
-	color5 = "#691fc0",
-	color6 = "#2c5650",
+	color5 = "#6920bf",
+	color6 = "#2d5651",
 	color7 = "#45433c",
 	color8 = "#49413d",
 	color9 = "#9f0f0f",
