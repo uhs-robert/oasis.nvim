@@ -99,12 +99,12 @@ return function(c, palette_name)
     SpellLocal                 = { fg=c.syntax.statement, undercurl=true, sp=c.syntax.statement }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
     SpellRare                  = { fg=c.syntax.type, undercurl=true, sp=c.syntax.type }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
 
-    StatusLine                 = { fg=c.ui.border, bg=c.bg.surface }, -- Status line of current window
-    StatusLineNC               = { fg=c.fg.muted, bg=c.bg.surface}, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+    StatusLine                 = { fg=c.theme.light_primary, bg=c.bg.mantle }, -- Status line of current window
+    StatusLineNC               = { fg=c.fg.muted, bg=c.bg.mantle }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
     StatusLineTerm             = "StatusLine", -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
     TabLine                    = { fg=c.ui.border, bg=c.bg.surface }, -- Tab pages line, not active tab page label
     TabLineFill                = { fg=c.ui.border, bg=c.bg.surface }, -- Tab pages line, where there are no labels
-    TabLineSel                 = { fg=c.bg.core, bg=c.theme.accent }, -- Tab pages line, active tab page label
+    TabLineSel                 = { fg=c.bg.core, bg=c.theme.secondary }, -- Tab pages line, active tab page label
     MsgSeparator               = "StatusLine", -- Separator for scrolled messages, `msgsep` flag of 'display'
     Title                      = { fg=c.ui.title, bold=true }, -- Titles for output from ":set all", ":autocmd" etc.
     VertSplit                  = { fg=c.ui.border, bg=c.bg.mantle }, -- Column separating vertically split windows
