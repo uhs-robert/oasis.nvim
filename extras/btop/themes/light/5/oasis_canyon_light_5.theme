@@ -12,13 +12,13 @@ theme[main_fg]="#52412d"
 theme[title]="#52412d"
 
 # Highlight color for keyboard shortcuts
-theme[hi_fg]="#803f00"
+theme[hi_fg]="#804000"
 
 # Background color of selected item in processes box
 theme[selected_bg]="#ecbd93"
 
 # Foreground color of selected item in processes box
-theme[selected_fg]="#803f00"
+theme[selected_fg]="#804000"
 
 # Color of inactive/disabled text
 theme[inactive_fg]="#6d5d53"
@@ -35,14 +35,14 @@ theme[proc_misc]="#5c3c26"
 # CPU, Memory, Network, Proc box outline colors
 theme[cpu_box]="#28593f"
 theme[mem_box]="#56511d"
-theme[net_box]="#6b1fc1"
+theme[net_box]="#6b1fc2"
 theme[proc_box]="#a11010"
 
 # Box divider line and small boxes line color
 theme[div_line]="#ecbd93"
 
 # Temperature graph color (Blue -> Bright Blue -> Magenta)
-theme[temp_start]="#125190"
+theme[temp_start]="#11518f"
 theme[temp_mid]="#1f566c"
 theme[temp_end]="#6a20c2"
 
@@ -62,7 +62,7 @@ theme[available_mid]=""
 theme[available_end]="#764311"
 
 # Mem/Disk cached meter (Blue -> Bright Blue)
-theme[cached_start]="#125190"
+theme[cached_start]="#11518f"
 theme[cached_mid]=""
 theme[cached_end]="#1f566c"
 
@@ -72,12 +72,12 @@ theme[free_mid]=""
 theme[free_end]="#2d5a20"
 
 # Download graph colors (Blue -> Bright Blue)
-theme[download_start]="#125190"
+theme[download_start]="#11518f"
 theme[download_mid]=""
 theme[download_end]="#1f566c"
 
 # Upload graph colors (Magenta -> Bright Magenta)
-theme[upload_start]="#6b1fc1"
+theme[upload_start]="#6b1fc2"
 theme[upload_mid]=""
 theme[upload_end]="#6a20c2"
 

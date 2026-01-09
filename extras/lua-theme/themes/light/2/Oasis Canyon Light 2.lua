@@ -15,9 +15,9 @@ return {
 	fg_dim = "#8b8b8b",
 
 -- Accents
-	theme_primary = "#994f05",
-	theme_secondary = "#1c6c8d",
-	theme_accent = "#258353",
+	theme_primary = "#995005",
+	theme_secondary = "#a30505",
+	theme_accent = "#1c6c8d",
 
 -- Status
 	error = "#750e0e",
@@ -31,9 +31,9 @@ return {
 	red = "#bb1313",
 	green = "#2f6849",
 	yellow = "#655f22",
-	blue = "#155ea8",
-	magenta = "#7c29dc",
-	cyan = "#356660",
+	blue = "#155ea9",
+	magenta = "#7c2adc",
+	cyan = "#346660",
 	white = "#545149",
 	bright_black = "#58504a",
 	bright_red = "#bb1313",
@@ -49,9 +49,9 @@ return {
 	color1 = "#bb1313",
 	color2 = "#2f6849",
 	color3 = "#655f22",
-	color4 = "#155ea8",
-	color5 = "#7c29dc",
-	color6 = "#356660",
+	color4 = "#155ea9",
+	color5 = "#7c2adc",
+	color6 = "#346660",
 	color7 = "#545149",
 	color8 = "#58504a",
 	color9 = "#bb1313",
