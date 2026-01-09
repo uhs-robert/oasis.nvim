@@ -13,14 +13,14 @@ local base = {
   fg = theme.fg,
   palette = {
     primary = p.rose,
-    secondary = p.gold,
+    secondary = p.aloe,
     accent = p.sky,
   },
   theme = {
     strong_primary = p.rose[700],
     primary = p.rose[600],
     light_primary = p.rose[400],
-    secondary = p.gold[400],
+    secondary = p.aloe[500],
     accent = p.sky[500],
     cursor = p.khaki[500],
   },

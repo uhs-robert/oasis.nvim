@@ -4,7 +4,7 @@
 
 # MANAGER
 [mgr]
-cwd = { fg = "#90800e" }
+cwd = { fg = "#366838" }
 
 find_keyword = { fg = "#72dacc", bold = true, italic = true, underline = true }
 find_position = { fg = "#605617", bg = "reset", bold = true, italic = true }
@@ -62,7 +62,7 @@ selected = { reversed = true }
 # PICK
 [pick]
 border = { fg = "#910303" }
-active = { fg = "#90800e", bold = true }
+active = { fg = "#366838", bold = true }
 inactive = {}
 
 # COMPLETION
@@ -73,12 +73,12 @@ border = { fg = "#910303" }
 [tasks]
 border = { fg = "#910303" }
 title = {}
-hovered = { fg = "#90800e", underline = true }
+hovered = { fg = "#366838", underline = true }
 
 # WHICH
 [which]
 mask = { bg = "#f0d1e8" }
-cand = { fg = "#90800e" }
+cand = { fg = "#366838" }
 rest = { fg = "#5f4056" }
 desc = { fg = "#0d506c" }
 separator = "  "
@@ -129,8 +129,8 @@ rules = [
 # SPOT
 [spot]
 border = { fg = "#750e0e" }
-title = { fg = "#90800e" }
-tbl_cell = { fg = "#90800e", reversed = true }
+title = { fg = "#366838" }
+tbl_cell = { fg = "#366838", reversed = true }
 tbl_col = { bold = true }
 
 # extras/yazi/icons.toml.template
