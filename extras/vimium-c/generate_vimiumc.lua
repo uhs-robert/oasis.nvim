@@ -11,7 +11,12 @@ local function get_display_name(name)
   return Utils.capitalize(name)
 end
 
-local function extract_vimiumc_colors(palette)
+local function extract_vimiumc_colors(name, palette)
+  -- For desert theme, swap primary and secondary
+  local is_desert = name:match("desert") ~= nil or name:match("%..*$") and name:match("^(.+)%.") == "desert"
+  local primary = is_desert and palette.theme.secondary or palette.theme.primary
+  local secondary = is_desert and palette.theme.primary or palette.theme.secondary
+
   -- Map palette structure to Vimium-C color scheme
   return {
     bg_core = palette.bg.core,
@@ -21,11 +26,11 @@ local function extract_vimiumc_colors(palette)
     fg_dim = palette.fg.dim,
     link = palette.fg.dim, -- Use dim foreground for links
     border = palette.bg.mantle, -- Use mantle for borders
-    primary = palette.theme.primary,
+    primary = primary,
     light_primary = palette.theme.light_primary,
-    secondary = palette.theme.secondary,
+    secondary = secondary,
     title_match = palette.syntax.string, -- Use string color for matches
-    link_match = palette.theme.secondary, -- Use secondary for link matches
+    link_match = secondary, -- Use secondary for link matches
   }
 end
 
@@ -84,8 +89,8 @@ local function select_theme(label, themes)
 end
 
 local function generate_vimiumc_css(day_name, night_name, day_palette, night_palette)
-  local day_colors = extract_vimiumc_colors(day_palette)
-  local night_colors = extract_vimiumc_colors(night_palette)
+  local day_colors = extract_vimiumc_colors(day_name, day_palette)
+  local night_colors = extract_vimiumc_colors(night_name, night_palette)
 
   -- Read the CSS template
   local template = assert(File.read("./extras/vimium-c/vimium-c.css.erb"), "Missing vimium-c CSS template")

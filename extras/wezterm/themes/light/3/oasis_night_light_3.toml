@@ -10,16 +10,16 @@ cursor_border = "#7c410d"
 cursor_fg= "#e6dbb2"
 selection_bg= "#e1b69d"
 selection_fg= "#4e260e"
-split= "#772b2b"
+split= "#811f1f"
 compose_cursor= "#613c18"
 scrollbar_thumb= "#dbca8f"
 visual_bell= "#e2d5a6"
 
 ansi = [
   '#444444',
-  '#992323',
+  '#a11010',
   '#285a3f',
-  '#57511b',
+  '#57511d',
   '#125191',
   '#6b20c3',
   '#2d5752',
@@ -39,14 +39,14 @@ brights = [
 
 [colors.indexed]
 16 = '#613c18'
-17 = '#992126'
+17 = '#9b1e23'
 
 [colors.tab_bar]
 background = '#e2d5a6'
 inactive_tab_edge = '#dfd09b'
 
 [colors.tab_bar.active_tab]
-bg_color = '#801414'
+bg_color = '#910303'
 fg_color = '#e6dbb2'
 intensity = 'Normal'
 italic = false
@@ -55,7 +55,7 @@ underline = 'None'
 
 [colors.tab_bar.inactive_tab]
 bg_color = '#dbca8f'
-fg_color = '#801414'
+fg_color = '#910303'
 intensity = 'Normal'
 italic = false
 strikethrough = false

@@ -43,6 +43,11 @@ local function generate_stylesheet()
 end
 
 local function generate_manifest(name, palette)
+  -- For desert theme, swap primary and secondary
+  local is_desert = name == "oasis_desert"
+  local primary = is_desert and palette.theme.secondary or palette.theme.primary
+  local secondary = is_desert and palette.theme.primary or palette.theme.secondary
+
   local display_name = Utils.format_display_name(name)
   -- Keep a stable slug for IDs, but present a readable name in Thunderbird
   local theme_id = "oasis-" .. name
@@ -101,15 +106,15 @@ local function generate_manifest(name, palette)
 
         -- Tabs
         tab_text = palette.fg.core,
-        tab_line = palette.theme.primary,
-        tab_loading = palette.theme.primary,
+        tab_line = primary,
+        tab_loading = primary,
         tab_selected = palette.bg.surface,
         tab_background_text = palette.theme.light_primary,
         -- tab_background_text = palette.syntax.comment,
         tab_background_separator = palette.bg.surface,
 
         -- Buttons
-        button_background_active = palette.theme.primary,
+        button_background_active = primary,
         button_background_hover = palette.bg.surface,
 
         -- Icons
@@ -121,12 +126,12 @@ local function generate_manifest(name, palette)
         -- Input fields (search, address bar, etc.)
         toolbar_field = palette.bg.surface,
         toolbar_field_text = palette.fg.core,
-        toolbar_field_highlight = palette.theme.primary,
+        toolbar_field_highlight = primary,
         toolbar_field_highlight_text = palette.bg.core,
         toolbar_field_border = palette.ui.border,
         toolbar_field_focus = palette.bg.surface,
         toolbar_field_text_focus = palette.fg.core,
-        toolbar_field_border_focus = palette.theme.primary,
+        toolbar_field_border_focus = primary,
 
         -- Separators
         toolbar_top_separator = palette.bg.surface,
@@ -136,7 +141,7 @@ local function generate_manifest(name, palette)
         -- Sidebar
         sidebar = palette.bg.core,
         sidebar_text = palette.fg.core,
-        sidebar_highlight = palette.theme.primary,
+        sidebar_highlight = primary,
         sidebar_highlight_text = palette.bg.core,
         sidebar_border = palette.ui.border,
 
@@ -144,16 +149,16 @@ local function generate_manifest(name, palette)
         popup = palette.bg.surface,
         popup_text = palette.fg.core,
         popup_border = palette.ui.border,
-        popup_highlight = palette.theme.primary,
+        popup_highlight = primary,
         popup_highlight_text = palette.bg.core,
 
         -- Experimental theme colors
         spaces_bg = palette.bg.mantle,
-        spaces_bg_active = palette.theme.primary,
+        spaces_bg_active = primary,
         spaces_button = palette.bg.core,
         tree_view_bg = palette.bg.surface,
         bg_color = palette.bg.core,
-        button_primary_bg = palette.theme.primary,
+        button_primary_bg = primary,
         button_text = palette.bg.core,
         tree_pane_bg = palette.bg.surface,
         tree_card_bg = palette.bg.mantle,

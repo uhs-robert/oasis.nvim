@@ -34,9 +34,9 @@ theme[proc_misc]="#55544c"
 
 # CPU, Memory, Network, Proc box outline colors
 theme[cpu_box]="#306b4b"
-theme[mem_box]="#686120"
+theme[mem_box]="#686123"
 theme[net_box]="#7e2edd"
-theme[proc_box]="#b62929"
+theme[proc_box]="#bf1313"
 
 # Box divider line and small boxes line color
 theme[div_line]="#eee3c9"
@@ -54,10 +54,10 @@ theme[cpu_end]="#bf1313"
 # Mem/Disk used meter (Bright Red -> Red)
 theme[used_start]="#bf1313"
 theme[used_mid]=""
-theme[used_end]="#b62929"
+theme[used_end]="#bf1313"
 
 # Mem/Disk available meter (Yellow ->  orange)
-theme[available_start]="#686120"
+theme[available_start]="#686123"
 theme[available_mid]=""
 theme[available_end]="#8d5115"
 
@@ -84,4 +84,4 @@ theme[upload_end]="#7d2fdd"
 # Process box color gradient for threads, mem and cpu usage (Green -> Orange -> Red)
 theme[process_start]="#306b4b"
 theme[process_mid]="#8d5115"
-theme[process_end]="#b62929"
+theme[process_end]="#bf1313"

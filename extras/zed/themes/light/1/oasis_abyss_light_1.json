@@ -11,8 +11,8 @@
         "background": "#f9f7f5",
         "border": "#e8e0d8",
         "border.disabled": "#eee8e2",
-        "border.focused": "#8f1919",
-        "border.selected": "#8f1919",
+        "border.focused": "#a20707",
+        "border.selected": "#a20707",
         "border.transparent": "#00000000",
         "border.variant": "#f3efeb",
         "conflict": "#750e0e",
@@ -21,15 +21,15 @@
         "created": "#306c4c",
         "created.background": "#306c4c1a",
         "created.border": "#306c4c",
-        "deleted": "#b72a2a",
-        "deleted.background": "#b72a2a1a",
-        "deleted.border": "#b72a2a",
-        "drop_target.background": "#8f191940",
+        "deleted": "#c21313",
+        "deleted.background": "#c213131a",
+        "deleted.border": "#c21313",
+        "drop_target.background": "#a2070740",
         "editor.active_line.background": "#f3efebbf",
         "editor.active_line_number": "#7a491d",
         "editor.active_wrap_guide": "#978e881a",
         "editor.background": "#f9f7f5",
-        "editor.document_highlight.read_background": "#8f19191a",
+        "editor.document_highlight.read_background": "#a207071a",
         "editor.document_highlight.write_background": "#67747933",
         "editor.foreground": "#5c534b",
         "editor.gutter.background": "#f9f7f5",
@@ -59,7 +59,7 @@
         "hint.background": "#92d3c91a",
         "hint.border": "#0b5e52",
         "icon": "#5c534b",
-        "icon.accent": "#8f1919",
+        "icon.accent": "#a20707",
         "icon.disabled": "#978e88",
         "icon.muted": "#5c534b",
         "icon.placeholder": "#677479",
@@ -69,16 +69,16 @@
         "info": "#0d506c",
         "info.background": "#92c0d31a",
         "info.border": "#0d506c",
-        "link_text.hover": "#8f1919",
-        "modified": "#696220",
-        "modified.background": "#6962201a",
-        "modified.border": "#696220",
+        "link_text.hover": "#a20707",
+        "modified": "#696223",
+        "modified.background": "#6962231a",
+        "modified.border": "#696223",
         "panel.background": "#f3efeb",
         "players": [
           {
-            "background": "#8f1919",
-            "cursor": "#8f1919",
-            "selection": "#8f19193d"
+            "background": "#a20707",
+            "cursor": "#a20707",
+            "selection": "#a207073d"
           },
           {
             "background": "#a4590f",
@@ -159,7 +159,7 @@
             "color": "#5c534b"
           },
           "emphasis": {
-            "color": "#8f1919",
+            "color": "#a20707",
             "font_style": "italic"
           },
           "emphasis.strong": {
@@ -176,10 +176,10 @@
             "color": "#0b5e52"
           },
           "keyword": {
-            "color": "#bb2328"
+            "color": "#bc2126"
           },
           "label": {
-            "color": "#bb2328"
+            "color": "#bc2126"
           },
           "link_text": {
             "color": "#964e10",
@@ -280,20 +280,20 @@
         "terminal.ansi.dim_cyan": "#264a44",
         "terminal.ansi.dim_green": "#214b35",
         "terminal.ansi.dim_magenta": "#58219a",
-        "terminal.ansi.dim_red": "#801d1d",
+        "terminal.ansi.dim_red": "#870d0d",
         "terminal.ansi.dim_white": "#3d3b35",
-        "terminal.ansi.dim_yellow": "#494416",
+        "terminal.ansi.dim_yellow": "#494418",
         "terminal.ansi.green": "#306c4c",
         "terminal.ansi.magenta": "#7f30dd",
-        "terminal.ansi.red": "#b72a2a",
+        "terminal.ansi.red": "#c21313",
         "terminal.ansi.white": "#58554c",
-        "terminal.ansi.yellow": "#696220",
+        "terminal.ansi.yellow": "#696223",
         "terminal.background": "#f9f7f5",
         "terminal.bright_foreground": "#7c4734",
         "terminal.dim_foreground": "#978e88",
         "terminal.foreground": "#5c534b",
         "text": "#5c534b",
-        "text.accent": "#8f1919",
+        "text.accent": "#a20707",
         "text.disabled": "#978e88",
         "text.muted": "#5c534b",
         "text.placeholder": "#677479",
@@ -304,11 +304,11 @@
         "unreachable.background": "#6774791a",
         "unreachable.border": "#677479",
         "version_control.added": "#306c4c",
-        "version_control.deleted": "#b72a2a",
-        "version_control.modified": "#696220",
-        "warning": "#5d550b",
-        "warning.background": "#cec9971a",
-        "warning.border": "#5d550b"
+        "version_control.deleted": "#c21313",
+        "version_control.modified": "#696223",
+        "warning": "#5c540b",
+        "warning.background": "#cec8971a",
+        "warning.border": "#5c540b"
       }
     }
   ]

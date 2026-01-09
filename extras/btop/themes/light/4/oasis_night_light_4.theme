@@ -12,13 +12,13 @@ theme[main_fg]="#4f3f2b"
 theme[title]="#4f3f2b"
 
 # Highlight color for keyboard shortcuts
-theme[hi_fg]="#791111"
+theme[hi_fg]="#880101"
 
 # Background color of selected item in processes box
 theme[selected_bg]="#d8c688"
 
 # Foreground color of selected item in processes box
-theme[selected_fg]="#791111"
+theme[selected_fg]="#880101"
 
 # Color of inactive/disabled text
 theme[inactive_fg]="#6b5b50"
@@ -34,9 +34,9 @@ theme[proc_misc]="#593b26"
 
 # CPU, Memory, Network, Proc box outline colors
 theme[cpu_box]="#27573d"
-theme[mem_box]="#544f1a"
+theme[mem_box]="#544f1c"
 theme[net_box]="#681fbd"
-theme[proc_box]="#942222"
+theme[proc_box]="#9d1010"
 
 # Box divider line and small boxes line color
 theme[div_line]="#d8c688"
@@ -54,10 +54,10 @@ theme[cpu_end]="#9d0f0f"
 # Mem/Disk used meter (Bright Red -> Red)
 theme[used_start]="#9d0f0f"
 theme[used_mid]=""
-theme[used_end]="#942222"
+theme[used_end]="#9d1010"
 
 # Mem/Disk available meter (Yellow ->  orange)
-theme[available_start]="#544f1a"
+theme[available_start]="#544f1c"
 theme[available_mid]=""
 theme[available_end]="#734211"
 
@@ -84,4 +84,4 @@ theme[upload_end]="#671fbe"
 # Process box color gradient for threads, mem and cpu usage (Green -> Orange -> Red)
 theme[process_start]="#27573d"
 theme[process_mid]="#734211"
-theme[process_end]="#942222"
+theme[process_end]="#9d1010"

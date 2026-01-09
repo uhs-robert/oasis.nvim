@@ -9,6 +9,11 @@ local File = require("oasis.lib.file")
 local ColorUtils = require("oasis.tools.color_utils")
 
 local function generate_gemini_cli_theme(name, palette)
+  -- For desert theme, swap primary and secondary
+  local is_desert = name:match("desert") ~= nil
+  local primary = is_desert and palette.theme.secondary or palette.theme.primary
+  local secondary = is_desert and palette.theme.primary or palette.theme.secondary
+
   local display_name = Utils.format_display_name(name)
 
   -- Build JSON theme structure
@@ -30,9 +35,9 @@ local function generate_gemini_cli_theme(name, palette)
     DiffRemoved = palette.diff.delete,
     DiffModified = palette.diff.change,
     GradientColors = {
-      palette.theme.primary,
+      primary,
       palette.theme.accent,
-      palette.theme.secondary,
+      secondary,
     },
   }
 

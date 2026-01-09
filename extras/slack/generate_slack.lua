@@ -8,6 +8,11 @@ local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
 
 local function generate_slack_theme(name, palette)
+  -- For desert theme, swap primary and secondary
+  local is_desert = name:match("desert") ~= nil
+  local primary = is_desert and palette.theme.secondary or palette.theme.primary
+  local secondary = is_desert and palette.theme.primary or palette.theme.secondary
+
   local display_name = Utils.format_display_name(name)
 
   -- Map Oasis colors to Slack theme components
@@ -17,11 +22,11 @@ local function generate_slack_theme(name, palette)
     "%s,%s,%s,%s,%s,%s,%s,%s,%s,%s",
     palette.bg.surface, -- Column BG
     palette.bg.mantle, -- Menu BG Hover
-    palette.theme.primary, -- Active Item
+    primary, -- Active Item
     palette.bg.surface, -- Active Item Text
     palette.bg.mantle, -- Hover Item
     palette.fg.core, -- Text Color
-    palette.theme.secondary, -- Active Presence
+    secondary, -- Active Presence
     palette.theme.accent, -- Mention Badge
     palette.bg.core, -- Column BG (repeat)
     palette.fg.core -- Text Color (repeat)

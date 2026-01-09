@@ -15,22 +15,22 @@ return {
 	fg_dim = "#7c7c7c",
 
 -- Accents
-	theme_primary = "#801414",
+	theme_primary = "#910303",
 	theme_secondary = "#944f0a",
 	theme_accent = "#055b99",
 
 -- Status
 	error = "#750e0e",
-	warning = "#5d550b",
+	warning = "#5c540b",
 	info = "#0d506c",
 	hint = "#0b5e52",
 	ok = "#1c5d0b",
 
 -- ANSI Semnatic Colors
 	black = "#444444",
-	red = "#992323",
+	red = "#a11010",
 	green = "#285a3f",
-	yellow = "#57511b",
+	yellow = "#57511d",
 	blue = "#125191",
 	magenta = "#6b20c3",
 	cyan = "#2d5752",
@@ -46,9 +46,9 @@ return {
 
 -- ANSI Terminal Colors
 	color0 = "#444444",
-	color1 = "#992323",
+	color1 = "#a11010",
 	color2 = "#285a3f",
-	color3 = "#57511b",
+	color3 = "#57511d",
 	color4 = "#125191",
 	color5 = "#6b20c3",
 	color6 = "#2d5752",

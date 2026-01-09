@@ -1,0 +1,245 @@
+# starship/.config/starship.toml
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[╭](bright_black)[](light_primary)$os$username$sudo[](fg:light_primary)\
+$hostname$localip\
+[](fg:bright_blue)$directory[](fg:bright_blue)\
+$git_branch$git_status\
+$cmd_duration\
+$status\
+$fill\
+$c$rust$golang$nodejs$lua$php$java$kotlin$haskell$python\
+$docker_context$conda\
+[](fg:bright_black bg:none)$time[](fg:bright_black bg:none)\
+[ ](fg: none bg: none)$line_break\
+[╰─](fg:bright_black)$character\
+"""
+
+palette = 'oasis'
+[palettes.oasis]
+primary = "#1CA0FD"
+light_primary = "#58B8FD"
+secondary = "#F8B471"
+accent = "#FFA0A0"
+fg_core = "#D9E6FA"
+bg_core = "#101825"
+surface = "#22385C"
+black = "#000000"
+bright_black = "#504641"
+red = "#D06666"
+bright_red = "#FFA0A0"
+green = "#53D390"
+bright_green = "#96EA7F"
+yellow = "#F0E68C"
+bright_yellow = "#F8B471"
+blue = "#519BFF"
+bright_blue = "#87CEEB"
+magenta = "#C28EFF"
+bright_magenta = "#D2ADFF"
+cyan = "#5ABAAE"
+bright_cyan = "#8FD1C7"
+white = "#DDDBD5"
+bright_white = "#FFF9F2"
+
+[os]
+disabled = false
+style = "bg:light_primary fg:bg_core"
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+AlmaLinux = " "
+Amazon = " "
+Android = " "
+AOSC = " "
+Arch = " "
+Artix = " "
+CachyOS = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Elementary = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Ios = "󰀷 "
+Kali = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+Nobara = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+RockyLinux = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Void = " "
+Windows = "󰍲 "
+Zorin = " "
+
+[username]
+show_always = true
+style_user = "bg:light_primary fg:bg_core"
+style_root = "bg:bright_red fg:bg_core"
+format = '[$user ]($style)'
+
+[sudo]
+disabled = true
+style = "bg:bright_red fg:bg_core"
+
+[hostname]
+disabled = false
+ssh_only = true
+style = "fg:fg_core bold bg:red"
+ssh_symbol = '🌐'
+#trim_at = '.companyname.com'
+format = '[](fg:red bg:none)[ $ssh_symbol🌐$hostname]($style)'
+
+[localip]
+disabled = false
+ssh_only = true
+style = "fg:fg_core bold bg:red"
+format = '[ $localipv4 ](fg:fg_core bg:red)[](fg:red bg:none)'
+
+[directory]
+style = "fg:bg_core bg:bright_blue"
+format = "[ $path ]($style)"
+home_symbol = ' ~'
+truncation_length = 2
+truncation_symbol = "…/"
+truncate_to_repo = true
+repo_root_format = '[  ](fg:bg_core bg:bright_blue)[$read_only]($read_only_style)[$before_root_path]($style)[$repo_root]($style)[$path ]($style)'
+repo_root_style = 'fg:primt bold bg:prim'
+
+[directory.substitutions]
+".config" = ". "
+"Developer" = "󰲋 "
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Videos" = "󰨜 "
+"Games" = "🎮 "
+"steam" = " "
+"Emulators" = "🕹️ "
+
+[git_branch]
+symbol = ""
+style = "bg:bright_yellow"
+format = '[](fg:bright_yellow bg:none)[[ $symbol $branch(:$remote_branch) ](fg:bg_core bg:bright_yellow)]($style)'
+
+[git_status]
+style = "bg:bright_yellow"
+format = '[[($all_status $ahead_behind)](fg:bg_core bg:bright_yellow)]($style)[](fg:bright_yellow bg:none)'
+
+[nodejs]
+symbol = '󰎙 Node'
+style = "bg:magenta"
+format = '[](fg:magenta)[[ $symbol($version) ](fg:bg_core bg:magenta)]($style)[](fg:magenta)[─](fg:bright_black)'
+
+[lua]
+symbol = " "
+style = "bg:magenta"
+format = '[](fg:magenta)[[ $symbol($version) ](fg:bg_core bg:magenta)]($style)[](fg:magenta)[─](fg:bright_black)'
+
+[c]
+symbol = " C"
+style = "bg:magenta"
+format = '[](fg:magenta)[[ $symbol($version) ](fg:bg_core bg:magenta)]($style)[](fg:magenta)[─](fg:bright_black)'
+
+[rust]
+symbol = " Rust"
+style = "bg:magenta"
+format = '[](fg:magenta)[[ $symbol($version) ](fg:bg_core bg:magenta)]($style)[](fg:magenta)[─](fg:bright_black)'
+
+[golang]
+symbol = " Go"
+style = "bg:magenta"
+format = '[](fg:magenta)[[ $symbol($version) ](fg:bg_core bg:magenta)]($style)[](fg:magenta)[─](fg:bright_black)'
+
+[php]
+symbol = " Php"
+style = "bg:magenta"
+format = '[](fg:magenta)[[ $symbol($version) ](fg:bg_core bg:magenta)]($style)[](fg:magenta)[─](fg:bright_black)'
+
+[java]
+symbol = ' Java'
+style = "bg:magenta"
+format = '[](fg:magenta)[[ $symbol($version) ](fg:bg_core bg:magenta)]($style)[](fg:magenta)[─](fg:bright_black)'
+
+[kotlin]
+symbol = " Kotlin"
+style = "bg:magenta"
+format = '[](fg:magenta)[[ $symbol($version) ](fg:bg_core bg:magenta)]($style)[](fg:magenta)[─](fg:bright_black)'
+
+[haskell]
+symbol = " Haskell"
+style = "bg:magenta"
+format = '[](fg:magenta)[[ $symbol($version) ](fg:bg_core bg:magenta)]($style)[](fg:magenta)[─](fg:bright_black)'
+
+[python]
+symbol = ' Python'
+style = "bg:magenta"
+format = '[](fg:magenta)[[ $symbol($version) ](fg:bg_core bg:magenta)]($style)[](fg:magenta)[─](fg:bright_black)'
+
+[docker_context]
+symbol = " "
+style = "bg:white"
+format = '[](fg:red)[[ $symbol( $context) ](fg:fg_core bg:red)]($style)[](fg:red)[─](fg:white)'
+
+[conda]
+style = "bg:white"
+format = '[](fg:red)[[ $symbol( $environment) ](fg:fg_core bg:red)]($style)[](fg:red)[─](fg:white)'
+
+[time]
+disabled = false
+time_format = " %I:%M%P"
+style = "bg:bright_black"
+format = '[[  $time ](fg:fg_core bg:bright_black)]($style)'
+
+[fill]
+symbol = " "
+
+[cmd_duration]
+disabled = false
+style = "fg:yellow bg:none"
+format = '[]($style)[ 󱐋 $duration ]($style inverted)[]($style)'
+min_time = 500
+
+[status]
+style = "fg:red bg:none"
+disabled = false
+format = '[─](fg:bright_black bg:none)[](fg:red bg:none)[$symbol ](fg:bright_white bg:red)[]($style)'
+symbol = '   Error'
+
+[line_break]
+disabled = false
+
+[character]
+disabled = false
+success_symbol = '[❯](bold light_primary)'
+error_symbol = '[❯](bold red)'
+vimcmd_symbol = '[](bold yellow)'
+vimcmd_replace_one_symbol = '[R](bold bright_cyan)'
+vimcmd_replace_symbol = '[R](bold bright_cyan)'
+vimcmd_visual_symbol = '[V](bold bright_yellow)'

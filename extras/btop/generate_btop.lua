@@ -8,6 +8,11 @@ local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
 
 local function generate_btop_theme(name, palette)
+  -- For desert theme, swap primary and secondary
+  local is_desert = name:match("desert") ~= nil
+  local primary = is_desert and palette.theme.secondary or palette.theme.primary
+  local secondary = is_desert and palette.theme.primary or palette.theme.secondary
+
   local display_name = Utils.format_display_name(name)
 
   local lines = {
@@ -25,13 +30,13 @@ local function generate_btop_theme(name, palette)
     string.format('theme[title]="%s"', palette.fg.core),
     "",
     "# Highlight color for keyboard shortcuts",
-    string.format('theme[hi_fg]="%s"', palette.theme.primary),
+    string.format('theme[hi_fg]="%s"', primary),
     "",
     "# Background color of selected item in processes box",
     string.format('theme[selected_bg]="%s"', palette.bg.surface),
     "",
     "# Foreground color of selected item in processes box",
-    string.format('theme[selected_fg]="%s"', palette.theme.primary),
+    string.format('theme[selected_fg]="%s"', primary),
     "",
     "# Color of inactive/disabled text",
     string.format('theme[inactive_fg]="%s"', palette.fg.muted),

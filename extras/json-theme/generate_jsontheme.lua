@@ -49,6 +49,11 @@ local function get_diag_fg(diag, key)
 end
 
 local function generate_json_palette(name, palette)
+  -- For desert theme, swap primary and secondary
+  local is_desert = name == "oasis_desert"
+  local primary = is_desert and palette.theme.secondary or palette.theme.primary
+  local secondary = is_desert and palette.theme.primary or palette.theme.secondary
+
   local diag = (palette.ui and palette.ui.diag) or {}
 
   local kv = {}
@@ -66,8 +71,8 @@ local function generate_json_palette(name, palette)
   kv[#kv + 1] = { "fg_dim", palette.fg.dim }
 
   -- Accents
-  kv[#kv + 1] = { "theme_primary", palette.theme.primary }
-  kv[#kv + 1] = { "theme_secondary", palette.theme.secondary }
+  kv[#kv + 1] = { "theme_primary", primary }
+  kv[#kv + 1] = { "theme_secondary", secondary }
   kv[#kv + 1] = { "theme_accent", palette.theme.accent }
 
   -- Status

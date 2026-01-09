@@ -22,6 +22,11 @@ end
 
 -- Generate Firefox Color theme object
 local function generate_firefox_color_theme(name, palette)
+  -- For desert theme, swap primary and secondary
+  local is_desert = name:match("desert") ~= nil
+  local primary = is_desert and palette.theme.secondary or palette.theme.primary
+  local secondary = is_desert and palette.theme.primary or palette.theme.secondary
+
   local display_name = Utils.format_display_name(name)
 
   return {
@@ -29,23 +34,23 @@ local function generate_firefox_color_theme(name, palette)
       -- Main UI
       frame = hex_to_rgb(palette.bg.core),
       toolbar = hex_to_rgb(palette.bg.mantle),
-      toolbar_text = hex_to_rgb(palette.theme.primary),
-      tab_background_text = hex_to_rgb(palette.theme.primary),
+      toolbar_text = hex_to_rgb(primary),
+      tab_background_text = hex_to_rgb(primary),
 
       -- Input fields
       toolbar_field = hex_to_rgb(palette.bg.mantle),
       toolbar_field_text = hex_to_rgb(palette.fg.core),
       toolbar_field_border = hex_to_rgb(palette.bg.surface),
       toolbar_field_focus = hex_to_rgb(palette.bg.core),
-      toolbar_field_border_focus = hex_to_rgb(palette.theme.primary),
+      toolbar_field_border_focus = hex_to_rgb(primary),
       toolbar_field_highlight = hex_to_rgb(palette.ui.search.bg),
       toolbar_field_highlight_text = hex_to_rgb(palette.ui.search.fg),
 
       -- Tabs
-      tab_line = hex_to_rgb(palette.theme.secondary),
+      tab_line = hex_to_rgb(secondary),
       tab_selected = hex_to_rgb(palette.bg.core),
       tab_text = hex_to_rgb(palette.fg.core),
-      tab_loading = hex_to_rgb(palette.theme.secondary),
+      tab_loading = hex_to_rgb(secondary),
       tab_background_separator = hex_to_rgb(palette.theme.accent),
 
       -- Popups and menus
@@ -61,12 +66,12 @@ local function generate_firefox_color_theme(name, palette)
       -- Sidebar
       sidebar = hex_to_rgb(palette.bg.core),
       sidebar_text = hex_to_rgb(palette.fg.core),
-      sidebar_border = hex_to_rgb(palette.theme.primary),
+      sidebar_border = hex_to_rgb(primary),
       sidebar_highlight = hex_to_rgb(palette.ui.search.bg),
       sidebar_highlight_text = hex_to_rgb(palette.ui.search.fg),
 
       -- Icons and accents
-      icons = hex_to_rgb(palette.theme.primary),
+      icons = hex_to_rgb(primary),
       icons_attention = hex_to_rgb(palette.syntax.exception),
 
       -- New tab page

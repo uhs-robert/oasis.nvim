@@ -8,6 +8,11 @@ local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
 
 local function generate_fzf_theme(name, palette)
+  -- For desert theme, swap primary and secondary
+  local is_desert = name:match("desert") ~= nil
+  local primary = is_desert and palette.theme.secondary or palette.theme.primary
+  local secondary = is_desert and palette.theme.primary or palette.theme.secondary
+
   local display_name = Utils.format_display_name(name)
 
   -- FZF color mappings:
@@ -39,20 +44,20 @@ local function generate_fzf_theme(name, palette)
       palette.ui.cursorLine, -- bg+: Current line background
       palette.bg.core, -- bg: Background
       palette.theme.accent, -- spinner: Loading spinner
-      palette.theme.primary -- hl: Highlighted substrings
+      primary -- hl: Highlighted substrings
     ),
     string.format(
       "--color=fg:%s,header:%s,info:%s,pointer:%s \\",
       palette.fg.core, -- fg: Foreground
       palette.syntax.exception, -- header: Header text
-      palette.theme.primary, -- info: Info line
+      primary, -- info: Info line
       palette.theme.accent -- pointer: Current line pointer
     ),
     string.format(
       "--color=marker:%s,fg+:%s,prompt:%s,hl+:%s \\",
-      palette.theme.secondary, -- marker: Multi-select marker
+      secondary, -- marker: Multi-select marker
       palette.fg.core, -- fg+: Current line foreground
-      palette.theme.primary, -- prompt: Prompt
+      primary, -- prompt: Prompt
       palette.ui.search.bg -- hl+: Highlighted substrings on current line
     ),
     string.format("--color=selected-bg:%s \\", palette.ui.visual.bg), -- selected-bg: Selected line background
