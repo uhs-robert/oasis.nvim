@@ -27,6 +27,7 @@ local function generate_tmux_theme(name, palette)
     string.format('set -ogq @thm_core "%s"', string.lower(palette.bg.core)),
     string.format('set -ogq @thm_mantle "%s"', string.lower(palette.bg.mantle)),
     string.format('set -ogq @thm_surface "%s"', string.lower(palette.bg.surface)),
+    string.format('set -ogq @thm_visual "%s"', string.lower(palette.ui.search.bg)),
     "",
     "# General",
     string.format('set -ogq @thm_red "%s"', string.lower(palette.terminal.red)),
