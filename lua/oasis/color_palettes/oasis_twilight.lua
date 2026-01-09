@@ -20,7 +20,7 @@ local base = {
     primary = p.lavender[500],
     light_primary = p.lavender[300],
     secondary = p.khaki[400],
-    accent = p.cactus[700],
+    accent = p.cactus[400],
     cursor = p.khaki[500],
   },
 }

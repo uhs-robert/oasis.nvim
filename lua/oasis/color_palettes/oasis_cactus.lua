@@ -13,13 +13,14 @@ local base = {
   palette = {
     primary = p.aloe,
     secondary = p.rose,
+    accent = p.lavender,
   },
   theme = {
     strong_primary = p.aloe[700],
     primary = p.aloe[700],
     light_primary = p.aloe[500],
     secondary = p.rose[500],
-    accent = p.rose[300],
+    accent = p.lavender[300],
     cursor = p.khaki[500],
   },
 }
