@@ -10,6 +10,10 @@ local theme = p.theme.lagoon
 local base = {
   bg = theme.bg,
   fg = theme.fg,
+  palette = {
+    primary = p.lagoon,
+    secondary = p.sunrise,
+  },
   theme = {
     strong_primary = p.lagoon[700],
     primary = p.lagoon[500],
@@ -17,9 +21,6 @@ local base = {
     secondary = p.sunrise[500],
     accent = p.rose[500],
     cursor = p.khaki[500],
-    palette = {
-      primary = p.lagoon,
-    },
   },
 }
 
@@ -27,6 +28,7 @@ local base = {
 local dark = {
   bg = base.bg,
   fg = base.fg,
+  palette = base.palette,
   theme = base.theme,
   terminal = p.terminal,
   diff = vim.tbl_extend("force", p.diff, { change = theme.bg.surface }),
@@ -48,9 +50,9 @@ local dark = {
     -- Warm: (Control / Flow)
     func = p.sunset[200],
     builtinFunc = p.sundown[400], -- (eg. parseInst, Array, Object etc)
-    statement = opts.themed_syntax and base.theme.palette.primary[500] or p.khaki[500], -- (general statement (i.e. var, const))
+    statement = opts.themed_syntax and base.palette.primary[500] or p.khaki[500], -- (general statement (i.e. var, const))
     exception = p.red[400], -- (try/catch, return)
-    conditional = opts.themed_syntax and base.theme.palette.primary[600] or p.khaki[700], -- (Conditionals, Loops)
+    conditional = opts.themed_syntax and base.palette.primary[600] or p.khaki[700], -- (Conditionals, Loops)
     special = p.sunset[400], -- (Statement not covered above)
     operator = p.rose[500],
     punctuation = p.coral[400],
@@ -70,14 +72,14 @@ local dark = {
     dir = p.sky[500],
 
     title = base.theme.primary,
-    border = base.theme.palette.primary[600],
+    border = base.palette.primary[600],
     cursorLine = base.bg.mantle,
     nontext = base.fg.dim,
     float = {
       title = base.theme.primary,
       fg = base.fg.strong,
       bg = base.bg.mantle,
-      border = { fg = base.theme.palette.primary[600], bg = base.bg.mantle },
+      border = { fg = base.palette.primary[600], bg = base.bg.mantle },
     },
     diag = {
       error = { fg = p.diag.error.fg, bg = p.diag.error.bg },

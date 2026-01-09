@@ -11,7 +11,10 @@ local force_aaa = opts.contrast and opts.contrast.force_aaa or opts.contrast.min
 local base = {
   bg = theme.bg,
   fg = theme.fg,
-  -- General colors
+  palette = {
+    primary = p.teal,
+    secondary = p.sunrise,
+  },
   theme = {
     strong_primary = p.teal[700],
     primary = p.teal[600],
@@ -19,18 +22,16 @@ local base = {
     secondary = p.sunrise[500],
     accent = p.lavender[500],
     cursor = p.khaki[500],
-    palette = {
-      primary = p.teal,
-    },
   },
 }
 
-local primary = base.theme.palette.primary
+local primary = base.palette.primary
 
 -- Dark mode palette
 local dark = {
   bg = base.bg,
   fg = base.fg,
+  palette = base.palette,
   theme = base.theme,
   terminal = p.terminal,
   diff = vim.tbl_extend("force", p.diff, { change = theme.bg.surface }),
