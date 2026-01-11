@@ -60,7 +60,7 @@ return function(c, palette_name)
     ErrorMsg                   = { fg=c.ui.diag.error.fg, bg=c.ui.diag.error.bg }, -- Error messages on the command line
     Folded                     = { fg=c.syntax.statement, bg=c.bg.surface }, -- Line used for closed folds
     FoldColumn                 = { fg=c.fg.muted, bg=c.bg.core }, -- 'foldcolumn'
-    SignColumn                 = { fg=c.fg.muted, bg=c.bg.core }, -- Column where |signs| are displayed
+    SignColumn                 = { fg=c.fg.muted, bg="NONE" }, -- Column where |signs| are displayed
     IncSearch                  = { fg=c.ui.match.fg, bg=c.ui.match.bg }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     Search                     = { fg=c.fg.strong, bg=c.ui.search.bg }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
     Substitute                 = "Search", -- |:substitute| replacement text highlighting
@@ -69,7 +69,7 @@ return function(c, palette_name)
     LineNrBelow                = "LineNr", -- Line number for when the 'relativenumber' option is set, below the cursor line
     CursorLineNr               = { fg=c.ui.lineNumber, bg=(c.bg.gutter or "NONE"), bold=true }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     CursorLineFold             = { bg=c.bg.core }, -- Like FoldColumn when 'cursorline' is set for the cursor line
-    CursorLineSign             = { bg=c.bg.core }, -- Like SignColumn when 'cursorline' is set for the cursor line
+    CursorLineSign             = { bg="NONE" }, -- Like SignColumn when 'cursorline' is set for the cursor line
     MatchParen                 = { fg=c.ui.match.bg, bg=c.ui.search.bg, bold=true }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     ModeMsg                    = { fg=c.syntax.statement, bold=true }, -- 'showmode' message (e.g., "-- INSERT -- ")
     MsgArea                    = { fg=c.syntax.statement }, -- Area for messages and cmdline
