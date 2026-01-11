@@ -51,11 +51,24 @@ end
 
 -- Map of plugin detection name to highlight module path
 local PLUGIN_MODULES = {
-  ["lazy"] = "oasis.integrations.plugins.lazy",
-  ["which-key"] = "oasis.integrations.plugins.which_key",
-  ["snacks"] = "oasis.integrations.plugins.snacks",
   ["fzf-lua"] = "oasis.integrations.plugins.fzf_lua",
   ["gitsigns"] = "oasis.integrations.plugins.gitsigns",
+  ["lazy"] = "oasis.integrations.plugins.lazy",
+  ["mini.clue"] = "oasis.integrations.plugins.mini_clue",
+  ["mini.cmdline"] = "oasis.integrations.plugins.mini_cmdline",
+  ["mini.completion"] = "oasis.integrations.plugins.mini_completion",
+  ["mini.diff"] = "oasis.integrations.plugins.mini_diff",
+  ["mini.files"] = "oasis.integrations.plugins.mini_files",
+  ["mini.icons"] = "oasis.integrations.plugins.mini_icons",
+  ["mini.jump"] = "oasis.integrations.plugins.mini_jump",
+  ["mini.map"] = "oasis.integrations.plugins.mini_map",
+  ["mini.pick"] = "oasis.integrations.plugins.mini_pick",
+  ["mini.starter"] = "oasis.integrations.plugins.mini_starter",
+  ["mini.statusline"] = "oasis.integrations.plugins.mini_statusline",
+  ["mini.tabline"] = "oasis.integrations.plugins.mini_tabline",
+  ["mini.trailspace"] = "oasis.integrations.plugins.mini_trailspace",
+  ["snacks"] = "oasis.integrations.plugins.snacks",
+  ["which-key"] = "oasis.integrations.plugins.which_key",
 }
 
 -- TODO: Maybe make each plugin an opt-in from config?
