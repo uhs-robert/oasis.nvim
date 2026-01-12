@@ -73,7 +73,10 @@ function Oasis.cycle_intensity(show_picker)
         cfg.light_intensity = selected_intensity_number
         Oasis.apply(Oasis.styles.current)
         local indicator = string.rep("●", cfg.light_intensity) .. string.rep("○", 5 - cfg.light_intensity)
-        vim.notify(string.format("Oasis light intensity: %d/5 %s", cfg.light_intensity, indicator), vim.log.levels.INFO)
+        vim.notify(
+          string.format("Oasis light intensity: **%d/5 %s**", cfg.light_intensity, indicator),
+          vim.log.levels.INFO
+        )
       else
         vim.notify("Oasis light intensity selection cancelled", vim.log.levels.INFO)
       end
