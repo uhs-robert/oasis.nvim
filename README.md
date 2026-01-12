@@ -5,10 +5,10 @@
 </p>
 <hr/>
 <p align="center">
-  <a href="https://github.com/uhs-robert/oasis.nvim/stargazers"><img src="https://img.shields.io/github/stars/uhs-robert/oasis.nvim?colorA=192330&colorB=khaki&style=for-the-badge&cacheSeconds=4300"></a>
-  <a href="https://github.com/uhs-robert/oasis.nvim/issues"><img src="https://img.shields.io/github/issues/uhs-robert/oasis.nvim?colorA=192330&colorB=skyblue&style=for-the-badge&cacheSeconds=4300"></a>
-  <a href="https://github.com/uhs-robert/oasis.nvim/contributors"><img src="https://img.shields.io/github/contributors/uhs-robert/oasis.nvim?colorA=192330&colorB=8FD1C7&style=for-the-badge&cacheSeconds=4300"></a>
-  <a href="https://github.com/uhs-robert/oasis.nvim/network/members"><img src="https://img.shields.io/github/forks/uhs-robert/oasis.nvim?colorA=192330&colorB=C799FF&style=for-the-badge&cacheSeconds=4300"></a>
+  <a href="https://github.com/uhs-robert/oasis.nvim/stargazers"><img src="https://img.shields.io/github/stars/uhs-robert/oasis.nvim?colorA=192330&colorB=khaki&style=for-the-badge&cacheSeconds=4300" alt="Stargazers"></a>
+  <a href="https://github.com/uhs-robert/oasis.nvim/issues"><img src="https://img.shields.io/github/issues/uhs-robert/oasis.nvim?colorA=192330&colorB=skyblue&style=for-the-badge&cacheSeconds=4300" alt="Issues"></a>
+  <a href="https://github.com/uhs-robert/oasis.nvim/contributors"><img src="https://img.shields.io/github/contributors/uhs-robert/oasis.nvim?colorA=192330&colorB=8FD1C7&style=for-the-badge&cacheSeconds=4300" alt="Contributors"></a>
+  <a href="https://github.com/uhs-robert/oasis.nvim/network/members"><img src="https://img.shields.io/github/forks/uhs-robert/oasis.nvim?colorA=192330&colorB=C799FF&style=for-the-badge&cacheSeconds=4300" alt="Forks"></a>
 </p>
 
 ## 🌅 Overview
@@ -313,6 +313,7 @@ local function pick_colorscheme()
 end
 
 return {
+  {
     "uhs-robert/oasis.nvim",
     lazy = false,
     priority = 1000,
@@ -321,6 +322,7 @@ return {
       vim.cmd.colorscheme(pick_colorscheme())
     end
   }
+}
 ```
 
 <!-- user-themes:end-->
@@ -547,7 +549,7 @@ Thirsty for total control? You can override whatever you like.
 
 **`palette_overrides`** - Customize colors in palettes. Supports two methods for updating:
 
-### Static Table (no access to palette)
+### Palette Overrides: Static Table
 
 ```lua
 require("oasis").setup({
@@ -581,7 +583,7 @@ require("oasis").setup({
 })
 ```
 
-### Function (with palette access)
+### Palette Overrides: Function
 
 ```lua
 require("oasis").setup({
@@ -647,7 +649,7 @@ require("oasis").setup({
 
 **`highlight_overrides`** - Override or add highlight groups. Supports two methods for updating:
 
-### Static Table (no access to palette)
+### Highlight Overrides: Static Table
 
 ```lua
 require("oasis").setup({
@@ -686,7 +688,7 @@ require("oasis").setup({
 })
 ```
 
-### Function (with palette access)
+### Highlight Overrides: Function
 
 ```lua
 require("oasis").setup({
@@ -740,92 +742,92 @@ require("oasis").setup({
     <!-- dark-styles:start -->
     <a id="night-dark"></a>
     <h3>Night (Dark · Night Sky)</h3>
-    <img src="./assets/screenshots/night-dark-dashboard.png"></img>
-    <img src="./assets/screenshots/night-dark-code.png"></img>
+    <img src="./assets/screenshots/night-dark-dashboard.png" alt="Night dark mode dashboard"></img>
+    <img src="./assets/screenshots/night-dark-code.png" alt="Night dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="midnight-dark"></a>
     <h3>Midnight (Dark · Off Black)</h3>
-    <img src="./assets/screenshots/midnight-dark-dashboard.png"></img>
-    <img src="./assets/screenshots/midnight-dark-code.png"></img>
+    <img src="./assets/screenshots/midnight-dark-dashboard.png" alt="Midnight dark mode dashboard"></img>
+    <img src="./assets/screenshots/midnight-dark-code.png" alt="Midnight dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="abyss-dark"></a>
     <h3>Abyss (Dark · Black)</h3>
-    <img src="./assets/screenshots/abyss-dark-dashboard.png"></img>
-    <img src="./assets/screenshots/abyss-dark-code.png"></img>
+    <img src="./assets/screenshots/abyss-dark-dashboard.png" alt="Abyss dark mode dashboard"></img>
+    <img src="./assets/screenshots/abyss-dark-code.png" alt="Abyss dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="starlight-dark"></a>
     <h3>Starlight (Dark · Black Vivid)</h3>
-    <img src="./assets/screenshots/starlight-dark-dashboard.png"></img>
-    <img src="./assets/screenshots/starlight-dark-code.png"></img>
+    <img src="./assets/screenshots/starlight-dark-dashboard.png" alt="Starlight dark mode dashboard"></img>
+    <img src="./assets/screenshots/starlight-dark-code.png" alt="Starlight dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="desert-dark"></a>
     <h3>Desert (Dark · Grey)</h3>
-    <img src="./assets/screenshots/desert-dark-dashboard.png"></img>
-    <img src="./assets/screenshots/desert-dark-code.png"></img>
+    <img src="./assets/screenshots/desert-dark-dashboard.png" alt="Desert dark mode dashboard"></img>
+    <img src="./assets/screenshots/desert-dark-code.png" alt="Desert dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="sol-dark"></a>
     <h3>Sol (Dark · Red)</h3>
-    <img src="./assets/screenshots/sol-dark-dashboard.png"></img>
-    <img src="./assets/screenshots/sol-dark-code.png"></img>
+    <img src="./assets/screenshots/sol-dark-dashboard.png" alt="Sol dark mode dashboard"></img>
+    <img src="./assets/screenshots/sol-dark-code.png" alt="Sol dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="canyon-dark"></a>
     <h3>Canyon (Dark · Orange)</h3>
-    <img src="./assets/screenshots/canyon-dark-dashboard.png"></img>
-    <img src="./assets/screenshots/canyon-dark-code.png"></img>
+    <img src="./assets/screenshots/canyon-dark-dashboard.png" alt="Canyon dark mode dashboard"></img>
+    <img src="./assets/screenshots/canyon-dark-code.png" alt="Canyon dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="dune-dark"></a>
     <h3>Dune (Dark · Yellow)</h3>
-    <img src="./assets/screenshots/dune-dark-dashboard.png"></img>
-    <img src="./assets/screenshots/dune-dark-code.png"></img>
+    <img src="./assets/screenshots/dune-dark-dashboard.png" alt="Dune dark mode dashboard"></img>
+    <img src="./assets/screenshots/dune-dark-code.png" alt="Dune dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="cactus-dark"></a>
     <h3>Cactus (Dark · Green)</h3>
-    <img src="./assets/screenshots/cactus-dark-dashboard.png"></img>
-    <img src="./assets/screenshots/cactus-dark-code.png"></img>
+    <img src="./assets/screenshots/cactus-dark-dashboard.png" alt="Cactus dark mode dashboard"></img>
+    <img src="./assets/screenshots/cactus-dark-code.png" alt="Cactus dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="mirage-dark"></a>
     <h3>Mirage (Dark · Teal)</h3>
-    <img src="./assets/screenshots/mirage-dark-dashboard.png"></img>
-    <img src="./assets/screenshots/mirage-dark-code.png"></img>
+    <img src="./assets/screenshots/mirage-dark-dashboard.png" alt="Mirage dark mode dashboard"></img>
+    <img src="./assets/screenshots/mirage-dark-code.png" alt="Mirage dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="lagoon-dark"></a>
     <h3>Lagoon (Dark · Default)</h3>
-    <img src="./assets/screenshots/lagoon-dark-dashboard.png"></img>
-    <img src="./assets/screenshots/lagoon-dark-code.png"></img>
+    <img src="./assets/screenshots/lagoon-dark-dashboard.png" alt="Lagoon dark mode dashboard"></img>
+    <img src="./assets/screenshots/lagoon-dark-code.png" alt="Lagoon dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="twilight-dark"></a>
     <h3>Twilight (Dark · Purple)</h3>
-    <img src="./assets/screenshots/twilight-dark-dashboard.png"></img>
-    <img src="./assets/screenshots/twilight-dark-code.png"></img>
+    <img src="./assets/screenshots/twilight-dark-dashboard.png" alt="Twilight dark mode dashboard"></img>
+    <img src="./assets/screenshots/twilight-dark-code.png" alt="Twilight dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="rose-dark"></a>
     <h3>Rose (Dark · Pink)</h3>
-    <img src="./assets/screenshots/rose-dark-dashboard.png"></img>
-    <img src="./assets/screenshots/rose-dark-code.png"></img>
+    <img src="./assets/screenshots/rose-dark-dashboard.png" alt="Rose dark mode dashboard"></img>
+    <img src="./assets/screenshots/rose-dark-code.png" alt="Rose dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
@@ -837,92 +839,92 @@ require("oasis").setup({
   <a id="light-previews"></a>
     <a id="night-light"></a>
     <h3>Night (Light)</h3>
-    <img src="./assets/screenshots/night-light-3-dashboard.png"></img>
-    <img src="./assets/screenshots/night-light-3-code.png"></img>
+    <img src="./assets/screenshots/night-light-3-dashboard.png" alt="Night light mode dashboard"></img>
+    <img src="./assets/screenshots/night-light-3-code.png" alt="Night light mode code sample"></img>
     <p align="center">
       <a href="#light-previews">↑ Back to Light Styles</a>
     </p>
     <a id="midnight-light"></a>
     <h3>Midnight (Light)</h3>
-    <img src="./assets/screenshots/midnight-light-3-dashboard.png"></img>
-    <img src="./assets/screenshots/midnight-light-3-code.png"></img>
+    <img src="./assets/screenshots/midnight-light-3-dashboard.png" alt="Midnight light mode dashboard"></img>
+    <img src="./assets/screenshots/midnight-light-3-code.png" alt="Midnight light mode code sample"></img>
     <p align="center">
       <a href="#light-previews">↑ Back to Light Styles</a>
     </p>
     <a id="abyss-light"></a>
     <h3>Abyss (Light)</h3>
-    <img src="./assets/screenshots/abyss-light-3-dashboard.png"></img>
-    <img src="./assets/screenshots/abyss-light-3-code.png"></img>
+    <img src="./assets/screenshots/abyss-light-3-dashboard.png" alt="Abyss light mode dashboard"></img>
+    <img src="./assets/screenshots/abyss-light-3-code.png" alt="Abyss light mode code sample"></img>
     <p align="center">
       <a href="#light-previews">↑ Back to Light Styles</a>
     </p>
     <a id="starlight-light"></a>
     <h3>Starlight (Light)</h3>
-    <img src="./assets/screenshots/starlight-light-3-dashboard.png"></img>
-    <img src="./assets/screenshots/starlight-light-3-code.png"></img>
+    <img src="./assets/screenshots/starlight-light-3-dashboard.png" alt="Starlight light mode dashboard"></img>
+    <img src="./assets/screenshots/starlight-light-3-code.png" alt="Starlight light mode code sample"></img>
     <p align="center">
       <a href="#light-previews">↑ Back to Light Styles</a>
     </p>
     <a id="desert-light"></a>
     <h3>Desert (Light)</h3>
-    <img src="./assets/screenshots/desert-light-3-dashboard.png"></img>
-    <img src="./assets/screenshots/desert-light-3-code.png"></img>
+    <img src="./assets/screenshots/desert-light-3-dashboard.png" alt="Desert light mode dashboard"></img>
+    <img src="./assets/screenshots/desert-light-3-code.png" alt="Desert light mode code sample"></img>
     <p align="center">
       <a href="#light-previews">↑ Back to Light Styles</a>
     </p>
     <a id="sol-light"></a>
     <h3>Sol (Light)</h3>
-    <img src="./assets/screenshots/sol-light-3-dashboard.png"></img>
-    <img src="./assets/screenshots/sol-light-3-code.png"></img>
+    <img src="./assets/screenshots/sol-light-3-dashboard.png" alt="Sol light mode dashboard"></img>
+    <img src="./assets/screenshots/sol-light-3-code.png" alt="Sol light mode code sample"></img>
     <p align="center">
       <a href="#light-previews">↑ Back to Light Styles</a>
     </p>
     <a id="canyon-light"></a>
     <h3>Canyon (Light)</h3>
-    <img src="./assets/screenshots/canyon-light-3-dashboard.png"></img>
-    <img src="./assets/screenshots/canyon-light-3-code.png"></img>
+    <img src="./assets/screenshots/canyon-light-3-dashboard.png" alt="Canyon light mode dashboard"></img>
+    <img src="./assets/screenshots/canyon-light-3-code.png" alt="Canyon light mode code sample"></img>
     <p align="center">
       <a href="#light-previews">↑ Back to Light Styles</a>
     </p>
     <a id="dune-light"></a>
     <h3>Dune (Light)</h3>
-    <img src="./assets/screenshots/dune-light-3-dashboard.png"></img>
-    <img src="./assets/screenshots/dune-light-3-code.png"></img>
+    <img src="./assets/screenshots/dune-light-3-dashboard.png" alt="Dune light mode dashboard"></img>
+    <img src="./assets/screenshots/dune-light-3-code.png" alt="Dune light mode code sample"></img>
     <p align="center">
       <a href="#light-previews">↑ Back to Light Styles</a>
     </p>
     <a id="cactus-light"></a>
     <h3>Cactus (Light)</h3>
-    <img src="./assets/screenshots/cactus-light-3-dashboard.png"></img>
-    <img src="./assets/screenshots/cactus-light-3-code.png"></img>
+    <img src="./assets/screenshots/cactus-light-3-dashboard.png" alt="Cactus light mode dashboard"></img>
+    <img src="./assets/screenshots/cactus-light-3-code.png" alt="Cactus light mode code sample"></img>
     <p align="center">
       <a href="#light-previews">↑ Back to Light Styles</a>
     </p>
     <a id="mirage-light"></a>
     <h3>Mirage (Light)</h3>
-    <img src="./assets/screenshots/mirage-light-3-dashboard.png"></img>
-    <img src="./assets/screenshots/mirage-light-3-code.png"></img>
+    <img src="./assets/screenshots/mirage-light-3-dashboard.png" alt="Mirage light mode dashboard"></img>
+    <img src="./assets/screenshots/mirage-light-3-code.png" alt="Mirage light mode code sample"></img>
     <p align="center">
       <a href="#light-previews">↑ Back to Light Styles</a>
     </p>
     <a id="lagoon-light"></a>
     <h3>Lagoon (Light)</h3>
-    <img src="./assets/screenshots/lagoon-light-3-dashboard.png"></img>
-    <img src="./assets/screenshots/lagoon-light-3-code.png"></img>
+    <img src="./assets/screenshots/lagoon-light-3-dashboard.png" alt="Lagoon light mode dashboard"></img>
+    <img src="./assets/screenshots/lagoon-light-3-code.png" alt="Lagoon light mode code sample"></img>
     <p align="center">
       <a href="#light-previews">↑ Back to Light Styles</a>
     </p>
     <a id="twilight-light"></a>
     <h3>Twilight (Light)</h3>
-    <img src="./assets/screenshots/twilight-light-3-dashboard.png"></img>
-    <img src="./assets/screenshots/twilight-light-3-code.png"></img>
+    <img src="./assets/screenshots/twilight-light-3-dashboard.png" alt="Twilight light mode dashboard"></img>
+    <img src="./assets/screenshots/twilight-light-3-code.png" alt="Twilight light mode code sample"></img>
     <p align="center">
       <a href="#light-previews">↑ Back to Light Styles</a>
     </p>
     <a id="rose-light"></a>
     <h3>Rose (Light)</h3>
-    <img src="./assets/screenshots/rose-light-3-dashboard.png"></img>
-    <img src="./assets/screenshots/rose-light-3-code.png"></img>
+    <img src="./assets/screenshots/rose-light-3-dashboard.png" alt="Rose light mode dashboard"></img>
+    <img src="./assets/screenshots/rose-light-3-code.png" alt="Rose light mode code sample"></img>
     <p align="center">
       <a href="#light-previews">↑ Back to Light Styles</a>
     </p>
