@@ -77,7 +77,7 @@ return function(c, palette_name)
     NonText                    = { fg=c.ui.nontext }, -- '@' at the end of the window, characters from 'showbreak' and other non-existant characters. See also |hl-EndOfBuffer|.
     EndOfBuffer                = "NonText", -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
     Normal                     = { fg=c.fg.core, bg=c.bg.core }, -- Normal text
-    NormalNC                   = { fg=c.fg.muted }, -- normal text in non-current windows
+    NormalNC                   = "Normal", -- normal text in non-current windows
     NormalFloat                = { fg=c.ui.float.fg, bg=c.ui.float.bg }, -- Normal text in floating windows.
     FloatBorder                = { fg=c.ui.float.border.fg, bg=c.ui.float.border.bg }, -- Border of floating windows.
     FloatTitle                 = { fg=c.ui.float.title, bg=c.ui.float.border.bg, bold=true }, -- Title of floating windows.
