@@ -188,6 +188,30 @@
 ---@field min_ratio? number Minimum WCAG contrast ratio (4.5-7.0)
 ---@field force_aaa? boolean Force AAA compliance (7.0:1)
 
+---@class OasisIntegrationsConfig Table of plugin integration toggles
+---@field default_enabled? boolean Default behavior for integrations (true = enable all, false = disable all)
+---@field plugins? OasisIntegrationOverrides Per-plugin enable/disable overrides
+
+---@class OasisIntegrationOverrides Per-plugin integration toggles
+---@field fzf_lua? boolean
+---@field gitsigns? boolean
+---@field lazy? boolean
+---@field mini_clue? boolean
+---@field mini_cmdline? boolean
+---@field mini_completion? boolean
+---@field mini_diff? boolean
+---@field mini_files? boolean
+---@field mini_icons? boolean
+---@field mini_jump? boolean
+---@field mini_map? boolean
+---@field mini_pick? boolean
+---@field mini_starter? boolean
+---@field mini_statusline? boolean
+---@field mini_tabline? boolean
+---@field mini_trailspace? boolean
+---@field snacks? boolean
+---@field which_key? boolean
+
 -- Base color scales
 ---@class OasisColorScale Tailwind-style numeric color scale
 ---@field [50] string Lightest shade
@@ -401,6 +425,7 @@
 ---@field highlight_overrides? OasisHighlightOverrides|OasisHighlightOverridesFunction Table of highlight group overrides or function returning overrides
 ---@field contrast? OasisContrastConfig Table of contrast settings (min_ratio, force_aaa)
 ---@field styles? OasisStyleConfig Table of text styling toggles (bold, italic, underline, undercurl, strikethrough)
+---@field integrations? OasisIntegrationsConfig Table of plugin integration toggles
 ---@field terminal_colors? boolean Apply colors to built-in terminal
 ---@field transparent? boolean Make backgrounds transparent
 
