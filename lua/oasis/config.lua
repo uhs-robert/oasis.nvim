@@ -53,11 +53,38 @@ Config.defaults = {
 	-- Additional toggles
 	terminal_colors = true,       -- Enable/disable terminal color setting
 	transparent = false,          -- Make backgrounds transparent (NONE)
+
+	-- Plugin integrations
+	integrations = {
+		default_enabled = true,     -- Default behavior: true = enable all, false = disable all
+		plugins = {
+			fzf_lua = true,
+			gitsigns = true,
+			lazy = true,
+			mini_clue = true,
+			mini_cmdline = true,
+			mini_completion = true,
+			mini_diff = true,
+			mini_files = true,
+			mini_icons = true,
+			mini_jump = true,
+			mini_map = true,
+			mini_pick = true,
+			mini_starter = true,
+			mini_statusline = true,
+			mini_tabline = true,
+			mini_trailspace = true,
+			snacks = true,
+			which_key = true,
+		},
+	},
 }
 -- stylua: ignore end
 
 -- Current active configuration
 Config.options = deepcopy(Config.defaults)
+Config.user_options = {}
+Config.user_plugins = {}
 
 --- Deep merge two tables
 ---@param base table The base table
@@ -81,6 +108,8 @@ end
 ---@param user_config table|nil User configuration to merge with defaults
 function Config.setup(user_config)
   user_config = user_config or {}
+  Config.user_options = user_config
+  Config.user_plugins = ((user_config.integrations or {}).plugins or {})
   Config.options = deep_merge(Config.defaults, user_config)
 end
 
@@ -88,6 +117,18 @@ end
 ---@return table config The current configuration
 function Config.get()
   return Config.options
+end
+
+--- Get user configuration (unmerged)
+---@return table config The user configuration table
+function Config.get_user()
+  return Config.user_options
+end
+
+--- Get user integrations plugin overrides
+---@return table plugins The user integrations plugins map
+function Config.get_user_plugins()
+  return Config.user_plugins
 end
 
 --- Get the full palette name from the configured style

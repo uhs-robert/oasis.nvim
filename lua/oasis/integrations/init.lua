@@ -29,51 +29,31 @@ end
 -- Plugin Highlight Loading (for lazy-loaded plugins)
 -------------------------------------------------------
 
--- Map of plugin detection name to highlight module path
-local PLUGIN_MODULES = {
-  ["fzf-lua"] = "oasis.integrations.plugins.fzf_lua",
-  ["gitsigns"] = "oasis.integrations.plugins.gitsigns",
-  ["lazy"] = "oasis.integrations.plugins.lazy",
-  ["mini.clue"] = "oasis.integrations.plugins.mini_clue",
-  ["mini.cmdline"] = "oasis.integrations.plugins.mini_cmdline",
-  ["mini.completion"] = "oasis.integrations.plugins.mini_completion",
-  ["mini.diff"] = "oasis.integrations.plugins.mini_diff",
-  ["mini.files"] = "oasis.integrations.plugins.mini_files",
-  ["mini.icons"] = "oasis.integrations.plugins.mini_icons",
-  ["mini.jump"] = "oasis.integrations.plugins.mini_jump",
-  ["mini.map"] = "oasis.integrations.plugins.mini_map",
-  ["mini.pick"] = "oasis.integrations.plugins.mini_pick",
-  ["mini.starter"] = "oasis.integrations.plugins.mini_starter",
-  ["mini.statusline"] = "oasis.integrations.plugins.mini_statusline",
-  ["mini.tabline"] = "oasis.integrations.plugins.mini_tabline",
-  ["mini.trailspace"] = "oasis.integrations.plugins.mini_trailspace",
-  ["snacks"] = "oasis.integrations.plugins.snacks",
-  ["which-key"] = "oasis.integrations.plugins.which_key",
-}
-
--- TODO: Maybe make each plugin an opt-in from config?
--- Check if a plugin is loaded in package.loaded
--- local function is_plugin_loaded(plugin_name)
--- 	return package.loaded[plugin_name] ~= nil
--- end
---
 --- Load highlights for all detected plugins
 ---@param c table Color palette
 ---@return table highlights Plugin highlight groups
 function Plugin.get_plugin_highlights(c)
+  local Config = require("oasis.config")
+  local integrations = (Config.get().integrations or {})
+  local default_enabled = integrations.default_enabled ~= false
+  local plugin_config = integrations.plugins or {}
+  local user_plugins = Config.get_user_plugins()
   local highlights = {}
 
-  for plugin_name, module_path in pairs(PLUGIN_MODULES) do
-    -- if is_plugin_loaded(plugin_name) then
-    local ok, apply_plugin_highlights = pcall(require, module_path)
-    if ok and type(apply_plugin_highlights) == "function" then
-      local plugin_highlights = apply_plugin_highlights(c)
-      -- Merge plugin highlights into main table
-      for name, attrs in pairs(plugin_highlights) do
-        highlights[name] = attrs
-      end
+  for plugin_name, _ in pairs(plugin_config) do
+    local enabled
+
+    if default_enabled then
+      enabled = plugin_config[plugin_name] ~= false
+    else
+      enabled = user_plugins[plugin_name] == true
     end
-    -- end
+
+    if enabled then
+      local module_path = "oasis.integrations.plugins." .. plugin_name
+      local ok, apply_plugin_highlights = pcall(require, module_path)
+      if ok and type(apply_plugin_highlights) == "function" then apply_plugin_highlights(c, highlights) end
+    end
   end
 
   return highlights

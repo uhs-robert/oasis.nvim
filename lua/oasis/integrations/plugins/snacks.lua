@@ -1,20 +1,16 @@
 -- lua/oasis/integrations/plugins/snacks.lua
 -- Highlights for snacks.nvim plugin
 
-return function(c)
-  return {
-    -- stylua: ignore start
-    -- Dashboard
-    SnacksDashboardHeader = "OasisStrongPrimary",
-    SnacksDashboardFile    = "OasisLightPrimary",
-    SnacksDashboardSpecial = "OasisAccent",
-    SnacksDashboardDesc    = "OasisSecondary",
+return function(_, hl)
+  -- Dashboard
+  hl.SnacksDashboardHeader = "OasisStrongPrimary"
+  hl.SnacksDashboardFile = "OasisLightPrimary"
+  hl.SnacksDashboardSpecial = "OasisAccent"
+  hl.SnacksDashboardDesc = "OasisSecondary"
 
-    -- Picker
-    SnacksPickerBoxTitle   = "OasisFloatSecondary",
-    SnacksPickerInputTitle = "OasisFloatSecondary",
-    SnacksPickerInputBorder= "OasisFloatSecondary",
-    SnacksPickerPrompt     = "Identifier",
-    -- stylua: ignore end
-  }
+  -- Picker
+  hl.SnacksPickerBoxTitle = "OasisFloatSecondary"
+  hl.SnacksPickerInputTitle = "OasisFloatSecondary"
+  hl.SnacksPickerInputBorder = "OasisFloatSecondary"
+  hl.SnacksPickerPrompt = "Identifier"
 end
