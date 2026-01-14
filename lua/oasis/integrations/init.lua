@@ -25,26 +25,6 @@ function Plugin.refresh_all()
   end
 end
 
---- Refresh a specific integration
----@param name string Integration name
-function Plugin.refresh(name)
-  local integration = Plugin._integrations[name]
-  if integration and integration.refresh then
-    local ok, err = pcall(integration.refresh)
-    if not ok then vim.notify(("Oasis integration '%s' refresh failed: %s"):format(name, err), vim.log.levels.WARN) end
-  end
-end
-
---- List all registered integrations
----@return string[] List of integration names
-function Plugin.list()
-  local names = {}
-  for name, _ in pairs(Plugin._integrations) do
-    table.insert(names, name)
-  end
-  return names
-end
-
 -------------------------------------------------------
 -- Plugin Highlight Loading (for lazy-loaded plugins)
 -------------------------------------------------------
