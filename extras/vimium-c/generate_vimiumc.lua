@@ -1,19 +1,17 @@
 #!/usr/bin/env lua
 -- extras/vimium-c/generate_vimiumc.lua
 -- Generates Vimium-C browser extension themes from Oasis color palettes
+-- Each theme file contains dual-mode CSS (day/night) for automatic switching
 
 -- Load shared utilities
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
-
-local function get_display_name(name)
-  return Utils.capitalize(name)
-end
+local Directory = require("oasis.lib.directory")
 
 local function extract_vimiumc_colors(name, palette)
   -- For desert theme, swap primary and secondary
-  local is_desert = name:match("desert") ~= nil or name:match("%..*$") and name:match("^(.+)%.") == "desert"
+  local is_desert = name:match("desert") ~= nil
   local primary = is_desert and palette.theme.secondary or palette.theme.primary
   local secondary = is_desert and palette.theme.primary or palette.theme.secondary
 
@@ -24,80 +22,27 @@ local function extract_vimiumc_colors(name, palette)
     bg_surface = palette.bg.surface,
     fg = palette.fg.core,
     fg_dim = palette.fg.muted,
-    link = palette.theme.strong_primary, -- Use dim foreground for links
-    border = palette.bg.mantle, -- Use mantle for borders
+    link = palette.theme.strong_primary,
+    border = palette.bg.mantle,
     primary = primary,
     light_primary = palette.theme.light_primary,
     secondary = secondary,
-    title_match = palette.theme.accent, -- Use string color for matches
-    link_match = secondary, -- Use secondary for link matches
+    title_match = palette.theme.accent,
+    link_match = secondary,
   }
 end
 
-local function list_palettes()
-  local palette_names = Utils.get_palette_names()
-  assert(#palette_names > 0, "No palettes found")
-
-  local light_themes = {}
-  local dark_themes = {}
-
-  for _, name in ipairs(palette_names) do
-    -- Load raw palette to check if dual-mode
-    local ok, raw_palette = pcall(require, "oasis.color_palettes.oasis_" .. name)
-    if not ok then goto continue end
-
-    -- Check if dual-mode palette
-    if Utils.is_dual_mode_palette(raw_palette) then
-      -- Add both modes to respective lists
-      local dark_display = get_display_name(name) .. " (Dark)"
-      local light_display = get_display_name(name) .. " (Light)"
-      table.insert(dark_themes, { name = name .. ".dark", display = dark_display })
-      table.insert(light_themes, { name = name .. ".light", display = light_display })
-    else
-      -- Legacy palette - categorize by light_mode flag
-      local display_name = get_display_name(name)
-      if raw_palette.light_mode then
-        table.insert(light_themes, { name = name, display = display_name })
-      else
-        table.insert(dark_themes, { name = name, display = display_name })
-      end
-    end
-
-    ::continue::
-  end
-
-  return light_themes, dark_themes
-end
-
-local function select_theme(label, themes)
-  print(string.format("\n%s:", label))
-  for i, theme in ipairs(themes) do
-    print(string.format("  %d. %s", i, theme.display))
-  end
-
-  local alternate_label = label:match("light") and "dark" or "light"
-  print(string.format("  %d. Use a %s theme instead", #themes + 1, alternate_label))
-
-  io.write(string.format("\nSelect %s (1-%d): ", label, #themes + 1))
-  local choice = tonumber(io.read())
-
-  if not choice or choice < 1 or choice > #themes + 1 then return nil, "Invalid selection" end
-
-  if choice > #themes then return "SWITCH_THEME_TYPE" end
-
-  return themes[choice].name
-end
-
-local function generate_vimiumc_css(day_name, night_name, day_palette, night_palette)
-  local day_colors = extract_vimiumc_colors(day_name, day_palette)
-  local night_colors = extract_vimiumc_colors(night_name, night_palette)
+local function generate_vimiumc_css(name, day_palette, night_palette, intensity)
+  local display_name = Utils.format_display_name(name)
+  local day_colors = extract_vimiumc_colors(name, day_palette)
+  local night_colors = extract_vimiumc_colors(name, night_palette)
 
   -- Read the CSS template
   local template = assert(File.read("./extras/vimium-c/vimium-c.css.erb"), "Missing vimium-c CSS template")
 
   local replacements = {
-    ["{{day_name}}"] = get_display_name(day_name),
-    ["{{night_name}}"] = get_display_name(night_name),
+    ["{{day_name}}"] = display_name .. " Light " .. intensity,
+    ["{{night_name}}"] = display_name .. " Dark",
     ["{{day_bg_core}}"] = day_colors.bg_core,
     ["{{day_bg_mantle}}"] = day_colors.bg_mantle,
     ["{{day_bg_surface}}"] = day_colors.bg_surface,
@@ -132,21 +77,6 @@ local function generate_vimiumc_css(day_name, night_name, day_palette, night_pal
 end
 
 local function main(args)
-  if args[1] == "--list" or args[1] == "-l" then
-    local light_themes, dark_themes = list_palettes()
-    print("\n=== Oasis Vimium-C Themes ===")
-    print("\nLight Themes:")
-    for i, theme in ipairs(light_themes) do
-      print(string.format("  %d. %s", i, theme.display))
-    end
-    print("\nDark Themes:")
-    for i, theme in ipairs(dark_themes) do
-      print(string.format("  %d. %s", i, theme.display))
-    end
-    print()
-    return
-  end
-
   if args[1] == "--help" or args[1] == "-h" then
     print([[
 Oasis Vimium-C Theme Generator
@@ -155,117 +85,97 @@ Usage:
   lua extras/vimium-c/generate_vimiumc.lua [options]
 
 Options:
-  -d, --day THEME     Specify day theme (light mode)
-  -n, --night THEME   Specify night theme (dark mode)
-  -l, --list          List all available themes
-  -h, --help          Show this help
+  -l, --list    List all available themes
+  -h, --help    Show this help
 
-Interactive Mode:
-  Running without arguments starts interactive mode where you can
-  select day and night themes from a menu.
+Output Structure:
+  themes/
+  ├── 1/        Light intensity 1 (brightest)
+  │   ├── oasis_lagoon.css
+  │   └── ...
+  ├── 2/
+  ├── 3/        Light intensity 3 (default)
+  ├── 4/
+  └── 5/        Light intensity 5 (darkest)
 
-Examples:
-  lua extras/vimium-c/generate_vimiumc.lua                    # Interactive mode
-  lua extras/vimium-c/generate_vimiumc.lua -d day -n lagoon   # CLI mode
-  lua extras/vimium-c/generate_vimiumc.lua --list             # List themes
+Each CSS file contains dual-mode themes (day/night) that automatically
+switch based on the browser's light/dark mode preference.
 ]])
     return
   end
 
-  print("\n=== Oasis Vimium-C Theme Generator ===")
-
-  local day_name, night_name
-
-  -- Check for CLI arguments
-  local i = 1
-  while i <= #args do
-    if args[i] == "-d" or args[i] == "--day" then
-      day_name = args[i + 1]
-      i = i + 2
-    elseif args[i] == "-n" or args[i] == "--night" then
-      night_name = args[i + 1]
-      i = i + 2
-    else
-      i = i + 1
+  if args[1] == "--list" or args[1] == "-l" then
+    local palette_names = Utils.get_palette_names()
+    print("\n=== Available Oasis Themes ===\n")
+    for i, name in ipairs(palette_names) do
+      print(string.format("  %d. %s", i, Utils.capitalize(name)))
     end
+    print(string.format("\nTotal: %d dual-mode themes", #palette_names))
+    print("Each theme generates 5 intensity variants (light modes 1-5)\n")
+    return
   end
 
-  -- Interactive mode if not specified via CLI
-  if not day_name or not night_name then
-    local light_themes, dark_themes = list_palettes()
+  print("\n=== Oasis Vimium-C Theme Generator ===\n")
 
-    if not day_name then
-      local name
-      local select_err
-      local is_light = true
-      while not day_name do
-        local themes = is_light and light_themes or dark_themes
-        local label = is_light and "Day theme (light mode)" or "Day theme (dark mode)"
-        name, select_err = select_theme(label, themes)
-        if not name then
-          print("Error: " .. select_err)
-          return
-        end
+  local palette_names = Utils.get_palette_names()
 
-        if name == "SWITCH_THEME_TYPE" then
-          is_light = not is_light
-        else
-          day_name = name
-        end
+  if #palette_names == 0 then
+    print("Error: No palette files found in lua/oasis/color_palettes/")
+    return
+  end
+
+  print(string.format("Found %d dual-mode palette(s)\n", #palette_names))
+
+  local success_count = 0
+  local error_count = 0
+
+  -- Iterate over each palette and generate 5 intensity variants
+  for _, name in ipairs(palette_names) do
+    local ok, raw_palette = pcall(require, "oasis.color_palettes.oasis_" .. name)
+    if not ok then
+      print(string.format("✗ Failed to load palette: %s", name))
+      error_count = error_count + 1
+      goto continue
+    end
+
+    -- Only process dual-mode palettes
+    if not Utils.is_dual_mode_palette(raw_palette) then
+      print(string.format("↷ Skipping legacy palette: %s", name))
+      goto continue
+    end
+
+    -- Get the dark palette (same for all intensity variants)
+    local night_palette = raw_palette.dark
+
+    -- Generate 5 light intensity variants
+    for intensity = 1, 5 do
+      local day_palette = Utils.generate_light_palette_at_intensity(name, intensity)
+      if not day_palette then
+        print(string.format("✗ Failed to generate light palette for %s at intensity %d", name, intensity))
+        error_count = error_count + 1
+        goto next_intensity
       end
+
+      -- Build output path: themes/{intensity}/oasis_{name}.css
+      local output_dir = string.format("extras/vimium-c/themes/%d", intensity)
+      Directory.create(output_dir)
+      local output_path = string.format("%s/oasis_%s.css", output_dir, name)
+
+      -- Generate and write CSS
+      local css = generate_vimiumc_css(name, day_palette, night_palette, intensity)
+      File.write(output_path, css)
+      print(string.format("✓ Generated: %s", output_path))
+      success_count = success_count + 1
+
+      ::next_intensity::
     end
 
-    if not night_name then
-      local name
-      local select_err
-      local is_dark = true
-      while not night_name do
-        local themes = is_dark and dark_themes or light_themes
-        local label = is_dark and "Night theme (dark mode)" or "Night theme (light mode)"
-        name, select_err = select_theme(label, themes)
-        if not name then
-          print("Error: " .. select_err)
-          return
-        end
-
-        if name == "SWITCH_THEME_TYPE" then
-          is_dark = not is_dark
-        else
-          night_name = name
-        end
-      end
-    end
+    ::continue::
   end
 
-  -- Load palettes (handle dual-mode suffix if present)
-  local function load_palette_with_mode(name)
-    -- Check if name has mode suffix (e.g., "lagoon.dark")
-    local base_name, mode = name:match("^(.+)%.(.+)$")
-    if base_name and (mode == "dark" or mode == "light") then
-      -- Load raw palette and extract mode
-      local ok, raw_palette = pcall(require, "oasis.color_palettes.oasis_" .. base_name)
-      if ok and Utils.is_dual_mode_palette(raw_palette) then return raw_palette[mode] end
-    end
-    -- Legacy palette or no suffix - use standard loader
-    return Utils.load_palette(name)
-  end
-
-  local day_palette = load_palette_with_mode(day_name)
-  local night_palette = load_palette_with_mode(night_name)
-
-  -- Strip mode suffix for display/file names (e.g., "lagoon.dark" -> "lagoon")
-  local clean_day_name = day_name:match("^(.+)%..+$") or day_name
-  local clean_night_name = night_name:match("^(.+)%..+$") or night_name
-
-  -- Generate CSS
-  local css = generate_vimiumc_css(clean_day_name, clean_night_name, day_palette, night_palette)
-
-  -- Write to file
-  local output_path = string.format("extras/vimium-c/output/vimiumc-%s-%s.css", clean_night_name, clean_day_name)
-  File.write(output_path, css)
-  print(string.format("\n✓ Generated: %s", output_path))
-  print(string.format("  Day theme: Oasis %s", get_display_name(clean_day_name)))
-  print(string.format("  Night theme: Oasis %s\n", get_display_name(clean_night_name)))
+  print(string.format("\n=== Summary ==="))
+  print(string.format("Success: %d", success_count))
+  print(string.format("Errors: %d\n", error_count))
 end
 
 -- Run the generator

@@ -11,7 +11,7 @@ local System = require("oasis.lib.system")
 
 -- Generators to skip (require interactive input or special handling)
 local skip_list = {
-  ["generate_vimiumc.lua"] = true,
+  -- ["generate_vimiumc.lua"] = true,
 }
 
 local function find_generators()
@@ -78,7 +78,7 @@ end
 
 print("=== Summary ===")
 for _, result in ipairs(results) do
-  print(string.format("%-10s  Success: %2d  Errors: %d", result.name, result.success, result.errors))
+  print(string.format("%-11s  Success: %2d  Errors: %d", result.name, result.success, result.errors))
 end
 print()
 print(string.format("Total: %d themes generated, %d errors", total_success, total_errors))
