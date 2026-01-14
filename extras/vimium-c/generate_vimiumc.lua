@@ -23,13 +23,13 @@ local function extract_vimiumc_colors(name, palette)
     bg_mantle = palette.bg.mantle,
     bg_surface = palette.bg.surface,
     fg = palette.fg.core,
-    fg_dim = palette.fg.dim,
-    link = palette.fg.dim, -- Use dim foreground for links
+    fg_dim = palette.fg.muted,
+    link = palette.theme.strong_primary, -- Use dim foreground for links
     border = palette.bg.mantle, -- Use mantle for borders
     primary = primary,
     light_primary = palette.theme.light_primary,
     secondary = secondary,
-    title_match = palette.syntax.string, -- Use string color for matches
+    title_match = palette.theme.accent, -- Use string color for matches
     link_match = secondary, -- Use secondary for link matches
   }
 end
