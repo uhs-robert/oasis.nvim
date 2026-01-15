@@ -33,7 +33,7 @@ end
 function ScreenshotWorkflow:parse_variant(variant)
   -- e.g., "sol_dark" -> base="sol", mode="dark", intensity=nil
   --       "lagoon_light_3" -> base="lagoon", mode="light", intensity=3
-  --       "dawn" -> base="dawn", mode=nil, intensity=nil
+  --       "lagoon" -> base="lagoon", mode=nil, intensity=nil
   local base, mode, intensity = variant:match("^(.+)_(dark)$")
   if base then return base, mode, nil end
 

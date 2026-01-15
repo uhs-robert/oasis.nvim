@@ -140,7 +140,8 @@ switch based on the browser's light/dark mode preference.
 
     -- Only process dual-mode palettes
     if not Utils.is_dual_mode_palette(raw_palette) then
-      print(string.format("↷ Skipping legacy palette: %s", name))
+      print(string.format("✗ Palette is not dual-mode: %s", name))
+      error_count = error_count + 1
       goto continue
     end
 

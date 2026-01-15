@@ -7,7 +7,7 @@ function M.get(style)
   -- Default to lagoon if no style specified
   local palette_name = (style and ("oasis_" .. style)) or "oasis_lagoon"
 
-  -- Load and extract the specified palette (handles both legacy and dual-mode)
+  -- Load and extract the specified palette
   local Utils = require("oasis.utils")
   local c = Utils.load_and_extract_palette("oasis.color_palettes." .. palette_name)
   if not c then c = Utils.load_and_extract_palette("oasis.color_palettes.oasis_lagoon") end

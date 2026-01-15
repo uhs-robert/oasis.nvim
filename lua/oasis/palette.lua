@@ -154,27 +154,6 @@ local theme = {
     bg = { shadow = "#000000", core = "#000000", mantle = "#080808", surface = "#1A1A1A" },
     fg = { core = "#FAF7F0", strong = "#DCD9D2", dim = "#85665B", muted = "#4F5B6B", comment = "#5E7C9A" },
   },
-  -- Light themes
-  dawn = {
-    bg = { shadow = "#E9E0AE", core = "#EFE5B6", mantle = "#E3D8A4", surface = "#D7CC97" },
-    fg = { core = "#443725", strong = "#261E12", dim = "#54523A", muted = "#4E4D39", comment = "#456B80" },
-  },
-  dawnlight = {
-    bg = { shadow = "#E3D396", core = "#ECDFA3", mantle = "#DDD091", surface = "#D1C085" },
-    fg = { core = "#403423", strong = "#261E12", dim = "#504E3A", muted = "#4B4936", comment = "#43677b" },
-  },
-  day = {
-    bg = { shadow = "#DFC87D", core = "#E5D68B", mantle = "#DFC47A", surface = "#D3BA68" },
-    fg = { core = "#392E1D", strong = "#2A1F0F", dim = "#4B4934", muted = "#464430", comment = "#3E6174" },
-  },
-  dusk = {
-    bg = { shadow = "#E0C480", core = "#DCBA75", mantle = "#D5B36A", surface = "#CEAC5F" },
-    fg = { core = "#251C10", strong = "#2A1F0C", dim = "#3D3929", muted = "#373425", comment = "#3E5060" },
-  },
-  dust = {
-    bg = { shadow = "#CFA955", core = "#D4B165", mantle = "#C9A55A", surface = "#C39E4F" },
-    fg = { core = "#181309", strong = "#1C160B", dim = "#353224", muted = "#302D20", comment = "#31434C" },
-  },
 }
 
 -- Full palette with Tailwind-style numeric scales

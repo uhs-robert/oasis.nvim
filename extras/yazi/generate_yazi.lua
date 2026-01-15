@@ -133,16 +133,10 @@ local function main()
   local success_count, error_count = Utils.for_each_palette_variant(function(name, palette, mode, intensity)
     -- Build variant name with mode and optional intensity suffix
     local variant_name
-    if mode then
-      -- Dual-mode palette
-      if mode == "dark" then
-        variant_name = name .. "_dark"
-      else
-        variant_name = name .. "_light_" .. intensity
-      end
+    if mode == "dark" then
+      variant_name = name .. "_dark"
     else
-      -- Legacy flat palette
-      variant_name = name
+      variant_name = name .. "_light_" .. intensity
     end
 
     -- Build directory structure: themes/<mode>/[intensity/]flavors/oasis-<variant>.yazi/
