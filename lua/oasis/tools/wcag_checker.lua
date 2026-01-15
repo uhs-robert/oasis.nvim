@@ -62,10 +62,14 @@ function WcagChecker.analyze_palette(palette_name)
       return { error = "Mode " .. mode .. " not found in palette: " .. base_name }
     end
   else
-    -- Load legacy flat palette
+    -- Load palette by name (defaults to dark when dual-mode)
     local ok, loaded_palette = pcall(require, "oasis.color_palettes." .. palette_name)
     if not ok then return { error = "Failed to load palette: " .. palette_name } end
-    palette = loaded_palette
+    if Utils.is_dual_mode_palette(loaded_palette) then
+      palette = loaded_palette.dark
+    else
+      palette = loaded_palette
+    end
   end
 
   local results = {
@@ -229,7 +233,7 @@ function WcagChecker.print_palette_results(results)
   end
 end
 
---- Dynamically discover all available Oasis palette variants (excluding deprecated)
+--- Dynamically discover all available Oasis palette variants
 ---@return table Array of palette variant names (e.g., "oasis_lagoon.dark", "oasis_lagoon.light")
 local function discover_palettes()
   local palettes = {}

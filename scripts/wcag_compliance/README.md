@@ -64,22 +64,22 @@ lua scripts/wcag_compliance/wcag_calculator.lua '#EFE5B6' '#D26600' 7.0
 **Theme-based calculation (actual colors):**
 
 ```bash
-lua scripts/wcag_compliance/wcag_calculator.lua actual dawn
-# Calculates actual theme colors for 'dawn' and suggests compliant versions.
+lua scripts/wcag_compliance/wcag_calculator.lua actual lagoon
+# Calculates actual theme colors for 'lagoon' and suggests compliant versions.
 ```
 
 **Preset-based calculation (template reference colors):**
 
 ```bash
-lua scripts/wcag_compliance/wcag_calculator.lua presets dawn
-# Calculates reference 'BASE_COLORS' against the 'dawn' theme's background.
+lua scripts/wcag_compliance/wcag_calculator.lua presets lagoon
+# Calculates reference 'BASE_COLORS' against the 'lagoon' theme's background.
 ```
 
 **Check actual and presets simultaneously:**
 
 ```bash
-lua scripts/wcag_compliance/wcag_calculator.lua both dawn
-# Calculates both actual and preset colors for 'dawn' theme simultaneously.
+lua scripts/wcag_compliance/wcag_calculator.lua both lagoon
+# Calculates both actual and preset colors for 'lagoon' theme simultaneously.
 ```
 
 **Check all themes:**

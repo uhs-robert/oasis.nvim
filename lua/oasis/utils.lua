@@ -13,14 +13,6 @@ local function get_file()
 end
 local Utils = {}
 
-local DEPRECATED_PALETTES = {
-  dawn = true,
-  dawnlight = true,
-  day = true,
-  dusk = true,
-  dust = true,
-}
-
 -- Provide minimal `vim` compatibility when running outside Neovim (e.g., plain lua extras)
 -- Only fills missing pieces and never overrides an existing `vim` table/functions.
 local function ensure_vim_compat()
@@ -89,7 +81,7 @@ end
 --- @param palette table Palette table
 --- @param mode string|nil Explicit mode to select ("dark" or "light")
 --- @param fallback_mode string|nil Mode used when mode is nil (defaults to "dark")
---- @return table|nil extracted Palette variant or original palette for legacy tables
+--- @return table|nil extracted Palette variant
 --- @return string|nil err Error message (currently nil, reserved for parity)
 local function extract_palette_variant(palette, mode, fallback_mode)
   if Utils.is_dual_mode_palette(palette) then
@@ -116,19 +108,9 @@ function Utils.find_project_root()
   return nil
 end
 
---- Check if a palette is deprecated
---- @param name string Palette name with or without "oasis_" prefix
---- @return boolean
-function Utils.is_palette_deprecated(name)
-  local bare = name:gsub("^oasis_", "")
-  return DEPRECATED_PALETTES[bare] == true
-end
-
 --- Get list of available palette names from filesystem
---- @param include_deprecated boolean|nil Include deprecated palettes when true
 --- @return table List of palette names without "oasis_" prefix, sorted alphabetically
-function Utils.get_palette_names(include_deprecated)
-  local allow_deprecated = include_deprecated == true
+function Utils.get_palette_names()
   local handle = assert(io.popen("ls lua/oasis/color_palettes/oasis_*.lua 2>/dev/null"))
   local result = handle:read("*a")
   handle:close()
@@ -136,7 +118,7 @@ function Utils.get_palette_names(include_deprecated)
   local files = {}
   for file in result:gmatch("[^\n]+") do
     local name = file:match("oasis_(%w+)%.lua")
-    if name and (allow_deprecated or not Utils.is_palette_deprecated(name)) then table.insert(files, name) end
+    if name then table.insert(files, name) end
   end
 
   table.sort(files)
@@ -170,7 +152,6 @@ function Utils.get_palette_mode(palette_name)
 end
 
 --- Load and extract palette based on current background mode
---- Handles both legacy flat palettes and dual-mode palettes automatically
 --- @param palette_name string Palette module name (e.g., "oasis_lagoon")
 --- @param explicit_mode string|nil Force a specific mode ("dark" or "light"), overrides background detection
 --- @return table|nil, string|nil Extracted palette or nil, error message
@@ -207,7 +188,7 @@ function Utils.capitalize(str)
 end
 
 --- Format variant name for display (e.g., "lagoon_dark" -> "Oasis Lagoon Dark")
---- @param variant_name string Variant name (e.g., "lagoon_dark", "lagoon_light_3", "dawn")
+--- @param variant_name string Variant name (e.g., "lagoon_dark", "lagoon_light_3")
 --- @return string Formatted display name
 function Utils.format_display_name(variant_name)
   -- Strip optional oasis_ prefix to keep display names clean
@@ -271,12 +252,8 @@ if not (_G.vim and _G.vim.api) then ensure_vim_compat() end
 --- @param include_light_intensity boolean When true, generate 5 light intensity variants; otherwise single light
 --- @return number success_count
 --- @return number error_count
-local function iterate_palettes(callback, include_light_intensity, opts)
-  opts = opts or {}
-  local include_deprecated = opts.include_deprecated == true
-  local allow_legacy = opts.allow_legacy == true
-
-  local palette_names = Utils.get_palette_names(include_deprecated)
+local function iterate_palettes(callback, include_light_intensity)
+  local palette_names = Utils.get_palette_names()
   local success_count = 0
   local error_count = 0
 
@@ -323,17 +300,8 @@ local function iterate_palettes(callback, include_light_intensity, opts)
         end
       end
     else
-      if allow_legacy then
-        local ok_cb, err = pcall(callback, name, raw_palette, nil, nil)
-        if ok_cb then
-          success_count = success_count + 1
-        else
-          print(string.format("✗ Error processing %s: %s", name, err or "unknown error"))
-          error_count = error_count + 1
-        end
-      else
-        print(string.format("↷ Skipping legacy palette (deprecated): %s", name))
-      end
+      print(string.format("✗ Palette is not dual-mode: %s", name))
+      error_count = error_count + 1
     end
 
     ::continue::
@@ -342,13 +310,12 @@ local function iterate_palettes(callback, include_light_intensity, opts)
   return success_count, error_count
 end
 
---- Iterate over palette modes (dark + light for dual-mode; single call for legacy)
+--- Iterate over palette modes (dark + light for dual-mode)
 --- @param callback function Function(name, palette, mode) called per variant
---- @param opts table|nil Options: include_deprecated (bool), allow_legacy (bool)
 --- @return number success_count
 --- @return number error_count
-function Utils.for_each_palette_mode(callback, opts)
-  return iterate_palettes(callback, false, opts)
+function Utils.for_each_palette_mode(callback)
+  return iterate_palettes(callback, false)
 end
 
 --- Generate light palette at specific intensity level
@@ -384,47 +351,40 @@ function Utils.generate_light_palette_at_intensity(name, intensity)
 end
 
 --- Iterate over all palette modes with intensity variants for dual-mode palettes
---- For dual-mode palettes, generates 1 dark variant + 5 light intensity variants
---- For legacy palettes, calls callback once as before
+--- Generates 1 dark variant + 5 light intensity variants
 --- @param callback function Function(name, palette, mode, intensity) called for each variant
 ---                        - name: base palette name (e.g., "lagoon")
 ---                        - palette: extracted palette table
----                        - mode: "dark", "light", or nil for legacy palettes
----                        - intensity: 1-5 for light mode, nil for dark mode or legacy palettes
---- @param opts table|nil Options: include_deprecated (bool), allow_legacy (bool)
+---                        - mode: "dark" or "light"
+---                        - intensity: 1-5 for light mode, nil for dark mode
 --- @return number, number Success count, error count
-function Utils.for_each_palette_variant(callback, opts)
-  return iterate_palettes(callback, true, opts)
+function Utils.for_each_palette_variant(callback)
+  return iterate_palettes(callback, true)
 end
 
 --- Build output path for a palette variant
 --- All themes go in themes/<palette>/ folders for consistent organization
 --- @param base_dir string Base directory (e.g., "extras/alacritty")
 --- @param extension string File extension (e.g., "toml", "conf")
---- @param name string Palette name (e.g., "lagoon", "dawn")
---- @param mode string|nil "dark", "light", or nil for standalone palettes
+--- @param name string Palette name (e.g., "lagoon")
+--- @param mode string "dark" or "light"
 --- @param intensity number|nil Intensity level 1-5 for light mode
 --- @return string output_path Full path to output file
---- @return string variant_name Name used in the file (e.g., "lagoon_dark", "dawn")
+--- @return string variant_name Name used in the file (e.g., "lagoon_dark", "lagoon_light_3")
 --- @return string subdir Relative directory under themes/ (e.g., "dark", "light/3")
 function Utils.build_variant_path(base_dir, extension, name, mode, intensity)
   local variant_name
   local subdir
 
-  if mode then
-    -- Dual-mode palette
-    if mode == "dark" then
-      variant_name = name .. "_dark"
-      subdir = "dark"
-    else
-      if not intensity then error("Light mode requires an intensity value (1-5)") end
-      variant_name = name .. "_light_" .. intensity
-      subdir = string.format("light/%d", intensity)
-    end
+  if mode == "dark" then
+    variant_name = name .. "_dark"
+    subdir = "dark"
+  elseif mode == "light" then
+    if not intensity then error("Light mode requires an intensity value (1-5)") end
+    variant_name = name .. "_light_" .. intensity
+    subdir = string.format("light/%d", intensity)
   else
-    -- Standalone palette (e.g., dawn, day, desert)
-    variant_name = name
-    subdir = "legacy"
+    error("Palette mode must be 'dark' or 'light'")
   end
 
   -- All themes go in themes/<mode>/ (or light/<intensity>) for consistent organization
@@ -448,7 +408,7 @@ end
 --- @param base_dir string Base directory (e.g., "extras/lua-theme")
 --- @param extension string File extension (e.g., "lua", "json")
 --- @param name string Palette name (e.g., "lagoon")
---- @param mode string|nil "dark", "light", or nil for standalone palettes
+--- @param mode string "dark" or "light"
 --- @param intensity number|nil Intensity level 1-5 for light mode
 --- @return string output_path Full path to output file with display name
 --- @return string variant_name Internal variant name (e.g., "lagoon_dark")

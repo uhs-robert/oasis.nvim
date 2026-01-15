@@ -34,7 +34,7 @@ function Config.get_themes()
   package.path = Config.PROJECT_ROOT .. "/lua/?.lua;" .. Config.PROJECT_ROOT .. "/lua/?/init.lua;" .. package.path
 
   local Utils = require("oasis.utils")
-  local all_palettes = Utils.get_palette_names() -- excludes deprecated
+  local all_palettes = Utils.get_palette_names()
   local themes = {}
 
   for _, name in ipairs(all_palettes) do

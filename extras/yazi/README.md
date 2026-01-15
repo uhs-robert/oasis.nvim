@@ -25,7 +25,7 @@ Edit your `~/.config/yazi/theme.toml` to import the Oasis theme:
 ```toml
 [flavor]
 dark = "oasis-lagoon"
-light = "oasis-dawn"
+light = "oasis-lagoon-light-3"
 ```
 
 > [!NOTE]
