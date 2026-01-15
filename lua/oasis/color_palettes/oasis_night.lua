@@ -1,10 +1,14 @@
 -- lua/oasis/color_palettes/oasis_night.lua
 
 local Config = require("oasis.config")
-local LightTheme = require("oasis.tools.light_theme_generator")
 local p = require("oasis.palette")
 local opts = Config.get()
 local theme = p.theme.night
+
+-- Neovim: Only generate when needed. Extras: generate both.
+local in_neovim = vim.uv ~= nil or vim.loop ~= nil
+local need_light = not in_neovim or vim.o.background == "light"
+
 local light_seed = require("oasis.color_palettes.oasis_canyon").dark
 local target_lightness = { [1] = 84, [2] = 82, [3] = 80, [4] = 78, [5] = 76 }
 
@@ -95,22 +99,26 @@ local dark = {
 }
 
 -- Light mode configuration (backgrounds/ui/theme from night fg, syntax from canyon)
-local light_bg = LightTheme.generate_bg(base.fg.core, opts.light_intensity, { target_l_core = target_lightness })
-local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
-  search = { bg = p.visual.orange, fg = base.fg.core },
-  match = { bg = p.visual.red, fg = base.fg.core },
-})
-local light = {
-  light_mode = true,
-  bg = light_bg,
-  fg = LightTheme.generate_fg(light_seed.fg, light_bg.core, opts.light_intensity),
-  theme = LightTheme.generate_theme(dark.theme, opts.light_intensity),
-  terminal = LightTheme.generate_terminal(light_seed.terminal, light_bg.core, opts.light_intensity, opts.contrast),
-  diff = LightTheme.apply_contrast(dark.diff, light_bg.core),
-  git = LightTheme.apply_contrast(dark.git, light_bg.core),
-  syntax = LightTheme.generate_syntax(light_seed.syntax, light_bg.core, opts.light_intensity, nil, opts.contrast),
-  ui = LightTheme.generate_ui(light_ui, light_bg, opts.light_intensity),
-}
+local light
+if need_light then
+  local LightTheme = require("oasis.tools.light_theme_generator")
+  local light_bg = LightTheme.generate_bg(base.fg.core, opts.light_intensity, { target_l_core = target_lightness })
+  local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
+    search = { bg = p.visual.orange, fg = base.fg.core },
+    match = { bg = p.visual.red, fg = base.fg.core },
+  })
+  light = {
+    light_mode = true,
+    bg = light_bg,
+    fg = LightTheme.generate_fg(light_seed.fg, light_bg.core, opts.light_intensity),
+    theme = LightTheme.generate_theme(dark.theme, opts.light_intensity),
+    terminal = LightTheme.generate_terminal(light_seed.terminal, light_bg.core, opts.light_intensity, opts.contrast),
+    diff = LightTheme.apply_contrast(dark.diff, light_bg.core),
+    git = LightTheme.apply_contrast(dark.git, light_bg.core),
+    syntax = LightTheme.generate_syntax(light_seed.syntax, light_bg.core, opts.light_intensity, nil, opts.contrast),
+    ui = LightTheme.generate_ui(light_ui, light_bg, opts.light_intensity),
+  }
+end
 
 -- Return dual-mode palette
 return {
