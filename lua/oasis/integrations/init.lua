@@ -29,16 +29,15 @@ end
 -- Plugin Highlight Loading (for lazy-loaded plugins)
 -------------------------------------------------------
 
---- Load highlights for all detected plugins
+--- Apply plugin highlights directly to the highlights table
 ---@param c table Color palette
----@return table highlights Plugin highlight groups
-function Plugin.get_plugin_highlights(c)
+---@param highlights table Highlights table to mutate
+function Plugin.apply_plugin_highlights(c, highlights)
   local Config = require("oasis.config")
   local integrations = (Config.get().integrations or {})
   local default_enabled = integrations.default_enabled ~= false
   local plugin_config = integrations.plugins or {}
   local user_plugins = Config.get_user_plugins()
-  local highlights = {}
 
   for plugin_name, _ in pairs(plugin_config) do
     local enabled
@@ -51,12 +50,10 @@ function Plugin.get_plugin_highlights(c)
 
     if enabled then
       local module_path = "oasis.integrations.plugins." .. plugin_name
-      local ok, apply_plugin_highlights = pcall(require, module_path)
-      if ok and type(apply_plugin_highlights) == "function" then apply_plugin_highlights(c, highlights) end
+      local ok, apply_fn = pcall(require, module_path)
+      if ok and type(apply_fn) == "function" then apply_fn(c, highlights) end
     end
   end
-
-  return highlights
 end
 
 return Plugin
