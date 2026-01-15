@@ -22,6 +22,8 @@
 ---@field strong_primary? string
 ---@field light_primary? string
 ---@field secondary string
+---@field secondary_strong? string
+---@field secondary_light? string
 ---@field accent string
 
 ---@class OasisPaletteSyntax
@@ -97,8 +99,25 @@
 ---@field add string
 ---@field change string
 ---@field delete string
+---@field text string
 
 ---@class OasisPaletteTerminal
+---@field black string
+---@field red string
+---@field green string
+---@field yellow string
+---@field blue string
+---@field magenta string
+---@field cyan string
+---@field white string
+---@field bright_black string
+---@field bright_red string
+---@field bright_green string
+---@field bright_yellow string
+---@field bright_blue string
+---@field bright_magenta string
+---@field bright_cyan string
+---@field bright_white string
 ---@field color0 string
 ---@field color1 string
 ---@field color2 string
@@ -128,19 +147,7 @@
 ---@field terminal OasisPaletteTerminal
 
 -- Highlight types
----@class OasisHighlightAttrs Table for highlight attributes
----@field fg? string Foreground color
----@field bg? string Background color
----@field sp? string Special color (for undercurl, underline)
----@field bold? boolean Bold text
----@field italic? boolean Italic text
----@field underline? boolean Underline
----@field undercurl? boolean Undercurl (wavy underline)
----@field strikethrough? boolean Strikethrough
----@field reverse? boolean Reverse video
----@field standout? boolean Standout
----@field blend? number Blend level (0-100)
----@field link? string Link to another highlight group
+---@class OasisHighlightAttrs: vim.api.keyset.highlight Table for highlight attributes
 
 ---@alias OasisHighlightDefinition OasisHighlightAttrs|string
 
@@ -155,7 +162,8 @@
 ---@field light_4? OasisHighlightGroupMap
 ---@field light_5? OasisHighlightGroupMap
 
----@class OasisHighlightOverrides : OasisHighlightGroupMap
+---@class OasisHighlightOverrides
+---@field [string] OasisHighlightDefinition
 ---@field light? OasisHighlightGroupMap Global light mode overrides (all themes, all intensities)
 ---@field light_1? OasisHighlightGroupMap Global light intensity 1 overrides (all themes)
 ---@field light_2? OasisHighlightGroupMap Global light intensity 2 overrides (all themes)
@@ -183,6 +191,7 @@
 ---@field underline? boolean Enable/disable underline
 ---@field undercurl? boolean Enable/disable undercurl
 ---@field strikethrough? boolean Enable/disable strikethrough
+---@field all_enabled? boolean Internal: precomputed aggregate toggle
 
 ---@class OasisContrastConfig Table of contrast settings
 ---@field min_ratio? number Minimum WCAG contrast ratio (4.5-7.0)
@@ -354,8 +363,25 @@
 ---@field add? string
 ---@field change? string
 ---@field delete? string
+---@field text? string
 
 ---@class OasisPaletteTerminalOverrides
+---@field black? string
+---@field red? string
+---@field green? string
+---@field yellow? string
+---@field blue? string
+---@field magenta? string
+---@field cyan? string
+---@field white? string
+---@field bright_black? string
+---@field bright_red? string
+---@field bright_green? string
+---@field bright_yellow? string
+---@field bright_blue? string
+---@field bright_magenta? string
+---@field bright_cyan? string
+---@field bright_white? string
 ---@field color0? string
 ---@field color1? string
 ---@field color2? string
@@ -390,7 +416,8 @@
 
 ---@alias OasisPaletteOverrideMap table<string, OasisPaletteColorOverrides>
 
----@class OasisPaletteOverrides : OasisPaletteOverrideMap
+---@class OasisPaletteOverrides
+---@field [string] OasisPaletteColorOverrides
 ---@field light? OasisPaletteColorOverrides Global light mode overrides (all themes, all intensities)
 ---@field light_1? OasisPaletteColorOverrides Global light intensity 1 overrides (all themes)
 ---@field light_2? OasisPaletteColorOverrides Global light intensity 2 overrides (all themes)

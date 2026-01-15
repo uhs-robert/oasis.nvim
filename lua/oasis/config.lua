@@ -24,6 +24,7 @@ end
 
 -- Default configuration
 -- stylua: ignore start
+---@type OasisConfig
 Config.defaults = {
 	style = DEFAULT_DARK,         -- Primary style choice (default palette)
 	dark_style = "auto",          -- "auto" uses `style`, or specify a dark theme (e.g., "sol", "canyon")
@@ -81,6 +82,7 @@ Config.defaults = {
 -- stylua: ignore end
 
 -- Current active configuration
+---@type OasisConfig
 Config.options = deepcopy(Config.defaults)
 Config.user_options = {}
 Config.user_plugins = {}
@@ -110,16 +112,26 @@ function Config.setup(user_config)
   Config.user_options = user_config
   Config.user_plugins = ((user_config.integrations or {}).plugins or {})
   Config.options = deep_merge(Config.defaults, user_config)
+  local styles = Config.options.styles
+  if type(styles) ~= "table" then
+    styles = {}
+    Config.options.styles = styles
+  end
+  styles.all_enabled = styles.bold ~= false
+    and styles.italic ~= false
+    and styles.underline ~= false
+    and styles.undercurl ~= false
+    and styles.strikethrough ~= false
 end
 
 --- Get current configuration
----@return table config The current configuration
+---@return OasisConfig config The current configuration
 function Config.get()
   return Config.options
 end
 
 --- Get user configuration (unmerged)
----@return table config The user configuration table
+---@return OasisConfig config The user configuration table
 function Config.get_user()
   return Config.user_options
 end

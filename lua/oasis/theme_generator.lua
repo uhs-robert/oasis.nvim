@@ -1,50 +1,49 @@
 -- lua/oasis/theme_generator.lua
 
-return function(c, palette_name)
-  local LIGHT_MODE = c.light_mode or false
-  local Config = require("oasis.config").get()
-  local Overrides = require("oasis.lib.override_highlight")
-  local is_desert = palette_name and palette_name:match("desert")
+local Config = require("oasis.config")
 
-  -- Helper function to conditionally apply text styles based on config
-  local function apply_styles(attrs)
-    if type(attrs) ~= "table" then
-      return attrs -- Return as-is if it's a string (link reference)
-    end
+-- Groups to give transparency if enabled
+local TRANSPARENT_GROUPS = {
+  "Normal",
+  "NormalNC",
+  "NormalFloat",
+  "SignColumn",
+  "FoldColumn",
+  "StatusLine",
+  "StatusLineNC",
+  "TabLine",
+  "TabLineFill",
+  "Pmenu",
+  "PmenuSbar",
+  "CursorLine",
+  "ColorColumn",
+  "FloatBorder",
+}
 
-    local result = vim.deepcopy(attrs)
-    local styles = Config.styles or {}
-
-    -- Remove styles if disabled in config
-    if not styles.bold then result.bold = nil end
-    if not styles.italic then result.italic = nil end
-    if not styles.underline then result.underline = nil end
-    if not styles.undercurl then
-      result.undercurl = nil
-      result.sp = nil -- Remove special color for undercurl
-    end
-    if not styles.strikethrough then result.strikethrough = nil end
-
-    return result
-  end
+---Create the full highlight table for a palette.
+---@param c OasisPalette Color palette
+---@param light_mode boolean Whether palette is light mode
+---@param is_desert boolean Whether palette is desert variant
+---@return OasisHighlightGroupMap highlights
+local function create_highlights(c, light_mode, is_desert)
 
   -- stylua: ignore start
   local highlights = {
     -- Main Theme Colors (Highlights for plugins)
-    OasisStrongPrimary         = { fg=(is_desert and c.theme.secondary_strong or c.theme.strong_primary), bg="none" },
-    OasisPrimary               = { fg=(is_desert and c.theme.secondary or c.theme.primary), bg="none" },
-    OasisLightPrimary          = { fg=(is_desert and c.theme.secondary_light or c.theme.light_primary), bg="none" },
+    OasisStrongPrimary         = { fg=(is_desert and c.theme.secondary_strong or c.theme.strong_primary), bg="NONE" },
+    OasisPrimary               = { fg=(is_desert and c.theme.secondary or c.theme.primary), bg="NONE" },
+    OasisLightPrimary          = { fg=(is_desert and c.theme.secondary_light or c.theme.light_primary), bg="NONE" },
     OasisFloatPrimary          = { fg=c.theme.primary, bg=c.ui.float.border.bg },
-    OasisSecondary             = { fg=(is_desert and c.theme.primary or c.theme.secondary), bg="none" },
+    OasisSecondary             = { fg=(is_desert and c.theme.primary or c.theme.secondary), bg="NONE" },
     OasisFloatSecondary        = { fg=c.theme.secondary, bg=c.ui.float.border.bg },
-    OasisAccent                = { fg=c.theme.accent, bg="none" },
+    OasisAccent                = { fg=c.theme.accent, bg="NONE" },
 
     -- The following are the Neovim (as of 0.8.0-dev+100-g371dfb174) highlight
     -- groups, mostly used for styling UI elements.
     -- See :h highlight-groups
     ColorColumn                = { fg=c.fg.core, bg=c.bg.mantle }, -- Columns set with 'colorcolumn'
     Conceal                    = { fg=c.fg.muted }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
-    Cursor                     = { fg=c.bg.core, bg=(LIGHT_MODE and c.syntax.statement or c.terminal.yellow) }, -- Character under the cursor
+    Cursor                     = { fg=c.bg.core, bg=(light_mode and c.syntax.statement or c.terminal.yellow) }, -- Character under the cursor
     CurSearch                  = { fg=c.ui.match.fg, bg=c.ui.match.bg, bold=true }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
     lCursor                    = { fg=c.bg.core, bg=c.syntax.exception }, -- Character under the cursor when |language-mapping| is used (see 'guicursor')
     CursorIM                   = "Cursor", -- Like Cursor, but used when in IME mode |CursorIM|
@@ -108,7 +107,7 @@ return function(c, palette_name)
     MsgSeparator               = "StatusLine", -- Separator for scrolled messages, `msgsep` flag of 'display'
     Title                      = { fg=c.ui.title, bold=true }, -- Titles for output from ":set all", ":autocmd" etc.
     VertSplit                  = { fg=c.ui.border, bg=c.bg.mantle }, -- Column separating vertically split windows
-    Visual                     = { bg=c.ui.visual.bg, fg = (c.ui.fg_visual or "NONE") }, -- Visual mode selection
+    Visual                     = { bg=c.ui.visual.bg, fg = (c.ui.visual.fg or "NONE") }, -- Visual mode selection
     VisualNOS                  = { bg=c.ui.visual.bg }, -- Visual mode selection when vim is "Not Owning the Selection".
     WarningMsg                 = { fg=c.ui.diag.warn.fg, bold=true }, -- Warning messages
     Whitespace                 = "NonText", -- "nbsp", "space", "tab" and "trail" in 'listchars'
@@ -341,7 +340,7 @@ return function(c, palette_name)
   }
 
   -- Light mode overrides
-  if LIGHT_MODE then
+  if light_mode then
     -- Emphasize syntax
     highlights.MatchParen           = { fg=c.fg.core, bg=c.ui.search.bg, bold=true }
     highlights.Number               = { fg=c.syntax.constant, bold=true }
@@ -359,66 +358,113 @@ return function(c, palette_name)
   end
   -- stylua: ignore end
 
-  -- Load plugin highlights (lazy-loaded based on installed plugins)
-  local plugin_highlights = require("oasis.integrations").get_plugin_highlights(c)
-  for name, attrs in pairs(plugin_highlights) do
-    highlights[name] = attrs
+  return highlights
+end
+
+---Filter highlight attributes based on style toggles.
+---@param attrs OasisHighlightAttrs Highlight attributes
+---@param styles OasisStyleConfig Style configuration table
+---@param all_styles_enabled boolean Whether all styles are enabled
+---@return OasisHighlightAttrs filtered_attrs
+local function apply_styles(attrs, styles, all_styles_enabled)
+  if all_styles_enabled or type(attrs) ~= "table" then return attrs end
+
+  local result = {}
+  for k, v in pairs(attrs) do
+    result[k] = v
   end
-
-  -- Apply transparency if enabled
-  if Config.transparent then
-    local transparent_groups = {
-      "Normal",
-      "NormalNC",
-      "NormalFloat",
-      "SignColumn",
-      "FoldColumn",
-      "StatusLine",
-      "StatusLineNC",
-      "TabLine",
-      "TabLineFill",
-      "Pmenu",
-      "PmenuSbar",
-      "CursorLine",
-      "ColorColumn",
-      "FloatBorder",
-    }
-
-    for _, group in ipairs(transparent_groups) do
-      if highlights[group] and type(highlights[group]) == "table" then highlights[group].bg = "NONE" end
-    end
+  if not styles.bold then result.bold = nil end
+  if not styles.italic then result.italic = nil end
+  if not styles.underline then result.underline = nil end
+  if not styles.undercurl then
+    result.undercurl = nil
+    result.sp = nil
   end
+  if not styles.strikethrough then result.strikethrough = nil end
 
-  -- Apply base highlights first
-  for name, attrs in pairs(highlights) do
-    if type(attrs) == "table" then
-      vim.api.nvim_set_hl(0, name, apply_styles(attrs))
-    else
-      vim.api.nvim_set_hl(0, name, { link = attrs })
-    end
-  end
+  return result
+end
 
-  -- Apply user highlight overrides last (they take precedence)
-  local overrides = Overrides.resolve(c, palette_name, Config)
-  for name, attrs in pairs(overrides) do
-    if type(attrs) == "table" then
-      vim.api.nvim_set_hl(0, name, apply_styles(attrs))
-    else
-      vim.api.nvim_set_hl(0, name, { link = attrs })
-    end
-  end
-
-  -- Apply terminal colors
-  vim.o.termguicolors = true
-  if Config.terminal_colors and c.terminal then
-    for i = 0, 15 do
-      local key = ("color%d"):format(i)
-      local val = c.terminal[key]
-      if val and val ~= "NONE" then vim.g["terminal_color_" .. i] = val end
-    end
-
-    vim.g.terminal_color_background = c.bg.core
-    vim.g.terminal_color_foreground = c.fg.core
+---Apply transparency to configured highlight groups.
+---@param highlights OasisHighlightGroupMap Highlight groups table to mutate
+---@param transparent boolean Whether transparency is enabled
+local function apply_transparency(highlights, transparent)
+  if not transparent then return end
+  for _, group in ipairs(TRANSPARENT_GROUPS) do
+    if highlights[group] and type(highlights[group]) == "table" then highlights[group].bg = "NONE" end
   end
 end
--- vi:nowrap
+
+---Apply user highlight overrides (takes precedence).
+---@param c OasisPalette Color palette
+---@param palette_name string Palette name (e.g., "oasis_lagoon")
+---@param cfg OasisConfig Config table
+---@param styles OasisStyleConfig Style configuration table
+---@param all_styles_enabled boolean Whether all styles are enabled
+local function apply_user_overrides(c, palette_name, cfg, styles, all_styles_enabled)
+  local user_overrides = cfg.highlight_overrides
+  if user_overrides == nil or (type(user_overrides) == "table" and next(user_overrides) == nil) then return end
+
+  local Overrides = require("oasis.lib.override_highlight")
+  local overrides = Overrides.resolve(c, palette_name, cfg)
+  local set_hl = vim.api.nvim_set_hl
+  for name, attrs in pairs(overrides) do
+    if type(attrs) == "table" then
+      set_hl(0, name, apply_styles(attrs, styles, all_styles_enabled))
+    else
+      ---@cast attrs string
+      set_hl(0, name, { link = attrs })
+    end
+  end
+end
+
+---Apply highlight groups.
+---@param highlights OasisHighlightGroupMap Highlight groups table
+---@param styles OasisStyleConfig Style configuration table
+---@param all_styles_enabled boolean Whether all styles are enabled
+local function set_highlight_groups(highlights, styles, all_styles_enabled)
+  local set_hl = vim.api.nvim_set_hl
+  for name, attrs in pairs(highlights) do
+    if type(attrs) == "table" then
+      set_hl(0, name, all_styles_enabled and attrs or apply_styles(attrs, styles, all_styles_enabled))
+    else
+      ---@cast attrs string
+      set_hl(0, name, { link = attrs })
+    end
+  end
+end
+
+---Apply terminal colors from palette.
+---@param c OasisPalette Color palette
+---@param terminal_colors boolean Whether terminal colors are enabled
+local function apply_terminal_colors(c, terminal_colors)
+  vim.o.termguicolors = true
+  if not (terminal_colors and c.terminal) then return end
+
+  for i = 0, 15 do
+    local key = ("color%d"):format(i)
+    local val = c.terminal[key]
+    if val and val ~= "NONE" then vim.g["terminal_color_" .. i] = val end
+  end
+
+  vim.g.terminal_color_background = c.bg.core
+  vim.g.terminal_color_foreground = c.fg.core
+end
+
+---Apply highlight groups, integrations, and terminal colors for a palette.
+---@param c OasisPalette Color palette
+---@param palette_name string Palette name (e.g., "oasis_lagoon")
+return function(c, palette_name)
+  local light_mode = c.light_mode or false
+  local cfg = Config.get()
+  local is_desert = palette_name and palette_name:match("desert")
+  local styles = cfg.styles or {}
+  local all_styles_enabled = styles.all_enabled ~= false
+
+  local highlights = create_highlights(c, light_mode, is_desert)
+  require("oasis.integrations").apply_plugin_highlights(c, highlights)
+  apply_transparency(highlights, cfg.transparent)
+  set_highlight_groups(highlights, styles, all_styles_enabled)
+  apply_user_overrides(c, palette_name, cfg, styles, all_styles_enabled)
+  apply_terminal_colors(c, cfg.terminal_colors)
+end
