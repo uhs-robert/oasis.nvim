@@ -1,8 +1,16 @@
 -- lua/oasis/Utils.lua
 -- Common utilities for Oasis generator scripts
 
-local Directory = require("oasis.lib.directory")
-local File = require("oasis.lib.file")
+-- Lazy-loaded modules (only needed for generator scripts, not Neovim startup)
+local Directory, File
+local function get_directory()
+  if not Directory then Directory = require("oasis.lib.directory") end
+  return Directory
+end
+local function get_file()
+  if not File then File = require("oasis.lib.file") end
+  return File
+end
 local Utils = {}
 
 local DEPRECATED_PALETTES = {
@@ -99,7 +107,7 @@ function Utils.find_project_root()
   handle:close()
 
   for _ = 1, 4 do -- current dir + 3 parents
-    if File.exists(current .. "/lua/oasis/color_palettes") then return current end
+    if get_file().exists(current .. "/lua/oasis/color_palettes") then return current end
 
     current = current:match("(.+)/[^/]+$")
     if not current then break end
@@ -139,10 +147,8 @@ end
 --- @param palette table Palette table
 --- @return boolean True if dual-mode palette
 function Utils.is_dual_mode_palette(palette)
-  return palette.dark ~= nil
-    and palette.light ~= nil
-    and type(palette.dark) == "table"
-    and type(palette.light) == "table"
+  -- Check for dual-mode structure (has dark key, light may be lazy-loaded/nil)
+  return palette.dark ~= nil and type(palette.dark) == "table"
 end
 
 --- Get the mode of a palette ('light', 'dark', or 'dual') by inspecting it.
@@ -257,8 +263,8 @@ function Utils.deepcopy(orig)
   return copy
 end
 
--- Initialize compatibility shims once utilities are defined
-ensure_vim_compat()
+-- Initialize compatibility shims only for standalone Lua (generator scripts)
+if not (_G.vim and _G.vim.api) then ensure_vim_compat() end
 
 --- Internal iterator over palettes with optional light intensity sweep
 --- @param callback function Function(name, palette, mode, intensity) invoked per variant
@@ -423,7 +429,7 @@ function Utils.build_variant_path(base_dir, extension, name, mode, intensity)
 
   -- All themes go in themes/<mode>/ (or light/<intensity>) for consistent organization
   local output_dir = string.format("%s/themes/%s", base_dir, subdir)
-  Directory.create(output_dir)
+  get_directory().create(output_dir)
 
   local filename
   if extension ~= nil and extension ~= "" then
@@ -453,7 +459,7 @@ function Utils.build_display_variant_path(base_dir, extension, name, mode, inten
   local display_name = Utils.format_display_name(variant_name)
 
   local output_dir = string.format("%s/themes/%s", base_dir, subdir)
-  Directory.create(output_dir)
+  get_directory().create(output_dir)
 
   local filename
   if extension ~= nil and extension ~= "" then

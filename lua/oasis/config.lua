@@ -1,7 +1,6 @@
 -- lua/oasis/config.lua
 
 local Config = {}
-local Utils = require("oasis.utils")
 local DEFAULT_DARK = "lagoon"
 local DEFAULT_LIGHT = "lagoon"
 local BASE_COLORS = nil
@@ -140,17 +139,9 @@ function Config.get_palette_name()
   -- Use dark_style/light_style based on background
   local style_option = bg == "light" and Config.options.light_style or Config.options.dark_style
 
-  -- Default to main `style` if `light_style`/`dark_style` is "auto"
-  if style_option == "auto" then
-    style_option = Config.options.style
-
-    -- Check if the configured style is compatible with current background or use defaults
-    local palette_name = "oasis_" .. style_option
-    local mode = Utils.get_palette_mode(palette_name)
-    if mode and mode ~= "dual" and mode ~= bg then style_option = bg == "light" and DEFAULT_LIGHT or DEFAULT_DARK end
-  end
-
-  if not style_option then return "oasis_" .. DEFAULT_DARK end
+  -- Default to main `style` or DEFAULT
+  if style_option == "auto" then style_option = Config.options.style end
+  if not style_option then return "oasis_" .. (bg == "light" and DEFAULT_LIGHT or DEFAULT_DARK) end
 
   -- Otherwise return the parsed palette
   local palette_name = "oasis_" .. style_option
@@ -162,6 +153,9 @@ end
 ---@param palette_name string The name of the palette (e.g., "oasis_desert")
 ---@return table palette The palette with overrides applied
 function Config.apply_palette_overrides(palette, palette_name)
+  local overrides = Config.options.palette_overrides
+  if type(overrides) == "table" and next(overrides) == nil then return palette end
+  if overrides == nil then return palette end
   local PaletteOverrides = require("oasis.lib.override_palette")
   return PaletteOverrides.resolve(palette, palette_name, Config.options)
 end
