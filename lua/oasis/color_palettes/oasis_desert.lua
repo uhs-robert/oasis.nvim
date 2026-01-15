@@ -1,10 +1,13 @@
 -- lua/oasis/color_palettes/oasis_desert.lua
 
 local Config = require("oasis.config")
-local LightTheme = require("oasis.tools.light_theme_generator")
 local p = require("oasis.palette")
 local opts = Config.get()
 local theme = p.theme.desert
+
+-- Neovim: Only generate when needed. Extras: generate both.
+local in_neovim = vim.uv ~= nil or vim.loop ~= nil
+local need_light = not in_neovim or vim.o.background == "light"
 
 -- General Reusable Colors
 local base = {
@@ -97,22 +100,26 @@ local dark = {
 }
 
 -- Light mode configuration
-local light_bg = LightTheme.generate_bg(base.fg.core, opts.light_intensity)
-local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
-  search = { bg = p.visual.yellow, fg = base.fg.core },
-  match = { bg = p.visual.orange, fg = base.fg.core },
-})
-local light = {
-  light_mode = true,
-  bg = light_bg,
-  fg = LightTheme.generate_fg(base.fg, light_bg.core, opts.light_intensity),
-  theme = LightTheme.generate_theme(base.theme, opts.light_intensity),
-  terminal = LightTheme.generate_terminal(p.terminal, light_bg.core, opts.light_intensity, opts.contrast),
-  diff = LightTheme.apply_contrast(dark.diff, light_bg.core),
-  git = LightTheme.apply_contrast(dark.git, light_bg.core),
-  syntax = LightTheme.generate_syntax(dark.syntax, light_bg.core, opts.light_intensity, nil, opts.contrast),
-  ui = LightTheme.generate_ui(light_ui, light_bg, opts.light_intensity),
-}
+local light
+if need_light then
+  local LightTheme = require("oasis.tools.light_theme_generator")
+  local light_bg = LightTheme.generate_bg(base.fg.core, opts.light_intensity)
+  local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
+    search = { bg = p.visual.yellow, fg = base.fg.core },
+    match = { bg = p.visual.orange, fg = base.fg.core },
+  })
+  light = {
+    light_mode = true,
+    bg = light_bg,
+    fg = LightTheme.generate_fg(base.fg, light_bg.core, opts.light_intensity),
+    theme = LightTheme.generate_theme(base.theme, opts.light_intensity),
+    terminal = LightTheme.generate_terminal(p.terminal, light_bg.core, opts.light_intensity, opts.contrast),
+    diff = LightTheme.apply_contrast(dark.diff, light_bg.core),
+    git = LightTheme.apply_contrast(dark.git, light_bg.core),
+    syntax = LightTheme.generate_syntax(dark.syntax, light_bg.core, opts.light_intensity, nil, opts.contrast),
+    ui = LightTheme.generate_ui(light_ui, light_bg, opts.light_intensity),
+  }
+end
 
 -- Return dual-mode palette
 return {
