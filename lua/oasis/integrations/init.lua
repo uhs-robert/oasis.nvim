@@ -6,7 +6,7 @@ local Plugin = {}
 -- Registry of active integrations (lualine, tabby, etc.)
 Plugin._integrations = {}
 
---- Register an integration
+--- Register a special edgecase integration (i.e, lualine/tabby)
 ---@param name string Integration name
 ---@param integration table Integration object with refresh() method
 function Plugin.register(name, integration)
@@ -21,37 +21,6 @@ function Plugin.refresh_all()
       if not ok then
         vim.notify(("Oasis integration '%s' refresh failed: %s"):format(name, err), vim.log.levels.WARN)
       end
-    end
-  end
-end
-
--------------------------------------------------------
--- Plugin Highlight Loading (for lazy-loaded plugins)
--------------------------------------------------------
-
---- Apply plugin highlights directly to the highlights table
----@param c table Color palette
----@param highlights table Highlights table to mutate
-function Plugin.apply_plugin_highlights(c, highlights)
-  local Config = require("oasis.config")
-  local integrations = (Config.get().integrations or {})
-  local default_enabled = integrations.default_enabled ~= false
-  local plugin_config = integrations.plugins or {}
-  local user_plugins = Config.get_user_plugins()
-
-  for plugin_name, _ in pairs(plugin_config) do
-    local enabled
-
-    if default_enabled then
-      enabled = plugin_config[plugin_name] ~= false
-    else
-      enabled = user_plugins[plugin_name] == true
-    end
-
-    if enabled then
-      local module_path = "oasis.integrations.plugins." .. plugin_name
-      local ok, apply_fn = pcall(require, module_path)
-      if ok and type(apply_fn) == "function" then apply_fn(c, highlights) end
     end
   end
 end
