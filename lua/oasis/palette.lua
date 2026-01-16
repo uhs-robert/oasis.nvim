@@ -5,7 +5,7 @@
 -- stylua: ignore start
 local terminal = {
 	black =               "#101010",
-	bright_black =        "#504641",
+	bright_black =        "#877363", -- Overridden by theme
 	red =                 "#FF7979",
 	bright_red =          "#FFA0A0",
 	green =               "#53D390",
