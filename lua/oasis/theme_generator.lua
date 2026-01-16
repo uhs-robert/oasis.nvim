@@ -294,7 +294,7 @@ local function create_highlights(c, light_mode, is_desert)
     ["@diff.minus"]           = { fg=c.diff.delete }, -- deleted text (for diff files)
     ["@diff.delta"]           = { fg=c.diff.change }, -- changed text (for diff files)
 
-    -- -- LSP
+    -- LSP
     ["@lsp.type.boolean"]                      = "@boolean",
     ["@lsp.type.builtinType"]                  = "@type.builtin",
     ["@lsp.type.comment"]                      = "@comment",
@@ -359,6 +359,190 @@ local function create_highlights(c, light_mode, is_desert)
   -- stylua: ignore end
 
   return highlights
+end
+
+-- Table of plugin highlight group functions
+---@alias PluginGroupFn fun(hl: OasisHighlightGroupMap, c: OasisPalette, light_mode: boolean|nil, is_desert: boolean|nil)
+---@type table<string, PluginGroupFn>
+local PLUGIN_GROUPS = {
+
+  -- FZF Lua
+  fzf_lua = function(hl)
+    hl.FzfLuaBorder = "FloatBorder"
+    hl.FzfLuaTitle = "OasisFloatSecondary"
+  end,
+
+  -- Git Signs
+  gitsigns = function(hl, c, light_mode)
+    if light_mode then
+      hl.GitSignsAdd = { fg = c.git.add, bg = c.bg.core }
+      hl.GitSignsChange = { fg = c.git.change, bg = c.bg.core }
+      hl.GitSignsDelete = { fg = c.git.delete, bg = c.bg.core }
+    else
+      hl.GitSignsAdd = { fg = c.git.add }
+      hl.GitSignsChange = { fg = c.git.change }
+      hl.GitSignsDelete = { fg = c.git.delete }
+    end
+  end,
+
+  -- Lazy
+  lazy = function(hl, c)
+    hl.LazyH1 = { fg = c.theme.primary, bold = true }
+    hl.LazyH2 = { fg = c.theme.light_primary, bold = true }
+    hl.lazyActiveBorder = "Identifier"
+  end,
+
+  -- Mini Clue
+  mini_clue = function(hl)
+    hl.MiniClueNextKey = "Statement"
+    hl.MiniClueDescGroup = "OasisSecondary"
+    hl.MiniClueDescSingle = "OasisLightPrimary"
+  end,
+
+  -- Mini Cmdline
+  mini_cmdline = function(hl, c)
+    hl.MiniCmdlinePeekSep = { fg = c.fg.muted, bg = c.ui.float.bg }
+  end,
+
+  -- Mini Completion
+  mini_completion = function(hl, c)
+    hl.MiniCompletionActiveParameter = { bg = c.bg.surface }
+  end,
+
+  -- Mini Diff
+  mini_diff = function(hl, c)
+    hl.MiniDiffSignAdd = { fg = c.git.add }
+    hl.MiniDiffSignChange = { fg = c.git.change }
+    hl.MiniDiffSignDelete = { fg = c.git.delete }
+  end,
+
+  -- Mini Files
+  mini_files = function(hl, c)
+    hl.MiniFilesCursorLine = "PmenuSel"
+    hl.MiniFilesBorderModified = { fg = c.ui.diag.warn.fg, bg = c.ui.float.bg }
+    hl.MiniFilesTitleFocused = { fg = c.theme.secondary, bg = c.ui.float.bg, bold = true }
+  end,
+
+  -- Mini Icons
+  mini_icons = function(hl, c)
+    hl.MiniIconsAzure = { fg = c.terminal.blue }
+    hl.MiniIconsBlue = { fg = c.terminal.bright_blue }
+    hl.MiniIconsCyan = { fg = c.terminal.cyan }
+    hl.MiniIconsGreen = { fg = c.terminal.green }
+    hl.MiniIconsGrey = { fg = c.terminal.white }
+    hl.MiniIconsOrange = { fg = c.terminal.bright_yellow }
+    hl.MiniIconsPurple = { fg = c.terminal.magenta }
+    hl.MiniIconsRed = { fg = c.terminal.red }
+    hl.MiniIconsYellow = { fg = c.terminal.yellow }
+  end,
+
+  -- Mini Jump
+  mini_jump = function(hl, c)
+    hl.MiniJump = { undercurl = true, sp = c.theme.cursor }
+  end,
+
+  -- Mini Map
+  mini_map = function(hl, c)
+    hl.MiniMapNormal = { fg = c.fg.comment, bg = c.ui.float.bg }
+    hl.MiniMapSymbolCount = { fg = c.fg.comment }
+  end,
+
+  -- Mini Pick
+  mini_pick = function(hl, c)
+    hl.MiniPickBorderBusy = { fg = c.ui.diag.warn.fg, bg = c.ui.float.bg }
+    hl.MiniPickMatchCurrent = "PmenuSel"
+    hl.MiniPickMatchMarked = "Search"
+    hl.MiniPickMatchRanges = "PmenuMatch"
+    hl.MiniPickPreviewLine = { bg = c.ui.visual.bg }
+    hl.MiniPickPrompt = { fg = c.ui.float.fg, bg = c.ui.float.bg, bold = true }
+    hl.MiniPickPromptPrefix = { fg = c.ui.float.title, bg = c.ui.float.bg, bold = true }
+  end,
+
+  -- Mini Starter
+  mini_starter = function(hl, c)
+    hl.MiniStarterFooter = "Comment"
+    hl.MiniStarterInactive = { fg = c.fg.muted }
+    hl.MiniStarterSection = "OasisSecondary"
+    hl.MiniStarterItemPrefix = { fg = c.theme.strong_primary, bold = true }
+    hl.MiniStarterQuery = { fg = c.theme.accent, bold = true }
+  end,
+
+  -- Mini Statusline
+  mini_statusline = function(hl, c)
+    hl.MiniStatuslineModeNormal = { bg = c.syntax.statement, fg = c.bg.core }
+    hl.MiniStatuslineModeInsert = { bg = c.syntax.string, fg = c.bg.core }
+    hl.MiniStatuslineModeCommand = { bg = c.syntax.parameter, fg = c.bg.core }
+    hl.MiniStatuslineModeVisual = { bg = c.syntax.special, fg = c.bg.core }
+    hl.MiniStatuslineModeReplace = { bg = c.syntax.operator, fg = c.bg.core }
+    hl.MiniStatuslineModeOther = { bg = c.syntax.type, fg = c.bg.core }
+    hl.MiniStatuslineDevInfo = { fg = c.syntax.statement, bg = c.bg.surface }
+    hl.MiniStatuslineFileInfo = { fg = c.syntax.statement, bg = c.bg.surface }
+    hl.MiniStatuslineFilename = { fg = c.theme.light_primary, bg = c.bg.mantle }
+    hl.MiniStatuslineInactive = { fg = c.fg.comment, bg = c.bg.surface }
+  end,
+
+  -- Mini Tabline
+  mini_tabline = function(hl, c)
+    hl.MiniTablineCurrent = { fg = c.theme.secondary, bg = c.bg.surface, bold = true }
+    hl.MiniTablineFill = "TabLineFill"
+    hl.MiniTablineHidden = "TabLine"
+    hl.MiniTablineModifiedCurrent = { fg = c.bg.core, bg = c.theme.secondary, bold = true }
+    hl.MiniTablineModifiedHidden = { fg = c.bg.core, bg = c.ui.border }
+    hl.MiniTablineModifiedVisible = { fg = c.bg.core, bg = c.ui.border, bold = true }
+    hl.MiniTablineTabpagesection = { fg = c.bg.core, bg = c.theme.accent }
+    hl.MiniTablineVisible = { fg = c.ui.border, bg = c.bg.surface, bold = true }
+  end,
+
+  -- Mini Trailspace
+  mini_trailspace = function(hl, c)
+    hl.MiniTrailspace = { bg = c.syntax.exception }
+  end,
+
+  -- Snacks
+  snacks = function(hl)
+    hl.SnacksDashboardHeader = "OasisStrongPrimary"
+    hl.SnacksDashboardFile = "OasisLightPrimary"
+    hl.SnacksDashboardSpecial = "OasisAccent"
+    hl.SnacksDashboardDesc = "OasisSecondary"
+    hl.SnacksPickerBoxTitle = "OasisFloatSecondary"
+    hl.SnacksPickerInputTitle = "OasisFloatSecondary"
+    hl.SnacksPickerInputBorder = "OasisFloatSecondary"
+    hl.SnacksPickerPrompt = "Identifier"
+  end,
+
+  -- Which Key
+  which_key = function(hl)
+    hl.WhichKey = "Statement"
+    hl.WhichKeyDesc = "OasisLightPrimary"
+    hl.WhichKeyGroup = "OasisSecondary"
+  end,
+}
+
+---Create plugin highlights for enabled integrations.
+---@param c OasisPalette Color palette
+---@param highlights OasisHighlightGroupMap Highlight groups table to mutate
+---@param light_mode boolean Whether palette is light mode
+---@param is_desert boolean Whether palette is desert variant
+local function create_plugin_highlights(c, highlights, light_mode, is_desert)
+  local integrations = (Config.get().integrations or {})
+  local default_enabled = integrations.default_enabled ~= false
+  local plugin_config = integrations.plugins or {}
+  local user_plugins = Config.get_user_plugins()
+
+  for plugin_name, _ in pairs(plugin_config) do
+    local enabled
+
+    if default_enabled then
+      enabled = plugin_config[plugin_name] ~= false -- Opt-out behaviour
+    else
+      enabled = user_plugins[plugin_name] == true -- Opt-in behaviour
+    end
+
+    if enabled then
+      local apply_fn = PLUGIN_GROUPS[plugin_name]
+      if type(apply_fn) == "function" then apply_fn(highlights, c, light_mode, is_desert) end
+    end
+  end
 end
 
 ---Filter highlight attributes based on style toggles.
@@ -462,7 +646,7 @@ return function(c, palette_name)
   local all_styles_enabled = styles.all_enabled ~= false
 
   local highlights = create_highlights(c, light_mode, is_desert)
-  require("oasis.integrations").apply_plugin_highlights(c, highlights)
+  create_plugin_highlights(c, highlights, light_mode, is_desert)
   apply_transparency(highlights, cfg.transparent)
   set_highlight_groups(highlights, styles, all_styles_enabled)
   apply_user_overrides(c, palette_name, cfg, styles, all_styles_enabled)
