@@ -201,6 +201,7 @@ The examples below use the default intensity of level 3.
 | [fzf-lua](https://github.com/ibhagwan/fzf-lua)              |
 | [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) |
 | [mini.nvim](https://nvim-mini.org/mini.nvim/)               |
+| [lazy.nvim](https://github.com/folke/lazy.nvim)             |
 | [snacks.nvim](https://github.com/folke/snacks.nvim)         |
 | [which-key.nvim](https://github.com/folke/which-key.nvim)   |
 
@@ -550,6 +551,31 @@ require("oasis").setup({
 
   palette_overrides = {},               -- Override colors in specific palettes
   highlight_overrides = {},             -- Override specific highlight groups
+
+  -- Plugin integrations
+  integrations = {
+    default_enabled = true,             -- Default behavior: true = enable all, false = disable all
+    plugins = {
+      fzf_lua = true,
+      gitsigns = true,
+      lazy = true,
+      mini_clue = true,
+      mini_cmdline = true,
+      mini_completion = true,
+      mini_diff = true,
+      mini_files = true,
+      mini_icons = true,
+      mini_jump = true,
+      mini_map = true,
+      mini_pick = true,
+      mini_starter = true,
+      mini_statusline = true,
+      mini_tabline = true,
+      mini_trailspace = true,
+      snacks = true,
+      which_key = true,
+    },
+  },
 })
 ```
 
