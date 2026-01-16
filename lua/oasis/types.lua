@@ -16,6 +16,7 @@
 ---@field muted string
 ---@field dim string
 ---@field strong string
+---@field comment string
 
 ---@class OasisPaletteTheme
 ---@field primary string
@@ -25,6 +26,7 @@
 ---@field secondary_strong? string
 ---@field secondary_light? string
 ---@field accent string
+---@field cursor string
 
 ---@class OasisPaletteSyntax
 ---@field parameter string
@@ -101,6 +103,11 @@
 ---@field delete string
 ---@field text string
 
+---@class OasisPaletteGit
+---@field add string
+---@field change string
+---@field delete string
+
 ---@class OasisPaletteTerminal
 ---@field black string
 ---@field red string
@@ -144,6 +151,7 @@
 ---@field syntax OasisPaletteSyntax
 ---@field ui OasisPaletteUi
 ---@field diff OasisPaletteDiff
+---@field git OasisPaletteGit
 ---@field terminal OasisPaletteTerminal
 
 -- Highlight types
@@ -282,6 +290,7 @@
 ---@field muted? string
 ---@field dim? string
 ---@field strong? string
+---@field comment? string
 
 ---@class OasisPaletteThemeOverrides
 ---@field primary? string
