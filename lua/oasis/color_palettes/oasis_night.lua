@@ -37,7 +37,11 @@ local dark = {
   fg = base.fg,
   theme = base.theme,
   palette = base.palette,
-  terminal = vim.tbl_extend("force", p.terminal, { bright_black = theme.fg.dim, color8 = theme.fg.dim }),
+  terminal = vim.tbl_extend(
+    "force",
+    p.terminal,
+    { black = theme.bg.core, color0 = theme.bg.core, bright_black = theme.fg.muted, color8 = theme.fg.muted }
+  ),
   diff = vim.tbl_extend("force", p.diff, { change = theme.bg.surface }),
   git = p.git,
 
