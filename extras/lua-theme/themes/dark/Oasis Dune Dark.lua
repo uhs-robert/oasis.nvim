@@ -27,7 +27,7 @@ return {
 	ok = "#96EA7F",
 
 -- ANSI Semnatic Colors
-	black = "#101010",
+	black = "#2E2620",
 	red = "#FF7979",
 	green = "#53D390",
 	yellow = "#F0E68C",
@@ -35,7 +35,7 @@ return {
 	magenta = "#C695FF",
 	cyan = "#68C0B6",
 	white = "#DDDBD5",
-	bright_black = "#6E6E6E",
+	bright_black = "#826D5A",
 	bright_red = "#FFA0A0",
 	bright_green = "#96EA7F",
 	bright_yellow = "#F8B471",
@@ -45,7 +45,7 @@ return {
 	bright_white = "#FFF9F2",
 
 -- ANSI Terminal Colors
-	color0 = "#101010",
+	color0 = "#2E2620",
 	color1 = "#FF7979",
 	color2 = "#53D390",
 	color3 = "#F0E68C",
@@ -53,7 +53,7 @@ return {
 	color5 = "#C695FF",
 	color6 = "#68C0B6",
 	color7 = "#DDDBD5",
-	color8 = "#6E6E6E",
+	color8 = "#826D5A",
 	color9 = "#FFA0A0",
 	color10 = "#96EA7F",
 	color11 = "#F8B471",
