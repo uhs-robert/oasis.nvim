@@ -79,11 +79,9 @@ local function apply_theme(palette, palette_name)
   build(palette, palette_name)
 
   -- Defer plugin integrations to after startup
-  vim.schedule(function()
-    pcall(require, "oasis.integrations.lualine")
-    pcall(require, "oasis.integrations.tabby")
-    require("oasis.integrations").refresh_all()
-  end)
+  pcall(require, "oasis.integrations.lualine")
+  pcall(require, "oasis.integrations.tabby")
+  require("oasis.integrations").refresh_all()
 end
 
 --- Apply Oasis using a palette module name (no prefix).
@@ -107,9 +105,7 @@ function Oasis.setup(user_config)
   -- Register commands on first setup call
   if not Oasis._commands_registered then
     -- Defer to after startup
-    vim.schedule(function()
-      require("oasis.api").setup()
-    end)
+    require("oasis.api").setup()
     Oasis._commands_registered = true
   end
 end
