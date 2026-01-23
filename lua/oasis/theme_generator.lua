@@ -503,6 +503,7 @@ local PLUGIN_GROUPS = {
     hl.SnacksDashboardHeader = "OasisStrongPrimary"
     hl.SnacksDashboardFile = "OasisLightPrimary"
     hl.SnacksDashboardSpecial = "OasisAccent"
+    hl.SnacksDashboardIcon = "Number"
     hl.SnacksDashboardDesc = "OasisSecondary"
     hl.SnacksPickerBoxTitle = "OasisFloatSecondary"
     hl.SnacksPickerInputTitle = "OasisFloatSecondary"
