@@ -527,22 +527,13 @@ local PLUGIN_GROUPS = {
 local function create_plugin_highlights(c, highlights, light_mode, is_desert)
   local integrations = (Config.get().integrations or {})
   local default_enabled = integrations.default_enabled ~= false
-  local plugin_config = integrations.plugins or {}
   local user_plugins = Config.get_user_plugins()
 
-  for plugin_name, _ in pairs(plugin_config) do
-    local enabled
+  for plugin_name, apply_fn in pairs(PLUGIN_GROUPS) do
+    local user_setting = user_plugins[plugin_name]
+    local enabled = user_setting == nil and default_enabled or user_setting
 
-    if default_enabled then
-      enabled = plugin_config[plugin_name] ~= false -- Opt-out behaviour
-    else
-      enabled = user_plugins[plugin_name] == true -- Opt-in behaviour
-    end
-
-    if enabled then
-      local apply_fn = PLUGIN_GROUPS[plugin_name]
-      if type(apply_fn) == "function" then apply_fn(highlights, c, light_mode, is_desert) end
-    end
+    if enabled and type(apply_fn) == "function" then apply_fn(highlights, c, light_mode, is_desert) end
   end
 end
 
