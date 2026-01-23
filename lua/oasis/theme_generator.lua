@@ -392,39 +392,29 @@ local PLUGIN_GROUPS = {
     hl.lazyActiveBorder = "Identifier"
   end,
 
-  -- Mini Clue
-  mini_clue = function(hl)
+  -- Mini
+  mini = function(hl, c)
+    -- Mini Clue
     hl.MiniClueNextKey = "Statement"
     hl.MiniClueDescGroup = "OasisSecondary"
     hl.MiniClueDescSingle = "OasisLightPrimary"
-  end,
 
-  -- Mini Cmdline
-  mini_cmdline = function(hl, c)
+    -- Mini Cmdline
     hl.MiniCmdlinePeekSep = { fg = c.fg.muted, bg = c.ui.float.bg }
-  end,
 
-  -- Mini Completion
-  mini_completion = function(hl, c)
+    -- Mini Completion
     hl.MiniCompletionActiveParameter = { bg = c.bg.surface }
-  end,
 
-  -- Mini Diff
-  mini_diff = function(hl, c)
+    -- Mini Diff
     hl.MiniDiffSignAdd = { fg = c.git.add }
     hl.MiniDiffSignChange = { fg = c.git.change }
     hl.MiniDiffSignDelete = { fg = c.git.delete }
-  end,
 
-  -- Mini Files
-  mini_files = function(hl, c)
-    hl.MiniFilesCursorLine = "PmenuSel"
+    -- Mini Files
     hl.MiniFilesBorderModified = { fg = c.ui.diag.warn.fg, bg = c.ui.float.bg }
     hl.MiniFilesTitleFocused = { fg = c.theme.secondary, bg = c.ui.float.bg, bold = true }
-  end,
 
-  -- Mini Icons
-  mini_icons = function(hl, c)
+    -- Mini Icons
     hl.MiniIconsAzure = { fg = c.terminal.blue }
     hl.MiniIconsBlue = { fg = c.terminal.bright_blue }
     hl.MiniIconsCyan = { fg = c.terminal.cyan }
@@ -434,21 +424,15 @@ local PLUGIN_GROUPS = {
     hl.MiniIconsPurple = { fg = c.terminal.magenta }
     hl.MiniIconsRed = { fg = c.terminal.red }
     hl.MiniIconsYellow = { fg = c.terminal.yellow }
-  end,
 
-  -- Mini Jump
-  mini_jump = function(hl, c)
+    -- Mini Jump
     hl.MiniJump = { undercurl = true, sp = c.theme.cursor }
-  end,
 
-  -- Mini Map
-  mini_map = function(hl, c)
+    -- Mini Map
     hl.MiniMapNormal = { fg = c.fg.comment, bg = c.ui.float.bg }
     hl.MiniMapSymbolCount = { fg = c.fg.comment }
-  end,
 
-  -- Mini Pick
-  mini_pick = function(hl, c)
+    -- Mini Pick
     hl.MiniPickBorderBusy = { fg = c.ui.diag.warn.fg, bg = c.ui.float.bg }
     hl.MiniPickMatchCurrent = "PmenuSel"
     hl.MiniPickMatchMarked = "Search"
@@ -456,19 +440,15 @@ local PLUGIN_GROUPS = {
     hl.MiniPickPreviewLine = { bg = c.ui.visual.bg }
     hl.MiniPickPrompt = { fg = c.ui.float.fg, bg = c.ui.float.bg, bold = true }
     hl.MiniPickPromptPrefix = { fg = c.ui.float.title, bg = c.ui.float.bg, bold = true }
-  end,
 
-  -- Mini Starter
-  mini_starter = function(hl, c)
+    -- Mini Starter
     hl.MiniStarterFooter = "Comment"
     hl.MiniStarterInactive = { fg = c.fg.muted }
     hl.MiniStarterSection = "OasisSecondary"
     hl.MiniStarterItemPrefix = { fg = c.theme.strong_primary, bold = true }
     hl.MiniStarterQuery = { fg = c.theme.accent, bold = true }
-  end,
 
-  -- Mini Statusline
-  mini_statusline = function(hl, c)
+    -- Mini Statusline
     hl.MiniStatuslineModeNormal = { bg = c.syntax.statement, fg = c.bg.core }
     hl.MiniStatuslineModeInsert = { bg = c.syntax.string, fg = c.bg.core }
     hl.MiniStatuslineModeCommand = { bg = c.syntax.parameter, fg = c.bg.core }
@@ -479,10 +459,8 @@ local PLUGIN_GROUPS = {
     hl.MiniStatuslineFileInfo = { fg = c.syntax.statement, bg = c.bg.surface }
     hl.MiniStatuslineFilename = { fg = c.theme.light_primary, bg = c.bg.mantle }
     hl.MiniStatuslineInactive = { fg = c.fg.comment, bg = c.bg.surface }
-  end,
 
-  -- Mini Tabline
-  mini_tabline = function(hl, c)
+    -- Mini Tabline
     hl.MiniTablineCurrent = { fg = c.theme.secondary, bg = c.bg.surface, bold = true }
     hl.MiniTablineFill = "TabLineFill"
     hl.MiniTablineHidden = "TabLine"
@@ -491,20 +469,21 @@ local PLUGIN_GROUPS = {
     hl.MiniTablineModifiedVisible = { fg = c.bg.core, bg = c.ui.border, bold = true }
     hl.MiniTablineTabpagesection = { fg = c.bg.core, bg = c.theme.accent }
     hl.MiniTablineVisible = { fg = c.ui.border, bg = c.bg.surface, bold = true }
-  end,
 
-  -- Mini Trailspace
-  mini_trailspace = function(hl, c)
+    -- Mini Trailspace
     hl.MiniTrailspace = { bg = c.syntax.exception }
   end,
 
   -- Snacks
   snacks = function(hl)
+    -- Snacks Dashboard
     hl.SnacksDashboardHeader = "OasisStrongPrimary"
     hl.SnacksDashboardFile = "OasisLightPrimary"
     hl.SnacksDashboardSpecial = "OasisAccent"
     hl.SnacksDashboardIcon = "Number"
     hl.SnacksDashboardDesc = "OasisSecondary"
+
+    -- Snacks Picker
     hl.SnacksPickerBoxTitle = "OasisFloatSecondary"
     hl.SnacksPickerInputTitle = "OasisFloatSecondary"
     hl.SnacksPickerInputBorder = "OasisFloatSecondary"
