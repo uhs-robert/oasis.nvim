@@ -57,6 +57,7 @@ Config.defaults = {
 	-- Plugin integrations
 	integrations = {
 		default_enabled = true,     -- Default behavior: true = enable all, false = disable all
+    -- For each plugin: nil = use default_enabled, true = enable, false = disable
 		plugins = {
 			fzf_lua = nil,
 			gitsigns = nil,
@@ -75,31 +76,13 @@ Config.options = deepcopy(Config.defaults)
 Config.user_options = {}
 Config.user_plugins = {}
 
---- Deep merge two tables
----@param base table The base table
----@param override table The table to merge on top
----@return table merged The merged result
-local function deep_merge(base, override)
-  local result = deepcopy(base)
-
-  for k, v in pairs(override) do
-    if type(v) == "table" and type(result[k]) == "table" then
-      result[k] = deep_merge(result[k], v)
-    else
-      result[k] = v
-    end
-  end
-
-  return result
-end
-
 --- Setup configuration
 ---@param user_config table|nil User configuration to merge with defaults
 function Config.setup(user_config)
   user_config = user_config or {}
   Config.user_options = user_config
   Config.user_plugins = ((user_config.integrations or {}).plugins or {})
-  Config.options = deep_merge(Config.defaults, user_config)
+  Config.options = vim.tbl_deep_extend("force", deepcopy(Config.defaults), user_config)
   local styles = Config.options.styles
   if type(styles) ~= "table" then
     styles = {}

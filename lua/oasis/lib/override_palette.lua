@@ -4,24 +4,6 @@ local PaletteOverrides = {}
 local Config = require("oasis.config")
 local deepcopy = vim.deepcopy
 
---- Deep merge two tables
----@param base table The base table
----@param override table The table to merge on top
----@return table merged The merged result
-local function deep_merge(base, override)
-  local result = deepcopy(base)
-
-  for k, v in pairs(override) do
-    if type(v) == "table" and type(result[k]) == "table" then
-      result[k] = deep_merge(result[k], v)
-    else
-      result[k] = v
-    end
-  end
-
-  return result
-end
-
 --- Resolve function overrides into a table
 ---@param palette table
 ---@param overrides table|function|nil
@@ -42,10 +24,12 @@ end
 ---@param overrides table
 ---@param intensity number
 local function apply_global_light(result, overrides, intensity)
-  if overrides.light then result = deep_merge(result, overrides.light) end
+  if overrides.light then result = vim.tbl_deep_extend("force", result, overrides.light) end
 
   local intensity_key = "light_" .. intensity
-  if overrides[intensity_key] then result = deep_merge(result, overrides[intensity_key]) end
+  if overrides[intensity_key] then
+    result = vim.tbl_deep_extend("force", result, overrides[intensity_key])
+  end
 
   return result
 end
@@ -59,7 +43,7 @@ local function apply_dark(result, palette_override)
   for key, value in pairs(palette_override) do
     if key ~= "light" and not key:match("^light_%d$") then dark_overrides[key] = value end
   end
-  return deep_merge(result, dark_overrides)
+  return vim.tbl_deep_extend("force", result, dark_overrides)
 end
 
 --- Apply palette-specific light/intensity overrides
@@ -68,10 +52,12 @@ end
 ---@param intensity number
 ---@return table
 local function apply_light(result, palette_override, intensity)
-  if palette_override.light then result = deep_merge(result, palette_override.light) end
+  if palette_override.light then result = vim.tbl_deep_extend("force", result, palette_override.light) end
 
   local intensity_key = "light_" .. intensity
-  if palette_override[intensity_key] then result = deep_merge(result, palette_override[intensity_key]) end
+  if palette_override[intensity_key] then
+    result = vim.tbl_deep_extend("force", result, palette_override[intensity_key])
+  end
 
   return result
 end
