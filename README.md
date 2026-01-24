@@ -522,9 +522,9 @@ Oasis offers _many_ different styles to choose from. Have fun customizing with `
 -- Oasis.nvim
 -- Styles: "night", "midnight", "abyss", "starlight", "desert", "sol", "canyon", "dune", "cactus", "mirage", "lagoon", "twilight", "rose"
 require("oasis").setup({
-  style = "lagoon",                     -- Primary style, default used when colorscheme is set to "oasis"
-  dark_style = "auto",                  -- Applies to your primary style only: "auto" uses `style`. Or override with another dark theme (e.g., "abyss")
-  light_style = "auto",                 -- Applies to your primary style only: "auto" uses `style`. Or override with another light theme (e.g., "dune")
+  style = "lagoon",                     -- Primary style, the default used when colorscheme is set to "oasis"
+  dark_style = nil,                     -- Applies to primary style only: Overrides dark mode with another theme (e.g., "abyss")
+  light_style = nil,                    -- Applies to primary style only: Overrides light mode with another theme (e.g., "dune")
   light_intensity = 3,                  -- Light background intensity (1-5): 1=subtle, 5=saturated
   use_legacy_comments = false,          -- For "desert" style only, uses the loud skyblue comment color from desert.vim for a more retro experience
   themed_syntax = true,                 -- Uses the theme's primary color for statements/keywords. Set to false for the classic yellow syntax from desert.vim for a more retro experience

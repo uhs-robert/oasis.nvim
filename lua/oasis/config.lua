@@ -27,8 +27,8 @@ end
 ---@type OasisConfig
 Config.defaults = {
 	style = DEFAULT_DARK,         -- Primary style choice (default palette)
-	dark_style = "auto",          -- "auto" uses `style`, or specify a dark theme (e.g., "sol", "canyon")
-	light_style = "auto",         -- "auto" uses `style`, or specify a light theme (e.g., "night", "canyon")
+	dark_style = nil,             -- nil=`style`, or specify a dark theme (e.g., "sol", "canyon")
+	light_style = nil,            -- nil=`style`, or specify a light theme (e.g., "night", "canyon")
 	use_legacy_comments = false,  -- Applies to `desert` only. Uses vibrant skyblue for comments
 	themed_syntax = true,         -- Use theme primary color for statements/conditionals
 	light_intensity = 3,          -- Light background intensity (1-5): 1=subtle, 5=saturated
@@ -118,17 +118,15 @@ end
 ---@return string palette_name Full palette name (e.g., "oasis_lagoon")
 function Config.get_palette_name()
   local bg = get_background()
+  local themes = Config.get_base_colors().theme
 
-  -- Use dark_style/light_style based on background
+  -- Use dark_style/light_style based on background, fallback to style, then DEFAULT
+  -- Invalid names (e.g., "auto", typos) are treated as nil
   local style_option = bg == "light" and Config.options.light_style or Config.options.dark_style
+  if not themes[style_option] then style_option = nil end
+  style_option = style_option or Config.options.style or (bg == "light" and DEFAULT_LIGHT or DEFAULT_DARK)
 
-  -- Default to main `style` or DEFAULT
-  if style_option == "auto" then style_option = Config.options.style end
-  if not style_option then return "oasis_" .. (bg == "light" and DEFAULT_LIGHT or DEFAULT_DARK) end
-
-  -- Otherwise return the parsed palette
-  local palette_name = "oasis_" .. style_option
-  return palette_name
+  return "oasis_" .. style_option
 end
 
 --- Apply palette overrides to a loaded palette

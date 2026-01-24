@@ -452,8 +452,8 @@
 
 ---@class OasisConfig Table for main configuration
 ---@field style? string Palette variant shorthand (e.g., "lagoon", "desert")
----@field dark_style? string Dark mode palette ("auto" or shorthand variant name)
----@field light_style? string Light mode palette ("auto" or shorthand variant name)
+---@field dark_style? string Darkmode palette variant shorthand (e.g., "lagoon", "desert")
+---@field light_style? string Light mode palette variant shorthand (e.g., "lagoon", "desert")
 ---@field use_legacy_comments? boolean Use classic vim desert comments (desert only)
 ---@field themed_syntax? boolean Use theme primary color for statements
 ---@field light_intensity? number Light background intensity (1-5)
