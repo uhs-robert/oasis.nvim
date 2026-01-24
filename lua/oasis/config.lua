@@ -113,17 +113,24 @@ function Config.get_user_plugins()
   return Config.user_plugins
 end
 
+--- Check if a theme name is valid (exists in palette.lua themes)
+---@param name string|nil Theme name to validate (e.g., "lagoon", "desert")
+---@return boolean is_valid True if the name exists in themes
+function Config.is_valid_theme(name)
+  if not name then return false end
+  local themes = Config.get_base_colors().theme
+  return themes[name] ~= nil
+end
+
 --- Get the full palette name from the configured style
 --- Guaranteed to return a usable palette name string (falls back to defaults).
 ---@return string palette_name Full palette name (e.g., "oasis_lagoon")
 function Config.get_palette_name()
   local bg = get_background()
-  local themes = Config.get_base_colors().theme
 
   -- Use dark_style/light_style based on background, fallback to style, then DEFAULT
-  -- Invalid names (e.g., "auto", typos) are treated as nil
   local style_option = bg == "light" and Config.options.light_style or Config.options.dark_style
-  if not themes[style_option] then style_option = nil end
+  if not Config.is_valid_theme(style_option) then style_option = nil end
   style_option = style_option or Config.options.style or (bg == "light" and DEFAULT_LIGHT or DEFAULT_DARK)
 
   return "oasis_" .. style_option

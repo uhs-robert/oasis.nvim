@@ -22,8 +22,9 @@ local function resolve_palette_name(palette_name, bg)
     local cfg = Config.get()
     local old_style_option = old_bg == "light" and cfg.light_style or cfg.dark_style
 
-    -- Resolve "auto" for old background
-    if old_style_option == "auto" then old_style_option = cfg.style end
+    -- Resolve invalid names: fall back to cfg.style then default
+    if not Config.is_valid_theme(old_style_option) then old_style_option = nil end
+    old_style_option = old_style_option or cfg.style or "lagoon"
 
     -- Check if user was on their configured theme for the old background
     local old_configured_palette = "oasis_" .. old_style_option
