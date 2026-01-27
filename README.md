@@ -242,6 +242,7 @@ To use the extras, refer to their respective documentation.
 | Termux      | [extras/termux](extras/termux)                         |
 | Thunderbird | [extras/thunderbird](extras/thunderbird)               |
 | TMUX        | [tmux-oasis](https://github.com/uhs-robert/tmux-oasis) |
+| Vimium      | [extras/vimium](extras/vimium)                         |
 | Vimium C    | [extras/vimium-c](extras/vimium-c)                     |
 | Warp        | [extras/warp](extras/warp)                             |
 | WezTerm     | [extras/wezterm](extras/wezterm)                       |
