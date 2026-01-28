@@ -94,7 +94,7 @@ local diff = {
 -- Git
 local git = {
   add = terminal.bright_green,
-  change = terminal.bright_yellow,
+  change = terminal.yellow,
   delete = terminal.bright_red,
 }
 
