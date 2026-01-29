@@ -61,6 +61,7 @@ map_ansi_colors(semantic_ansi_map, light_terminal)
 local visual = {
   red = "#532E2E",
   stone = "#2D251F",
+  desert = "#433F38",
   orange = "#5A3824",
   yellow = "#4D4528",
   green = "#1F3A2D",
@@ -103,8 +104,8 @@ local theme = {
   -- Dark themes
   -- fg targets: dim = 4:0:1 (shadow), muted = 3:0:1 (core), comment = 4:5:1 (core)
   desert = {
-    bg = { shadow = "#303030", core = "#333333", mantle = "#444444", surface = "#555555" },
-    fg = { core = "#F7EDE1", strong = "#E5D9CE", dim = "#9E8B7C", muted = "#67808D", comment = "#77A4BD" },
+    bg = { shadow = "#212121", core = "#262626", mantle = "#2E2E2E", surface = "#404040" },
+    fg = { core = "#F7EDE1", strong = "#E5D9CE", dim = "#748C9A", muted = "#77725F", comment = "#948F7A" },
   },
   abyss = {
     bg = { shadow = "#000000", core = "#000000", mantle = "#080808", surface = "#1A1A1A" },

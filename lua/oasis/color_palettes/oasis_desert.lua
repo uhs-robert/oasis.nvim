@@ -78,7 +78,7 @@ local dark = {
   -- UI
   ui = {
     lineNumber = p.sunset[400],
-    visual = { bg = base.bg.surface, fg = "none" },
+    visual = { bg = p.visual.desert, fg = "none" },
     search = { bg = p.visual.palm, fg = base.bg.core },
     match = { bg = p.palm[400], fg = base.bg.core },
     dir = p.sky[500],
