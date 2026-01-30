@@ -77,6 +77,7 @@ local dark = {
     visual = { bg = base.bg.surface, fg = "none" },
     search = { bg = p.visual.red, fg = base.fg.core },
     match = { bg = p.rose[500], fg = base.bg.core },
+    matchParen = { bg = p.visual.red, fg = p.rose[500] },
     dir = p.sky[500],
 
     title = base.theme.primary,

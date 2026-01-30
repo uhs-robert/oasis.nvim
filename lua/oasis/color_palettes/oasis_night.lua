@@ -79,7 +79,8 @@ local dark = {
     lineNumber = p.sunset[500],
     visual = { bg = p.visual.indigo, fg = "none" },
     search = { bg = p.visual.violet, fg = base.fg.core },
-    match = { bg = p.sunrise[600], fg = base.bg.core },
+    match = { bg = p.khaki[500], fg = base.bg.core },
+    matchParen = { bg = p.stone[900], fg = p.khaki[500] },
     dir = p.sky[500],
 
     title = base.theme.primary,
