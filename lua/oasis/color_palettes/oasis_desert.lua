@@ -19,12 +19,12 @@ local base = {
     accent = p.palm,
   },
   theme = {
-    strong_primary = p.khaki[600],
+    strong_primary = p.khaki[700],
     primary = p.khaki[500],
     light_primary = p.khaki[300],
     secondary_strong = p.red[800],
-    secondary = p.red[400],
-    secondary_light = p.red[50],
+    secondary = p.red[500],
+    secondary_light = p.rose[500],
     accent = p.palm[500],
     cursor = p.khaki[500],
   },
@@ -49,35 +49,35 @@ local dark = {
   -- Syntax
   syntax = {
     -- Cold: (Data)
-    parameter = p.lavender[300],
-    identifier = p.teal[300],
+    parameter = p.lavender[400],
+    identifier = p.teal[500],
     delimiter = base.theme.secondary,
-    type = p.teal[500],
-    builtinVar = p.lagoon[300], -- (this, document, window, etc)
-    string = p.cactus[400],
-    regex = p.palm[400],
-    builtinConst = p.slate[300], -- (e.g. null, undefined, Infinity, etc)
-    constant = p.sunset[300], -- (constant: number, float, boolean, or const not string/character)
+    type = p.teal[700],
+    builtinVar = p.lagoon[500], -- (this, document, window, etc)
+    string = p.cactus[500],
+    regex = p.palm[500],
+    builtinConst = p.steelblue[500], -- (e.g. null, undefined, Infinity, etc)
+    constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
-    func = p.sand[500],
+    func = p.sunset[300],
     builtinFunc = p.sundown[400], -- (eg. parseInst, Array, Object etc)
     statement = opts.themed_syntax and primary[500] or p.khaki[500], -- (general statement (i.e. var, const))
-    exception = opts.themed_syntax and p.red[50] or p.red[50], -- (try/catch, return)
-    conditional = opts.themed_syntax and primary[600] or p.khaki[600], -- (Conditionals, Loops)
-    special = p.sunset[300], -- (Statement not covered above)
-    operator = p.peach[300],
-    punctuation = p.coral[200],
+    exception = opts.themed_syntax and p.red[300] or p.red[300], -- (try/catch, return)
+    conditional = opts.themed_syntax and primary[700] or p.khaki[700], -- (Conditionals, Loops)
+    special = p.sunset[400], -- (Statement not covered above)
+    operator = p.rose[500],
+    punctuation = p.coral[400],
     preproc = p.sky[500], -- (imports)
 
     -- Neutral: (Connections / Info)
-    bracket = p.slate[300], -- (bracket punctuation)
+    bracket = p.slate[500], -- (bracket punctuation)
     comment = (opts.useLegacyComments or opts.use_legacy_comments) and "#87CEEB" or theme.fg.comment,
   },
 
   -- UI
   ui = {
-    lineNumber = p.sunset[400],
+    lineNumber = p.sunset[600],
     visual = { bg = p.visual.desert, fg = "none" },
     search = { bg = p.visual.palm, fg = base.bg.core },
     match = { bg = p.palm[400], fg = base.bg.core },
