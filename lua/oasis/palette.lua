@@ -70,7 +70,7 @@ local visual = {
   blue = "#335668",
   sky = "#3D6980",
   indigo = "#3E2F4A",
-  violet = "#603C6C",
+  violet = "#653F73",
   pink = "#5A324B",
   grey = "#666666",
 }
