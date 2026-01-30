@@ -56,7 +56,7 @@ local dark = {
     builtinVar = opts.themed_syntax and p.khaki[500] or p.gold[600], -- (this, document, window, etc)
     string = p.cactus[500],
     regex = p.palm[600],
-    builtinConst = p.slate[400], -- (e.g. null, undefined, Infinity, etc)
+    builtinConst = p.steelblue[400], -- (e.g. null, undefined, Infinity, etc)
     constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
