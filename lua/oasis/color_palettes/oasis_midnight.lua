@@ -52,7 +52,7 @@ local dark = {
     builtinVar = p.lagoon[500], -- (this, document, window, etc)
     string = p.cactus[500],
     regex = p.palm[500],
-    builtinConst = p.slate[500], -- (e.g. null, undefined, Infinity, etc)
+    builtinConst = p.steelblue[500], -- (e.g. null, undefined, Infinity, etc)
     constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
