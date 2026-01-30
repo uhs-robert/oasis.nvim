@@ -469,6 +469,18 @@ function LightTheme.generate_ui(dark_ui, light_bg, intensity_level, contrast_tar
     }
   end
 
+  -- Match paren (subtle highlight with readable fg)
+  if dark_ui.matchParen then
+    local fg_h, fg_s, _ = ColorUtils.rgb_to_hsl(dark_ui.matchParen.fg or "#000000")
+    local adj_s, adj_l = soften_hue(fg_h, fg_s * 0.75, 30)
+    local light_fg = ColorUtils.hsl_to_rgb(fg_h, adj_s, adj_l)
+    light_fg = ColorUtils.darken_to_contrast(light_fg, light_bg.core, min_ratio)
+    result.matchParen = {
+      bg = light_bg.surface,
+      fg = light_fg,
+    }
+  end
+
   -- Float window
   if dark_ui.float then
     result.float = {
