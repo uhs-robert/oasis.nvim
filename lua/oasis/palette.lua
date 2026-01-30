@@ -109,7 +109,7 @@ local theme = {
   },
   abyss = {
     bg = { shadow = "#000000", core = "#000000", mantle = "#080808", surface = "#1A1A1A" },
-    fg = { core = "#F0EBE6", strong = "#FFDACC", dim = "#7A6A5E", muted = "#495D65", comment = "#5E7986" },
+    fg = { core = "#F0EBE6", strong = "#FFDACC", dim = "#587179", muted = "#605C4D", comment = "#7A7662" },
   },
   midnight = {
     bg = { shadow = "#0C1014", core = "#101418", mantle = "#14181C", surface = "#1C242C" },
