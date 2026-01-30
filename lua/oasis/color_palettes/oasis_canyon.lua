@@ -23,7 +23,7 @@ local base = {
     primary = p.sunset[300],
     light_primary = p.sunshine[200],
     secondary = p.rose[500],
-    accent = p.sky[500],
+    accent = p.lagoon[500],
     cursor = p.khaki[500],
   },
 }
@@ -75,9 +75,9 @@ local dark = {
   ui = {
     lineNumber = p.gold[500],
     visual = { bg = base.bg.surface, fg = "none" },
-    search = { bg = p.visual.blue, fg = base.fg.core },
-    match = { bg = p.sky[400], fg = base.bg.core },
-    matchParen = { bg = p.visual.blue, fg = p.sky[400] },
+    search = { bg = p.sky[900], fg = base.fg.core },
+    match = { bg = p.lagoon[500], fg = base.bg.core },
+    matchParen = { bg = p.visual.blue, fg = p.lagoon[500] },
     dir = p.sky[400],
 
     title = base.theme.primary,
