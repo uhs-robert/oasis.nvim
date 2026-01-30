@@ -79,9 +79,9 @@ local dark = {
   ui = {
     lineNumber = p.sunshine[600],
     visual = { bg = base.bg.surface, fg = "none" },
-    search = { bg = p.visual.blue, fg = base.fg.core },
-    match = { bg = p.cactus[500], fg = base.bg.core },
-    matchParen = { bg = p.visual.blue, fg = p.cactus[500] },
+    search = { bg = p.visual.palm, fg = base.fg.core },
+    match = { bg = p.palm[500], fg = base.bg.core },
+    matchParen = { bg = p.stone[900], fg = p.khaki[500] },
     dir = p.sky[500],
 
     title = base.theme.primary,
