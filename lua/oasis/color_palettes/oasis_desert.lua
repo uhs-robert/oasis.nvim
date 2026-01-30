@@ -80,7 +80,8 @@ local dark = {
     lineNumber = p.sunset[600],
     visual = { bg = p.visual.desert, fg = "none" },
     search = { bg = p.visual.palm, fg = base.bg.core },
-    match = { bg = p.palm[400], fg = base.bg.core },
+    match = { bg = p.palm[700], fg = base.bg.core },
+    matchParen = { bg = p.stone[900], fg = primary[500] },
     dir = p.sky[500],
 
     title = base.theme.secondary,
