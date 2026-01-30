@@ -67,8 +67,6 @@ local function load_palette_module(palette_name)
     palette = palette[mode]
   end
 
-  vim.g.colors_name = palette_name:gsub("_", "-")
-
   return Config.apply_palette_overrides(palette, palette_name)
 end
 
@@ -94,6 +92,15 @@ function Oasis.apply(palette_name)
   local bg = vim.o.background
   palette_name = resolve_palette_name(palette_name, bg)
   remember_style(palette_name, bg)
+
+  -- Reset highlights
+  if vim.v.vim_did_enter == 1 then
+    vim.cmd("highlight clear")
+    if vim.fn.exists("syntax_on") == 1 then vim.cmd("syntax reset") end
+  end
+
+  -- Set colorscheme name and load
+  vim.g.colors_name = palette_name:gsub("_", "-")
   local palette = load_palette_module(palette_name)
   apply_theme(palette, palette_name)
 end
