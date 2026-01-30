@@ -69,7 +69,7 @@ local function create_highlights(c, light_mode, is_desert)
     CursorLineNr               = { fg=c.ui.lineNumber, bg=(c.bg.gutter or "NONE"), bold=true }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     CursorLineFold             = { bg=c.bg.core }, -- Like FoldColumn when 'cursorline' is set for the cursor line
     CursorLineSign             = { bg="NONE" }, -- Like SignColumn when 'cursorline' is set for the cursor line
-    MatchParen                 = { fg=c.ui.match.bg, bg=c.ui.search.bg, bold=true }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+    MatchParen                 = { fg=c.ui.matchParen.fg, bg=c.ui.matchParen.bg, bold=true }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     ModeMsg                    = { fg=c.syntax.statement, bold=true }, -- 'showmode' message (e.g., "-- INSERT -- ")
     MsgArea                    = { fg=c.syntax.statement }, -- Area for messages and cmdline
     MoreMsg                    = { fg=c.syntax.type, bold=true }, -- |more-prompt|
