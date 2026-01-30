@@ -140,7 +140,7 @@ local function create_highlights(c, light_mode, is_desert)
     Operator                   = { fg=c.syntax.operator }, --   "sizeof", "+", "*", etc.
     Exception                  = { fg=c.syntax.exception, bold=true }, --   try, catch, throw
 
-    PreProc                    = { fg=c.syntax.preproc }, -- (*) Generic Preprocessor
+    PreProc                    = { fg=c.syntax.preproc, italic=true }, -- (*) Generic Preprocessor
     Include                    = "PreProc", --   Preprocessor #include
     Define                     = "PreProc", --   Preprocessor #define
     Macro                      = "PreProc", --   Same as Define
@@ -258,6 +258,7 @@ local function create_highlights(c, light_mode, is_desert)
     ["@keyword.coroutine"]    = { fg=c.syntax.conditional }, -- Keyword coroutines (e.g. `go` in Go, `async/await` in Python)
     ["@keyword.operator"]     = { fg=c.syntax.operator, bold=true }, -- Keyword English words (e.g. `and`, `or`)
     ["@keyword.import"]       = "PreProc", -- Keyword  (e.g. `import`, `from` in Python)
+    ["@keyword.directive"]    = "PreProc", -- Keyword  (e.g. #define, #if)
     ["@keyword.return"]       = { fg=c.syntax.exception, italic=true }, -- Keyword -- `return` and `yield`
     ["@keyword.exception"]    = "Exception", -- Keyword (e.g. `throw`, `catch`)
     ["@keyword.luap"]         = "Exception", -- Keyword
