@@ -11,8 +11,8 @@ return {
 -- Foregrounds
 	fg_core = "#F0EBE6",
 	fg_strong = "#FFDACC",
-	fg_muted = "#495D65",
-	fg_dim = "#7A6A5E",
+	fg_muted = "#605C4D",
+	fg_dim = "#587179",
 
 -- Accents
 	theme_primary = "#FF7979",
@@ -35,7 +35,7 @@ return {
 	magenta = "#C695FF",
 	cyan = "#68C0B6",
 	white = "#DDDBD5",
-	bright_black = "#495D65",
+	bright_black = "#605C4D",
 	bright_red = "#FFA0A0",
 	bright_green = "#96EA7F",
 	bright_yellow = "#F8B471",
@@ -53,7 +53,7 @@ return {
 	color5 = "#C695FF",
 	color6 = "#68C0B6",
 	color7 = "#DDDBD5",
-	color8 = "#495D65",
+	color8 = "#605C4D",
 	color9 = "#FFA0A0",
 	color10 = "#96EA7F",
 	color11 = "#F8B471",

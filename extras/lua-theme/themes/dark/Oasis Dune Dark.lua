@@ -15,8 +15,8 @@ return {
 	fg_dim = "#6E6E6E",
 
 -- Accents
-	theme_primary = "#CDC673",
-	theme_secondary = "#AED6B0",
+	theme_primary = "#F0E68C",
+	theme_secondary = "#96D4CB",
 	theme_accent = "#D2ADFF",
 
 -- Status

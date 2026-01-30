@@ -11,8 +11,8 @@ return {
 -- Foregrounds
 	fg_core = "#4e473f",
 	fg_strong = "#693c2c",
-	fg_muted = "#5b666b",
-	fg_dim = "#887f78",
+	fg_muted = "#66645c",
+	fg_dim = "#738388",
 
 -- Accents
 	theme_primary = "#880101",
