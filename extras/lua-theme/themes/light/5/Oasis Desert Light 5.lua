@@ -11,12 +11,12 @@ return {
 -- Foregrounds
 	fg_core = "#504132",
 	fg_strong = "#4b423a",
-	fg_muted = "#586267",
-	fg_dim = "#847a71",
+	fg_muted = "#636058",
+	fg_dim = "#727e85",
 
 -- Accents
 	theme_primary = "#71670f",
-	theme_secondary = "#810808",
+	theme_secondary = "#8a0000",
 	theme_accent = "#297613",
 
 -- Status

@@ -4,7 +4,7 @@
 
 # MANAGER
 [mgr]
-cwd = { fg = "#2e5b31" }
+cwd = { fg = "#286259" }
 
 find_keyword = { fg = "#ab76d6", bold = true, italic = true, underline = true }
 find_position = { fg = "#9f272b", bg = "reset", bold = true, italic = true }
@@ -23,13 +23,13 @@ border_style = { fg = "#4b4934" }
 
 # TABS
 [tabs]
-active = { fg = "#ece1c6", bg = "#5e5922", bold = true }
-inactive = { fg = "#5e5922", bg = "#e8dbbb" }
+active = { fg = "#ece1c6", bg = "#71670f", bold = true }
+inactive = { fg = "#71670f", bg = "#e8dbbb" }
 
 # MODE
 [mode]
-normal_main = { fg = "#ece1c6", bg = "#5e5922", bold = true }
-normal_alt = { fg = "#5e5922", bg = "#ece1c6" }
+normal_main = { fg = "#ece1c6", bg = "#71670f", bold = true }
+normal_alt = { fg = "#71670f", bg = "#ece1c6" }
 
 select_main = { fg = "#ece1c6", bg = "#7d4712", bold = true }
 select_alt = { fg = "#7d4712", bg = "#ece1c6" }
@@ -54,31 +54,31 @@ perm_exec = { fg = "#22593d" }
 
 # INPUT
 [input]
-border = { fg = "#5e5922" }
+border = { fg = "#71670f" }
 title = {}
 value = {}
 selected = { reversed = true }
 
 # PICK
 [pick]
-border = { fg = "#5e5922" }
-active = { fg = "#2e5b31", bold = true }
+border = { fg = "#71670f" }
+active = { fg = "#286259", bold = true }
 inactive = {}
 
 # COMPLETION
 [cmp]
-border = { fg = "#5e5922" }
+border = { fg = "#71670f" }
 
 # TASKS
 [tasks]
-border = { fg = "#5e5922" }
+border = { fg = "#71670f" }
 title = {}
-hovered = { fg = "#2e5b31", underline = true }
+hovered = { fg = "#286259", underline = true }
 
 # WHICH
 [which]
 mask = { bg = "#e8dbbb" }
-cand = { fg = "#2e5b31" }
+cand = { fg = "#286259" }
 rest = { fg = "#4b4931" }
 desc = { fg = "#0d506c" }
 separator = "  "
@@ -86,7 +86,7 @@ separator_style = { fg = "#6e635b" }
 
 # HELP
 [help]
-on = { fg = "#5e5922" }
+on = { fg = "#71670f" }
 run = { fg = "#0d506c" }
 hovered = { reversed = true, bold = true }
 footer = { fg = "#4b4931", bg = "#e1cfa4" }
@@ -120,7 +120,7 @@ rules = [
   { url = "*", is = "orphan", fg = "#a91010"},
 
   # Executables
-  { url = "*", is = "exec", fg = "#5e5922"},
+  { url = "*", is = "exec", fg = "#71670f"},
 
   # Directory
   { url = "*/", fg = "#5b520b" },
@@ -129,8 +129,8 @@ rules = [
 # SPOT
 [spot]
 border = { fg = "#750e0e" }
-title = { fg = "#2e5b31" }
-tbl_cell = { fg = "#2e5b31", reversed = true }
+title = { fg = "#286259" }
+tbl_cell = { fg = "#286259", reversed = true }
 tbl_col = { bold = true }
 
 # extras/yazi/icons.toml.template

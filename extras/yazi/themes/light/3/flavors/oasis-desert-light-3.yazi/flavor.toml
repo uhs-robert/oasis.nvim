@@ -4,22 +4,22 @@
 
 # MANAGER
 [mgr]
-cwd = { fg = "#920c0c" }
+cwd = { fg = "#9b0303" }
 
 find_keyword = { fg = "#dd986f", bold = true, italic = true, underline = true }
-find_position = { fg = "#af1a13", bg = "reset", bold = true, italic = true }
+find_position = { fg = "#ab2126", bg = "reset", bold = true, italic = true }
 
-marker_copied = { fg = "#215f3d", bg = "#215f3d" }
-marker_cut = { fg = "#af1a13", bg = "#af1a13" }
+marker_copied = { fg = "#255e40", bg = "#255e40" }
+marker_cut = { fg = "#ab2126", bg = "#ab2126" }
 marker_marked = { fg = "#0d506c", bg = "#0d506c" }
 marker_selected = { fg = "#615a20", bg = "#615a20" }
 
-count_copied = { fg = "#f7e7d4", bg = "#215f3d" }
-count_cut = { fg = "#f7e7d4", bg = "#af1a13" }
+count_copied = { fg = "#f7e7d4", bg = "#255e40" }
+count_cut = { fg = "#f7e7d4", bg = "#ab2126" }
 count_selected = { fg = "#f7e7d4", bg = "#615a20" }
 
 border_symbol = "│"
-border_style = { fg = "#8c2929" }
+border_style = { fg = "#912323" }
 
 # TABS
 [tabs]
@@ -44,13 +44,13 @@ sep_right = { open = "", close = "" }
 
 progress_label = { fg = "#f7e7d4", bold = true }
 progress_normal = { fg = "#0d506c", bg = "#f7e7d4" }
-progress_error = { fg = "#af1a13", bg = "#f7e7d4" }
+progress_error = { fg = "#ab2126", bg = "#f7e7d4" }
 
-perm_sep = { fg = "#506d80" }
+perm_sep = { fg = "#6d695e" }
 perm_type = { fg = "#0d506c" }
 perm_read = { fg = "#615a20" }
-perm_write = { fg = "#af1a13" }
-perm_exec = { fg = "#215f3d" }
+perm_write = { fg = "#ab2126" }
+perm_exec = { fg = "#255e40" }
 
 # INPUT
 [input]
@@ -62,7 +62,7 @@ selected = { reversed = true }
 # PICK
 [pick]
 border = { fg = "#817613" }
-active = { fg = "#920c0c", bold = true }
+active = { fg = "#9b0303", bold = true }
 inactive = {}
 
 # COMPLETION
@@ -73,16 +73,16 @@ border = { fg = "#817613" }
 [tasks]
 border = { fg = "#817613" }
 title = {}
-hovered = { fg = "#920c0c", underline = true }
+hovered = { fg = "#9b0303", underline = true }
 
 # WHICH
 [which]
 mask = { bg = "#f5e0c7" }
-cand = { fg = "#920c0c" }
+cand = { fg = "#9b0303" }
 rest = { fg = "#564b42" }
 desc = { fg = "#0d506c" }
 separator = "  "
-separator_style = { fg = "#506d80" }
+separator_style = { fg = "#6d695e" }
 
 # HELP
 [help]
@@ -95,7 +95,7 @@ footer = { fg = "#564b42", bg = "#f0d1ad" }
 [notify]
 title_info = { fg = "#0d506c" }
 title_warn = { fg = "#615a20" }
-title_error = { fg = "#af1a13" }
+title_error = { fg = "#ab2126" }
 
 # FILETYPE
 [filetype]
@@ -129,8 +129,8 @@ rules = [
 # SPOT
 [spot]
 border = { fg = "#750e0e" }
-title = { fg = "#920c0c" }
-tbl_cell = { fg = "#920c0c", reversed = true }
+title = { fg = "#9b0303" }
+tbl_cell = { fg = "#9b0303", reversed = true }
 tbl_col = { bold = true }
 
 # extras/yazi/icons.toml.template
