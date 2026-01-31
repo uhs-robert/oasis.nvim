@@ -248,7 +248,8 @@ local function create_highlights(c, light_mode, is_desert)
     ["@method"]               = "Function", -- Function
     ["@field"]                = "Identifier", -- Identifier
     ["@property"]             = "Identifier", -- Identifier
-    ["@constructor"]          = "@punctuation.bracket", -- Special (e.g. 'Map', 'Set', 'Error')
+    ["@constructor"]          = "Type", -- Special (e.g. 'Map', 'Set', 'Error')
+    ["@constructor.lua"]      = "@punctuation.bracket", -- Special (e.g. {})
     ["@conditional"]          = "Conditional", -- Conditional
     ["@repeat"]               = "Repeat", -- Repeat
     ["@label"]                = "Label", -- Label
