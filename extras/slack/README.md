@@ -97,32 +97,32 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Canyon Dark**
 ```
-#624020,#402412,#FFBA75,#624020,#402412,#F8E7D3,#FFA0A0,#87CEEB,#2F1A05,#F8E7D3
+#624020,#402412,#FFBA75,#624020,#402412,#F8E7D3,#FFA0A0,#58B8FD,#2F1A05,#F8E7D3
 ```
 
 **Oasis Canyon Light 1**
 ```
-#e8e0d8,#f3efeb,#a25407,#e8e0d8,#f3efeb,#665137,#ab0707,#1f7294,#f9f7f5,#665137
+#e8e0d8,#f3efeb,#a25407,#e8e0d8,#f3efeb,#665137,#ab0707,#0966a9,#f9f7f5,#665137
 ```
 
 **Oasis Canyon Light 2**
 ```
-#eedac3,#f5e9db,#994f05,#eedac3,#f5e9db,#624e35,#a30505,#1c6c8d,#f8f0e7,#624e35
+#eedac3,#f5e9db,#994f05,#eedac3,#f5e9db,#624e35,#a30505,#0761a1,#f8f0e7,#624e35
 ```
 
 **Oasis Canyon Light 3**
 ```
-#f0d1ad,#f5e0c7,#914a03,#f0d1ad,#f5e0c7,#5d4a33,#9b0303,#196685,#f7e7d4,#5d4a33
+#f0d1ad,#f5e0c7,#914a03,#f0d1ad,#f5e0c7,#5d4a33,#9b0303,#055b99,#f7e7d4,#5d4a33
 ```
 
 **Oasis Canyon Light 4**
 ```
-#eec9a0,#f3d8ba,#884501,#eec9a0,#f3d8ba,#574630,#920101,#16607e,#f5dfc7,#574630
+#eec9a0,#f3d8ba,#884501,#eec9a0,#f3d8ba,#574630,#920101,#035691,#f5dfc7,#574630
 ```
 
 **Oasis Canyon Light 5**
 ```
-#ecbd93,#f1cdad,#804000,#ecbd93,#f1cdad,#52412d,#8a0000,#145a76,#f3d5ba,#52412d
+#ecbd93,#f1cdad,#804000,#ecbd93,#f1cdad,#52412d,#8a0000,#025088,#f3d5ba,#52412d
 ```
 
 ## Desert
