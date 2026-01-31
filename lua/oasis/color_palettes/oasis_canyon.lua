@@ -49,11 +49,11 @@ local dark = {
     identifier = p.teal[400],
     delimiter = base.theme.strong_primary,
     type = p.teal[700],
-    builtinVar = p.lagoon[400], -- (this, document, window, etc)
+    builtinVar = p.lagoon[300], -- (this, document, window, etc)
     string = p.cactus[500],
     regex = p.palm[400],
     builtinConst = p.steelblue[500], -- (e.g. null, undefined, Infinity, etc)
-    constant = p.gold[400], -- (constant: number, float, boolean, or const not string/character)
+    constant = p.lagoon[500], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
     func = p.sand[300],
@@ -64,7 +64,7 @@ local dark = {
     special = p.sunset[400], -- (Statement not covered above)
     operator = p.rose[500],
     punctuation = p.coral[400],
-    preproc = p.sky[500], -- (imports)
+    preproc = p.khaki[500], -- (imports)
 
     -- Neutral: (Connections / Info)
     bracket = p.slate[500], -- (bracket punctuation)
@@ -73,7 +73,7 @@ local dark = {
 
   -- UI
   ui = {
-    lineNumber = p.gold[500],
+    lineNumber = p.lagoon[500],
     visual = { bg = base.bg.surface, fg = "none" },
     search = { bg = p.sky[900], fg = base.fg.core },
     match = { bg = p.lagoon[500], fg = base.bg.core },
