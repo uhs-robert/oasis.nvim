@@ -63,6 +63,7 @@ Config.defaults = {
 			gitsigns = nil,
 			lazy = nil,
       mini = nil,
+      render_markdown = nil,
 			snacks = nil,
 			which_key = nil,
 		},

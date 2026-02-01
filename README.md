@@ -196,14 +196,15 @@ The examples below use the default intensity of level 3.
 <br>
 <!-- plugins:start -->
 
-| Plugin                                                      |
-| ----------------------------------------------------------- |
-| [fzf-lua](https://github.com/ibhagwan/fzf-lua)              |
-| [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) |
-| [mini.nvim](https://nvim-mini.org/mini.nvim/)               |
-| [lazy.nvim](https://github.com/folke/lazy.nvim)             |
-| [snacks.nvim](https://github.com/folke/snacks.nvim)         |
-| [which-key.nvim](https://github.com/folke/which-key.nvim)   |
+| Plugin                                                                               |
+| ------------------------------------------------------------------------------------ |
+| [fzf-lua](https://github.com/ibhagwan/fzf-lua)                                       |
+| [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)                          |
+| [mini.nvim](https://nvim-mini.org/mini.nvim/)                                        |
+| [lazy.nvim](https://github.com/folke/lazy.nvim)                                      |
+| [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim) |
+| [snacks.nvim](https://github.com/folke/snacks.nvim)                                  |
+| [which-key.nvim](https://github.com/folke/which-key.nvim)                            |
 
 <!-- plugins:end -->
 </details>
@@ -562,6 +563,7 @@ require("oasis").setup({
       gitsigns = nil,
       lazy = nil,
       mini = nil,
+      render_markdown = nil,
       snacks = nil,
       which_key = nil,
     },
