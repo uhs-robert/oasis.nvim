@@ -235,8 +235,8 @@ local function create_highlights(c, light_mode, is_desert)
     ["@string.regexp"]        = { fg=c.syntax.regex }, -- SpecialChar
     ["@string.escape"]        = { fg=c.syntax.builtinVar, bold=true }, -- SpecialChar
     ["@string.special"]       = "SpecialChar", -- (e.g., dates)
-    ["@string.special.symbol"]  = { fg=c.syntax.identifier },
-    ["@string.special.url"]   = { fg=c.syntax.special, undercurl=true },
+    ["@string.special.symbol"]= { fg=c.syntax.identifier },
+    ["@string.special.url"]   = { fg = c.syntax.regex },
     ["@character"]            = "Character", -- Character
     ["@character.special"]    = "SpecialChar", -- SpecialChar
     ["@number"]               = "Number", -- Number
@@ -280,12 +280,18 @@ local function create_highlights(c, light_mode, is_desert)
     ["@tag.attribute"]        = "Identifier", -- Tag
     ["@tag.delimiter"]        = { fg=c.syntax.punctuation }, -- Tag
 
-
-    ["@markup.strong"]        = { bold=true },
-    ["@markup.italic"]        = { italic=true },
+    ["@markup.heading"]       = "Function",
+    ["@markup.heading.1"]     = { fg = c.terminal.red, bold = true },
+    ["@markup.heading.2"]     = { fg = c.terminal.bright_yellow, bold = true },
+    ["@markup.heading.3"]     = { fg = c.terminal.yellow, bold = true },
+    ["@markup.heading.4"]     = { fg = c.terminal.green, bold = true },
+    ["@markup.heading.5"]     = { fg = c.terminal.blue, bold = true },
+    ["@markup.heading.6"]     = { fg = c.terminal.bright_magenta, bold = true },
+    ["@markup.link.label"]    = { fg = c.theme.primary },
+    ["@markup.strong"]        = { fg = c.theme.light_primary, bold = true },
+    ["@markup.italic"]        = { fg = c.theme.light_primary, italic = true },
     ["@markup.strikethrough"] = { strikethrough=true },
     ["@markup.underline"]     = { underline=true },
-    ["@markup.heading"]       = "Function",
     ["@markup.quote"]         = "@variable.parameter",
     ["@markup.math"]          = "Constant",
     ["@markup.environment"]   = "Keyword",
@@ -474,6 +480,21 @@ local PLUGIN_GROUPS = {
 
     -- Mini Trailspace
     hl.MiniTrailspace = { bg = c.syntax.exception }
+  end,
+
+  -- Render Markdown
+  render_markdown = function(hl, c)
+    hl.RenderMarkdownBullet = "Special"
+    hl.RenderMarkdownChecked = "String"
+    hl.RenderMarkdownCode = { bg = c.bg.mantle }
+    hl.RenderMarkdownCodeBorder = { bg = c.bg.surface }
+    hl.RenderMarkdownCodeInline = { bg = c.bg.mantle }
+    hl.RenderMarkdownLink = { fg = c.theme.strong_primary }
+    hl.RenderMarkdownTableHead = { fg = c.fg.muted }
+    hl.RenderMarkdownTableRow = { fg = c.fg.muted }
+    hl.RenderMarkdownTodo = { fg = c.terminal.cyan }
+    hl.RenderMarkdownUnchecked = { fg = c.terminal.bright_red }
+    -- hl.RenderMarkdownWikiLink = {}
   end,
 
   -- Snacks
