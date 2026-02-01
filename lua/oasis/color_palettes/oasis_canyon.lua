@@ -46,14 +46,13 @@ local dark = {
   syntax = {
     -- Cold: (Data)
     parameter = p.lavender[400],
-    identifier = p.teal[400],
+    identifier = p.sky[500],
     delimiter = base.theme.strong_primary,
     type = p.teal[700],
-    builtinVar = p.lagoon[300], -- (this, document, window, etc)
+    builtinVar = p.gold[400], -- (this, document, window, etc)
     string = p.cactus[500],
     regex = p.palm[400],
     builtinConst = p.steelblue[500], -- (e.g. null, undefined, Infinity, etc)
-    constant = p.lagoon[500], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
     func = p.sand[300],
@@ -64,7 +63,7 @@ local dark = {
     special = p.sunset[400], -- (Statement not covered above)
     operator = p.rose[500],
     punctuation = p.coral[400],
-    preproc = p.khaki[500], -- (imports)
+    preproc = p.teal[300], -- (imports)
 
     -- Neutral: (Connections / Info)
     bracket = p.slate[500], -- (bracket punctuation)
