@@ -306,6 +306,7 @@ local function create_highlights(c, light_mode, is_desert)
     ["@lsp.type.boolean"]                      = "@boolean",
     ["@lsp.type.builtinType"]                  = "@type.builtin",
     ["@lsp.type.comment"]                      = "@comment",
+    ["@lsp.type.class"]                        = "@type",
     ["@lsp.type.decorator"]                    = "@attribute",
     ["@lsp.type.deriveHelper"]                 = "@attribute",
     ["@lsp.type.enum"]                         = "@type",
@@ -328,7 +329,7 @@ local function create_highlights(c, light_mode, is_desert)
     ["@lsp.type.typeAlias"]                    = "@type.definition",
     ["@lsp.type.unresolvedReference"]          = { undercurl = true, sp = c.ui.diag.error.fg },
     ["@lsp.type.variable"]                     = {}, -- use treesitter styles for regular variables
-    ["@lsp.typemod.class.defaultLibrary"]      = "@type.builtin",
+    ["@lsp.typemod.class.defaultLibrary"]      = "@type",
     ["@lsp.typemod.enum.defaultLibrary"]       = "@type.builtin",
     ["@lsp.typemod.enumMember.defaultLibrary"] = "@constant.builtin",
     ["@lsp.typemod.function.defaultLibrary"]   = "@function.builtin",
