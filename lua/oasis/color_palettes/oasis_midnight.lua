@@ -53,7 +53,7 @@ local dark = {
     string = p.cactus[500],
     regex = p.palm[500],
     builtinConst = p.steelblue[500], -- (e.g. null, undefined, Infinity, etc)
-    constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
+    constant = p.sunset[600], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
     func = p.sunset[300],
@@ -73,7 +73,7 @@ local dark = {
 
   -- UI
   ui = {
-    lineNumber = p.sunset[500],
+    lineNumber = p.sunset[600],
     visual = { bg = base.bg.surface, fg = "none" },
     search = { bg = p.stone[900], fg = base.fg.core },
     match = { bg = p.khaki[500], fg = base.bg.core },
