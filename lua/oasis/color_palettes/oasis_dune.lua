@@ -46,7 +46,7 @@ local dark = {
   syntax = {
     -- Cold: (Data)
     parameter = p.lavender[400],
-    identifier = p.teal[300],
+    identifier = p.sky[500],
     delimiter = base.theme.strong_primary,
     type = p.teal[600],
     builtinVar = p.lagoon[400], -- (this, document, window, etc)
@@ -64,7 +64,7 @@ local dark = {
     special = p.sunset[500], -- (Statement not covered above)
     operator = p.rose[300],
     punctuation = p.coral[300],
-    preproc = p.sky[500], -- (imports)
+    preproc = p.teal[300], -- (imports)
 
     -- Neutral: (Connections / Info)
     bracket = p.slate[400], -- (bracket punctuation)
