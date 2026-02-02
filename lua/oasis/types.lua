@@ -32,6 +32,7 @@
 ---@field parameter string
 ---@field identifier string
 ---@field type string
+---@field typedef string
 ---@field builtinVar string
 ---@field string string
 ---@field regex string
@@ -47,6 +48,7 @@
 ---@field operator string
 ---@field punctuation string
 ---@field preproc string
+---@field macro string
 ---@field bracket string
 ---@field comment string
 ---@field delimiter? string
@@ -303,6 +305,7 @@
 ---@field parameter? string
 ---@field identifier? string
 ---@field type? string
+---@field typedef? string
 ---@field builtinVar? string
 ---@field string? string
 ---@field regex? string
@@ -318,6 +321,7 @@
 ---@field operator? string
 ---@field punctuation? string
 ---@field preproc? string
+---@field macro? string
 ---@field bracket? string
 ---@field comment? string
 ---@field delimiter? string
