@@ -512,6 +512,7 @@ local PLUGIN_GROUPS = {
     hl.SnacksPickerInputTitle = "OasisFloatSecondary"
     hl.SnacksPickerInputBorder = "OasisFloatSecondary"
     hl.SnacksPickerPrompt = "Identifier"
+    hl.SnacksPickerMatch = "Constant"
   end,
 
   -- Which Key
