@@ -148,13 +148,13 @@ local function create_highlights(c, light_mode, is_desert)
 
     Type                       = { fg=c.syntax.type }, -- (*) int, long, char, etc.
     StorageClass               = { fg=c.syntax.type, bold=true }, --   static, register, volatile, etc.
-    Structure                  = { fg=c.ui.diag.info.fg, bold=true }, --   struct, union, enum, etc.
     Typedef                    = { fg=c.syntax.type }, --   A typedef
+    Structure                  = "StorageClass", --   struct, union, enum, etc.
 
-    Special                    = { fg=c.syntax.special }, -- (*) Any special symbol
-    SpecialChar                = "Special", --   Special character in a constant
+    Special                    = { fg=c.syntax.special, bold=true }, -- (*) Any special symbol
+    SpecialChar                = "Exception", --   Special character in a constant
     Tag                        = "Special", --   You can use CTRL-] on this
-    Delimiter                  = { fg=(c.syntax.delimiter or c.syntax.identifier) }, --   Character that needs attention
+    Delimiter                  = { fg=c.syntax.delimiter }, --   Character that needs attention
     SpecialComment             = "Special", --   Special things inside a comment (e.g. '\n')
     Debug                      = "Constant", --   Debugging statements
 
@@ -185,7 +185,7 @@ local function create_highlights(c, light_mode, is_desert)
     DiagnosticVirtualTextWarn  = { fg=c.ui.diag.warn.fg, bg=c.ui.diag.warn.bg } , -- Used for "Warn" diagnostic virtual text.
     DiagnosticVirtualTextInfo  = { fg=c.ui.diag.info.fg, bg=c.ui.diag.info.bg } , -- Used for "Info" diagnostic virtual text.
     DiagnosticVirtualTextHint  = { fg=c.ui.diag.hint.fg, bg=c.ui.diag.hint.bg } , -- Used for "Hint" diagnostic virtual text.
-    DiagnosticVirtualTextOk    = "DiagnosticOk" , -- Used for "Ok" diagnostic virtual text.
+    DiagnosticVirtualTextOk    = { fg=c.ui.diag.ok.fg, bg=c.ui.diag.ok.bg } , -- Used for "Ok" diagnostic virtual text.
     DiagnosticUnderlineError   = { undercurl=true, sp=c.ui.diag.error.fg } , -- Used to underline "Error" diagnostics.
     DiagnosticUnderlineWarn    = { undercurl=true, sp=c.ui.diag.warn.fg } , -- Used to underline "Warn" diagnostics.
     DiagnosticUnderlineInfo    = { undercurl=true, sp=c.ui.diag.info.fg } , -- Used to underline "Info" diagnostics.
@@ -227,16 +227,16 @@ local function create_highlights(c, light_mode, is_desert)
     ["@punctuation.special"]  = { fg=c.syntax.operator }, -- Delimiter (e.g. `{}` in string interpolation)
     ["@constant"]             = "Constant", -- Constant
     ["@constant.builtin"]     = { fg=c.syntax.builtinConst, italic=true }, -- Special
-    ["@constant.macro"]       = "Define", -- Define
+    ["@constant.macro"]       = "Macro", -- Define
 
     ["@define"]               = "Define", -- Define
     ["@macro"]                = "Macro", -- Macro
     ["@string"]               = "String", -- String
     ["@string.regexp"]        = { fg=c.syntax.regex }, -- SpecialChar
-    ["@string.escape"]        = { fg=c.syntax.builtinVar, bold=true }, -- SpecialChar
+    ["@string.escape"]        = "Exception", -- SpecialChar
     ["@string.special"]       = "SpecialChar", -- (e.g., dates)
     ["@string.special.symbol"]= { fg=c.syntax.identifier },
-    ["@string.special.url"]   = { fg = c.syntax.regex },
+    ["@string.special.url"]   = { fg=c.syntax.regex, underline=true },
     ["@character"]            = "Character", -- Character
     ["@character.special"]    = "SpecialChar", -- SpecialChar
     ["@number"]               = "Number", -- Number
@@ -263,22 +263,32 @@ local function create_highlights(c, light_mode, is_desert)
     ["@keyword.return"]       = { fg=c.syntax.exception, italic=true }, -- Keyword -- `return` and `yield`
     ["@keyword.exception"]    = "Exception", -- Keyword (e.g. `throw`, `catch`)
     ["@keyword.luap"]         = "Exception", -- Keyword
+    ["@keyword.modifier"]     = "Exception", -- Keyword (e.g. `!important`)
     ["@keyword.repeat"]       = "Repeat", -- Keyword
     ["@keyword.function"]     = { fg=c.syntax.statement }, -- Keyword
     ["@keyword.conditional"]  = "Conditional", -- Keyword
 
     ["@exception"]            = "Exception", -- Exception 
 
+    ["@attribute"]            = "Macro", -- Special (e.g. 'Map', 'Set', 'Error')
+    ["@attribute.css"]        = "Keyword", -- (e.g. `:hover`, `::before`)
+
     ["@type"]                 = "Type", -- Type
+    ["@type.builtin"]         = "Typedef",
     ["@type.definition"]      = "Typedef", -- Typedef
     ["@storageclass"]         = "StorageClass", -- StorageClass
     ["@structure"]            = "Structure", -- Structure
-    ["@namespace"]            = "Identifier", -- Identifier
+    ["@namespace"]            = "@variable.builtin", -- Identifier
     ["@include"]              = "Include", -- Include
     ["@preproc"]              = "PreProc", -- PreProc
     ["@debug"]                = "Debug", -- Debug
-    ["@tag.attribute"]        = "Identifier", -- Tag
+    ["@tag"]                  = "Label", -- Tag
+    ["@tag.attribute"]        = "Keyword", -- Tag
     ["@tag.delimiter"]        = { fg=c.syntax.punctuation }, -- Tag
+    ["@tag.html"]             = "Statement", -- Html tag
+    ["@tag.css"]              = "Statement", -- Html tag in CSS
+    ["@tag.builtin"]          = "Conditional", -- Html tag e.g. `<div>`
+    ["@tag.tsx"]              = "Type", -- Tsx tag
 
     ["@markup.heading"]       = "Function",
     ["@markup.heading.1"]     = { fg = c.terminal.red, bold = true },
@@ -329,13 +339,13 @@ local function create_highlights(c, light_mode, is_desert)
     ["@lsp.type.typeAlias"]                    = "@type.definition",
     ["@lsp.type.unresolvedReference"]          = { undercurl = true, sp = c.ui.diag.error.fg },
     ["@lsp.type.variable"]                     = {}, -- use treesitter styles for regular variables
-    ["@lsp.typemod.class.defaultLibrary"]      = "@type",
+    ["@lsp.typemod.class.defaultLibrary"]      = "@type.builtin",
     ["@lsp.typemod.enum.defaultLibrary"]       = "@type.builtin",
     ["@lsp.typemod.enumMember.defaultLibrary"] = "@constant.builtin",
     ["@lsp.typemod.function.defaultLibrary"]   = "@function.builtin",
     ["@lsp.typemod.keyword.async"]             = "@keyword.coroutine",
     ["@lsp.typemod.keyword.injected"]          = "@keyword",
-    ["@lsp.typemod.macro.defaultLibrary"]      = "@function.builtin",
+    ["@lsp.typemod.macro.defaultLibrary"]      = { fg=c.syntax.macro, italic=true },
     ["@lsp.typemod.method.defaultLibrary"]     = "@function.builtin",
     ["@lsp.typemod.operator.injected"]         = "@operator",
     ["@lsp.typemod.string.injected"]           = "@string",
