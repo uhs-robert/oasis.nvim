@@ -49,7 +49,8 @@ local dark = {
     identifier = p.sky[500],
     delimiter = base.theme.strong_primary,
     type = p.teal[600],
-    builtinVar = p.lagoon[400], -- (this, document, window, etc)
+    typedef = p.teal[700],
+    builtinVar = p.lagoon[500], -- (this, document, window, etc)
     string = p.cactus[500],
     regex = p.palm[500],
     builtinConst = p.steelblue[400], -- (e.g. null, undefined, Infinity, etc)
@@ -62,9 +63,12 @@ local dark = {
     exception = p.red[100], -- (try/catch, return)
     conditional = opts.themed_syntax and base.palette.primary[700] or p.khaki[700], -- (Conditionals, Loops)
     special = p.sunset[500], -- (Statement not covered above)
+    keyword = opts.themed_syntax and p.cyan[800] or base.palette.primary[600], -- (important keywords (i.e. html attributes))
+    keyword = opts.themed_syntax and p.cyan[600] or base.palette.primary[600], -- (important keywords (i.e. html attributes))
     operator = p.rose[300],
     punctuation = p.coral[300],
-    preproc = p.teal[300], -- (imports)
+    preproc = p.soil[500], -- (imports)
+    macro = p.soil[600], -- (imports)
 
     -- Neutral: (Connections / Info)
     bracket = p.slate[400], -- (bracket punctuation)

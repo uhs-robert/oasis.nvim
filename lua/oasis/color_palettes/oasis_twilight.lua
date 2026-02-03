@@ -45,10 +45,11 @@ local dark = {
   -- Syntax
   syntax = {
     -- Cold: (Data)
-    parameter = opts.themed_syntax and p.khaki[400] or p.lavender[500],
+    parameter = opts.themed_syntax and p.khaki[600] or p.lavender[500],
     identifier = p.sky[400],
     delimiter = base.theme.strong_primary,
     type = p.teal[700],
+    typedef = p.teal[800],
     builtinVar = p.lagoon[500], -- (this, document, window, etc)
     string = p.cactus[500],
     regex = p.palm[500],
@@ -62,9 +63,11 @@ local dark = {
     exception = p.red[300], -- (try/catch, return)
     conditional = opts.themed_syntax and base.palette.primary[400] or p.khaki[700], -- (Conditionals, Loops)
     special = p.sunset[400], -- (Statement not covered above)
+    keyword = opts.themed_syntax and p.cyan[800] or base.palette.primary[600], -- (important keywords (i.e. html attributes))
     operator = p.rose[400],
     punctuation = p.coral[400],
-    preproc = p.teal[400], -- (imports)
+    preproc = p.soil[500], -- (imports)
+    macro = p.soil[700], -- (imports)
 
     -- Neutral: (Connections / Info)
     bracket = p.grey[400], -- (bracket punctuation)
