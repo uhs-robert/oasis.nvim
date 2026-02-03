@@ -25,6 +25,7 @@
 ---@field secondary string
 ---@field secondary_strong? string
 ---@field secondary_light? string
+---@field label? string
 ---@field accent string
 ---@field cursor string
 
@@ -297,6 +298,7 @@
 ---@class OasisPaletteThemeOverrides
 ---@field primary? string
 ---@field secondary? string
+---@field label? string
 ---@field accent? string
 ---@field strong_primary? string
 ---@field light_primary? string
