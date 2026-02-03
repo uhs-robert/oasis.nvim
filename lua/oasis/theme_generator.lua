@@ -208,6 +208,7 @@ local function create_highlights(c, light_mode, is_desert)
     ["@variable"]             = { fg=c.fg.core }, -- Identifier
     ["@variable.builtin"]     = { fg=c.syntax.builtinVar }, -- Identifier
     ["@variable.parameter"]   = "@parameter", -- Identifier
+    ["@variable.css"]         = "@parameter", -- Identifier
     ["@variable.member"]      = { fg=c.syntax.identifier }, -- Identifier
 
     ["@text.literal"]         = "Comment", -- Comment
