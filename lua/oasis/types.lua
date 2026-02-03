@@ -44,7 +44,6 @@
 ---@field statement string
 ---@field conditional string
 ---@field exception string
----@field keyword string
 ---@field special string
 ---@field operator string
 ---@field punctuation string
@@ -318,7 +317,6 @@
 ---@field statement? string
 ---@field conditional? string
 ---@field exception? string
----@field keyword? string
 ---@field special? string
 ---@field operator? string
 ---@field punctuation? string
