@@ -55,10 +55,10 @@ local dark = {
     delimiter = base.theme.strong_primary,
     type = p.teal[600],
     typedef = p.teal[700],
-    builtinVar = p.lagoon[500], -- (this, document, window, etc)
+    builtinVar = opts.themed_syntax and p.khaki[500] or p.lagoon[500], -- (this, document, window, etc)
     string = p.cactus[500],
-    regex = p.palm[600],
-    builtinConst = p.steelblue[400], -- (e.g. null, undefined, Infinity, etc)
+    regex = p.palm[400],
+    builtinConst = opts.themed_syntax and p.khaki[700] or p.steelblue[400], -- (e.g. null, undefined, Infinity, etc)
     constant = p.sunset[600], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
