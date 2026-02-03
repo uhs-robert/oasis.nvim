@@ -104,20 +104,15 @@ local function generate_bat_theme(name, display_name, palette)
   )
   add_scope(
     "Constants, booleans, numbers",
-    "constant.numeric, variable.other.constant, entity.name.constant, constant.language.boolean, constant.language.false, constant.language.true, keyword.other.unit.user-defined, keyword.other.unit.suffix.floating-point",
+    "constant.numeric, variable.other.constant, entity.name.constant, constant.language.boolean, constant.language.false, constant.language.true, keyword.other.unit.user-defined, keyword.other.unit.suffix.floating-point, constant.other.caps",
     palette.syntax.constant
   )
   add_scope("Variable", "variable, variable.other, variable.other.readwrite, variable.other.object", palette.fg.core)
   add_scope("Parameter", "variable.parameter, meta.parameter, meta.parameters variable", palette.syntax.parameter)
-  add_scope(
-    "Built-in constant",
-    "constant.language, support.constant, support.function.builtin, constant.other.caps",
-    palette.syntax.builtinConst,
-    "italic"
-  )
+  add_scope("Built-in constant", "constant.language", palette.syntax.builtinConst, "italic")
   add_scope(
     "Built-in variable",
-    "variable.language, variable.language.this, variable.language.self, variable.language.super",
+    "variable.language, variable.language.this, variable.language.self, variable.language.super, support.variable, support.constant.language, support.namespace, support.other, support.constant",
     palette.syntax.builtinVar
   )
   add_scope(
@@ -129,7 +124,7 @@ local function generate_bat_theme(name, display_name, palette)
   add_scope(
     "Character, escape",
     "constant.character, constant.character.escape, constant.other.placeholder",
-    palette.syntax.builtinVar
+    palette.syntax.exception
   )
   add_scope("Entity name", "entity.name, entity.other.inherited-class", palette.syntax.identifier)
   add_scope(
@@ -144,7 +139,7 @@ local function generate_bat_theme(name, display_name, palette)
   )
   add_scope(
     "Keyword, storage",
-    "keyword, storage, storage.type.function.arrow, keyword.declaration, keyword.other",
+    "keyword, storage, storage.type.function, storage.type.function.arrow, keyword.declaration, keyword.other",
     palette.syntax.statement
   )
   add_scope(
@@ -160,7 +155,7 @@ local function generate_bat_theme(name, display_name, palette)
   )
   add_scope(
     "Operator",
-    "keyword.operator, keyword.operator.arithmetic, keyword.operator.logical, keyword.operator.assignment, keyword.operator.bitwise, keyword.operator.comparison, keyword.operator.relational, keyword.operator.word, punctuation.accessor, punctuation.accessor.dot, punctuation.accessor.arrow, punctuation.separator.pointer-access, punctuation.definition.tag",
+    "keyword.operator, keyword.operator.arithmetic, keyword.operator.logical, keyword.operator.assignment, keyword.operator.bitwise, keyword.operator.comparison, keyword.operator.relational, keyword.operator.word, punctuation.accessor, punctuation.accessor.dot, punctuation.accessor.arrow, punctuation.separator.pointer-access, punctuation.definition.tag, punctuation.definition.tag.begin, punctuation.definition.tag.end",
     palette.syntax.operator
   )
   add_scope(
@@ -186,12 +181,12 @@ local function generate_bat_theme(name, display_name, palette)
   add_scope(
     "Storage modifier",
     "storage.modifier, storage.modifier.static, storage.modifier.const, storage.modifier.async, storage.modifier.reference, storage.modifier.pointer",
-    palette.syntax.type
+    palette.syntax.statement
   )
   add_scope(
     "Structure",
     "entity.name.struct, storage.type.struct, storage.type.union, keyword.declaration.struct, entity.name.union",
-    palette.ui.diag.info.fg
+    palette.syntax.macro
   )
   add_scope(
     "Special",
@@ -209,7 +204,8 @@ local function generate_bat_theme(name, display_name, palette)
     palette.syntax.exception,
     "bold"
   )
-  add_scope("Entity Name Tag", "entity.name.tag, meta.tag", palette.syntax.special)
+  add_scope("Entity Name Tag", "entity.name.tag, meta.tag", palette.syntax.statement)
+  add_scope("Entity Name Preproc", "entity.name.xml", palette.syntax.preproc)
   add_scope("Meta Tag", "meta.tag", palette.syntax.exception)
   add_scope("Tag attribute", "entity.other.attribute-name, meta.attribute", palette.syntax.identifier)
   add_scope("Invalid", "invalid, invalid.illegal, invalid.broken", palette.ui.diag.error.fg)
@@ -298,7 +294,7 @@ local function generate_bat_theme(name, display_name, palette)
   add_scope(
     "Shell shebang",
     "comment.line.shebang, punctuation.definition.comment.shebang.shell, meta.shebang.shell",
-    palette.syntax.special,
+    palette.syntax.preproc,
     "italic"
   )
   add_scope("Shell shebang command", "comment.line.shebang constant.language", secondary, "italic")
@@ -340,14 +336,18 @@ local function generate_bat_theme(name, display_name, palette)
   add_scope("Man page options", "entity.name", secondary)
 
   lines[#lines + 1] = "\t\t<!-- Markdown -->"
-  add_scope("Markdown heading 1", "markup.heading.1.markdown", palette.syntax.exception, "bold")
-  add_scope("Markdown heading 2", "markup.heading.2.markdown", palette.syntax.constant, "bold")
+  add_scope("Markdown heading 1", "markup.heading.1.markdown", palette.terminal.red, "bold")
+  add_scope("Markdown heading 2", "markup.heading.2.markdown", palette.terminal.bright_yellow, "bold")
+  add_scope("Markdown heading 3", "markup.heading.3.markdown", palette.terminal.yellow, "bold")
+  add_scope("Markdown heading 4", "markup.heading.4.markdown", palette.terminal.green, "bold")
+  add_scope("Markdown heading 5", "markup.heading.5.markdown", palette.terminal.blue, "bold")
+  add_scope("Markdown heading 6", "markup.heading.6.markdown", palette.terminal.bright_magenta, "bold")
   add_scope("Markdown heading", "markup.heading.markdown", primary, "bold")
-  add_scope("Markdown bold", "markup.bold", palette.fg.strong, "bold")
-  add_scope("Markdown italic", "markup.italic", palette.fg.core, "italic")
-  add_scope("Markdown link", "markup.underline.link", secondary)
+  add_scope("Markdown bold", "markup.bold", secondary, "bold")
+  add_scope("Markdown italic", "markup.italic", secondary, "italic")
+  add_scope("Markdown link", "markup.underline.link", primary, "underline")
   add_scope("Markdown code", "markup.inline.raw, markup.fenced_code", palette.syntax.string)
-  add_scope("Markdown quote", "markup.quote", palette.syntax.comment, "italic")
+  add_scope("Markdown quote", "markup.quote", palette.syntax.parameter, "italic")
   add_scope("Markdown list", "markup.list", palette.fg.core)
 
   lines[#lines + 1] = "\t\t<!-- Typst -->"
