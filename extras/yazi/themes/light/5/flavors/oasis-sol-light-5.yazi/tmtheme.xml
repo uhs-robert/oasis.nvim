@@ -70,7 +70,7 @@
 			<key>name</key>
 			<string>Constants, booleans, numbers</string>
 			<key>scope</key>
-			<string>constant.numeric, variable.other.constant, entity.name.constant, constant.language.boolean, constant.language.false, constant.language.true, keyword.other.unit.user-defined, keyword.other.unit.suffix.floating-point</string>
+			<string>constant.numeric, variable.other.constant, entity.name.constant, constant.language.boolean, constant.language.false, constant.language.true, keyword.other.unit.user-defined, keyword.other.unit.suffix.floating-point, constant.other.caps</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -103,7 +103,7 @@
 			<key>name</key>
 			<string>Built-in constant</string>
 			<key>scope</key>
-			<string>constant.language, support.constant, support.function.builtin, constant.other.caps</string>
+			<string>constant.language</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -116,7 +116,7 @@
 			<key>name</key>
 			<string>Built-in variable</string>
 			<key>scope</key>
-			<string>variable.language, variable.language.this, variable.language.self, variable.language.super</string>
+			<string>variable.language, variable.language.this, variable.language.self, variable.language.super, support.variable, support.constant.language, support.namespace, support.other, support.constant</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -153,7 +153,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#454747</string>
+				<string>#4d4720</string>
 			</dict>
 		</dict>
 		<dict>
@@ -193,7 +193,7 @@
 			<key>name</key>
 			<string>Keyword, storage</string>
 			<key>scope</key>
-			<string>keyword, storage, storage.type.function.arrow, keyword.declaration, keyword.other</string>
+			<string>keyword, storage, storage.type.function, storage.type.function.arrow, keyword.declaration, keyword.other</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -228,7 +228,7 @@
 			<key>name</key>
 			<string>Operator</string>
 			<key>scope</key>
-			<string>keyword.operator, keyword.operator.arithmetic, keyword.operator.logical, keyword.operator.assignment, keyword.operator.bitwise, keyword.operator.comparison, keyword.operator.relational, keyword.operator.word, punctuation.accessor, punctuation.accessor.dot, punctuation.accessor.arrow, punctuation.separator.pointer-access, punctuation.definition.tag</string>
+			<string>keyword.operator, keyword.operator.arithmetic, keyword.operator.logical, keyword.operator.assignment, keyword.operator.bitwise, keyword.operator.comparison, keyword.operator.relational, keyword.operator.word, punctuation.accessor, punctuation.accessor.dot, punctuation.accessor.arrow, punctuation.separator.pointer-access, punctuation.definition.tag, punctuation.definition.tag.begin, punctuation.definition.tag.end</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -287,18 +287,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#254743</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Structure</string>
-			<key>scope</key>
-			<string>entity.name.struct, storage.type.struct, storage.type.union, keyword.declaration.struct, entity.name.union</string>
-			<key>settings</key>
-			<dict>
-				<key>foreground</key>
-				<string>#0d506c</string>
+				<string>#871f20</string>
 			</dict>
 		</dict>
 		<dict>
@@ -344,7 +333,18 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#6a3a12</string>
+				<string>#871f20</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Entity Name Preproc</string>
+			<key>scope</key>
+			<string>entity.name.xml</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#504436</string>
 			</dict>
 		</dict>
 		<dict>
@@ -743,7 +743,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#6a3a12</string>
+				<string>#504436</string>
 				<key>fontStyle</key>
 				<string>italic</string>
 			</dict>
@@ -895,7 +895,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#4d4720</string>
+				<string>#8f0e0e</string>
 				<key>fontStyle</key>
 				<string>bold</string>
 			</dict>
@@ -908,7 +908,59 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#2b2a2a</string>
+				<string>#683b0f</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Markdown heading 3</string>
+			<key>scope</key>
+			<string>markup.heading.3.markdown</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#4c4719</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Markdown heading 4</string>
+			<key>scope</key>
+			<string>markup.heading.4.markdown</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#234f38</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Markdown heading 5</string>
+			<key>scope</key>
+			<string>markup.heading.5.markdown</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#0f477f</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Markdown heading 6</string>
+			<key>scope</key>
+			<string>markup.heading.6.markdown</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#5d1cac</string>
 				<key>fontStyle</key>
 				<string>bold</string>
 			</dict>
@@ -934,7 +986,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#5b2d26</string>
+				<string>#834406</string>
 				<key>fontStyle</key>
 				<string>bold</string>
 			</dict>
@@ -947,7 +999,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#5b2e26</string>
+				<string>#834406</string>
 				<key>fontStyle</key>
 				<string>italic</string>
 			</dict>
@@ -960,7 +1012,9 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#834406</string>
+				<string>#800000</string>
+				<key>fontStyle</key>
+				<string>underline</string>
 			</dict>
 		</dict>
 		<dict>
@@ -982,7 +1036,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#665250</string>
+				<string>#4e0098</string>
 				<key>fontStyle</key>
 				<string>italic</string>
 			</dict>
