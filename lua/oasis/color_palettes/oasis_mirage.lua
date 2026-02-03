@@ -25,6 +25,7 @@ local base = {
     primary = p.teal[600],
     light_primary = p.teal[400],
     secondary = p.sunrise[500],
+    label = p.sunrise[600],
     accent = p.lavender[300],
     cursor = p.khaki[500],
   },

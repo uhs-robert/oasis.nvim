@@ -25,6 +25,7 @@ local base = {
     secondary_strong = p.red[800],
     secondary = p.red[500],
     secondary_light = p.rose[500],
+    label = p.red[600],
     accent = p.palm[500],
     cursor = p.khaki[500],
   },
