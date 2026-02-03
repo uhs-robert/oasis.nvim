@@ -67,7 +67,7 @@ local dark = {
     operator = p.rose[500],
     punctuation = p.coral[400],
     preproc = p.soil[500], -- (imports)
-    macro = p.soil[600], -- (imports)
+    macro = p.soil[700], -- (imports)
 
     -- Neutral: (Connections / Info)
     bracket = p.slate[500], -- (bracket punctuation)

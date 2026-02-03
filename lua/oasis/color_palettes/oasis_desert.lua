@@ -52,7 +52,8 @@ local dark = {
     parameter = p.lavender[400],
     identifier = (opts.useLegacyComments or opts.use_legacy_comments) and p.teal[500] or p.sky[500],
     delimiter = base.theme.secondary,
-    type = p.teal[700],
+    type = p.teal[600],
+    typedef = p.teal[700],
     builtinVar = p.lagoon[500], -- (this, document, window, etc)
     string = p.cactus[500],
     regex = p.palm[500],
@@ -66,13 +67,15 @@ local dark = {
     exception = opts.themed_syntax and p.red[300] or p.red[300], -- (try/catch, return)
     conditional = opts.themed_syntax and primary[700] or p.khaki[700], -- (Conditionals, Loops)
     special = p.sunset[400], -- (Statement not covered above)
+    keyword = opts.themed_syntax and p.cyan[600] or base.palette.primary[600], -- (important keywords (i.e. html attributes))
     operator = p.rose[500],
     punctuation = p.coral[400],
-    preproc = (opts.useLegacyComments or opts.use_legacy_comments) and p.sky[500] or p.teal[500], -- (imports)
+    preproc = p.soil[500], -- (imports)
+    macro = p.soil[600], -- (imports)
 
     -- Neutral: (Connections / Info)
     bracket = p.slate[500], -- (bracket punctuation)
-    comment = (opts.useLegacyComments or opts.use_legacy_comments) and "#87CEEB" or theme.fg.comment,
+    comment = (opts.useLegacyComments or opts.use_legacy_comments) and p.sky[500] or theme.fg.comment,
   },
 
   -- UI
