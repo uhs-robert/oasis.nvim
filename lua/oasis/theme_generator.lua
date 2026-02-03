@@ -272,7 +272,7 @@ local function create_highlights(c, light_mode, is_desert)
     ["@exception"]            = "Exception", -- Exception 
 
     ["@attribute"]            = "Macro", -- Special (e.g. 'Map', 'Set', 'Error')
-    ["@attribute.css"]        = "@constant.builtin", -- (e.g. `:hover`, `::before`)
+    ["@attribute.css"]        = { fg=c.syntax.exception, italic=true }, -- (e.g. `:hover`, `::before`)
 
     ["@type"]                 = "Type", -- Type
     ["@type.builtin"]         = "Typedef",
