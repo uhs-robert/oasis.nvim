@@ -7,15 +7,15 @@
 cwd = { fg = "#326234" }
 
 find_keyword = { fg = "#72dacc", bold = true, italic = true, underline = true }
-find_position = { fg = "#584f15", bg = "reset", bold = true, italic = true }
+find_position = { fg = "#554f24", bg = "reset", bold = true, italic = true }
 
 marker_copied = { fg = "#205338", bg = "#205338" }
-marker_cut = { fg = "#584f15", bg = "#584f15" }
+marker_cut = { fg = "#554f24", bg = "#554f24" }
 marker_marked = { fg = "#0d506c", bg = "#0d506c" }
 marker_selected = { fg = "#56501d", bg = "#56501d" }
 
 count_copied = { fg = "#f3ceea", bg = "#205338" }
-count_cut = { fg = "#f3ceea", bg = "#584f15" }
+count_cut = { fg = "#f3ceea", bg = "#554f24" }
 count_selected = { fg = "#f3ceea", bg = "#56501d" }
 
 border_symbol = "│"
@@ -44,12 +44,12 @@ sep_right = { open = "", close = "" }
 
 progress_label = { fg = "#f3ceea", bold = true }
 progress_normal = { fg = "#0d506c", bg = "#f3ceea" }
-progress_error = { fg = "#584f15", bg = "#f3ceea" }
+progress_error = { fg = "#554f24", bg = "#f3ceea" }
 
 perm_sep = { fg = "#745766" }
 perm_type = { fg = "#0d506c" }
 perm_read = { fg = "#56501d" }
-perm_write = { fg = "#584f15" }
+perm_write = { fg = "#554f24" }
 perm_exec = { fg = "#205338" }
 
 # INPUT
@@ -95,7 +95,7 @@ footer = { fg = "#563a4f", bg = "#eaa9da" }
 [notify]
 title_info = { fg = "#0d506c" }
 title_warn = { fg = "#56501d" }
-title_error = { fg = "#584f15" }
+title_error = { fg = "#554f24" }
 
 # FILETYPE
 [filetype]

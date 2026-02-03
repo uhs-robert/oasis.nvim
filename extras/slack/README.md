@@ -161,22 +161,22 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Dune Dark**
 ```
-#534A3F,#3C332C,#F0E68C,#534A3F,#3C332C,#E8E5DA,#96D4CB,#D2ADFF,#2E2620,#E8E5DA
+#534A3F,#3C332C,#F0E68C,#534A3F,#3C332C,#E8E5DA,#8FD1C7,#D2ADFF,#2E2620,#E8E5DA
 ```
 
 **Oasis Dune Light 1**
 ```
-#e8e4d8,#f3f1eb,#908419,#e8e4d8,#f3f1eb,#58554c,#377c72,#5107ab,#f9f8f5,#58554c
+#e8e4d8,#f3f1eb,#908419,#e8e4d8,#f3f1eb,#58554c,#377c71,#5107ab,#f9f8f5,#58554c
 ```
 
 **Oasis Dune Light 2**
 ```
-#eee5c9,#f5f0e0,#887d16,#eee5c9,#f5f0e0,#57544b,#33756c,#4c05a3,#f9f6ec,#57544b
+#eee5c9,#f5f0e0,#887d16,#eee5c9,#f5f0e0,#57544b,#33756b,#4c05a3,#f9f6ec,#57544b
 ```
 
 **Oasis Dune Light 3**
 ```
-#e9dfba,#f0ead1,#817613,#e9dfba,#f0ead1,#525047,#2f6f66,#48039b,#f4efdd,#525047
+#e9dfba,#f0ead1,#817613,#e9dfba,#f0ead1,#525047,#2f6f65,#48039b,#f4efdd,#525047
 ```
 
 **Oasis Dune Light 4**
