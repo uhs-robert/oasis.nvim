@@ -64,7 +64,6 @@ local dark = {
     exception = p.red[500], -- (try/catch, return)
     conditional = opts.themed_syntax and base.palette.primary[600] or p.gold[300], -- (Conditionals, Loops)
     special = base.theme.secondary, -- (Statement not covered above)
-    keyword = opts.themed_syntax and p.khaki[700] or base.palette.primary[600], -- (important keywords (i.e. html attributes))
     operator = p.rose[500],
     punctuation = p.rose[700],
     preproc = p.soil[500], -- (imports)

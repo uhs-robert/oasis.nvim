@@ -133,7 +133,7 @@ local function create_highlights(c, light_mode, is_desert)
     Function                   = { fg=c.syntax.func }, --   Function name (also: methods for classes)
 
     Statement                  = { fg=c.syntax.statement }, -- (*) Any statement
-    Keyword                    = { fg=c.syntax.keyword, italic=true }, --   any other keyword
+    Keyword                    = { fg=c.syntax.identifier, italic=true }, --   any other keyword
     Conditional                = { fg=c.syntax.conditional }, --   if, then, else, endif, switch, etc.
     Repeat                     = "Conditional", --   for, do, while, etc.
     Label                      = "Conditional", --   case, default, etc.
