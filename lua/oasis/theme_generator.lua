@@ -133,23 +133,23 @@ local function create_highlights(c, light_mode, is_desert)
     Function                   = { fg=c.syntax.func }, --   Function name (also: methods for classes)
 
     Statement                  = { fg=c.syntax.statement }, -- (*) Any statement
-    Keyword                    = { fg=c.syntax.statement }, --   any other keyword
+    Keyword                    = { fg=c.syntax.keyword, italic=true }, --   any other keyword
     Conditional                = { fg=c.syntax.conditional }, --   if, then, else, endif, switch, etc.
     Repeat                     = "Conditional", --   for, do, while, etc.
     Label                      = "Conditional", --   case, default, etc.
     Operator                   = { fg=c.syntax.operator }, --   "sizeof", "+", "*", etc.
     Exception                  = { fg=c.syntax.exception, bold=true }, --   try, catch, throw
 
-    PreProc                    = { fg=c.syntax.preproc, italic=true }, -- (*) Generic Preprocessor
+    PreProc                    = { fg=c.syntax.preproc }, -- (*) Generic Preprocessor
     Include                    = "PreProc", --   Preprocessor #include
     Define                     = "PreProc", --   Preprocessor #define
-    Macro                      = "PreProc", --   Same as Define
     PreCondit                  = "PreProc", --   Preprocessor #if, #else, #endif, etc.
+    Macro                      = { fg=c.syntax.macro, italic=true, bold=true }, --   Macros
 
     Type                       = { fg=c.syntax.type }, -- (*) int, long, char, etc.
     StorageClass               = { fg=c.syntax.type, bold=true }, --   static, register, volatile, etc.
-    Typedef                    = { fg=c.syntax.type }, --   A typedef
     Structure                  = "StorageClass", --   struct, union, enum, etc.
+    Typedef                    = { fg=c.syntax.typedef, italic=true }, --   A typedef
 
     Special                    = { fg=c.syntax.special, bold=true }, -- (*) Any special symbol
     SpecialChar                = "Exception", --   Special character in a constant
@@ -259,6 +259,7 @@ local function create_highlights(c, light_mode, is_desert)
     ["@keyword.coroutine"]    = { fg=c.syntax.conditional }, -- Keyword coroutines (e.g. `go` in Go, `async/await` in Python)
     ["@keyword.operator"]     = { fg=c.syntax.operator, bold=true }, -- Keyword English words (e.g. `and`, `or`)
     ["@keyword.import"]       = "PreProc", -- Keyword  (e.g. `import`, `from` in Python)
+    ["@keyword.export"]       = "PreProc", -- Keyword  (e.g. `export`)
     ["@keyword.directive"]    = "PreProc", -- Keyword  (e.g. #define, #if)
     ["@keyword.return"]       = { fg=c.syntax.exception, italic=true }, -- Keyword -- `return` and `yield`
     ["@keyword.exception"]    = "Exception", -- Keyword (e.g. `throw`, `catch`)
