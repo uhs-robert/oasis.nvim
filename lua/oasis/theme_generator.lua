@@ -236,7 +236,7 @@ local function create_highlights(c, light_mode, is_desert)
     ["@string.escape"]        = "Exception", -- SpecialChar
     ["@string.special"]       = "SpecialChar", -- (e.g., dates)
     ["@string.special.symbol"]= { fg=c.syntax.identifier },
-    ["@string.special.url"]   = { fg=c.syntax.regex, underline=true },
+    ["@string.special.url"]   = { fg=c.syntax.statement, underline=true },
     ["@character"]            = "Character", -- Character
     ["@character.special"]    = "SpecialChar", -- SpecialChar
     ["@number"]               = "Number", -- Number
@@ -272,7 +272,7 @@ local function create_highlights(c, light_mode, is_desert)
     ["@exception"]            = "Exception", -- Exception 
 
     ["@attribute"]            = "Macro", -- Special (e.g. 'Map', 'Set', 'Error')
-    ["@attribute.css"]        = "Keyword", -- (e.g. `:hover`, `::before`)
+    ["@attribute.css"]        = "@constant.builtin", -- (e.g. `:hover`, `::before`)
 
     ["@type"]                 = "Type", -- Type
     ["@type.builtin"]         = "Typedef",
@@ -298,9 +298,9 @@ local function create_highlights(c, light_mode, is_desert)
     ["@markup.heading.4"]     = { fg = c.terminal.green, bold = true },
     ["@markup.heading.5"]     = { fg = c.terminal.blue, bold = true },
     ["@markup.heading.6"]     = { fg = c.terminal.bright_magenta, bold = true },
-    ["@markup.link.label"]    = { fg = c.theme.primary },
-    ["@markup.strong"]        = { fg = c.theme.light_primary, bold = true },
-    ["@markup.italic"]        = { fg = c.theme.light_primary, italic = true },
+    ["@markup.link.label"]    = { fg =(c.theme.label and c.theme.label or c.theme.secondary) },
+    ["@markup.strong"]        = { fg = c.theme.secondary, bold = true },
+    ["@markup.italic"]        = { fg = c.theme.secondary, italic = true },
     ["@markup.strikethrough"] = { strikethrough=true },
     ["@markup.underline"]     = { underline=true },
     ["@markup.quote"]         = "@variable.parameter",

@@ -23,6 +23,7 @@ local base = {
     primary = p.lagoon[500],
     light_primary = p.lagoon[300],
     secondary = p.sunrise[500],
+    label = p.sunrise[600],
     accent = p.rose[500],
     cursor = p.khaki[500],
   },

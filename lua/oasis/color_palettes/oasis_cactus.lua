@@ -23,6 +23,7 @@ local base = {
     primary = p.aloe[700],
     light_primary = p.aloe[500],
     secondary = p.rose[500],
+    label = p.rose[600],
     accent = p.lavender[300],
     cursor = p.khaki[500],
   },
