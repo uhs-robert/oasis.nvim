@@ -140,7 +140,7 @@ local function create_highlights(c, light_mode, is_desert)
     Operator                   = { fg=c.syntax.operator }, --   "sizeof", "+", "*", etc.
     Exception                  = { fg=c.syntax.exception, bold=true }, --   try, catch, throw
 
-    PreProc                    = { fg=c.syntax.preproc }, -- (*) Generic Preprocessor
+    PreProc                    = { fg=c.syntax.preproc, italic=true }, -- (*) Generic Preprocessor
     Include                    = "PreProc", --   Preprocessor #include
     Define                     = "PreProc", --   Preprocessor #define
     PreCondit                  = "PreProc", --   Preprocessor #if, #else, #endif, etc.
@@ -249,6 +249,8 @@ local function create_highlights(c, light_mode, is_desert)
     ["@method"]               = "Function", -- Function
     ["@field"]                = "Identifier", -- Identifier
     ["@property"]             = "Identifier", -- Identifier
+    ["@module"]               = "Special", -- Special
+    ["@module.builtin"]       = "@variable.builtin", -- Special
     ["@constructor"]          = "Type", -- Special (e.g. 'Map', 'Set', 'Error')
     ["@constructor.lua"]      = "@punctuation.bracket", -- Special (e.g. {})
     ["@conditional"]          = "Conditional", -- Conditional
@@ -260,7 +262,7 @@ local function create_highlights(c, light_mode, is_desert)
     ["@keyword.coroutine"]    = { fg=c.syntax.conditional }, -- Keyword coroutines (e.g. `go` in Go, `async/await` in Python)
     ["@keyword.operator"]     = { fg=c.syntax.operator, bold=true }, -- Keyword English words (e.g. `and`, `or`)
     ["@keyword.import"]       = "PreProc", -- Keyword  (e.g. `import`, `from` in Python)
-    ["@keyword.export"]       = "PreProc", -- Keyword  (e.g. `export`)
+    ["@keyword.export"]       = { fg=c.syntax.preproc, bold=true }, -- Keyword  (e.g. `export`)
     ["@keyword.directive"]    = "PreProc", -- Keyword  (e.g. #define, #if)
     ["@keyword.return"]       = { fg=c.syntax.exception, italic=true }, -- Keyword -- `return` and `yield`
     ["@keyword.exception"]    = "Exception", -- Keyword (e.g. `throw`, `catch`)
@@ -281,6 +283,7 @@ local function create_highlights(c, light_mode, is_desert)
     ["@storageclass"]         = "StorageClass", -- StorageClass
     ["@structure"]            = "Structure", -- Structure
     ["@namespace"]            = "@variable.builtin", -- Identifier
+    ["@namespace.builtin"]    = "@variable.builtin", -- Identifier
     ["@include"]              = "Include", -- Include
     ["@preproc"]              = "PreProc", -- PreProc
     ["@debug"]                = "Debug", -- Debug
@@ -352,10 +355,11 @@ local function create_highlights(c, light_mode, is_desert)
     ["@lsp.typemod.operator.injected"]         = "@operator",
     ["@lsp.typemod.string.injected"]           = "@string",
     ["@lsp.typemod.struct.defaultLibrary"]     = "@type.builtin",
-    -- ["@lsp.typemod.type.defaultLibrary"]       = {},
-    -- ["@lsp.typemod.typeAlias.defaultLibrary"]  = {},
+    ["@lsp.typemod.type.defaultLibrary"]       = "@type.builtin",
+    ["@lsp.typemod.typeAlias.defaultLibrary"]  = "@type.builtin",
     ["@lsp.typemod.variable.callable"]         = "@function",
     ["@lsp.typemod.variable.defaultLibrary"]   = "@variable.builtin",
+    ["@lsp.typemod.variable.global"]           = "@variable.builtin",
     ["@lsp.typemod.variable.injected"]         = "@variable",
     ["@lsp.typemod.variable.static"]           = "@constant",
   }
