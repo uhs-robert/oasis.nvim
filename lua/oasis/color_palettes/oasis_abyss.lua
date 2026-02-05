@@ -67,11 +67,11 @@ local dark = {
     keyword = opts.themed_syntax and p.cyan[700] or base.palette.primary[600], -- (important keywords (i.e. html attributes))
     operator = p.rose[500],
     punctuation = p.coral[300],
-    preproc = p.soil[500], -- (imports)
-    macro = p.soil[700], -- (imports)
 
     -- Neutral: (Connections / Info)
     bracket = p.slate[500],
+    preproc = p.soil[500], -- (imports)
+    macro = p.soil[700], -- (imports)
     comment = theme.fg.comment, -- (comments)
   },
 
