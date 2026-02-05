@@ -39,17 +39,25 @@ local function generate_stylesheet()
 :root {
   /* Custom color variables are injected by the theme manifest */
 }
+
+/* Custom Folder Tree */
+  #folderPane #folderTree li.children {
+    background-color: var(--tree_card_bg) !important;
+  }
 ]]
 end
 
 local function generate_manifest(name, palette)
-  -- For desert theme, swap primary and secondary
-  local is_desert = name == "oasis_desert"
-  local primary = is_desert and palette.theme.secondary or palette.theme.primary
-  local secondary = is_desert and palette.theme.primary or palette.theme.secondary
+  local theme = vim.tbl_deep_extend("force", {}, palette.theme)
 
-  local display_name = Utils.format_display_name(name)
+  -- For desert theme, swap primary and secondary
+  if name == "oasis_desert" then
+    theme.primary = palette.theme.secondary
+    theme.secondary = palette.theme.primary
+  end
+
   -- Keep a stable slug for IDs, but present a readable name in Thunderbird
+  local display_name = Utils.format_display_name(name)
   local theme_id = "oasis-" .. name
 
   -- Build the manifest structure
@@ -78,21 +86,36 @@ local function generate_manifest(name, palette)
         tree_view_bg = "--tree-view-bg",
         bg_color = "--bg-color",
         button_primary_bg = "--button-primary-background-color",
+        primary = "--primary-color",
+        primary_hover = "--primary-color-hover",
         button_text = "--button-primary-text-color",
         tree_pane_bg = "--tree-pane-background",
         tree_card_bg = "--tree-card-background",
         layout_bg_0 = "--layout-background-0",
         layout_bg_1 = "--layout-background-1",
         button_bg = "--button-background-color",
+        button_hover_bg = "--button-hover-background-color",
+        btn_bg = "--btn-bg",
+        btn_bg_hover = "--btn-bg-hover",
+        btn_fg_hover = "--btn-color-hover",
+        btn_fg = "--btn-color",
         lwt_accent_color = "--lwt-accent-color",
         list_container_background_selected_current = "--list-container-background-selected-current",
         ab_cards_list_bg = "--ab-cards-list-bg",
         in_content_box_info_background = "--in-content-box-info-background",
+        indicator_background_selected = "--indicator-background-selected",
+        indicator_border_selected = "--indicator-border-selected",
         calendar_view_toggle_bg = "--calendar-view-toggle-background",
         calendar_view_toggle_hover_bg = "--calendar-view-toggle-hover-background",
         tabs_toolbar_bg = "--tabs-toolbar-background-color",
-        color_gray_70 = "--color-gray-70",
+        tabs_toolbar_active_border = "--tabline-color",
+        color_white = "--color-white",
+        color_green_60 = "--color-green-60",
+        color_red_50 = "--color-red-50",
+        color_ink_50 = "--color-ink-50",
         color_gray_50 = "--color-gray-50",
+        color_gray_60 = "--color-gray-60",
+        color_gray_70 = "--color-gray-70",
       },
     },
     theme = {
@@ -106,15 +129,15 @@ local function generate_manifest(name, palette)
 
         -- Tabs
         tab_text = palette.fg.core,
-        tab_line = primary,
-        tab_loading = primary,
+        tab_line = theme.primary,
+        tab_loading = theme.primary,
         tab_selected = palette.bg.surface,
         tab_background_text = palette.theme.light_primary,
         -- tab_background_text = palette.syntax.comment,
         tab_background_separator = palette.bg.surface,
 
         -- Buttons
-        button_background_active = primary,
+        button_background_active = theme.primary,
         button_background_hover = palette.bg.surface,
 
         -- Icons
@@ -124,14 +147,16 @@ local function generate_manifest(name, palette)
         bookmark_text = palette.fg.core,
 
         -- Input fields (search, address bar, etc.)
-        toolbar_field = palette.bg.surface,
+        toolbar_field = palette.bg.mantle,
         toolbar_field_text = palette.fg.core,
-        toolbar_field_highlight = primary,
+        toolbar_field_highlight = theme.primary,
         toolbar_field_highlight_text = palette.bg.core,
         toolbar_field_border = palette.ui.border,
-        toolbar_field_focus = palette.bg.surface,
-        toolbar_field_text_focus = palette.fg.core,
-        toolbar_field_border_focus = primary,
+        toolbar_field_focus = palette.bg.mantle,
+        toolbar_field_text_focus = palette.fg.strong,
+        toolbar_field_border_focus = theme.secondary,
+        indicator_background_selected = theme.secondary,
+        indicator_border_selected = theme.secondary,
 
         -- Separators
         toolbar_top_separator = palette.bg.surface,
@@ -141,39 +166,51 @@ local function generate_manifest(name, palette)
         -- Sidebar
         sidebar = palette.bg.core,
         sidebar_text = palette.fg.core,
-        sidebar_highlight = primary,
+        sidebar_highlight = theme.primary,
         sidebar_highlight_text = palette.bg.core,
         sidebar_border = palette.ui.border,
 
         -- Popups and menus
-        popup = palette.bg.surface,
+        popup = palette.bg.mantle,
         popup_text = palette.fg.core,
         popup_border = palette.ui.border,
-        popup_highlight = primary,
+        popup_highlight = theme.primary,
         popup_highlight_text = palette.bg.core,
 
         -- Experimental theme colors
         spaces_bg = palette.bg.mantle,
-        spaces_bg_active = primary,
+        spaces_bg_active = theme.primary,
         spaces_button = palette.bg.core,
-        tree_view_bg = palette.bg.surface,
+        tree_view_bg = palette.bg.mantle,
         bg_color = palette.bg.core,
-        button_primary_bg = primary,
+        button_primary_bg = theme.primary,
         button_text = palette.bg.core,
-        tree_pane_bg = palette.bg.surface,
-        tree_card_bg = palette.bg.mantle,
+        tree_pane_bg = palette.bg.mantle,
+        tree_card_bg = palette.bg.core,
         layout_bg_0 = palette.bg.core,
         layout_bg_1 = palette.bg.core,
         button_bg = palette.bg.mantle,
+        button_hover_bg = palette.bg.mantle,
+        primary = palette.theme.strong_primary,
+        primary_hover = theme.primary,
+        btn_bg = palette.bg.mantle,
+        btn_bg_hover = palette.theme.strong_primary,
+        btn_fg_hover = palette.bg.mantle,
         lwt_accent_color = palette.bg.mantle,
         list_container_background_selected_current = palette.bg.mantle,
         ab_cards_list_bg = palette.bg.mantle,
         in_content_box_info_background = palette.bg.mantle,
         calendar_view_toggle_bg = palette.bg.mantle,
         calendar_view_toggle_hover_bg = palette.bg.surface,
-        tabs_toolbar_bg = palette.bg.mantle,
+        tabs_toolbar_bg = palette.bg.core,
+        tabs_toolbar_active_border = theme.secondary,
+        color_white = palette.fg.core,
+        color_ink_50 = palette.fg.dim,
+        color_green_60 = palette.syntax.string,
+        color_red_50 = palette.syntax.exception,
         color_gray_70 = palette.bg.mantle,
-        color_gray_50 = palette.bg.surface,
+        color_gray_60 = palette.bg.surface,
+        color_gray_50 = palette.fg.muted,
       },
     },
   }
