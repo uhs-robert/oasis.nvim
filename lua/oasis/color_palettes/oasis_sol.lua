@@ -70,11 +70,11 @@ local dark = {
     special = base.theme.secondary, -- (Statement not covered above)
     operator = opts.themed_syntax and p.peach[300] or p.rose[400],
     punctuation = opts.themed_syntax and p.peach[500] or p.coral[400],
-    preproc = p.soil[500], -- (imports)
-    macro = p.soil[700], -- (imports)
 
     -- Neutral: (Connections / Info)
     bracket = p.slate[500], -- (bracket punctuation)
+    preproc = p.soil[500], -- (imports)
+    macro = p.soil[700], -- (imports)
     comment = theme.fg.comment, -- (comments)
   },
 
