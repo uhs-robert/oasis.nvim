@@ -7,6 +7,7 @@
 /*****************************************************************************/
 :root {
   .vimium-reset,
+  .vimium-body,
   #vomnibar,
   #hud-container {
     /***********************************/
@@ -109,6 +110,11 @@
     --font: Maple Mono, Maple Mono NF, Consolas, Source Code Pro, sans;
     --padding: 2px;
     --box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.8);
+    --vimium-background-color: var(--bg-core);
+    --vimium-background-text-color: var(--fg-core);
+    --vimium-foreground-color: var(--bg-mantle);
+    --vimium-foreground-text-color: var(--fg-core);
+    --vimium-link-color: var(--accent);
   }
 }
 
@@ -133,6 +139,42 @@
 @keyframes fade {
   from { opacity: 0; }
   to   { opacity: 1; }
+}
+
+/** OPTIONS PAGE */
+.vimium-body {
+  header {
+    color: var(--primary);
+    border-color: var(--border);
+  }
+
+  .exclusion-header-text {
+    color: var(--secondary);
+  }
+
+  .example {
+    color: var(--link) !important;
+    font-style: italic;
+    font-family: "Maple Mono";
+  }
+
+  input, button {
+    background-color: var(--bg-surface);
+    border-color: var(--border);
+    color: var(--fg-core);
+  }
+
+  .key {
+    background-color: var(--bg-mantle);
+    border-color: var(--bg-surface);
+    color: var(--fg-core);
+  }
+
+  button[disabled], button[disabled]:hover, button[disabled]:active {
+    background-color: var(--bg-shadow);
+    border-color: var(--border);
+    color: var(--fg-core);
+  }
 }
 
 /** HINTS */
