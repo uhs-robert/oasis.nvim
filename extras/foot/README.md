@@ -6,7 +6,7 @@
 ### Example
 
 ```ini
-include ~/.config/foot/themes/oasis_lagoon.ini
+include=~/.config/foot/themes/oasis_lagoon.ini
 ```
 
 Or, you can directly use the generated `.ini` file as your main `foot.ini` if you prefer to have a dedicated configuration per theme.
