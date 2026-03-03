@@ -436,6 +436,7 @@ local PLUGIN_GROUPS = {
     hl.MiniDiffSignDelete = { fg = c.git.delete }
 
     -- Mini Files
+    hl.MiniFilesCursorLine = "PmenuSel"
     hl.MiniFilesBorderModified = { fg = c.ui.diag.warn.fg, bg = c.ui.float.bg }
     hl.MiniFilesTitleFocused = { fg = c.theme.secondary, bg = c.ui.float.bg, bold = true }
 
