@@ -242,6 +242,7 @@ To use the extras, refer to their respective documentation.
 | Slack       | [extras/slack](extras/slack)                           |
 | Termux      | [extras/termux](extras/termux)                         |
 | Thunderbird | [extras/thunderbird](extras/thunderbird)               |
+| Tridactyl   | [extras/tridactyl](extras/tridactyl)                   |
 | TMUX        | [tmux-oasis](https://github.com/uhs-robert/tmux-oasis) |
 | Vimium      | [extras/vimium](extras/vimium)                         |
 | Vimium C    | [extras/vimium-c](extras/vimium-c)                     |
