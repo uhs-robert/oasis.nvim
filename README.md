@@ -239,6 +239,7 @@ To use the extras, refer to their respective documentation.
 | Konsole     | [extras/konsole](extras/konsole)                       |
 | LazyGit     | [extras/lazygit](extras/lazygit)                       |
 | Lua-theme   | [extras/lua-theme](/extras/lua-theme)                  |
+| Qutebrowser | [extras/qutebrowser](extras/qutebrowser)               |
 | Slack       | [extras/slack](extras/slack)                           |
 | Termux      | [extras/termux](extras/termux)                         |
 | Thunderbird | [extras/thunderbird](extras/thunderbird)               |
