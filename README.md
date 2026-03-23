@@ -184,7 +184,7 @@ The examples below use the default intensity of level 3.
   <tr>
     <td align="center"><a href="#desert-light"><img src="assets/screenshots/desert-light-3-dashboard.png" alt="Desert (light)" width="auto"></a><br><strong>Desert</strong></td>
     <td align="center"><a href="#sol-light"><img src="assets/screenshots/sol-light-3-dashboard.png" alt="Sol (light)" width="auto"></a><br><strong>Sol</strong></td>
-    <td align="center"><a href="#scorpion-light"><img src="assets/screenshots/scorpion-dark-dashboard.png" alt="Desert (dark)" width="auto"></a><br><strong>Scorpion</strong><br><em>Scorched</em></td>
+    <td align="center"><a href="#scorpion-light"><img src="assets/screenshots/scorpion-light-3-dashboard.png" alt="Desert (dark)" width="auto"></a><br><strong>Scorpion</strong><br><em>Scorched</em></td>
     <td align="center"><a href="#canyon-light"><img src="assets/screenshots/canyon-light-3-dashboard.png" alt="Canyon (light)" width="auto"></a><br><strong>Canyon</strong></td>
   </tr>
   <tr>
@@ -955,9 +955,9 @@ require("oasis").setup({
       <a href="#light-previews">↑ Back to Light Styles</a>
     </p>
     <a id="scorpion-light"></a>
-    <h3>Scorpion (light · Scorched)</h3>
-    <img src="./assets/screenshots/scorpion-light-dashboard.png" alt="Scorpion light mode dashboard"></img>
-    <img src="./assets/screenshots/scorpion-light-code.png" alt="Scorpion light mode code sample"></img>
+    <h3>Scorpion (Light · Scorched)</h3>
+    <img src="./assets/screenshots/scorpion-light-3-dashboard.png" alt="Scorpion light mode dashboard"></img>
+    <img src="./assets/screenshots/scorpion-light-3-code.png" alt="Scorpion light mode code sample"></img>
     <p align="center">
       <a href="#light-previews">↑ Back to light Styles</a>
     </p>
