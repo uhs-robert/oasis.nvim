@@ -87,7 +87,7 @@ function ScreenshotWorkflow:capture_code_view()
   System.sleep(0.5)
   self.kitty:send_keys("", true) -- Send Enter
   self.kitty:send_keys("\x1b", false) -- Send Escape
-  self.kitty:send_keys("19G")
+  self.kitty:send_keys("21G")
   self.kitty:send_keys("$")
   self.screenshot_capture:capture(self.instance_name, self.variant, "code")
 end
