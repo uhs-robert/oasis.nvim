@@ -64,7 +64,7 @@ local function load_palette_module(palette_name)
   -- Extract variant based on background (dual-mode palettes have .dark/.light)
   if palette.dark then
     local mode = vim.o.background == "light" and "light" or "dark"
-    palette = palette[mode]
+    palette = vim.tbl_extend("keep", palette[mode], { is_desert = palette.dark.is_desert })
   end
 
   return Config.apply_palette_overrides(palette, palette_name)
