@@ -14,7 +14,7 @@ local base = {
   bg = theme.bg,
   fg = theme.fg,
   palette = {
-    primary = p.sunset,
+    primary = p.sunrise,
     secondary = p.rose,
     accent = p.sky,
   },
@@ -24,7 +24,7 @@ local base = {
     light_primary = p.sunshine[200],
     secondary = p.rose[500],
     label = p.rose[600],
-    accent = p.lagoon[500],
+    accent = p.sky[500],
     cursor = p.khaki[500],
   },
 }
@@ -46,41 +46,41 @@ local dark = {
   -- Syntax
   syntax = {
     -- Cold: (Data)
-    parameter = p.lavender[400],
+    parameter = p.palm[500],
     identifier = p.sky[500],
     delimiter = base.theme.strong_primary,
     type = p.teal[600],
     typedef = p.teal[700],
-    builtinVar = p.lagoon[500], -- (this, document, window, etc)
-    string = p.cactus[500],
-    regex = p.palm[400],
-    builtinConst = p.steelblue[500], -- (e.g. null, undefined, Infinity, etc)
-    constant = p.sunset[600], -- (constant: number, float, boolean, or const not string/character)
+    string = p.rose[500],
+    regex = p.desert_rose[600],
+    builtinVar = p.lavender[400], -- (this, document, window, etc)
+    builtinConst = p.iris[400], -- (e.g. null, undefined, Infinity, etc)
+    constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
-    func = p.sand[300],
-    builtinFunc = p.sand[500], -- (eg. parseInst, Array, Object etc)
-    statement = opts.themed_syntax and base.palette.primary[300] or p.khaki[500], -- (general statement (i.e. var, const))
-    exception = p.red[300], -- (try/catch, return)
-    conditional = opts.themed_syntax and base.palette.primary[400] or p.khaki[700], -- (Conditionals, Loops)
-    special = base.theme.secondary, -- (Statement not covered above)
-    operator = p.rose[500],
-    punctuation = p.coral[400],
+    func = p.sand[200],
+    builtinFunc = p.sand[400], -- (eg. parseInst, Array, Object etc)
+    statement = opts.themed_syntax and base.palette.primary[400] or p.khaki[500], -- (general statement (i.e. var, const))
+    exception = opts.themed_syntax and p.red[500] or p.red[300], -- (try/catch, return)
+    conditional = opts.themed_syntax and base.palette.primary[500] or p.khaki[800], -- (Conditionals, Loops)
+    special = p.khaki[600], -- (Statement not covered above)
+    operator = base.palette.primary[400],
+    punctuation = base.palette.primary[500],
 
     -- Neutral: (Connections / Info)
-    bracket = p.slate[500], -- (bracket punctuation)
-    preproc = p.soil[500], -- (imports)
-    macro = p.soil[700], -- (imports)
+    bracket = p.slate[500], -- (bracket)
+    preproc = p.gold[400], -- (imports)
+    macro = p.gold[500], -- (imports)
     comment = theme.fg.comment, -- (comments)
   },
 
   -- UI
   ui = {
-    lineNumber = p.sunset[600],
+    lineNumber = p.gold[500],
     visual = { bg = base.bg.surface, fg = "none" },
-    search = { bg = p.sky[900], fg = base.fg.core },
-    match = { bg = p.lagoon[500], fg = base.bg.core },
-    matchParen = { bg = p.visual.blue, fg = p.lagoon[500] },
+    search = { bg = p.visual.grey, fg = base.fg.core },
+    match = { bg = p.olive[500], fg = base.bg.core },
+    matchParen = { bg = p.visual.blue, fg = p.sky[500] },
     dir = p.sky[400],
 
     title = base.theme.primary,
@@ -88,7 +88,7 @@ local dark = {
     cursorLine = base.bg.mantle,
     nontext = base.fg.dim,
     float = {
-      title = base.theme.primary,
+      title = base.theme.secondary,
       fg = base.fg.strong,
       bg = base.bg.mantle,
       border = { fg = base.theme.strong_primary, bg = base.bg.mantle },

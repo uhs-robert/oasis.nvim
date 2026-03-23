@@ -46,39 +46,39 @@ local dark = {
   -- Syntax
   syntax = {
     -- Cold: (Data)
-    parameter = p.lavender[500],
+    parameter = p.palm[500],
     identifier = p.sky[500],
     delimiter = base.theme.strong_primary,
-    type = p.teal[700],
-    typedef = p.teal[800],
-    builtinVar = opts.themed_syntax and p.khaki[500] or p.lagoon[500], -- (this, document, window, etc)
-    string = p.cactus[500],
-    regex = p.palm[500],
-    builtinConst = opts.themed_syntax and p.khaki[700] or p.steelblue[500], -- (e.g. null, undefined, Infinity, etc)
-    constant = p.sunset[600], -- (constant: number, float, boolean, or const not string/character)
+    type = p.teal[500],
+    typedef = p.teal[700],
+    string = p.rose[500],
+    regex = p.desert_rose[600],
+    builtinVar = opts.themed_syntax and p.lavender[500] or base.primary[500], -- (this, document, window, etc)
+    builtinConst = opts.themed_syntax and p.iris[400] or p.steelblue[500], -- (e.g. null, undefined, Infinity, etc)
+    constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
-    func = p.sunset[200],
-    builtinFunc = p.sundown[400], -- (eg. parseInst, Array, Object etc)
+    func = p.sand[200],
+    builtinFunc = p.sand[400], -- (eg. parseInst, Array, Object etc)
     statement = opts.themed_syntax and base.palette.primary[500] or p.khaki[500], -- (general statement (i.e. var, const))
-    exception = p.red[400], -- (try/catch, return)
-    conditional = opts.themed_syntax and base.palette.primary[600] or p.khaki[700], -- (Conditionals, Loops)
-    special = base.theme.secondary, -- (Statement not covered above)
-    operator = p.rose[500],
-    punctuation = p.coral[400],
+    exception = opts.themed_syntax and p.red[500] or base.primary[600], -- (try/catch, return)
+    conditional = opts.themed_syntax and base.palette.primary[600] or p.khaki[800], -- (Conditionals, Loops)
+    special = p.sunset[200], -- (Statement not covered above)
+    operator = p.sapphire[600],
+    punctuation = p.sapphire[700],
 
     -- Neutral: (Connections / Info)
     bracket = p.slate[500], -- (bracket punctuation)
-    preproc = p.soil[500], -- (imports)
-    macro = p.soil[700], -- (imports)
+    preproc = p.khaki[600], -- (imports)
+    macro = p.khaki[800], -- (imports)
     comment = theme.fg.comment, -- (comments)
   },
 
   -- UI
   ui = {
-    lineNumber = p.sunset[600],
+    lineNumber = p.sunset[500],
     visual = { bg = base.bg.surface, fg = "none" },
-    search = { bg = p.visual.orange, fg = base.fg.core },
+    search = { bg = p.visual.grey, fg = base.fg.core },
     match = { bg = p.sunrise[600], fg = base.bg.core },
     matchParen = { bg = p.visual.orange, fg = p.sunrise[600] },
     dir = p.sky[500],
@@ -88,7 +88,7 @@ local dark = {
     cursorLine = base.bg.mantle,
     nontext = base.fg.dim,
     float = {
-      title = base.theme.primary,
+      title = base.theme.secondary,
       fg = base.fg.strong,
       bg = base.bg.mantle,
       border = { fg = base.palette.primary[600], bg = base.bg.mantle },
