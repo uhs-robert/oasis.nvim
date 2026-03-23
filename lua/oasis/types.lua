@@ -86,10 +86,15 @@
 ---@field hint OasisPaletteUiDiagEntry
 ---@field ok OasisPaletteUiDiagEntry
 
+---@class OasisPaletteUiMatchParen
+---@field bg string
+---@field fg string
+
 ---@class OasisPaletteUi
 ---@field visual OasisPaletteUiVisual
 ---@field search OasisPaletteUiSearch
 ---@field match OasisPaletteUiMatch
+---@field matchParen? OasisPaletteUiMatchParen
 ---@field dir string
 ---@field title string
 ---@field border string
@@ -146,6 +151,7 @@
 
 ---@class OasisPalette Table for palette
 ---@field light_mode boolean Whether this is a light mode palette
+---@field is_desert? boolean Whether this palette uses desert primary/secondary swap
 ---@field light_intensity? number Light background intensity (1-5, light mode only)
 ---@field bg OasisPaletteBg
 ---@field fg OasisPaletteFg
@@ -359,10 +365,15 @@
 ---@field hint? OasisPaletteUiDiagEntryOverrides
 ---@field ok? OasisPaletteUiDiagEntryOverrides
 
+---@class OasisPaletteUiMatchParenOverrides
+---@field bg? string
+---@field fg? string
+
 ---@class OasisPaletteUiOverrides
 ---@field visual? OasisPaletteUiVisualOverrides
 ---@field search? OasisPaletteUiSearchOverrides
 ---@field match? OasisPaletteUiMatchOverrides
+---@field matchParen? OasisPaletteUiMatchParenOverrides
 ---@field dir? string
 ---@field title? string
 ---@field border? string
