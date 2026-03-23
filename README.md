@@ -880,8 +880,8 @@ require("oasis").setup({
     </p>
     <a id="luna-dark"></a>
     <h3>Luna (Dark · Indigo)</h3>
-    <img src="./assets/screenshots/luna-dark-3-dashboard.png" alt="Luna dark mode dashboard"></img>
-    <img src="./assets/screenshots/luna-dark-3-code.png" alt="Luna dark mode code sample"></img>
+    <img src="./assets/screenshots/luna-dark-dashboard.png" alt="Luna dark mode dashboard"></img>
+    <img src="./assets/screenshots/luna-dark-code.png" alt="Luna dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to dark Styles</a>
     </p>
