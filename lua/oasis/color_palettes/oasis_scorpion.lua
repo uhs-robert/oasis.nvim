@@ -1,0 +1,136 @@
+-- lua/oasis/color_palettes/oasis_scorpion.lua
+
+local Config = require("oasis.config")
+local p = require("oasis.palette")
+local opts = Config.get()
+local theme = p.theme.scorpion
+
+-- Neovim: Only generate when needed. Extras: generate both.
+local in_neovim = vim.uv ~= nil or vim.loop ~= nil
+local need_light = not in_neovim or vim.o.background == "light"
+
+-- General Reusable Colors
+local base = {
+  bg = theme.bg,
+  fg = theme.fg,
+  palette = {
+    primary = p.khaki,
+    secondary = p.sundown,
+    accent = p.palm,
+  },
+  theme = {
+    strong_primary = p.khaki[700],
+    primary = p.khaki[500],
+    light_primary = p.khaki[300],
+    secondary_strong = p.sundown[700],
+    secondary = p.sundown[500],
+    secondary_light = p.sundown[300],
+    label = p.sundown[600],
+    accent = p.palm[500],
+    cursor = p.khaki[500],
+  },
+}
+
+-- Dark mode palette
+local dark = {
+  is_desert = true, -- Treat as a desert variant
+  bg = base.bg,
+  fg = base.fg,
+  theme = base.theme,
+  palette = base.palette,
+  terminal = vim.tbl_extend(
+    "force",
+    p.terminal,
+    { black = theme.bg.core, color0 = theme.bg.core, bright_black = theme.fg.muted, color8 = theme.fg.muted }
+  ),
+  diff = vim.tbl_extend("force", p.diff, { change = theme.bg.surface }),
+  git = p.git,
+
+  -- Syntax
+  syntax = {
+    -- Cold: (Data)
+    parameter = p.palm[500],
+    identifier = p.sky[500],
+    delimiter = base.theme.secondary_strong,
+    type = p.teal[700],
+    typedef = p.teal[800],
+    string = p.rose[500],
+    regex = p.desert_rose[500],
+    builtinVar = p.lavender[500], -- (this, document, window, etc)
+    builtinConst = p.iris[500], -- (e.g. null, undefined, Infinity, etc)
+    constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
+
+    -- Warm: (Control / Flow)
+    func = p.sand[200],
+    builtinFunc = p.sand[400], -- (eg. parseInt, Array, Object etc)
+    statement = opts.themed_syntax and base.palette.primary[600] or p.khaki[500], -- (general statement (i.e. var, const))
+    exception = opts.themed_syntax and p.red[500] or p.red[400], -- (try/catch, return)
+    conditional = opts.themed_syntax and base.palette.primary[800] or p.khaki[800], -- (Conditionals, Loops)
+
+    special = p.sunset[200], -- (Statement not covered above)
+    operator = base.palette.primary[600],
+    punctuation = base.palette.primary[700],
+
+    -- Neutral: (Connections / Info)
+    bracket = p.slate[500],
+    preproc = p.sundown[600], -- (imports)
+    macro = p.sundown[700], -- (imports)
+    comment = theme.fg.comment, -- (comments)
+  },
+
+  -- UI
+  ui = {
+    lineNumber = p.sunset[600],
+    visual = { bg = p.visual.orange, fg = "none" },
+    search = { bg = p.visual.grey, fg = base.fg.core },
+    match = { bg = p.olive[500], fg = base.bg.core },
+    matchParen = { bg = p.stone[900], fg = p.khaki[700] },
+    dir = p.sky[500],
+
+    title = base.theme.secondary,
+    border = base.theme.secondary_strong,
+    cursorLine = base.bg.surface,
+    nontext = base.fg.dim,
+    float = {
+      title = base.theme.primary,
+      fg = base.fg.strong,
+      bg = base.bg.mantle,
+      border = { fg = base.theme.secondary_strong, bg = base.bg.mantle },
+    },
+    diag = {
+      error = { fg = p.diag.error.fg, bg = p.diag.error.bg },
+      warn = { fg = p.diag.warn.fg, bg = p.diag.warn.bg },
+      info = { fg = p.diag.info.fg, bg = p.diag.info.bg },
+      hint = { fg = p.diag.hint.fg, bg = p.diag.hint.bg },
+      ok = { fg = p.diag.ok.fg, bg = "none" },
+    },
+  },
+}
+
+-- Light mode configuration
+local light
+if need_light then
+  local LightTheme = require("oasis.tools.light_theme_generator")
+  local light_bg = LightTheme.generate_bg(base.fg.core, opts.light_intensity)
+  local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
+    search = { bg = p.visual.red, fg = base.fg.core },
+    match = { bg = p.cactus[400], fg = base.fg.core },
+  })
+  light = {
+    light_mode = true,
+    bg = light_bg,
+    fg = LightTheme.generate_fg(base.fg, light_bg.core, opts.light_intensity),
+    theme = LightTheme.generate_theme(base.theme, opts.light_intensity),
+    terminal = LightTheme.generate_terminal(p.terminal, light_bg.core, opts.light_intensity, opts.contrast),
+    diff = LightTheme.apply_contrast(dark.diff, light_bg.core),
+    git = LightTheme.apply_contrast(dark.git, light_bg.core),
+    syntax = LightTheme.generate_syntax(dark.syntax, light_bg.core, opts.light_intensity, nil, opts.contrast),
+    ui = LightTheme.generate_ui(light_ui, light_bg, opts.light_intensity),
+  }
+end
+
+-- Return dual-mode palette
+return {
+  dark = dark,
+  light = light,
+}
