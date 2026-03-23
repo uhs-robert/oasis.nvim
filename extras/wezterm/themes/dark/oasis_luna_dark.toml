@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_luna_dark.toml
+## name: Oasis Luna Dark
+## author: uhs-robert
+
+[colors]
+foreground = "#EEEAFE"
+background= "#171345"
+cursor_bg = "#F0E68C"
+cursor_border = "#F0E68C"
+cursor_fg= "#171345"
+selection_bg= "#666666"
+selection_fg= "#EEEAFE"
+split= "#CB9EFF"
+compose_cursor= "#FF9633"
+scrollbar_thumb= "#2C266D"
+visual_bell= "#211C59"
+
+ansi = [
+  '#171345',
+  '#FF7979',
+  '#7FCF78',
+  '#F0E68C',
+  '#81C0FF',
+  '#C695FF',
+  '#68C0B6',
+  '#FFF7D7',
+]
+
+brights = [
+  '#8A82B3',
+  '#FFA0A0',
+  '#A3E39A',
+  '#F8B471',
+  '#87CEEB',
+  '#D2ADFF',
+  '#8FD1C7',
+  '#F7F4E9',
+]
+
+[colors.indexed]
+16 = '#FF9633'
+17 = '#FF7979'
+
+[colors.tab_bar]
+background = '#211C59'
+inactive_tab_edge = '#0C0A2A'
+
+[colors.tab_bar.active_tab]
+bg_color = '#F0E68C'
+fg_color = '#171345'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#2C266D'
+fg_color = '#F0E68C'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#2C266D'
+fg_color = '#CB9EFF'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#CB9EFF'
+fg_color = '#171345'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#6DCEEB'
+fg_color = '#171345'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Luna Dark'

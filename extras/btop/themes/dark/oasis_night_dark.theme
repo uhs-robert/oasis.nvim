@@ -3,43 +3,43 @@
 # Author: uhs-robert
 
 # Main background, empty for terminal default, need to be empty if you want transparent background
-theme[main_bg]="#0D0D1A"
+theme[main_bg]="#040E25"
 
 # Main text color
-theme[main_fg]="#F7F4E9"
+theme[main_fg]="#E8F1FF"
 
 # Title color for boxes
-theme[title]="#F7F4E9"
+theme[title]="#E8F1FF"
 
 # Highlight color for keyboard shortcuts
-theme[hi_fg]="#FF7979"
+theme[hi_fg]="#7FA3C9"
 
 # Background color of selected item in processes box
-theme[selected_bg]="#262633"
+theme[selected_bg]="#11203D"
 
 # Foreground color of selected item in processes box
-theme[selected_fg]="#FF7979"
+theme[selected_fg]="#7FA3C9"
 
 # Color of inactive/disabled text
-theme[inactive_fg]="#5E5D79"
+theme[inactive_fg]="#536B83"
 
 # Color of text appearing on top of graphs, i.e uptime and current network graph scaling
-theme[graph_text]="#F2E8D8"
+theme[graph_text]="#D9E6FA"
 
 # Background color of the percentage meters
-theme[meter_bg]="#06060E"
+theme[meter_bg]="#0A1730"
 
 # Misc colors for processes box including mini cpu graphs, details memory graph and details status text
-theme[proc_misc]="#F2E8D8"
+theme[proc_misc]="#D9E6FA"
 
 # CPU, Memory, Network, Proc box outline colors
-theme[cpu_box]="#53D390"
+theme[cpu_box]="#7FCF78"
 theme[mem_box]="#F0E68C"
 theme[net_box]="#C695FF"
 theme[proc_box]="#FF7979"
 
 # Box divider line and small boxes line color
-theme[div_line]="#262633"
+theme[div_line]="#11203D"
 
 # Temperature graph color (Blue -> Bright Blue -> Magenta)
 theme[temp_start]="#81C0FF"
@@ -47,7 +47,7 @@ theme[temp_mid]="#87CEEB"
 theme[temp_end]="#D2ADFF"
 
 # CPU graph colors (Green -> Orange -> Bright Red)
-theme[cpu_start]="#53D390"
+theme[cpu_start]="#7FCF78"
 theme[cpu_mid]="#F8B471"
 theme[cpu_end]="#FFA0A0"
 
@@ -67,9 +67,9 @@ theme[cached_mid]=""
 theme[cached_end]="#87CEEB"
 
 # Mem/Disk free meter (Green -> Bright Green)
-theme[free_start]="#53D390"
+theme[free_start]="#7FCF78"
 theme[free_mid]=""
-theme[free_end]="#96EA7F"
+theme[free_end]="#A3E39A"
 
 # Download graph colors (Blue -> Bright Blue)
 theme[download_start]="#81C0FF"
@@ -82,6 +82,6 @@ theme[upload_mid]=""
 theme[upload_end]="#D2ADFF"
 
 # Process box color gradient for threads, mem and cpu usage (Green -> Orange -> Red)
-theme[process_start]="#53D390"
+theme[process_start]="#7FCF78"
 theme[process_mid]="#F8B471"
 theme[process_end]="#FF7979"

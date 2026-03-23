@@ -33,7 +33,7 @@ theme[meter_bg]="#f0e7d1"
 theme[proc_misc]="#524f49"
 
 # CPU, Memory, Network, Proc box outline colors
-theme[cpu_box]="#2e6648"
+theme[cpu_box]="#396535"
 theme[mem_box]="#645d21"
 theme[net_box]="#7924dc"
 theme[proc_box]="#b71212"
@@ -47,7 +47,7 @@ theme[temp_mid]="#23627b"
 theme[temp_end]="#7826dc"
 
 # CPU graph colors (Green -> Orange -> Bright Red)
-theme[cpu_start]="#2e6648"
+theme[cpu_start]="#396535"
 theme[cpu_mid]="#874d14"
 theme[cpu_end]="#b71212"
 
@@ -67,9 +67,9 @@ theme[cached_mid]=""
 theme[cached_end]="#23627b"
 
 # Mem/Disk free meter (Green -> Bright Green)
-theme[free_start]="#2e6648"
+theme[free_start]="#396535"
 theme[free_mid]=""
-theme[free_end]="#336725"
+theme[free_end]="#36662f"
 
 # Download graph colors (Blue -> Bright Blue)
 theme[download_start]="#145ca4"
@@ -82,6 +82,6 @@ theme[upload_mid]=""
 theme[upload_end]="#7826dc"
 
 # Process box color gradient for threads, mem and cpu usage (Green -> Orange -> Red)
-theme[process_start]="#2e6648"
+theme[process_start]="#396535"
 theme[process_mid]="#874d14"
 theme[process_end]="#b71212"

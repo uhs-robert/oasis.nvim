@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_scorpion_dark.toml
+## name: Oasis Scorpion Dark
+## author: uhs-robert
+
+[colors]
+foreground = "#F7EAE5"
+background= "#140400"
+cursor_bg = "#F0E68C"
+cursor_border = "#F0E68C"
+cursor_fg= "#140400"
+selection_bg= "#666666"
+selection_fg= "#F7EAE5"
+split= "#C96E4D"
+compose_cursor= "#FF9633"
+scrollbar_thumb= "#331C16"
+visual_bell= "#22100B"
+
+ansi = [
+  '#140400',
+  '#FF7979',
+  '#7FCF78',
+  '#F0E68C',
+  '#81C0FF',
+  '#C695FF',
+  '#68C0B6',
+  '#FFF7D7',
+]
+
+brights = [
+  '#9A6F66',
+  '#FFA0A0',
+  '#A3E39A',
+  '#F8B471',
+  '#87CEEB',
+  '#D2ADFF',
+  '#8FD1C7',
+  '#F7F4E9',
+]
+
+[colors.indexed]
+16 = '#FF9633'
+17 = '#FF7979'
+
+[colors.tab_bar]
+background = '#22100B'
+inactive_tab_edge = '#080100'
+
+[colors.tab_bar.active_tab]
+bg_color = '#F0E68C'
+fg_color = '#140400'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#331C16'
+fg_color = '#F0E68C'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#331C16'
+fg_color = '#F7997D'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#F7997D'
+fg_color = '#140400'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#7FCF78'
+fg_color = '#140400'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Scorpion Dark'

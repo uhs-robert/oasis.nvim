@@ -3,7 +3,7 @@
 # Author: uhs-robert
 
 # Main background, empty for terminal default, need to be empty if you want transparent background
-theme[main_bg]="#2E2620"
+theme[main_bg]="#29211C"
 
 # Main text color
 theme[main_fg]="#E8E5DA"
@@ -15,7 +15,7 @@ theme[title]="#E8E5DA"
 theme[hi_fg]="#F0E68C"
 
 # Background color of selected item in processes box
-theme[selected_bg]="#534A3F"
+theme[selected_bg]="#483F35"
 
 # Foreground color of selected item in processes box
 theme[selected_fg]="#F0E68C"
@@ -27,19 +27,19 @@ theme[inactive_fg]="#826D5A"
 theme[graph_text]="#EDE8AF"
 
 # Background color of the percentage meters
-theme[meter_bg]="#3C332C"
+theme[meter_bg]="#352C26"
 
 # Misc colors for processes box including mini cpu graphs, details memory graph and details status text
 theme[proc_misc]="#EDE8AF"
 
 # CPU, Memory, Network, Proc box outline colors
-theme[cpu_box]="#53D390"
+theme[cpu_box]="#7FCF78"
 theme[mem_box]="#F0E68C"
 theme[net_box]="#C695FF"
 theme[proc_box]="#FF7979"
 
 # Box divider line and small boxes line color
-theme[div_line]="#534A3F"
+theme[div_line]="#483F35"
 
 # Temperature graph color (Blue -> Bright Blue -> Magenta)
 theme[temp_start]="#81C0FF"
@@ -47,7 +47,7 @@ theme[temp_mid]="#87CEEB"
 theme[temp_end]="#D2ADFF"
 
 # CPU graph colors (Green -> Orange -> Bright Red)
-theme[cpu_start]="#53D390"
+theme[cpu_start]="#7FCF78"
 theme[cpu_mid]="#F8B471"
 theme[cpu_end]="#FFA0A0"
 
@@ -67,9 +67,9 @@ theme[cached_mid]=""
 theme[cached_end]="#87CEEB"
 
 # Mem/Disk free meter (Green -> Bright Green)
-theme[free_start]="#53D390"
+theme[free_start]="#7FCF78"
 theme[free_mid]=""
-theme[free_end]="#96EA7F"
+theme[free_end]="#A3E39A"
 
 # Download graph colors (Blue -> Bright Blue)
 theme[download_start]="#81C0FF"
@@ -82,6 +82,6 @@ theme[upload_mid]=""
 theme[upload_end]="#D2ADFF"
 
 # Process box color gradient for threads, mem and cpu usage (Green -> Orange -> Red)
-theme[process_start]="#53D390"
+theme[process_start]="#7FCF78"
 theme[process_mid]="#F8B471"
 theme[process_end]="#FF7979"
