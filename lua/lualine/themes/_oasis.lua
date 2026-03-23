@@ -37,13 +37,13 @@ function M.get(style)
   }
 
   hl.replace = {
-    a = { bg = c.syntax.operator, fg = c.bg.core },
-    b = { bg = c.bg.surface, fg = c.syntax.operator },
+    a = { bg = c.syntax.exception, fg = c.bg.core },
+    b = { bg = c.bg.surface, fg = c.syntax.exception },
   }
 
   hl.terminal = {
-    a = { bg = c.syntax.type, fg = c.bg.core },
-    b = { bg = c.bg.surface, fg = c.syntax.type },
+    a = { bg = c.syntax.typedef, fg = c.bg.core },
+    b = { bg = c.bg.surface, fg = c.syntax.typedef },
   }
 
   hl.inactive = {
