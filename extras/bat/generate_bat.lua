@@ -6,6 +6,7 @@
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
+local Directory = require("oasis.lib.directory")
 
 -- XML escape helper
 local function xml_escape(str)
@@ -387,13 +388,11 @@ local function main()
 
 		-- Write to Yazi theme as well
     -- stylua: ignore start
-		File.write(
-			"extras/yazi/themes/" .. mode .. "/"
-				.. (mode == "dark" and "flavors/" or (intensity .. "/flavors/"))
-				.. "oasis-" .. name .. (mode == "dark" and "-dark" or ("-light-" .. intensity)) .. ".yazi/"
-				.. "tmtheme.xml",
-			theme
-		)
+		local yazi_dir = "extras/yazi/themes/" .. mode .. "/"
+			.. (mode == "dark" and "flavors/" or (intensity .. "/flavors/"))
+			.. "oasis-" .. name .. (mode == "dark" and "-dark" or ("-light-" .. intensity)) .. ".yazi"
+		Directory.create(yazi_dir)
+		File.write(yazi_dir .. "/tmtheme.xml", theme)
     -- stylua: ignore end
 
     print(string.format(" Generated: %s", output_path))
