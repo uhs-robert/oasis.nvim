@@ -53,6 +53,7 @@ Config.defaults = {
 	-- Additional toggles
 	terminal_colors = true,       -- Enable/disable terminal color setting
 	transparent = false,          -- Make backgrounds transparent (NONE)
+	match_paren_bg = true,        -- Enable/disable background on MatchParen highlight
 
 	-- Plugin integrations
 	integrations = {
