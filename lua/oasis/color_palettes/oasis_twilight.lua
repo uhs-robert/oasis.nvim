@@ -1,5 +1,4 @@
 -- lua/oasis/color_palettes/oasis_twilight.lua
-
 local Config = require("oasis.config")
 local p = require("oasis.palette")
 local opts = Config.get()
@@ -14,17 +13,17 @@ local base = {
   bg = theme.bg,
   fg = theme.fg,
   palette = {
-    primary = p.lavender,
-    secondary = p.khaki,
-    accent = p.cactus,
+    primary = p.sunrise,
+    secondary = p.lavender,
+    accent = p.khaki,
   },
   theme = {
-    strong_primary = p.lavender[600],
-    primary = p.lavender[500],
-    light_primary = p.lavender[300],
-    secondary = p.khaki[400],
-    label = p.khaki[600],
-    accent = p.cactus[400],
+    strong_primary = p.sundown[600],
+    primary = p.sundown[500],
+    light_primary = p.sundown[300],
+    secondary = p.lavender[300],
+    label = p.khaki[700],
+    accent = p.khaki[500],
     cursor = p.khaki[500],
   },
 }
@@ -46,31 +45,31 @@ local dark = {
   -- Syntax
   syntax = {
     -- Cold: (Data)
-    parameter = opts.themed_syntax and p.khaki[600] or p.lavender[500],
+    parameter = p.palm[500],
     identifier = p.sky[400],
-    delimiter = base.theme.strong_primary,
-    type = p.teal[700],
-    typedef = p.teal[800],
-    builtinVar = p.lagoon[500], -- (this, document, window, etc)
-    string = p.cactus[500],
-    regex = p.palm[500],
-    builtinConst = p.steelblue[500], -- (e.g. null, undefined, Infinity, etc)
-    constant = p.sunset[600], -- (constant: number, float, boolean, or const not string/character)
+    delimiter = p.sundown[700],
+    type = p.teal[600],
+    typedef = p.teal[700],
+    string = p.rose[500],
+    regex = p.desert_rose[600],
+    builtinVar = p.lavender[400], -- (this, document, window, etc)
+    builtinConst = p.iris[300], -- (e.g. null, undefined, Infinity, etc)
+    constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
-    func = p.sunset[200],
-    builtinFunc = p.sundown[400], -- (eg. parseInst, Array, Object etc)
-    statement = opts.themed_syntax and base.palette.primary[200] or p.khaki[500], -- (general statement (i.e. var, const))
-    exception = p.red[300], -- (try/catch, return)
-    conditional = opts.themed_syntax and base.palette.primary[400] or p.khaki[700], -- (Conditionals, Loops)
-    special = base.theme.secondary, -- (Statement not covered above)
-    operator = p.rose[400],
-    punctuation = p.coral[400],
+    func = p.sand[200],
+    builtinFunc = p.sand[400], -- (eg. parseInst, Array, Object etc)
+    statement = opts.themed_syntax and base.palette.primary[400] or p.khaki[500], -- (general statement (i.e. var, const))
+    exception = opts.themed_syntax and p.red[500] or base.primary[600], -- (try/catch, return)
+    conditional = opts.themed_syntax and base.palette.primary[500] or p.khaki[800], -- (Conditionals, Loops)
+    special = p.sunset[200], -- (Statement not covered above)
+    operator = base.palette.primary[300],
+    punctuation = base.palette.primary[400],
 
     -- Neutral: (Connections / Info)
-    bracket = p.grey[400], -- (bracket punctuation)
-    preproc = p.soil[500], -- (imports)
-    macro = p.soil[700], -- (imports)
+    bracket = p.slate[500], -- (bracket punctuation)
+    preproc = p.khaki[600], -- (imports)
+    macro = p.khaki[800], -- (imports)
     comment = theme.fg.comment, -- (comments)
   },
 
@@ -78,9 +77,9 @@ local dark = {
   ui = {
     lineNumber = p.sunset[600],
     visual = { bg = base.bg.surface, fg = "none" },
-    search = { bg = p.visual.yellow, fg = base.fg.core },
-    match = { bg = p.khaki[400], fg = base.bg.core },
-    matchParen = { bg = p.visual.yellow, fg = p.khaki[500] },
+    search = { bg = p.visual.grey, fg = base.fg.core },
+    match = { bg = p.sundown[500], fg = base.bg.core },
+    matchParen = { bg = p.visual.yellow, fg = p.khaki[600] },
     dir = p.sky[500],
 
     title = base.theme.primary,
@@ -88,7 +87,7 @@ local dark = {
     cursorLine = base.bg.mantle,
     nontext = base.fg.dim,
     float = {
-      title = base.theme.primary,
+      title = base.theme.secondary,
       fg = base.fg.strong,
       bg = base.bg.mantle,
       border = { fg = base.theme.primary, bg = base.bg.mantle },

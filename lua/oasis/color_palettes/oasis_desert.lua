@@ -8,6 +8,7 @@ local theme = p.theme.desert
 -- Neovim: Only generate when needed. Extras: generate both.
 local in_neovim = vim.uv ~= nil or vim.loop ~= nil
 local need_light = not in_neovim or vim.o.background == "light"
+local use_legacy_comments = (opts.useLegacyComments or opts.use_legacy_comments)
 
 -- General Reusable Colors
 local base = {
@@ -19,7 +20,7 @@ local base = {
     accent = p.palm,
   },
   theme = {
-    strong_primary = p.khaki[700],
+    strong_primary = p.khaki[800],
     primary = p.khaki[500],
     light_primary = p.khaki[300],
     secondary_strong = p.red[800],
@@ -35,6 +36,7 @@ local primary = base.palette.primary
 
 -- Dark mode palette
 local dark = {
+  is_desert = true, -- Treat as a desert variant
   bg = base.bg,
   fg = base.fg,
   theme = base.theme,
@@ -50,41 +52,41 @@ local dark = {
   -- Syntax
   syntax = {
     -- Cold: (Data)
-    parameter = p.lavender[400],
-    identifier = (opts.useLegacyComments or opts.use_legacy_comments) and p.teal[500] or p.sky[500],
-    delimiter = base.theme.secondary,
-    type = p.teal[600],
+    parameter = p.palm[500],
+    identifier = use_legacy_comments and p.sapphire[400] or p.sky[500],
+    delimiter = base.theme.strong_primary,
+    type = p.teal[500],
     typedef = p.teal[700],
-    builtinVar = p.lagoon[500], -- (this, document, window, etc)
-    string = p.cactus[500],
-    regex = p.palm[500],
-    builtinConst = p.steelblue[400], -- (e.g. null, undefined, Infinity, etc)
-    constant = p.sunset[600], -- (constant: number, float, boolean, or const not string/character)
+    string = p.rose[500],
+    regex = p.desert_rose[500],
+    builtinVar = p.lavender[400], -- (this, document, window, etc)
+    builtinConst = p.iris[400], -- (e.g. null, undefined, Infinity, etc)
+    constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
-    func = p.sunset[300],
-    builtinFunc = p.sundown[400], -- (eg. parseInst, Array, Object etc)
+    func = p.sand[200],
+    builtinFunc = p.sand[400], -- (eg. parseInst, Array, Object etc)
     statement = primary[500], -- (general statement (i.e. var, const))
-    exception = p.red[300], -- (try/catch, return)
-    conditional = primary[700], -- (Conditionals, Loops)
-    special = base.theme.secondary, -- (Statement not covered above)
-    operator = p.rose[500],
-    punctuation = p.coral[400],
+    exception = p.red[500], -- (try/catch, return)
+    conditional = primary[800], -- (Conditionals, Loops)
+    special = p.sunset[200], -- (Statement not covered above)
+    operator = primary[600],
+    punctuation = primary[700],
 
     -- Neutral: (Connections / Info)
-    bracket = p.slate[500], -- (bracket punctuation)
-    preproc = p.soil[500], -- (imports)
-    macro = p.soil[600], -- (imports)
-    comment = (opts.useLegacyComments or opts.use_legacy_comments) and p.sky[500] or theme.fg.comment,
+    bracket = p.slate[500], -- (bracket)
+    preproc = p.sundown[500], -- (imports)
+    macro = p.sundown[600], -- (imports)
+    comment = use_legacy_comments and p.cyan[500] or theme.fg.comment,
   },
 
   -- UI
   ui = {
-    lineNumber = p.sunset[600],
+    lineNumber = p.sunset[500],
     visual = { bg = p.visual.desert, fg = "none" },
-    search = { bg = p.visual.palm, fg = base.bg.core },
-    match = { bg = p.palm[700], fg = base.bg.core },
-    matchParen = { bg = p.stone[900], fg = primary[500] },
+    search = { bg = p.visual.grey, fg = base.fg.core },
+    match = { bg = p.olive[500], fg = base.bg.core },
+    matchParen = { bg = p.stone[900], fg = primary[700] },
     dir = p.sky[500],
 
     title = base.theme.secondary,
@@ -92,7 +94,7 @@ local dark = {
     cursorLine = base.bg.mantle,
     nontext = base.fg.dim,
     float = {
-      title = base.theme.secondary_light,
+      title = base.theme.primary,
       fg = base.fg.strong,
       bg = base.bg.mantle,
       border = { fg = base.theme.secondary, bg = base.bg.mantle },

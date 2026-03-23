@@ -8,8 +8,8 @@ local terminal = {
 	bright_black =        "#877363", -- Overridden by theme
 	red =                 "#FF7979",
 	bright_red =          "#FFA0A0",
-	green =               "#53D390",
-	bright_green =        "#96EA7F",
+  green =               "#7FCF78",
+  bright_green =        "#A3E39A",
 	yellow =              "#F0E68C",
 	bright_yellow =       "#F8B471",
 	blue =                "#81C0FF",
@@ -18,8 +18,8 @@ local terminal = {
 	bright_magenta =      "#D2ADFF",
 	cyan =                "#68C0B6",
 	bright_cyan =         "#8FD1C7",
-	white =               "#DDDBD5",
-	bright_white =        "#FFF9F2",
+	white =               "#FFF7D7",
+	bright_white =        "#F7F4E9",
 }
 
 local light_terminal = {
@@ -69,6 +69,7 @@ local visual = {
   teal = "#2B4A46",
   blue = "#335668",
   sky = "#3D6980",
+  night = "#24364D",
   indigo = "#3E2F4A",
   violet = "#653F73",
   pink = "#5A324B",
@@ -79,7 +80,7 @@ local visual = {
 local diag = {
   error = { fg = terminal.bright_red, bg = visual.red },
   warn = { fg = terminal.yellow, bg = visual.yellow },
-  info = { fg = terminal.bright_blue, bg = visual.blue },
+  info = { fg = terminal.blue, bg = visual.blue },
   hint = { fg = terminal.bright_cyan, bg = visual.teal },
   ok = { fg = terminal.bright_green, bg = visual.green },
 }
@@ -108,16 +109,17 @@ local theme = {
     fg = { core = "#F7EDE1", strong = "#E5D9CE", dim = "#748C9A", muted = "#77725F", comment = "#948F7A" },
   },
   abyss = {
-    bg = { shadow = "#000000", core = "#000000", mantle = "#080808", surface = "#1A1A1A" },
+    bg = { shadow = "#050505", core = "#000000", mantle = "#101010", surface = "#1C1C1C" },
     fg = { core = "#F0EBE6", strong = "#FFDACC", dim = "#587179", muted = "#605C4D", comment = "#7A7662" },
   },
   midnight = {
-    bg = { shadow = "#0C1014", core = "#101418", mantle = "#14181C", surface = "#1C242C" },
+    bg = { shadow = "#0C1014", core = "#101418", mantle = "#18202A", surface = "#223040" },
     fg = { core = "#F7F4F2", strong = "#FFE0CC", dim = "#7D7267", muted = "#4E6578", comment = "#69809D" },
   },
   night = {
-    bg = { shadow = "#0C0C18", core = "#0D0D1A", mantle = "#06060E", surface = "#262633" },
-    fg = { core = "#F7F4E9", strong = "#F2E8D8", dim = "#7B7063", muted = "#5E5D79", comment = "#757995" },
+    bg = { shadow = "#030D1A", core = "#040E25", mantle = "#0A1730", surface = "#11203D" },
+    fg = { core = "#E8F1FF", strong = "#D9E6FA", dim = "#74808F", muted = "#536B83", comment = "#708CA8" },
+  },
   luna = {
     bg = { shadow = "#0C0A2A", core = "#171345", mantle = "#211C59", surface = "#2C266D" },
     fg = { core = "#EEEAFE", strong = "#DCD5FF", dim = "#7E789B", muted = "#8A82B3", comment = "#A29AC9" },
@@ -127,23 +129,23 @@ local theme = {
     fg = { core = "#F7EAE5", strong = "#FFD9CF", dim = "#8E7770", muted = "#9A6F66", comment = "#B08A80" },
   },
   sol = {
-    bg = { shadow = "#2C1512", core = "#2F1815", mantle = "#3A2521", surface = "#4F312B" },
+    bg = { shadow = "#25110F", core = "#2A1412", mantle = "#341F1B", surface = "#462A25" },
     fg = { core = "#FFE0DA", strong = "#FFD3CB", dim = "#7B7B7B", muted = "#83615B", comment = "#A27D78" },
   },
   canyon = {
-    bg = { shadow = "#2B1804", core = "#2F1A05", mantle = "#402412", surface = "#624020" },
-    fg = { core = "#F8E7D3", strong = "#FFD8BC", dim = "#7B7B7B", muted = "#8B6043", comment = "#AD7C5D" },
+    bg = { shadow = "#221511", core = "#2B1914", mantle = "#38251E", surface = "#4A342A" },
+    fg = { core = "#F8E7D3", strong = "#FFD8BC", dim = "#857164", muted = "#9A6549", comment = "#B67E61" },
   },
   dune = {
-    bg = { shadow = "#2B231E", core = "#2E2620", mantle = "#3C332C", surface = "#534A3F" },
+    bg = { shadow = "#241D19", core = "#29211C", mantle = "#352C26", surface = "#483F35" },
     fg = { core = "#E8E5DA", strong = "#EDE8AF", dim = "#6E6E6E", muted = "#826D5A", comment = "#9F8B79" },
   },
   mirage = {
-    bg = { shadow = "#172328", core = "#18252A", mantle = "#1A2D33", surface = "#2A3F46" },
+    bg = { shadow = "#132025", core = "#152229", mantle = "#1C2B31", surface = "#253840" },
     fg = { core = "#DDEFEF", strong = "#C9EEE6", dim = "#907C6C", muted = "#587270", comment = "#439789" },
   },
   cactus = {
-    bg = { shadow = "#19231B", core = "#1C261E", mantle = "#2C3A30", surface = "#3C4B3E" },
+    bg = { shadow = "#152017", core = "#18231A", mantle = "#253127", surface = "#334137" },
     fg = { core = "#DDF0E5", strong = "#C7EDCF", dim = "#907B6A", muted = "#5B7360", comment = "#69956D" },
   },
   lagoon = {
@@ -151,7 +153,7 @@ local theme = {
     fg = { core = "#D9E6FA", strong = "#D0E2F0", dim = "#877363", muted = "#3B6A87", comment = "#4D88A7" },
   },
   twilight = {
-    bg = { shadow = "#201C2B", core = "#221B2F", mantle = "#2B243B", surface = "#352D47" },
+    bg = { shadow = "#201726", core = "#261A30", mantle = "#312140", surface = "#3F2B50" },
     fg = { core = "#E6E0F8", strong = "#E1D2FF", dim = "#76665A", muted = "#71609A", comment = "#8B80AA" },
   },
   rose = {
@@ -159,7 +161,7 @@ local theme = {
     fg = { core = "#EDD5E7", strong = "#EBBEDF", dim = "#8A786C", muted = "#816175", comment = "#A87A91" },
   },
   starlight = {
-    bg = { shadow = "#000000", core = "#000000", mantle = "#080808", surface = "#1A1A1A" },
+    bg = { shadow = "#050505", core = "#000000", mantle = "#111216", surface = "#1C2028" },
     fg = { core = "#FAF7F0", strong = "#DCD9D2", dim = "#85665B", muted = "#4F5B6B", comment = "#5E7C9A" },
   },
 }
@@ -201,19 +203,6 @@ local colors = {
     [50] = "#F1F3F5",
   },
 
-  steelblue = {
-    [900] = "#4575A5",
-    [800] = "#5D8BBB",
-    [700] = "#6F98C3",
-    [600] = "#7FA3C9",
-    [500] = "#85A8CC",
-    [400] = "#93B3D2",
-    [300] = "#A2BED8",
-    [200] = "#B0C8DE",
-    [100] = "#BFD2E3",
-    [50] = "#CEDCE9",
-  },
-
   stone = {
     [900] = "#4D4A42",
     [800] = "#6B665C",
@@ -226,6 +215,19 @@ local colors = {
     [100] = "#F5F3EF",
     [50] = "#FAF9F7",
   },
+
+  -- soil = {
+  --   [900] = "#6F664F",
+  --   [800] = "#898067",
+  --   [700] = "#A39A7F",
+  --   [600] = "#B6B097",
+  --   [500] = "#C2BFA5",
+  --   [400] = "#D1CDB8",
+  --   [300] = "#DFDCCA",
+  --   [200] = "#EBE9DD",
+  --   [100] = "#F5F4EE",
+  --   [50] = "#FBFBF8",
+  -- },
 
   -- Reds/Pinks
   red = {
@@ -333,18 +335,33 @@ local colors = {
     [50] = "#FFE7CC",
   },
 
+  amber = {
+    [900] = "#4E2E12",
+    [800] = "#71411D",
+    [700] = "#CD853F",
+    [600] = "#D79655",
+    [500] = "#E2A76B",
+    [400] = "#E9B987",
+    [300] = "#F0CAA1",
+    [200] = "#F5DCBE",
+    [100] = "#FAECD9",
+    [50] = "#FDF7EF",
+  },
+
   -- Yellows
   gold = {
-    [900] = "#664500",
-    [800] = "#B37800",
-    [700] = "#FFAA00",
-    [600] = "#FFC133",
-    [500] = "#FFD700",
-    [400] = "#F4E36B",
-    [300] = "#EADD61",
-    [200] = "#F2E890",
-    [100] = "#F8F1BF",
-    [50] = "#FCF8DF",
+    [900] = "#7A5200",
+    [800] = "#A66F00",
+    [700] = "#CC8D00",
+    [600] = "#EAAA14",
+    [500] = "#FFC43D",
+    [400] = "#FFD05C",
+    [300] = "#FFDB7D",
+    [200] = "#FFE7A3",
+    [100] = "#FFF2CC",
+    [50] = "#FFF9E8",
+  },
+
   sand = {
     [900] = "#664D1A",
     [800] = "#B3862E",
@@ -359,9 +376,9 @@ local colors = {
   },
 
   khaki = {
-    [900] = "#4D4A1B",
-    [800] = "#807C37",
-    [700] = "#BDB76B",
+    [900] = "#807C37",
+    [800] = "#BDB76B",
+    [700] = "#CDC673",
     [600] = "#D6CE7C",
     [500] = "#F0E68C",
     [400] = "#F2E898",
@@ -384,33 +401,20 @@ local colors = {
     [50] = "#FBF0CB",
   },
 
-  sand = {
-    [900] = "#664D1A",
-    [800] = "#B3862E",
-    [700] = "#FFBF42",
-    [600] = "#FFCB6B",
-    [500] = "#FFD082",
-    [400] = "#FFD393",
-    [300] = "#FFDCA4",
-    [200] = "#FFE5B5",
-    [100] = "#FFEEC6",
-    [50] = "#FFF7D7",
-  },
-
-  soil = {
-    [900] = "#504641",
-    [800] = "#AC9F91",
-    [700] = "#B9ADA2",
-    [600] = "#C4B6AA",
-    [500] = "#D5CAB9",
-    [400] = "#E0D7C9",
-    [300] = "#E8E2D7",
-    [200] = "#EFE9E2",
-    [100] = "#F5F1ED",
-    [50] = "#FAF8F5",
-  },
-
   -- Greens
+  olive = {
+    [900] = "#526528",
+    [800] = "#69812F",
+    [700] = "#819D3C",
+    [600] = "#93B346",
+    [500] = "#A1C254",
+    [400] = "#B2CF72",
+    [300] = "#C3DB93",
+    [200] = "#D5E6B6",
+    [100] = "#E8F0D8",
+    [50] = "#F5F9EE",
+  },
+
   palm = {
     [900] = "#295B24",
     [800] = "#3F8339",
@@ -515,6 +519,19 @@ local colors = {
     [200] = "#ACD5FF",
     [100] = "#C5E2FF",
     [50] = "#DEF0FF",
+  },
+
+  steelblue = {
+    [900] = "#4575A5",
+    [800] = "#5D8BBB",
+    [700] = "#6F98C3",
+    [600] = "#7FA3C9",
+    [500] = "#85A8CC",
+    [400] = "#93B3D2",
+    [300] = "#A2BED8",
+    [200] = "#B0C8DE",
+    [100] = "#BFD2E3",
+    [50] = "#CEDCE9",
   },
 
   -- Purples/Indigos

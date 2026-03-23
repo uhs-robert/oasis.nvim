@@ -5,29 +5,22 @@ local p = require("oasis.palette")
 local opts = Config.get()
 local theme = p.theme.night
 
--- Neovim: Only generate when needed. Extras: generate both.
+-- Neovim: Only generate light theme when needed. Extras: generate both.
 local in_neovim = vim.uv ~= nil or vim.loop ~= nil
 local need_light = not in_neovim or vim.o.background == "light"
-
-local light_seed = require("oasis.color_palettes.oasis_canyon").dark
-local target_lightness = { [1] = 84, [2] = 82, [3] = 80, [4] = 78, [5] = 76 }
 
 -- General Reusable Colors
 local base = {
   bg = theme.bg,
   fg = theme.fg,
-  palette = {
-    primary = p.red,
-    secondary = p.sunrise,
-    accent = p.lavender,
-  },
+  palette = { primary = p.khaki, secondary = p.red, accent = p.steelblue },
   theme = {
-    strong_primary = p.red[800],
-    primary = p.red[500],
-    light_primary = p.red[100],
-    secondary = p.sunrise[500],
-    label = p.sunrise[600],
-    accent = p.lavender[200],
+    strong_primary = p.steelblue[800],
+    primary = p.steelblue[600],
+    light_primary = p.steelblue[200],
+    secondary = p.khaki[600],
+    label = p.khaki[600],
+    accent = p.rose[500],
     cursor = p.khaki[500],
   },
 }
@@ -48,42 +41,43 @@ local dark = {
 
   -- Syntax
   syntax = {
+
     -- Cold: (Data)
-    parameter = p.lavender[500],
+    parameter = p.palm[500],
     identifier = p.sky[500],
-    delimiter = base.theme.strong_primary,
-    type = p.teal[600],
+    delimiter = p.lagoon[800],
+    type = p.teal[500],
     typedef = p.teal[700],
-    builtinVar = p.lagoon[500], -- (this, document, window, etc)
-    string = p.cactus[500],
-    regex = p.palm[500],
-    builtinConst = p.steelblue[500], -- (constant: number, float, boolean, or const not string/character)
-    constant = p.sunset[600],
+    string = p.rose[500],
+    regex = p.desert_rose[500],
+    builtinVar = p.lavender[500], -- (this, document, window, etc)
+    builtinConst = p.iris[500], -- (e.g. null, undefined, Infinity, etc)
+    constant = p.sunset[600], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
-    func = p.sunset[300],
-    builtinFunc = p.sundown[400], -- (eg. parseInt, Array, Object etc)
-    statement = opts.themed_syntax and base.palette.primary[300] or p.khaki[500], -- (general statement (i.e. var, const))
-    exception = opts.themed_syntax and p.khaki[600] or p.red[400], -- (try/catch, return)
-    conditional = opts.themed_syntax and p.red[500] or p.khaki[700], -- (Conditionals, Loops)
-    special = base.theme.secondary, -- (Statement not covered above)
-    operator = p.rose[500],
-    punctuation = p.coral[300],
+    func = p.sand[200],
+    builtinFunc = p.sand[400], -- (eg. parseInt, Array, Object etc)
+    statement = opts.themed_syntax and base.palette.primary[600] or p.khaki[500], -- (general statement (i.e. var, const))
+    exception = opts.themed_syntax and p.red[500] or p.red[400], -- (try/catch, return)
+    conditional = opts.themed_syntax and base.palette.primary[800] or p.khaki[800], -- (Conditionals, Loops)
+    special = p.sunset[200], -- (Statement not covered above)
+    operator = base.palette.primary[600],
+    punctuation = base.palette.primary[700],
 
     -- Neutral: (Connections / Info)
-    bracket = p.grey[500],
-    preproc = p.soil[500], -- (imports)
-    macro = p.soil[700], -- (imports)
+    bracket = p.slate[500],
+    preproc = p.sundown[500], -- (imports)
+    macro = p.sundown[700], -- (imports)
     comment = theme.fg.comment, -- (comments)
   },
 
   -- UI
   ui = {
     lineNumber = p.sunset[600],
-    visual = { bg = p.visual.indigo, fg = "none" },
-    search = { bg = p.visual.violet, fg = base.fg.core },
-    match = { bg = p.khaki[500], fg = base.bg.core },
-    matchParen = { bg = p.stone[900], fg = p.khaki[500] },
+    visual = { bg = p.visual.night, fg = "none" },
+    search = { bg = p.visual.grey, fg = base.fg.core },
+    match = { bg = p.khaki[700], fg = base.bg.core },
+    matchParen = { bg = p.stone[900], fg = p.khaki[700] },
     dir = p.sky[500],
 
     title = base.theme.primary,
@@ -91,7 +85,7 @@ local dark = {
     cursorLine = base.bg.surface,
     nontext = base.fg.dim,
     float = {
-      title = base.theme.primary,
+      title = base.theme.secondary,
       fg = base.fg.strong,
       bg = base.bg.mantle,
       border = { fg = base.theme.primary, bg = base.bg.mantle },
@@ -109,8 +103,11 @@ local dark = {
 -- Light mode configuration (backgrounds/ui/theme from night fg, syntax from canyon)
 local light
 if need_light then
+  local light_seed = require("oasis.color_palettes.oasis_canyon").dark
+  local target_lightness = { [1] = 84, [2] = 82, [3] = 80, [4] = 78, [5] = 76 }
   local LightTheme = require("oasis.tools.light_theme_generator")
-  local light_bg = LightTheme.generate_bg(base.fg.core, opts.light_intensity, { target_l_core = target_lightness })
+  local light_bg =
+    LightTheme.generate_bg(p.theme.dune.fg.core, opts.light_intensity, { target_l_core = target_lightness })
   local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
     search = { bg = p.visual.orange, fg = base.fg.core },
     match = { bg = p.visual.red, fg = base.fg.core },
