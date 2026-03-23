@@ -61,7 +61,7 @@ local function create_highlights(c, light_mode, is_desert)
     FoldColumn                 = { fg=c.fg.muted, bg=c.bg.core }, -- 'foldcolumn'
     SignColumn                 = { fg=c.fg.muted, bg="NONE" }, -- Column where |signs| are displayed
     IncSearch                  = { fg=c.ui.match.fg, bg=c.ui.match.bg }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-    Search                     = { fg=c.fg.strong, bg=c.ui.search.bg }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
+    Search                     = { fg=c.ui.search.fg, bg=c.ui.search.bg }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
     Substitute                 = "Search", -- |:substitute| replacement text highlighting
     LineNr                     = { fg=c.fg.muted, bg=(c.bg.gutter or "NONE") }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
     LineNrAbove                = "LineNr", -- Line number for when the 'relativenumber' option is set, above the cursor line
@@ -237,7 +237,7 @@ local function create_highlights(c, light_mode, is_desert)
     ["@string.escape"]        = "Exception", -- SpecialChar
     ["@string.special"]       = "SpecialChar", -- (e.g., dates)
     ["@string.special.symbol"]= { fg=c.syntax.identifier },
-    ["@string.special.url"]   = { fg=c.syntax.statement, underline=true },
+    ["@string.special.url"]   = { fg=c.ui.diag.info.fg, underline=true },
     ["@character"]            = "Character", -- Character
     ["@character.special"]    = "SpecialChar", -- SpecialChar
     ["@number"]               = "Number", -- Number
@@ -280,6 +280,7 @@ local function create_highlights(c, light_mode, is_desert)
     ["@type"]                 = "Type", -- Type
     ["@type.builtin"]         = "Typedef",
     ["@type.definition"]      = "Typedef", -- Typedef
+    ["@type.jsdoc"]           = "Typedef", -- Type
     ["@storageclass"]         = "StorageClass", -- StorageClass
     ["@structure"]            = "Structure", -- Structure
     ["@namespace"]            = "@variable.builtin", -- Identifier
@@ -479,8 +480,8 @@ local PLUGIN_GROUPS = {
     hl.MiniStatuslineModeInsert = { bg = c.syntax.string, fg = c.bg.core }
     hl.MiniStatuslineModeCommand = { bg = c.syntax.parameter, fg = c.bg.core }
     hl.MiniStatuslineModeVisual = { bg = c.syntax.special, fg = c.bg.core }
-    hl.MiniStatuslineModeReplace = { bg = c.syntax.operator, fg = c.bg.core }
-    hl.MiniStatuslineModeOther = { bg = c.syntax.type, fg = c.bg.core }
+    hl.MiniStatuslineModeReplace = { bg = c.syntax.exception, fg = c.bg.core }
+    hl.MiniStatuslineModeOther = { bg = c.syntax.typedef, fg = c.bg.core }
     hl.MiniStatuslineDevInfo = { fg = c.syntax.statement, bg = c.bg.surface }
     hl.MiniStatuslineFileInfo = { fg = c.syntax.statement, bg = c.bg.surface }
     hl.MiniStatuslineFilename = { fg = c.theme.light_primary, bg = c.bg.mantle }
