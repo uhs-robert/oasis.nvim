@@ -33,9 +33,9 @@ local function create_highlights(c, light_mode, is_desert)
     OasisStrongPrimary         = { fg=(is_desert and c.theme.secondary_strong or c.theme.strong_primary), bg="NONE" },
     OasisPrimary               = { fg=(is_desert and c.theme.secondary or c.theme.primary), bg="NONE" },
     OasisLightPrimary          = { fg=(is_desert and c.theme.secondary_light or c.theme.light_primary), bg="NONE" },
-    OasisFloatPrimary          = { fg=c.theme.primary, bg=c.ui.float.border.bg },
+    OasisFloatPrimary          = { fg=(is_desert and c.theme.secondary or c.theme.primary), bg=c.ui.float.border.bg },
     OasisSecondary             = { fg=(is_desert and c.theme.primary or c.theme.secondary), bg="NONE" },
-    OasisFloatSecondary        = { fg=c.theme.secondary, bg=c.ui.float.border.bg },
+    OasisFloatSecondary        = { fg=(is_desert and c.theme.primary or c.theme.secondary), bg=c.ui.float.border.bg },
     OasisAccent                = { fg=c.theme.accent, bg="NONE" },
 
     -- The following are the Neovim (as of 0.8.0-dev+100-g371dfb174) highlight
@@ -138,7 +138,7 @@ local function create_highlights(c, light_mode, is_desert)
     Repeat                     = "Conditional", --   for, do, while, etc.
     Label                      = "Conditional", --   case, default, etc.
     Operator                   = { fg=c.syntax.operator }, --   "sizeof", "+", "*", etc.
-    Exception                  = { fg=c.syntax.exception, bold=true }, --   try, catch, throw
+    Exception                  = { fg=c.syntax.exception }, --   try, catch, throw
 
     PreProc                    = { fg=c.syntax.preproc, italic=true }, -- (*) Generic Preprocessor
     Include                    = "PreProc", --   Preprocessor #include
@@ -654,7 +654,7 @@ end
 return function(c, palette_name)
   local light_mode = c.light_mode or false
   local cfg = Config.get()
-  local is_desert = palette_name and palette_name:match("desert")
+  local is_desert = c.is_desert or palette_name:match("desert")
   local styles = cfg.styles or {}
   local all_styles_enabled = styles.all_enabled ~= false
 

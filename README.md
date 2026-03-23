@@ -17,7 +17,7 @@ Born from the classic [desert.vim](https://github.com/fugalh/desert.vim), transf
 
 Oasis follows a warm/cool color split philosophy (**warm = action/flow**, **cool = structure/data**).
 
-**All themes meet AAA WCAG compliance standards**. Light themes allow contrast ratio to be customized.
+**All themes meet AAA WCAG high contrast compliance standards**. Light themes allow contrast ratio to be customized.
 
 <p align="center">
   <img src="./assets/socials/Oasis Logo Social - 3 Fit.png"
@@ -117,16 +117,18 @@ Click any card below to view the full preview and syntax sample. [↓ Or click h
   <tr>
     <td align="center"><a href="#desert-dark"><img src="assets/screenshots/desert-dark-dashboard.png" alt="Desert (dark)" width="auto"></a><br><strong>Desert</strong><br><em>Grey</em></td>
     <td align="center"><a href="#sol-dark"><img src="assets/screenshots/sol-dark-dashboard.png" alt="Sol (dark)" width="auto"></a><br><strong>Sol</strong><br><em>Red</em></td>
+    <td align="center"><a href="#scorpion-dark"><img src="assets/screenshots/scorpion-dark-dashboard.png" alt="Desert (dark)" width="auto"></a><br><strong>Scorpion</strong><br><em>Scorched</em></td>
     <td align="center"><a href="#canyon-dark"><img src="assets/screenshots/canyon-dark-dashboard.png" alt="Canyon (dark)" width="auto"></a><br><strong>Canyon</strong><br><em>Orange</em></td>
-    <td align="center"><a href="#dune-dark"><img src="assets/screenshots/dune-dark-dashboard.png" alt="Dune (dark)" width="auto"></a><br><strong>Dune</strong><br><em>Yellow</em></td>
   </tr>
   <tr>
+    <td align="center"><a href="#dune-dark"><img src="assets/screenshots/dune-dark-dashboard.png" alt="Dune (dark)" width="auto"></a><br><strong>Dune</strong><br><em>Yellow</em></td>
     <td align="center"><a href="#cactus-dark"><img src="assets/screenshots/cactus-dark-dashboard.png" alt="Cactus (dark)" width="auto"></a><br><strong>Cactus</strong><br><em>Green</em></td>
     <td align="center"><a href="#mirage-dark"><img src="assets/screenshots/mirage-dark-dashboard.png" alt="Mirage (dark)" width="auto"></a><br><strong>Mirage</strong><br><em>Teal</em></td>
     <td align="center"><a href="#lagoon-dark"><img src="assets/screenshots/lagoon-dark-dashboard.png" alt="Lagoon (dark)" width="auto"></a><br><strong>Lagoon (Default)</strong><br><em>Blue</em></td>
-    <td align="center"><a href="#twilight-dark"><img src="assets/screenshots/twilight-dark-dashboard.png" alt="Twilight (dark)" width="auto"></a><br><strong>Twilight</strong><br><em>Purple</em></td>
   </tr>
   <tr>
+    <td align="center"><a href="#twilight-dark"><img src="assets/screenshots/twilight-dark-dashboard.png" alt="Twilight (dark)" width="auto"></a><br><strong>Twilight</strong><br><em>Sunset</em></td>
+    <td align="center"><a href="#luna-dark"><img src="assets/screenshots/luna-dark-dashboard.png" alt="Luna (dark)" width="auto"></a><br><strong>Luna</strong><br><em>Indigo</em></td>
     <td align="center"><a href="#rose-dark"><img src="assets/screenshots/rose-dark-dashboard.png" alt="Rose (dark)" width="auto"></a><br><strong>Rose</strong><br><em>Pink</em></td>
   </tr>
 </table>
@@ -168,23 +170,25 @@ The examples below use the default intensity of level 3.
   <tr>
     <td align="center"><a href="#desert-light"><img src="assets/screenshots/desert-light-3-dashboard.png" alt="Desert (light)" width="auto"></a><br><strong>Desert</strong></td>
     <td align="center"><a href="#sol-light"><img src="assets/screenshots/sol-light-3-dashboard.png" alt="Sol (light)" width="auto"></a><br><strong>Sol</strong></td>
+    <td align="center"><a href="#scorpion-light"><img src="assets/screenshots/scorpion-dark-dashboard.png" alt="Desert (dark)" width="auto"></a><br><strong>Scorpion</strong><br><em>Scorched</em></td>
     <td align="center"><a href="#canyon-light"><img src="assets/screenshots/canyon-light-3-dashboard.png" alt="Canyon (light)" width="auto"></a><br><strong>Canyon</strong></td>
-    <td align="center"><a href="#dune-light"><img src="assets/screenshots/dune-light-3-dashboard.png" alt="Dune (light)" width="auto"></a><br><strong>Dune</strong></td>
   </tr>
   <tr>
+    <td align="center"><a href="#dune-light"><img src="assets/screenshots/dune-light-3-dashboard.png" alt="Dune (light)" width="auto"></a><br><strong>Dune</strong></td>
     <td align="center"><a href="#cactus-light"><img src="assets/screenshots/cactus-light-3-dashboard.png" alt="Cactus (light)" width="auto"></a><br><strong>Cactus</strong></td>
     <td align="center"><a href="#mirage-light"><img src="assets/screenshots/mirage-light-3-dashboard.png" alt="Mirage (light)" width="auto"></a><br><strong>Mirage</strong></td>
     <td align="center"><a href="#lagoon-light"><img src="assets/screenshots/lagoon-light-3-dashboard.png" alt="Lagoon (light)" width="auto"></a><br><strong>Lagoon</strong></td>
-    <td align="center"><a href="#twilight-light"><img src="assets/screenshots/twilight-light-3-dashboard.png" alt="Twilight (light)" width="auto"></a><br><strong>Twilight</strong></td>
   </tr>
   <tr>
+    <td align="center"><a href="#twilight-light"><img src="assets/screenshots/twilight-light-3-dashboard.png" alt="Twilight (light)" width="auto"></a><br><strong>Twilight</strong></td>
+    <td align="center"><a href="#luna-light"><img src="assets/screenshots/luna-dark-dashboard.png" alt="Luna (dark)" width="auto"></a><br><strong>Luna</strong><br><em>Indigo</em></td>
     <td align="center"><a href="#rose-light"><img src="assets/screenshots/rose-light-3-dashboard.png" alt="Rose (light)" width="auto"></a><br><strong>Rose</strong></td>
   </tr>
 </table>
 
 ## ✨ Features
 
-- **13 theme styles with dual modes**: Each theme offers both dark and light variants with 5 adjustable intensity levels.
+- **15 theme styles with dual modes**: Each theme offers both dark and light variants with 5 adjustable intensity levels.
 - **Dark/Light Modes**: Automatic switching based on your system theme or `vim.o.background`.
 - **Comprehensive highlighting** - LSP, Tree-sitter, and plugin support
 - **Fast loading** - Direct highlight application for optimal performance based on the plugins in your config
@@ -299,12 +303,14 @@ colorscheme oasis-abyss
 colorscheme oasis-starlight
 colorscheme oasis-desert
 colorscheme oasis-sol
+colorscheme oasis-scorpion
 colorscheme oasis-canyon
 colorscheme oasis-dune
 colorscheme oasis-cactus
 colorscheme oasis-mirage
 colorscheme oasis-lagoon
 colorscheme oasis-twilight
+colorscheme oasis-luna
 colorscheme oasis-rose
 ```
 
@@ -822,6 +828,13 @@ require("oasis").setup({
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
+    <a id="scorpion-dark"></a>
+    <h3>Scorpion (Dark · Scorched)</h3>
+    <img src="./assets/screenshots/scorpion-dark-dashboard.png" alt="Scorpion dark mode dashboard"></img>
+    <img src="./assets/screenshots/scorpion-dark-code.png" alt="Scorpion dark mode code sample"></img>
+    <p align="center">
+      <a href="#dark-previews">↑ Back to Dark Styles</a>
+    </p>
     <a id="canyon-dark"></a>
     <h3>Canyon (Dark · Orange)</h3>
     <img src="./assets/screenshots/canyon-dark-dashboard.png" alt="Canyon dark mode dashboard"></img>
@@ -858,11 +871,18 @@ require("oasis").setup({
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="twilight-dark"></a>
-    <h3>Twilight (Dark · Purple)</h3>
+    <h3>Twilight (Dark · Sunset)</h3>
     <img src="./assets/screenshots/twilight-dark-dashboard.png" alt="Twilight dark mode dashboard"></img>
     <img src="./assets/screenshots/twilight-dark-code.png" alt="Twilight dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
+    </p>
+    <a id="luna-dark"></a>
+    <h3>Luna (Dark · Indigo)</h3>
+    <img src="./assets/screenshots/luna-dark-3-dashboard.png" alt="Luna dark mode dashboard"></img>
+    <img src="./assets/screenshots/luna-dark-3-code.png" alt="Luna dark mode code sample"></img>
+    <p align="center">
+      <a href="#dark-previews">↑ Back to dark Styles</a>
     </p>
     <a id="rose-dark"></a>
     <h3>Rose (Dark · Pink)</h3>
@@ -919,6 +939,13 @@ require("oasis").setup({
     <p align="center">
       <a href="#light-previews">↑ Back to Light Styles</a>
     </p>
+    <a id="scorpion-light"></a>
+    <h3>Scorpion (light · Scorched)</h3>
+    <img src="./assets/screenshots/scorpion-light-dashboard.png" alt="Scorpion light mode dashboard"></img>
+    <img src="./assets/screenshots/scorpion-light-code.png" alt="Scorpion light mode code sample"></img>
+    <p align="center">
+      <a href="#light-previews">↑ Back to light Styles</a>
+    </p>
     <a id="canyon-light"></a>
     <h3>Canyon (Light)</h3>
     <img src="./assets/screenshots/canyon-light-3-dashboard.png" alt="Canyon light mode dashboard"></img>
@@ -958,6 +985,13 @@ require("oasis").setup({
     <h3>Twilight (Light)</h3>
     <img src="./assets/screenshots/twilight-light-3-dashboard.png" alt="Twilight light mode dashboard"></img>
     <img src="./assets/screenshots/twilight-light-3-code.png" alt="Twilight light mode code sample"></img>
+    <p align="center">
+      <a href="#light-previews">↑ Back to Light Styles</a>
+    </p>
+    <a id="luna-light"></a>
+    <h3>Luna (Light)</h3>
+    <img src="./assets/screenshots/luna-light-3-dashboard.png" alt="Luna light mode dashboard"></img>
+    <img src="./assets/screenshots/luna-light-3-code.png" alt="Luna light mode code sample"></img>
     <p align="center">
       <a href="#light-previews">↑ Back to Light Styles</a>
     </p>
