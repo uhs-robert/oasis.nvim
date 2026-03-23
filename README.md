@@ -30,7 +30,30 @@ Oasis follows a warm/cool color split philosophy (**warm = action/flow**, **cool
 <!-- whats-new:start -->
 
   <details>
-    <summary>🚨 v4.1: Legacy Light Themes Removed</summary>
+    <summary>🚨 v5.0: Major Visual Overhaul, Redesign, and New Themes</summary>
+    <!-- v5.0:start -->
+    <h3>🚨 BREAKING CHANGE: All themes updated, major style changes</h3>
+    <p>This release is a major redesign of the palette system and theme pack. </p>
+    <p> Many themes have been substantially reworked, including background ramps,
+      semantic color relationships, and overall visual identity.</p>
+    <p> If you prefer the previous appearance, pin to the last v4.2 release like so: </p>
+
+    ```lua
+    {
+      'uhs-robert/oasis.nvim',
+      version = '4.2.0',
+      config = function()
+        require('oasis').setup({})
+        vim.cmd.colorscheme('oasis')
+      end,
+    }
+    ```
+
+    <!-- v5.0:end -->
+
+  </details>
+
+  <summary>🚨 v4.1: Legacy Light Themes Removed</summary>
     <!-- v4.1:start -->
     <h3>🚨 BREAKING CHANGE: Legacy Light Themes Removed</h3>
     The standalone light themes <strong>Dawn, Dawnlight, Day, Dusk, and Dust</strong> have been removed in v4.1 (deprecated in v4.0).
@@ -89,15 +112,6 @@ Oasis follows a warm/cool color split philosophy (**warm = action/flow**, **cool
     <!-- v4:end -->
   </details>
 
-  <details>
-    <summary>🚨 v3.0: Themed Syntax</summary>
-    <!-- v3:start -->
-    <h3>✨ Dual style themes</h3>
-    Each style now uses its signature color for statements and keywords.
-    <br>
-    Prefer the classic yellow syntax? <a href="#-usage">See how to opt-out under API Commands ↓</a>
-    <!-- v3:end -->
-  </details>
 <!-- whats-new:end -->
 </details>
 
@@ -109,7 +123,7 @@ Click any card below to view the full preview and syntax sample. [↓ Or click h
 
 <table>
   <tr>
-    <td align="center"><a href="#night-dark"><img src="assets/screenshots/night-dark-dashboard.png" alt="Night (dark)" width="auto"></a><br><strong>Night</strong><br><em>Night Sky</em></td>
+    <td align="center"><a href="#night-dark"><img src="assets/screenshots/night-dark-dashboard.png" alt="Night (dark)" width="auto"></a><br><strong>Night</strong><br><em>Desert Night</em></td>
     <td align="center"><a href="#midnight-dark"><img src="assets/screenshots/midnight-dark-dashboard.png" alt="Midnight (dark)" width="auto"></a><br><strong>Midnight</strong><br><em>Off Black</em></td>
     <td align="center"><a href="#abyss-dark"><img src="assets/screenshots/abyss-dark-dashboard.png" alt="Abyss (dark)" width="auto"></a><br><strong>Abyss</strong><br><em>Black</em></td>
     <td align="center"><a href="#starlight-dark"><img src="assets/screenshots/starlight-dark-dashboard.png" alt="Starlight (dark)" width="auto"></a><br><strong>Starlight</strong><br><em>Black Vivid</em></td>
@@ -788,7 +802,7 @@ require("oasis").setup({
     <summary><b>🌕️ Dark Previews</b></summary>
     <!-- dark-styles:start -->
     <a id="night-dark"></a>
-    <h3>Night (Dark · Night Sky)</h3>
+    <h3>Night (Dark · Desert Night)</h3>
     <img src="./assets/screenshots/night-dark-dashboard.png" alt="Night dark mode dashboard"></img>
     <img src="./assets/screenshots/night-dark-code.png" alt="Night dark mode code sample"></img>
     <p align="center">

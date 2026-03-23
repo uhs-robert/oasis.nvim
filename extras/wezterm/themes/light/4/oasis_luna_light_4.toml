@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_luna_light_4.toml
+## name: Oasis Luna Light 4
+## author: uhs-robert
+
+[colors]
+foreground = "#42376c"
+background= "#d5cef3"
+cursor_bg = "#524c22"
+cursor_border = "#524c22"
+cursor_fg= "#d5cef3"
+selection_bg= "#e19d9d"
+selection_fg= "#4e0e0e"
+split= "#532784"
+compose_cursor= "#5a3716"
+scrollbar_thumb= "#b5a9ea"
+visual_bell= "#cac2f0"
+
+ansi = [
+  '#3f3f3f',
+  '#970f0f',
+  '#2f532c',
+  '#514c1b',
+  '#104c87',
+  '#641eb6',
+  '#2a524d',
+  '#4a3e10',
+]
+
+brights = [
+  '#463d37',
+  '#980f0f',
+  '#2c5427',
+  '#6f3f10',
+  '#1d5165',
+  '#631eb8',
+  '#2a524c',
+  '#463f25',
+]
+
+[colors.indexed]
+16 = '#5a3716'
+17 = '#971015'
+
+[colors.tab_bar]
+background = '#cac2f0'
+inactive_tab_edge = '#c0b5ed'
+
+[colors.tab_bar.active_tab]
+bg_color = '#796e11'
+fg_color = '#d5cef3'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#b5a9ea'
+fg_color = '#796e11'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#b5a9ea'
+fg_color = '#450192'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#450192'
+fg_color = '#d5cef3'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#136881'
+fg_color = '#d5cef3'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Luna Light 4'

@@ -1,0 +1,119 @@
+/* extras/css/themes/light/1/oasis_scorpion_light_1.css
+ * name: Oasis Scorpion Light 1
+ * author: uhs-robert
+ * mode: light
+ * light intensity: 1
+ */
+
+:root,
+[data-oasis-theme="scorpion_light_1"],
+.oasis-scorpion_light_1 {
+	--oasis-name: "Oasis Scorpion Light 1";
+	--oasis-mode: "light";
+	--oasis-light-intensity: 1;
+	--oasis-bg-core: #f9f6f5;
+	--oasis-bg-mantle: #f3edeb;
+	--oasis-bg-shadow: #eee5e2;
+	--oasis-bg-surface: #e8dcd8;
+	--oasis-diff-add: #325d48;
+	--oasis-diff-change: #7e4536;
+	--oasis-diff-delete: #7c4545;
+	--oasis-diff-text: #764a2f;
+	--oasis-fg-comment: #897672;
+	--oasis-fg-core: #694e44;
+	--oasis-fg-dim: #978d8a;
+	--oasis-fg-muted: #7e6e6b;
+	--oasis-fg-strong: #7f4435;
+	--oasis-git-add: #23611b;
+	--oasis-git-change: #5d550c;
+	--oasis-git-delete: #ad0000;
+	--oasis-syntax-bracket: #6b727f;
+	--oasis-syntax-builtinConst: #5751c3;
+	--oasis-syntax-builtinFunc: #8a550f;
+	--oasis-syntax-builtinVar: #8100fe;
+	--oasis-syntax-comment: #896b66;
+	--oasis-syntax-conditional: #625c34;
+	--oasis-syntax-constant: #464645;
+	--oasis-syntax-delimiter: #895343;
+	--oasis-syntax-exception: #c0151b;
+	--oasis-syntax-func: #82500e;
+	--oasis-syntax-identifier: #276881;
+	--oasis-syntax-operator: #69612c;
+	--oasis-syntax-parameter: #265d21;
+	--oasis-syntax-preproc: #9a492f;
+	--oasis-syntax-punctuation: #68622f;
+	--oasis-syntax-regex: #9a4461;
+	--oasis-syntax-special: #944e10;
+	--oasis-syntax-statement: #69612c;
+	--oasis-syntax-string: #b4191e;
+	--oasis-syntax-type: #34635e;
+	--oasis-terminal-black: #545454;
+	--oasis-terminal-blue: #1661ae;
+	--oasis-terminal-bright-black: #5f5249;
+	--oasis-terminal-bright-blue: #266783;
+	--oasis-terminal-bright-cyan: #356a61;
+	--oasis-terminal-bright-green: #396c32;
+	--oasis-terminal-bright-magenta: #7e30dd;
+	--oasis-terminal-bright-red: #c11313;
+	--oasis-terminal-bright-white: #5d5432;
+	--oasis-terminal-bright-yellow: #8e5215;
+	--oasis-terminal-color0: #545454;
+	--oasis-terminal-color1: #c11313;
+	--oasis-terminal-color10: #396c32;
+	--oasis-terminal-color11: #8e5215;
+	--oasis-terminal-color12: #266783;
+	--oasis-terminal-color13: #7e30dd;
+	--oasis-terminal-color14: #356a61;
+	--oasis-terminal-color15: #5d5432;
+	--oasis-terminal-color2: #3d6b39;
+	--oasis-terminal-color3: #696223;
+	--oasis-terminal-color4: #1661ae;
+	--oasis-terminal-color5: #7f2fde;
+	--oasis-terminal-color6: #366964;
+	--oasis-terminal-color7: #635315;
+	--oasis-terminal-color8: #5f5249;
+	--oasis-terminal-color9: #c11313;
+	--oasis-terminal-cyan: #366964;
+	--oasis-terminal-green: #3d6b39;
+	--oasis-terminal-magenta: #7f2fde;
+	--oasis-terminal-red: #c11313;
+	--oasis-terminal-white: #635315;
+	--oasis-terminal-yellow: #696223;
+	--oasis-theme-accent: #388032;
+	--oasis-theme-label: #944224;
+	--oasis-theme-light-primary: #7a7014;
+	--oasis-theme-primary: #908419;
+	--oasis-theme-secondary: #a23211;
+	--oasis-theme-secondary-light: #832c0c;
+	--oasis-theme-secondary-strong: #914b31;
+	--oasis-theme-strong-primary: #8b8537;
+	--oasis-ui-border: #744a3a;
+	--oasis-ui-cursorLine: #f3edeb;
+	--oasis-ui-diag-error-bg: #d59090;
+	--oasis-ui-diag-error-fg: #750e0e;
+	--oasis-ui-diag-hint-bg: #92d3c9;
+	--oasis-ui-diag-hint-fg: #0b5e52;
+	--oasis-ui-diag-info-bg: #92b2d3;
+	--oasis-ui-diag-info-fg: #0e447b;
+	--oasis-ui-diag-ok-bg: #9ece97;
+	--oasis-ui-diag-ok-fg: #145d0b;
+	--oasis-ui-diag-warn-bg: #cec897;
+	--oasis-ui-diag-warn-fg: #5c540b;
+	--oasis-ui-dir: #2d5a6c;
+	--oasis-ui-float-bg: #f3edeb;
+	--oasis-ui-float-border-bg: #f3edeb;
+	--oasis-ui-float-border-fg: #744a3a;
+	--oasis-ui-float-fg: #893f29;
+	--oasis-ui-float-title: #893f29;
+	--oasis-ui-lineNumber: #79491c;
+	--oasis-ui-match-bg: #7ad1a1;
+	--oasis-ui-match-fg: #0d311d;
+	--oasis-ui-matchParen-bg: #e8dcd8;
+	--oasis-ui-matchParen-fg: #585537;
+	--oasis-ui-nontext: #9b8c88;
+	--oasis-ui-search-bg: #e19d9d;
+	--oasis-ui-search-fg: #4e0e0e;
+	--oasis-ui-title: #893f29;
+	--oasis-ui-visual-bg: #e8dcd8;
+	--oasis-ui-visual-fg: none;
+}

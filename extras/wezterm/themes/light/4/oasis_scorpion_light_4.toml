@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_scorpion_light_4.toml
+## name: Oasis Scorpion Light 4
+## author: uhs-robert
+
+[colors]
+foreground = "#543f37"
+background= "#f5d3c7"
+cursor_bg = "#565024"
+cursor_border = "#565024"
+cursor_fg= "#f5d3c7"
+selection_bg= "#e19d9d"
+selection_fg= "#4e0e0e"
+split= "#5d3c2f"
+compose_cursor= "#613b18"
+scrollbar_thumb= "#eeb4a0"
+visual_bell= "#f3c9ba"
+
+ansi = [
+  '#444444',
+  '#a11010',
+  '#32582f',
+  '#57511d',
+  '#11518f',
+  '#6a20c1',
+  '#2d5752',
+  '#504311',
+]
+
+brights = [
+  '#4c423b',
+  '#a11010',
+  '#2f5929',
+  '#764312',
+  '#1e556c',
+  '#691fc3',
+  '#2c5751',
+  '#4b4328',
+]
+
+[colors.indexed]
+16 = '#613b18'
+17 = '#a01117'
+
+[colors.tab_bar]
+background = '#f3c9ba'
+inactive_tab_edge = '#f0bfad'
+
+[colors.tab_bar.active_tab]
+bg_color = '#796e11'
+fg_color = '#f5d3c7'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#eeb4a0'
+fg_color = '#796e11'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#eeb4a0'
+fg_color = '#8a270a'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#8a270a'
+fg_color = '#f5d3c7'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#2d6c27'
+fg_color = '#f5d3c7'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Scorpion Light 4'

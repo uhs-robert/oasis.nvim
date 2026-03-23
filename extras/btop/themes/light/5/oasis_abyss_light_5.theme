@@ -12,13 +12,13 @@ theme[main_fg]="#48413b"
 theme[title]="#48413b"
 
 # Highlight color for keyboard shortcuts
-theme[hi_fg]="#800000"
+theme[hi_fg]="#71670f"
 
 # Background color of selected item in processes box
 theme[selected_bg]="#ecb893"
 
 # Foreground color of selected item in processes box
-theme[selected_fg]="#800000"
+theme[selected_fg]="#71670f"
 
 # Color of inactive/disabled text
 theme[inactive_fg]="#615f56"
@@ -33,7 +33,7 @@ theme[meter_bg]="#f1c9ad"
 theme[proc_misc]="#623828"
 
 # CPU, Memory, Network, Proc box outline colors
-theme[cpu_box]="#27583e"
+theme[cpu_box]="#31572e"
 theme[mem_box]="#554f1c"
 theme[net_box]="#691fbe"
 theme[proc_box]="#9f0f0f"
@@ -47,7 +47,7 @@ theme[temp_mid]="#1e546a"
 theme[temp_end]="#681fbf"
 
 # CPU graph colors (Green -> Orange -> Bright Red)
-theme[cpu_start]="#27583e"
+theme[cpu_start]="#31572e"
 theme[cpu_mid]="#744211"
 theme[cpu_end]="#9e0f0f"
 
@@ -67,9 +67,9 @@ theme[cached_mid]=""
 theme[cached_end]="#1e546a"
 
 # Mem/Disk free meter (Green -> Bright Green)
-theme[free_start]="#27583e"
+theme[free_start]="#31572e"
 theme[free_mid]=""
-theme[free_end]="#2c5920"
+theme[free_end]="#2e5829"
 
 # Download graph colors (Blue -> Bright Blue)
 theme[download_start]="#11508d"
@@ -82,6 +82,6 @@ theme[upload_mid]=""
 theme[upload_end]="#681fbf"
 
 # Process box color gradient for threads, mem and cpu usage (Green -> Orange -> Red)
-theme[process_start]="#27583e"
+theme[process_start]="#31572e"
 theme[process_mid]="#744211"
 theme[process_end]="#9f0f0f"

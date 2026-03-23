@@ -14,8 +14,8 @@ def setup(c, samecolorrows=True):
         "bright_red":     "#c01313",
         "yellow":         "#686223",
         "bright_yellow":  "#8e5115",
-        "green":          "#2b6e26",
-        "bright_green":   "#2b6e26",
+        "green":          "#3d6b39",
+        "bright_green":   "#396b32",
         "teal":           "#366963",
         "blue":           "#1561ad",
         "bright_blue":    "#256782",
@@ -31,7 +31,7 @@ def setup(c, samecolorrows=True):
         "primary":        "#a20707",
         "strong_primary": "#9c2525",
         "secondary":      "#a4590f",
-        "accent":         "#25961d",
+        "accent":         "#388032",
         "match":          "#7ad1a7",
     }
     # }}}
