@@ -468,5 +468,6 @@
 ---@field integrations? OasisIntegrationsConfig Table of plugin integration toggles
 ---@field terminal_colors? boolean Apply colors to built-in terminal
 ---@field transparent? boolean Make backgrounds transparent
+---@field match_paren_bg? boolean Show background on MatchParen highlight (default: true)
 
 return {}
