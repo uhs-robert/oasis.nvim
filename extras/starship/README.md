@@ -27,6 +27,8 @@ white         = '#FFF7D7'
 
 The `starship.toml` in this directory also provides an opinionated prompt layout built around Oasis colors. Feel free to use it if you like:
 
+<img width="1263" height="97" alt="starship_prompt" src="https://github.com/user-attachments/assets/01571e29-1b72-44d3-90e0-cc4de37de22b" />
+
 1. Copy `starship.toml` to `~/.config/starship.toml` (or merge it into your existing config).
 2. Copy the palette block from `themes/dark/oasis_<variant>.toml` into your config.
 
