@@ -37,8 +37,7 @@ Oasis follows a warm/cool color split philosophy (**warm = action/flow**, **cool
     <p> Many themes have been substantially reworked, including background ramps,
       semantic color relationships, and overall visual identity.</p>
     <p> If you prefer the previous appearance, pin to the last v4.2 release like so: </p>
-
-    ```lua
+    <pre><code class="language-lua">
     {
       'uhs-robert/oasis.nvim',
       version = '4.2.0',
@@ -46,30 +45,29 @@ Oasis follows a warm/cool color split philosophy (**warm = action/flow**, **cool
         require('oasis').setup({})
         vim.cmd.colorscheme('oasis')
       end,
-    }
-    ```
-
+    }</code></pre>
     <!-- v5.0:end -->
 
   </details>
 
-  <summary>🚨 v4.1: Legacy Light Themes Removed</summary>
-    <!-- v4.1:start -->
-    <h3>🚨 BREAKING CHANGE: Legacy Light Themes Removed</h3>
-    The standalone light themes <strong>Dawn, Dawnlight, Day, Dusk, and Dust</strong> have been removed in v4.1 (deprecated in v4.0).
-    <ul>
-      <li>Use the dual-mode system with <code>light_style</code> + <code>light_intensity</code> instead.</li>
-      <li>Closest matches: <code>night</code> with <code>light_intensity = 1..5</code> (1=brightest, 5=darkest).</li>
-    </ul>
-    <h3>✨ New Features</h3>
-    <ul>
-      <li>Configurable plugin integration system.</li>
-      <li>Expanded highlight coverage (additional Treesitter + LSP groups + mini ecosystem).</li>
-      <li>Palette/highlight override system and LuaLS type definitions.</li>
-      <li>New theme generators/formats: CSS, JSON, and Lua themes.</li>
-      <li>New/expanded extras: bat themes, Warp, WezTerm/kitty updates, Yazi enhancements, tmux visual selection.</li>
-    </ul>
-    <!-- v4.1:end -->
+  <details>
+    <summary>🚨 v4.1: Legacy Light Themes Removed</summary>
+      <!-- v4.1:start -->
+      <h3>🚨 BREAKING CHANGE: Legacy Light Themes Removed</h3>
+      The standalone light themes <strong>Dawn, Dawnlight, Day, Dusk, and Dust</strong> have been removed in v4.1 (deprecated in v4.0).
+      <ul>
+        <li>Use the dual-mode system with <code>light_style</code> + <code>light_intensity</code> instead.</li>
+        <li>Closest matches: <code>night</code> with <code>light_intensity = 1..5</code> (1=brightest, 5=darkest).</li>
+      </ul>
+      <h3>✨ New Features</h3>
+      <ul>
+        <li>Configurable plugin integration system.</li>
+        <li>Expanded highlight coverage (additional Treesitter + LSP groups + mini ecosystem).</li>
+        <li>Palette/highlight override system and LuaLS type definitions.</li>
+        <li>New theme generators/formats: CSS, JSON, and Lua themes.</li>
+        <li>New/expanded extras: bat themes, Warp, WezTerm/kitty updates, Yazi enhancements, tmux visual selection.</li>
+      </ul>
+      <!-- v4.1:end -->
   </details>
 
   <details>
