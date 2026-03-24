@@ -1,245 +1,279 @@
-# starship/.config/starship.toml
+# extras/starship/starship.toml
 "$schema" = 'https://starship.rs/config-schema.json'
 
+# ════════════════════════════════════════════════════════════════════════════ #
+# !- Shapes
+# ════════════════════════════════════════════════════════════════════════════ #
+# See: https://www.nerdfonts.com/cheat-sheet?q=nf-ple-
+#
+# Feel free to swap out the shapes as desired to fit your fancy.
+
+
+# ════════════════════════════════════════════════════════════════════════════ #
+# !- Main Format
+# ════════════════════════════════════════════════════════════════════════════ #
 format = """
-[╭](bright_black)[](light_primary)$os$username$sudo[](fg:light_primary)\
+[╭](bright_black)[](primary)$os$username$sudo[](fg:primary)\
 $hostname$localip\
-[](fg:bright_blue)$directory[](fg:bright_blue)\
+[](fg:bright_yellow)$directory[](fg:bright_yellow)\
 $git_branch$git_status\
 $cmd_duration\
 $status\
 $fill\
 $c$rust$golang$nodejs$lua$php$java$kotlin$haskell$python\
 $docker_context$conda\
-[](fg:bright_black bg:none)$time[](fg:bright_black bg:none)\
+[](fg:strong_primary bg:none)$time[](fg:strong_primary bg:none)\
 [ ](fg: none bg: none)$line_break\
 [╰─](fg:bright_black)$character\
 """
 
+# ──────────────────────────────────────────────────────────────────────────── #
+# !-- Palette
+# ──────────────────────────────────────────────────────────────────────────── #
 palette = 'oasis'
 [palettes.oasis]
-primary = "#1CA0FD"
-light_primary = "#58B8FD"
-secondary = "#F8B471"
-accent = "#FFA0A0"
-fg_core = "#D9E6FA"
-bg_core = "#101825"
-surface = "#22385C"
-black = "#000000"
-bright_black = "#504641"
-red = "#D06666"
-bright_red = "#FFA0A0"
-green = "#53D390"
-bright_green = "#96EA7F"
-yellow = "#F0E68C"
-bright_yellow = "#F8B471"
-blue = "#519BFF"
-bright_blue = "#87CEEB"
-magenta = "#C28EFF"
-bright_magenta = "#D2ADFF"
-cyan = "#5ABAAE"
-bright_cyan = "#8FD1C7"
-white = "#DDDBD5"
-bright_white = "#FFF9F2"
+primary = '#F0E68C'
+strong_primary = '#4D4A42'
+white = '#FFF7D7'
+black = '#101825'
+bright_black = '#877363'
+bright_blue = '#87CEEB'
+bright_cyan = '#8FD1C7'
+green = '#7FCF78'
+bright_green = "#A3E39A"
+bright_yellow = '#F8B471'
+magenta = '#C695FF'
+red = '#FF7979'
+bright_red = '#FFA0A0'
 
+
+# ──────────────────────────────────────────────────────────────────────────── #
+# !-- General
+# ──────────────────────────────────────────────────────────────────────────── #
+[line_break]
+disabled = false
+
+[fill]
+symbol = " "
+
+# ──────────────────────────────────────────────────────────────────────────── #
+# !-- Character
+# ──────────────────────────────────────────────────────────────────────────── #
+[character]
+disabled = false
+success_symbol = '[❯](bold bright_green)'
+error_symbol = '[❯](bold red)'
+vimcmd_symbol = '[](bold primary)'
+vimcmd_replace_one_symbol = '[󰫿](bold bright_red)'
+vimcmd_replace_symbol = '[󰫿](bold red)'
+vimcmd_visual_symbol = '[󰬃](bold bright_yellow)'
+
+# ──────────────────────────────────────────────────────────────────────────── #
+# !-- Command / Status
+# ──────────────────────────────────────────────────────────────────────────── #
+[cmd_duration]
+disabled = false
+style = "fg:bright_red bg:none"
+format = '[]($style)[ 󱐋 $duration ]($style inverted)[]($style)'
+min_time = 500
+
+[status]
+disabled = false
+symbol = '   Error'
+style = "fg:red bg:none"
+format = '[─](fg:bright_black bg:none)[](fg:red bg:none)[$symbol ](fg:black bg:red)[]($style)'
+
+# ──────────────────────────────────────────────────────────────────────────── #
+# !-- OS
+# ──────────────────────────────────────────────────────────────────────────── #
 [os]
 disabled = false
-style = "bg:light_primary fg:bg_core"
+style = "bg:primary fg:black"
 
 [os.symbols]
-Alpaquita = " "
-Alpine = " "
-AlmaLinux = " "
-Amazon = " "
-Android = " "
-AOSC = " "
-Arch = " "
-Artix = " "
-CachyOS = " "
-CentOS = " "
-Debian = " "
-DragonFly = " "
-Elementary = " "
-Emscripten = " "
-EndeavourOS = " "
-Fedora = " "
-FreeBSD = " "
-Garuda = "󰛓 "
-Gentoo = " "
-HardenedBSD = "󰞌 "
-Illumos = "󰈸 "
-Ios = "󰀷 "
-Kali = " "
-Linux = " "
-Mabox = " "
-Macos = " "
-Manjaro = " "
-Mariner = " "
-MidnightBSD = " "
-Mint = " "
-NetBSD = " "
-NixOS = " "
-Nobara = " "
-OpenBSD = "󰈺 "
-openSUSE = " "
-OracleLinux = "󰌷 "
-Pop = " "
-Raspbian = " "
-Redhat = " "
-RedHatEnterprise = " "
-RockyLinux = " "
-Redox = "󰀘 "
-Solus = "󰠳 "
-SUSE = " "
-Ubuntu = " "
-Unknown = " "
-Void = " "
-Windows = "󰍲 "
-Zorin = " "
+Alpaquita = ""
+Alpine = ""
+AlmaLinux = ""
+Amazon = ""
+Android = ""
+AOSC = ""
+Arch = ""
+Artix = ""
+CachyOS = ""
+CentOS = ""
+Debian = ""
+DragonFly = ""
+Elementary = ""
+Emscripten = ""
+EndeavourOS = ""
+Fedora = ""
+FreeBSD = ""
+Garuda = "󰛓"
+Gentoo = ""
+HardenedBSD = "󰞌"
+Illumos = "󰈸"
+Ios = "󰀷"
+Kali = ""
+Linux = ""
+Mabox = ""
+Macos = ""
+Manjaro = ""
+Mariner = ""
+MidnightBSD = ""
+Mint = ""
+NetBSD = ""
+NixOS = ""
+Nobara = ""
+OpenBSD = "󰈺"
+openSUSE = ""
+OracleLinux = "󰌷"
+Pop = ""
+Raspbian = ""
+Redhat = ""
+RedHatEnterprise = ""
+RockyLinux = ""
+Redox = "󰀘"
+Solus = "󰠳"
+SUSE = ""
+Ubuntu = ""
+Unknown = ""
+Void = ""
+Windows = "󰍲"
+Zorin = ""
 
+# ──────────────────────────────────────────────────────────────────────────── #
+# !-- User / Sudo / SSH
+# ──────────────────────────────────────────────────────────────────────────── #
 [username]
 show_always = true
-style_user = "bg:light_primary fg:bg_core"
-style_root = "bg:bright_red fg:bg_core"
-format = '[$user ]($style)'
+style_user = "bg:primary fg:black"
+style_root = "bg:primary fg:black"
+format = '[ $user ]($style)'
 
 [sudo]
 disabled = true
-style = "bg:bright_red fg:bg_core"
+style = "bg:primary fg:black"
 
 [hostname]
 disabled = false
 ssh_only = true
-style = "fg:fg_core bold bg:red"
+style = "fg:white bold bg:black"
 ssh_symbol = '🌐'
 #trim_at = '.companyname.com'
-format = '[](fg:red bg:none)[ $ssh_symbol🌐$hostname]($style)'
+format = '[](fg:red bg:none)[ $ssh_symbol $hostname]($style)'
 
 [localip]
 disabled = false
 ssh_only = true
-style = "fg:fg_core bold bg:red"
-format = '[ $localipv4 ](fg:fg_core bg:red)[](fg:red bg:none)'
+style = "fg:black bold bg:red"
+format = '[ $localipv4 ](fg:black bg:red)[](fg:red bg:none)'
 
+# ──────────────────────────────────────────────────────────────────────────── #
+# !-- Directories
+# ──────────────────────────────────────────────────────────────────────────── #
 [directory]
-style = "fg:bg_core bg:bright_blue"
+style = "fg:black bg:bright_yellow"
 format = "[ $path ]($style)"
-home_symbol = ' ~'
+# 󰶵 󱔖 󰔈 󱁏  󰯙 󰷠 󰮭 󰚀 󰮯 󰊠 󰯉
+home_symbol = ' ~'
 truncation_length = 2
 truncation_symbol = "…/"
 truncate_to_repo = true
-repo_root_format = '[  ](fg:bg_core bg:bright_blue)[$read_only]($read_only_style)[$before_root_path]($style)[$repo_root]($style)[$path ]($style)'
-repo_root_style = 'fg:primt bold bg:prim'
+repo_root_format = '[  ](fg:black bg:bright_yellow)[$read_only]($read_only_style)[$before_root_path]($style)[$repo_root]($style)[$path ]($style)'
+repo_root_style = 'fg:black bold bg:bright_yellow'
 
 [directory.substitutions]
 ".config" = ". "
 "Developer" = "󰲋 "
 "Documents" = "󰈙 "
 "Downloads" = " "
-"Music" = "󰝚 "
+"Music" = " "
 "Pictures" = " "
-"Videos" = "󰨜 "
-"Games" = "🎮 "
+"Videos" = "󰕧 "
+"Games" = "󰊴 "
 "steam" = " "
-"Emulators" = "🕹️ "
+"Emulators" = "󰺵 "
 
+# ──────────────────────────────────────────────────────────────────────────── #
+# !-- Git
+# ──────────────────────────────────────────────────────────────────────────── #
 [git_branch]
 symbol = ""
-style = "bg:bright_yellow"
-format = '[](fg:bright_yellow bg:none)[[ $symbol $branch(:$remote_branch) ](fg:bg_core bg:bright_yellow)]($style)'
+style = "bg:bright_blue"
+format = '[](fg:bright_blue bg:none)[[ $symbol $branch(:$remote_branch) ](fg:black bg:bright_blue)]($style)'
 
 [git_status]
-style = "bg:bright_yellow"
-format = '[[($all_status $ahead_behind)](fg:bg_core bg:bright_yellow)]($style)[](fg:bright_yellow bg:none)'
+style = "bg:bright_blue"
+format = '[[($all_status $ahead_behind)](fg:black bg:bright_blue)]($style)[](fg:bright_blue bg:none)'
+
+# ──────────────────────────────────────────────────────────────────────────── #
+# !-- Programming Languages
+# ──────────────────────────────────────────────────────────────────────────── #
 
 [nodejs]
 symbol = '󰎙 Node'
-style = "bg:magenta"
-format = '[](fg:magenta)[[ $symbol($version) ](fg:bg_core bg:magenta)]($style)[](fg:magenta)[─](fg:bright_black)'
+style = "bg:green"
+format = '[](fg:green)[[ $symbol( $version) ](fg:black bg:green)]($style)[](fg:green)[─](fg:bright_black)'
 
 [lua]
-symbol = " "
-style = "bg:magenta"
-format = '[](fg:magenta)[[ $symbol($version) ](fg:bg_core bg:magenta)]($style)[](fg:magenta)[─](fg:bright_black)'
+symbol = '󰢱 Lua'
+style = "bg:green"
+format = '[](fg:green)[[ $symbol( $version) ](fg:black bg:green)]($style)[](fg:green)[─](fg:bright_black)'
 
 [c]
 symbol = " C"
-style = "bg:magenta"
-format = '[](fg:magenta)[[ $symbol($version) ](fg:bg_core bg:magenta)]($style)[](fg:magenta)[─](fg:bright_black)'
+style = "bg:green"
+format = '[](fg:green)[[ $symbol( $version) ](fg:black bg:green)]($style)[](fg:green)[─](fg:bright_black)'
 
 [rust]
 symbol = " Rust"
-style = "bg:magenta"
-format = '[](fg:magenta)[[ $symbol($version) ](fg:bg_core bg:magenta)]($style)[](fg:magenta)[─](fg:bright_black)'
+style = "bg:green"
+format = '[](fg:green)[[ $symbol( $version) ](fg:black bg:green)]($style)[](fg:green)[─](fg:bright_black)'
 
 [golang]
 symbol = " Go"
-style = "bg:magenta"
-format = '[](fg:magenta)[[ $symbol($version) ](fg:bg_core bg:magenta)]($style)[](fg:magenta)[─](fg:bright_black)'
+style = "bg:green"
+format = '[](fg:green)[[ $symbol( $version) ](fg:black bg:green)]($style)[](fg:green)[─](fg:bright_black)'
 
 [php]
 symbol = " Php"
-style = "bg:magenta"
-format = '[](fg:magenta)[[ $symbol($version) ](fg:bg_core bg:magenta)]($style)[](fg:magenta)[─](fg:bright_black)'
+style = "bg:green"
+format = '[](fg:green)[[ $symbol( $version) ](fg:black bg:green)]($style)[](fg:green)[─](fg:bright_black)'
 
 [java]
 symbol = ' Java'
-style = "bg:magenta"
-format = '[](fg:magenta)[[ $symbol($version) ](fg:bg_core bg:magenta)]($style)[](fg:magenta)[─](fg:bright_black)'
+style = "bg:green"
+format = '[](fg:green)[[ $symbol( $version) ](fg:black bg:green)]($style)[](fg:green)[─](fg:bright_black)'
 
 [kotlin]
 symbol = " Kotlin"
-style = "bg:magenta"
-format = '[](fg:magenta)[[ $symbol($version) ](fg:bg_core bg:magenta)]($style)[](fg:magenta)[─](fg:bright_black)'
+style = "bg:green"
+format = '[](fg:green)[[ $symbol( $version) ](fg:black bg:green)]($style)[](fg:green)[─](fg:bright_black)'
 
 [haskell]
 symbol = " Haskell"
-style = "bg:magenta"
-format = '[](fg:magenta)[[ $symbol($version) ](fg:bg_core bg:magenta)]($style)[](fg:magenta)[─](fg:bright_black)'
+style = "bg:green"
+format = '[](fg:green)[[ $symbol( $version) ](fg:black bg:green)]($style)[](fg:green)[─](fg:bright_black)'
 
 [python]
 symbol = ' Python'
-style = "bg:magenta"
-format = '[](fg:magenta)[[ $symbol($version) ](fg:bg_core bg:magenta)]($style)[](fg:magenta)[─](fg:bright_black)'
+style = "bg:green"
+format = '[](fg:green)[[ $symbol( $version) ](fg:black bg:green)]($style)[](fg:green)[─](fg:bright_black)'
 
 [docker_context]
-symbol = " "
-style = "bg:white"
-format = '[](fg:red)[[ $symbol( $context) ](fg:fg_core bg:red)]($style)[](fg:red)[─](fg:white)'
+symbol = " Docker"
+style = "bg:bright_black"
+format = '[](fg:red)[[ $symbol( $context) ](fg:black bg:red)]($style)[](fg:red)[─](fg:bright_black)'
 
 [conda]
-style = "bg:white"
-format = '[](fg:red)[[ $symbol( $environment) ](fg:fg_core bg:red)]($style)[](fg:red)[─](fg:white)'
+style = "bg:bright_black"
+format = '[](fg:red)[[ $symbol( $environment) ](fg:black bg:red)]($style)[](fg:red)[─](fg:bright_black)'
 
+# ──────────────────────────────────────────────────────────────────────────── #
+# !-- Time
+# ──────────────────────────────────────────────────────────────────────────── #
 [time]
 disabled = false
 time_format = " %I:%M%P"
-style = "bg:bright_black"
-format = '[[  $time ](fg:fg_core bg:bright_black)]($style)'
-
-[fill]
-symbol = " "
-
-[cmd_duration]
-disabled = false
-style = "fg:yellow bg:none"
-format = '[]($style)[ 󱐋 $duration ]($style inverted)[]($style)'
-min_time = 500
-
-[status]
-style = "fg:red bg:none"
-disabled = false
-format = '[─](fg:bright_black bg:none)[](fg:red bg:none)[$symbol ](fg:bright_white bg:red)[]($style)'
-symbol = '   Error'
-
-[line_break]
-disabled = false
-
-[character]
-disabled = false
-success_symbol = '[❯](bold light_primary)'
-error_symbol = '[❯](bold red)'
-vimcmd_symbol = '[](bold yellow)'
-vimcmd_replace_one_symbol = '[R](bold bright_cyan)'
-vimcmd_replace_symbol = '[R](bold bright_cyan)'
-vimcmd_visual_symbol = '[V](bold bright_yellow)'
+style = "bg:strong_primary"
+format = '[[  $time ](fg:white bg:strong_primary)]($style)'
