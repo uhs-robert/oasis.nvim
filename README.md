@@ -257,6 +257,7 @@ To use the extras, refer to their respective documentation.
 | Lua-theme   | [extras/lua-theme](/extras/lua-theme)                  |
 | Qutebrowser | [extras/qutebrowser](extras/qutebrowser)               |
 | Slack       | [extras/slack](extras/slack)                           |
+| Starship    | [extras/starship](extras/starship)                     |
 | Termux      | [extras/termux](extras/termux)                         |
 | Thunderbird | [extras/thunderbird](extras/thunderbird)               |
 | Tridactyl   | [extras/tridactyl](extras/tridactyl)                   |

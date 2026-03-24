@@ -1,42 +1,48 @@
-> [!WARNING]
-> Come back soon! Not ready yet.
+# Starship
 
-# Starship Setup
+Oasis palette files for [Starship](https://starship.rs) terminal shell prompt.
 
-1. Create `~/.config/starship/themes`
-2. Download theme file into `themes` directory
-3. Source the theme in your `~/.config/starship.toml`
+## Setup
 
-### Example
+### Option A – palette block only (to embed in your custom setup)
+
+Add the palette to your existing `~/.config/starship.toml`:
+
+1. Copy the `[palettes.oasis_<variant>]` block from the theme file into your config.
+2. Set `palette = "oasis_<variant>"` at the top of your config.
+
+**Example** (`~/.config/starship.toml`):
 
 ```toml
-# Import the Oasis theme palette
-palette = "oasis_lagoon"
-
-# Source the theme file
 "$schema" = 'https://starship.rs/config-schema.json'
+palette = "oasis_lagoon_dark"
 
-[palettes.oasis_lagoon]
-# This will be populated by the theme file
-# You can override specific colors here if desired
-
-format = """
-[┌───────────────────>](fg:accent)\
-$os\
-$directory\
-$git_branch\
-$git_status\
-[└─>](fg:accent) """
-
-# ... rest of your starship configuration
+[palettes.oasis_lagoon_dark]
+black         = '#101825'
+white         = '#FFF7D7'
+# ... rest of the palette block
 ```
 
-Or use a simpler import approach:
+### Option B – use the bundled format (to use our prebuilt custom setup)
 
-```bash
-# Add to your shell rc file (.bashrc, .zshrc, etc.)
-export STARSHIP_CONFIG=~/.config/starship/themes/oasis_lagoon.toml
+The `starship.toml` in this directory also provides an opinionated prompt layout built around Oasis colors. Feel free to use it if you like:
+
+1. Copy `starship.toml` to `~/.config/starship.toml` (or merge it into your existing config).
+2. Copy the palette block from `themes/dark/oasis_<variant>.toml` into your config.
+
+## Available themes
+
+Themes are organized under `themes/`:
+
+```text
+themes/
+  dark/
+  light/
+    1/            # lightest
+    2/
+    3/
+    4/
+    5/            # darkest light variant
 ```
 
-> [!TIP]
-> You can dynamically switch themes by changing the `palette` value in your config or by modifying the `STARSHIP_CONFIG` environment variable.
+Each file is named `oasis_<variant>_<mode>.toml` (e.g., `oasis_lagoon_dark.toml`).
