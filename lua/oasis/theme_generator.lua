@@ -23,20 +23,20 @@ local TRANSPARENT_GROUPS = {
 ---Create the full highlight table for a palette.
 ---@param c OasisPalette Color palette
 ---@param light_mode boolean Whether palette is light mode
----@param is_desert boolean Whether palette is desert variant
+---@param theme {primary: string, light_primary: string, strong_primary: string, secondary: string}
 ---@return OasisHighlightGroupMap highlights
-local function create_highlights(c, light_mode, is_desert)
+local function create_highlights(c, light_mode, theme)
   local match_paren_bg = Config.get().match_paren_bg ~= false
 
   -- stylua: ignore start
   local highlights = {
     -- Main Theme Colors (Highlights for plugins)
-    OasisStrongPrimary         = { fg=(is_desert and c.theme.secondary_strong or c.theme.strong_primary), bg="NONE" },
-    OasisPrimary               = { fg=(is_desert and c.theme.secondary or c.theme.primary), bg="NONE" },
-    OasisLightPrimary          = { fg=(is_desert and c.theme.secondary_light or c.theme.light_primary), bg="NONE" },
-    OasisFloatPrimary          = { fg=(is_desert and c.theme.secondary or c.theme.primary), bg=c.ui.float.border.bg },
-    OasisSecondary             = { fg=(is_desert and c.theme.primary or c.theme.secondary), bg="NONE" },
-    OasisFloatSecondary        = { fg=(is_desert and c.theme.primary or c.theme.secondary), bg=c.ui.float.border.bg },
+    OasisStrongPrimary         = { fg=theme.strong_primary, bg="NONE" },
+    OasisPrimary               = { fg=theme.primary, bg="NONE" },
+    OasisLightPrimary          = { fg=theme.light_primary, bg="NONE" },
+    OasisFloatPrimary          = { fg=theme.primary, bg=c.ui.float.border.bg },
+    OasisSecondary             = { fg=theme.secondary, bg="NONE" },
+    OasisFloatSecondary        = { fg=theme.secondary, bg=c.ui.float.border.bg },
     OasisAccent                = { fg=c.theme.accent, bg="NONE" },
 
     -- The following are the Neovim (as of 0.8.0-dev+100-g371dfb174) highlight
@@ -99,12 +99,12 @@ local function create_highlights(c, light_mode, is_desert)
     SpellLocal                 = { fg=c.syntax.statement, undercurl=true, sp=c.syntax.statement }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
     SpellRare                  = { fg=c.syntax.type, undercurl=true, sp=c.syntax.type }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
 
-    StatusLine                 = { fg=c.theme.light_primary, bg=c.bg.mantle }, -- Status line of current window
+    StatusLine                 = { fg=theme.light_primary, bg=c.bg.mantle }, -- Status line of current window
     StatusLineNC               = { fg=c.fg.muted, bg=c.bg.mantle }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
     StatusLineTerm             = "StatusLine", -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
     TabLine                    = { fg=c.ui.border, bg=c.bg.surface }, -- Tab pages line, not active tab page label
     TabLineFill                = { fg=c.ui.border, bg=c.bg.surface }, -- Tab pages line, where there are no labels
-    TabLineSel                 = { fg=c.bg.core, bg=c.theme.secondary }, -- Tab pages line, active tab page label
+    TabLineSel                 = { fg=c.bg.core, bg=theme.secondary }, -- Tab pages line, active tab page label
     MsgSeparator               = "StatusLine", -- Separator for scrolled messages, `msgsep` flag of 'display'
     Title                      = { fg=c.ui.title, bold=true }, -- Titles for output from ":set all", ":autocmd" etc.
     VertSplit                  = { fg=c.ui.border, bg=c.bg.mantle }, -- Column separating vertically split windows
@@ -304,9 +304,9 @@ local function create_highlights(c, light_mode, is_desert)
     ["@markup.heading.4"]     = { fg = c.terminal.green, bold = true },
     ["@markup.heading.5"]     = { fg = c.terminal.blue, bold = true },
     ["@markup.heading.6"]     = { fg = c.terminal.bright_magenta, bold = true },
-    ["@markup.link.label"]    = { fg =(c.theme.label and c.theme.label or c.theme.secondary) },
-    ["@markup.strong"]        = { fg = c.theme.secondary, bold = true },
-    ["@markup.italic"]        = { fg = c.theme.secondary, italic = true },
+    ["@markup.link.label"]    = { fg =(c.theme.label and c.theme.label or theme.secondary) },
+    ["@markup.strong"]        = { fg =(c.theme.label and c.theme.label or theme.secondary), bold = true },
+    ["@markup.italic"]        = { fg =(c.theme.label and c.theme.label or theme.secondary), italic = true },
     ["@markup.strikethrough"] = { strikethrough=true },
     ["@markup.underline"]     = { underline=true },
     ["@markup.quote"]         = "@variable.parameter",
@@ -389,7 +389,7 @@ local function create_highlights(c, light_mode, is_desert)
 end
 
 -- Table of plugin highlight group functions
----@alias PluginGroupFn fun(hl: OasisHighlightGroupMap, c: OasisPalette, light_mode: boolean|nil, is_desert: boolean|nil)
+---@alias PluginGroupFn fun(hl: OasisHighlightGroupMap, c: OasisPalette, light_mode: boolean|nil, is_desert: boolean|nil, theme: {primary: string, light_primary: string, strong_primary: string, secondary: string})
 ---@type table<string, PluginGroupFn>
 local PLUGIN_GROUPS = {
 
@@ -413,14 +413,14 @@ local PLUGIN_GROUPS = {
   end,
 
   -- Lazy
-  lazy = function(hl, c)
-    hl.LazyH1 = { fg = c.theme.primary, bold = true }
-    hl.LazyH2 = { fg = c.theme.light_primary, bold = true }
+  lazy = function(hl, _, _, _, theme)
+    hl.LazyH1 = { fg = theme.primary, bold = true }
+    hl.LazyH2 = { fg = theme.light_primary, bold = true }
     hl.lazyActiveBorder = "Identifier"
   end,
 
   -- Mini
-  mini = function(hl, c)
+  mini = function(hl, c, _, _, theme)
     -- Mini Clue
     hl.MiniClueNextKey = "Statement"
     hl.MiniClueDescGroup = "OasisSecondary"
@@ -440,7 +440,7 @@ local PLUGIN_GROUPS = {
     -- Mini Files
     hl.MiniFilesCursorLine = "PmenuSel"
     hl.MiniFilesBorderModified = { fg = c.ui.diag.warn.fg, bg = c.ui.float.bg }
-    hl.MiniFilesTitleFocused = { fg = c.theme.secondary, bg = c.ui.float.bg, bold = true }
+    hl.MiniFilesTitleFocused = { fg = theme.secondary, bg = c.ui.float.bg, bold = true }
 
     -- Mini Icons
     hl.MiniIconsAzure = { fg = c.terminal.blue }
@@ -473,7 +473,7 @@ local PLUGIN_GROUPS = {
     hl.MiniStarterFooter = "Comment"
     hl.MiniStarterInactive = { fg = c.fg.muted }
     hl.MiniStarterSection = "OasisSecondary"
-    hl.MiniStarterItemPrefix = { fg = c.theme.strong_primary, bold = true }
+    hl.MiniStarterItemPrefix = { fg = theme.strong_primary, bold = true }
     hl.MiniStarterQuery = { fg = c.theme.accent, bold = true }
 
     -- Mini Statusline
@@ -485,14 +485,14 @@ local PLUGIN_GROUPS = {
     hl.MiniStatuslineModeOther = { bg = c.syntax.typedef, fg = c.bg.core }
     hl.MiniStatuslineDevInfo = { fg = c.syntax.statement, bg = c.bg.surface }
     hl.MiniStatuslineFileInfo = { fg = c.syntax.statement, bg = c.bg.surface }
-    hl.MiniStatuslineFilename = { fg = c.theme.light_primary, bg = c.bg.mantle }
+    hl.MiniStatuslineFilename = { fg = theme.light_primary, bg = c.bg.mantle }
     hl.MiniStatuslineInactive = { fg = c.fg.comment, bg = c.bg.surface }
 
     -- Mini Tabline
-    hl.MiniTablineCurrent = { fg = c.theme.secondary, bg = c.bg.surface, bold = true }
+    hl.MiniTablineCurrent = { fg = theme.secondary, bg = c.bg.surface, bold = true }
     hl.MiniTablineFill = "TabLineFill"
     hl.MiniTablineHidden = "TabLine"
-    hl.MiniTablineModifiedCurrent = { fg = c.bg.core, bg = c.theme.secondary, bold = true }
+    hl.MiniTablineModifiedCurrent = { fg = c.bg.core, bg = theme.secondary, bold = true }
     hl.MiniTablineModifiedHidden = { fg = c.bg.core, bg = c.ui.border }
     hl.MiniTablineModifiedVisible = { fg = c.bg.core, bg = c.ui.border, bold = true }
     hl.MiniTablineTabpagesection = { fg = c.bg.core, bg = c.theme.accent }
@@ -503,13 +503,13 @@ local PLUGIN_GROUPS = {
   end,
 
   -- Render Markdown
-  render_markdown = function(hl, c)
+  render_markdown = function(hl, c, _, _, theme)
     hl.RenderMarkdownBullet = "Special"
     hl.RenderMarkdownChecked = "String"
     hl.RenderMarkdownCode = { bg = c.bg.mantle }
     hl.RenderMarkdownCodeBorder = { bg = c.bg.surface }
     hl.RenderMarkdownCodeInline = { bg = c.bg.mantle }
-    hl.RenderMarkdownLink = { fg = c.theme.strong_primary }
+    hl.RenderMarkdownLink = { fg = theme.strong_primary }
     hl.RenderMarkdownTableHead = { fg = c.fg.muted }
     hl.RenderMarkdownTableRow = { fg = c.fg.muted }
     hl.RenderMarkdownTodo = { fg = c.terminal.cyan }
@@ -547,7 +547,8 @@ local PLUGIN_GROUPS = {
 ---@param highlights OasisHighlightGroupMap Highlight groups table to mutate
 ---@param light_mode boolean Whether palette is light mode
 ---@param is_desert boolean Whether palette is desert variant
-local function create_plugin_highlights(c, highlights, light_mode, is_desert)
+---@param theme {primary: string, light_primary: string, strong_primary: string, secondary: string}
+local function create_plugin_highlights(c, highlights, light_mode, is_desert, theme)
   local integrations = (Config.get().integrations or {})
   local default_enabled = integrations.default_enabled ~= false
   local user_plugins = Config.get_user_plugins()
@@ -556,7 +557,7 @@ local function create_plugin_highlights(c, highlights, light_mode, is_desert)
     local user_setting = user_plugins[plugin_name]
     local enabled = user_setting == nil and default_enabled or user_setting
 
-    if enabled and type(apply_fn) == "function" then apply_fn(highlights, c, light_mode, is_desert) end
+    if enabled and type(apply_fn) == "function" then apply_fn(highlights, c, light_mode, is_desert, theme) end
   end
 end
 
@@ -660,8 +661,15 @@ return function(c, palette_name)
   local styles = cfg.styles or {}
   local all_styles_enabled = styles.all_enabled ~= false
 
-  local highlights = create_highlights(c, light_mode, is_desert)
-  create_plugin_highlights(c, highlights, light_mode, is_desert)
+  local theme = {
+    primary = is_desert and c.theme.secondary or c.theme.primary,
+    light_primary = is_desert and c.theme.secondary_light or c.theme.light_primary,
+    strong_primary = is_desert and c.theme.secondary_strong or c.theme.strong_primary,
+    secondary = is_desert and c.theme.primary or c.theme.secondary,
+  }
+
+  local highlights = create_highlights(c, light_mode, theme)
+  create_plugin_highlights(c, highlights, light_mode, is_desert, theme)
   apply_transparency(highlights, cfg.transparent)
   set_highlight_groups(highlights, styles, all_styles_enabled)
   apply_user_overrides(c, palette_name, cfg, styles, all_styles_enabled)
