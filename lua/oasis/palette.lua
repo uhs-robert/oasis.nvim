@@ -117,7 +117,7 @@ local theme = {
     fg = { core = "#F7F4F2", strong = "#FFE0CC", dim = "#7D7267", muted = "#4E6578", comment = "#69809D" },
   },
   night = {
-    bg = { shadow = "#030D1A", core = "#040E25", mantle = "#0A1730", surface = "#11203D" },
+    bg = { shadow = "#020A19", core = "#050F23", mantle = "#0B1832", surface = "#122444" },
     fg = { core = "#E8F1FF", strong = "#D9E6FA", dim = "#74808F", muted = "#536B83", comment = "#708CA8" },
   },
   luna = {
