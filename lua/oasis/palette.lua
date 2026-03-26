@@ -104,25 +104,49 @@ local git = {
 local theme = {
   -- Dark themes
   -- fg targets: dim = 4:0:1 (shadow), muted = 3:0:1 (core), comment = 4:5:1 (core)
+  abyss = {
+    bg = { shadow = "#050505", core = "#000000", mantle = "#101010", surface = "#1C1C1C" },
+    fg = { core = "#F0EBE6", strong = "#FFDACC", dim = "#587179", muted = "#605C4D", comment = "#7A7662" },
+  },
+  cactus = {
+    bg = { shadow = "#152017", core = "#18231A", mantle = "#253127", surface = "#334137" },
+    fg = { core = "#DDF0E5", strong = "#C7EDCF", dim = "#907B6A", muted = "#5B7360", comment = "#69956D" },
+  },
+  canyon = {
+    bg = { shadow = "#221511", core = "#2B1914", mantle = "#38251E", surface = "#4A342A" },
+    fg = { core = "#F8E7D3", strong = "#FFD8BC", dim = "#857164", muted = "#9A6549", comment = "#B67E61" },
+  },
   desert = {
     bg = { shadow = "#212121", core = "#262626", mantle = "#2E2E2E", surface = "#404040" },
     fg = { core = "#F7EDE1", strong = "#E5D9CE", dim = "#748C9A", muted = "#77725F", comment = "#948F7A" },
   },
-  abyss = {
-    bg = { shadow = "#050505", core = "#000000", mantle = "#101010", surface = "#1C1C1C" },
-    fg = { core = "#F0EBE6", strong = "#FFDACC", dim = "#587179", muted = "#605C4D", comment = "#7A7662" },
+  dune = {
+    bg = { shadow = "#241D19", core = "#29211C", mantle = "#352C26", surface = "#483F35" },
+    fg = { core = "#E8E5DA", strong = "#EDE8AF", dim = "#6E6E6E", muted = "#826D5A", comment = "#9F8B79" },
+  },
+  lagoon = {
+    bg = { shadow = "#0F1522", core = "#101825", mantle = "#1A283F", surface = "#22385C" },
+    fg = { core = "#D9E6FA", strong = "#D0E2F0", dim = "#877363", muted = "#3B6A87", comment = "#4D88A7" },
+  },
+  luna = {
+    bg = { shadow = "#0C0A2A", core = "#171345", mantle = "#211C59", surface = "#2C266D" },
+    fg = { core = "#EEEAFE", strong = "#DCD5FF", dim = "#7E789B", muted = "#8A82B3", comment = "#A29AC9" },
   },
   midnight = {
     bg = { shadow = "#0C1014", core = "#101418", mantle = "#18202A", surface = "#223040" },
     fg = { core = "#F7F4F2", strong = "#FFE0CC", dim = "#7D7267", muted = "#4E6578", comment = "#69809D" },
   },
+  mirage = {
+    bg = { shadow = "#132025", core = "#152229", mantle = "#1C2B31", surface = "#253840" },
+    fg = { core = "#DDEFEF", strong = "#C9EEE6", dim = "#907C6C", muted = "#587270", comment = "#439789" },
+  },
   night = {
     bg = { shadow = "#020A19", core = "#050F23", mantle = "#0B1832", surface = "#122444" },
     fg = { core = "#E8F1FF", strong = "#D9E6FA", dim = "#74808F", muted = "#536B83", comment = "#708CA8" },
   },
-  luna = {
-    bg = { shadow = "#0C0A2A", core = "#171345", mantle = "#211C59", surface = "#2C266D" },
-    fg = { core = "#EEEAFE", strong = "#DCD5FF", dim = "#7E789B", muted = "#8A82B3", comment = "#A29AC9" },
+  rose = {
+    bg = { shadow = "#2B1523", core = "#301828", mantle = "#3E2636", surface = "#523A4B" },
+    fg = { core = "#FADBE4", strong = "#EBBEDF", dim = "#8A786C", muted = "#816175", comment = "#A87A91" },
   },
   scorpion = {
     bg = { shadow = "#080100", core = "#140400", mantle = "#22100B", surface = "#331C16" },
@@ -132,37 +156,13 @@ local theme = {
     bg = { shadow = "#25110F", core = "#2A1412", mantle = "#341F1B", surface = "#462A25" },
     fg = { core = "#FFE0DA", strong = "#FFD3CB", dim = "#7B7B7B", muted = "#83615B", comment = "#A27D78" },
   },
-  canyon = {
-    bg = { shadow = "#221511", core = "#2B1914", mantle = "#38251E", surface = "#4A342A" },
-    fg = { core = "#F8E7D3", strong = "#FFD8BC", dim = "#857164", muted = "#9A6549", comment = "#B67E61" },
-  },
-  dune = {
-    bg = { shadow = "#241D19", core = "#29211C", mantle = "#352C26", surface = "#483F35" },
-    fg = { core = "#E8E5DA", strong = "#EDE8AF", dim = "#6E6E6E", muted = "#826D5A", comment = "#9F8B79" },
-  },
-  mirage = {
-    bg = { shadow = "#132025", core = "#152229", mantle = "#1C2B31", surface = "#253840" },
-    fg = { core = "#DDEFEF", strong = "#C9EEE6", dim = "#907C6C", muted = "#587270", comment = "#439789" },
-  },
-  cactus = {
-    bg = { shadow = "#152017", core = "#18231A", mantle = "#253127", surface = "#334137" },
-    fg = { core = "#DDF0E5", strong = "#C7EDCF", dim = "#907B6A", muted = "#5B7360", comment = "#69956D" },
-  },
-  lagoon = {
-    bg = { shadow = "#0F1522", core = "#101825", mantle = "#1A283F", surface = "#22385C" },
-    fg = { core = "#D9E6FA", strong = "#D0E2F0", dim = "#877363", muted = "#3B6A87", comment = "#4D88A7" },
-  },
-  twilight = {
-    bg = { shadow = "#201726", core = "#261A30", mantle = "#312140", surface = "#3F2B50" },
-    fg = { core = "#E6E0F8", strong = "#E1D2FF", dim = "#76665A", muted = "#71609A", comment = "#8B80AA" },
-  },
-  rose = {
-    bg = { shadow = "#2B1523", core = "#301828", mantle = "#3E2636", surface = "#523A4B" },
-    fg = { core = "#EDD5E7", strong = "#EBBEDF", dim = "#8A786C", muted = "#816175", comment = "#A87A91" },
-  },
   starlight = {
     bg = { shadow = "#050505", core = "#000000", mantle = "#111216", surface = "#1C2028" },
     fg = { core = "#FAF7F0", strong = "#DCD9D2", dim = "#85665B", muted = "#4F5B6B", comment = "#5E7C9A" },
+  },
+  twilight = {
+    bg = { shadow = "#201726", core = "#261A30", mantle = "#312140", surface = "#3F2B50" },
+    fg = { core = "#F0E4F2", strong = "#EAD8FF", dim = "#76665A", muted = "#71609A", comment = "#8B80AA" },
   },
 }
 
