@@ -19,7 +19,7 @@ local base = {
     primary = p.steelblue[600],
     light_primary = p.steelblue[200],
     secondary = p.khaki[600],
-    label = p.steelblue[500],
+    label = p.red[500],
     accent = p.rose[500],
     cursor = p.khaki[500],
   },
