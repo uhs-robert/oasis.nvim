@@ -673,22 +673,16 @@ require("oasis").setup({
       },
 
       -- Per-theme overrides (use shorthand names: desert, lagoon, etc.)
-      lagoon = {
+      night = {
+        bg = colors.theme.midnight.bg, -- Use another theme's bg colors
         syntax = {
           string = colors.rose[500],
-          punctuation = colors.peach[500],
-          comment = c.fg.dim
         },
 
         -- Light mode for this theme
         light = {
           syntax = { string = colors.red[800] }
         },
-
-        -- Specific intensity for this theme
-        light = {
-          syntax = { string = colors.red[800] }
-        }
       }
     }
   end
