@@ -51,7 +51,7 @@ local dark = {
     -- Cold: (Data)
     parameter = p.palm[500],
     identifier = p.sky[500],
-    delimiter = base.theme.strong_primary,
+    delimiter = base.theme.secondary_strong,
     type = p.teal[700],
     typedef = p.teal[800],
     string = p.rose[500],
@@ -63,7 +63,7 @@ local dark = {
     -- Warm: (Control / Flow)
     func = p.sand[200],
     builtinFunc = p.sand[400], -- (eg. parseInt, Array, Object etc)
-    statement = opts.themed_syntax and base.palette.primary[600] or p.khaki[500], -- (general statement (i.e. var, const))
+    statement = opts.themed_syntax and base.palette.primary[500] or p.khaki[500], -- (general statement (i.e. var, const))
     exception = opts.themed_syntax and p.red[500] or p.red[400], -- (try/catch, return)
     conditional = opts.themed_syntax and base.palette.primary[800] or p.khaki[800], -- (Conditionals, Loops)
     special = p.sunset[200], -- (Statement not covered above)
