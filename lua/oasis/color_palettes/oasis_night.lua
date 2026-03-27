@@ -18,7 +18,7 @@ local base = {
     strong_primary = p.steelblue[800],
     primary = p.steelblue[600],
     light_primary = p.steelblue[200],
-    secondary = p.khaki[600],
+    secondary = p.khaki[500],
     label = p.red[500],
     accent = p.rose[500],
     cursor = p.khaki[500],
@@ -57,7 +57,7 @@ local dark = {
     -- Warm: (Control / Flow)
     func = p.sand[200],
     builtinFunc = p.sand[400], -- (eg. parseInt, Array, Object etc)
-    statement = opts.themed_syntax and base.palette.primary[600] or p.khaki[500], -- (general statement (i.e. var, const))
+    statement = opts.themed_syntax and base.palette.primary[500] or p.khaki[500], -- (general statement (i.e. var, const))
     exception = opts.themed_syntax and p.red[500] or p.red[400], -- (try/catch, return)
     conditional = opts.themed_syntax and base.palette.primary[800] or p.khaki[800], -- (Conditionals, Loops)
     special = p.sunset[200], -- (Statement not covered above)
