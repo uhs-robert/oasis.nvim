@@ -564,7 +564,7 @@ require("oasis").setup({
   -- Display options
   transparent = false,                  -- Set to true for transparent backgrounds (bye-bye theme backgrounds)
   terminal_colors = true,               -- Apply Oasis colors to Neovim's built-in terminal
-  match_paren_bg = true,                -- Enable/disable background on MatchParen highlight
+  match_paren_bg = false,               -- Enable/disable background on MatchParen highlight
 
   -- Contrast controls (WCAG: AA = 4.5, AAA = 7.0)
   contrast = {
