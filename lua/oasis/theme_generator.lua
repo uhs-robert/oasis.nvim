@@ -61,8 +61,8 @@ local function create_highlights(c, light_mode, theme)
     Folded                     = { fg=c.syntax.statement, bg=c.bg.surface }, -- Line used for closed folds
     FoldColumn                 = { fg=c.fg.muted, bg=c.bg.core }, -- 'foldcolumn'
     SignColumn                 = { fg=c.fg.muted, bg="NONE" }, -- Column where |signs| are displayed
-    IncSearch                  = { fg=c.ui.match.fg, bg=c.ui.match.bg }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-    Search                     = { fg=c.ui.search.fg, bg=c.ui.search.bg }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
+    IncSearch                  = { fg=c.ui.match.fg, bg=c.ui.match.bg, bold=true }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+    Search                     = { fg=c.ui.search.fg, bg=c.ui.search.bg, bold=true }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
     Substitute                 = "Search", -- |:substitute| replacement text highlighting
     LineNr                     = { fg=c.fg.muted, bg=(c.bg.gutter or "NONE") }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
     LineNrAbove                = "LineNr", -- Line number for when the 'relativenumber' option is set, above the cursor line
@@ -133,15 +133,15 @@ local function create_highlights(c, light_mode, theme)
     Identifier                 = { fg=c.syntax.identifier }, -- (*) Any variable name
     Function                   = { fg=c.syntax.func }, --   Function name (also: methods for classes)
 
-    Statement                  = { fg=c.syntax.statement }, -- (*) Any statement
-    Keyword                    = { fg=c.syntax.identifier, italic=true }, --   any other keyword
-    Conditional                = { fg=c.syntax.conditional }, --   if, then, else, endif, switch, etc.
+    Statement                  = { fg=c.syntax.statement, bold=true }, -- (*) Any statement
+    Keyword                    = { fg=c.syntax.identifier, bold=true, italic=true }, --   any other keyword
+    Conditional                = { fg=c.syntax.conditional, bold=true }, --   if, then, else, endif, switch, etc.
     Repeat                     = "Conditional", --   for, do, while, etc.
     Label                      = "Conditional", --   case, default, etc.
     Operator                   = { fg=c.syntax.operator }, --   "sizeof", "+", "*", etc.
-    Exception                  = { fg=c.syntax.exception }, --   try, catch, throw
+    Exception                  = { fg=c.syntax.exception, bold=true }, --   try, catch, throw
 
-    PreProc                    = { fg=c.syntax.preproc, italic=true }, -- (*) Generic Preprocessor
+    PreProc                    = { fg=c.syntax.preproc, bold=true, italic=true }, -- (*) Generic Preprocessor
     Include                    = "PreProc", --   Preprocessor #include
     Define                     = "PreProc", --   Preprocessor #define
     PreCondit                  = "PreProc", --   Preprocessor #if, #else, #endif, etc.
@@ -149,18 +149,18 @@ local function create_highlights(c, light_mode, theme)
 
     Type                       = { fg=c.syntax.type }, -- (*) int, long, char, etc.
     StorageClass               = { fg=c.syntax.type, bold=true }, --   static, register, volatile, etc.
-    Structure                  = "StorageClass", --   struct, union, enum, etc.
+    Structure                  = "Type", --   struct, union, enum, etc.
     Typedef                    = { fg=c.syntax.typedef, italic=true }, --   A typedef
 
-    Special                    = { fg=c.syntax.special, bold=true }, -- (*) Any special symbol
+    Special                    = { fg=c.syntax.special }, -- (*) Any special symbol
     SpecialChar                = "Exception", --   Special character in a constant
-    Tag                        = "Special", --   You can use CTRL-] on this
+    Tag                        = { fg=c.syntax.special, underline=true }, --   You can use CTRL-] on this
     Delimiter                  = { fg=c.syntax.delimiter }, --   Character that needs attention
-    SpecialComment             = "Special", --   Special things inside a comment (e.g. '\n')
+    SpecialComment             = { fg=c.syntax.special, bold=true, italic=true }, --   Special things inside a comment (e.g. '\n')
     Debug                      = "Constant", --   Debugging statements
 
     Underlined                 = { underline=true }, -- Text that stands out, HTML links
-    Ignore                     = "Normal", -- Left blank, hidden |hl-Ignore|
+    Ignore                     = { fg=c.fg.muted }, -- Left blank, hidden |hl-Ignore|
     Error                      = { fg=c.bg.core, bg=c.ui.diag.error.fg, reverse=true }, -- Any erroneous construct
     Todo                       = { fg=c.bg.core, bg=c.ui.diag.warn.fg, bold=true }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
@@ -228,13 +228,13 @@ local function create_highlights(c, light_mode, theme)
     ["@punctuation.bracket"]  = { fg=c.syntax.bracket }, -- Delimiter (e.g. `()`, `{}`, `[]`)
     ["@punctuation.special"]  = { fg=c.syntax.operator }, -- Delimiter (e.g. `{}` in string interpolation)
     ["@constant"]             = "Constant", -- Constant
-    ["@constant.builtin"]     = { fg=c.syntax.builtinConst, italic=true }, -- Special
+    ["@constant.builtin"]     = { fg=c.syntax.builtinConst, bold=true, italic=true }, -- Special
     ["@constant.macro"]       = "Macro", -- Define
 
     ["@define"]               = "Define", -- Define
     ["@macro"]                = "Macro", -- Macro
     ["@string"]               = "String", -- String
-    ["@string.regexp"]        = { fg=c.syntax.regex }, -- SpecialChar
+    ["@string.regexp"]        = { fg=c.syntax.regex, bold=true }, -- SpecialChar
     ["@string.escape"]        = "Exception", -- SpecialChar
     ["@string.special"]       = "SpecialChar", -- (e.g., dates)
     ["@string.special.symbol"]= { fg=c.syntax.identifier },
@@ -518,10 +518,11 @@ local PLUGIN_GROUPS = {
   end,
 
   -- Snacks
-  snacks = function(hl)
+  snacks = function(hl, _, _, _, theme)
     -- Snacks Dashboard
     hl.SnacksDashboardHeader = "OasisStrongPrimary"
-    hl.SnacksDashboardFile = "OasisLightPrimary"
+    -- hl.SnacksDashboardFile = "OasisLightPrimary"
+    hl.SnacksDashboardFile = { fg = theme.light_primary, bg = "NONE", bold = true }
     hl.SnacksDashboardSpecial = "OasisAccent"
     hl.SnacksDashboardIcon = "Number"
     hl.SnacksDashboardDesc = "OasisSecondary"
