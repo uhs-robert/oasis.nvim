@@ -57,8 +57,8 @@ local dark = {
     constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
-    func = p.sand[400],
-    builtinFunc = p.sand[200], -- (eg. parseInst, Array, Object etc)
+    func = p.khaki[500],
+    builtinFunc = p.khaki[300], -- (eg. parseInst, Array, Object etc)
     statement = opts.themed_syntax and base.palette.primary[400] or p.khaki[500], -- (general statement (i.e. var, const))
     exception = opts.themed_syntax and p.red[500] or base.primary[600], -- (try/catch, return)
     conditional = opts.themed_syntax and base.palette.primary[500] or p.khaki[800], -- (Conditionals, Loops)
@@ -68,8 +68,8 @@ local dark = {
 
     -- Neutral: (Connections / Info)
     bracket = p.slate[500], -- (bracket punctuation)
-    preproc = p.khaki[600], -- (imports)
-    macro = p.khaki[800], -- (imports)
+    preproc = p.gold[400], -- (imports)
+    macro = p.gold[500], -- (imports)
     comment = theme.fg.comment, -- (comments)
   },
 

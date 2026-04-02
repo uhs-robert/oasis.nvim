@@ -72,8 +72,8 @@ local dark = {
 
     -- Neutral: (Connections / Info)
     bracket = p.slate[500],
-    preproc = p.sundown[600], -- (imports)
-    macro = p.sundown[700], -- (imports)
+    preproc = p.sundown[500], -- (imports)
+    macro = p.sundown[600], -- (imports)
     comment = theme.fg.comment, -- (comments)
   },
 
