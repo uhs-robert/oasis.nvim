@@ -4,7 +4,7 @@
 
 # MANAGER
 [mgr]
-cwd = { fg = "#777027" }
+cwd = { fg = "#897e15" }
 
 find_keyword = { fg = "#dd6f6f", bold = true, italic = true, underline = true }
 find_position = { fg = "#a11216", bg = "reset", bold = true, italic = true }
@@ -29,13 +29,13 @@ inactive = { fg = "#2d4967", bg = "#e2d5a6" }
 # MODE
 [mode]
 normal_main = { fg = "#e6dbb2", bg = "#2d4967", bold = true }
-normal_alt = { fg = "#2d4967", bg = "#e6dbb2" }
+normal_alt = { fg = "#2d4967", bg = "#dbca8f" }
 
 select_main = { fg = "#e6dbb2", bg = "#774412", bold = true }
-select_alt = { fg = "#774412", bg = "#e6dbb2" }
+select_alt = { fg = "#774412", bg = "#dbca8f" }
 
 unset_main = { fg = "#e6dbb2", bg = "#750e0e", bold = true }
-unset_alt = { fg = "#750e0e", bg = "#e6dbb2" }
+unset_alt = { fg = "#750e0e", bg = "#dbca8f" }
 
 # STATUS
 [status]
@@ -62,7 +62,7 @@ selected = { reversed = true }
 # PICK
 [pick]
 border = { fg = "#2d4967" }
-active = { fg = "#777027", bold = true }
+active = { fg = "#897e15", bold = true }
 inactive = {}
 
 # COMPLETION
@@ -73,12 +73,12 @@ border = { fg = "#2d4967" }
 [tasks]
 border = { fg = "#2d4967" }
 title = {}
-hovered = { fg = "#777027", underline = true }
+hovered = { fg = "#897e15", underline = true }
 
 # WHICH
 [which]
 mask = { bg = "#e2d5a6" }
-cand = { fg = "#777027" }
+cand = { fg = "#897e15" }
 rest = { fg = "#5d3d28" }
 desc = { fg = "#0e447b" }
 separator = "  "
@@ -129,8 +129,8 @@ rules = [
 # SPOT
 [spot]
 border = { fg = "#750e0e" }
-title = { fg = "#777027" }
-tbl_cell = { fg = "#777027", reversed = true }
+title = { fg = "#897e15" }
+tbl_cell = { fg = "#897e15", reversed = true }
 tbl_col = { bold = true }
 
 # extras/yazi/icons.toml.template

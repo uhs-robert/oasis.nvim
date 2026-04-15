@@ -25,13 +25,13 @@ inactive = { fg = "{{tab_active}}", bg = "{{bg_mantle}}" }
 # MODE
 [mode]
 normal_main = { fg = "{{bg_core}}", bg = "{{mode_normal}}", bold = true }
-normal_alt = { fg = "{{mode_normal}}", bg = "{{bg_core}}" }
+normal_alt = { fg = "{{mode_normal}}", bg = "{{bg_surface}}" }
 
 select_main = { fg = "{{bg_core}}", bg = "{{mode_select}}", bold = true }
-select_alt = { fg = "{{mode_select}}", bg = "{{bg_core}}" }
+select_alt = { fg = "{{mode_select}}", bg = "{{bg_surface}}" }
 
 unset_main = { fg = "{{bg_core}}", bg = "{{mode_unset}}", bold = true }
-unset_alt = { fg = "{{mode_unset}}", bg = "{{bg_core}}" }
+unset_alt = { fg = "{{mode_unset}}", bg = "{{bg_surface}}" }
 
 # STATUS
 [status]

@@ -7,15 +7,15 @@
 cwd = { fg = "#93C795" }
 
 find_keyword = { fg = "#7FCF78", bold = true, italic = true, underline = true }
-find_position = { fg = "#FFBF42", bg = "reset", bold = true, italic = true }
+find_position = { fg = "#FFC43D", bg = "reset", bold = true, italic = true }
 
 marker_copied = { fg = "#F8B471", bg = "#F8B471" }
-marker_cut = { fg = "#FFBF42", bg = "#FFBF42" }
+marker_cut = { fg = "#FFC43D", bg = "#FFC43D" }
 marker_marked = { fg = "#81C0FF", bg = "#81C0FF" }
 marker_selected = { fg = "#F0E68C", bg = "#F0E68C" }
 
 count_copied = { fg = "#301828", bg = "#F8B471" }
-count_cut = { fg = "#301828", bg = "#FFBF42" }
+count_cut = { fg = "#301828", bg = "#FFC43D" }
 count_selected = { fg = "#301828", bg = "#F0E68C" }
 
 border_symbol = "│"
@@ -29,13 +29,13 @@ inactive = { fg = "#FF9090", bg = "#3E2636" }
 # MODE
 [mode]
 normal_main = { fg = "#301828", bg = "#FF9090", bold = true }
-normal_alt = { fg = "#FF9090", bg = "#301828" }
+normal_alt = { fg = "#FF9090", bg = "#523A4B" }
 
 select_main = { fg = "#301828", bg = "#F8B471", bold = true }
-select_alt = { fg = "#F8B471", bg = "#301828" }
+select_alt = { fg = "#F8B471", bg = "#523A4B" }
 
 unset_main = { fg = "#301828", bg = "#FFA0A0", bold = true }
-unset_alt = { fg = "#FFA0A0", bg = "#301828" }
+unset_alt = { fg = "#FFA0A0", bg = "#523A4B" }
 
 # STATUS
 [status]
@@ -44,12 +44,12 @@ sep_right = { open = "", close = "" }
 
 progress_label = { fg = "#301828", bold = true }
 progress_normal = { fg = "#81C0FF", bg = "#301828" }
-progress_error = { fg = "#FFBF42", bg = "#301828" }
+progress_error = { fg = "#FFC43D", bg = "#301828" }
 
 perm_sep = { fg = "#A87A91" }
 perm_type = { fg = "#81C0FF" }
 perm_read = { fg = "#F0E68C" }
-perm_write = { fg = "#FFBF42" }
+perm_write = { fg = "#FFC43D" }
 perm_exec = { fg = "#F8B471" }
 
 # INPUT
@@ -95,7 +95,7 @@ footer = { fg = "#EBBEDF", bg = "#523A4B" }
 [notify]
 title_info = { fg = "#81C0FF" }
 title_warn = { fg = "#F0E68C" }
-title_error = { fg = "#FFBF42" }
+title_error = { fg = "#FFC43D" }
 
 # FILETYPE
 [filetype]
