@@ -6,7 +6,7 @@
 [mgr]
 cwd = { fg = "#2f6f65" }
 
-find_keyword = { fg = "#ab76d6", bold = true, italic = true, underline = true }
+find_keyword = { fg = "#b7d17a", bold = true, italic = true, underline = true }
 find_position = { fg = "#b81419", bg = "reset", bold = true, italic = true }
 
 marker_copied = { fg = "#ac191d", bg = "#ac191d" }
@@ -29,13 +29,13 @@ inactive = { fg = "#817613", bg = "#f0ead1" }
 # MODE
 [mode]
 normal_main = { fg = "#f4efdd", bg = "#817613", bold = true }
-normal_alt = { fg = "#817613", bg = "#f4efdd" }
+normal_alt = { fg = "#817613", bg = "#e9dfba" }
 
 select_main = { fg = "#f4efdd", bg = "#884e14", bold = true }
-select_alt = { fg = "#884e14", bg = "#f4efdd" }
+select_alt = { fg = "#884e14", bg = "#e9dfba" }
 
 unset_main = { fg = "#f4efdd", bg = "#750e0e", bold = true }
-unset_alt = { fg = "#750e0e", bg = "#f4efdd" }
+unset_alt = { fg = "#750e0e", bg = "#e9dfba" }
 
 # STATUS
 [status]

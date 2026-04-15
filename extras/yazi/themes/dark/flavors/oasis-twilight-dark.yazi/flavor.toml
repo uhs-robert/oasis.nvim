@@ -29,13 +29,13 @@ inactive = { fg = "#F7997D", bg = "#312140" }
 # MODE
 [mode]
 normal_main = { fg = "#261A30", bg = "#F7997D", bold = true }
-normal_alt = { fg = "#F7997D", bg = "#261A30" }
+normal_alt = { fg = "#F7997D", bg = "#3F2B50" }
 
 select_main = { fg = "#261A30", bg = "#F8B471", bold = true }
-select_alt = { fg = "#F8B471", bg = "#261A30" }
+select_alt = { fg = "#F8B471", bg = "#3F2B50" }
 
 unset_main = { fg = "#261A30", bg = "#FFA0A0", bold = true }
-unset_alt = { fg = "#FFA0A0", bg = "#261A30" }
+unset_alt = { fg = "#FFA0A0", bg = "#3F2B50" }
 
 # STATUS
 [status]
@@ -79,7 +79,7 @@ hovered = { fg = "#D2ADFF", underline = true }
 [which]
 mask = { bg = "#312140" }
 cand = { fg = "#D2ADFF" }
-rest = { fg = "#E1D2FF" }
+rest = { fg = "#EAD8FF" }
 desc = { fg = "#81C0FF" }
 separator = "  "
 separator_style = { fg = "#8B80AA" }
@@ -89,7 +89,7 @@ separator_style = { fg = "#8B80AA" }
 on = { fg = "#F7997D" }
 run = { fg = "#81C0FF" }
 hovered = { reversed = true, bold = true }
-footer = { fg = "#E1D2FF", bg = "#3F2B50" }
+footer = { fg = "#EAD8FF", bg = "#3F2B50" }
 
 # NOTIFY
 [notify]
