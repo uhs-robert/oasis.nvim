@@ -140,6 +140,10 @@ local theme = {
     bg = { shadow = "#132025", core = "#152229", mantle = "#1C2B31", surface = "#253840" },
     fg = { core = "#DDEFEF", strong = "#C9EEE6", dim = "#907C6C", muted = "#587270", comment = "#439789" },
   },
+  moonlight = {
+    bg = { shadow = "#020304", core = "#070C13", mantle = "#0F1520", surface = "#1A2330" },
+    fg = { core = "#F7F4F2", strong = "#E8F1FF", dim = "#74808F", muted = "#4E6578", comment = "#69809D" },
+  },
   night = {
     bg = { shadow = "#020A19", core = "#050F23", mantle = "#0B1832", surface = "#122444" },
     fg = { core = "#E8F1FF", strong = "#D9E6FA", dim = "#74808F", muted = "#536B83", comment = "#708CA8" },

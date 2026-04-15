@@ -122,23 +122,24 @@ Click any card below to view the full preview and syntax sample. [↓ Or click h
 <table>
   <tr>
     <td align="center"><a href="#night-dark"><img src="assets/screenshots/night-dark-dashboard.png" alt="Night (dark)" width="auto"></a><br><strong>Night</strong><br><em>Desert Night</em></td>
-    <td align="center"><a href="#midnight-dark"><img src="assets/screenshots/midnight-dark-dashboard.png" alt="Midnight (dark)" width="auto"></a><br><strong>Midnight</strong><br><em>Off Black</em></td>
-    <td align="center"><a href="#abyss-dark"><img src="assets/screenshots/abyss-dark-dashboard.png" alt="Abyss (dark)" width="auto"></a><br><strong>Abyss</strong><br><em>Black</em></td>
-    <td align="center"><a href="#starlight-dark"><img src="assets/screenshots/starlight-dark-dashboard.png" alt="Starlight (dark)" width="auto"></a><br><strong>Starlight</strong><br><em>Black Vivid</em></td>
+    <td align="center"><a href="#moonlight-dark"><img src="assets/screenshots/moonlight-dark-dashboard.png" alt="Moonlight (dark)" width="auto"></a><br><strong>Moonlight</strong><br><em>Moonlit Night</em></td>
+    <td align="center"><a href="#midnight-dark"><img src="assets/screenshots/midnight-dark-dashboard.png" alt="Midnight (dark)" width="auto"></a><br><strong>Midnight</strong><br><em>Dark Desert</em></td>
+    <td align="center"><a href="#abyss-dark"><img src="assets/screenshots/abyss-dark-dashboard.png" alt="Abyss (dark)" width="auto"></a><br><strong>Abyss</strong><br><em>Black Desert</em></td>
   </tr>
   <tr>
+    <td align="center"><a href="#starlight-dark"><img src="assets/screenshots/starlight-dark-dashboard.png" alt="Starlight (dark)" width="auto"></a><br><strong>Starlight</strong><br><em>Black Lagoon</em></td>
     <td align="center"><a href="#desert-dark"><img src="assets/screenshots/desert-dark-dashboard.png" alt="Desert (dark)" width="auto"></a><br><strong>Desert</strong><br><em>Grey</em></td>
     <td align="center"><a href="#sol-dark"><img src="assets/screenshots/sol-dark-dashboard.png" alt="Sol (dark)" width="auto"></a><br><strong>Sol</strong><br><em>Red</em></td>
     <td align="center"><a href="#scorpion-dark"><img src="assets/screenshots/scorpion-dark-dashboard.png" alt="Desert (dark)" width="auto"></a><br><strong>Scorpion</strong><br><em>Scorched</em></td>
-    <td align="center"><a href="#canyon-dark"><img src="assets/screenshots/canyon-dark-dashboard.png" alt="Canyon (dark)" width="auto"></a><br><strong>Canyon</strong><br><em>Orange</em></td>
   </tr>
   <tr>
+    <td align="center"><a href="#canyon-dark"><img src="assets/screenshots/canyon-dark-dashboard.png" alt="Canyon (dark)" width="auto"></a><br><strong>Canyon</strong><br><em>Orange</em></td>
     <td align="center"><a href="#dune-dark"><img src="assets/screenshots/dune-dark-dashboard.png" alt="Dune (dark)" width="auto"></a><br><strong>Dune</strong><br><em>Yellow</em></td>
     <td align="center"><a href="#cactus-dark"><img src="assets/screenshots/cactus-dark-dashboard.png" alt="Cactus (dark)" width="auto"></a><br><strong>Cactus</strong><br><em>Green</em></td>
     <td align="center"><a href="#mirage-dark"><img src="assets/screenshots/mirage-dark-dashboard.png" alt="Mirage (dark)" width="auto"></a><br><strong>Mirage</strong><br><em>Teal</em></td>
-    <td align="center"><a href="#lagoon-dark"><img src="assets/screenshots/lagoon-dark-dashboard.png" alt="Lagoon (dark)" width="auto"></a><br><strong>Lagoon (Default)</strong><br><em>Blue</em></td>
   </tr>
   <tr>
+    <td align="center"><a href="#lagoon-dark"><img src="assets/screenshots/lagoon-dark-dashboard.png" alt="Lagoon (dark)" width="auto"></a><br><strong>Lagoon (Default)</strong><br><em>Blue</em></td>
     <td align="center"><a href="#twilight-dark"><img src="assets/screenshots/twilight-dark-dashboard.png" alt="Twilight (dark)" width="auto"></a><br><strong>Twilight</strong><br><em>Sunset</em></td>
     <td align="center"><a href="#luna-dark"><img src="assets/screenshots/luna-dark-dashboard.png" alt="Luna (dark)" width="auto"></a><br><strong>Luna</strong><br><em>Indigo</em></td>
     <td align="center"><a href="#rose-dark"><img src="assets/screenshots/rose-dark-dashboard.png" alt="Rose (dark)" width="auto"></a><br><strong>Rose</strong><br><em>Pink</em></td>
@@ -175,23 +176,24 @@ The examples below use the default intensity of level 3.
 <table>
   <tr>
     <td align="center"><a href="#night-light"><img src="assets/screenshots/night-light-3-dashboard.png" alt="Night (light)" width="auto"></a><br><strong>Night</strong></td>
+    <td align="center"><a href="#moonlight-light"><img src="assets/screenshots/moonlight-light-3-dashboard.png" alt="Moonlight (light)" width="auto"></a><br><strong>Moonlight</strong></td>
     <td align="center"><a href="#midnight-light"><img src="assets/screenshots/midnight-light-3-dashboard.png" alt="Midnight (light)" width="auto"></a><br><strong>Midnight</strong></td>
     <td align="center"><a href="#abyss-light"><img src="assets/screenshots/abyss-light-3-dashboard.png" alt="Abyss (light)" width="auto"></a><br><strong>Abyss</strong></td>
-    <td align="center"><a href="#starlight-light"><img src="assets/screenshots/starlight-light-3-dashboard.png" alt="Starlight (light)" width="auto"></a><br><strong>Starlight</strong></td>
   </tr>
   <tr>
+    <td align="center"><a href="#starlight-light"><img src="assets/screenshots/starlight-light-3-dashboard.png" alt="Starlight (light)" width="auto"></a><br><strong>Starlight</strong></td>
     <td align="center"><a href="#desert-light"><img src="assets/screenshots/desert-light-3-dashboard.png" alt="Desert (light)" width="auto"></a><br><strong>Desert</strong></td>
     <td align="center"><a href="#sol-light"><img src="assets/screenshots/sol-light-3-dashboard.png" alt="Sol (light)" width="auto"></a><br><strong>Sol</strong></td>
     <td align="center"><a href="#scorpion-light"><img src="assets/screenshots/scorpion-light-3-dashboard.png" alt="Desert (dark)" width="auto"></a><br><strong>Scorpion</strong><br><em>Scorched</em></td>
-    <td align="center"><a href="#canyon-light"><img src="assets/screenshots/canyon-light-3-dashboard.png" alt="Canyon (light)" width="auto"></a><br><strong>Canyon</strong></td>
   </tr>
   <tr>
+    <td align="center"><a href="#canyon-light"><img src="assets/screenshots/canyon-light-3-dashboard.png" alt="Canyon (light)" width="auto"></a><br><strong>Canyon</strong></td>
     <td align="center"><a href="#dune-light"><img src="assets/screenshots/dune-light-3-dashboard.png" alt="Dune (light)" width="auto"></a><br><strong>Dune</strong></td>
     <td align="center"><a href="#cactus-light"><img src="assets/screenshots/cactus-light-3-dashboard.png" alt="Cactus (light)" width="auto"></a><br><strong>Cactus</strong></td>
     <td align="center"><a href="#mirage-light"><img src="assets/screenshots/mirage-light-3-dashboard.png" alt="Mirage (light)" width="auto"></a><br><strong>Mirage</strong></td>
-    <td align="center"><a href="#lagoon-light"><img src="assets/screenshots/lagoon-light-3-dashboard.png" alt="Lagoon (light)" width="auto"></a><br><strong>Lagoon</strong></td>
   </tr>
   <tr>
+    <td align="center"><a href="#lagoon-light"><img src="assets/screenshots/lagoon-light-3-dashboard.png" alt="Lagoon (light)" width="auto"></a><br><strong>Lagoon</strong></td>
     <td align="center"><a href="#twilight-light"><img src="assets/screenshots/twilight-light-3-dashboard.png" alt="Twilight (light)" width="auto"></a><br><strong>Twilight</strong></td>
     <td align="center"><a href="#luna-light"><img src="assets/screenshots/luna-light-3-dashboard.png" alt="Luna (dark)" width="auto"></a><br><strong>Luna</strong><br><em>Indigo</em></td>
     <td align="center"><a href="#rose-light"><img src="assets/screenshots/rose-light-3-dashboard.png" alt="Rose (light)" width="auto"></a><br><strong>Rose</strong></td>
@@ -200,7 +202,7 @@ The examples below use the default intensity of level 3.
 
 ## ✨ Features
 
-- **15 theme styles with dual modes**: Each theme offers both dark and light variants with 5 adjustable intensity levels.
+- **16 theme styles with dual modes**: Each theme offers both dark and light variants with 5 adjustable intensity levels.
 - **Dark/Light Modes**: Automatic switching based on your system theme or `vim.o.background`.
 - **Comprehensive highlighting** - LSP, Tree-sitter, and plugin support
 - **Fast loading** - Direct highlight application for optimal performance based on the plugins in your config
@@ -311,6 +313,7 @@ colorscheme oasis
 
 " Or load a specific style - must be prefixed with `oasis-`
 colorscheme oasis-night
+colorscheme oasis-moonlight
 colorscheme oasis-midnight
 colorscheme oasis-abyss
 colorscheme oasis-starlight
@@ -543,7 +546,7 @@ Oasis offers _many_ different styles to choose from. Have fun customizing with `
 
 ```lua
 -- Oasis.nvim
--- Styles: "night", "midnight", "abyss", "starlight", "desert", "sol", "canyon", "dune", "cactus", "mirage", "lagoon", "twilight", "rose"
+-- Styles: "night", "moonlight", "midnight", "abyss", "starlight", "desert", "sol", "canyon", "dune", "cactus", "mirage", "lagoon", "twilight", "rose"
 require("oasis").setup({
   style = "lagoon",                     -- Primary style, the default used when colorscheme is set to "oasis"
   dark_style = nil,                     -- Applies to primary style only: Overrides dark mode with another theme (e.g., "abyss")
@@ -801,6 +804,13 @@ require("oasis").setup({
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
+    <a id="moonlight-dark"></a>
+    <h3>Moonlight (Dark · Moonlit Night)</h3>
+    <img src="./assets/screenshots/moonlight-dark-dashboard.png" alt="Moonlight dark mode dashboard"></img>
+    <img src="./assets/screenshots/moonlight-dark-code.png" alt="Moonlight dark mode code sample"></img>
+    <p align="center">
+      <a href="#dark-previews">↑ Back to Dark Styles</a>
+    </p>
     <a id="midnight-dark"></a>
     <h3>Midnight (Dark · Off Black)</h3>
     <img src="./assets/screenshots/midnight-dark-dashboard.png" alt="Midnight dark mode dashboard"></img>
@@ -909,6 +919,13 @@ require("oasis").setup({
     <h3>Night (Light)</h3>
     <img src="./assets/screenshots/night-light-3-dashboard.png" alt="Night light mode dashboard"></img>
     <img src="./assets/screenshots/night-light-3-code.png" alt="Night light mode code sample"></img>
+    <p align="center">
+      <a href="#light-previews">↑ Back to Light Styles</a>
+    </p>
+    <a id="moonlight-light"></a>
+    <h3>Moonlight (Light)</h3>
+    <img src="./assets/screenshots/moonlight-light-3-dashboard.png" alt="Moonlight light mode dashboard"></img>
+    <img src="./assets/screenshots/moonlight-light-3-code.png" alt="Moonlight light mode code sample"></img>
     <p align="center">
       <a href="#light-previews">↑ Back to Light Styles</a>
     </p>
