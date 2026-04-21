@@ -238,7 +238,7 @@ local function create_highlights(c, light_mode, theme)
     ["@string.escape"]        = "Exception", -- SpecialChar
     ["@string.special"]       = "SpecialChar", -- (e.g., dates)
     ["@string.special.symbol"]= { fg=c.syntax.identifier },
-    ["@string.special.url"]   = { fg=c.ui.diag.info.fg, underline=true },
+    ["@string.special.url"]   = { fg=c.ui.diag.hint.fg, underline=true },
     ["@character"]            = "Character", -- Character
     ["@character.special"]    = "SpecialChar", -- SpecialChar
     ["@number"]               = "Number", -- Number
