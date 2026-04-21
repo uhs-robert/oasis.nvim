@@ -19,14 +19,15 @@ function Tabby.get_theme()
   if not c then
     c, err = Utils.load_and_extract_palette("oasis.color_palettes.oasis_lagoon")
   end
+  local main_status = (c.theme.status or c.theme.primary)
 
   return {
     fill = { fg = c.fg.muted, bg = c.bg.core }, -- tabline background (transparent)
-    head = { fg = c.bg.core, bg = c.syntax.statement }, -- head element
-    current_tab = { fg = c.bg.core, bg = c.syntax.statement }, -- current tab label
-    tab = { fg = c.syntax.statement, bg = c.bg.mantle }, -- other tab label
+    head = { fg = c.bg.core, bg = main_status }, -- head element
+    current_tab = { fg = c.bg.core, bg = main_status }, -- current tab label
+    tab = { fg = main_status, bg = c.bg.mantle }, -- other tab label
     win = { fg = c.syntax.special, bg = c.bg.mantle }, -- window
-    tail = { fg = c.bg.core, bg = c.syntax.statement }, -- tail element
+    tail = { fg = c.bg.core, bg = main_status }, -- tail element
   }
 end
 

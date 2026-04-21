@@ -14,10 +14,11 @@ function M.get(style)
   assert(c, "Failed to load Oasis palette for lualine")
 
   local hl = {}
+  local main_status = (c.theme.status or c.theme.primary)
 
   hl.normal = {
-    a = { bg = c.syntax.statement, fg = c.bg.core },
-    b = { bg = c.bg.surface, fg = c.syntax.statement },
+    a = { bg = main_status, fg = c.bg.core },
+    b = { bg = c.bg.surface, fg = main_status },
     c = { bg = c.bg.mantle, fg = c.theme.light_primary },
   }
 
