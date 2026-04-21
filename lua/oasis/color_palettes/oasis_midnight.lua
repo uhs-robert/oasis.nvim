@@ -20,7 +20,7 @@ local base = {
   },
   theme = {
     strong_primary = p.khaki[800],
-    primary = p.khaki[500],
+    primary = p.khaki[600],
     light_primary = p.khaki[300],
     secondary_strong = p.red[800],
     secondary = p.red[500],
