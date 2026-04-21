@@ -24,6 +24,7 @@ local base = {
     label = p.red[600],
     accent = p.cyan[500],
     cursor = p.khaki[500],
+    status = p.lavender[400],
   },
 }
 

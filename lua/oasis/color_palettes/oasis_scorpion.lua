@@ -28,6 +28,7 @@ local base = {
     label = p.sundown[600],
     accent = p.palm[500],
     cursor = p.khaki[500],
+    status = p.sundown[500],
   },
 }
 
