@@ -3,6 +3,7 @@
 local Config = require("oasis.config")
 local p = require("oasis.palette")
 local opts = Config.get()
+local theme = p.theme.moonlight
 
 -- Neovim: Only generate light theme when needed. Extras: generate both.
 local in_neovim = vim.uv ~= nil or vim.loop ~= nil
