@@ -266,6 +266,7 @@ To use the extras, refer to their respective documentation.
 | TMUX        | [tmux-oasis](https://github.com/uhs-robert/tmux-oasis) |
 | Vimium      | [extras/vimium](extras/vimium)                         |
 | Vimium C    | [extras/vimium-c](extras/vimium-c)                     |
+| VS Code     | [extras/vscode](extras/vscode)                         |
 | Warp        | [extras/warp](extras/warp)                             |
 | WezTerm     | [extras/wezterm](extras/wezterm)                       |
 | Yazi        | [extras/yazi](extras/yazi)                             |
