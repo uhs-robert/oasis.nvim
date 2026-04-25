@@ -1,0 +1,91 @@
+# extras/wezterm/oasis_moonlight_light_2.toml
+## name: Oasis Moonlight Light 2
+## author: uhs-robert
+
+[colors]
+foreground = "#54432d"
+background= "#e9deb9"
+cursor_bg = "#7b4514"
+cursor_border = "#7b4514"
+cursor_fg= "#e9deb9"
+selection_bg= "#e1b69d"
+selection_fg= "#4e260e"
+split= "#37485a"
+compose_cursor= "#643d18"
+scrollbar_thumb= "#decd96"
+visual_bell= "#e5d8ae"
+
+ansi = [
+  '#603e34',
+  '#a51111',
+  '#345b30',
+  '#59531e',
+  '#125395',
+  '#6d21c7',
+  '#2e5954',
+  '#524511',
+]
+
+brights = [
+  '#5b4033',
+  '#a51111',
+  '#315c2b',
+  '#794512',
+  '#20586f',
+  '#6c21c8',
+  '#2e5a53',
+  '#4e4629',
+]
+
+[colors.indexed]
+16 = '#643d18'
+17 = '#a51218'
+
+[colors.tab_bar]
+background = '#e5d8ae'
+inactive_tab_edge = '#e2d3a2'
+
+[colors.tab_bar.active_tab]
+bg_color = '#314e6d'
+fg_color = '#e9deb9'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab]
+bg_color = '#decd96'
+fg_color = '#314e6d'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = '#decd96'
+fg_color = '#918517'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab]
+bg_color = '#918517'
+fg_color = '#e9deb9'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[colors.tab_bar.new_tab_hover]
+bg_color = '#a30505'
+fg_color = '#e9deb9'
+intensity = 'Normal'
+italic = false
+strikethrough = false
+underline = 'None'
+
+[metadata]
+aliases = []
+author = 'uhs-robert'
+name = 'Oasis Moonlight Light 2'

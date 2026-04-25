@@ -3,58 +3,58 @@
 ## author: uhs-robert
 
 [colors]
-foreground = "#433a5c"
-background= "#d7cef3"
+foreground = "#493b4b"
+background= "#f3cbbe"
 cursor_bg = "#713f12"
 cursor_border = "#713f12"
-cursor_fg= "#d7cef3"
-selection_bg= "#c3a1dd"
-selection_fg= "#31124a"
-split= "#672f1f"
+cursor_fg= "#f3cbbe"
+selection_bg= "#e1b69d"
+selection_fg= "#4e260e"
+split= "#682f1f"
 compose_cursor= "#5b3716"
-scrollbar_thumb= "#b9a9ea"
-visual_bell= "#cdc2f0"
+scrollbar_thumb= "#ecac97"
+visual_bell= "#f1c0b1"
 
 ansi = [
-  '#3f3f3f',
-  '#980f0f',
-  '#2f542c',
-  '#524c1b',
-  '#104c87',
-  '#641eb7',
-  '#2a524e',
-  '#4a3e10',
+  '#404040',
+  '#991010',
+  '#2f542d',
+  '#524d1c',
+  '#114d88',
+  '#651eb8',
+  '#2b524e',
+  '#4b3f10',
 ]
 
 brights = [
-  '#473e37',
+  '#473e38',
   '#990f0f',
-  '#2c5427',
-  '#6f4011',
+  '#2d5527',
+  '#704011',
   '#1d5166',
-  '#641eb8',
-  '#2a524c',
+  '#641eb9',
+  '#2a534d',
   '#463f25',
 ]
 
 [colors.indexed]
 16 = '#5b3716'
-17 = '#971015'
+17 = '#981116'
 
 [colors.tab_bar]
-background = '#cdc2f0'
-inactive_tab_edge = '#c3b5ed'
+background = '#f1c0b1'
+inactive_tab_edge = '#efb6a4'
 
 [colors.tab_bar.active_tab]
 bg_color = '#812509'
-fg_color = '#d7cef3'
+fg_color = '#f3cbbe'
 intensity = 'Normal'
 italic = false
 strikethrough = false
 underline = 'None'
 
 [colors.tab_bar.inactive_tab]
-bg_color = '#b9a9ea'
+bg_color = '#ecac97'
 fg_color = '#812509'
 intensity = 'Normal'
 italic = false
@@ -62,7 +62,7 @@ strikethrough = false
 underline = 'None'
 
 [colors.tab_bar.inactive_tab_hover]
-bg_color = '#b9a9ea'
+bg_color = '#ecac97'
 fg_color = '#430192'
 intensity = 'Normal'
 italic = false
@@ -71,7 +71,7 @@ underline = 'None'
 
 [colors.tab_bar.new_tab]
 bg_color = '#430192'
-fg_color = '#d7cef3'
+fg_color = '#f3cbbe'
 intensity = 'Normal'
 italic = false
 strikethrough = false
@@ -79,7 +79,7 @@ underline = 'None'
 
 [colors.tab_bar.new_tab_hover]
 bg_color = '#827712'
-fg_color = '#d7cef3'
+fg_color = '#f3cbbe'
 intensity = 'Normal'
 italic = false
 strikethrough = false
