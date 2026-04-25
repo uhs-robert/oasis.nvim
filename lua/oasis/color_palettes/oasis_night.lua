@@ -104,10 +104,10 @@ local dark = {
 local light
 if need_light then
   local light_seed = require("oasis.color_palettes.oasis_canyon").dark
-  local target_lightness = { [1] = 84, [2] = 82, [3] = 80, [4] = 78, [5] = 76 }
+  local target_lightness = { [1] = 93, [2] = 89, [3] = 86, [4] = 83, [5] = 80 }
   local LightTheme = require("oasis.tools.light_theme_generator")
   local light_bg =
-    LightTheme.generate_bg(p.theme.dune.fg.core, opts.light_intensity, { target_l_core = target_lightness })
+    LightTheme.generate_bg(theme.light_bg_seed, opts.light_intensity, { target_l_core = target_lightness })
   local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
     search = { bg = p.visual.orange, fg = base.fg.core },
     match = { bg = p.visual.red, fg = base.fg.core },
