@@ -113,7 +113,7 @@ end
 function LightTheme.apply_intensity(base_color, intensity_level)
   if not base_color or intensity_level < 1 or intensity_level > 5 then return base_color end
 
-  local h, _, _ = ColorUtils.rgb_to_hsl(base_color)
+  local h, original_s, _ = ColorUtils.rgb_to_hsl(base_color)
 
   local new_hue, new_sat, new_light
 
@@ -143,6 +143,9 @@ function LightTheme.apply_intensity(base_color, intensity_level)
     new_sat = 100
     new_light = 84
   end
+
+  -- Achromatic seeds (grey) have no real hue — preserve neutral output
+  if original_s == 0 then new_sat = 0 end
 
   -- Apply outlier adjustments for problematic hues
   new_sat, new_light = resolve_outliers(new_hue, new_sat, new_light)
