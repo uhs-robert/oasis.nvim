@@ -1,0 +1,64 @@
+-- extras/lua-theme/themes/light/1/Oasis Moonlight Light 1.lua
+-- Generated from Oasis palettes
+
+return {
+-- Backgrounds
+	bg_core = "#e0dbcc",
+	bg_mantle = "#dbd5c2",
+	bg_shadow = "#d5ceb9",
+	bg_surface = "#cfc7af",
+
+-- Foregrounds
+	fg_core = "#52422d",
+	fg_strong = "#5d3d27",
+	fg_muted = "#705d53",
+	fg_dim = "#857b74",
+
+-- Accents
+	theme_primary = "#355374",
+	theme_secondary = "#988c1a",
+	theme_accent = "#ab0707",
+
+-- Status
+	error = "#750e0e",
+	warning = "#5c540b",
+	info = "#0e447b",
+	hint = "#0b5e52",
+	ok = "#145d0b",
+
+-- ANSI Semnatic Colors
+	black = "#5e3c33",
+	red = "#a21010",
+	green = "#33592f",
+	yellow = "#57511d",
+	blue = "#125191",
+	magenta = "#6b1fc4",
+	cyan = "#2d5753",
+	white = "#504311",
+	bright_black = "#593f30",
+	bright_red = "#a21010",
+	bright_green = "#2f5a2a",
+	bright_yellow = "#764412",
+	bright_blue = "#1f566d",
+	bright_magenta = "#6a20c4",
+	bright_cyan = "#2c5851",
+	bright_white = "#4c4428",
+
+-- ANSI Terminal Colors
+	color0 = "#5e3c33",
+	color1 = "#a21010",
+	color2 = "#33592f",
+	color3 = "#57511d",
+	color4 = "#125191",
+	color5 = "#6b1fc4",
+	color6 = "#2d5753",
+	color7 = "#504311",
+	color8 = "#593f30",
+	color9 = "#a21010",
+	color10 = "#2f5a2a",
+	color11 = "#764412",
+	color12 = "#1f566d",
+	color13 = "#6a20c4",
+	color14 = "#2c5851",
+	color15 = "#4c4428",
+}

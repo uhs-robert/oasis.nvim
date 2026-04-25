@@ -9,8 +9,8 @@ return {
 	bg_surface = "#3F2B50",
 
 -- Foregrounds
-	fg_core = "#E6E0F8",
-	fg_strong = "#E1D2FF",
+	fg_core = "#F0E4F2",
+	fg_strong = "#EAD8FF",
 	fg_muted = "#71609A",
 	fg_dim = "#76665A",
 

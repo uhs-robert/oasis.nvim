@@ -28,7 +28,7 @@ def setup(c, samecolorrows=True):
         "fg_dim":         "#6E6E6E",
         "fg_muted":       "#826D5A",
         "light_primary":  "#F6EEB2",
-        "primary":        "#F0E68C",
+        "primary":        "#D6CE7C",
         "strong_primary": "#BDB76B",
         "secondary":      "#8FD1C7",
         "accent":         "#D2ADFF",
