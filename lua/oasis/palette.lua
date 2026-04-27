@@ -132,9 +132,9 @@ local theme = {
     fg = { core = "#D9E6FA", strong = "#D0E2F0", dim = "#877363", muted = "#3B6A87", comment = "#4D88A7" },
   },
   luna = {
-    bg = { shadow = "#0C0A2A", core = "#171345", mantle = "#211C59", surface = "#2C266D" },
+    bg = { shadow = "#0C0A2A", core = "#101032", mantle = "#1A1646", surface = "#241F56" },
     fg = { core = "#EEEAFE", strong = "#DCD5FF", dim = "#7E789B", muted = "#8A82B3", comment = "#A29AC9" },
-    light_bg_seed = "#211C59",
+    light_bg_seed = "#1A1646",
   },
   midnight = {
     bg = { shadow = "#0C1014", core = "#101418", mantle = "#18202A", surface = "#223040" },
