@@ -9,22 +9,22 @@ return {
 	bg_surface = "#b4e4c8",
 
 -- Foregrounds
-	fg_core = "#405147",
-	fg_strong = "#3b5340",
+	fg_core = "#121714",
+	fg_strong = "#2f4133",
 	fg_muted = "#626d64",
-	fg_dim = "#8f847d",
+	fg_dim = "#90857d",
 
 -- Accents
-	theme_primary = "#305a32",
-	theme_secondary = "#920101",
+	theme_primary = "#264728",
+	theme_secondary = "#6d0101",
 	theme_accent = "#430192",
 
 -- Status
-	error = "#750e0e",
-	warning = "#5c540b",
-	info = "#0e447b",
-	hint = "#0b5e52",
-	ok = "#145d0b",
+	error = "#250404",
+	warning = "#332e06",
+	info = "#051a2e",
+	hint = "#06342d",
+	ok = "#0b3206",
 
 -- ANSI Semnatic Colors
 	black = "#4d4d4d",
@@ -34,10 +34,10 @@ return {
 	blue = "#135aa0",
 	magenta = "#7623d7",
 	cyan = "#32615c",
-	white = "#5a4c13",
+	white = "#5b4c13",
 	bright_black = "#564b43",
 	bright_red = "#b31111",
-	bright_green = "#34642e",
+	bright_green = "#35642e",
 	bright_yellow = "#844b14",
 	bright_blue = "#226078",
 	bright_magenta = "#7523d9",
@@ -52,10 +52,10 @@ return {
 	color4 = "#135aa0",
 	color5 = "#7623d7",
 	color6 = "#32615c",
-	color7 = "#5a4c13",
+	color7 = "#5b4c13",
 	color8 = "#564b43",
 	color9 = "#b31111",
-	color10 = "#34642e",
+	color10 = "#35642e",
 	color11 = "#844b14",
 	color12 = "#226078",
 	color13 = "#7523d9",

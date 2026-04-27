@@ -3,75 +3,75 @@
 ## author: uhs-robert
 
 [colors]
-foreground = "#4c443e"
-background= "#f2d9b5"
-cursor_bg = "#5a5216"
-cursor_border = "#5a5216"
-cursor_fg= "#f2d9b5"
+foreground = "#171412"
+background= "#f4cbc2"
+cursor_bg = "#625918"
+cursor_border = "#625918"
+cursor_fg= "#f4cbc2"
 selection_bg= "#e1c99d"
 selection_fg= "#4e370e"
-split= "#832020"
-compose_cursor= "#633c18"
-scrollbar_thumb= "#ebc58e"
-visual_bell= "#f0d2a8"
+split= "#7a1e1e"
+compose_cursor= "#845020"
+scrollbar_thumb= "#edaa9b"
+visual_bell= "#f2c0b5"
 
 ansi = [
-  '#454545',
-  '#a31111',
-  '#335a30',
-  '#58521e',
-  '#125292',
-  '#6c20c5',
-  '#2e5854',
-  '#514411',
+  '#404040',
+  '#9a1010',
+  '#30542d',
+  '#524d1c',
+  '#114d89',
+  '#651eb8',
+  '#2b534e',
+  '#4b3f10',
 ]
 
 brights = [
-  '#4d433c',
-  '#a31010',
-  '#305b2a',
-  '#784512',
-  '#1f576d',
-  '#6b20c6',
-  '#2d5952',
-  '#4c4529',
+  '#473e38',
+  '#9a0f0f',
+  '#2d5527',
+  '#714011',
+  '#1d5267',
+  '#651eba',
+  '#2a534d',
+  '#474026',
 ]
 
 [colors.indexed]
-16 = '#633c18'
-17 = '#a31217'
+16 = '#845020'
+17 = '#991116'
 
 [colors.tab_bar]
-background = '#f0d2a8'
-inactive_tab_edge = '#edcb9b'
+background = '#f2c0b5'
+inactive_tab_edge = '#f0b5a8'
 
 [colors.tab_bar.active_tab]
-bg_color = '#686222'
-fg_color = '#f2d9b5'
+bg_color = '#534e1b'
+fg_color = '#f4cbc2'
 intensity = 'Normal'
 italic = false
 strikethrough = false
 underline = 'None'
 
 [colors.tab_bar.inactive_tab]
-bg_color = '#ebc58e'
-fg_color = '#686222'
+bg_color = '#edaa9b'
+fg_color = '#534e1b'
 intensity = 'Normal'
 italic = false
 strikethrough = false
 underline = 'None'
 
 [colors.tab_bar.inactive_tab_hover]
-bg_color = '#ebc58e'
-fg_color = '#920101'
+bg_color = '#edaa9b'
+fg_color = '#6d0101'
 intensity = 'Normal'
 italic = false
 strikethrough = false
 underline = 'None'
 
 [colors.tab_bar.new_tab]
-bg_color = '#920101'
-fg_color = '#f2d9b5'
+bg_color = '#6d0101'
+fg_color = '#f4cbc2'
 intensity = 'Normal'
 italic = false
 strikethrough = false
@@ -79,7 +79,7 @@ underline = 'None'
 
 [colors.tab_bar.new_tab_hover]
 bg_color = '#2d6c27'
-fg_color = '#f2d9b5'
+fg_color = '#f4cbc2'
 intensity = 'Normal'
 italic = false
 strikethrough = false

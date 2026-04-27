@@ -3,33 +3,33 @@
 
 return {
 -- Backgrounds
-	bg_core = "#d2e9d4",
-	bg_mantle = "#c8e4ca",
-	bg_shadow = "#bedfc0",
-	bg_surface = "#b3dab6",
+	bg_core = "#f4ddec",
+	bg_mantle = "#f0d1e6",
+	bg_shadow = "#edc6df",
+	bg_surface = "#e9bad9",
 
 -- Foregrounds
-	fg_core = "#663d49",
-	fg_strong = "#5e4055",
+	fg_core = "#1a0f12",
+	fg_strong = "#4a3243",
 	fg_muted = "#70626b",
 	fg_dim = "#89807b",
 
 -- Accents
-	theme_primary = "#89280b",
-	theme_secondary = "#376739",
+	theme_primary = "#572133",
+	theme_secondary = "#2a4e2b",
 	theme_accent = "#2f6f65",
 
 -- Status
-	error = "#750e0e",
-	warning = "#5c540b",
-	info = "#0e447b",
-	hint = "#0b5e52",
-	ok = "#145d0b",
+	error = "#250404",
+	warning = "#332e06",
+	info = "#051a2e",
+	hint = "#06342d",
+	ok = "#0b3206",
 
 -- ANSI Semnatic Colors
 	black = "#494949",
 	red = "#ab1111",
-	green = "#365e32",
+	green = "#365f32",
 	yellow = "#5d561f",
 	blue = "#135699",
 	magenta = "#7121ce",
@@ -39,15 +39,15 @@ return {
 	bright_red = "#ab1111",
 	bright_green = "#335f2c",
 	bright_yellow = "#7e4813",
-	bright_blue = "#215b72",
-	bright_magenta = "#7022cf",
+	bright_blue = "#215c73",
+	bright_magenta = "#7022d0",
 	bright_cyan = "#2f5d56",
 	bright_white = "#51492c",
 
 -- ANSI Terminal Colors
 	color0 = "#494949",
 	color1 = "#ab1111",
-	color2 = "#365e32",
+	color2 = "#365f32",
 	color3 = "#5d561f",
 	color4 = "#135699",
 	color5 = "#7121ce",
@@ -57,8 +57,8 @@ return {
 	color9 = "#ab1111",
 	color10 = "#335f2c",
 	color11 = "#7e4813",
-	color12 = "#215b72",
-	color13 = "#7022cf",
+	color12 = "#215c73",
+	color13 = "#7022d0",
 	color14 = "#2f5d56",
 	color15 = "#51492c",
 }

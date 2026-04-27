@@ -9,11 +9,11 @@ def setup(c, samecolorrows=True):
 
     # flavours {{{
     palette = {
-        "magenta":        "#7c2adc",
-        "red":            "#bb1313",
+        "magenta":        "#7c2bdc",
+        "red":            "#bc1313",
         "bright_red":     "#bc1313",
         "yellow":         "#665f22",
-        "bright_yellow":  "#8b4f14",
+        "bright_yellow":  "#8a4f14",
         "green":          "#3b6837",
         "bright_green":   "#386931",
         "teal":           "#356660",
@@ -24,13 +24,13 @@ def setup(c, samecolorrows=True):
         "mantle":         "#f5eadb",
         "shadow":         "#f1e3cf",
         "surface":        "#eedcc3",
-        "fg_core":        "#545249",
+        "fg_core":        "#181714",
         "fg_dim":         "#8c8c8c",
         "fg_muted":       "#776d64",
-        "light_primary":  "#746811",
-        "primary":        "#766f28",
-        "strong_primary": "#7d783b",
-        "secondary":      "#33756b",
+        "light_primary":  "#685e0f",
+        "primary":        "#615b21",
+        "strong_primary": "#86763f",
+        "secondary":      "#275b53",
         "accent":         "#4c05a3",
         "match":          "#b7d17a",
     }

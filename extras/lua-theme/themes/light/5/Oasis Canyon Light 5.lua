@@ -9,22 +9,22 @@ return {
 	bg_surface = "#ecbd93",
 
 -- Foregrounds
-	fg_core = "#52412d",
-	fg_strong = "#5c3c26",
+	fg_core = "#1a150e",
+	fg_strong = "#462e1d",
 	fg_muted = "#705c53",
 	fg_dim = "#857a73",
 
 -- Accents
-	theme_primary = "#804000",
-	theme_secondary = "#8a0000",
+	theme_primary = "#5f3105",
+	theme_secondary = "#630000",
 	theme_accent = "#145a76",
 
 -- Status
-	error = "#750e0e",
-	warning = "#5c540b",
-	info = "#0e447b",
-	hint = "#0b5e52",
-	ok = "#145d0b",
+	error = "#250404",
+	warning = "#332e06",
+	info = "#051a2e",
+	hint = "#06342d",
+	ok = "#0b3206",
 
 -- ANSI Semnatic Colors
 	black = "#444444",
@@ -32,7 +32,7 @@ return {
 	green = "#32592f",
 	yellow = "#56511d",
 	blue = "#11518f",
-	magenta = "#6b1fc2",
+	magenta = "#6a1fc1",
 	cyan = "#2d5752",
 	white = "#4f4311",
 	bright_black = "#4b423a",
@@ -50,7 +50,7 @@ return {
 	color2 = "#32592f",
 	color3 = "#56511d",
 	color4 = "#11518f",
-	color5 = "#6b1fc2",
+	color5 = "#6a1fc1",
 	color6 = "#2d5752",
 	color7 = "#4f4311",
 	color8 = "#4b423a",

@@ -7,29 +7,29 @@
 cwd = { fg = "#93C795" }
 
 find_keyword = { fg = "#7FCF78", bold = true, italic = true, underline = true }
-find_position = { fg = "#FFC43D", bg = "reset", bold = true, italic = true }
+find_position = { fg = "#FF7979", bg = "reset", bold = true, italic = true }
 
-marker_copied = { fg = "#F8B471", bg = "#F8B471" }
-marker_cut = { fg = "#FFC43D", bg = "#FFC43D" }
+marker_copied = { fg = "#F0E68C", bg = "#F0E68C" }
+marker_cut = { fg = "#FF7979", bg = "#FF7979" }
 marker_marked = { fg = "#81C0FF", bg = "#81C0FF" }
 marker_selected = { fg = "#F0E68C", bg = "#F0E68C" }
 
-count_copied = { fg = "#301828", bg = "#F8B471" }
-count_cut = { fg = "#301828", bg = "#FFC43D" }
+count_copied = { fg = "#301828", bg = "#F0E68C" }
+count_cut = { fg = "#301828", bg = "#FF7979" }
 count_selected = { fg = "#301828", bg = "#F0E68C" }
 
 border_symbol = "│"
-border_style = { fg = "#FF8080" }
+border_style = { fg = "#D18BA2" }
 
 # TABS
 [tabs]
-active = { fg = "#301828", bg = "#FF9090", bold = true }
-inactive = { fg = "#FF9090", bg = "#3E2636" }
+active = { fg = "#301828", bg = "#DB9AB0", bold = true }
+inactive = { fg = "#DB9AB0", bg = "#3E2636" }
 
 # MODE
 [mode]
-normal_main = { fg = "#301828", bg = "#FF9090", bold = true }
-normal_alt = { fg = "#FF9090", bg = "#523A4B" }
+normal_main = { fg = "#301828", bg = "#DB9AB0", bold = true }
+normal_alt = { fg = "#DB9AB0", bg = "#523A4B" }
 
 select_main = { fg = "#301828", bg = "#F8B471", bold = true }
 select_alt = { fg = "#F8B471", bg = "#523A4B" }
@@ -44,34 +44,34 @@ sep_right = { open = "", close = "" }
 
 progress_label = { fg = "#301828", bold = true }
 progress_normal = { fg = "#81C0FF", bg = "#301828" }
-progress_error = { fg = "#FFC43D", bg = "#301828" }
+progress_error = { fg = "#FF7979", bg = "#301828" }
 
 perm_sep = { fg = "#A87A91" }
 perm_type = { fg = "#81C0FF" }
 perm_read = { fg = "#F0E68C" }
-perm_write = { fg = "#FFC43D" }
-perm_exec = { fg = "#F8B471" }
+perm_write = { fg = "#FF7979" }
+perm_exec = { fg = "#F0E68C" }
 
 # INPUT
 [input]
-border = { fg = "#FF9090" }
+border = { fg = "#DB9AB0" }
 title = {}
 value = {}
 selected = { reversed = true }
 
 # PICK
 [pick]
-border = { fg = "#FF9090" }
+border = { fg = "#DB9AB0" }
 active = { fg = "#93C795", bold = true }
 inactive = {}
 
 # COMPLETION
 [cmp]
-border = { fg = "#FF9090" }
+border = { fg = "#DB9AB0" }
 
 # TASKS
 [tasks]
-border = { fg = "#FF9090" }
+border = { fg = "#DB9AB0" }
 title = {}
 hovered = { fg = "#93C795", underline = true }
 
@@ -86,7 +86,7 @@ separator_style = { fg = "#A87A91" }
 
 # HELP
 [help]
-on = { fg = "#FF9090" }
+on = { fg = "#DB9AB0" }
 run = { fg = "#81C0FF" }
 hovered = { reversed = true, bold = true }
 footer = { fg = "#EBBEDF", bg = "#523A4B" }
@@ -95,7 +95,7 @@ footer = { fg = "#EBBEDF", bg = "#523A4B" }
 [notify]
 title_info = { fg = "#81C0FF" }
 title_warn = { fg = "#F0E68C" }
-title_error = { fg = "#FFC43D" }
+title_error = { fg = "#FF7979" }
 
 # FILETYPE
 [filetype]
@@ -120,10 +120,10 @@ rules = [
   { url = "*", is = "orphan", fg = "#FF7979"},
 
   # Executables
-  { url = "*", is = "exec", fg = "#FF9090"},
+  { url = "*", is = "exec", fg = "#DB9AB0"},
 
   # Directory
-  { url = "*/", fg = "#FFB0B0" },
+  { url = "*/", fg = "#EAB8C8" },
 ]
 
 # SPOT

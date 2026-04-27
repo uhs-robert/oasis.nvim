@@ -3,15 +3,15 @@
 ## author: uhs-robert
 
 [colors]
-foreground = "#57554b"
+foreground = "#1c1c19"
 background= "#f9f7f5"
-cursor_bg = "#6d6119"
-cursor_border = "#6d6119"
+cursor_bg = "#7b6e1d"
+cursor_border = "#7b6e1d"
 cursor_fg= "#f9f7f5"
 selection_bg= "#e1c99d"
 selection_fg= "#4e370e"
 split= "#58563c"
-compose_cursor= "#79491c"
+compose_cursor= "#a36326"
 scrollbar_thumb= "#e8e0d8"
 visual_bell= "#f3efeb"
 
@@ -19,7 +19,7 @@ ansi = [
   '#555555',
   '#c21313',
   '#3d6c39',
-  '#696223',
+  '#696323',
   '#1662af',
   '#8030de',
   '#366a64',
@@ -29,16 +29,16 @@ ansi = [
 brights = [
   '#5f5349',
   '#c21313',
-  '#396c32',
+  '#396d33',
   '#8f5215',
   '#266884',
   '#7f31de',
   '#356a62',
-  '#5e5432',
+  '#5e5532',
 ]
 
 [colors.indexed]
-16 = '#79491c'
+16 = '#a36326'
 17 = '#c1151c'
 
 [colors.tab_bar]
@@ -46,7 +46,7 @@ background = '#f3efeb'
 inactive_tab_edge = '#eee8e2'
 
 [colors.tab_bar.active_tab]
-bg_color = '#7d752c'
+bg_color = '#686224'
 fg_color = '#f9f7f5'
 intensity = 'Normal'
 italic = false
@@ -55,7 +55,7 @@ underline = 'None'
 
 [colors.tab_bar.inactive_tab]
 bg_color = '#e8e0d8'
-fg_color = '#7d752c'
+fg_color = '#686224'
 intensity = 'Normal'
 italic = false
 strikethrough = false
@@ -63,14 +63,14 @@ underline = 'None'
 
 [colors.tab_bar.inactive_tab_hover]
 bg_color = '#e8e0d8'
-fg_color = '#377c71'
+fg_color = '#2b6159'
 intensity = 'Normal'
 italic = false
 strikethrough = false
 underline = 'None'
 
 [colors.tab_bar.new_tab]
-bg_color = '#377c71'
+bg_color = '#2b6159'
 fg_color = '#f9f7f5'
 intensity = 'Normal'
 italic = false

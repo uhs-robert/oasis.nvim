@@ -3,10 +3,10 @@
 
 return {
 -- Backgrounds
-	bg_core = "#171345",
-	bg_mantle = "#211C59",
+	bg_core = "#101032",
+	bg_mantle = "#1A1646",
 	bg_shadow = "#0C0A2A",
-	bg_surface = "#2C266D",
+	bg_surface = "#241F56",
 
 -- Foregrounds
 	fg_core = "#EEEAFE",
@@ -16,7 +16,7 @@ return {
 
 -- Accents
 	theme_primary = "#F0E68C",
-	theme_secondary = "#CB9EFF",
+	theme_secondary = "#9797E9",
 	theme_accent = "#6DCEEB",
 
 -- Status
@@ -27,7 +27,7 @@ return {
 	ok = "#A3E39A",
 
 -- ANSI Semnatic Colors
-	black = "#171345",
+	black = "#101032",
 	red = "#FF7979",
 	green = "#7FCF78",
 	yellow = "#F0E68C",
@@ -45,7 +45,7 @@ return {
 	bright_white = "#F7F4E9",
 
 -- ANSI Terminal Colors
-	color0 = "#171345",
+	color0 = "#101032",
 	color1 = "#FF7979",
 	color2 = "#7FCF78",
 	color3 = "#F0E68C",
