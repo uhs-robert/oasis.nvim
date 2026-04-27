@@ -107,7 +107,7 @@ local theme = {
   abyss = {
     bg = { shadow = "#050505", core = "#000000", mantle = "#101010", surface = "#1C1C1C" },
     fg = { core = "#F0EBE6", strong = "#FFDACC", dim = "#587179", muted = "#605C4D", comment = "#7A7662" },
-    light_bg_seed = "#6F664F",
+    light_bg_seed = "#000000",
   },
   cactus = {
     bg = { shadow = "#152017", core = "#18231A", mantle = "#253127", surface = "#334137" },
@@ -148,7 +148,7 @@ local theme = {
   moonlight = {
     bg = { shadow = "#020304", core = "#070C13", mantle = "#0F1520", surface = "#1A2330" },
     fg = { core = "#F7F4F2", strong = "#E8F1FF", dim = "#74808F", muted = "#4E6578", comment = "#69809D" },
-    light_bg_seed = "#F0E68C",
+    light_bg_seed = "#E8E5DA",
   },
   night = {
     bg = { shadow = "#020A19", core = "#050F23", mantle = "#0B1832", surface = "#122444" },
@@ -158,7 +158,7 @@ local theme = {
   rose = {
     bg = { shadow = "#2B1523", core = "#301828", mantle = "#3E2636", surface = "#523A4B" },
     fg = { core = "#FADBE4", strong = "#EBBEDF", dim = "#8A786C", muted = "#816175", comment = "#A87A91" },
-    light_bg_seed = "#93C795",
+    light_bg_seed = "#301828",
   },
   scorpion = {
     bg = { shadow = "#080100", core = "#140400", mantle = "#22100B", surface = "#331C16" },
