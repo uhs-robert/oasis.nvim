@@ -198,8 +198,8 @@ end
 function LightTheme.generate_fg(dark_fg, light_bg_core, intensity_level, contrast_targets)
   -- Default contrast targets (can be overridden)
   local default_targets = {
-    strong = 7.0, -- AAA
-    core = 7.0, -- AAA
+    core = 16.0, -- AAA
+    strong = 9.0, -- AAA
     muted = 4.5, -- AA
     comment = 4.0, -- AA (muted, blends with background)
     dim = 3.0, -- Minimal
@@ -248,41 +248,40 @@ end
 function LightTheme.generate_syntax(dark_syntax, light_bg_core, intensity_level, contrast_targets, opts)
   -- Contrast floor control
   opts = opts or {}
-  local min_ratio = math.min(7.0, math.max(4.5, opts.min_ratio or 7.0))
+  local min_ratio = math.min(7.0, math.max(5.8, opts.min_ratio or 7.0))
   local force_aaa = opts.force_aaa or false
 
   -- Default contrast targets for syntax elements (base values)
   local default_targets = {
-    -- Highest Contract (AAA++)
-    constant = min_ratio + 3.0,
-    parameter = min_ratio + 1.5,
-
     -- High contrast (AAA+)
-    type = min_ratio + 0.5,
-    string = min_ratio + 0.5,
-    func = min_ratio + 0.5,
-    conditional = min_ratio + 0.5,
+    func = min_ratio + 1.2,
+    bracket = min_ratio + 1.5,
+    string = min_ratio + 1.2,
 
     -- Standard AAA
-    identifier = min_ratio,
-    builtinVar = min_ratio,
-    regex = min_ratio,
-    builtinConst = min_ratio,
+    conditional = min_ratio,
     builtinFunc = min_ratio,
-    statement = min_ratio,
+    builtinVar = min_ratio,
     exception = min_ratio,
     special = min_ratio,
     operator = min_ratio,
-    punctuation = min_ratio,
+    punctuation = min_ratio + 1.2,
     preproc = min_ratio,
-    delimiter = min_ratio,
+
+    -- Sub AAA
+    statement = min_ratio - 1,
+    regex = min_ratio - 1.2,
+    builtinConst = min_ratio - 1,
+    constant = min_ratio - 1,
+    parameter = min_ratio - 0.5,
+    type = min_ratio - 0.5,
+    identifier = min_ratio - 0.5,
 
     -- Muted (AA) - blend with background
-    bracket = 4.5,
     comment = 4.5,
+    delimiter = 4.5,
 
     -- Dim (A) - Faded into background
-    nontext = 3.0,
   }
   contrast_targets = contrast_targets or default_targets
 
@@ -297,8 +296,8 @@ function LightTheme.generate_syntax(dark_syntax, light_bg_core, intensity_level,
     cold = { l_offset = 4, s_factor = 0.75 },
     -- Warm colors (control): slightly darker, more prominent
     warm = { l_offset = -2, s_factor = 0.80 },
-    -- Outlier colors: for emphasis, most prominent
-    emphasis = { l_offset = 0, s_factor = 1.00 },
+    -- Outlier colors: for emphasis, darkest
+    emphasis = { l_offset = 0, s_factor = 0.85 },
     -- Neutral colors: medium
     neutral = { l_offset = 0, s_factor = 0.65 },
   }
@@ -319,10 +318,10 @@ function LightTheme.generate_syntax(dark_syntax, light_bg_core, intensity_level,
 
   -- Classify syntax elements by category
   local categories = {
-    cold = { "identifier", "type", "string", "regex", "builtinConst" },
+    cold = { "identifier", "type", "typedef", "builtinConst", "parameter", "builtinVar" },
     warm = {
-      "func",
-      "builtinFunc",
+      "string",
+      "regex",
       "statement",
       "exception",
       "conditional",
@@ -330,9 +329,11 @@ function LightTheme.generate_syntax(dark_syntax, light_bg_core, intensity_level,
       "operator",
       "punctuation",
       "preproc",
+      "macro",
+      "constant",
     },
-    emphasis = { "constant", "builtinVar", "parameter" },
-    neutral = { "bracket", "comment", "delimiter" },
+    emphasis = {},
+    neutral = { "bracket", "comment", "delimiter", "builtinFunc", "func" },
   }
 
   -- Generate colors for each category
@@ -400,12 +401,12 @@ function LightTheme.generate_ui(dark_ui, light_bg, intensity_level, contrast_tar
 
   -- Default contrast targets for UI elements
   local default_targets = {
-    lineNumber = min_ratio,
-    dir = min_ratio,
+    lineNumber = min_ratio - 2.5,
+    dir = aa_compliant + 2.0,
     title = aa_compliant,
     border = aa_compliant,
-    diag = 4.5,
-    nontext = 3.0,
+    diag = aa_compliant + 1.0,
+    nontext = 3.5,
   }
   contrast_targets = contrast_targets or default_targets
 
@@ -419,26 +420,34 @@ function LightTheme.generate_ui(dark_ui, light_bg, intensity_level, contrast_tar
     end
   end
 
+  local function soften_ui_color(source, ratio)
+    if type(source) ~= "string" then return light_bg.core end
+    local h, s, _ = ColorUtils.rgb_to_hsl(source)
+    local new_s, base_l = soften_hue(h, s * 0.75, 30 - ((intensity_level - 1) * 2))
+    return ColorUtils.darken_to_contrast(ColorUtils.hsl_to_rgb(h, new_s, base_l), light_bg.core, ratio or min_ratio)
+  end
+
   local result = {}
 
-  -- Simple elements
-  local simple_elements = {
-    "lineNumber",
-    "dir",
-    "title",
-    "border",
-    "nontext",
+  local complex_keys = {
+    visual = true,
+    search = true,
+    match = true,
+    matchParen = true,
+    float = true,
+    picker = true,
+    diag = true,
+    cursorLine = true,
   }
 
-  for _, key in ipairs(simple_elements) do
-    if dark_ui[key] and type(dark_ui[key]) == "string" then
-      local h, s, _ = ColorUtils.rgb_to_hsl(dark_ui[key])
+  for key, value in pairs(dark_ui) do
+    if not complex_keys[key] and type(value) == "string" then
+      local h, s, _ = ColorUtils.rgb_to_hsl(value)
       local base_l = 30 - ((intensity_level - 1) * 2)
       local new_s = s * 0.75
       new_s, base_l = soften_hue(h, new_s, base_l)
       result[key] = ColorUtils.hsl_to_rgb(h, new_s, base_l)
 
-      -- Apply contrast target
       local target_ratio = contrast_targets[key] or default_targets[key] or 7.0
       result[key] = ColorUtils.darken_to_contrast(result[key], light_bg.core, target_ratio)
     end
@@ -477,23 +486,32 @@ function LightTheme.generate_ui(dark_ui, light_bg, intensity_level, contrast_tar
     local fg_h, fg_s, _ = ColorUtils.rgb_to_hsl(dark_ui.matchParen.fg or "#000000")
     local adj_s, adj_l = soften_hue(fg_h, fg_s * 0.75, 30)
     local light_fg = ColorUtils.hsl_to_rgb(fg_h, adj_s, adj_l)
-    light_fg = ColorUtils.darken_to_contrast(light_fg, light_bg.core, min_ratio)
+    light_fg = ColorUtils.darken_to_contrast(light_fg, light_bg.core, min_ratio - 3)
     result.matchParen = {
       bg = light_bg.surface,
       fg = light_fg,
     }
   end
 
-  -- Float window
   if dark_ui.float then
+    local float_title = soften_ui_color(dark_ui.float.title, 7.0)
+    local float_border = soften_ui_color(dark_ui.float.border and dark_ui.float.border.fg, 4.5)
     result.float = {
-      title = result.title or light_bg.core,
-      fg = result.title or light_bg.core,
+      title = float_title,
+      fg = float_title,
       bg = light_bg.mantle,
-      border = {
-        fg = result.border or light_bg.core,
-        bg = light_bg.mantle,
-      },
+      border = { fg = float_border, bg = light_bg.mantle },
+    }
+  end
+
+  if dark_ui.picker then
+    local picker_title = soften_ui_color(dark_ui.picker.title, 7.0)
+    local picker_border = soften_ui_color(dark_ui.picker.border and dark_ui.picker.border.fg, 4)
+    result.picker = {
+      title = picker_title,
+      fg = picker_title,
+      bg = light_bg.mantle,
+      border = { fg = picker_border, bg = light_bg.mantle },
     }
   end
 
@@ -515,6 +533,27 @@ function LightTheme.generate_ui(dark_ui, light_bg, intensity_level, contrast_tar
           bg = diag_bg,
         }
       end
+    end
+  end
+
+  -- Generic fallback: any unknown table with bg/fg string fields gets a
+  -- standard light-mode bg (high-lightness tint) + contrast-checked fg.
+  for key, value in pairs(dark_ui) do
+    if not complex_keys[key] and not result[key] and type(value) == "table" then
+      local out = {}
+      if type(value.bg) == "string" then
+        local h, _, _ = ColorUtils.rgb_to_hsl(value.bg)
+        local adj_s, adj_l = soften_hue(h, 65, 82)
+        out.bg = ColorUtils.hsl_to_rgb(h, adj_s, adj_l)
+      end
+      if type(value.fg) == "string" then
+        local h, s, _ = ColorUtils.rgb_to_hsl(value.fg)
+        local adj_s, adj_l = soften_hue(h, s * 0.75, 25)
+        local fg = ColorUtils.hsl_to_rgb(h, adj_s, adj_l)
+        local bg_ref = out.bg or light_bg.core
+        out.fg = ColorUtils.darken_to_contrast(fg, bg_ref, min_ratio)
+      end
+      if next(out) then result[key] = out end
     end
   end
 
@@ -597,61 +636,32 @@ end
 function LightTheme.generate_theme(dark_theme, intensity_level)
   local result = {}
 
-  -- Theme colors should maintain vibrancy like dark mode
-  -- Intensity affects saturation and lightness
   local sat_factor = 0.9 + (intensity_level * 0.02) -- 0.92 to 1.0
   local light_base = 35 - (intensity_level * 2) -- 33% to 25%
 
-  -- Strong primary (for large text only)
-  if dark_theme.strong_primary then
-    local h, s, _ = ColorUtils.rgb_to_hsl(dark_theme.strong_primary)
-    result.strong_primary = ColorUtils.hsl_to_rgb(h, s * sat_factor, light_base + 5)
-  end
+  -- Per-key lightness offsets; keys not listed get offset 0
+  local l_offsets = {
+    strong_primary = 7.5,
+    primary = -5.5,
+    light_primary = -7.5,
+    secondary = -5.5,
+    secondary_strong = 7.5,
+    secondary_light = -7.5,
+    label = 3,
+    accent = 2,
+    status = 2,
+    cursor = 0,
+  }
 
-  -- Primary color (base primary color)
-  if dark_theme.primary then
-    local h, s, _ = ColorUtils.rgb_to_hsl(dark_theme.primary)
-    result.primary = ColorUtils.hsl_to_rgb(h, s * sat_factor, light_base)
+  for key, value in pairs(dark_theme) do
+    if key == "palette" then
+      result.palette = value
+    elseif type(value) == "string" then
+      local h, s, _ = ColorUtils.rgb_to_hsl(value)
+      local offset = l_offsets[key] or 0
+      result[key] = ColorUtils.hsl_to_rgb(h, s * sat_factor, light_base + offset)
+    end
   end
-
-  -- Light primary (lighter variant)
-  if dark_theme.light_primary then
-    local h, s, _ = ColorUtils.rgb_to_hsl(dark_theme.light_primary)
-    result.light_primary = ColorUtils.hsl_to_rgb(h, s * sat_factor, light_base - 5)
-  end
-
-  -- Secondary color
-  if dark_theme.secondary then
-    local h, s, _ = ColorUtils.rgb_to_hsl(dark_theme.secondary)
-    result.secondary = ColorUtils.hsl_to_rgb(h, s * sat_factor, light_base + 2)
-  end
-
-  -- Secondary strong (darker variant for desert theme)
-  if dark_theme.secondary_strong then
-    local h, s, _ = ColorUtils.rgb_to_hsl(dark_theme.secondary_strong)
-    result.secondary_strong = ColorUtils.hsl_to_rgb(h, s * sat_factor, light_base + 5)
-  end
-
-  -- Secondary light (lighter variant for desert theme)
-  if dark_theme.secondary_light then
-    local h, s, _ = ColorUtils.rgb_to_hsl(dark_theme.secondary_light)
-    result.secondary_light = ColorUtils.hsl_to_rgb(h, s * sat_factor, light_base - 5)
-  end
-
-  -- Label color (for markup and UI elements)
-  if dark_theme.label then
-    local h, s, _ = ColorUtils.rgb_to_hsl(dark_theme.label)
-    result.label = ColorUtils.hsl_to_rgb(h, s * sat_factor, light_base + 3)
-  end
-
-  -- Accent color
-  if dark_theme.accent then
-    local h, s, _ = ColorUtils.rgb_to_hsl(dark_theme.accent)
-    result.accent = ColorUtils.hsl_to_rgb(h, s * sat_factor, light_base + 2)
-  end
-
-  -- Copy palette if it exists
-  if dark_theme.palette then result.palette = dark_theme.palette end
 
   return result
 end
