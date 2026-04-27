@@ -125,7 +125,7 @@ local theme = {
   dune = {
     bg = { shadow = "#241D19", core = "#29211C", mantle = "#352C26", surface = "#483F35" },
     fg = { core = "#E8E5DA", strong = "#EDE8AF", dim = "#6E6E6E", muted = "#826D5A", comment = "#9F8B79" },
-    light_bg_seed = "#D0B081",
+    light_bg_seed = "#F3D3A3",
   },
   lagoon = {
     bg = { shadow = "#0F1522", core = "#101825", mantle = "#1A283F", surface = "#22385C" },
@@ -139,7 +139,7 @@ local theme = {
   midnight = {
     bg = { shadow = "#0C1014", core = "#101418", mantle = "#18202A", surface = "#223040" },
     fg = { core = "#F7F4F2", strong = "#FFE0CC", dim = "#7D7267", muted = "#4E6578", comment = "#69809D" },
-    light_bg_seed = "#F3D3A3",
+    light_bg_seed = "#F17D62",
   },
   mirage = {
     bg = { shadow = "#132025", core = "#152229", mantle = "#1C2B31", surface = "#253840" },
@@ -163,6 +163,7 @@ local theme = {
   scorpion = {
     bg = { shadow = "#080100", core = "#140400", mantle = "#22100B", surface = "#331C16" },
     fg = { core = "#F7EAE5", strong = "#FFD9CF", dim = "#8E7770", muted = "#9A6F66", comment = "#B08A80" },
+    light_bg_seed = "#F9A05E",
   },
   sol = {
     bg = { shadow = "#25110F", core = "#2A1412", mantle = "#341F1B", surface = "#462A25" },
