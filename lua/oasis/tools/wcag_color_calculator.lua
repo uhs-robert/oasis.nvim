@@ -11,7 +11,7 @@ local STANDARDS = {
   AA_NORMAL = 4.5,
   AA_LARGE = 3.0,
 }
-STANDARDS = STANDARDS
+WcagCalculator.STANDARDS = STANDARDS
 
 -- Preset color collections for Oasis themes (reference colors to test)
 PRESETS = {
@@ -259,6 +259,8 @@ end
 function WcagCalculator.adjust_for_target(hex_color, background_hex, target_ratio, max_iterations)
   target_ratio = target_ratio or STANDARDS.AAA_NORMAL
   max_iterations = max_iterations or 100
+  local MIN_DARK_LIGHTNESS = 0.08
+  local MAX_LIGHT_LIGHTNESS = 0.96
 
   local color = Color.from_hex(hex_color)
   local background = Color.from_hex(background_hex)
@@ -268,11 +270,18 @@ function WcagCalculator.adjust_for_target(hex_color, background_hex, target_rati
   -- Determine search direction based on background
   local search_lighter = bg_lightness < 0.5
 
+  -- If target is impossible within the allowed bounds, return max allowed contrast.
+  local fallback_l = search_lighter and MAX_LIGHT_LIGHTNESS or MIN_DARK_LIGHTNESS
+  local fallback_color = Color.from_hsl(hue, saturation, fallback_l)
+  local fallback_ratio = WcagCalculator.contrast_ratio(fallback_color, background)
+  if fallback_ratio < target_ratio then return fallback_color:to_hex(), fallback_ratio end
+
   -- Binary search state
-  local min_l = 0.0
-  local max_l = 1.0
-  local best_color = hex_color
-  local best_ratio = WcagCalculator.contrast_ratio(color, background)
+  local min_l = MIN_DARK_LIGHTNESS
+  local max_l = MAX_LIGHT_LIGHTNESS
+  local best_color = nil
+  local best_ratio = 0
+  -- local best_ratio = WcagCalculator.contrast_ratio(color, background)
 
   for _ = 1, max_iterations do
     -- Check if search range is valid
@@ -301,7 +310,9 @@ function WcagCalculator.adjust_for_target(hex_color, background_hex, target_rati
     end
   end
 
-  return best_color, best_ratio
+  if best_color then return best_color, best_ratio end
+
+  return fallback_color:to_hex(), fallback_ratio
 end
 
 --- Calculate AAA-compliant versions of multiple colors
