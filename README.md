@@ -15,7 +15,7 @@
 
 Born from the classic [desert.vim](https://github.com/fugalh/desert.vim), transformed and modernized into something new entirely.
 
-Oasis follows a warm/cool color split philosophy (**warm = action/flow**, **cool = structure/data**).
+Oasis follows a warm/cool color split philosophy (**warm = action/flow**, **cool = data/properties**).
 
 **All themes meet AAA WCAG high contrast compliance standards**. Light themes allow contrast ratio to be customized.
 
@@ -163,11 +163,6 @@ Light styles use a saturation intensity scale from 1-5: set from `config` or via
 </table>
 
 <p align="center"><small>Use <code>:OasisIntensity</code> to step through intensity levels 1 → 5 in light mode.</small></p>
-
-> [!NOTE]
-> The **Night** style uses the darkest light backgrounds (lightness 78-84%) compared to the rest.
->
-> This provides a middle ground between traditional light and dark modes.
 
 ### Light Previews
 
