@@ -369,12 +369,15 @@ local function create_highlights(c, light_mode, theme)
   -- Light mode overrides
   if light_mode then
     -- Emphasize syntax
-    highlights.MatchParen           = { fg=c.fg.core, bg=c.ui.search.bg, bold=true }
+    highlights.MatchParen           = { fg=c.ui.matchParen.fg, bg=c.ui.search.bg, bold=true, reverse=match_paren_bg }
     highlights.Number               = { fg=c.syntax.constant, bold=true }
     highlights.Conditional          = { fg=c.syntax.conditional, bold=true }
-    highlights.Type                 = { fg=c.syntax.type, bold = true }
+    highlights.Type                 = { fg=c.syntax.type, bold=true }
+    highlights.Function             = { fg=c.syntax.func, bold=true, italic=true }
+    highlights.String               = { fg=c.syntax.string, italic=true }
     highlights["@parameter"]        = { fg=c.syntax.parameter, bold=true }
-    highlights["@keyword.return"]   = { fg=c.syntax.exception, bold=true, italic=true }
+    highlights["@variable.parameter"]        = { fg=c.syntax.parameter, bold=true }
+    highlights["@keyword.return"]   = { fg=c.syntax.exception, bold=true }
     highlights["@string.regexp"]    = { fg=c.syntax.regex, bold=true }
     highlights["@variable.builtin"] = { fg=c.syntax.builtinVar, bold=true }
 
@@ -518,19 +521,19 @@ local PLUGIN_GROUPS = {
   end,
 
   -- Snacks
-  snacks = function(hl, _, _, _, theme)
+  snacks = function(hl, c, _, _, theme)
     -- Snacks Dashboard
     hl.SnacksDashboardHeader = "OasisStrongPrimary"
-    -- hl.SnacksDashboardFile = "OasisLightPrimary"
     hl.SnacksDashboardFile = { fg = theme.light_primary, bg = "NONE", bold = true }
     hl.SnacksDashboardSpecial = "OasisAccent"
     hl.SnacksDashboardIcon = "Number"
     hl.SnacksDashboardDesc = "OasisSecondary"
 
     -- Snacks Picker
-    hl.SnacksPickerBoxTitle = "OasisFloatSecondary"
-    hl.SnacksPickerInputTitle = "OasisFloatSecondary"
-    hl.SnacksPickerInputBorder = "OasisFloatSecondary"
+    hl.SnacksPickerBoxTitle = c.ui.picker and { fg = c.ui.picker.title, bg = c.ui.picker.bg } or "OasisFloatSecondary"
+    hl.SnacksPickerInputTitle = c.ui.picker and { fg = c.ui.picker.title, bg = c.ui.picker.bg } or "OasisFloatSecondary"
+    hl.SnacksPickerInputBorder = c.ui.picker and { fg = c.ui.picker.border.fg, bg = c.ui.picker.border.bg }
+      or "OasisFloatSecondary"
     hl.SnacksPickerPrompt = "Identifier"
     hl.SnacksPickerMatch = "Constant"
   end,
