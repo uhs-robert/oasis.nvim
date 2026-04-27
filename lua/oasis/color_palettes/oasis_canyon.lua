@@ -112,11 +112,16 @@ if need_light then
     search = { bg = p.visual.orange, fg = base.fg.core },
     match = { bg = p.lagoon[500], fg = base.fg.core },
   })
+  local light_theme = vim.tbl_deep_extend("force", {}, dark.theme, {
+    strong_primary = p.sunrise[800],
+    primary = p.sunrise[500],
+    light_primary = p.sunshine[200],
+  })
   light = {
     light_mode = true,
     bg = light_bg,
     fg = LightTheme.generate_fg(base.fg, light_bg.core, opts.light_intensity),
-    theme = LightTheme.generate_theme(base.theme, opts.light_intensity),
+    theme = LightTheme.generate_theme(light_theme, opts.light_intensity),
     terminal = LightTheme.generate_terminal(p.terminal, light_bg.core, opts.light_intensity, opts.contrast),
     diff = LightTheme.apply_contrast(dark.diff, light_bg.core),
     git = LightTheme.apply_contrast(dark.git, light_bg.core),

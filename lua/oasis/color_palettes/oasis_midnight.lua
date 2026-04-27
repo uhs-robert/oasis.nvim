@@ -110,7 +110,7 @@ local dark = {
 local light
 if need_light then
   local LightTheme = require("oasis.tools.light_theme_generator")
-  local target_lightness = { [1] = 93, [2] = 89, [3] = 86, [4] = 83, [5] = 80 }
+  local target_lightness = { [1] = 96, [2] = 93, [3] = 89, [4] = 86, [5] = 83 }
   local light_bg =
     LightTheme.generate_bg(theme.light_bg_seed, opts.light_intensity, { target_l_core = target_lightness })
   local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
