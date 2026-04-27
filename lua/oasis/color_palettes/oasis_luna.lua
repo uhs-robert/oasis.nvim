@@ -19,18 +19,17 @@ local base = {
     primary = p.khaki[500],
     light_primary = p.khaki[300],
     secondary_strong = p.khaki[800],
-    secondary = p.lavender[400],
-    secondary_light = p.lavender[300],
+    secondary = p.iris[400],
+    secondary_light = p.iris[200],
     label = p.red[600],
     accent = p.cyan[500],
     cursor = p.khaki[500],
-    status = p.lavender[400],
+    status = p.iris[500],
   },
 }
 
 -- Dark mode palette
 local dark = {
-  is_desert = true, -- Treat as a desert variant
   bg = base.bg,
   fg = base.fg,
   theme = base.theme,
@@ -92,6 +91,12 @@ local dark = {
       fg = base.fg.strong,
       bg = base.bg.mantle,
       border = { fg = base.theme.secondary, bg = base.bg.mantle },
+    },
+    picker = {
+      title = base.theme.primary,
+      fg = base.fg.strong,
+      bg = base.bg.mantle,
+      border = { fg = base.theme.primary, bg = base.bg.mantle },
     },
     diag = {
       error = { fg = p.diag.error.fg, bg = p.diag.error.bg },
