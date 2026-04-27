@@ -6,31 +6,31 @@
 theme[main_bg]="#f4f1dd"
 
 # Main text color
-theme[main_fg]="#5f4e3a"
+theme[main_fg]="#191510"
 
 # Title color for boxes
-theme[title]="#5f4e3a"
+theme[title]="#191510"
 
 # Highlight color for keyboard shortcuts
-theme[hi_fg]="#9b0303"
+theme[hi_fg]="#750202"
 
 # Background color of selected item in processes box
 theme[selected_bg]="#e9e3ba"
 
 # Foreground color of selected item in processes box
-theme[selected_fg]="#9b0303"
+theme[selected_fg]="#750202"
 
 # Color of inactive/disabled text
-theme[inactive_fg]="#716e64"
+theme[inactive_fg]="#716e65"
 
 # Color of text appearing on top of graphs, i.e uptime and current network graph scaling
-theme[graph_text]="#5a4f46"
+theme[graph_text]="#483f38"
 
 # Background color of the percentage meters
 theme[meter_bg]="#f0ecd1"
 
 # Misc colors for processes box including mini cpu graphs, details memory graph and details status text
-theme[proc_misc]="#5a4f46"
+theme[proc_misc]="#483f38"
 
 # CPU, Memory, Network, Proc box outline colors
 theme[cpu_box]="#3b6736"
@@ -42,9 +42,9 @@ theme[proc_box]="#ba1313"
 theme[div_line]="#e9e3ba"
 
 # Temperature graph color (Blue -> Bright Blue -> Magenta)
-theme[temp_start]="#145ea6"
+theme[temp_start]="#145ea7"
 theme[temp_mid]="#24647d"
-theme[temp_end]="#7a29dc"
+theme[temp_end]="#7a2adc"
 
 # CPU graph colors (Green -> Orange -> Bright Red)
 theme[cpu_start]="#3b6736"
@@ -62,7 +62,7 @@ theme[available_mid]=""
 theme[available_end]="#894f15"
 
 # Mem/Disk cached meter (Blue -> Bright Blue)
-theme[cached_start]="#145ea6"
+theme[cached_start]="#145ea7"
 theme[cached_mid]=""
 theme[cached_end]="#24647d"
 
@@ -72,14 +72,14 @@ theme[free_mid]=""
 theme[free_end]="#376830"
 
 # Download graph colors (Blue -> Bright Blue)
-theme[download_start]="#145ea6"
+theme[download_start]="#145ea7"
 theme[download_mid]=""
 theme[download_end]="#24647d"
 
 # Upload graph colors (Magenta -> Bright Magenta)
 theme[upload_start]="#7b28dc"
 theme[upload_mid]=""
-theme[upload_end]="#7a29dc"
+theme[upload_end]="#7a2adc"
 
 # Process box color gradient for threads, mem and cpu usage (Green -> Orange -> Red)
 theme[process_start]="#3b6736"

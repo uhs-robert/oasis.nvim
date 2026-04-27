@@ -3,38 +3,38 @@
 
 return {
 -- Backgrounds
-	bg_core = "#eaddbe",
-	bg_mantle = "#e6d7b2",
-	bg_shadow = "#e2d1a7",
-	bg_surface = "#decb9b",
+	bg_core = "#dedede",
+	bg_mantle = "#d6d6d6",
+	bg_shadow = "#cfcfcf",
+	bg_surface = "#c7c7c7",
 
 -- Foregrounds
-	fg_core = "#4c453e",
-	fg_strong = "#663b2b",
+	fg_core = "#171412",
+	fg_strong = "#4f2d21",
 	fg_muted = "#64635a",
 	fg_dim = "#728186",
 
 -- Accents
-	theme_primary = "#686222",
-	theme_secondary = "#920101",
+	theme_primary = "#534e1b",
+	theme_secondary = "#6d0101",
 	theme_accent = "#2d6c27",
 
 -- Status
-	error = "#750e0e",
-	warning = "#5c540b",
-	info = "#0e447b",
-	hint = "#0b5e52",
-	ok = "#145d0b",
+	error = "#250404",
+	warning = "#332e06",
+	info = "#051a2e",
+	hint = "#06342d",
+	ok = "#0b3206",
 
 -- ANSI Semnatic Colors
 	black = "#464646",
 	red = "#a51111",
-	green = "#335b30",
+	green = "#345b31",
 	yellow = "#59531e",
-	blue = "#125393",
-	magenta = "#6d21c6",
+	blue = "#125394",
+	magenta = "#6d21c7",
 	cyan = "#2e5955",
-	white = "#524511",
+	white = "#534511",
 	bright_black = "#4e443d",
 	bright_red = "#a51010",
 	bright_green = "#305c2a",
@@ -42,17 +42,17 @@ return {
 	bright_blue = "#1f586f",
 	bright_magenta = "#6c20c8",
 	bright_cyan = "#2e5a53",
-	bright_white = "#4d4629",
+	bright_white = "#4e4629",
 
 -- ANSI Terminal Colors
 	color0 = "#464646",
 	color1 = "#a51111",
-	color2 = "#335b30",
+	color2 = "#345b31",
 	color3 = "#59531e",
-	color4 = "#125393",
-	color5 = "#6d21c6",
+	color4 = "#125394",
+	color5 = "#6d21c7",
 	color6 = "#2e5955",
-	color7 = "#524511",
+	color7 = "#534511",
 	color8 = "#4e443d",
 	color9 = "#a51010",
 	color10 = "#305c2a",
@@ -60,5 +60,5 @@ return {
 	color12 = "#1f586f",
 	color13 = "#6c20c8",
 	color14 = "#2e5a53",
-	color15 = "#4d4629",
+	color15 = "#4e4629",
 }

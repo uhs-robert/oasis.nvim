@@ -4,18 +4,18 @@
 
 # MANAGER
 [mgr]
-cwd = { fg = "#918517" }
+cwd = { fg = "#706712" }
 
 find_keyword = { fg = "#dd986f", bold = true, italic = true, underline = true }
-find_position = { fg = "#be151c", bg = "reset", bold = true, italic = true }
+find_position = { fg = "#bf151c", bg = "reset", bold = true, italic = true }
 
-marker_copied = { fg = "#b2191f", bg = "#b2191f" }
-marker_cut = { fg = "#be151c", bg = "#be151c" }
-marker_marked = { fg = "#0e447b", bg = "#0e447b" }
+marker_copied = { fg = "#a81218", bg = "#a81218" }
+marker_cut = { fg = "#bf151c", bg = "#bf151c" }
+marker_marked = { fg = "#051a2e", bg = "#051a2e" }
 marker_selected = { fg = "#686123", bg = "#686123" }
 
-count_copied = { fg = "#f9f5ec", bg = "#b2191f" }
-count_cut = { fg = "#f9f5ec", bg = "#be151c" }
+count_copied = { fg = "#f9f5ec", bg = "#a81218" }
+count_cut = { fg = "#f9f5ec", bg = "#bf151c" }
 count_selected = { fg = "#f9f5ec", bg = "#686123" }
 
 border_symbol = "│"
@@ -23,19 +23,19 @@ border_style = { fg = "#22587e" }
 
 # TABS
 [tabs]
-active = { fg = "#f9f5ec", bg = "#075b98", bold = true }
-inactive = { fg = "#075b98", bg = "#f5efe0" }
+active = { fg = "#f9f5ec", bg = "#054b7d", bold = true }
+inactive = { fg = "#054b7d", bg = "#f5efe0" }
 
 # MODE
 [mode]
-normal_main = { fg = "#f9f5ec", bg = "#075b98", bold = true }
-normal_alt = { fg = "#075b98", bg = "#eee3c9" }
+normal_main = { fg = "#f9f5ec", bg = "#054b7d", bold = true }
+normal_alt = { fg = "#054b7d", bg = "#eee3c9" }
 
 select_main = { fg = "#f9f5ec", bg = "#8d5115", bold = true }
 select_alt = { fg = "#8d5115", bg = "#eee3c9" }
 
-unset_main = { fg = "#f9f5ec", bg = "#750e0e", bold = true }
-unset_alt = { fg = "#750e0e", bg = "#eee3c9" }
+unset_main = { fg = "#f9f5ec", bg = "#250404", bold = true }
+unset_alt = { fg = "#250404", bg = "#eee3c9" }
 
 # STATUS
 [status]
@@ -43,59 +43,59 @@ sep_left = { open = "", close = "" }
 sep_right = { open = "", close = "" }
 
 progress_label = { fg = "#f9f5ec", bold = true }
-progress_normal = { fg = "#0e447b", bg = "#f9f5ec" }
-progress_error = { fg = "#be151c", bg = "#f9f5ec" }
+progress_normal = { fg = "#051a2e", bg = "#f9f5ec" }
+progress_error = { fg = "#bf151c", bg = "#f9f5ec" }
 
 perm_sep = { fg = "#627287" }
-perm_type = { fg = "#0e447b" }
+perm_type = { fg = "#051a2e" }
 perm_read = { fg = "#686123" }
-perm_write = { fg = "#be151c" }
-perm_exec = { fg = "#b2191f" }
+perm_write = { fg = "#bf151c" }
+perm_exec = { fg = "#a81218" }
 
 # INPUT
 [input]
-border = { fg = "#075b98" }
+border = { fg = "#054b7d" }
 title = {}
 value = {}
 selected = { reversed = true }
 
 # PICK
 [pick]
-border = { fg = "#075b98" }
-active = { fg = "#918517", bold = true }
+border = { fg = "#054b7d" }
+active = { fg = "#706712", bold = true }
 inactive = {}
 
 # COMPLETION
 [cmp]
-border = { fg = "#075b98" }
+border = { fg = "#054b7d" }
 
 # TASKS
 [tasks]
-border = { fg = "#075b98" }
+border = { fg = "#054b7d" }
 title = {}
-hovered = { fg = "#918517", underline = true }
+hovered = { fg = "#706712", underline = true }
 
 # WHICH
 [which]
 mask = { bg = "#f5efe0" }
-cand = { fg = "#918517" }
-rest = { fg = "#55544c" }
-desc = { fg = "#0e447b" }
+cand = { fg = "#706712" }
+rest = { fg = "#45443e" }
+desc = { fg = "#051a2e" }
 separator = "  "
 separator_style = { fg = "#627287" }
 
 # HELP
 [help]
-on = { fg = "#075b98" }
-run = { fg = "#0e447b" }
+on = { fg = "#054b7d" }
+run = { fg = "#051a2e" }
 hovered = { reversed = true, bold = true }
-footer = { fg = "#55544c", bg = "#eee3c9" }
+footer = { fg = "#45443e", bg = "#eee3c9" }
 
 # NOTIFY
 [notify]
-title_info = { fg = "#0e447b" }
+title_info = { fg = "#051a2e" }
 title_warn = { fg = "#686123" }
-title_error = { fg = "#be151c" }
+title_error = { fg = "#bf151c" }
 
 # FILETYPE
 [filetype]
@@ -110,8 +110,8 @@ rules = [
   { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", fg = "#7d2fdd" },
 
   # Documents
-  { mime = "application/{pdf,doc,rtf,txt,md,vnd.oasis.opendocument.text*}", fg = "#3c6a39" },
-  { mime = "text/{richtext,markdown}", fg = "#3c6a39" },
+  { mime = "application/{pdf,doc,rtf,txt,md,vnd.oasis.opendocument.text*}", fg = "#3c6a38" },
+  { mime = "text/{richtext,markdown}", fg = "#3c6a38" },
   { mime = "text/{csv}", fg = "#396b32" },
   { mime = "application/{vnd.ms-excel*,vnd.oasis.opendocument.spreadsheet*,vnd.openxmlformats-officedocument.spreadsheet*}", fg = "#396b32" },
 
@@ -120,17 +120,17 @@ rules = [
   { url = "*", is = "orphan", fg = "#bf1313"},
 
   # Executables
-  { url = "*", is = "exec", fg = "#075b98"},
+  { url = "*", is = "exec", fg = "#054b7d"},
 
   # Directory
-  { url = "*/", fg = "#16556f" },
+  { url = "*/", fg = "#144d64" },
 ]
 
 # SPOT
 [spot]
-border = { fg = "#750e0e" }
-title = { fg = "#918517" }
-tbl_cell = { fg = "#918517", reversed = true }
+border = { fg = "#250404" }
+title = { fg = "#706712" }
+tbl_cell = { fg = "#706712", reversed = true }
 tbl_col = { bold = true }
 
 # extras/yazi/icons.toml.template

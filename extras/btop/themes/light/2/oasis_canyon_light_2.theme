@@ -6,36 +6,36 @@
 theme[main_bg]="#f8f0e7"
 
 # Main text color
-theme[main_fg]="#624e35"
+theme[main_fg]="#1b150e"
 
 # Title color for boxes
-theme[title]="#624e35"
+theme[title]="#1b150e"
 
 # Highlight color for keyboard shortcuts
-theme[hi_fg]="#994f05"
+theme[hi_fg]="#78410a"
 
 # Background color of selected item in processes box
 theme[selected_bg]="#eedac3"
 
 # Foreground color of selected item in processes box
-theme[selected_fg]="#994f05"
+theme[selected_fg]="#78410a"
 
 # Color of inactive/disabled text
 theme[inactive_fg]="#7f6a5f"
 
 # Color of text appearing on top of graphs, i.e uptime and current network graph scaling
-theme[graph_text]="#6e492d"
+theme[graph_text]="#583b24"
 
 # Background color of the percentage meters
 theme[meter_bg]="#f5e9db"
 
 # Misc colors for processes box including mini cpu graphs, details memory graph and details status text
-theme[proc_misc]="#6e492d"
+theme[proc_misc]="#583b24"
 
 # CPU, Memory, Network, Proc box outline colors
 theme[cpu_box]="#3b6837"
 theme[mem_box]="#655f22"
-theme[net_box]="#7c2adc"
+theme[net_box]="#7c29dc"
 theme[proc_box]="#bb1313"
 
 # Box divider line and small boxes line color
@@ -44,7 +44,7 @@ theme[div_line]="#eedac3"
 # Temperature graph color (Blue -> Bright Blue -> Magenta)
 theme[temp_start]="#155ea9"
 theme[temp_mid]="#24647e"
-theme[temp_end]="#7a2bdc"
+theme[temp_end]="#7b2bdc"
 
 # CPU graph colors (Green -> Orange -> Bright Red)
 theme[cpu_start]="#3b6837"
@@ -69,7 +69,7 @@ theme[cached_end]="#24647e"
 # Mem/Disk free meter (Green -> Bright Green)
 theme[free_start]="#3b6837"
 theme[free_mid]=""
-theme[free_end]="#376830"
+theme[free_end]="#376930"
 
 # Download graph colors (Blue -> Bright Blue)
 theme[download_start]="#155ea9"
@@ -77,9 +77,9 @@ theme[download_mid]=""
 theme[download_end]="#24647e"
 
 # Upload graph colors (Magenta -> Bright Magenta)
-theme[upload_start]="#7c2adc"
+theme[upload_start]="#7c29dc"
 theme[upload_mid]=""
-theme[upload_end]="#7a2bdc"
+theme[upload_end]="#7b2bdc"
 
 # Process box color gradient for threads, mem and cpu usage (Green -> Orange -> Red)
 theme[process_start]="#3b6837"
