@@ -104,11 +104,10 @@ local dark = {
 -- Light mode configuration (backgrounds/ui/theme from night fg, syntax from canyon)
 local light
 if need_light then
-  local light_seed = require("oasis.color_palettes.oasis_canyon").dark
-  local target_lightness = { [1] = 84, [2] = 82, [3] = 80, [4] = 78, [5] = 76 }
+  local target_lightness = { [1] = 96, [2] = 93, [3] = 89, [4] = 86, [5] = 83 }
   local LightTheme = require("oasis.tools.light_theme_generator")
   local light_bg =
-    LightTheme.generate_bg(p.theme.dune.fg.core, opts.light_intensity, { target_l_core = target_lightness })
+    LightTheme.generate_bg(theme.light_bg_seed, opts.light_intensity, { target_l_core = target_lightness })
   local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
     search = { bg = p.visual.orange, fg = base.fg.core },
     match = { bg = p.visual.red, fg = base.fg.core },
@@ -116,12 +115,12 @@ if need_light then
   light = {
     light_mode = true,
     bg = light_bg,
-    fg = LightTheme.generate_fg(light_seed.fg, light_bg.core, opts.light_intensity),
+    fg = LightTheme.generate_fg(dark.fg, light_bg.core, opts.light_intensity),
     theme = LightTheme.generate_theme(dark.theme, opts.light_intensity),
-    terminal = LightTheme.generate_terminal(light_seed.terminal, light_bg.core, opts.light_intensity, opts.contrast),
+    terminal = LightTheme.generate_terminal(dark.terminal, light_bg.core, opts.light_intensity, opts.contrast),
     diff = LightTheme.apply_contrast(dark.diff, light_bg.core),
     git = LightTheme.apply_contrast(dark.git, light_bg.core),
-    syntax = LightTheme.generate_syntax(light_seed.syntax, light_bg.core, opts.light_intensity, nil, opts.contrast),
+    syntax = LightTheme.generate_syntax(dark.syntax, light_bg.core, opts.light_intensity, nil, opts.contrast),
     ui = LightTheme.generate_ui(light_ui, light_bg, opts.light_intensity),
   }
 end
