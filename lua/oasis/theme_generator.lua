@@ -372,7 +372,7 @@ local function create_highlights(c, light_mode, theme)
   -- Apply light mode overrides
   if light_mode then
     -- Emphasize syntax
-    highlights.MatchParen                      = { fg=c.ui.matchParen.fg, bg=c.ui.search.bg, bold=true, reverse=match_paren_bg }
+    highlights.MatchParen                      = { fg=c.ui.matchParen.fg, bg=c.ui.matchParen.bg, bold=true, reverse=match_paren_bg }
     highlights.Type                            = { fg=c.syntax.type, bold=true }
     highlights.Function                        = { fg=c.syntax.func, bold=true, italic=true }
     highlights.String                          = { fg=c.syntax.string, italic=true }
