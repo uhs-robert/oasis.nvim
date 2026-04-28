@@ -4,9 +4,9 @@
 return {
 -- Backgrounds
 	bg_core = "#f3edcf",
-	bg_mantle = "#ede4b7",
+	bg_mantle = "#eee6bd",
 	bg_shadow = "#f0e8c3",
-	bg_surface = "#eadfaa",
+	bg_surface = "#e7db9e",
 
 -- Foregrounds
 	fg_core = "#191510",

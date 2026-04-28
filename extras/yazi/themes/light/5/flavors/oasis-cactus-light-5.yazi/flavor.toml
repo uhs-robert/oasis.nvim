@@ -19,23 +19,23 @@ count_cut = { fg = "#c7e5d2", bg = "#a41218" }
 count_selected = { fg = "#c7e5d2", bg = "#59531d" }
 
 border_symbol = "│"
-border_style = { fg = "#384b39" }
+border_style = { fg = "#445b46" }
 
 # TABS
 [tabs]
 active = { fg = "#c7e5d2", bg = "#234124", bold = true }
-inactive = { fg = "#234124", bg = "#b2dbc1" }
+inactive = { fg = "#234124", bg = "#b7dec5" }
 
 # MODE
 [mode]
 normal_main = { fg = "#c7e5d2", bg = "#234124", bold = true }
-normal_alt = { fg = "#234124", bg = "#a8d6b9" }
+normal_alt = { fg = "#234124", bg = "#9dd2b0" }
 
 select_main = { fg = "#c7e5d2", bg = "#794512", bold = true }
-select_alt = { fg = "#794512", bg = "#a8d6b9" }
+select_alt = { fg = "#794512", bg = "#9dd2b0" }
 
 unset_main = { fg = "#c7e5d2", bg = "#701818", bold = true }
-unset_alt = { fg = "#701818", bg = "#a8d6b9" }
+unset_alt = { fg = "#701818", bg = "#9dd2b0" }
 
 # STATUS
 [status]
@@ -77,7 +77,7 @@ hovered = { fg = "#630000", underline = true }
 
 # WHICH
 [which]
-mask = { bg = "#b2dbc1" }
+mask = { bg = "#b7dec5" }
 cand = { fg = "#630000" }
 rest = { fg = "#293a2d" }
 desc = { fg = "#184571" }
@@ -89,7 +89,7 @@ separator_style = { fg = "#526854" }
 on = { fg = "#234124" }
 run = { fg = "#184571" }
 hovered = { reversed = true, bold = true }
-footer = { fg = "#293a2d", bg = "#a8d6b9" }
+footer = { fg = "#293a2d", bg = "#9dd2b0" }
 
 # NOTIFY
 [notify]
@@ -176,7 +176,7 @@ files = [
   { name = "node_modules", text = "", fg = "#a51010" },
   { name = ".prettierrc.toml", text = "", fg = "#20586f" },
   { name = "build.zig.zon", text = "", fg = "#59531d" },
-  { name = ".ds_store", text = "", fg = "#a8d6b9" },
+  { name = ".ds_store", text = "", fg = "#9dd2b0" },
   { name = "PKGBUILD", text = "", fg = "#20586f" },
   { name = ".prettierrc", text = "", fg = "#20586f" },
   { name = ".bash_profile", text = "", fg = "#305c2b" },
@@ -345,7 +345,7 @@ exts = [
   { name = "vi", text = "", fg = "#794512" },
   { name = "msf", text = "", fg = "#20586f" },
   { name = "blp", text = "󰺾", fg = "#20586f" },
-  { name = "less", text = "", fg = "#a8d6b9" },
+  { name = "less", text = "", fg = "#9dd2b0" },
   { name = "sh", text = "", fg = "#423b33" },
   { name = "odg", text = "", fg = "#794512" },
   { name = "mint", text = "󰌪", fg = "#305c2b" },
@@ -374,7 +374,7 @@ exts = [
   { name = "java", text = "", fg = "#a51010" },
   { name = "cjs", text = "", fg = "#794512" },
   { name = "qm", text = "", fg = "#125393" },
-  { name = "ebuild", text = "", fg = "#a8d6b9" },
+  { name = "ebuild", text = "", fg = "#9dd2b0" },
   { name = "mustache", text = "", fg = "#59531d" },
   { name = "terminal", text = "", fg = "#305c2b" },
   { name = "ejs", text = "", fg = "#794512" },
@@ -402,7 +402,7 @@ exts = [
   { name = "7z", text = "", fg = "#59531d" },
   { name = "apl", text = "⍝", fg = "#59531d" },
   { name = "epp", text = "", fg = "#59531d" },
-  { name = "app", text = "", fg = "#a8d6b9" },
+  { name = "app", text = "", fg = "#9dd2b0" },
   { name = "dot", text = "󱁉", fg = "#423b33" },
   { name = "kpp", text = "", fg = "#6c21c7" },
   { name = "eot", text = "", fg = "#6d20c7" },
@@ -423,7 +423,7 @@ exts = [
   { name = "xpi", text = "", fg = "#59531d" },
   { name = "fcmat", text = "", fg = "#a51010" },
   { name = "pot", text = "", fg = "#125393" },
-  { name = "bin", text = "", fg = "#a8d6b9" },
+  { name = "bin", text = "", fg = "#9dd2b0" },
   { name = "xlsx", text = "󰈛", fg = "#423b33" },
   { name = "aac", text = "", fg = "#125393" },
   { name = "kicad_sym", text = "", fg = "#6d20c7" },
@@ -463,7 +463,7 @@ exts = [
   { name = "igs", text = "󰻫", fg = "#305c2b" },
   { name = "vsix", text = "", fg = "#423b33" },
   { name = "vim", text = "", fg = "#305c2b" },
-  { name = "diff", text = "", fg = "#a8d6b9" },
+  { name = "diff", text = "", fg = "#9dd2b0" },
   { name = "drl", text = "", fg = "#a51010" },
   { name = "erl", text = "", fg = "#a51010" },
   { name = "vhdl", text = "󰍛", fg = "#305c2b" },
@@ -502,7 +502,7 @@ exts = [
   { name = "m3u8", text = "󰲹", fg = "#a51010" },
   { name = "image", text = "", fg = "#a51010" },
   { name = "tfvars", text = "", fg = "#423b33" },
-  { name = "tex", text = "", fg = "#a8d6b9" },
+  { name = "tex", text = "", fg = "#9dd2b0" },
   { name = "cbl", text = "⚙", fg = "#423b33" },
   { name = "flc", text = "", fg = "#6d20c7" },
   { name = "elc", text = "", fg = "#463b0f" },
@@ -520,7 +520,7 @@ exts = [
   { name = "img", text = "", fg = "#a51010" },
   { name = "t", text = "", fg = "#125393" },
   { name = "fcstd1", text = "", fg = "#a51010" },
-  { name = "out", text = "", fg = "#a8d6b9" },
+  { name = "out", text = "", fg = "#9dd2b0" },
   { name = "jsx", text = "", fg = "#125393" },
   { name = "bash", text = "", fg = "#305c2b" },
   { name = "edn", text = "", fg = "#125393" },
@@ -571,7 +571,7 @@ exts = [
   { name = "ifc", text = "󰻫", fg = "#305c2b" },
   { name = "spec.js", text = "", fg = "#794512" },
   { name = "so", text = "", fg = "#6d20c7" },
-  { name = "desktop", text = "", fg = "#a8d6b9" },
+  { name = "desktop", text = "", fg = "#9dd2b0" },
   { name = "sml", text = "λ", fg = "#59531d" },
   { name = "slvs", text = "󰻫", fg = "#305c2b" },
   { name = "pp", text = "", fg = "#59531d" },
@@ -617,7 +617,7 @@ exts = [
   { name = "d.ts", text = "", fg = "#59531d" },
   { name = "razor", text = "󱦘", fg = "#423b33" },
   { name = "rake", text = "", fg = "#a51010" },
-  { name = "patch", text = "", fg = "#a8d6b9" },
+  { name = "patch", text = "", fg = "#9dd2b0" },
   { name = "cuh", text = "", fg = "#463b0f" },
   { name = "d", text = "", fg = "#a51010" },
   { name = "query", text = "", fg = "#305c2b" },
@@ -632,7 +632,7 @@ exts = [
   { name = "obj", text = "󰆧", fg = "#463b0f" },
   { name = "pyi", text = "", fg = "#794512" },
   { name = "pyd", text = "", fg = "#794512" },
-  { name = "exe", text = "", fg = "#a8d6b9" },
+  { name = "exe", text = "", fg = "#9dd2b0" },
   { name = "pyc", text = "", fg = "#794512" },
   { name = "fctb", text = "", fg = "#a51010" },
   { name = "part", text = "", fg = "#2d5a53" },
@@ -647,7 +647,7 @@ exts = [
   { name = "prisma", text = "", fg = "#423b33" },
   { name = "conf", text = "", fg = "#463b0f" },
   { name = "clj", text = "", fg = "#305c2b" },
-  { name = "o", text = "", fg = "#a8d6b9" },
+  { name = "o", text = "", fg = "#9dd2b0" },
   { name = "mp4", text = "", fg = "#59531d" },
   { name = "cc", text = "", fg = "#a51010" },
   { name = "kicad_prl", text = "", fg = "#6d20c7" },
@@ -753,8 +753,8 @@ exts = [
   { name = "kicad_sch", text = "", fg = "#6d20c7" },
   { name = "epub", text = "", fg = "#59531d" },
   { name = "env", text = "", fg = "#794512" },
-  { name = "magnet", text = "", fg = "#a8d6b9" },
-  { name = "elf", text = "", fg = "#a8d6b9" },
+  { name = "magnet", text = "", fg = "#9dd2b0" },
+  { name = "elf", text = "", fg = "#9dd2b0" },
   { name = "fodg", text = "", fg = "#794512" },
   { name = "svg", text = "󰜡", fg = "#59531d" },
   { name = "dwg", text = "󰻫", fg = "#305c2b" },
