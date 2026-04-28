@@ -154,38 +154,34 @@ function LightTheme.apply_intensity(base_color, intensity_level)
 end
 
 --- Generate complete light mode background set from dark mode foreground
---- Derives all backgrounds (core, mantle, shadow, surface) from dark fg.core
---- @param dark_fg_core string Dark mode fg.core color (source of truth)
+--- Derives all backgrounds (core, mantle, shadow, surface) from one seed color
+--- @param light_bg_seed string Dark mode core seed color
 --- @param intensity_level number Light intensity (1-5)
 --- @param opts? table Optional overrides { target_l_core = number|table, l_step = number }
 --- @return table Background colors {core, mantle, shadow, surface}
-function LightTheme.generate_bg(dark_fg_core, intensity_level, opts)
-  -- Generate base bg.core using intensity formula
-  local core = LightTheme.apply_intensity(dark_fg_core, intensity_level)
+function LightTheme.generate_bg(light_bg_seed, intensity_level, opts)
+  local bg_core = LightTheme.apply_intensity(light_bg_seed, intensity_level)
+  local h, s, l = ColorUtils.rgb_to_hsl(bg_core)
 
-  -- Get HSL of core to derive related backgrounds
-  local h, s, l = ColorUtils.rgb_to_hsl(core)
-
-  -- Optional lightness override for palettes that want a specific band
+  -- Optional lightness override
   if opts and opts.target_l_core then
     local override = opts.target_l_core
     if type(override) == "table" then override = override[intensity_level] end
     if override then l = override end
-    core = ColorUtils.hsl_to_rgb(h, s, l)
+    bg_core = ColorUtils.hsl_to_rgb(h, s, l)
   end
 
-  -- Progressive darkening: core (lightest) → mantle → shadow → surface (darkest)
-  -- Each step is 3% darker in lightness by default
+  -- Progressive darkening by 3% steps: core -> shadow -> mantle -> surface
   local step = (opts and opts.l_step) or 3
-  local mantle = ColorUtils.hsl_to_rgb(h, s, l - step)
-  local shadow = ColorUtils.hsl_to_rgb(h, s, l - (step * 2))
-  local surface = ColorUtils.hsl_to_rgb(h, s, l - (step * 3))
+  local bg_shadow = ColorUtils.hsl_to_rgb(h, s, l - step)
+  local bg_mantle = ColorUtils.hsl_to_rgb(h, s, l - (step * 2))
+  local bg_surface = ColorUtils.hsl_to_rgb(h, s, l - (step * 3))
 
   return {
-    core = core,
-    mantle = mantle,
-    shadow = shadow,
-    surface = surface,
+    shadow = bg_shadow,
+    core = bg_core,
+    mantle = bg_mantle,
+    surface = bg_surface,
   }
 end
 
