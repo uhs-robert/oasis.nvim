@@ -140,8 +140,8 @@ Click any card below to view the full preview and syntax sample. [↓ Or click h
   </tr>
   <tr>
     <td align="center"><a href="#lagoon-dark"><img src="assets/screenshots/lagoon-dark-dashboard.png" alt="Lagoon (dark)" width="auto"></a><br><strong>Lagoon (Default)</strong><br><em>Blue</em></td>
-    <td align="center"><a href="#twilight-dark"><img src="assets/screenshots/twilight-dark-dashboard.png" alt="Twilight (dark)" width="auto"></a><br><strong>Twilight</strong><br><em>Sunset</em></td>
     <td align="center"><a href="#luna-dark"><img src="assets/screenshots/luna-dark-dashboard.png" alt="Luna (dark)" width="auto"></a><br><strong>Luna</strong><br><em>Indigo</em></td>
+    <td align="center"><a href="#twilight-dark"><img src="assets/screenshots/twilight-dark-dashboard.png" alt="Twilight (dark)" width="auto"></a><br><strong>Twilight</strong><br><em>Sunset</em></td>
     <td align="center"><a href="#rose-dark"><img src="assets/screenshots/rose-dark-dashboard.png" alt="Rose (dark)" width="auto"></a><br><strong>Rose</strong><br><em>Pink</em></td>
   </tr>
 </table>
@@ -189,8 +189,8 @@ The examples below use the default intensity of level 3.
   </tr>
   <tr>
     <td align="center"><a href="#lagoon-light"><img src="assets/screenshots/lagoon-light-3-dashboard.png" alt="Lagoon (light)" width="auto"></a><br><strong>Lagoon</strong></td>
-    <td align="center"><a href="#twilight-light"><img src="assets/screenshots/twilight-light-3-dashboard.png" alt="Twilight (light)" width="auto"></a><br><strong>Twilight</strong></td>
     <td align="center"><a href="#luna-light"><img src="assets/screenshots/luna-light-3-dashboard.png" alt="Luna (dark)" width="auto"></a><br><strong>Luna</strong><br><em>Indigo</em></td>
+    <td align="center"><a href="#twilight-light"><img src="assets/screenshots/twilight-light-3-dashboard.png" alt="Twilight (light)" width="auto"></a><br><strong>Twilight</strong></td>
     <td align="center"><a href="#rose-light"><img src="assets/screenshots/rose-light-3-dashboard.png" alt="Rose (light)" width="auto"></a><br><strong>Rose</strong></td>
   </tr>
 </table>
@@ -321,8 +321,8 @@ colorscheme oasis-dune
 colorscheme oasis-cactus
 colorscheme oasis-mirage
 colorscheme oasis-lagoon
-colorscheme oasis-twilight
 colorscheme oasis-luna
+colorscheme oasis-twilight
 colorscheme oasis-rose
 ```
 
@@ -542,7 +542,7 @@ Oasis offers _many_ different styles to choose from. Have fun customizing with `
 
 ```lua
 -- Oasis.nvim
--- Styles: "night", "moonlight", "midnight", "abyss", "starlight", "desert", "sol", "canyon", "dune", "cactus", "mirage", "lagoon", "twilight", "rose"
+-- Styles: "night", "moonlight", "midnight", "abyss", "starlight", "desert", "sol", "canyon", "dune", "cactus", "mirage", "lagoon", "luna", "twilight", "rose"
 require("oasis").setup({
   style = "lagoon",                     -- Primary style, the default used when colorscheme is set to "oasis"
   dark_style = nil,                     -- Applies to primary style only: Overrides dark mode with another theme (e.g., "abyss")
@@ -884,19 +884,19 @@ require("oasis").setup({
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
-    <a id="twilight-dark"></a>
-    <h3>Twilight (Dark · Sunset)</h3>
-    <img src="./assets/screenshots/twilight-dark-dashboard.png" alt="Twilight dark mode dashboard"></img>
-    <img src="./assets/screenshots/twilight-dark-code.png" alt="Twilight dark mode code sample"></img>
-    <p align="center">
-      <a href="#dark-previews">↑ Back to Dark Styles</a>
-    </p>
     <a id="luna-dark"></a>
     <h3>Luna (Dark · Indigo)</h3>
     <img src="./assets/screenshots/luna-dark-dashboard.png" alt="Luna dark mode dashboard"></img>
     <img src="./assets/screenshots/luna-dark-code.png" alt="Luna dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to dark Styles</a>
+    </p>
+    <a id="twilight-dark"></a>
+    <h3>Twilight (Dark · Sunset)</h3>
+    <img src="./assets/screenshots/twilight-dark-dashboard.png" alt="Twilight dark mode dashboard"></img>
+    <img src="./assets/screenshots/twilight-dark-code.png" alt="Twilight dark mode code sample"></img>
+    <p align="center">
+      <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="rose-dark"></a>
     <h3>Rose (Dark · Pink)</h3>
@@ -1002,17 +1002,17 @@ require("oasis").setup({
     <p align="center">
       <a href="#light-previews">↑ Back to Light Styles</a>
     </p>
-    <a id="twilight-light"></a>
-    <h3>Twilight (Light)</h3>
-    <img src="./assets/screenshots/twilight-light-3-dashboard.png" alt="Twilight light mode dashboard"></img>
-    <img src="./assets/screenshots/twilight-light-3-code.png" alt="Twilight light mode code sample"></img>
-    <p align="center">
-      <a href="#light-previews">↑ Back to Light Styles</a>
-    </p>
     <a id="luna-light"></a>
     <h3>Luna (Light)</h3>
     <img src="./assets/screenshots/luna-light-3-dashboard.png" alt="Luna light mode dashboard"></img>
     <img src="./assets/screenshots/luna-light-3-code.png" alt="Luna light mode code sample"></img>
+    <p align="center">
+      <a href="#light-previews">↑ Back to Light Styles</a>
+    </p>
+    <a id="twilight-light"></a>
+    <h3>Twilight (Light)</h3>
+    <img src="./assets/screenshots/twilight-light-3-dashboard.png" alt="Twilight light mode dashboard"></img>
+    <img src="./assets/screenshots/twilight-light-3-code.png" alt="Twilight light mode code sample"></img>
     <p align="center">
       <a href="#light-previews">↑ Back to Light Styles</a>
     </p>
