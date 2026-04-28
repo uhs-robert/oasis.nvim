@@ -521,12 +521,10 @@ function LightTheme.generate_ui(dark_ui, light_bg, intensity_level, contrast_tar
     for level, colors in pairs(dark_ui.diag) do
       if type(colors) == "table" and colors.fg then
         local h, _, _ = ColorUtils.rgb_to_hsl(colors.fg)
-        -- Create vibrant, darker background (higher saturation, lower lightness)
         local adj_s, adj_l = soften_hue(h, 55, 70)
         local diag_bg = ColorUtils.hsl_to_rgb(h, adj_s, adj_l)
-        -- Generate dark foreground from the same hue for AA contrast
-        local diag_fg = ColorUtils.hsl_to_rgb(h, 80, 15)
-        diag_fg = ColorUtils.darken_to_contrast(diag_fg, diag_bg, contrast_targets.diag)
+        local diag_fg = ColorUtils.hsl_to_rgb(h, 65, 45)
+        diag_fg = ColorUtils.darken_to_contrast(diag_fg, diag_bg, 4.5)
 
         result.diag[level] = {
           fg = diag_fg,
