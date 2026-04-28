@@ -115,6 +115,7 @@ if need_light then
   local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
     search = { bg = p.visual.pink, fg = base.fg.core },
     match = { bg = p.visual.teal, fg = base.fg.core },
+    matchParen = { bg = dark.ui.matchParen.bg, fg = p.cactus[500] },
   })
   local light_terminal = LightTheme.generate_terminal(p.terminal, light_bg.core, opts.light_intensity, opts.contrast)
   light = {

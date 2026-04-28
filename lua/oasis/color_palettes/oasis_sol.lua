@@ -114,6 +114,15 @@ if need_light then
   local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
     search = { bg = p.visual.red, fg = base.fg.core },
     match = { bg = p.visual.green, fg = base.fg.core },
+    title = base.theme.primary,
+    border = base.theme.secondary,
+    float = {
+      title = base.theme.primary,
+      fg = base.fg.strong,
+      bg = base.bg.mantle,
+      border = { fg = base.theme.strong_primary, bg = base.bg.mantle },
+    },
+    matchParen = { bg = dark.ui.matchParen.bg, fg = p.cactus[500] },
   })
   local light_theme = vim.tbl_deep_extend("force", {}, dark.theme, {
     strong_primary = p.red[800],

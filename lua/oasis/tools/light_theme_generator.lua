@@ -165,7 +165,7 @@ function LightTheme.generate_bg(light_bg_seed, intensity_level, opts)
   -- Seed encodes desired hue/saturation/lightness for intensity 3.
   if opts and opts.preserve_hsl then
     local h, s, seed_l = ColorUtils.rgb_to_hsl(light_bg_seed)
-    local l = math.max(0, math.min(100, seed_l + (3 - intensity_level) * 3))
+    local l = math.max(70, math.min(97, seed_l + (3 - intensity_level) * 3))
     bg_core = ColorUtils.hsl_to_rgb(h, s, l)
   else
     bg_core = LightTheme.apply_intensity(light_bg_seed, intensity_level)
@@ -180,11 +180,11 @@ function LightTheme.generate_bg(light_bg_seed, intensity_level, opts)
     bg_core = ColorUtils.hsl_to_rgb(h, s, l)
   end
 
-  -- Progressive darkening by 3% steps: core -> shadow -> mantle -> surface
+  -- Darken in increasing step multipliers
   local step = (opts and opts.l_step) or 3
   local bg_shadow = ColorUtils.hsl_to_rgb(h, s, l - step)
-  local bg_mantle = ColorUtils.hsl_to_rgb(h, s, l - (step * 2))
-  local bg_surface = ColorUtils.hsl_to_rgb(h, s, l - (step * 3))
+  local bg_mantle = ColorUtils.hsl_to_rgb(h, s, l - (step * 1.5))
+  local bg_surface = ColorUtils.hsl_to_rgb(h, s, l - (step * 4))
 
   return {
     shadow = bg_shadow,
@@ -401,15 +401,15 @@ function LightTheme.generate_ui(dark_ui, light_bg, intensity_level, contrast_tar
   -- Contrast floor control
   opts = opts or {}
   local min_ratio = math.min(7.0, math.max(3.0, opts.min_ratio or 7.0))
-  local aa_compliant = math.max(4.5, min_ratio)
+  local aa_compliant = math.min(4.5, min_ratio)
   local force_aaa = opts.force_aaa or false
 
   -- Default contrast targets for UI elements
   local default_targets = {
     lineNumber = min_ratio - 2.5,
     dir = aa_compliant + 2.0,
-    title = aa_compliant,
-    border = aa_compliant,
+    title = aa_compliant + 1.0,
+    border = aa_compliant + 1.0,
     diag = aa_compliant + 1.0,
     nontext = 3.5,
   }
@@ -491,7 +491,7 @@ function LightTheme.generate_ui(dark_ui, light_bg, intensity_level, contrast_tar
     local fg_h, fg_s, _ = ColorUtils.rgb_to_hsl(dark_ui.matchParen.fg or "#000000")
     local adj_s, adj_l = soften_hue(fg_h, fg_s * 0.75, 30)
     local light_fg = ColorUtils.hsl_to_rgb(fg_h, adj_s, adj_l)
-    light_fg = ColorUtils.darken_to_contrast(light_fg, light_bg.core, min_ratio - 3)
+    light_fg = ColorUtils.darken_to_contrast(light_fg, light_bg.core, aa_compliant)
     result.matchParen = {
       bg = light_bg.surface,
       fg = light_fg,
@@ -499,8 +499,8 @@ function LightTheme.generate_ui(dark_ui, light_bg, intensity_level, contrast_tar
   end
 
   if dark_ui.float then
-    local float_title = soften_ui_color(dark_ui.float.title, 7.0)
-    local float_border = soften_ui_color(dark_ui.float.border and dark_ui.float.border.fg, 4.5)
+    local float_title = soften_ui_color(dark_ui.float.title, 8.0)
+    local float_border = soften_ui_color(dark_ui.float.border and dark_ui.float.border.fg, aa_compliant + 1.0)
     result.float = {
       title = float_title,
       fg = float_title,
@@ -511,7 +511,7 @@ function LightTheme.generate_ui(dark_ui, light_bg, intensity_level, contrast_tar
 
   if dark_ui.picker then
     local picker_title = soften_ui_color(dark_ui.picker.title, 7.0)
-    local picker_border = soften_ui_color(dark_ui.picker.border and dark_ui.picker.border.fg, 4)
+    local picker_border = soften_ui_color(dark_ui.picker.border and dark_ui.picker.border.fg, aa_compliant + 1.0)
     result.picker = {
       title = picker_title,
       fg = picker_title,

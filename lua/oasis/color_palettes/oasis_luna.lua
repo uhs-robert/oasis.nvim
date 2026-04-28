@@ -112,14 +112,14 @@ local dark = {
 local light
 if need_light then
   local LightTheme = require("oasis.tools.light_theme_generator")
-  local light_bg =
-    LightTheme.generate_bg(theme.light_bg_seed, opts.light_intensity, { preserve_hsl = true })
+  local light_bg = LightTheme.generate_bg(theme.light_bg_seed, opts.light_intensity, { preserve_hsl = true })
   local light_theme = vim.tbl_deep_extend("force", {}, base.theme, {
     strong_primary = p.iris[800],
   })
   local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
     search = { bg = p.visual.indigo, fg = base.fg.core },
     match = { bg = p.visual.yellow, fg = base.fg.core },
+    matchParen = { bg = dark.ui.matchParen.bg, fg = p.gold[300] },
   })
   local light_terminal = LightTheme.generate_terminal(p.terminal, light_bg.core, opts.light_intensity, opts.contrast)
   light = {
