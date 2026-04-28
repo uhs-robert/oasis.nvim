@@ -50,10 +50,13 @@ local function create_highlights(c, light_mode, theme)
     CursorIM                   = "Cursor", -- Like Cursor, but used when in IME mode |CursorIM|
     CursorColumn               = { bg=c.ui.cursorLine }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
     CursorLine                 = { bg=c.ui.cursorLine }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermc.fg OR guifg) is not set.
+    Added                      = { fg=c.diff.add }, -- Added line
+    Changed                    = { fg=c.diff.change }, -- Changed line
+    Removed                    = { fg=c.diff.delete }, -- Deleted line
     DiffAdd                    = { bg=c.diff.add }, -- Diff mode: Added line |diff.txt|
     DiffChange                 = { bg=c.diff.change }, -- Diff mode: Changed line |diff.txt|
     DiffDelete                 = { bg=c.diff.delete }, -- Diff mode: Deleted line |diff.txt|
-    DiffText                   = { bg=c.diff.text }, -- Diff mode: Changed text within a changed line |diff.txt|
+    DiffText                   = { bg=c.fg.core }, -- Diff mode: Changed text within a changed line |diff.txt|
     Directory                  = { fg=c.ui.dir }, -- Directory names (and other special names in listings)
     TermCursor                 = { reverse=true }, -- Cursor in a focused terminal
     TermCursorNC               = { reverse=true }, -- Cursor in an unfocusd terminal
@@ -315,9 +318,9 @@ local function create_highlights(c, light_mode, theme)
     ["@markup.link.url"]      = "@string.special.url",
     ["@markup.raw"]           = "String",
 
-    ["@diff.plus"]            = { fg=c.diff.add }, -- added text (for diff files)
-    ["@diff.minus"]           = { fg=c.diff.delete }, -- deleted text (for diff files)
-    ["@diff.delta"]           = { fg=c.diff.change }, -- changed text (for diff files)
+    ["@diff.plus"]            = "Added", -- added text (for diff files)
+    ["@diff.delta"]           = "Changed", -- changed text (for diff files)
+    ["@diff.minus"]           = "Removed", -- deleted text (for diff files)
 
     -- LSP
     ["@lsp.type.boolean"]                      = "@boolean",
@@ -366,7 +369,7 @@ local function create_highlights(c, light_mode, theme)
     ["@lsp.typemod.variable.static"]           = "@constant",
   }
 
-  -- Light mode overrides
+  -- Apply light mode overrides
   if light_mode then
     -- Emphasize syntax
     highlights.MatchParen           = { fg=c.ui.matchParen.fg, bg=c.ui.search.bg, bold=true, reverse=match_paren_bg }
@@ -381,10 +384,20 @@ local function create_highlights(c, light_mode, theme)
     highlights["@string.regexp"]    = { fg=c.syntax.regex, bold=true }
     highlights["@variable.builtin"] = { fg=c.syntax.builtinVar, bold=true }
 
-    -- Inline diff
-    highlights.DiffAdd              = { fg=c.fg.core,     bg="#DDEDDC" }
-    highlights.DiffChange           = { fg=c.fg.core,     bg=c.bg.surface }
-    highlights.DiffDelete           = { fg=c.fg.core,     bg="#F3D8D6" }
+    -- Diff
+    highlights.Added                      = { fg=c.diff.add, bold=true }
+    highlights.Changed                    = { fg=c.diff.change, bold=true }
+    highlights.Removed                    = { fg=c.diff.delete, bold=true }
+    highlights.DiffAdd                    = { fg=c.diff.add, bg=c.ui.diag.ok.bg, bold=true }
+    highlights.DiffChange                 = { fg=c.fg.core, bg=c.bg.surface, bold=true }
+    highlights.DiffDelete                 = { fg=c.diff.delete, bg=c.ui.diag.error.bg, bold=true }
+
+    -- Diagnostics
+    highlights.DiagnosticUnderlineError   = { undercurl=true, sp=c.ui.diag.error.fg, bold=true }
+    highlights.DiagnosticUnderlineWarn    = { undercurl=true, sp=c.ui.diag.warn.fg, bold=true }
+    highlights.DiagnosticUnderlineInfo    = { undercurl=true, sp=c.ui.diag.info.fg, bold=true }
+    highlights.DiagnosticUnderlineHint    = { undercurl=true, sp=c.ui.diag.hint.fg, bold=true }
+    highlights.DiagnosticUnderlineOk      = { undercurl=true, sp=c.ui.diag.ok.fg, bold=true }
   end
   -- stylua: ignore end
 
@@ -405,9 +418,9 @@ local PLUGIN_GROUPS = {
   -- Git Signs
   gitsigns = function(hl, c, light_mode)
     if light_mode then
-      hl.GitSignsAdd = { fg = c.git.add, bg = c.bg.core }
-      hl.GitSignsChange = { fg = c.git.change, bg = c.bg.core }
-      hl.GitSignsDelete = { fg = c.git.delete, bg = c.bg.core }
+      hl.GitSignsAdd = { fg = c.git.add, bg = c.ui.diag.ok.bg, bold = true }
+      hl.GitSignsChange = { fg = c.git.change, bg = c.ui.diag.warn.bg, bold = true }
+      hl.GitSignsDelete = { fg = c.git.delete, bg = c.ui.diag.error.bg, bold = true }
     else
       hl.GitSignsAdd = { fg = c.git.add }
       hl.GitSignsChange = { fg = c.git.change }
