@@ -155,12 +155,21 @@ end
 
 --- Generate complete light mode background set from dark mode foreground
 --- Derives all backgrounds (core, mantle, shadow, surface) from one seed color
---- @param light_bg_seed string Dark mode core seed color
+--- @param light_bg_seed string Seed color
 --- @param intensity_level number Light intensity (1-5)
---- @param opts? table Optional overrides { target_l_core = number|table, l_step = number }
+--- @param opts? table Optional overrides { target_l_core = number|table, l_step = number, preserve_hsl = boolean }
 --- @return table Background colors {core, mantle, shadow, surface}
 function LightTheme.generate_bg(light_bg_seed, intensity_level, opts)
-  local bg_core = LightTheme.apply_intensity(light_bg_seed, intensity_level)
+  local bg_core
+
+  -- Seed encodes desired hue/saturation/lightness for intensity 3.
+  if opts and opts.preserve_hsl then
+    local h, s, seed_l = ColorUtils.rgb_to_hsl(light_bg_seed)
+    local l = math.max(0, math.min(100, seed_l + (3 - intensity_level) * 3))
+    bg_core = ColorUtils.hsl_to_rgb(h, s, l)
+  else
+    bg_core = LightTheme.apply_intensity(light_bg_seed, intensity_level)
+  end
   local h, s, l = ColorUtils.rgb_to_hsl(bg_core)
 
   -- Optional lightness override
