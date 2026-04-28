@@ -58,47 +58,50 @@ map_ansi_colors(semantic_ansi_map, terminal)
 map_ansi_colors(semantic_ansi_map, light_terminal)
 
 -- Visual BG
+
+-- stylua: ignore start
 local visual = {
-  red = "#532E2E",
-  stone = "#2D251F",
+  red    = "#532E2E",
+  stone  = "#2D251F",
   desert = "#433F38",
   orange = "#5A3824",
   yellow = "#4D4528",
-  green = "#1F3A2D",
-  palm = "#345A2B",
-  teal = "#2B4A46",
-  blue = "#335668",
-  sky = "#3D6980",
-  night = "#24364D",
+  green  = "#1F3A2D",
+  palm   = "#345A2B",
+  teal   = "#2B4A46",
+  blue   = "#335668",
+  sky    = "#3D6980",
+  night  = "#24364D",
   indigo = "#3E2F4A",
   violet = "#653F73",
-  pink = "#5A324B",
-  grey = "#666666",
+  pink   = "#5A324B",
+  grey   = "#666666",
 }
 
 -- Diagnostics
 local diag = {
   error = { fg = terminal.bright_red, bg = visual.red },
-  warn = { fg = terminal.yellow, bg = visual.yellow },
-  info = { fg = terminal.blue, bg = visual.blue },
-  hint = { fg = terminal.bright_cyan, bg = visual.teal },
-  ok = { fg = terminal.bright_green, bg = visual.green },
+  warn  = { fg = terminal.yellow, bg = visual.yellow },
+  info  = { fg = terminal.blue, bg = visual.blue },
+  hint  = { fg = terminal.bright_cyan, bg = visual.teal },
+  ok    = { fg = terminal.bright_green, bg = visual.green },
 }
 
 -- Diff
 local diff = {
-  add = visual.green,
+  add    = visual.green,
   change = visual.yellow, -- Unused, prefer theme[name].bg.surface
   delete = visual.red,
-  text = visual.orange,
+  text   = visual.orange,
 }
 
 -- Git
 local git = {
-  add = terminal.bright_green,
+  add    = terminal.bright_green,
   change = terminal.yellow,
   delete = terminal.bright_red,
 }
+-- stylua: ignore end
 
 -- Theme specific
 local theme = {
