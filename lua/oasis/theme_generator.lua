@@ -372,32 +372,30 @@ local function create_highlights(c, light_mode, theme)
   -- Apply light mode overrides
   if light_mode then
     -- Emphasize syntax
-    highlights.MatchParen           = { fg=c.ui.matchParen.fg, bg=c.ui.search.bg, bold=true, reverse=match_paren_bg }
-    highlights.Number               = { fg=c.syntax.constant, bold=true }
-    highlights.Conditional          = { fg=c.syntax.conditional, bold=true }
-    highlights.Type                 = { fg=c.syntax.type, bold=true }
-    highlights.Function             = { fg=c.syntax.func, bold=true, italic=true }
-    highlights.String               = { fg=c.syntax.string, italic=true }
-    highlights["@parameter"]        = { fg=c.syntax.parameter, bold=true }
-    highlights["@variable.parameter"]        = { fg=c.syntax.parameter, bold=true }
-    highlights["@keyword.return"]   = { fg=c.syntax.exception, bold=true }
-    highlights["@string.regexp"]    = { fg=c.syntax.regex, bold=true }
-    highlights["@variable.builtin"] = { fg=c.syntax.builtinVar, bold=true }
+    highlights.MatchParen                      = { fg=c.ui.matchParen.fg, bg=c.ui.search.bg, bold=true, reverse=match_paren_bg }
+    highlights.Type                            = { fg=c.syntax.type, bold=true }
+    highlights.Function                        = { fg=c.syntax.func, bold=true, italic=true }
+    highlights.String                          = { fg=c.syntax.string, italic=true }
+    highlights["@parameter"]                   = { fg=c.syntax.parameter, bold=true }
+    highlights["@variable.parameter"]          = { fg=c.syntax.parameter, bold=true }
+    highlights["@keyword.return"]              = { fg=c.syntax.exception, bold=true }
+    highlights["@string.regexp"]               = { fg=c.syntax.regex, bold=true }
+    highlights["@variable.builtin"]            = { fg=c.syntax.builtinVar, bold=true }
 
     -- Diff
-    highlights.Added                      = { fg=c.diff.add, bold=true }
-    highlights.Changed                    = { fg=c.diff.change, bold=true }
-    highlights.Removed                    = { fg=c.diff.delete, bold=true }
-    highlights.DiffAdd                    = { fg=c.diff.add, bg=c.ui.diag.ok.bg, bold=true }
-    highlights.DiffChange                 = { fg=c.fg.core, bg=c.bg.surface, bold=true }
-    highlights.DiffDelete                 = { fg=c.diff.delete, bg=c.ui.diag.error.bg, bold=true }
+    highlights.Added                           = { fg=c.diff.add, bold=true }
+    highlights.Changed                         = { fg=c.diff.change, bold=true }
+    highlights.Removed                         = { fg=c.diff.delete, bold=true }
+    highlights.DiffAdd                         = { fg=c.diff.add, bg=c.ui.diag.ok.bg, bold=true }
+    highlights.DiffChange                      = { fg=c.fg.core, bg=c.bg.surface, bold=true }
+    highlights.DiffDelete                      = { fg=c.diff.delete, bg=c.ui.diag.error.bg, bold=true }
 
     -- Diagnostics
-    highlights.DiagnosticUnderlineError   = { undercurl=true, sp=c.ui.diag.error.fg, bold=true }
-    highlights.DiagnosticUnderlineWarn    = { undercurl=true, sp=c.ui.diag.warn.fg, bold=true }
-    highlights.DiagnosticUnderlineInfo    = { undercurl=true, sp=c.ui.diag.info.fg, bold=true }
-    highlights.DiagnosticUnderlineHint    = { undercurl=true, sp=c.ui.diag.hint.fg, bold=true }
-    highlights.DiagnosticUnderlineOk      = { undercurl=true, sp=c.ui.diag.ok.fg, bold=true }
+    highlights.DiagnosticUnderlineError        = { undercurl=true, sp=c.ui.diag.error.fg, bold=true }
+    highlights.DiagnosticUnderlineWarn         = { undercurl=true, sp=c.ui.diag.warn.fg, bold=true }
+    highlights.DiagnosticUnderlineInfo         = { undercurl=true, sp=c.ui.diag.info.fg, bold=true }
+    highlights.DiagnosticUnderlineHint         = { undercurl=true, sp=c.ui.diag.hint.fg, bold=true }
+    highlights.DiagnosticUnderlineOk           = { undercurl=true, sp=c.ui.diag.ok.fg, bold=true }
   end
   -- stylua: ignore end
 
