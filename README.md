@@ -179,7 +179,7 @@ The examples below use the default intensity of level 3.
     <td align="center"><a href="#starlight-light"><img src="assets/screenshots/starlight-light-3-dashboard.png" alt="Starlight (light)" width="auto"></a><br><strong>Starlight</strong></td>
     <td align="center"><a href="#desert-light"><img src="assets/screenshots/desert-light-3-dashboard.png" alt="Desert (light)" width="auto"></a><br><strong>Desert</strong></td>
     <td align="center"><a href="#sol-light"><img src="assets/screenshots/sol-light-3-dashboard.png" alt="Sol (light)" width="auto"></a><br><strong>Sol</strong></td>
-    <td align="center"><a href="#scorpion-light"><img src="assets/screenshots/scorpion-light-3-dashboard.png" alt="Desert (dark)" width="auto"></a><br><strong>Scorpion</strong><br><em>Scorched</em></td>
+    <td align="center"><a href="#scorpion-light"><img src="assets/screenshots/scorpion-light-3-dashboard.png" alt="Desert (dark)" width="auto"></a><br><strong>Scorpion</strong></td>
   </tr>
   <tr>
     <td align="center"><a href="#canyon-light"><img src="assets/screenshots/canyon-light-3-dashboard.png" alt="Canyon (light)" width="auto"></a><br><strong>Canyon</strong></td>
@@ -189,7 +189,7 @@ The examples below use the default intensity of level 3.
   </tr>
   <tr>
     <td align="center"><a href="#lagoon-light"><img src="assets/screenshots/lagoon-light-3-dashboard.png" alt="Lagoon (light)" width="auto"></a><br><strong>Lagoon</strong></td>
-    <td align="center"><a href="#luna-light"><img src="assets/screenshots/luna-light-3-dashboard.png" alt="Luna (dark)" width="auto"></a><br><strong>Luna</strong><br><em>Indigo</em></td>
+    <td align="center"><a href="#luna-light"><img src="assets/screenshots/luna-light-3-dashboard.png" alt="Luna (dark)" width="auto"></a><br><strong>Luna</strong></td>
     <td align="center"><a href="#twilight-light"><img src="assets/screenshots/twilight-light-3-dashboard.png" alt="Twilight (light)" width="auto"></a><br><strong>Twilight</strong></td>
     <td align="center"><a href="#rose-light"><img src="assets/screenshots/rose-light-3-dashboard.png" alt="Rose (light)" width="auto"></a><br><strong>Rose</strong></td>
   </tr>
