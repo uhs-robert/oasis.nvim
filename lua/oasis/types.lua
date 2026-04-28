@@ -90,6 +90,15 @@
 ---@field bg string
 ---@field fg string
 
+---@class OasisPaletteUiPickerBorder
+---@field fg string
+---@field bg string
+
+---@class OasisPaletteUiPicker
+---@field title string
+---@field bg string
+---@field border OasisPaletteUiPickerBorder
+
 ---@class OasisPaletteUi
 ---@field visual OasisPaletteUiVisual
 ---@field search OasisPaletteUiSearch
@@ -103,6 +112,7 @@
 ---@field nontext string
 ---@field float OasisPaletteUiFloat
 ---@field diag OasisPaletteUiDiag
+---@field picker? OasisPaletteUiPicker
 
 ---@class OasisPaletteDiff
 ---@field add string
