@@ -3,58 +3,58 @@
 ## author: uhs-robert
 
 [colors]
-foreground = "#231d16"
-background= "#fbfaf9"
-cursor_bg = "#7d701d"
-cursor_border = "#7d701d"
-cursor_fg= "#fbfaf9"
+foreground = "#1f1913"
+background= "#f9f6e7"
+cursor_bg = "#7a6d1c"
+cursor_border = "#7a6d1c"
+cursor_fg= "#f9f6e7"
 selection_bg= "#e1c99d"
 selection_fg= "#4e370e"
-split= "#a32626"
-compose_cursor= "#a66427"
-scrollbar_thumb= "#e9e3dd"
-visual_bell= "#f5f2f0"
+split= "#9f2525"
+compose_cursor= "#a26226"
+scrollbar_thumb= "#f0e8c2"
+visual_bell= "#f3edcf"
 
 ansi = [
-  '#565656',
-  '#c51414',
-  '#3e6e3a',
-  '#6b6424',
-  '#1663b2',
-  '#8233de',
-  '#376b66',
-  '#655516',
+  '#4a4a4a',
+  '#c01313',
+  '#3d6b38',
+  '#686123',
+  '#1561ad',
+  '#7f2edd',
+  '#356863',
+  '#574913',
 ]
 
 brights = [
-  '#61544b',
-  '#c51414',
-  '#3a6e33',
-  '#915416',
-  '#266a86',
-  '#8134de',
-  '#366c63',
-  '#605633',
+  '#534840',
+  '#c01313',
+  '#396b32',
+  '#8e5115',
+  '#256782',
+  '#7e2fdd',
+  '#356961',
+  '#52492c',
 ]
 
 [colors.indexed]
-16 = '#a66427'
-17 = '#c4151c'
+16 = '#a26226'
+17 = '#bf151b'
 
 [colors.tab_bar]
-background = '#f5f2f0'
-inactive_tab_edge = '#efebe7'
+background = '#f3edcf'
+inactive_tab_edge = '#f6f1db'
 
 [colors.tab_bar.active_tab]
 bg_color = '#786e14'
-fg_color = '#fbfaf9'
+fg_color = '#f9f6e7'
 intensity = 'Normal'
 italic = false
 strikethrough = false
 underline = 'None'
 
 [colors.tab_bar.inactive_tab]
-bg_color = '#e9e3dd'
+bg_color = '#f0e8c2'
 fg_color = '#786e14'
 intensity = 'Normal'
 italic = false
@@ -62,7 +62,7 @@ strikethrough = false
 underline = 'None'
 
 [colors.tab_bar.inactive_tab_hover]
-bg_color = '#e9e3dd'
+bg_color = '#f0e8c2'
 fg_color = '#870606'
 intensity = 'Normal'
 italic = false
@@ -71,7 +71,7 @@ underline = 'None'
 
 [colors.tab_bar.new_tab]
 bg_color = '#870606'
-fg_color = '#fbfaf9'
+fg_color = '#f9f6e7'
 intensity = 'Normal'
 italic = false
 strikethrough = false
@@ -79,7 +79,7 @@ underline = 'None'
 
 [colors.tab_bar.new_tab_hover]
 bg_color = '#388032'
-fg_color = '#fbfaf9'
+fg_color = '#f9f6e7'
 intensity = 'Normal'
 italic = false
 strikethrough = false

@@ -4,7 +4,7 @@
 # Author: uhs-robert
 
 export FZF_DEFAULT_OPTS=" \
---color=bg+:#f3dbba,bg:#f5e2c7,spinner:#430192,hl:#534e1b \
+--color=bg+:#f0d5ad,bg:#f5e2c7,spinner:#430192,hl:#534e1b \
 --color=fg:#161513,header:#ac1318,info:#534e1b,pointer:#430192 \
 --color=marker:#204d46,fg+:#161513,prompt:#534e1b,hl+:#e1c99d \
 --color=selected-bg:#eecea0 \

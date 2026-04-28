@@ -3,7 +3,7 @@
 # Author: uhs-robert
 
 # Main background, empty for terminal default, need to be empty if you want transparent background
-theme[main_bg]="#f9f9fb"
+theme[main_bg]="#f9f9fe"
 
 # Main text color
 theme[main_fg]="#1f1a33"
@@ -15,31 +15,31 @@ theme[title]="#1f1a33"
 theme[hi_fg]="#786e14"
 
 # Background color of selected item in processes box
-theme[selected_bg]="#dddde9"
+theme[selected_bg]="#d2d2f7"
 
 # Foreground color of selected item in processes box
 theme[selected_fg]="#786e14"
 
 # Color of inactive/disabled text
-theme[inactive_fg]="#747185"
+theme[inactive_fg]="#747186"
 
 # Color of text appearing on top of graphs, i.e uptime and current network graph scaling
-theme[graph_text]="#483c7f"
+theme[graph_text]="#483c80"
 
 # Background color of the percentage meters
-theme[meter_bg]="#f0f0f5"
+theme[meter_bg]="#dfdffa"
 
 # Misc colors for processes box including mini cpu graphs, details memory graph and details status text
-theme[proc_misc]="#483c7f"
+theme[proc_misc]="#483c80"
 
 # CPU, Memory, Network, Proc box outline colors
-theme[cpu_box]="#3e6d39"
+theme[cpu_box]="#3e6d3a"
 theme[mem_box]="#6a6323"
 theme[net_box]="#8132de"
 theme[proc_box]="#c41414"
 
 # Box divider line and small boxes line color
-theme[div_line]="#dddde9"
+theme[div_line]="#d2d2f7"
 
 # Temperature graph color (Blue -> Bright Blue -> Magenta)
 theme[temp_start]="#1663b1"
@@ -47,7 +47,7 @@ theme[temp_mid]="#266985"
 theme[temp_end]="#8033de"
 
 # CPU graph colors (Green -> Orange -> Bright Red)
-theme[cpu_start]="#3e6d39"
+theme[cpu_start]="#3e6d3a"
 theme[cpu_mid]="#915315"
 theme[cpu_end]="#c41414"
 
@@ -67,7 +67,7 @@ theme[cached_mid]=""
 theme[cached_end]="#266985"
 
 # Mem/Disk free meter (Green -> Bright Green)
-theme[free_start]="#3e6d39"
+theme[free_start]="#3e6d3a"
 theme[free_mid]=""
 theme[free_end]="#3a6e33"
 
@@ -82,6 +82,6 @@ theme[upload_mid]=""
 theme[upload_end]="#8033de"
 
 # Process box color gradient for threads, mem and cpu usage (Green -> Orange -> Red)
-theme[process_start]="#3e6d39"
+theme[process_start]="#3e6d3a"
 theme[process_mid]="#915315"
 theme[process_end]="#c41414"
