@@ -3,58 +3,58 @@
 ## author: uhs-robert
 
 [colors]
-foreground = "#181714"
-background= "#f8f1e7"
-cursor_bg = "#776b1d"
-cursor_border = "#776b1d"
-cursor_fg= "#f8f1e7"
+foreground = "#171613"
+background= "#f9f0e1"
+cursor_bg = "#766a1d"
+cursor_border = "#766a1d"
+cursor_fg= "#f9f0e1"
 selection_bg= "#e1c99d"
 selection_fg= "#4e370e"
-split= "#55533a"
-compose_cursor= "#9e6025"
-scrollbar_thumb= "#eedcc3"
-visual_bell= "#f5eadb"
+split= "#545239"
+compose_cursor= "#9d6025"
+scrollbar_thumb= "#f1ddbb"
+visual_bell= "#f4e3c7"
 
 ansi = [
-  '#525252',
-  '#bc1313',
+  '#474747',
+  '#ba1313',
   '#3b6837',
-  '#665f22',
-  '#155fa9',
-  '#7c2bdc',
-  '#356660',
-  '#605114',
+  '#655f22',
+  '#155ea8',
+  '#7c29dc',
+  '#346660',
+  '#534611',
 ]
 
 brights = [
-  '#5c4f47',
-  '#bc1313',
-  '#386931',
+  '#50453e',
+  '#bb1313',
+  '#376830',
   '#8a4f14',
-  '#24657f',
+  '#24647e',
   '#7b2bdc',
-  '#34665f',
-  '#5a5230',
+  '#34665e',
+  '#4f472a',
 ]
 
 [colors.indexed]
-16 = '#9e6025'
-17 = '#bb141b'
+16 = '#9d6025'
+17 = '#ba141b'
 
 [colors.tab_bar]
-background = '#f5eadb'
-inactive_tab_edge = '#f1e3cf'
+background = '#f4e3c7'
+inactive_tab_edge = '#f6ead4'
 
 [colors.tab_bar.active_tab]
 bg_color = '#615b21'
-fg_color = '#f8f1e7'
+fg_color = '#f9f0e1'
 intensity = 'Normal'
 italic = false
 strikethrough = false
 underline = 'None'
 
 [colors.tab_bar.inactive_tab]
-bg_color = '#eedcc3'
+bg_color = '#f1ddbb'
 fg_color = '#615b21'
 intensity = 'Normal'
 italic = false
@@ -62,7 +62,7 @@ strikethrough = false
 underline = 'None'
 
 [colors.tab_bar.inactive_tab_hover]
-bg_color = '#eedcc3'
+bg_color = '#f1ddbb'
 fg_color = '#275b53'
 intensity = 'Normal'
 italic = false
@@ -71,7 +71,7 @@ underline = 'None'
 
 [colors.tab_bar.new_tab]
 bg_color = '#275b53'
-fg_color = '#f8f1e7'
+fg_color = '#f9f0e1'
 intensity = 'Normal'
 italic = false
 strikethrough = false
@@ -79,7 +79,7 @@ underline = 'None'
 
 [colors.tab_bar.new_tab_hover]
 bg_color = '#4c05a3'
-fg_color = '#f8f1e7'
+fg_color = '#f9f0e1'
 intensity = 'Normal'
 italic = false
 strikethrough = false

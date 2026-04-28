@@ -4,57 +4,57 @@
 
 [colors]
 foreground = "#191210"
-background= "#f3ceba"
-cursor_bg = "#635918"
-cursor_border = "#635918"
-cursor_fg= "#f3ceba"
+background= "#efbaa9"
+cursor_bg = "#585015"
+cursor_border = "#585015"
+cursor_fg= "#efbaa9"
 selection_bg= "#e1b69d"
 selection_fg= "#4e260e"
-split= "#5a392e"
-compose_cursor= "#855120"
-scrollbar_thumb= "#ecb293"
-visual_bell= "#f1c5ad"
+split= "#4c3026"
+compose_cursor= "#77481d"
+scrollbar_thumb= "#e89b82"
+visual_bell= "#eaa58f"
 
 ansi = [
-  '#414141',
-  '#9b0f0f',
-  '#30552d',
-  '#534e1c',
-  '#114e8a',
-  '#671ebb',
-  '#2b544f',
-  '#4c4010',
+  '#2c2c2c',
+  '#880d0d',
+  '#2a4a27',
+  '#484418',
+  '#0f4478',
+  '#5a1ba3',
+  '#254945',
+  '#332b0b',
 ]
 
 brights = [
-  '#483f38',
-  '#9b0f0f',
-  '#2d5628',
-  '#724111',
-  '#1e5268',
-  '#661fbb',
-  '#2a544d',
-  '#484126',
+  '#302b25',
+  '#880d0d',
+  '#284b23',
+  '#63390f',
+  '#1a485b',
+  '#591ba4',
+  '#254943',
+  '#302b1a',
 ]
 
 [colors.indexed]
-16 = '#855120'
-17 = '#9b1116'
+16 = '#77481d'
+17 = '#880f14'
 
 [colors.tab_bar]
-background = '#f1c5ad'
-inactive_tab_edge = '#eebba0'
+background = '#eaa58f'
+inactive_tab_edge = '#edb09c'
 
 [colors.tab_bar.active_tab]
 bg_color = '#58500b'
-fg_color = '#f3ceba'
+fg_color = '#efbaa9'
 intensity = 'Normal'
 italic = false
 strikethrough = false
 underline = 'None'
 
 [colors.tab_bar.inactive_tab]
-bg_color = '#ecb293'
+bg_color = '#e89b82'
 fg_color = '#58500b'
 intensity = 'Normal'
 italic = false
@@ -62,7 +62,7 @@ strikethrough = false
 underline = 'None'
 
 [colors.tab_bar.inactive_tab_hover]
-bg_color = '#ecb293'
+bg_color = '#e89b82'
 fg_color = '#5e1a06'
 intensity = 'Normal'
 italic = false
@@ -71,7 +71,7 @@ underline = 'None'
 
 [colors.tab_bar.new_tab]
 bg_color = '#5e1a06'
-fg_color = '#f3ceba'
+fg_color = '#efbaa9'
 intensity = 'Normal'
 italic = false
 strikethrough = false
@@ -79,7 +79,7 @@ underline = 'None'
 
 [colors.tab_bar.new_tab_hover]
 bg_color = '#296624'
-fg_color = '#f3ceba'
+fg_color = '#efbaa9'
 intensity = 'Normal'
 italic = false
 strikethrough = false
