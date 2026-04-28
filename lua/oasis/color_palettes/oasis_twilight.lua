@@ -22,6 +22,7 @@ local base = {
     primary = p.sundown[500],
     light_primary = p.sundown[300],
     secondary = p.lavender[300],
+    secondary_strong = p.lavender[700],
     label = p.khaki[700],
     accent = p.khaki[500],
     cursor = p.khaki[500],
@@ -110,6 +111,14 @@ if need_light then
   local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
     search = { bg = p.visual.orange, fg = base.fg.core },
     match = { bg = p.visual.red, fg = base.fg.core },
+    border = base.theme.secondary_strong,
+    float = {
+      title = base.theme.primary,
+      fg = base.fg.strong,
+      bg = base.bg.mantle,
+      border = { fg = base.theme.secondary_strong, bg = base.bg.mantle },
+    },
+    matchParen = { bg = dark.ui.matchParen.bg, fg = base.theme.primary },
   })
   local light_terminal = LightTheme.generate_terminal(p.terminal, light_bg.core, opts.light_intensity, opts.contrast)
   light = {
