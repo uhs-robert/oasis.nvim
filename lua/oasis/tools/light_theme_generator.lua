@@ -572,15 +572,15 @@ function LightTheme.generate_terminal(dark_terminal, light_bg_core, intensity_le
   intensity_level = math.max(1, math.min(5, intensity_level or 3))
 
   -- Contrast targets
-  local default_chroma_target = 5.8
-  local default_neutral_target = 7.0
+  local default_chroma_target = 5.5
+  local default_neutral_target = 8.2
   local chroma_target = opts.chroma_target or default_chroma_target
   local neutral_target = opts.neutral_target or default_neutral_target
   local min_ratio = math.min(7.0, math.max(4.5, opts.min_ratio or chroma_target))
   chroma_target = math.max(chroma_target, min_ratio)
   if opts.force_aaa then
     chroma_target = 7.0
-    neutral_target = 7.0
+    neutral_target = 8.5
   end
 
   -- Neutrals vs chromatics
