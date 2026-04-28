@@ -660,20 +660,36 @@ function LightTheme.generate_theme(dark_theme, intensity_level)
   return result
 end
 
+--- Generate light-mode git colors, using light terminal bright_yellow for change
+--- @param dark_git table Dark mode git colors
+--- @param light_terminal table Already-computed light terminal colors
+--- @param light_bg_core string Light background core color
+--- @param opts? table Optional { target_contrast = number, min_ratio = number, force_aaa = boolean }
+--- @return table Light mode git colors
+function LightTheme.generate_git(dark_git, light_terminal, light_bg_core, opts)
+  local result = LightTheme.apply_contrast(dark_git, light_bg_core, opts)
+  if light_terminal and light_terminal.bright_yellow then result.change = light_terminal.bright_yellow end
+  return result
+end
+
 --- Apply contrast adjustment to all string values in a table
 --- @param dark_table table Table with color values
 --- @param light_bg_core string Light mode background core color
---- @param target_contrast? number Target contrast ratio (default 7.0)
+--- @param opts? table Optional { target_contrast = number, min_ratio = number, force_aaa = boolean }
 --- @return table Table with adjusted colors
-function LightTheme.apply_contrast(dark_table, light_bg_core, target_contrast)
-  target_contrast = target_contrast or 7.0
+function LightTheme.apply_contrast(dark_table, light_bg_core, opts)
+  opts = opts or {}
+  local target = opts.target_contrast or 5.5
+  local min_ratio = math.min(7.0, math.max(4.5, opts.min_ratio or target))
+  target = math.max(target, min_ratio)
+  if opts.force_aaa then target = 7.0 end
   local result = {}
 
   for key, value in pairs(dark_table) do
     if type(value) == "string" then
-      result[key] = ColorUtils.darken_to_contrast(value, light_bg_core, target_contrast)
+      result[key] = ColorUtils.darken_to_contrast(value, light_bg_core, target)
     else
-      result[key] = value -- Preserve non-string values
+      result[key] = value
     end
   end
 

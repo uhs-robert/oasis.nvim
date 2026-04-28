@@ -118,14 +118,15 @@ if need_light then
   local light_theme = vim.tbl_deep_extend("force", {}, dark.theme, {
     secondary_strong = p.red[800],
   })
+  local light_terminal = LightTheme.generate_terminal(p.terminal, light_bg.core, opts.light_intensity, opts.contrast)
   light = {
     light_mode = true,
     bg = light_bg,
     fg = LightTheme.generate_fg(base.fg, light_bg.core, opts.light_intensity),
     theme = LightTheme.generate_theme(light_theme, opts.light_intensity),
-    terminal = LightTheme.generate_terminal(p.terminal, light_bg.core, opts.light_intensity, opts.contrast),
-    diff = LightTheme.apply_contrast(dark.diff, light_bg.core),
-    git = LightTheme.apply_contrast(dark.git, light_bg.core),
+    terminal = light_terminal,
+    diff = LightTheme.apply_contrast(dark.diff, light_bg.core, opts.contrast),
+    git = LightTheme.generate_git(dark.git, light_terminal, light_bg.core, opts.contrast),
     syntax = LightTheme.generate_syntax(dark.syntax, light_bg.core, opts.light_intensity, nil, opts.contrast),
     ui = LightTheme.generate_ui(light_ui, light_bg, opts.light_intensity),
   }
