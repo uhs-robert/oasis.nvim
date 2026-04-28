@@ -175,7 +175,7 @@ local theme = {
   sol = {
     bg = { shadow = "#25110F", core = "#2A1412", mantle = "#341F1B", surface = "#462A25" },
     fg = { core = "#FFE0DA", strong = "#FFD3CB", dim = "#7B7B7B", muted = "#83615B", comment = "#A27D78" },
-    light_bg_seed = "#EFBCBC",
+    light_bg_seed = "#F2C4C4",
   },
   starlight = {
     bg = { shadow = "#050505", core = "#000000", mantle = "#111216", surface = "#1C2028" },
