@@ -23,7 +23,7 @@ local TRANSPARENT_GROUPS = {
 ---Create the full highlight table for a palette.
 ---@param c OasisPalette Color palette
 ---@param light_mode boolean Whether palette is light mode
----@param theme {primary: string, light_primary: string, strong_primary: string, secondary: string}
+---@param theme {primary: string, light_primary: string, strong_primary: string, secondary: string, title?: string}
 ---@return OasisHighlightGroupMap highlights
 local function create_highlights(c, light_mode, theme)
   local match_paren_bg = Config.get().match_paren_bg ~= false
@@ -31,6 +31,7 @@ local function create_highlights(c, light_mode, theme)
   -- stylua: ignore start
   local highlights = {
     -- Main Theme Colors (Highlights for plugins)
+    OasisTitle                 = { fg=theme.title, bg="NONE" },
     OasisStrongPrimary         = { fg=theme.strong_primary, bg="NONE" },
     OasisPrimary               = { fg=theme.primary, bg="NONE" },
     OasisLightPrimary          = { fg=theme.light_primary, bg="NONE" },
@@ -403,7 +404,7 @@ local function create_highlights(c, light_mode, theme)
 end
 
 -- Table of plugin highlight group functions
----@alias PluginGroupFn fun(hl: OasisHighlightGroupMap, c: OasisPalette, light_mode: boolean|nil, is_desert: boolean|nil, theme: {primary: string, light_primary: string, strong_primary: string, secondary: string})
+---@alias PluginGroupFn fun(hl: OasisHighlightGroupMap, c: OasisPalette, light_mode: boolean|nil, is_desert: boolean|nil, theme: {primary: string, light_primary: string, strong_primary: string, secondary: string, title?: string})
 ---@type table<string, PluginGroupFn>
 local PLUGIN_GROUPS = {
 
@@ -534,7 +535,7 @@ local PLUGIN_GROUPS = {
   -- Snacks
   snacks = function(hl, c, _, _, theme)
     -- Snacks Dashboard
-    hl.SnacksDashboardHeader = "OasisStrongPrimary"
+    hl.SnacksDashboardHeader = "OasisTitle"
     hl.SnacksDashboardFile = { fg = theme.light_primary, bg = "NONE", bold = true }
     hl.SnacksDashboardSpecial = "OasisAccent"
     hl.SnacksDashboardIcon = "Number"
@@ -681,6 +682,7 @@ return function(c, palette_name)
     light_primary = is_desert and c.theme.secondary_light or c.theme.light_primary,
     strong_primary = is_desert and c.theme.secondary_strong or c.theme.strong_primary,
     secondary = is_desert and c.theme.primary or c.theme.secondary,
+    title = is_desert and c.theme.title or is_desert and c.theme.secondary_strong or c.theme.strong_primary,
   }
 
   local highlights = create_highlights(c, light_mode, theme)
