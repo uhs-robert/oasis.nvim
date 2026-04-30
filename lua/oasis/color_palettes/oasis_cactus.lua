@@ -15,16 +15,17 @@ local base = {
   fg = theme.fg,
   palette = {
     primary = p.aloe,
-    secondary = p.rose,
-    accent = p.lavender,
+    secondary = p.lavender,
+    accent = p.rose,
   },
   theme = {
     strong_primary = p.aloe[700],
     primary = p.aloe[700],
     light_primary = p.aloe[500],
-    secondary = p.rose[500],
+    secondary = p.lavender[300],
+    secondary_strong = p.lavender[500],
     label = p.rose[600],
-    accent = p.lavender[300],
+    accent = p.rose[500],
     cursor = p.khaki[500],
   },
 }
@@ -80,7 +81,7 @@ local dark = {
     visual = { bg = base.bg.surface, fg = "none" },
     search = { bg = p.visual.grey, fg = base.fg.core },
     match = { bg = p.lavender[500], fg = base.bg.core },
-    matchParen = { bg = p.stone[900], fg = p.khaki[700] },
+    matchParen = { bg = p.stone[900], fg = base.palette.secondary[500] },
     dir = p.sky[500],
 
     title = base.theme.primary,
@@ -92,6 +93,12 @@ local dark = {
       fg = base.fg.strong,
       bg = base.bg.mantle,
       border = { fg = base.theme.primary, bg = base.bg.mantle },
+    },
+    picker = {
+      title = base.theme.secondary,
+      fg = base.fg.strong,
+      bg = base.bg.mantle,
+      border = { fg = base.theme.secondary_strong, bg = base.bg.mantle },
     },
     diag = {
       error = { fg = p.diag.error.fg, bg = p.diag.error.bg },
@@ -110,8 +117,8 @@ if need_light then
   local light_bg = LightTheme.generate_bg(theme.light_bg_seed, opts.light_intensity, { preserve_hsl = true })
   local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
     search = { bg = p.visual.green, fg = base.fg.core },
-    match = { bg = p.visual.red, fg = base.fg.core },
-    matchParen = { bg = dark.ui.matchParen.bg, fg = p.rose[800] },
+    match = { bg = p.visual.violet, fg = base.fg.core },
+    matchParen = { bg = dark.ui.matchParen.bg, fg = p.lavender[800] },
   })
   local light_terminal = LightTheme.generate_terminal(p.terminal, light_bg.core, opts.light_intensity, opts.contrast)
   light = {
