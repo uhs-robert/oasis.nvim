@@ -16,7 +16,6 @@ Oasis color themes for Mozilla Thunderbird, packaged as WebExtension themes.
 
 - Dark variants live in `themes/dark/` as `oasis_<palette>_dark.xpi`.
 - Light variants are grouped under `themes/light/<1-5>/` as `oasis_<palette>_light_<intensity>.xpi`.
-- Palettes: abyss, cactus, canyon, desert, dune, lagoon, luna, midnight, mirage, moonlight, night, rose, scorpion, sol, starlight, twilight
 
 ## Uninstallation
 
