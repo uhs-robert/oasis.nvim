@@ -15,16 +15,16 @@ local base = {
   fg = theme.fg,
   palette = {
     primary = p.sunrise,
-    secondary = p.rose,
-    accent = p.sky,
+    secondary = p.lagoon,
+    accent = p.rose,
   },
   theme = {
     strong_primary = p.sunset[500],
     primary = p.sunset[300],
     light_primary = p.sunshine[200],
-    secondary = p.rose[500],
+    secondary = p.lagoon[300],
     label = p.rose[600],
-    accent = p.sky[500],
+    accent = p.rose[600],
     cursor = p.khaki[500],
   },
 }
@@ -80,7 +80,7 @@ local dark = {
     visual = { bg = base.bg.surface, fg = "none" },
     search = { bg = p.visual.grey, fg = base.fg.core },
     match = { bg = p.olive[500], fg = base.bg.core },
-    matchParen = { bg = p.visual.blue, fg = p.sky[500] },
+    matchParen = { bg = p.visual.blue, fg = p.lagoon[400] },
     dir = p.sky[400],
 
     title = base.theme.primary,
