@@ -121,14 +121,14 @@ Click any card below to view the full preview and syntax sample. [↓ Or click h
 
 <table>
   <tr>
+    <td align="center"><a href="#moonlight-dark"><img src="assets/screenshots/moonlight-dark-dashboard.png" alt="Moonlight (dark)" width="auto"></a><br><strong>Moonlight</strong><br><em>Desert Moon</em></td>
     <td align="center"><a href="#night-dark"><img src="assets/screenshots/night-dark-dashboard.png" alt="Night (dark)" width="auto"></a><br><strong>Night</strong><br><em>Desert Night</em></td>
-    <td align="center"><a href="#moonlight-dark"><img src="assets/screenshots/moonlight-dark-dashboard.png" alt="Moonlight (dark)" width="auto"></a><br><strong>Moonlight</strong><br><em>Moonlit Night</em></td>
-    <td align="center"><a href="#midnight-dark"><img src="assets/screenshots/midnight-dark-dashboard.png" alt="Midnight (dark)" width="auto"></a><br><strong>Midnight</strong><br><em>Dark Desert</em></td>
+    <td align="center"><a href="#midnight-dark"><img src="assets/screenshots/midnight-dark-dashboard.png" alt="Midnight (dark)" width="auto"></a><br><strong>Midnight</strong><br><em>Desert Dark</em></td>
     <td align="center"><a href="#abyss-dark"><img src="assets/screenshots/abyss-dark-dashboard.png" alt="Abyss (dark)" width="auto"></a><br><strong>Abyss</strong><br><em>Black Desert</em></td>
   </tr>
   <tr>
     <td align="center"><a href="#starlight-dark"><img src="assets/screenshots/starlight-dark-dashboard.png" alt="Starlight (dark)" width="auto"></a><br><strong>Starlight</strong><br><em>Black Lagoon</em></td>
-    <td align="center"><a href="#desert-dark"><img src="assets/screenshots/desert-dark-dashboard.png" alt="Desert (dark)" width="auto"></a><br><strong>Desert</strong><br><em>Grey</em></td>
+    <td align="center"><a href="#desert-dark"><img src="assets/screenshots/desert-dark-dashboard.png" alt="Desert (dark)" width="auto"></a><br><strong>Desert</strong><br><em>Classic</em></td>
     <td align="center"><a href="#sol-dark"><img src="assets/screenshots/sol-dark-dashboard.png" alt="Sol (dark)" width="auto"></a><br><strong>Sol</strong><br><em>Red</em></td>
     <td align="center"><a href="#scorpion-dark"><img src="assets/screenshots/scorpion-dark-dashboard.png" alt="Desert (dark)" width="auto"></a><br><strong>Scorpion</strong><br><em>Scorched</em></td>
   </tr>
@@ -794,112 +794,112 @@ require("oasis").setup({
     <summary><b>🌕️ Dark Previews</b></summary>
     <!-- dark-styles:start -->
     <a id="night-dark"></a>
-    <h3>Night (Dark · Desert Night)</h3>
+    <h3>Night (Dark)</h3>
     <img src="./assets/screenshots/night-dark-dashboard.png" alt="Night dark mode dashboard"></img>
     <img src="./assets/screenshots/night-dark-code.png" alt="Night dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="moonlight-dark"></a>
-    <h3>Moonlight (Dark · Moonlit Night)</h3>
+    <h3>Moonlight (Dark)</h3>
     <img src="./assets/screenshots/moonlight-dark-dashboard.png" alt="Moonlight dark mode dashboard"></img>
     <img src="./assets/screenshots/moonlight-dark-code.png" alt="Moonlight dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="midnight-dark"></a>
-    <h3>Midnight (Dark · Off Black)</h3>
+    <h3>Midnight (Dark)</h3>
     <img src="./assets/screenshots/midnight-dark-dashboard.png" alt="Midnight dark mode dashboard"></img>
     <img src="./assets/screenshots/midnight-dark-code.png" alt="Midnight dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="abyss-dark"></a>
-    <h3>Abyss (Dark · Black)</h3>
+    <h3>Abyss (Dark)</h3>
     <img src="./assets/screenshots/abyss-dark-dashboard.png" alt="Abyss dark mode dashboard"></img>
     <img src="./assets/screenshots/abyss-dark-code.png" alt="Abyss dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="starlight-dark"></a>
-    <h3>Starlight (Dark · Black Vivid)</h3>
+    <h3>Starlight (Dark)</h3>
     <img src="./assets/screenshots/starlight-dark-dashboard.png" alt="Starlight dark mode dashboard"></img>
     <img src="./assets/screenshots/starlight-dark-code.png" alt="Starlight dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="desert-dark"></a>
-    <h3>Desert (Dark · Grey)</h3>
+    <h3>Desert (Dark)</h3>
     <img src="./assets/screenshots/desert-dark-dashboard.png" alt="Desert dark mode dashboard"></img>
     <img src="./assets/screenshots/desert-dark-code.png" alt="Desert dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="sol-dark"></a>
-    <h3>Sol (Dark · Red)</h3>
+    <h3>Sol (Dark)</h3>
     <img src="./assets/screenshots/sol-dark-dashboard.png" alt="Sol dark mode dashboard"></img>
     <img src="./assets/screenshots/sol-dark-code.png" alt="Sol dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="scorpion-dark"></a>
-    <h3>Scorpion (Dark · Scorched)</h3>
+    <h3>Scorpion (Dark)</h3>
     <img src="./assets/screenshots/scorpion-dark-dashboard.png" alt="Scorpion dark mode dashboard"></img>
     <img src="./assets/screenshots/scorpion-dark-code.png" alt="Scorpion dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="canyon-dark"></a>
-    <h3>Canyon (Dark · Orange)</h3>
+    <h3>Canyon (Dark)</h3>
     <img src="./assets/screenshots/canyon-dark-dashboard.png" alt="Canyon dark mode dashboard"></img>
     <img src="./assets/screenshots/canyon-dark-code.png" alt="Canyon dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="dune-dark"></a>
-    <h3>Dune (Dark · Yellow)</h3>
+    <h3>Dune (Dark)</h3>
     <img src="./assets/screenshots/dune-dark-dashboard.png" alt="Dune dark mode dashboard"></img>
     <img src="./assets/screenshots/dune-dark-code.png" alt="Dune dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="cactus-dark"></a>
-    <h3>Cactus (Dark · Green)</h3>
+    <h3>Cactus (Dark)</h3>
     <img src="./assets/screenshots/cactus-dark-dashboard.png" alt="Cactus dark mode dashboard"></img>
     <img src="./assets/screenshots/cactus-dark-code.png" alt="Cactus dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="mirage-dark"></a>
-    <h3>Mirage (Dark · Teal)</h3>
+    <h3>Mirage (Dark)</h3>
     <img src="./assets/screenshots/mirage-dark-dashboard.png" alt="Mirage dark mode dashboard"></img>
     <img src="./assets/screenshots/mirage-dark-code.png" alt="Mirage dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="lagoon-dark"></a>
-    <h3>Lagoon (Dark · Default)</h3>
+    <h3>Lagoon (Dark)</h3>
     <img src="./assets/screenshots/lagoon-dark-dashboard.png" alt="Lagoon dark mode dashboard"></img>
     <img src="./assets/screenshots/lagoon-dark-code.png" alt="Lagoon dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="luna-dark"></a>
-    <h3>Luna (Dark · Indigo)</h3>
+    <h3>Luna (Dark)</h3>
     <img src="./assets/screenshots/luna-dark-dashboard.png" alt="Luna dark mode dashboard"></img>
     <img src="./assets/screenshots/luna-dark-code.png" alt="Luna dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to dark Styles</a>
     </p>
     <a id="twilight-dark"></a>
-    <h3>Twilight (Dark · Sunset)</h3>
+    <h3>Twilight (Dark)</h3>
     <img src="./assets/screenshots/twilight-dark-dashboard.png" alt="Twilight dark mode dashboard"></img>
     <img src="./assets/screenshots/twilight-dark-code.png" alt="Twilight dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="rose-dark"></a>
-    <h3>Rose (Dark · Pink)</h3>
+    <h3>Rose (Dark)</h3>
     <img src="./assets/screenshots/rose-dark-dashboard.png" alt="Rose dark mode dashboard"></img>
     <img src="./assets/screenshots/rose-dark-code.png" alt="Rose dark mode code sample"></img>
     <p align="center">
