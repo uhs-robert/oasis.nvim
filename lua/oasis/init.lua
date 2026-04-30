@@ -12,7 +12,7 @@ Oasis.styles = {}
 ---@param bg string Current background ("light" or "dark")
 ---@return string resolved_palette The palette name to use
 local function resolve_palette_name(palette_name, bg)
-  local resolved_palette = palette_name or Config.get_palette_name() or "oasis_lagoon"
+  local resolved_palette = palette_name or Config.get_palette_name() or "oasis_moonlight"
   local is_current_theme = (resolved_palette == Oasis.styles.current)
   local last_theme_for_this_bg = Oasis.styles[bg]
 
@@ -24,18 +24,18 @@ local function resolve_palette_name(palette_name, bg)
 
     -- Resolve invalid names: fall back to cfg.style then default
     if not Config.is_valid_theme(old_style_option) then old_style_option = nil end
-    old_style_option = old_style_option or cfg.style or "lagoon"
+    old_style_option = old_style_option or cfg.style or "moonlight"
 
     -- Check if user was on their configured theme for the old background
     local old_configured_palette = "oasis_" .. old_style_option
     local should_use_config = resolved_palette == old_configured_palette
     if should_use_config then
-      return Config.get_palette_name() or "oasis_lagoon"
+      return Config.get_palette_name() or "oasis_moonlight"
     else
       -- User switched themes
       local Utils = require("oasis.utils")
       local mode = Utils.get_palette_mode(resolved_palette)
-      if not (mode == "dual" or mode == bg) then return Config.get_palette_name() or "oasis_lagoon" end
+      if not (mode == "dual" or mode == bg) then return Config.get_palette_name() or "oasis_moonlight" end
     end
   end
 
@@ -72,7 +72,7 @@ end
 
 --- Apply theme and refresh plugin integrations
 ---@param palette table The color palette to apply
----@param palette_name string The palette name (e.g., "oasis_lagoon")
+---@param palette_name string The palette name (e.g., "oasis_moonlight")
 local function apply_theme(palette, palette_name)
   local build = require("oasis.theme_generator")
   build(palette, palette_name)

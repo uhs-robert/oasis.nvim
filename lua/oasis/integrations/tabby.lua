@@ -5,19 +5,19 @@ local Tabby = {}
 --- Get current oasis palette for tabby theme
 ---@return table
 function Tabby.get_theme()
-  local current_palette = vim.g.colors_name or "oasis_lagoon"
+  local current_palette = vim.g.colors_name or "oasis_moonlight"
 
   -- Convert hyphen format to underscore format for module loading
   current_palette = current_palette:gsub("%-", "_")
 
   -- Ensure the palette name has proper format
-  if not current_palette:match("^oasis_") then current_palette = "oasis_lagoon" end
+  if not current_palette:match("^oasis_") then current_palette = "oasis_moonlight" end
 
   -- Load and extract the current palette
   local Utils = require("oasis.utils")
   local c, err = Utils.load_and_extract_palette("oasis.color_palettes." .. current_palette)
   if not c then
-    c, err = Utils.load_and_extract_palette("oasis.color_palettes.oasis_lagoon")
+    c, err = Utils.load_and_extract_palette("oasis.color_palettes.oasis_moonlight")
   end
   local main_status = (c.theme.status or c.theme.primary)
 

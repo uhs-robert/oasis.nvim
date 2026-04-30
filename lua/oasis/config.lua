@@ -1,8 +1,8 @@
 -- lua/oasis/config.lua
 
 local Config = {}
-local DEFAULT_DARK = "lagoon"
-local DEFAULT_LIGHT = "lagoon"
+local DEFAULT_DARK = "moonlight"
+local DEFAULT_LIGHT = "moonlight"
 local BASE_COLORS = nil
 local deepcopy = vim.deepcopy
 

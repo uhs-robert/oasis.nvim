@@ -53,7 +53,7 @@ Click any card below to view the full preview and syntax sample. [↓ Or click h
     <td align="center"><a href="#mirage-dark"><img src="assets/screenshots/mirage-dark-dashboard.png" alt="Mirage (dark)" width="auto"></a><br><strong>Mirage</strong><br><em>Teal</em></td>
   </tr>
   <tr>
-    <td align="center"><a href="#lagoon-dark"><img src="assets/screenshots/lagoon-dark-dashboard.png" alt="Lagoon (dark)" width="auto"></a><br><strong>Lagoon (Default)</strong><br><em>Blue</em></td>
+    <td align="center"><a href="#lagoon-dark"><img src="assets/screenshots/lagoon-dark-dashboard.png" alt="Lagoon (dark)" width="auto"></a><br><strong>Lagoon</strong><br><em>Blue</em></td>
     <td align="center"><a href="#luna-dark"><img src="assets/screenshots/luna-dark-dashboard.png" alt="Luna (dark)" width="auto"></a><br><strong>Luna</strong><br><em>Indigo</em></td>
     <td align="center"><a href="#twilight-dark"><img src="assets/screenshots/twilight-dark-dashboard.png" alt="Twilight (dark)" width="auto"></a><br><strong>Twilight</strong><br><em>Sunset</em></td>
     <td align="center"><a href="#rose-dark"><img src="assets/screenshots/rose-dark-dashboard.png" alt="Rose (dark)" width="auto"></a><br><strong>Rose</strong><br><em>Pink</em></td>
@@ -64,15 +64,15 @@ Click any card below to view the full preview and syntax sample. [↓ Or click h
 
 Light styles use a saturation intensity scale from 1-5: set from `config` or via `:OasisIntensity`.
 
-### Light theme intensity scale (Lagoon example)
+### Light theme intensity scale (Moonlight example)
 
 <table>
   <tr>
-    <td align="center"><img src="assets/screenshots/lagoon-light-1-dashboard.png" alt="Lagoon light intensity 1" width="auto"><br><strong>1</strong></td>
-    <td align="center"><img src="assets/screenshots/lagoon-light-2-dashboard.png" alt="Lagoon light intensity 2" width="auto"><br><strong>2</strong></td>
-    <td align="center"><img src="assets/screenshots/lagoon-light-3-dashboard.png" alt="Lagoon light intensity 3" width="auto"><br><strong>3</strong></td>
-    <td align="center"><img src="assets/screenshots/lagoon-light-4-dashboard.png" alt="Lagoon light intensity 4" width="auto"><br><strong>4</strong></td>
-    <td align="center"><img src="assets/screenshots/lagoon-light-5-dashboard.png" alt="Lagoon light intensity 5" width="auto"><br><strong>5</strong></td>
+    <td align="center"><img src="assets/screenshots/moonlight-light-1-dashboard.png" alt="Moonlight light intensity 1" width="auto"><br><strong>1</strong></td>
+    <td align="center"><img src="assets/screenshots/moonlight-light-2-dashboard.png" alt="Moonlight light intensity 2" width="auto"><br><strong>2</strong></td>
+    <td align="center"><img src="assets/screenshots/moonlight-light-3-dashboard.png" alt="Moonlight light intensity 3" width="auto"><br><strong>3</strong></td>
+    <td align="center"><img src="assets/screenshots/moonlight-light-4-dashboard.png" alt="Moonlight light intensity 4" width="auto"><br><strong>4</strong></td>
+    <td align="center"><img src="assets/screenshots/moonlight-light-5-dashboard.png" alt="Moonlight light intensity 5" width="auto"><br><strong>5</strong></td>
   </tr>
 </table>
 
@@ -364,18 +364,18 @@ require("oasis").toggle_themed_syntax()
 vim.keymap.set("n", "<leader>ts", require("oasis").toggle_themed_syntax, { desc = "Toggle themed syntax" })
 ```
 
-> **⚠️ v3.0 Breaking Change**: Themed syntax is now enabled by default. To restore classic syntax highlighting, disable it:
+> Themed syntax is enabled by default. To use the classic syntax highlighting, disable it:
 >
 > ```lua
 > require("oasis").setup({
->   themed_syntax = false,  -- Use traditional yellow/khaki for all styles
+>   themed_syntax = false,  -- Use classic yellow/khaki for all styles
 > })
 > ```
 
 This option controls how statement/keyword colors are rendered:
 
 - **Enabled** (default): Statements and keywords use the theme's primary color (e.g., blue in lagoon, teal in mirage, orange in canyon)
-- **Disabled**: Statements and keywords use traditional yellow/khaki tones across all styles
+- **Disabled**: Statements and keywords use classic yellow/khaki tones across all styles
 
 ### Cycle Light Intensity
 
@@ -458,7 +458,7 @@ Oasis offers _many_ different styles to choose from. Have fun customizing with `
 -- Oasis.nvim
 -- Styles: "night", "moonlight", "midnight", "abyss", "starlight", "desert", "sol", "canyon", "dune", "cactus", "mirage", "lagoon", "luna", "twilight", "rose"
 require("oasis").setup({
-  style = "lagoon",                     -- Primary style, the default used when colorscheme is set to "oasis"
+  style = "moonlight",                  -- Primary style, the default used when colorscheme is set to "oasis"
   dark_style = nil,                     -- Applies to primary style only: Overrides dark mode with another theme (e.g., "abyss")
   light_style = nil,                    -- Applies to primary style only: Overrides light mode with another theme (e.g., "dune")
   light_intensity = 3,                  -- Light background intensity (1-5): 1=subtle, 5=saturated

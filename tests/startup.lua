@@ -101,7 +101,7 @@ local function run_single_iteration()
 
   local _, palette_time = measure(function()
     local Config = require("oasis.config")
-    local palette_name = Config.get_palette_name() or "oasis_lagoon"
+    local palette_name = Config.get_palette_name() or "oasis_moonlight"
     local module_name = "oasis.color_palettes." .. palette_name
 
     package.loaded[module_name] = nil

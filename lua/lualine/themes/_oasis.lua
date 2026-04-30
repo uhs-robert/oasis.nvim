@@ -4,13 +4,13 @@ local M = {}
 
 ---@param style? string
 function M.get(style)
-  -- Default to lagoon if no style specified
-  local palette_name = (style and ("oasis_" .. style)) or "oasis_lagoon"
+  -- Default to moonlight if no style specified
+  local palette_name = (style and ("oasis_" .. style)) or "oasis_moonlight"
 
   -- Load and extract the specified palette
   local Utils = require("oasis.utils")
   local c = Utils.load_and_extract_palette("oasis.color_palettes." .. palette_name)
-  if not c then c = Utils.load_and_extract_palette("oasis.color_palettes.oasis_lagoon") end
+  if not c then c = Utils.load_and_extract_palette("oasis.color_palettes.oasis_moonlight") end
   assert(c, "Failed to load Oasis palette for lualine")
 
   local hl = {}
