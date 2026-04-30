@@ -36,12 +36,12 @@ Click any card below to view the full preview and syntax sample. [↓ Or click h
 <table>
   <tr>
     <td align="center"><a href="#moonlight-dark"><img src="assets/screenshots/moonlight-dark-dashboard.png" alt="Moonlight (dark)" width="auto"></a><br><strong>Moonlight</strong><br><em>Desert Moon</em></td>
-    <td align="center"><a href="#night-dark"><img src="assets/screenshots/night-dark-dashboard.png" alt="Night (dark)" width="auto"></a><br><strong>Night</strong><br><em>Desert Night</em></td>
     <td align="center"><a href="#midnight-dark"><img src="assets/screenshots/midnight-dark-dashboard.png" alt="Midnight (dark)" width="auto"></a><br><strong>Midnight</strong><br><em>Desert Dark</em></td>
     <td align="center"><a href="#abyss-dark"><img src="assets/screenshots/abyss-dark-dashboard.png" alt="Abyss (dark)" width="auto"></a><br><strong>Abyss</strong><br><em>Black Desert</em></td>
+    <td align="center"><a href="#starlight-dark"><img src="assets/screenshots/starlight-dark-dashboard.png" alt="Starlight (dark)" width="auto"></a><br><strong>Starlight</strong><br><em>Black Lagoon</em></td>
   </tr>
   <tr>
-    <td align="center"><a href="#starlight-dark"><img src="assets/screenshots/starlight-dark-dashboard.png" alt="Starlight (dark)" width="auto"></a><br><strong>Starlight</strong><br><em>Black Lagoon</em></td>
+    <td align="center"><a href="#night-dark"><img src="assets/screenshots/night-dark-dashboard.png" alt="Night (dark)" width="auto"></a><br><strong>Night</strong><br><em>Desert Night</em></td>
     <td align="center"><a href="#desert-dark"><img src="assets/screenshots/desert-dark-dashboard.png" alt="Desert (dark)" width="auto"></a><br><strong>Desert</strong><br><em>Classic</em></td>
     <td align="center"><a href="#sol-dark"><img src="assets/screenshots/sol-dark-dashboard.png" alt="Sol (dark)" width="auto"></a><br><strong>Sol</strong><br><em>Red</em></td>
     <td align="center"><a href="#scorpion-dark"><img src="assets/screenshots/scorpion-dark-dashboard.png" alt="Desert (dark)" width="auto"></a><br><strong>Scorpion</strong><br><em>Scorched</em></td>
@@ -84,13 +84,13 @@ The examples below use the default intensity of level 3.
 
 <table>
   <tr>
-    <td align="center"><a href="#night-light"><img src="assets/screenshots/night-light-3-dashboard.png" alt="Night (light)" width="auto"></a><br><strong>Night</strong></td>
     <td align="center"><a href="#moonlight-light"><img src="assets/screenshots/moonlight-light-3-dashboard.png" alt="Moonlight (light)" width="auto"></a><br><strong>Moonlight</strong></td>
     <td align="center"><a href="#midnight-light"><img src="assets/screenshots/midnight-light-3-dashboard.png" alt="Midnight (light)" width="auto"></a><br><strong>Midnight</strong></td>
     <td align="center"><a href="#abyss-light"><img src="assets/screenshots/abyss-light-3-dashboard.png" alt="Abyss (light)" width="auto"></a><br><strong>Abyss</strong></td>
+    <td align="center"><a href="#starlight-light"><img src="assets/screenshots/starlight-light-3-dashboard.png" alt="Starlight (light)" width="auto"></a><br><strong>Starlight</strong></td>
   </tr>
   <tr>
-    <td align="center"><a href="#starlight-light"><img src="assets/screenshots/starlight-light-3-dashboard.png" alt="Starlight (light)" width="auto"></a><br><strong>Starlight</strong></td>
+    <td align="center"><a href="#night-light"><img src="assets/screenshots/night-light-3-dashboard.png" alt="Night (light)" width="auto"></a><br><strong>Night</strong></td>
     <td align="center"><a href="#desert-light"><img src="assets/screenshots/desert-light-3-dashboard.png" alt="Desert (light)" width="auto"></a><br><strong>Desert</strong></td>
     <td align="center"><a href="#sol-light"><img src="assets/screenshots/sol-light-3-dashboard.png" alt="Sol (light)" width="auto"></a><br><strong>Sol</strong></td>
     <td align="center"><a href="#scorpion-light"><img src="assets/screenshots/scorpion-light-3-dashboard.png" alt="Desert (dark)" width="auto"></a><br><strong>Scorpion</strong></td>
@@ -707,13 +707,6 @@ require("oasis").setup({
   <details open>
     <summary><b>🌕️ Dark Previews</b></summary>
     <!-- dark-styles:start -->
-    <a id="night-dark"></a>
-    <h3>Night (Dark)</h3>
-    <img src="./assets/screenshots/night-dark-dashboard.png" alt="Night dark mode dashboard"></img>
-    <img src="./assets/screenshots/night-dark-code.png" alt="Night dark mode code sample"></img>
-    <p align="center">
-      <a href="#dark-previews">↑ Back to Dark Styles</a>
-    </p>
     <a id="moonlight-dark"></a>
     <h3>Moonlight (Dark)</h3>
     <img src="./assets/screenshots/moonlight-dark-dashboard.png" alt="Moonlight dark mode dashboard"></img>
@@ -739,6 +732,13 @@ require("oasis").setup({
     <h3>Starlight (Dark)</h3>
     <img src="./assets/screenshots/starlight-dark-dashboard.png" alt="Starlight dark mode dashboard"></img>
     <img src="./assets/screenshots/starlight-dark-code.png" alt="Starlight dark mode code sample"></img>
+    <p align="center">
+      <a href="#dark-previews">↑ Back to Dark Styles</a>
+    </p>
+    <a id="night-dark"></a>
+    <h3>Night (Dark)</h3>
+    <img src="./assets/screenshots/night-dark-dashboard.png" alt="Night dark mode dashboard"></img>
+    <img src="./assets/screenshots/night-dark-code.png" alt="Night dark mode code sample"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
@@ -825,13 +825,6 @@ require("oasis").setup({
   <summary><b>🌞 Light Previews</b></summary>
   <!-- light-styles:start -->
   <a id="light-previews"></a>
-    <a id="night-light"></a>
-    <h3>Night (Light)</h3>
-    <img src="./assets/screenshots/night-light-3-dashboard.png" alt="Night light mode dashboard"></img>
-    <img src="./assets/screenshots/night-light-3-code.png" alt="Night light mode code sample"></img>
-    <p align="center">
-      <a href="#light-previews">↑ Back to Light Styles</a>
-    </p>
     <a id="moonlight-light"></a>
     <h3>Moonlight (Light)</h3>
     <img src="./assets/screenshots/moonlight-light-3-dashboard.png" alt="Moonlight light mode dashboard"></img>
@@ -857,6 +850,13 @@ require("oasis").setup({
     <h3>Starlight (Light)</h3>
     <img src="./assets/screenshots/starlight-light-3-dashboard.png" alt="Starlight light mode dashboard"></img>
     <img src="./assets/screenshots/starlight-light-3-code.png" alt="Starlight light mode code sample"></img>
+    <p align="center">
+      <a href="#light-previews">↑ Back to Light Styles</a>
+    </p>
+    <a id="night-light"></a>
+    <h3>Night (Light)</h3>
+    <img src="./assets/screenshots/night-light-3-dashboard.png" alt="Night light mode dashboard"></img>
+    <img src="./assets/screenshots/night-light-3-code.png" alt="Night light mode code sample"></img>
     <p align="center">
       <a href="#light-previews">↑ Back to Light Styles</a>
     </p>
