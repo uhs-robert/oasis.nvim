@@ -30,9 +30,9 @@ def setup(c, samecolorrows=True):
         "light_primary":  "#214223",
         "primary":        "#264728",
         "strong_primary": "#3e7240",
-        "secondary":      "#6d0101",
-        "accent":         "#430192",
-        "match":          "#dd6f6f",
+        "secondary":      "#32016d",
+        "accent":         "#920101",
+        "match":          "#bc76d6",
     }
     # }}}
 
