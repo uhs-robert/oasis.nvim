@@ -23,95 +23,9 @@ Oasis follows a warm/cool color split philosophy (**warm = action/flow**, **cool
   <img src="./assets/socials/Oasis Logo Social - 3 Fit.png"
   width="auto" height="auto" alt="preview" />
 </p>
-
-<details>
-<summary>✨ What's New / 🚨 Breaking Changes</summary>
-<br/>
-<!-- whats-new:start -->
-
-  <details>
-    <summary>🚨 v5.0: Major Visual Overhaul, Redesign, and New Themes</summary>
-    <!-- v5.0:start -->
-    <h3>🚨 BREAKING CHANGE: All themes updated, major style changes</h3>
-    <p>This release is a major redesign of the palette system and theme pack. </p>
-    <p> Many themes have been substantially reworked, including background ramps,
-      semantic color relationships, and overall visual identity.</p>
-    <p> If you prefer the previous appearance, pin to the last v4.2 release like so: </p>
-    <pre><code class="language-lua">
-    {
-      'uhs-robert/oasis.nvim',
-      version = '4.2.0',
-      config = function()
-        require('oasis').setup({})
-        vim.cmd.colorscheme('oasis')
-      end,
-    }</code></pre>
-    <!-- v5.0:end -->
-
-  </details>
-
-  <details>
-    <summary>🚨 v4.1: Legacy Light Themes Removed</summary>
-      <!-- v4.1:start -->
-      <h3>🚨 BREAKING CHANGE: Legacy Light Themes Removed</h3>
-      The standalone light themes <strong>Dawn, Dawnlight, Day, Dusk, and Dust</strong> have been removed in v4.1 (deprecated in v4.0).
-      <ul>
-        <li>Use the dual-mode system with <code>light_style</code> + <code>light_intensity</code> instead.</li>
-        <li>Closest matches: <code>night</code> with <code>light_intensity = 1..5</code> (1=brightest, 5=darkest).</li>
-      </ul>
-      <h3>✨ New Features</h3>
-      <ul>
-        <li>Configurable plugin integration system.</li>
-        <li>Expanded highlight coverage (additional Treesitter + LSP groups + mini ecosystem).</li>
-        <li>Palette/highlight override system and LuaLS type definitions.</li>
-        <li>New theme generators/formats: CSS, JSON, and Lua themes.</li>
-        <li>New/expanded extras: bat themes, Warp, WezTerm/kitty updates, Yazi enhancements, tmux visual selection.</li>
-      </ul>
-      <!-- v4.1:end -->
-  </details>
-
-  <details>
-    <summary>🚨 v4.0: Dual Style Themes / Deprecated Themes</summary>
-    <!-- v4:start -->
-    <h3>✨ Dual Style Themes</h3>
-    Each style now has <strong>5 light theme variants</strong>.
-    <ul>
-      <li>Check out the <a href="#%EF%B8%8F-light-styles">new light theme screenshots</a>.</li>
-      <li><a href="#%EF%B8%8F-configuration">Config options have been updated</a> with new <code>contrast</code> and <code>light_intensity</code> settings and <code>light/dark_style</code> updates.</li>
-      <li><a href="#-usage">New API command :OasisIntensity under usage</a> to cycle intensity. Also available via lua for keymap.</li>
-    </ul>
-    <h3>🚨 BREAKING CHANGE: Deprecated Light Theme Migration</h3>
-    The following standalone <strong>light themes have been deprecated</strong> in favor of the dual-mode system:
-    <table>
-      <tr>
-        <td>Dawn</td>
-        <td>Replaced with <code>light_intensity = 1</code></td>
-      </tr>
-      <tr>
-        <td>Dawnlight</td>
-        <td>Replaced with <code>light_intensity = 2</code></td>
-      </tr>
-      <tr>
-        <td>Day</td>
-        <td>Replaced with <code>light_intensity = 3</code></td>
-      </tr>
-      <tr>
-        <td>Dusk</td>
-        <td>Replaced with <code>light_intensity = 4</code></td>
-      </tr>
-      <tr>
-        <td>Dust</td>
-        <td>Replaced with <code>light_intensity = 5</code></td>
-      </tr>
-    </table>
-    > The best match for the old light themes is <code>night</code> which also resolves accessibility issues.
-    <br/>
-    <strong>Deprecated themes will be completely removed on January 15th of 2026.</strong>
-    <!-- v4:end -->
-  </details>
-
-<!-- whats-new:end -->
-</details>
+<p align="center">
+  <a href="./NEWS.md">✨ What's New / 🚨 Breaking Changes</a>
+</p>
 
 ## 🌙 Dark Styles
 
