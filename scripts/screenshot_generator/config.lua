@@ -24,7 +24,7 @@ local Config = {
 
   -- Exception palettes that should capture all light intensity levels (1-5)
   SHOWCASE_LIGHT_INTENSITY_THEMES = {
-    lagoon = { 1, 2, 3, 4, 5 },
+    moonlight = { 1, 2, 3, 4, 5 },
   },
 }
 

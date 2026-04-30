@@ -2,6 +2,32 @@
 
 Check here for the latest news following an update to see if there are any breaking changes and to learn about new features.
 
+## 🚨 [v6.0](https://github.com/uhs-robert/oasis.nvim/releases/tag/v6.0.0): Moonlight Default, New Theme, and Extended Extras
+
+### 🚨 BREAKING CHANGE: Default theme changed from `lagoon` to `moonlight`
+
+The default colorscheme is now **Moonlight**. This makes the default palette more neutral and better aligns with Oasis’ Desert-inspired syntax model, especially the staple khaki statement/control colors.
+
+If you prefer to keep Lagoon as your default, please set it as your style like so:
+
+```lua
+require('oasis').setup({
+  style = "lagoon",
+})
+vim.cmd.colorscheme('oasis')
+```
+
+### ✨ New Features
+
+- **New theme**: `moonlight`, the deep steel-blue desert night illuminated by pale moonlight.
+- **VS Code theme support**: 96 total variants covering all 16 palettes × dark + 5 light intensities.
+- **Starship prompt theme**: New Starship integration in `extras/starship/`.
+- **Snacks picker integration**: Dedicated UI palette types for snacks.nvim picker.
+- **Theme status color**: New `theme.status` property for status bar integrations.
+- **Bold syntax styling**: Strategic bold accents on key syntax groups for improved visual hierarchy.
+- **MatchParen**: Underline-only by default (background disabled) for less intrusive matching.
+- **Light theme overhaul**: All 16 palettes regenerated with HSL-preserving background seeds, improved diagnostic colors, and tighter contrast targets.
+
 ## 🚨 [v5.0](https://github.com/uhs-robert/oasis.nvim/releases/tag/v5.0.0): Major Visual Overhaul, Redesign, and New Themes
 
 ### 🚨 BREAKING CHANGE: All themes updated, major style changes
