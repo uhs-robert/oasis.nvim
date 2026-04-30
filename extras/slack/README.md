@@ -68,64 +68,64 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Cactus Dark**
 ```
-#334137,#253127,#7FBB82,#334137,#253127,#DDF0E5,#FFA0A0,#D2ADFF,#18231A,#DDF0E5
+#334137,#253127,#7FBB82,#334137,#253127,#DDF0E5,#D2ADFF,#FFA0A0,#18231A,#DDF0E5
 ```
 
 **Oasis Cactus Light 1**
 ```
-#c6e7d2,#e1f2e7,#325a34,#c6e7d2,#e1f2e7,#161d19,#870606,#5107ab,#f1f9f4,#161d19
+#c6e7d2,#e1f2e7,#325a34,#c6e7d2,#e1f2e7,#161d19,#400687,#ab0707,#f1f9f4,#161d19
 ```
 
 **Oasis Cactus Light 2**
 ```
-#bde1c8,#d7edde,#2e5430,#bde1c8,#d7edde,#121714,#7e0404,#4c05a3,#e7f4eb,#121714
+#bde1c8,#d7edde,#2e5430,#bde1c8,#d7edde,#121714,#3b047e,#a30505,#e7f4eb,#121714
 ```
 
 **Oasis Cactus Light 3**
 ```
-#b2dcc1,#cce8d6,#2a4e2c,#b2dcc1,#cce8d6,#121714,#750202,#48039b,#dcefe3,#121714
+#b2dcc1,#cce8d6,#2a4e2c,#b2dcc1,#cce8d6,#121714,#360275,#9b0303,#dcefe3,#121714
 ```
 
 **Oasis Cactus Light 4**
 ```
-#a8d7ba,#c2e3ce,#264728,#a8d7ba,#c2e3ce,#121714,#6d0101,#430192,#d2eadb,#121714
+#a8d7ba,#c2e3ce,#264728,#a8d7ba,#c2e3ce,#121714,#32016d,#920101,#d2eadb,#121714
 ```
 
 **Oasis Cactus Light 5**
 ```
-#9dd2b0,#b7dec5,#234124,#9dd2b0,#b7dec5,#121714,#630000,#3e008a,#c7e5d2,#121714
+#9dd2b0,#b7dec5,#234124,#9dd2b0,#b7dec5,#121714,#2d0063,#8a0000,#c7e5d2,#121714
 ```
 
 ## Canyon
 
 **Oasis Canyon Dark**
 ```
-#4A342A,#38251E,#FFBA75,#4A342A,#38251E,#F8E7D3,#FFA0A0,#87CEEB,#2B1914,#F8E7D3
+#4A342A,#38251E,#FFBA75,#4A342A,#38251E,#F8E7D3,#94D0FE,#FF9090,#2B1914,#F8E7D3
 ```
 
 **Oasis Canyon Light 1**
 ```
-#e7c3a5,#efd7c3,#81460c,#e7c3a5,#efd7c3,#1a150e,#870606,#1f7294,#f4e3d5,#1a150e
+#e7c3a5,#efd7c3,#81460c,#e7c3a5,#efd7c3,#1a150e,#074e85,#ab0707,#f4e3d5,#1a150e
 ```
 
 **Oasis Canyon Light 2**
 ```
-#e4bb98,#eccfb7,#78410a,#e4bb98,#eccfb7,#1b150e,#7e0404,#1c6c8d,#f1dbc9,#1b150e
+#e4bb98,#eccfb7,#78410a,#e4bb98,#eccfb7,#1b150e,#05497d,#a30505,#f1dbc9,#1b150e
 ```
 
 **Oasis Canyon Light 3**
 ```
-#e1b38c,#e9c7ab,#703c08,#e1b38c,#e9c7ab,#1a150e,#750202,#196685,#eed3bd,#1a150e
+#e1b38c,#e9c7ab,#703c08,#e1b38c,#e9c7ab,#1a150e,#034374,#9b0303,#eed3bd,#1a150e
 ```
 
 **Oasis Canyon Light 4**
 ```
-#dfab80,#e6bf9f,#683606,#dfab80,#e6bf9f,#1a150e,#6d0101,#16607e,#ebcbb1,#1a150e
+#dfab80,#e6bf9f,#683606,#dfab80,#e6bf9f,#1a150e,#023e6c,#920101,#ebcbb1,#1a150e
 ```
 
 **Oasis Canyon Light 5**
 ```
-#dca374,#e3b793,#5f3105,#dca374,#e3b793,#1a150e,#630000,#145a76,#e8c3a5,#1a150e
+#dca374,#e3b793,#5f3105,#dca374,#e3b793,#1a150e,#013863,#8a0000,#e8c3a5,#1a150e
 ```
 
 ## Desert
