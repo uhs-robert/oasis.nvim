@@ -98,10 +98,10 @@ local function create_highlights(c, light_mode, theme)
     Question                   = { fg=c.ui.diag.ok.fg, bold=true }, -- |hit-enter| prompt and yes/no questions
     QuickFixLine               = { fg=c.bg.core, bg=c.syntax.statement }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
     SpecialKey                 = { fg=c.syntax.type }, -- Unprintable characters: text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
-    SpellBad                   = { fg=c.ui.diag.error.fg, undercurl=true, sp=c.ui.diag.error.fg }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
-    SpellCap                   = { fg=c.ui.diag.info.fg, undercurl=true, sp=c.ui.diag.info.fg }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
-    SpellLocal                 = { fg=c.syntax.statement, undercurl=true, sp=c.syntax.statement }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
-    SpellRare                  = { fg=c.syntax.type, undercurl=true, sp=c.syntax.type }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
+    SpellBad                   = { bg=c.bg.shadow, undercurl=true, sp=c.ui.diag.error.fg }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
+    SpellCap                   = { bg=c.bg.shadow, undercurl=true, sp=c.ui.diag.info.fg }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
+    SpellLocal                 = { bg=c.bg.shadow, undercurl=true, sp=c.ui.diag.warn.fg }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
+    SpellRare                  = { bg=c.bg.shadow, undercurl=true, sp=c.ui.diag.hint.fg }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
 
     StatusLine                 = { fg=theme.light_primary, bg=c.bg.mantle }, -- Status line of current window
     StatusLineNC               = { fg=c.fg.muted, bg=c.bg.mantle }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
