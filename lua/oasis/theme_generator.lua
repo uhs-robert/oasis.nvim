@@ -301,14 +301,14 @@ local function create_highlights(c, light_mode, theme)
     ["@tag.builtin"]          = "Conditional", -- Html tag e.g. `<div>`
     ["@tag.tsx"]              = "Type", -- Tsx tag
 
-    ["@markup.heading"]       = "Function",
+    ["@markup.heading"]       = { fg = c.ui.title, bg = c.bg.mantle, bold=true },
     ["@markup.heading.1"]     = { fg = c.terminal.red, bold = true },
     ["@markup.heading.2"]     = { fg = c.terminal.bright_yellow, bold = true },
     ["@markup.heading.3"]     = { fg = c.terminal.yellow, bold = true },
     ["@markup.heading.4"]     = { fg = c.terminal.green, bold = true },
     ["@markup.heading.5"]     = { fg = c.terminal.blue, bold = true },
     ["@markup.heading.6"]     = { fg = c.terminal.bright_magenta, bold = true },
-    ["@markup.link.label"]    = { fg =(c.theme.label and c.theme.label or theme.secondary) },
+    ["@markup.link.label"]    = { fg =(c.syntax.typedef) },
     ["@markup.strong"]        = { fg =(c.theme.label and c.theme.label or theme.secondary), bold = true },
     ["@markup.italic"]        = { fg =(c.theme.label and c.theme.label or theme.secondary), italic = true },
     ["@markup.strikethrough"] = { strikethrough=true },
@@ -524,11 +524,12 @@ local PLUGIN_GROUPS = {
     hl.RenderMarkdownCode = { bg = c.bg.mantle }
     hl.RenderMarkdownCodeBorder = { bg = c.bg.surface }
     hl.RenderMarkdownCodeInline = { bg = c.bg.mantle }
-    hl.RenderMarkdownLink = { fg = theme.strong_primary }
-    hl.RenderMarkdownTableHead = { fg = c.fg.muted }
+    hl.RenderMarkdownLink = { fg = c.syntax.type }
+    hl.RenderMarkdownTableHead = { fg = c.fg.muted, bg = c.bg.mantle }
     hl.RenderMarkdownTableRow = { fg = c.fg.muted }
     hl.RenderMarkdownTodo = { fg = c.terminal.cyan }
     hl.RenderMarkdownUnchecked = { fg = c.terminal.bright_red }
+    hl.RenderMarkdownHint = { fg = c.terminal.magenta }
     -- hl.RenderMarkdownWikiLink = {}
   end,
 
