@@ -520,15 +520,15 @@ local PLUGIN_GROUPS = {
   -- Render Markdown
   render_markdown = function(hl, c, _, _, theme)
     hl.RenderMarkdownBullet = "Special"
-    hl.RenderMarkdownChecked = "String"
+    hl.RenderMarkdownChecked = { fg = c.terminal.green }
+    hl.RenderMarkdownTodo = { fg = c.ui.diag.info.fg }
+    hl.RenderMarkdownUnchecked = { fg = c.terminal.red }
     hl.RenderMarkdownCode = { bg = c.bg.mantle }
     hl.RenderMarkdownCodeBorder = { bg = c.bg.surface }
     hl.RenderMarkdownCodeInline = { bg = c.bg.mantle }
     hl.RenderMarkdownLink = { fg = c.syntax.type }
     hl.RenderMarkdownTableHead = { fg = c.fg.muted, bg = c.bg.mantle }
     hl.RenderMarkdownTableRow = { fg = c.fg.muted }
-    hl.RenderMarkdownTodo = { fg = c.terminal.cyan }
-    hl.RenderMarkdownUnchecked = { fg = c.terminal.bright_red }
     hl.RenderMarkdownHint = { fg = c.terminal.magenta }
     -- hl.RenderMarkdownWikiLink = {}
   end,
