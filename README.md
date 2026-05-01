@@ -27,6 +27,17 @@ Oasis follows a warm/cool color split philosophy (**warm = action/flow**, **cool
   <a href="./NEWS.md">✨ What's New / 🚨 Breaking Changes</a>
 </p>
 
+> [!IMPORTANT]
+> Oasis v6 changed the default theme from `lagoon` to `moonlight`.
+>
+> Prefer the previous default?
+>
+> ```lua
+> require("oasis").setup({
+>   style = "lagoon",
+> })
+> ```
+
 ## 🌙 Dark Styles
 
 Click any card below to view the full preview and syntax sample. [↓ Or click here to view all full previews](#view-all-theme-styles)
