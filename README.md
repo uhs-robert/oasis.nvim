@@ -177,6 +177,7 @@ To use the extras, refer to their respective documentation.
 | Konsole     | [extras/konsole](extras/konsole)                       |
 | LazyGit     | [extras/lazygit](extras/lazygit)                       |
 | Lua-theme   | [extras/lua-theme](/extras/lua-theme)                  |
+| Nless       | [extras/nless](/extras/nless)                          |
 | Qutebrowser | [extras/qutebrowser](extras/qutebrowser)               |
 | Slack       | [extras/slack](extras/slack)                           |
 | Starship    | [extras/starship](extras/starship)                     |
