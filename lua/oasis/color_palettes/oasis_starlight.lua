@@ -90,8 +90,8 @@ local dark = {
     float = {
       title = base.theme.secondary,
       fg = base.fg.strong,
-      bg = base.bg.mantle,
-      border = { fg = base.theme.strong_primary, bg = base.bg.mantle },
+      bg = base.bg.crust,
+      border = { fg = base.theme.strong_primary, bg = base.bg.crust },
     },
     diag = {
       error = { fg = p.diag.error.fg, bg = p.diag.error.bg },

@@ -111,7 +111,7 @@ local function create_highlights(c, light_mode, theme)
     TabLineSel                 = { fg=c.bg.core, bg=theme.secondary }, -- Tab pages line, active tab page label
     MsgSeparator               = "StatusLine", -- Separator for scrolled messages, `msgsep` flag of 'display'
     Title                      = { fg=c.ui.title, bold=true }, -- Titles for output from ":set all", ":autocmd" etc.
-    VertSplit                  = { fg=c.ui.border, bg=c.bg.mantle }, -- Column separating vertically split windows
+    VertSplit                  = { fg=c.ui.border, bg=c.bg.crust }, -- Column separating vertically split windows
     Visual                     = { bg=c.ui.visual.bg, fg = (c.ui.visual.fg or "NONE") }, -- Visual mode selection
     VisualNOS                  = { bg=c.ui.visual.bg }, -- Visual mode selection when vim is "Not Owning the Selection".
     WarningMsg                 = { fg=c.ui.diag.warn.fg, bold=true }, -- Warning messages
@@ -206,6 +206,8 @@ local function create_highlights(c, light_mode, theme)
     DiagnosticSignInfo         = "DiagnosticInfo" , -- Used for "Info" signs in sign column.
     DiagnosticSignHint         = "DiagnosticHint" , -- Used for "Hint" signs in sign column.
     DiagnosticSignOk           = "DiagnosticOk" , -- Used for "Ok" signs in sign column.
+
+    TreesitterContext          = { fg=c.ui.float.fg, bg=c.bg.surface }, -- "NormalFloat"
 
     -- Tree-Sitter syntax groups.
     -- See :h treesitter-highlight-groups, some groups may not be listed,
@@ -523,9 +525,9 @@ local PLUGIN_GROUPS = {
     hl.RenderMarkdownChecked = { fg = c.terminal.green }
     hl.RenderMarkdownTodo = { fg = c.ui.diag.info.fg }
     hl.RenderMarkdownUnchecked = { fg = c.terminal.red }
-    hl.RenderMarkdownCode = { bg = c.bg.mantle }
-    hl.RenderMarkdownCodeBorder = { bg = c.bg.surface }
-    hl.RenderMarkdownCodeInline = { bg = c.bg.mantle }
+    hl.RenderMarkdownCode = { bg = c.bg.crust }
+    hl.RenderMarkdownCodeBorder = { bg = c.bg.mantle }
+    hl.RenderMarkdownCodeInline = { bg = c.bg.shadow }
     hl.RenderMarkdownLink = { fg = c.syntax.type }
     hl.RenderMarkdownTableHead = { fg = c.ui.border }
     hl.RenderMarkdownTableRow = { fg = c.ui.border }
