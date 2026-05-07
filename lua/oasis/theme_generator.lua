@@ -557,6 +557,11 @@ local PLUGIN_GROUPS = {
     hl.WhichKeyDesc = "OasisLightPrimary"
     hl.WhichKeyGroup = "OasisSecondary"
   end,
+
+  -- Yazi
+  yazi = function(hl)
+    hl.YaziFloat = "NormalFloat"
+  end,
 }
 
 ---Create plugin highlights for enabled integrations.

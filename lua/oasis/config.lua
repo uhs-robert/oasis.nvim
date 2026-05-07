@@ -67,6 +67,7 @@ Config.defaults = {
       render_markdown = nil,
 			snacks = nil,
 			which_key = nil,
+      yazi = nil,
 		},
 	},
 }
