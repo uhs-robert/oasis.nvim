@@ -301,7 +301,7 @@ local function create_highlights(c, light_mode, theme)
     ["@tag.builtin"]          = "Conditional", -- Html tag e.g. `<div>`
     ["@tag.tsx"]              = "Type", -- Tsx tag
 
-    ["@markup.heading"]       = { fg = c.ui.title, bg = c.bg.mantle, bold=true },
+    ["@markup.heading"]       = { fg = (c.theme.label and c.theme.label or theme.secondary), bold=true },
     ["@markup.heading.1"]     = { fg = c.terminal.red, bold = true },
     ["@markup.heading.2"]     = { fg = c.terminal.bright_yellow, bold = true },
     ["@markup.heading.3"]     = { fg = c.terminal.yellow, bold = true },
@@ -527,8 +527,8 @@ local PLUGIN_GROUPS = {
     hl.RenderMarkdownCodeBorder = { bg = c.bg.surface }
     hl.RenderMarkdownCodeInline = { bg = c.bg.mantle }
     hl.RenderMarkdownLink = { fg = c.syntax.type }
-    hl.RenderMarkdownTableHead = { fg = c.fg.muted, bg = c.bg.mantle }
-    hl.RenderMarkdownTableRow = { fg = c.fg.muted }
+    hl.RenderMarkdownTableHead = { fg = c.ui.border }
+    hl.RenderMarkdownTableRow = { fg = c.ui.border }
     hl.RenderMarkdownHint = { fg = c.terminal.magenta }
     -- hl.RenderMarkdownWikiLink = {}
   end,
