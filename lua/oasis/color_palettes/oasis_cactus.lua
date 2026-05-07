@@ -47,15 +47,15 @@ local dark = {
   -- Syntax
   syntax = {
     -- Cold: (Data)
-    parameter = p.gold[400],
+    parameter = p.lavender[500],
     identifier = p.sky[500],
     delimiter = base.theme.strong_primary,
-    type = p.teal[600],
-    typedef = p.teal[700],
+    type = p.teal[700],
+    typedef = p.teal[800],
     string = p.rose[500],
     regex = p.desert_rose[600],
-    builtinVar = opts.themed_syntax and p.lavender[500] or base.primary[500], -- (this, document, window, etc)
-    builtinConst = opts.themed_syntax and p.iris[400] or p.steelblue[400], -- (e.g. null, undefined, Infinity, etc)
+    builtinVar = opts.themed_syntax and p.khaki[500] or base.primary[500], -- (this, document, window, etc)
+    builtinConst = opts.themed_syntax and p.khaki[800] or p.steelblue[400], -- (e.g. null, undefined, Infinity, etc)
     constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
