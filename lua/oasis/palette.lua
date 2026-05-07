@@ -106,84 +106,85 @@ local git = {
 -- Theme specific
 local theme = {
   -- Dark themes
+  -- bg (shadow is inset, crust is usually darker than core)
   -- fg targets: dim = 4:0:1 (shadow), muted = 3:0:1 (core), comment = 4:5:1 (core)
   abyss = {
-    bg = { shadow = "#050505", core = "#000000", mantle = "#101010", surface = "#1C1C1C" },
+    bg = { shadow = "#121212", core = "#000000", crust = "#080808", mantle = "#141414", surface = "#1C1C1C" },
     fg = { core = "#F0EBE6", strong = "#FFDACC", dim = "#587179", muted = "#605C4D", comment = "#7A7662" },
     light_bg_seed = "#D8D8D8",
   },
   cactus = {
-    bg = { shadow = "#152017", core = "#18231A", mantle = "#253127", surface = "#334137" },
+    bg = { shadow = "#0F1511", core = "#151E17", crust = "#111813", mantle = "#212C22", surface = "#2F3D33" },
     fg = { core = "#DDF0E5", strong = "#C7EDCF", dim = "#907B6A", muted = "#5B7360", comment = "#69956D" },
     light_bg_seed = "#DCEFE3",
   },
   canyon = {
-    bg = { shadow = "#221511", core = "#2B1914", mantle = "#38251E", surface = "#4A342A" },
+    bg = { shadow = "#1C100D", core = "#261612", crust = "#1F120E", mantle = "#35231D", surface = "#483228" },
     fg = { core = "#F8E7D3", strong = "#FFD8BC", dim = "#857164", muted = "#9A6549", comment = "#B67E61" },
     light_bg_seed = "#EED3BD",
   },
   desert = {
-    bg = { shadow = "#212121", core = "#262626", mantle = "#2E2E2E", surface = "#404040" },
+    bg = { shadow = "#1F1F1F", core = "#262626", crust = "#1C1C1C", mantle = "#2E2E2E", surface = "#404040" },
     fg = { core = "#F7EDE1", strong = "#E5D9CE", dim = "#748C9A", muted = "#77725F", comment = "#948F7A" },
     light_bg_seed = "#F3EDCF",
   },
   dune = {
-    bg = { shadow = "#241D19", core = "#29211C", mantle = "#352C26", surface = "#483F35" },
+    bg = { shadow = "#1E1A15", core = "#27211B", crust = "#211D17", mantle = "#322A24", surface = "#463E34" },
     fg = { core = "#E8E5DA", strong = "#EDE8AF", dim = "#6E6E6E", muted = "#826D5A", comment = "#9F8B79" },
     light_bg_seed = "#F7E9D4",
   },
   lagoon = {
-    bg = { shadow = "#0F1522", core = "#101825", mantle = "#1A283F", surface = "#22385C" },
+    bg = { shadow = "#0B1119", core = "#101825", crust = "#0C131C", mantle = "#1A283F", surface = "#22385C" },
     fg = { core = "#D9E6FA", strong = "#D0E2F0", dim = "#877363", muted = "#3B6A87", comment = "#4D88A7" },
     light_bg_seed = "#DCEAFA",
   },
   luna = {
-    bg = { shadow = "#0C0A2A", core = "#101032", mantle = "#1A1646", surface = "#241F56" },
+    bg = { shadow = "#0A0A1F", core = "#0D0D2B", crust = "#0B0B23", mantle = "#17143E", surface = "#211D4E" },
     fg = { core = "#EEEAFE", strong = "#DCD5FF", dim = "#7E789B", muted = "#8A82B3", comment = "#A29AC9" },
     light_bg_seed = "#E2E0F8",
   },
   midnight = {
-    bg = { shadow = "#0C1014", core = "#101418", mantle = "#18202A", surface = "#223040" },
+    bg = { shadow = "#05070A", core = "#0C0E13", crust = "#07090D", mantle = "#141C24", surface = "#1E2A38" },
     fg = { core = "#F7F4F2", strong = "#FFE0CC", dim = "#7D7267", muted = "#4E6578", comment = "#69809D" },
     light_bg_seed = "#D9DEE8",
   },
   mirage = {
-    bg = { shadow = "#132025", core = "#152229", mantle = "#1C2B31", surface = "#253840" },
+    bg = { shadow = "#0B1318", core = "#111C22", crust = "#0D161C", mantle = "#18252A", surface = "#21333B" },
     fg = { core = "#DDEFEF", strong = "#C9EEE6", dim = "#907C6C", muted = "#587270", comment = "#439789" },
     light_bg_seed = "#D8F2EF",
   },
   moonlight = {
-    bg = { shadow = "#020304", core = "#070C13", mantle = "#0F1520", surface = "#1A2330" },
+    bg = { shadow = "#030507", core = "#070C13", crust = "#050A0F", mantle = "#0F1520", surface = "#1A2330" },
     fg = { core = "#F7F4F2", strong = "#E8F1FF", dim = "#74808F", muted = "#4E6578", comment = "#69809D" },
     light_bg_seed = "#E8E5D8",
   },
   night = {
-    bg = { shadow = "#020A19", core = "#050F23", mantle = "#0B1832", surface = "#122444" },
+    bg = { shadow = "#030916", core = "#050F23", crust = "#040B1B", mantle = "#0B1832", surface = "#122444" },
     fg = { core = "#E8F1FF", strong = "#D9E6FA", dim = "#74808F", muted = "#536B83", comment = "#708CA8" },
     light_bg_seed = "#CBDCF0",
   },
   rose = {
-    bg = { shadow = "#2B1523", core = "#301828", mantle = "#3E2636", surface = "#523A4B" },
+    bg = { shadow = "#22111B", core = "#2C1724", crust = "#25131E", mantle = "#3C2534", surface = "#4E3747" },
     fg = { core = "#FADBE4", strong = "#EBBEDF", dim = "#8A786C", muted = "#816175", comment = "#A87A91" },
     light_bg_seed = "#F3D6E8",
   },
   scorpion = {
-    bg = { shadow = "#080100", core = "#140400", mantle = "#22100B", surface = "#331C16" },
+    bg = { shadow = "#0A0200", core = "#1A0500", crust = "#140400", mantle = "#27120C", surface = "#361D17" },
     fg = { core = "#F7EAE5", strong = "#FFD9CF", dim = "#8E7770", muted = "#9A6F66", comment = "#B08A80" },
     light_bg_seed = "#F4CFC3",
   },
   sol = {
-    bg = { shadow = "#25110F", core = "#2A1412", mantle = "#341F1B", surface = "#462A25" },
+    bg = { shadow = "#1C0E0D", core = "#271311", crust = "#1F0F0E", mantle = "#2F1C18", surface = "#432823" },
     fg = { core = "#FFE0DA", strong = "#FFD3CB", dim = "#7B7B7B", muted = "#83615B", comment = "#A27D78" },
     light_bg_seed = "#F2C4C4",
   },
   starlight = {
-    bg = { shadow = "#050505", core = "#000000", mantle = "#111216", surface = "#1C2028" },
-    fg = { core = "#FAF7F0", strong = "#DCD9D2", dim = "#85665B", muted = "#4F5B6B", comment = "#5E7C9A" },
+    bg = { shadow = "#0B0E14", core = "#000000", crust = "#090D11", mantle = "#0C131C", surface = "#1C2028" },
+    fg = { core = "#FAF7F0", strong = "#DCD9D2", dim = "#A48E7F", muted = "#4F5B6B", comment = "#5E7C9A" },
     light_bg_seed = "#F5F2EA",
   },
   twilight = {
-    bg = { shadow = "#201726", core = "#261A30", mantle = "#312140", surface = "#3F2B50" },
+    bg = { shadow = "#120D17", core = "#1B1320", crust = "#150F1A", mantle = "#261A32", surface = "#362343" },
     fg = { core = "#F0E4F2", strong = "#EAD8FF", dim = "#76665A", muted = "#71609A", comment = "#8B80AA" },
     light_bg_seed = "#EADFF4",
   },

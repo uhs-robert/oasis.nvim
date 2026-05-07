@@ -90,8 +90,8 @@ local dark = {
     float = {
       title = base.theme.secondary,
       fg = base.fg.strong,
-      bg = base.bg.mantle,
-      border = { fg = base.palette.primary[600], bg = base.bg.mantle },
+      bg = base.bg.crust,
+      border = { fg = base.palette.primary[600], bg = base.bg.crust },
     },
     diag = {
       error = { fg = p.diag.error.fg, bg = p.diag.error.bg },
@@ -107,8 +107,7 @@ local dark = {
 local light
 if need_light then
   local LightTheme = require("oasis.tools.light_theme_generator")
-  local light_bg =
-    LightTheme.generate_bg(theme.light_bg_seed, opts.light_intensity, { preserve_hsl = true })
+  local light_bg = LightTheme.generate_bg(theme.light_bg_seed, opts.light_intensity, { preserve_hsl = true })
   local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
     search = { bg = p.visual.blue, fg = base.fg.core },
     match = { bg = p.visual.orange, fg = base.fg.core },
