@@ -36,7 +36,7 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Abyss Dark**
 ```
-#1C1C1C,#101010,#D6CE7C,#1C1C1C,#101010,#F0EBE6,#FF7979,#7FCF78,#000000,#F0EBE6
+#1C1C1C,#141414,#D6CE7C,#1C1C1C,#141414,#F0EBE6,#FF7979,#7FCF78,#000000,#F0EBE6
 ```
 
 **Oasis Abyss Light 1**
@@ -68,7 +68,7 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Cactus Dark**
 ```
-#334137,#253127,#7FBB82,#334137,#253127,#DDF0E5,#D2ADFF,#FFA0A0,#18231A,#DDF0E5
+#2F3D33,#212C22,#7FBB82,#2F3D33,#212C22,#DDF0E5,#D2ADFF,#FFA0A0,#151E17,#DDF0E5
 ```
 
 **Oasis Cactus Light 1**
@@ -100,7 +100,7 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Canyon Dark**
 ```
-#4A342A,#38251E,#FFBA75,#4A342A,#38251E,#F8E7D3,#94D0FE,#FF9090,#2B1914,#F8E7D3
+#483228,#35231D,#FFBA75,#483228,#35231D,#F8E7D3,#94D0FE,#FF9090,#261612,#F8E7D3
 ```
 
 **Oasis Canyon Light 1**
@@ -164,7 +164,7 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Dune Dark**
 ```
-#483F35,#352C26,#D6CE7C,#483F35,#352C26,#E8E5DA,#8FD1C7,#D2ADFF,#29211C,#E8E5DA
+#463E34,#322A24,#D6CE7C,#463E34,#322A24,#E8E5DA,#8FD1C7,#D2ADFF,#27211B,#E8E5DA
 ```
 
 **Oasis Dune Light 1**
@@ -228,7 +228,7 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Luna Dark**
 ```
-#241F56,#1A1646,#F0E68C,#241F56,#1A1646,#EEEAFE,#9797E9,#6DCEEB,#101032,#EEEAFE
+#211D4E,#17143E,#F0E68C,#211D4E,#17143E,#EEEAFE,#9797E9,#6DCEEB,#0D0D2B,#EEEAFE
 ```
 
 **Oasis Luna Light 1**
@@ -260,7 +260,7 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Midnight Dark**
 ```
-#223040,#18202A,#D6CE7C,#223040,#18202A,#F7F4F2,#FF7979,#7FCF78,#101418,#F7F4F2
+#1E2A38,#141C24,#D6CE7C,#1E2A38,#141C24,#F7F4F2,#FF7979,#7FCF78,#0C0E13,#F7F4F2
 ```
 
 **Oasis Midnight Light 1**
@@ -292,7 +292,7 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Mirage Dark**
 ```
-#253840,#1C2B31,#79C7BE,#253840,#1C2B31,#DDEFEF,#F8B471,#D2ADFF,#152229,#DDEFEF
+#21333B,#18252A,#79C7BE,#21333B,#18252A,#DDEFEF,#F8B471,#D2ADFF,#111C22,#DDEFEF
 ```
 
 **Oasis Mirage Light 1**
@@ -388,7 +388,7 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Rose Dark**
 ```
-#523A4B,#3E2636,#DB9AB0,#523A4B,#3E2636,#FADBE4,#93C795,#8FD1C7,#301828,#FADBE4
+#4E3747,#3C2534,#DB9AB0,#4E3747,#3C2534,#FADBE4,#93C795,#8FD1C7,#2C1724,#FADBE4
 ```
 
 **Oasis Rose Light 1**
@@ -420,7 +420,7 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Scorpion Dark**
 ```
-#331C16,#22100B,#F0E68C,#331C16,#22100B,#F7EAE5,#F7997D,#7FCF78,#140400,#F7EAE5
+#361D17,#27120C,#F0E68C,#361D17,#27120C,#F7EAE5,#F7997D,#7FCF78,#1A0500,#F7EAE5
 ```
 
 **Oasis Scorpion Light 1**
@@ -452,7 +452,7 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Sol Dark**
 ```
-#462A25,#341F1B,#FF7979,#462A25,#341F1B,#FFE0DA,#F8B471,#7FCF78,#2A1412,#FFE0DA
+#432823,#2F1C18,#FF7979,#432823,#2F1C18,#FFE0DA,#F8B471,#7FCF78,#271311,#FFE0DA
 ```
 
 **Oasis Sol Light 1**
@@ -484,7 +484,7 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Starlight Dark**
 ```
-#1C2028,#111216,#58B8FD,#1C2028,#111216,#FAF7F0,#F0E68C,#FFA0A0,#000000,#FAF7F0
+#1C2028,#0C131C,#58B8FD,#1C2028,#0C131C,#FAF7F0,#F0E68C,#FFA0A0,#000000,#FAF7F0
 ```
 
 **Oasis Starlight Light 1**
@@ -516,7 +516,7 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Twilight Dark**
 ```
-#3F2B50,#312140,#F7997D,#3F2B50,#312140,#F0E4F2,#D2ADFF,#F0E68C,#261A30,#F0E4F2
+#362343,#261A32,#F7997D,#362343,#261A32,#F0E4F2,#D2ADFF,#F0E68C,#1B1320,#F0E4F2
 ```
 
 **Oasis Twilight Light 1**

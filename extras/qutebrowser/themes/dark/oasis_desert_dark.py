@@ -22,7 +22,7 @@ def setup(c, samecolorrows=True):
         "search":         "#4D4A42",
         "core":           "#262626",
         "mantle":         "#2E2E2E",
-        "shadow":         "#212121",
+        "shadow":         "#1F1F1F",
         "surface":        "#404040",
         "fg_core":        "#F7EDE1",
         "fg_dim":         "#748C9A",

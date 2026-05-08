@@ -5,7 +5,7 @@ return {
 -- Backgrounds
 	bg_core = "#070C13",
 	bg_mantle = "#0F1520",
-	bg_shadow = "#020304",
+	bg_shadow = "#030507",
 	bg_surface = "#1A2330",
 
 -- Foregrounds

@@ -9,12 +9,13 @@
 .oasis-twilight_dark {
 	--oasis-name: "Oasis Twilight Dark";
 	--oasis-mode: "dark";
-	--oasis-bg-core: #261A30;
-	--oasis-bg-mantle: #312140;
-	--oasis-bg-shadow: #201726;
-	--oasis-bg-surface: #3F2B50;
+	--oasis-bg-core: #1B1320;
+	--oasis-bg-crust: #150F1A;
+	--oasis-bg-mantle: #261A32;
+	--oasis-bg-shadow: #120D17;
+	--oasis-bg-surface: #362343;
 	--oasis-diff-add: #1F3A2D;
-	--oasis-diff-change: #3F2B50;
+	--oasis-diff-change: #362343;
 	--oasis-diff-delete: #532E2E;
 	--oasis-diff-text: #5A3824;
 	--oasis-fg-comment: #8B80AA;
@@ -77,7 +78,7 @@
 	--oasis-syntax-string: #FFA0A0;
 	--oasis-syntax-type: #79C7BE;
 	--oasis-syntax-typedef: #68C0B6;
-	--oasis-terminal-black: #261A30;
+	--oasis-terminal-black: #1B1320;
 	--oasis-terminal-blue: #81C0FF;
 	--oasis-terminal-bright-black: #71609A;
 	--oasis-terminal-bright-blue: #87CEEB;
@@ -87,7 +88,7 @@
 	--oasis-terminal-bright-red: #FFA0A0;
 	--oasis-terminal-bright-white: #F7F4E9;
 	--oasis-terminal-bright-yellow: #F8B471;
-	--oasis-terminal-color0: #261A30;
+	--oasis-terminal-color0: #1B1320;
 	--oasis-terminal-color1: #FF7979;
 	--oasis-terminal-color10: #A3E39A;
 	--oasis-terminal-color11: #F8B471;
@@ -118,7 +119,7 @@
 	--oasis-theme-secondary-strong: #9C5FEB;
 	--oasis-theme-strong-primary: #E28E6F;
 	--oasis-ui-border: #F7997D;
-	--oasis-ui-cursorLine: #312140;
+	--oasis-ui-cursorLine: #261A32;
 	--oasis-ui-diag-error-bg: #532E2E;
 	--oasis-ui-diag-error-fg: #FFA0A0;
 	--oasis-ui-diag-hint-bg: #2B4A46;
@@ -130,20 +131,20 @@
 	--oasis-ui-diag-warn-bg: #4D4528;
 	--oasis-ui-diag-warn-fg: #F0E68C;
 	--oasis-ui-dir: #87CEEB;
-	--oasis-ui-float-bg: #312140;
-	--oasis-ui-float-border-bg: #312140;
+	--oasis-ui-float-bg: #150F1A;
+	--oasis-ui-float-border-bg: #150F1A;
 	--oasis-ui-float-border-fg: #F7997D;
 	--oasis-ui-float-fg: #EAD8FF;
 	--oasis-ui-float-title: #D2ADFF;
 	--oasis-ui-lineNumber: #FF9633;
 	--oasis-ui-match-bg: #F7997D;
-	--oasis-ui-match-fg: #261A30;
+	--oasis-ui-match-fg: #1B1320;
 	--oasis-ui-matchParen-bg: #4D4528;
 	--oasis-ui-matchParen-fg: #D6CE7C;
 	--oasis-ui-nontext: #76665A;
 	--oasis-ui-search-bg: #666666;
 	--oasis-ui-search-fg: #F0E4F2;
 	--oasis-ui-title: #F7997D;
-	--oasis-ui-visual-bg: #3F2B50;
+	--oasis-ui-visual-bg: #362343;
 	--oasis-ui-visual-fg: none;
 }
