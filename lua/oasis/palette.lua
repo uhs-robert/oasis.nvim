@@ -144,7 +144,7 @@ local theme = {
     light_bg_seed = "#E2E0F8",
   },
   midnight = {
-    bg = { shadow = "#05070A", core = "#0C0E13", crust = "#07090D", mantle = "#141C24", surface = "#1E2A38" },
+    bg = { shadow = "#05070A", core = "#0C0E13", crust = "#070A0E", mantle = "#141C24", surface = "#1E2A38" },
     fg = { core = "#F7F4F2", strong = "#FFE0CC", dim = "#7D7267", muted = "#4E6578", comment = "#69809D" },
     light_bg_seed = "#D9DEE8",
   },
@@ -154,7 +154,7 @@ local theme = {
     light_bg_seed = "#D8F2EF",
   },
   moonlight = {
-    bg = { shadow = "#030507", core = "#070C13", crust = "#0F1520", mantle = "#0F1520", surface = "#1A2330" },
+    bg = { shadow = "#030507", core = "#070C13", crust = "#0A1018", mantle = "#0F1520", surface = "#1A2330" },
     fg = { core = "#F7F4F2", strong = "#E8F1FF", dim = "#74808F", muted = "#4E6578", comment = "#69809D" },
     light_bg_seed = "#E8E5D8",
   },
@@ -169,7 +169,7 @@ local theme = {
     light_bg_seed = "#F3D6E8",
   },
   scorpion = {
-    bg = { shadow = "#0A0200", core = "#1A0500", crust = "#22100B", mantle = "#27120C", surface = "#361D17" },
+    bg = { shadow = "#0A0200", core = "#1A0500", crust = "#140400", mantle = "#27120C", surface = "#361D17" },
     fg = { core = "#F7EAE5", strong = "#FFD9CF", dim = "#8E7770", muted = "#9A6F66", comment = "#B08A80" },
     light_bg_seed = "#F4CFC3",
   },
