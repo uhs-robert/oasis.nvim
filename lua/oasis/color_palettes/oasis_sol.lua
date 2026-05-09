@@ -54,7 +54,7 @@ local dark = {
     delimiter = base.theme.primary,
     type = p.teal[600],
     typedef = p.teal[700],
-    string = p.sunrise[500],
+    string = opts.themed_syntax and p.khaki[500] or p.rose[500],
     regex = p.copper[500],
     builtinVar = p.lavender[400], -- (this, document, window, etc)
     builtinConst = p.iris[400], -- (e.g. null, undefined, Infinity, etc)
@@ -64,16 +64,16 @@ local dark = {
     func = p.sand[300],
     builtinFunc = p.sand[200], -- (eg. parseInst, Array, Object etc)
     statement = opts.themed_syntax and base.palette.primary[200] or p.khaki[500], -- (general statement (i.e. var, const))
-    exception = opts.themed_syntax and p.gold[500] or p.red[300], -- (try/catch, return)
-    conditional = opts.themed_syntax and force_aaa and p.rose[600] or p.rose[700] or p.khaki[800], -- (Conditionals, Loops)
+    exception = opts.themed_syntax and p.gold[500] or p.red[400], -- (try/catch, return)
+    conditional = opts.themed_syntax and p.rose[700] or p.khaki[800], -- (Conditionals, Loops)
     special = p.sunset[200], -- (Statement not covered above)
     operator = base.palette.primary[300],
     punctuation = base.palette.primary[400],
 
     -- Neutral: (Connections / Info)
     bracket = p.slate[500], -- (bracket)
-    preproc = p.khaki[600], -- (imports)
-    macro = p.khaki[700], -- (imports)
+    preproc = p.sundown[600], -- (imports)
+    macro = p.sundown[700], -- (imports)
     comment = theme.fg.comment, -- (comments)
   },
 
