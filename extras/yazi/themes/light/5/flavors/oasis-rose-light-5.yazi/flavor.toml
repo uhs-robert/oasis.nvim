@@ -19,17 +19,17 @@ count_cut = { fg = "#ecbedb", bg = "#8e0f15" }
 count_selected = { fg = "#ecbedb", bg = "#4c4719" }
 
 border_symbol = "│"
-border_style = { fg = "#62404b" }
+border_style = { fg = "#693c4e" }
 
 # TABS
 [tabs]
-active = { fg = "#ecbedb", bg = "#491a2a", bold = true }
-inactive = { fg = "#491a2a", bg = "#e7acd1" }
+active = { fg = "#ecbedb", bg = "#4e152c", bold = true }
+inactive = { fg = "#4e152c", bg = "#e7acd1" }
 
 # MODE
 [mode]
-normal_main = { fg = "#ecbedb", bg = "#491a2a", bold = true }
-normal_alt = { fg = "#491a2a", bg = "#de8fc1" }
+normal_main = { fg = "#ecbedb", bg = "#4e152c", bold = true }
+normal_alt = { fg = "#4e152c", bg = "#de8fc1" }
 
 select_main = { fg = "#ecbedb", bg = "#683b0f", bold = true }
 select_alt = { fg = "#683b0f", bg = "#de8fc1" }
@@ -54,24 +54,24 @@ perm_exec = { fg = "#413b10" }
 
 # INPUT
 [input]
-border = { fg = "#491a2a" }
+border = { fg = "#4e152c" }
 title = {}
 value = {}
 selected = { reversed = true }
 
 # PICK
 [pick]
-border = { fg = "#491a2a" }
+border = { fg = "#4e152c" }
 active = { fg = "#224123", bold = true }
 inactive = {}
 
 # COMPLETION
 [cmp]
-border = { fg = "#491a2a" }
+border = { fg = "#4e152c" }
 
 # TASKS
 [tasks]
-border = { fg = "#491a2a" }
+border = { fg = "#4e152c" }
 title = {}
 hovered = { fg = "#224123", underline = true }
 
@@ -86,7 +86,7 @@ separator_style = { fg = "#684f5c" }
 
 # HELP
 [help]
-on = { fg = "#491a2a" }
+on = { fg = "#4e152c" }
 run = { fg = "#184571" }
 hovered = { reversed = true, bold = true }
 footer = { fg = "#352430", bg = "#de8fc1" }
@@ -120,10 +120,10 @@ rules = [
   { url = "*", is = "orphan", fg = "#8f0e0e"},
 
   # Executables
-  { url = "*", is = "exec", fg = "#491a2a"},
+  { url = "*", is = "exec", fg = "#4e152c"},
 
   # Directory
-  { url = "*/", fg = "#451424" },
+  { url = "*/", fg = "#471227" },
 ]
 
 # SPOT
