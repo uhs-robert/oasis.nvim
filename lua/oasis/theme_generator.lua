@@ -240,7 +240,7 @@ local function create_highlights(c, light_mode, theme)
     ["@define"]               = "Define", -- Define
     ["@macro"]                = "Macro", -- Macro
     ["@string"]               = "String", -- String
-    ["@string.regexp"]        = { fg=c.syntax.regex, bold=true }, -- SpecialChar
+    ["@string.regexp"]        = { fg=c.syntax.regex, italic=true }, -- SpecialChar
     ["@string.escape"]        = "Exception", -- SpecialChar
     ["@string.special"]       = "SpecialChar", -- (e.g., dates)
     ["@string.special.symbol"]= { fg=c.syntax.identifier },
