@@ -21,8 +21,8 @@ local base = {
     accent = p.teal,
   },
   theme = {
-    strong_primary = p.desert_rose[700],
-    primary = p.desert_rose[600],
+    strong_primary = p.desert_rose[600],
+    primary = p.desert_rose[500],
     light_primary = p.desert_rose[400],
     secondary = p.aloe[600],
     label = p.aloe[700],
