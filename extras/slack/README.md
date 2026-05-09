@@ -388,32 +388,32 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Rose Dark**
 ```
-#4E3747,#3C2534,#DB9AB0,#4E3747,#3C2534,#FADBE4,#93C795,#8FD1C7,#2C1724,#FADBE4
+#4E3747,#3C2534,#E6A4BE,#4E3747,#3C2534,#FADBE4,#93C795,#8FD1C7,#2C1724,#FADBE4
 ```
 
 **Oasis Rose Light 1**
 ```
-#ecbfd9,#f5dceb,#65283c,#ecbfd9,#f5dceb,#201317,#325b33,#377c71,#faeef5,#201317
+#ecbfd9,#f5dceb,#6b213e,#ecbfd9,#f5dceb,#201317,#325b33,#377c71,#faeef5,#201317
 ```
 
 **Oasis Rose Light 2**
 ```
-#e8b3d5,#f1d0e5,#5e2438,#e8b3d5,#f1d0e5,#1a0f12,#2e542f,#33756b,#f6e2ef,#1a0f12
+#e8b3d5,#f1d0e5,#641e3a,#e8b3d5,#f1d0e5,#1a0f12,#2e542f,#33756b,#f6e2ef,#1a0f12
 ```
 
 **Oasis Rose Light 3**
 ```
-#e5a7cd,#eec4de,#572133,#e5a7cd,#eec4de,#1a0f12,#2a4e2b,#2f6f65,#f3d6e8,#1a0f12
+#e5a7cd,#eec4de,#5d1b35,#e5a7cd,#eec4de,#1a0f12,#2a4e2b,#2f6f65,#f3d6e8,#1a0f12
 ```
 
 **Oasis Rose Light 4**
 ```
-#e39ac6,#ebb8d7,#501d2f,#e39ac6,#ebb8d7,#1a0f12,#264827,#2c685f,#f0cae1,#1a0f12
+#e39ac6,#ebb8d7,#551830,#e39ac6,#ebb8d7,#1a0f12,#264827,#2c685f,#f0cae1,#1a0f12
 ```
 
 **Oasis Rose Light 5**
 ```
-#de8fc1,#e7acd1,#491a2a,#de8fc1,#e7acd1,#1a0f12,#224123,#286259,#ecbedb,#1a0f12
+#de8fc1,#e7acd1,#4e152c,#de8fc1,#e7acd1,#1a0f12,#224123,#286259,#ecbedb,#1a0f12
 ```
 
 ## Scorpion
