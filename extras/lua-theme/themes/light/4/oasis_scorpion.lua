@@ -1,0 +1,64 @@
+-- extras/lua-theme/themes/light/4/oasis_scorpion.lua
+-- Generated from Oasis palettes
+
+return {
+-- Backgrounds
+	bg_core = "#f2c5b6",
+	bg_mantle = "#efb6a3",
+	bg_shadow = "#f0bba9",
+	bg_surface = "#e99c82",
+
+-- Foregrounds
+	fg_core = "#191210",
+	fg_strong = "#42241c",
+	fg_muted = "#635653",
+	fg_dim = "#7c726e",
+
+-- Accents
+	theme_primary = "#60580d",
+	theme_secondary = "#661d07",
+	theme_accent = "#2d6c27",
+
+-- Status
+	error = "#701818",
+	warning = "#5c5413",
+	info = "#184571",
+	hint = "#145e53",
+	ok = "#1d5c14",
+
+-- ANSI Semnatic Colors
+	black = "#323232",
+	red = "#930f0f",
+	green = "#2e512b",
+	yellow = "#4f4a1a",
+	blue = "#104a83",
+	magenta = "#611db0",
+	cyan = "#294f4b",
+	white = "#3b320c",
+	bright_black = "#38312c",
+	bright_red = "#930e0e",
+	bright_green = "#2b5125",
+	bright_yellow = "#6c3e10",
+	bright_blue = "#1c4e62",
+	bright_magenta = "#601db2",
+	bright_cyan = "#284f49",
+	bright_white = "#37321d",
+
+-- ANSI Terminal Colors
+	color0 = "#323232",
+	color1 = "#930f0f",
+	color2 = "#2e512b",
+	color3 = "#4f4a1a",
+	color4 = "#104a83",
+	color5 = "#611db0",
+	color6 = "#294f4b",
+	color7 = "#3b320c",
+	color8 = "#38312c",
+	color9 = "#930e0e",
+	color10 = "#2b5125",
+	color11 = "#6c3e10",
+	color12 = "#1c4e62",
+	color13 = "#601db2",
+	color14 = "#284f49",
+	color15 = "#37321d",
+}

@@ -115,9 +115,10 @@ local function main()
   print(string.format("Found %d palette(s)\n", #palette_names))
 
   local success_count, error_count = Utils.for_each_palette_variant(function(name, palette, mode, intensity)
-    local output_path, variant_name, display_name =
-      Utils.build_display_variant_path("extras/lua-theme", "lua", name, mode, intensity)
-    local content = generate_lua_palette(variant_name, display_name, palette, output_path)
+    local _, variant_name, subdir =
+      Utils.build_variant_path("extras/lua-theme", "lua", name, mode, intensity)
+    local output_path = string.format("extras/lua-theme/themes/%s/oasis_%s.lua", subdir, name)
+    local content = generate_lua_palette(variant_name, variant_name, palette, output_path)
     File.write(output_path, content)
     print(string.format("✓ Generated: %s", output_path))
   end)
