@@ -21,6 +21,10 @@ count_selected = { fg = "#c6cddc", bg = "#4d481a" }
 border_symbol = "│"
 border_style = { fg = "#4e4c2f" }
 
+# INDICATOR
+[indicator]
+padding = { open = "", close = "" }
+
 # TABS
 [tabs]
 active = { fg = "#c6cddc", bg = "#4c4718", bold = true }
