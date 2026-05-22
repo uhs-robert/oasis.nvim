@@ -17,6 +17,10 @@ count_selected = { fg = "{{bg_core}}", bg = "{{warning}}" }
 border_symbol = "│"
 border_style = { fg = "{{border}}" }
 
+# INDICATOR
+[indicator]
+padding = { open = "", close = "" }
+
 # TABS
 [tabs]
 active = { fg = "{{bg_core}}", bg = "{{tab_active}}", bold = true }
