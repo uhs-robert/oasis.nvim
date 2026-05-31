@@ -32,6 +32,12 @@
   --oasis-ui-search-bg: #a4dac0;
   --oasis-ui-border: #445b46;
 
+  --oasis-mode-normal: #3d683f;
+  --oasis-mode-hint: #7a1dd2;
+  --oasis-mode-visual: #5c411e;
+  --oasis-mode-insert: #8e0f14;
+  --oasis-mode-nmode: #5c5219;
+
   --oasis-terminal-black: #3c3c3c;
   --oasis-terminal-blue: #125393;
   --oasis-terminal-bright-black: #423b33;
@@ -69,6 +75,25 @@
 }
 
 /* NOTE: You can type `:help` in tridactly to see the html for CSS styling */
+
+/* Modes */
+.TridactylModenormal {
+  background: var(--oasis-mode-normal) !important;
+}
+.TridactylModehint {
+  background: var(--oasis-mode-hint) !important;
+}
+.TridactylModevisual {
+  background: var(--oasis-mode-visual) !important;
+}
+.TridactylModeinsert,
+.TridactylModeinput {
+  background: var(--oasis-mode-insert) !important;
+}
+.TridactylModenmode {
+  background: var(--oasis-mode-nmode) !important;
+}
+
 #completion {
   border-color: var(--oasis-ui-border);
 }
