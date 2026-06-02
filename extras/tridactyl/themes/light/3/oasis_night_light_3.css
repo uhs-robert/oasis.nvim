@@ -10,9 +10,7 @@
 
 :root {
   /* NOTE: CUSTOMIZE YOUR FONT FAMILY */
-  --code-font-family:
-    "ProFont IIx Nerd Font Mono", ui-monospace, "SFMono-Regular", Menlo, Monaco,
-    Consolas, "Liberation Mono", "Courier New", monospace;
+  --code-font-family: "Maple Mono NF", ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --oasis-theme-accent: #9b0303;
   --oasis-theme-cursor: #817613;
   --oasis-theme-label: #a00303;
@@ -30,7 +28,7 @@
   --oasis-fg-muted: #5c656e;
   --oasis-fg-strong: #29384e;
   --oasis-ui-search-bg: #e1b69d;
-  --oasis-ui-border: #43596e;
+  --oasis-ui-border: 1px solid #43596e;
 
   --oasis-mode-normal: #6c601a;
   --oasis-mode-hint: #34642f;
