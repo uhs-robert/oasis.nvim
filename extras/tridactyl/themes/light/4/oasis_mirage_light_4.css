@@ -55,6 +55,8 @@
   --oasis-terminal-white: #4d4110;
   --oasis-terminal-yellow: #5f5920;
 
+  --oasis-before-content: "> ";
+
   --tridactyl-cmplt-font-family: var(--code-font-family);
   --tridactyl-status-font-family: var(--code-font-family);
   --tridactyl-cmdl-font-family: var(--code-font-family);
@@ -65,13 +67,29 @@
   --tridactyl-bg: var(--oasis-bg-core);
   --tridactyl-cmdl-fg: var(--oasis-theme-light-primary);
   --tridactyl-cmdl-bg: var(--oasis-bg-core);
-  --tridactyl-cmplt-fg: var(--oasis-fg-core);
+  --tridactyl-cmplt-fg: var(--oasis-theme-primary);
   --tridactyl-cmplt-bg: var(--oasis-bg-core);
   --tridactyl-cmplt-border-top: var(--oasis-ui-border);
   --tridactyl-hint-active-bg: var(--oasis-bg-surface);
   --tridactyl-status-bg: var(--oasis-theme-primary);
   --tridactyl-status-fg: var(--oasis-bg-core);
   --tridactyl-of-bg: var(--oasis-bg-surface);
+}
+
+:root #completions td.documentation,
+:root #completions td.doc {
+  color: var(--oasis-fg-comment);
+  font-style: italic;
+  white-space: nowrap;
+  overflow: auto;
+  text-overflow: ellipsis;
+}
+
+:root #tridactyl-colon::before,
+:root .ExcmdCompletionOption td.excmd::before {
+  color: var(--oasis-theme-secondary);
+  content: var(--oasis-before-content);
+  font-weight: bold;
 }
 
 /* NOTE: You can type `:help` in tridactly to see the html for CSS styling */
