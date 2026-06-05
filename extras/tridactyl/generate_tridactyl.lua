@@ -48,7 +48,7 @@ local function extract_tridactyl_colors(palette)
     ui_search_bg = hex(palette.ui.search.bg),
     ui_border = hex(palette.ui.border),
     -- MODES
-    mode_normal = hex(palette.syntax.statement),
+    mode_normal = hex(palette.theme.primary),
     mode_hint = hex(palette.syntax.parameter),
     mode_visual = hex(palette.syntax.func),
     mode_insert = hex(palette.syntax.string),

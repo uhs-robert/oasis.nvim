@@ -30,7 +30,7 @@
   --oasis-ui-search-bg: #e1b69d;
   --oasis-ui-border: 1px solid #3c5063;
 
-  --oasis-mode-normal: #605717;
+  --oasis-mode-normal: #1e3146;
   --oasis-mode-hint: #2e592a;
   --oasis-mode-visual: #4e3b23;
   --oasis-mode-insert: #7f0e12;
@@ -72,6 +72,7 @@
   --tridactyl-status-bg: var(--oasis-theme-primary);
   --tridactyl-status-fg: var(--oasis-bg-core);
   --tridactyl-of-bg: var(--oasis-bg-surface);
+  --tridactyl-wk-key-next-fg: var(--oasis-theme-secondary);
 }
 
 :root #completions td.documentation,
