@@ -57,7 +57,7 @@ local function create_highlights(c, light_mode, theme)
     DiffAdd                    = { bg=c.diff.add }, -- Diff mode: Added line |diff.txt|
     DiffChange                 = { bg=c.diff.change }, -- Diff mode: Changed line |diff.txt|
     DiffDelete                 = { bg=c.diff.delete }, -- Diff mode: Deleted line |diff.txt|
-    DiffText                   = { bg=c.fg.core }, -- Diff mode: Changed text within a changed line |diff.txt|
+    DiffText                   = { bg=c.diff.text }, -- Diff mode: Changed text within a changed line |diff.txt|
     Directory                  = { fg=c.ui.dir }, -- Directory names (and other special names in listings)
     TermCursor                 = { reverse=true }, -- Cursor in a focused terminal
     TermCursorNC               = { reverse=true }, -- Cursor in an unfocusd terminal
@@ -390,7 +390,7 @@ local function create_highlights(c, light_mode, theme)
     highlights.Changed                         = { fg=c.diff.change, bold=true }
     highlights.Removed                         = { fg=c.diff.delete, bold=true }
     highlights.DiffAdd                         = { fg=c.diff.add, bg=c.ui.diag.ok.bg, bold=true }
-    highlights.DiffChange                      = { fg=c.fg.core, bg=c.bg.surface, bold=true }
+    highlights.DiffChange                      = { fg=c.diff.text, bg=c.bg.surface, bold=true }
     highlights.DiffDelete                      = { fg=c.diff.delete, bg=c.ui.diag.error.bg, bold=true }
 
     -- Diagnostics
