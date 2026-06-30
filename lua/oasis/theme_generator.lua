@@ -392,6 +392,7 @@ local function create_highlights(c, light_mode, theme)
     highlights.DiffAdd                         = { fg=c.diff.add, bg=c.ui.diag.ok.bg, bold=true }
     highlights.DiffChange                      = { fg=c.diff.text, bg=c.bg.surface, bold=true }
     highlights.DiffDelete                      = { fg=c.diff.delete, bg=c.ui.diag.error.bg, bold=true }
+    highlights.DiffText                        = { fg=c.diff.text, bg=c.ui.diag.warn.bg, bold=true }
 
     -- Diagnostics
     highlights.DiagnosticUnderlineError        = { undercurl=true, sp=c.ui.diag.error.fg, bold=true }
