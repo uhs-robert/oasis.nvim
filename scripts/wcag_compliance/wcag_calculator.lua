@@ -8,13 +8,15 @@ local script_dir = script_path:match("(.*/)")
 local project_root = script_dir:gsub("scripts/wcag_compliance/$", "")
 package.path = project_root .. "lua/?.lua;" .. project_root .. "lua/?/init.lua;" .. package.path
 
+-- Shim `vim` global before any module requires it
+require("oasis.utils")
+
 -- Load the calculator
 local calc = require("oasis.tools.wcag_color_calculator")
 
--- Dynamically discover available themes from color_palettes directory
+-- Dynamically discover available themes from color_palettes directory.
 local function discover_themes()
-  local light_themes = {}
-  local dark_themes = {}
+  local themes = {}
   local palette_dir = project_root .. "lua/oasis/color_palettes/"
 
   -- Get all .lua files in the palette directory (basename only)
@@ -32,25 +34,19 @@ local function discover_themes()
     if filename:match("%.lua$") then
       -- Extract theme name (remove .lua extension)
       local theme_name = filename:gsub("%.lua$", "")
-      local success, palette = pcall(require, "oasis.color_palettes." .. theme_name)
+      local success = pcall(require, "oasis.color_palettes." .. theme_name)
 
-      if success and palette then
-        if palette.light_mode then
-          table.insert(light_themes, theme_name)
-        else
-          table.insert(dark_themes, theme_name)
-        end
+      if success then
+        table.insert(themes, theme_name)
       else
         print("Warning: Could not load palette: " .. theme_name)
       end
     end
   end
 
-  -- Sort alphabetically for consistent output
-  table.sort(light_themes)
-  table.sort(dark_themes)
+  table.sort(themes)
 
-  return light_themes, dark_themes
+  return themes, themes
 end
 
 local LIGHT_THEMES, DARK_THEMES = discover_themes()
@@ -139,53 +135,45 @@ local function process_single_color(background, foreground, target)
   end
 end
 
+-- Test a theme in both dark and light mode (every theme supports both)
 local function process_palette(palette_name, custom_targets, config_opts)
   config_opts = config_opts or {}
-  print(string.format("Processing %s...", palette_name))
 
-  -- If no custom targets provided, auto-detect light/dark and apply appropriate defaults
-  if not custom_targets then
-    local palette, err
+  for _, mode in ipairs({ "dark", "light" }) do
+    print(string.format("Processing %s (%s)...", palette_name, mode))
+
+    local targets = custom_targets or (mode == "light" and get_light_theme_targets() or get_dark_theme_targets())
+
+    -- Use config-aware check if config options provided
     if next(config_opts) then
-      palette, err = calc.load_palette_with_config(palette_name, config_opts)
+      calc.check_palette_with_config(palette_name, config_opts, nil, targets, mode)
     else
-      palette, err = calc.load_palette(palette_name)
+      calc.check_palette(palette_name, nil, targets, mode)
     end
-    if palette then custom_targets = palette.light_mode and get_light_theme_targets() or get_dark_theme_targets() end
-  end
-
-  -- Use config-aware check if config options provided
-  if next(config_opts) then
-    calc.check_palette_with_config(palette_name, config_opts, nil, custom_targets)
-  else
-    calc.check_palette(palette_name, nil, custom_targets)
   end
 end
 
 local function process_preset_single(palette_name)
   palette_name = ensure_oasis_prefix(palette_name)
 
-  -- Load palette to determine if light or dark
-  local palette, err = calc.load_palette(palette_name)
-  if not palette then
-    print("Error loading " .. palette_name .. ": " .. (err or "unknown error"))
-    return
-  end
+  for _, mode in ipairs({ "dark", "light" }) do
+    local color_set = mode == "light" and calc.PRESETS.LIGHT_COLORS or calc.PRESETS.DARK_COLORS
+    local results, err, background = calc.check_preset_theme(palette_name, color_set, mode)
 
-  local color_set = palette.light_mode and calc.PRESETS.LIGHT_COLORS or calc.PRESETS.DARK_COLORS
-  local results, err2, background = calc.check_preset_theme(palette_name, color_set)
-
-  if results then
-    calc.print_results(
-      results,
-      background,
-      "WCAG AAA: Presets Calculations for `" .. palette_name .. "` (bg: `" .. background .. "`)"
-    )
-  else
-    print("Error checking preset: " .. (err2 or "unknown error"))
+    if results then
+      calc.print_results(
+        results,
+        background,
+        "WCAG AAA: Presets Calculations for `" .. palette_name .. "` (" .. mode .. ", bg: `" .. background .. "`)"
+      )
+    else
+      print("Error checking preset (" .. mode .. "): " .. (err or "unknown error"))
+    end
   end
 end
 
+-- Every theme supports both modes, so DARK_THEMES and LIGHT_THEMES are the
+-- same list; process_palette tests both modes per theme.
 local function process_all_palettes(config_opts)
   config_opts = config_opts or {}
   local mode_label = config_opts.themed_syntax and " (themed_syntax)" or ""
@@ -195,16 +183,6 @@ local function process_all_palettes(config_opts)
   print("(Light: AA comments, AAA others | Dark: AAA all)")
   print(string.rep("=", 80))
 
-  print("\n" .. string.rep("-", 80))
-  print("LIGHT THEMES")
-  print(string.rep("-", 80))
-  for _, theme in ipairs(LIGHT_THEMES) do
-    process_palette(theme, nil, config_opts)
-  end
-
-  print("\n" .. string.rep("-", 80))
-  print("DARK THEMES")
-  print(string.rep("-", 80))
   for _, theme in ipairs(DARK_THEMES) do
     process_palette(theme, nil, config_opts)
   end

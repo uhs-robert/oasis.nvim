@@ -20,9 +20,9 @@ benchmark:
 color-usage:
     lua scripts/analyze_color_usage.lua
 
-# Run WCAG contrast compliance checks
-wcag:
-    lua scripts/wcag_compliance/wcag_calculator.lua
+# Run WCAG contrast compliance checks, e.g. `just wcag actual lagoon --both`
+wcag *args:
+    lua scripts/wcag_compliance/wcag_calculator.lua {{args}}
 
 # Regenerate all extras theme files from palettes (tmux, kitty, vscode, etc.)
 extras:
