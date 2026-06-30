@@ -33,7 +33,7 @@ local function generate_tmux_theme(name, palette)
     string.format('set -ogq @thm_red "%s"', string.lower(palette.terminal.red)),
     string.format('set -ogq @thm_orange "%s"', string.lower(palette.terminal.bright_yellow)),
     string.format('set -ogq @thm_yellow "%s"', string.lower(palette.terminal.yellow)),
-    string.format('set -ogq @thm_green "%s"', string.lower(palette.syntax.string)),
+    string.format('set -ogq @thm_green "%s"', string.lower(palette.terminal.green)),
     string.format('set -ogq @thm_teal "%s"', string.lower(palette.terminal.bright_cyan)),
     string.format('set -ogq @thm_blue "%s"', string.lower(palette.terminal.blue)),
     string.format('set -ogq @thm_indigo "%s"', string.lower(palette.terminal.magenta)),
