@@ -390,24 +390,42 @@ function WcagCalculator.print_results(results, background_hex, title)
   print()
 end
 
+--- Unwrap a required palette module into a single flat mode
+--- Palette modules return { dark = {...}, light = {...} }; pick the
+--- requested mode (defaulting to dark) and fall back to whichever is present.
+---@param raw table Raw value returned by require("oasis.color_palettes.*")
+---@param mode? string "dark" or "light" (default: "dark")
+---@return table|nil, string|nil Flat palette or nil, error message
+local function unwrap_palette(raw, mode)
+  if not raw.dark and not raw.light then return raw, nil end
+
+  mode = mode or "dark"
+  local flat = raw[mode] or raw.dark or raw.light
+  if not flat then return nil, "Palette has no " .. mode .. " variant" end
+
+  return flat, nil
+end
+
 --- Load a palette and extract colors for WCAG checking
 ---@param palette_name string Palette name like "oasis_lagoon"
+---@param mode? string "dark" or "light" (default: "dark")
 ---@return table|nil, string|nil Palette colors or nil, error message
-function WcagCalculator.load_palette(palette_name)
+function WcagCalculator.load_palette(palette_name, mode)
   -- Ensure palette name has oasis_ prefix
   if not palette_name:match("^oasis_") then palette_name = "oasis_" .. palette_name end
 
-  local ok, palette = pcall(require, "oasis.color_palettes." .. palette_name)
+  local ok, raw = pcall(require, "oasis.color_palettes." .. palette_name)
   if not ok then return nil, "Failed to load palette: " .. palette_name end
 
-  return palette, nil
+  return unwrap_palette(raw, mode)
 end
 
 --- Load a palette with specific config options temporarily
 ---@param palette_name string Palette name like "oasis_lagoon"
 ---@param temp_config table Temporary config options to apply
+---@param mode? string "dark" or "light" (default: "dark")
 ---@return table|nil, string|nil Palette colors or nil, error message
-function WcagCalculator.load_palette_with_config(palette_name, temp_config)
+function WcagCalculator.load_palette_with_config(palette_name, temp_config, mode)
   -- Ensure palette name has oasis_ prefix
   if not palette_name:match("^oasis_") then palette_name = "oasis_" .. palette_name end
 
@@ -424,7 +442,7 @@ function WcagCalculator.load_palette_with_config(palette_name, temp_config)
   package.loaded["oasis.color_palettes." .. palette_name] = nil
 
   -- Load palette with new config
-  local ok, palette = pcall(require, "oasis.color_palettes." .. palette_name)
+  local ok, raw = pcall(require, "oasis.color_palettes." .. palette_name)
 
   -- Restore original config
   config.options = original_config
@@ -434,7 +452,7 @@ function WcagCalculator.load_palette_with_config(palette_name, temp_config)
 
   if not ok then return nil, "Failed to load palette: " .. palette_name end
 
-  return palette, nil
+  return unwrap_palette(raw, mode)
 end
 
 --- Extract colors from palette for WCAG testing
@@ -485,12 +503,13 @@ end
 ---@param palette_name string Palette name like "oasis_lagoon"
 ---@param target_ratio? number Default target contrast ratio (default: AAA_NORMAL)
 ---@param custom_targets? table<string, number> Custom targets for specific colors (e.g., { ["fg.comment"] = 4.5 })
+---@param mode? string "dark" or "light" (default: "dark")
 ---@return table|nil, string|nil Results or nil, error message
-function WcagCalculator.analyze_palette(palette_name, target_ratio, custom_targets)
+function WcagCalculator.analyze_palette(palette_name, target_ratio, custom_targets, mode)
   target_ratio = target_ratio or STANDARDS.AAA_NORMAL
   custom_targets = custom_targets or {}
 
-  local palette, err = WcagCalculator.load_palette(palette_name)
+  local palette, err = WcagCalculator.load_palette(palette_name, mode)
   if not palette then return nil, err end
 
   local background = palette.bg and palette.bg.core or "#000000"
@@ -514,17 +533,22 @@ end
 ---@param palette_name string Palette name
 ---@param target_ratio? number Default target contrast ratio
 ---@param custom_targets? table<string, number> Custom targets for specific colors
-function WcagCalculator.check_palette(palette_name, target_ratio, custom_targets)
-  local results, err = WcagCalculator.analyze_palette(palette_name, target_ratio, custom_targets)
+---@param mode? string "dark" or "light" (default: "dark")
+function WcagCalculator.check_palette(palette_name, target_ratio, custom_targets, mode)
+  local results, err = WcagCalculator.analyze_palette(palette_name, target_ratio, custom_targets, mode)
   if not results then
     print("Error: " .. err)
     return
   end
 
-  local palette, _ = WcagCalculator.load_palette(palette_name)
+  local palette, _ = WcagCalculator.load_palette(palette_name, mode)
   local background = (palette and palette.bg and palette.bg.core) or "#000000"
 
-  WcagCalculator.print_results(results, background, "WCAG AAA: Actual Calculations for `" .. palette_name .. "`")
+  WcagCalculator.print_results(
+    results,
+    background,
+    "WCAG AAA: Actual Calculations for `" .. palette_name .. "` (" .. (mode or "dark") .. ")"
+  )
 end
 
 --- Analyze a palette with specific config options (e.g., themed_syntax)
@@ -532,12 +556,13 @@ end
 ---@param config_opts table Config options to apply (e.g., {themed_syntax = true})
 ---@param target_ratio? number Default target contrast ratio (default: AAA_NORMAL)
 ---@param custom_targets? table<string, number> Custom targets for specific colors
+---@param mode? string "dark" or "light" (default: "dark")
 ---@return table|nil, string|nil Results or nil, error message
-function WcagCalculator.analyze_palette_with_config(palette_name, config_opts, target_ratio, custom_targets)
+function WcagCalculator.analyze_palette_with_config(palette_name, config_opts, target_ratio, custom_targets, mode)
   target_ratio = target_ratio or STANDARDS.AAA_NORMAL
   custom_targets = custom_targets or {}
 
-  local palette, err = WcagCalculator.load_palette_with_config(palette_name, config_opts)
+  local palette, err = WcagCalculator.load_palette_with_config(palette_name, config_opts, mode)
   if not palette then return nil, err end
 
   local background = palette.bg and palette.bg.core or "#000000"
@@ -562,19 +587,20 @@ end
 ---@param config_opts table Config options (e.g., {themed_syntax = true})
 ---@param target_ratio? number Default target contrast ratio
 ---@param custom_targets? table<string, number> Custom targets for specific colors
-function WcagCalculator.check_palette_with_config(palette_name, config_opts, target_ratio, custom_targets)
+---@param mode? string "dark" or "light" (default: "dark")
+function WcagCalculator.check_palette_with_config(palette_name, config_opts, target_ratio, custom_targets, mode)
   local results, err =
-    WcagCalculator.analyze_palette_with_config(palette_name, config_opts, target_ratio, custom_targets)
+    WcagCalculator.analyze_palette_with_config(palette_name, config_opts, target_ratio, custom_targets, mode)
   if not results then
     print("Error: " .. err)
     return
   end
 
-  local palette, _ = WcagCalculator.load_palette_with_config(palette_name, config_opts)
+  local palette, _ = WcagCalculator.load_palette_with_config(palette_name, config_opts, mode)
   local background = (palette and palette.bg and palette.bg.core) or "#000000"
 
   -- Build title with config options
-  local title = "WCAG AAA: Actual Calculations for `" .. palette_name .. "`"
+  local title = "WCAG AAA: Actual Calculations for `" .. palette_name .. "` (" .. (mode or "dark") .. ")"
   if config_opts.themed_syntax then title = title .. " (themed_syntax = true)" end
 
   WcagCalculator.print_results(results, background, title)
@@ -583,8 +609,7 @@ end
 --- Discover all available palettes dynamically from filesystem
 ---@return table, table Light palette names, Dark palette names
 function WcagCalculator.discover_palettes()
-  local light_palettes = {}
-  local dark_palettes = {}
+  local palettes = {}
 
   -- Try to find the actual palette directory
   local search_paths = {
@@ -616,34 +641,27 @@ function WcagCalculator.discover_palettes()
   end
 
   -- If we couldn't find files, return empty lists (fail gracefully)
-  if not found_dir or #palette_files == 0 then return light_palettes, dark_palettes end
+  if not found_dir or #palette_files == 0 then return palettes, palettes end
 
-  -- Load each palette and check if it's light or dark
+  -- Load each palette to confirm it resolves
   for _, palette_name in ipairs(palette_files) do
     local palette, _ = WcagCalculator.load_palette(palette_name)
-    if palette then
-      if palette.light_mode then
-        light_palettes[#light_palettes + 1] = palette_name
-      else
-        dark_palettes[#dark_palettes + 1] = palette_name
-      end
-    end
+    if palette then palettes[#palettes + 1] = palette_name end
   end
 
-  -- Sort alphabetically
-  table.sort(light_palettes)
-  table.sort(dark_palettes)
+  table.sort(palettes)
 
-  return light_palettes, dark_palettes
+  return palettes, palettes
 end
 
 --- Check preset colors against a specific theme (loads actual bg.core from palette)
 ---@param palette_name string Full palette name like "oasis_lagoon"
 ---@param color_set table Color set to test (LIGHT_COLORS or DARK_COLORS)
+---@param mode? string "dark" or "light" (default: "dark")
 ---@return table|nil, string|nil, string|nil Results
-function WcagCalculator.check_preset_theme(palette_name, color_set)
+function WcagCalculator.check_preset_theme(palette_name, color_set, mode)
   -- Load actual palette to get real bg.core
-  local palette, err = WcagCalculator.load_palette(palette_name)
+  local palette, err = WcagCalculator.load_palette(palette_name, mode)
   if not palette then return nil, err, nil end
 
   local background = palette.bg and palette.bg.core or "#000000"
@@ -658,7 +676,7 @@ function WcagCalculator.check_all_presets()
   print("(Testing reference colors against actual palette backgrounds)")
   print(string.rep("=", 80))
 
-  -- Dynamically discover all palettes
+  -- Dynamically discover all palettes (every palette supports both modes)
   local light_palettes, dark_palettes = WcagCalculator.discover_palettes()
 
   if #light_palettes > 0 then
@@ -667,7 +685,7 @@ function WcagCalculator.check_all_presets()
     print(string.rep("-", 80))
 
     for _, palette_name in ipairs(light_palettes) do
-      local results, err, background = WcagCalculator.check_preset_theme(palette_name, PRESETS.LIGHT_COLORS)
+      local results, err, background = WcagCalculator.check_preset_theme(palette_name, PRESETS.LIGHT_COLORS, "light")
       if results and background then
         WcagCalculator.print_results(results, background, palette_name .. " - " .. background)
       else
@@ -682,7 +700,7 @@ function WcagCalculator.check_all_presets()
     print(string.rep("-", 80))
 
     for _, palette_name in ipairs(dark_palettes) do
-      local results, err, background = WcagCalculator.check_preset_theme(palette_name, PRESETS.DARK_COLORS)
+      local results, err, background = WcagCalculator.check_preset_theme(palette_name, PRESETS.DARK_COLORS, "dark")
       if results and background then
         WcagCalculator.print_results(results, background, palette_name .. " - " .. background)
       else
