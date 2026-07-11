@@ -28,6 +28,7 @@
 ---@field label? string
 ---@field accent string
 ---@field cursor string
+---@field tabline_current? string
 
 ---@class OasisPaletteSyntax
 ---@field parameter string
@@ -317,6 +318,7 @@
 ---@field accent? string
 ---@field strong_primary? string
 ---@field light_primary? string
+---@field tabline_current? string
 
 ---@class OasisPaletteSyntaxOverrides
 ---@field parameter? string

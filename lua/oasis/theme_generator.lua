@@ -507,10 +507,11 @@ local PLUGIN_GROUPS = {
     hl.MiniStatuslineInactive = { fg = c.fg.comment, bg = c.bg.surface }
 
     -- Mini Tabline
-    hl.MiniTablineCurrent = { fg = theme.secondary, bg = c.bg.surface, bold = true }
+    local tabline_current = c.theme.tabline_current or theme.secondary
+    hl.MiniTablineCurrent = { fg = tabline_current, bg = c.bg.surface, bold = true }
     hl.MiniTablineFill = "TabLineFill"
     hl.MiniTablineHidden = "TabLine"
-    hl.MiniTablineModifiedCurrent = { fg = c.bg.core, bg = theme.secondary, bold = true }
+    hl.MiniTablineModifiedCurrent = { fg = c.bg.core, bg = tabline_current, bold = true }
     hl.MiniTablineModifiedHidden = { fg = c.bg.core, bg = c.ui.border }
     hl.MiniTablineModifiedVisible = { fg = c.bg.core, bg = c.ui.border, bold = true }
     hl.MiniTablineTabpagesection = { fg = c.bg.core, bg = c.theme.accent }

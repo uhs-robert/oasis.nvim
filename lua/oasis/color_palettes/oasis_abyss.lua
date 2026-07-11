@@ -29,6 +29,7 @@ local base = {
     title = p.red[800],
     accent = p.palm[500],
     cursor = p.khaki[500],
+    tabline_current = p.red[500],
   },
 }
 
