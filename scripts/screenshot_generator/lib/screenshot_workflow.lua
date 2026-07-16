@@ -56,13 +56,14 @@ end
 function ScreenshotWorkflow:launch_terminal()
   print("  Launching Kitty terminal...")
   self.kitty:launch()
+  System.sleep(0.5)
 end
 
 --- Capture dashboard screenshot
 function ScreenshotWorkflow:capture_dashboard()
   print("  Opening Neovim dashboard...")
-  self.kitty:send_keys("cd " .. Config.PROJECT_ROOT)
-  self.kitty:send_keys("nvim")
+  self.kitty:send_keys("cd " .. Config.PROJECT_ROOT, true)
+  self.kitty:send_keys("nvim", true)
   System.sleep(1)
 
   -- Run lua first, can't chain the pipe | with lua
@@ -87,8 +88,8 @@ function ScreenshotWorkflow:capture_code_view()
   System.sleep(0.5)
   self.kitty:send_keys("", true) -- Send Enter
   self.kitty:send_keys("\x1b", false) -- Send Escape
-  self.kitty:send_keys("11G")
-  self.kitty:send_keys("$")
+  self.kitty:send_keys("11G", false)
+  self.kitty:send_keys("$", false)
   self.screenshot_capture:capture(self.instance_name, self.variant, "code")
 end
 
