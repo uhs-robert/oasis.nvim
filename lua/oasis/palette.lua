@@ -154,12 +154,12 @@ local theme = {
     light_bg_seed = "#D8F2EF",
   },
   moonlight = {
-    bg = { shadow = "#030507", core = "#070C13", crust = "#0A1018", mantle = "#0F1520", surface = "#1A2330" },
+    bg = { shadow = "#05070A", core = "#0C0E13", crust = "#070A0E", mantle = "#141C24", surface = "#1E2A38" },
     fg = { core = "#F7F4F2", strong = "#E8F1FF", dim = "#74808F", muted = "#4E6578", comment = "#69809D" },
     light_bg_seed = "#E8E5D8",
   },
   night = {
-    bg = { shadow = "#030916", core = "#050F23", crust = "#040B1B", mantle = "#0B1832", surface = "#122444" },
+    bg = { shadow = "#050A10", core = "#08111C", crust = "#060D16", mantle = "#101C2D", surface = "#182A46" },
     fg = { core = "#E8F1FF", strong = "#D9E6FA", dim = "#74808F", muted = "#536B83", comment = "#708CA8" },
     light_bg_seed = "#CBDCF0",
   },
