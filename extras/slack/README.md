@@ -324,7 +324,7 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Moonlight Dark**
 ```
-#1A2330,#0F1520,#7FA3C9,#1A2330,#0F1520,#F7F4F2,#F0E68C,#FFA0A0,#070C13,#F7F4F2
+#1E2A38,#141C24,#7FA3C9,#1E2A38,#141C24,#F7F4F2,#F0E68C,#FFA0A0,#0C0E13,#F7F4F2
 ```
 
 **Oasis Moonlight Light 1**
@@ -356,7 +356,7 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Night Dark**
 ```
-#122444,#0B1832,#7FA3C9,#122444,#0B1832,#E8F1FF,#F0E68C,#FFA0A0,#050F23,#E8F1FF
+#182A46,#101C2D,#7FA3C9,#182A46,#101C2D,#E8F1FF,#F0E68C,#FFA0A0,#08111C,#E8F1FF
 ```
 
 **Oasis Night Light 1**
