@@ -96,7 +96,7 @@ end
 function KittyController:send_keys(text, enter)
   if enter == nil then enter = true end
 
-  local payload = enter and (text .. "\n") or text
+  local payload = enter and (text .. "\r") or text
   local cmd = string.format("kitten @ --to unix:%s send-text %s", self.socket_path, shell_escape(payload))
   System.execute(cmd)
   System.sleep(0.5)
