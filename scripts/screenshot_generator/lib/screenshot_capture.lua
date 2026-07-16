@@ -40,7 +40,7 @@ end
 --- Focus window using Hyprland
 --- @param instance_name string Window title to focus
 function ScreenshotCapture:focus_window(instance_name)
-  System.execute("hyprctl dispatch focuswindow title:" .. instance_name)
+  System.execute(string.format("hyprctl dispatch 'hl.dsp.focus({ window = \"title:%s\" })'", instance_name))
   System.sleep(0.5)
 end
 
