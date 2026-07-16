@@ -48,7 +48,7 @@ local dark = {
     -- Cold: (Data)
     parameter = p.palm[500],
     identifier = p.sky[500],
-    delimiter = base.theme.strong_primary,
+    delimiter = base.palette.primary[800],
     type = p.teal[700],
     typedef = p.teal[800],
     string = p.rose[500],

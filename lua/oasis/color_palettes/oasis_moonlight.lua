@@ -19,6 +19,7 @@ local base = {
     primary = p.steelblue[600],
     light_primary = p.steelblue[200],
     secondary = p.khaki[500],
+    secondary_strong = p.khaki[800],
     label = p.red[500],
     accent = p.rose[500],
     cursor = p.khaki[500],
@@ -82,14 +83,20 @@ local dark = {
     dir = p.sky[500],
 
     title = base.theme.primary,
-    border = base.theme.primary,
+    border = base.theme.strong_primary,
     cursorLine = base.bg.surface,
     nontext = base.fg.dim,
     float = {
       title = base.theme.secondary,
       fg = base.fg.strong,
       bg = base.bg.crust,
-      border = { fg = base.theme.primary, bg = base.bg.crust },
+      border = { fg = base.theme.strong_primary, bg = base.bg.crust },
+    },
+    picker = {
+      title = base.theme.secondary,
+      fg = base.fg.strong,
+      bg = base.bg.crust,
+      border = { fg = base.theme.secondary_strong, bg = base.bg.crust },
     },
     diag = {
       error = { fg = p.diag.error.fg, bg = p.diag.error.bg },

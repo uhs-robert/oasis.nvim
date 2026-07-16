@@ -84,24 +84,24 @@ local dark = {
     visual = { bg = p.visual.red, fg = "none" },
     search = { bg = p.visual.grey, fg = base.fg.core },
     match = { bg = p.olive[500], fg = base.bg.core },
-    matchParen = { bg = p.stone[900], fg = base.theme.secondary },
+    matchParen = { bg = p.stone[900], fg = base.theme.primary },
     dir = p.sky[500],
 
     title = base.theme.secondary,
-    border = base.theme.strong_primary,
+    border = base.theme.secondary_strong,
     cursorLine = base.bg.surface,
     nontext = base.fg.dim,
     float = {
-      title = base.theme.secondary,
-      fg = base.fg.strong,
-      bg = base.bg.crust,
-      border = { fg = base.theme.strong_primary, bg = base.bg.crust },
-    },
-    picker = {
-      title = base.theme.secondary,
+      title = base.theme.primary,
       fg = base.fg.strong,
       bg = base.bg.crust,
       border = { fg = base.theme.secondary_strong, bg = base.bg.crust },
+    },
+    picker = {
+      title = base.theme.primary,
+      fg = base.fg.strong,
+      bg = base.bg.crust,
+      border = { fg = base.theme.strong_primary, bg = base.bg.crust },
     },
     diag = {
       error = { fg = p.diag.error.fg, bg = p.diag.error.bg },
