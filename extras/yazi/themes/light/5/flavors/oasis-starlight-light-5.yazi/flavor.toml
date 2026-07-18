@@ -19,7 +19,7 @@ count_cut = { fg = "#ebe5d5", bg = "#ad1319" }
 count_selected = { fg = "#ebe5d5", bg = "#5e581f" }
 
 border_symbol = "│"
-border_style = { fg = "#255e86" }
+border_style = { fg = "#385c81" }
 
 # INDICATOR
 [indicator]
@@ -27,13 +27,13 @@ padding = { open = "", close = "" }
 
 # TABS
 [tabs]
-active = { fg = "#ebe5d5", bg = "#013a62", bold = true }
-inactive = { fg = "#013a62", bg = "#e4dbc5" }
+active = { fg = "#ebe5d5", bg = "#003263", bold = true }
+inactive = { fg = "#003263", bg = "#e4dbc5" }
 
 # MODE
 [mode]
-normal_main = { fg = "#ebe5d5", bg = "#013a62", bold = true }
-normal_alt = { fg = "#013a62", bg = "#d7cbac" }
+normal_main = { fg = "#ebe5d5", bg = "#003263", bold = true }
+normal_alt = { fg = "#003263", bg = "#d7cbac" }
 
 select_main = { fg = "#ebe5d5", bg = "#804913", bold = true }
 select_alt = { fg = "#804913", bg = "#d7cbac" }
@@ -58,24 +58,24 @@ perm_exec = { fg = "#961016" }
 
 # INPUT
 [input]
-border = { fg = "#013a62" }
+border = { fg = "#003263" }
 title = {}
 value = {}
 selected = { reversed = true }
 
 # PICK
 [pick]
-border = { fg = "#013a62" }
+border = { fg = "#003263" }
 active = { fg = "#58500b", bold = true }
 inactive = {}
 
 # COMPLETION
 [cmp]
-border = { fg = "#013a62" }
+border = { fg = "#003263" }
 
 # TASKS
 [tasks]
-border = { fg = "#013a62" }
+border = { fg = "#003263" }
 title = {}
 hovered = { fg = "#58500b", underline = true }
 
@@ -83,17 +83,17 @@ hovered = { fg = "#58500b", underline = true }
 [which]
 mask = { bg = "#e4dbc5" }
 cand = { fg = "#58500b" }
-rest = { fg = "#3c3a35" }
+rest = { fg = "#3e3a2e" }
 desc = { fg = "#184571" }
 separator = "  "
 separator_style = { fg = "#5a687b" }
 
 # HELP
 [help]
-on = { fg = "#013a62" }
+on = { fg = "#003263" }
 run = { fg = "#184571" }
 hovered = { reversed = true, bold = true }
-footer = { fg = "#3c3a35", bg = "#d7cbac" }
+footer = { fg = "#3e3a2e", bg = "#d7cbac" }
 
 # NOTIFY
 [notify]
@@ -124,10 +124,10 @@ rules = [
   { url = "*", is = "orphan", fg = "#ae1111"},
 
   # Executables
-  { url = "*", is = "exec", fg = "#013a62"},
+  { url = "*", is = "exec", fg = "#003263"},
 
   # Directory
-  { url = "*/", fg = "#0d3a4c" },
+  { url = "*/", fg = "#002c59" },
 ]
 
 # SPOT
