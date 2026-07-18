@@ -9,17 +9,17 @@ cwd = { fg = "#F0E68C" }
 find_keyword = { fg = "#F0E68C", bold = true, italic = true, underline = true }
 find_position = { fg = "#FF7979", bg = "reset", bold = true, italic = true }
 
-marker_copied = { fg = "#FFA0A0", bg = "#FFA0A0" }
+marker_copied = { fg = "#FF9090", bg = "#FF9090" }
 marker_cut = { fg = "#FF7979", bg = "#FF7979" }
 marker_marked = { fg = "#81C0FF", bg = "#81C0FF" }
 marker_selected = { fg = "#F0E68C", bg = "#F0E68C" }
 
-count_copied = { fg = "#000000", bg = "#FFA0A0" }
+count_copied = { fg = "#000000", bg = "#FF9090" }
 count_cut = { fg = "#000000", bg = "#FF7979" }
 count_selected = { fg = "#000000", bg = "#F0E68C" }
 
 border_symbol = "│"
-border_style = { fg = "#3AACFD" }
+border_style = { fg = "#3787D7" }
 
 # INDICATOR
 [indicator]
@@ -27,13 +27,13 @@ padding = { open = "", close = "" }
 
 # TABS
 [tabs]
-active = { fg = "#000000", bg = "#58B8FD", bold = true }
-inactive = { fg = "#58B8FD", bg = "#0C131C" }
+active = { fg = "#000000", bg = "#5BADFF", bold = true }
+inactive = { fg = "#5BADFF", bg = "#0C131C" }
 
 # MODE
 [mode]
-normal_main = { fg = "#000000", bg = "#58B8FD", bold = true }
-normal_alt = { fg = "#58B8FD", bg = "#1C2028" }
+normal_main = { fg = "#000000", bg = "#5BADFF", bold = true }
+normal_alt = { fg = "#5BADFF", bg = "#1C2028" }
 
 select_main = { fg = "#000000", bg = "#F8B471", bold = true }
 select_alt = { fg = "#F8B471", bg = "#1C2028" }
@@ -54,28 +54,28 @@ perm_sep = { fg = "#5E7C9A" }
 perm_type = { fg = "#81C0FF" }
 perm_read = { fg = "#F0E68C" }
 perm_write = { fg = "#FF7979" }
-perm_exec = { fg = "#FFA0A0" }
+perm_exec = { fg = "#FF9090" }
 
 # INPUT
 [input]
-border = { fg = "#58B8FD" }
+border = { fg = "#5BADFF" }
 title = {}
 value = {}
 selected = { reversed = true }
 
 # PICK
 [pick]
-border = { fg = "#58B8FD" }
+border = { fg = "#5BADFF" }
 active = { fg = "#F0E68C", bold = true }
 inactive = {}
 
 # COMPLETION
 [cmp]
-border = { fg = "#58B8FD" }
+border = { fg = "#5BADFF" }
 
 # TASKS
 [tasks]
-border = { fg = "#58B8FD" }
+border = { fg = "#5BADFF" }
 title = {}
 hovered = { fg = "#F0E68C", underline = true }
 
@@ -83,17 +83,17 @@ hovered = { fg = "#F0E68C", underline = true }
 [which]
 mask = { bg = "#0C131C" }
 cand = { fg = "#F0E68C" }
-rest = { fg = "#DCD9D2" }
+rest = { fg = "#F7F4E9" }
 desc = { fg = "#81C0FF" }
 separator = "  "
 separator_style = { fg = "#5E7C9A" }
 
 # HELP
 [help]
-on = { fg = "#58B8FD" }
+on = { fg = "#5BADFF" }
 run = { fg = "#81C0FF" }
 hovered = { reversed = true, bold = true }
-footer = { fg = "#DCD9D2", bg = "#1C2028" }
+footer = { fg = "#F7F4E9", bg = "#1C2028" }
 
 # NOTIFY
 [notify]
@@ -124,10 +124,10 @@ rules = [
   { url = "*", is = "orphan", fg = "#FF7979"},
 
   # Executables
-  { url = "*", is = "exec", fg = "#58B8FD"},
+  { url = "*", is = "exec", fg = "#5BADFF"},
 
   # Directory
-  { url = "*/", fg = "#87CEEB" },
+  { url = "*/", fg = "#ACD5FF" },
 ]
 
 # SPOT
