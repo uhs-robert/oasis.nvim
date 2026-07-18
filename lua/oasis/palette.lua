@@ -180,7 +180,7 @@ local theme = {
   },
   starlight = {
     bg = { shadow = "#0B0E14", core = "#000000", crust = "#090D11", mantle = "#0C131C", surface = "#1C2028" },
-    fg = { core = "#FAF7F0", strong = "#DCD9D2", dim = "#A48E7F", muted = "#4F5B6B", comment = "#5E7C9A" },
+    fg = { core = "#FAF7F0", strong = "#F7F4E9", dim = "#587179", muted = "#4F5B6B", comment = "#5E7C9A" },
     light_bg_seed = "#F5F2EA",
   },
   twilight = {
