@@ -13,17 +13,13 @@ local need_light = not in_neovim or vim.o.background == "light"
 local base = {
   bg = theme.bg,
   fg = theme.fg,
-  palette = {
-    primary = p.lagoon,
-    secondary = p.khaki,
-    accent = p.sunrise,
-  },
+  palette = { primary = p.khaki, secondary = p.red, accent = p.sapphire },
   theme = {
-    strong_primary = p.lagoon[600],
-    primary = p.lagoon[500],
-    light_primary = p.sky[500],
+    strong_primary = p.sapphire[800],
+    primary = p.sapphire[600],
+    light_primary = p.sapphire[200],
     secondary = p.khaki[500],
-    label = p.khaki[700],
+    label = p.red[500],
     accent = p.rose[500],
     cursor = p.khaki[500],
   },
@@ -48,29 +44,29 @@ local dark = {
     -- Cold: (Data)
     parameter = p.palm[500],
     identifier = p.sky[500],
-    delimiter = base.palette.primary[800],
-    type = p.teal[700],
+    delimiter = p.lagoon[700],
+    type = p.teal[600],
     typedef = p.teal[800],
-    string = p.rose[500],
-    regex = p.copper[500],
-    builtinVar = opts.themed_syntax and p.lavender[500] or base.primary[500], -- (this, document, window, etc)
-    builtinConst = opts.themed_syntax and p.iris[400] or p.steelblue[500], -- (e.g. null, undefined, Infinity, etc)
+    string = p.rose[600],
+    regex = p.sunset[500],
+    builtinVar = p.lavender[600], -- (this, document, window, etc)
+    builtinConst = p.iris[600], -- (e.g. null, undefined, Infinity, etc)
     constant = p.sunset[600], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
-    func = p.sand[300],
-    builtinFunc = p.sand[200], -- (eg. parseInst, Array, Object etc)
-    statement = opts.themed_syntax and base.palette.primary[500] or p.khaki[500], -- (general statement (i.e. var, const))
-    exception = opts.themed_syntax and p.red[500] or base.primary[600], -- (try/catch, return)
-    conditional = opts.themed_syntax and base.palette.primary[600] or p.khaki[800], -- (Conditionals, Loops)
-    special = p.sunset[200], -- (Statement not covered above)
-    operator = p.sapphire[400],
-    punctuation = p.sapphire[500],
+    func = p.sandstone[500],
+    builtinFunc = p.sandstone[300], -- (eg. parseInst, Array, Object etc)
+    statement = base.palette.primary[600], -- (general statement (i.e. var, const))
+    exception = p.red[500], -- (try/catch, return)
+    conditional = p.dune[600], -- (Conditionals, Loops)
+    special = p.sunset[400], -- (Statement not covered above)
+    operator = base.palette.primary[700],
+    punctuation = base.palette.primary[800],
 
     -- Neutral: (Connections / Info)
     bracket = p.slate[500], -- (bracket punctuation)
-    preproc = p.khaki[600], -- (imports)
-    macro = p.khaki[800], -- (imports)
+    preproc = p.sundown[500], -- (imports)
+    macro = p.sundown[600], -- (imports)
     comment = theme.fg.comment, -- (comments)
   },
 
