@@ -20,7 +20,7 @@ Oasis follows a warm/cool color split philosophy (**warm = action/flow**, **cool
 **All themes meet AAA WCAG high contrast compliance standards**. Light themes allow contrast ratio to be customized.
 
 <p align="center">
-  <img src="./assets/socials/Oasis Logo Social - 3 Fit.png"
+  <img src="./assets/socials/Oasis Social - Fit.png"
   width="auto" height="auto" alt="preview" />
 </p>
 <p align="center">
