@@ -138,7 +138,7 @@ local function create_highlights(c, light_mode, theme)
     Function                   = { fg=c.syntax.func }, --   Function name (also: methods for classes)
 
     Statement                  = { fg=c.syntax.statement, bold=true }, -- (*) Any statement
-    Keyword                    = { fg=c.syntax.identifier, bold=true, italic=true }, --   any other keyword
+    Keyword                    = { fg=c.syntax.identifier, bold=true }, --   any other keyword
     Conditional                = { fg=c.syntax.conditional, bold=true }, --   if, then, else, endif, switch, etc.
     Repeat                     = "Conditional", --   for, do, while, etc.
     Label                      = "Conditional", --   case, default, etc.
@@ -234,7 +234,7 @@ local function create_highlights(c, light_mode, theme)
     ["@punctuation.bracket"]  = { fg=c.syntax.bracket }, -- Delimiter (e.g. `()`, `{}`, `[]`)
     ["@punctuation.special"]  = { fg=c.syntax.operator }, -- Delimiter (e.g. `{}` in string interpolation)
     ["@constant"]             = "Constant", -- Constant
-    ["@constant.builtin"]     = { fg=c.syntax.builtinConst, bold=true, italic=true }, -- Special
+    ["@constant.builtin"]     = { fg=c.syntax.builtinConst, bold=true }, -- Special
     ["@constant.macro"]       = "Macro", -- Define
 
     ["@define"]               = "Define", -- Define
@@ -271,7 +271,7 @@ local function create_highlights(c, light_mode, theme)
     ["@keyword.import"]       = "PreProc", -- Keyword  (e.g. `import`, `from` in Python)
     ["@keyword.export"]       = { fg=c.syntax.preproc, bold=true }, -- Keyword  (e.g. `export`)
     ["@keyword.directive"]    = "PreProc", -- Keyword  (e.g. #define, #if)
-    ["@keyword.return"]       = { fg=c.syntax.exception, italic=true }, -- Keyword -- `return` and `yield`
+    ["@keyword.return"]       = { fg=c.syntax.exception, bold=true }, -- Keyword -- `return` and `yield`
     ["@keyword.exception"]    = "Exception", -- Keyword (e.g. `throw`, `catch`)
     ["@keyword.luap"]         = "Exception", -- Keyword
     ["@keyword.modifier"]     = "Exception", -- Keyword (e.g. `!important`)
@@ -358,7 +358,7 @@ local function create_highlights(c, light_mode, theme)
     ["@lsp.typemod.function.defaultLibrary"]   = "@function.builtin",
     ["@lsp.typemod.keyword.async"]             = "@keyword.coroutine",
     ["@lsp.typemod.keyword.injected"]          = "@keyword",
-    ["@lsp.typemod.macro.defaultLibrary"]      = { fg=c.syntax.macro, italic=true },
+    ["@lsp.typemod.macro.defaultLibrary"]      = { fg=c.syntax.macro, bold=true },
     ["@lsp.typemod.method.defaultLibrary"]     = "@function.builtin",
     ["@lsp.typemod.operator.injected"]         = "@operator",
     ["@lsp.typemod.string.injected"]           = "@string",
@@ -377,8 +377,8 @@ local function create_highlights(c, light_mode, theme)
     -- Emphasize syntax
     highlights.MatchParen                      = { fg=c.ui.matchParen.fg, bg=c.ui.matchParen.bg, bold=true, reverse=match_paren_bg }
     highlights.Type                            = { fg=c.syntax.type, bold=true }
-    highlights.Function                        = { fg=c.syntax.func, bold=true, italic=true }
-    highlights.String                          = { fg=c.syntax.string, italic=true }
+    highlights.Function                        = { fg=c.syntax.func, bold=true }
+    highlights.String                          = { fg=c.syntax.string }
     highlights["@parameter"]                   = { fg=c.syntax.parameter, bold=true }
     highlights["@variable.parameter"]          = { fg=c.syntax.parameter, bold=true }
     highlights["@keyword.return"]              = { fg=c.syntax.exception, bold=true }
