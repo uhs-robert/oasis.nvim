@@ -19,7 +19,7 @@ function M.get(style)
   hl.normal = {
     a = { bg = main_status, fg = c.bg.core },
     b = { bg = c.bg.surface, fg = main_status },
-    c = { bg = c.bg.mantle, fg = c.theme.light_primary },
+    c = { bg = c.bg.mantle, fg = c.theme.primary_light },
   }
 
   hl.insert = {

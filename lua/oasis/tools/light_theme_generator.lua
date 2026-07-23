@@ -265,8 +265,8 @@ function LightTheme.generate_syntax(dark_syntax, light_bg_core, intensity_level,
 
     -- Standard AAA
     conditional = min_ratio,
-    builtinFunc = min_ratio,
-    builtinVar = min_ratio,
+    builtin_func = min_ratio,
+    builtin_var = min_ratio,
     exception = min_ratio,
     special = min_ratio,
     operator = min_ratio,
@@ -276,7 +276,7 @@ function LightTheme.generate_syntax(dark_syntax, light_bg_core, intensity_level,
     -- Sub AAA
     statement = min_ratio - 1,
     regex = min_ratio - 1.2,
-    builtinConst = min_ratio - 1,
+    builtin_const = min_ratio - 1,
     constant = min_ratio - 1,
     parameter = min_ratio - 0.5,
     type = min_ratio - 0.5,
@@ -323,7 +323,7 @@ function LightTheme.generate_syntax(dark_syntax, light_bg_core, intensity_level,
 
   -- Classify syntax elements by category
   local categories = {
-    cold = { "identifier", "type", "typedef", "builtinConst", "parameter", "builtinVar" },
+    cold = { "identifier", "type", "typedef", "builtin_const", "parameter", "builtin_var" },
     warm = {
       "string",
       "regex",
@@ -338,7 +338,7 @@ function LightTheme.generate_syntax(dark_syntax, light_bg_core, intensity_level,
       "constant",
     },
     emphasis = {},
-    neutral = { "bracket", "comment", "delimiter", "builtinFunc", "func" },
+    neutral = { "bracket", "comment", "delimiter", "builtin_func", "func" },
   }
 
   -- Generate colors for each category
@@ -406,7 +406,7 @@ function LightTheme.generate_ui(dark_ui, light_bg, intensity_level, contrast_tar
 
   -- Default contrast targets for UI elements
   local default_targets = {
-    lineNumber = min_ratio - 2.5,
+    line_number = min_ratio - 2.5,
     dir = aa_compliant + 2.0,
     title = aa_compliant + 1.0,
     border = aa_compliant + 1.0,
@@ -438,11 +438,11 @@ function LightTheme.generate_ui(dark_ui, light_bg, intensity_level, contrast_tar
     visual = true,
     search = true,
     match = true,
-    matchParen = true,
+    match_parent = true,
     float = true,
     picker = true,
     diag = true,
-    cursorLine = true,
+    cursor_line = true,
   }
 
   for key, value in pairs(dark_ui) do
@@ -459,7 +459,7 @@ function LightTheme.generate_ui(dark_ui, light_bg, intensity_level, contrast_tar
   end
 
   -- CursorLine uses background variant
-  result.cursorLine = light_bg.mantle
+  result.cursor_line = light_bg.mantle
 
   -- Visual selection (bg = surface for subtle highlight)
   if dark_ui.visual then result.visual = { bg = light_bg.surface, fg = "none" } end
@@ -487,12 +487,12 @@ function LightTheme.generate_ui(dark_ui, light_bg, intensity_level, contrast_tar
   end
 
   -- Match paren (subtle highlight with readable fg)
-  if dark_ui.matchParen then
-    local fg_h, fg_s, _ = ColorUtils.rgb_to_hsl(dark_ui.matchParen.fg or "#000000")
+  if dark_ui.match_parent then
+    local fg_h, fg_s, _ = ColorUtils.rgb_to_hsl(dark_ui.match_parent.fg or "#000000")
     local adj_s, adj_l = soften_hue(fg_h, fg_s * 0.75, 30)
     local light_fg = ColorUtils.hsl_to_rgb(fg_h, adj_s, adj_l)
     light_fg = ColorUtils.darken_to_contrast(light_fg, light_bg.core, aa_compliant)
-    result.matchParen = {
+    result.match_parent = {
       bg = light_bg.surface,
       fg = light_fg,
     }
@@ -633,7 +633,7 @@ end
 --- Generate light mode theme colors from dark mode (vibrant, decorative)
 --- Note: These colors are decorative and intentionally may not meet WCAG compliance
 --- These colors can fail WCAG compliance as they're decorative only
---- @param dark_theme table Dark mode theme colors {strong_primary, primary, light_primary, secondary, secondary_strong, secondary_light, label, accent}
+--- @param dark_theme table Dark mode theme colors {primary_strong, primary, primary_light, secondary, secondary_strong, secondary_light, label, accent}
 --- @param intensity_level number Intensity level (1-5)
 --- @return table Light mode theme colors (vibrant)
 function LightTheme.generate_theme(dark_theme, intensity_level)
@@ -644,9 +644,9 @@ function LightTheme.generate_theme(dark_theme, intensity_level)
 
   -- Per-key lightness offsets; keys not listed get offset 0
   local l_offsets = {
-    strong_primary = 7.5,
+    primary_strong = 7.5,
     primary = -5.5,
-    light_primary = -7.5,
+    primary_light = -7.5,
     secondary = -5.5,
     secondary_strong = 7.5,
     secondary_light = -7.5,

@@ -19,9 +19,9 @@ local base = {
     accent = p.lavender,
   },
   theme = {
-    strong_primary = p.khaki[800],
+    primary_strong = p.khaki[800],
     primary = p.khaki[600],
-    light_primary = p.khaki[200],
+    primary_light = p.khaki[200],
     secondary = p.teal[500],
     label = p.teal[600],
     accent = p.lavender[300],
@@ -48,18 +48,18 @@ local dark = {
     -- Cold: (Data)
     parameter = p.palm[500],
     identifier = p.sky[500],
-    delimiter = base.theme.strong_primary,
+    delimiter = base.theme.primary_strong,
     type = p.teal[600],
     typedef = p.teal[700],
     string = p.rose[500],
     regex = p.copper[400],
-    builtinVar = p.lavender[400], -- (this, document, window, etc)
-    builtinConst = p.iris[400], -- (e.g. null, undefined, Infinity, etc)
+    builtin_var = p.lavender[400], -- (this, document, window, etc)
+    builtin_const = p.iris[400], -- (e.g. null, undefined, Infinity, etc)
     constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
     func = p.sand[400],
-    builtinFunc = p.sand[200], -- (eg. parseInst, Array, Object etc)
+    builtin_func = p.sand[200], -- (eg. parseInst, Array, Object etc)
     statement = base.palette.primary[500], -- (general statement (i.e. var, const))
     conditional = base.palette.primary[800], -- (Conditionals, Loops)
     exception = p.red[500], -- (try/catch, return)
@@ -76,22 +76,22 @@ local dark = {
 
   -- UI
   ui = {
-    lineNumber = p.sunset[500],
+    line_number = p.sunset[500],
     visual = { bg = base.bg.surface, fg = "none" },
     search = { bg = p.visual.grey, fg = base.fg.core },
     match = { bg = p.olive[500], fg = base.bg.core },
-    matchParen = { bg = p.stone[900], fg = p.teal[700] },
+    match_parent = { bg = p.stone[900], fg = p.teal[700] },
     dir = p.sky[500],
 
     title = base.theme.primary,
-    border = base.theme.strong_primary,
-    cursorLine = base.bg.mantle,
+    border = base.theme.primary_strong,
+    cursor_line = base.bg.mantle,
     nontext = base.fg.dim,
     float = {
       title = base.theme.secondary,
       fg = base.fg.strong,
       bg = base.bg.crust,
-      border = { fg = base.theme.strong_primary, bg = base.bg.crust },
+      border = { fg = base.theme.primary_strong, bg = base.bg.crust },
     },
     diag = {
       error = { fg = p.diag.error.fg, bg = p.diag.error.bg },
@@ -111,10 +111,10 @@ if need_light then
   local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
     search = { bg = p.visual.desert, fg = base.fg.core },
     match = { bg = p.olive[500], fg = base.fg.core },
-    matchParen = { bg = dark.ui.matchParen.bg, fg = p.teal[500] },
+    match_parent = { bg = dark.ui.match_parent.bg, fg = p.teal[500] },
   })
   local light_theme = vim.tbl_deep_extend("force", {}, dark.theme, {
-    strong_primary = p.dune[700],
+    primary_strong = p.dune[700],
   })
   local light_terminal = LightTheme.generate_terminal(p.terminal, light_bg.core, opts.light_intensity, opts.contrast)
   light = {

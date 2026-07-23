@@ -56,7 +56,7 @@ local function extract_yazi_theme_colors(name, palette)
     ft_empty = palette.terminal.bright_red,
     ft_orphan = palette.terminal.red,
     ft_exec = palette.theme.primary,
-    ft_directory = palette.theme.light_primary or palette.theme.primary,
+    ft_directory = palette.theme.primary_light or palette.theme.primary,
   }
 end
 

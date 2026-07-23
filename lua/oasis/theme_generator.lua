@@ -23,7 +23,7 @@ local TRANSPARENT_GROUPS = {
 ---Create the full highlight table for a palette.
 ---@param c OasisPalette Color palette
 ---@param light_mode boolean Whether palette is light mode
----@param theme {primary: string, light_primary: string, strong_primary: string, secondary: string, title?: string}
+---@param theme {primary: string, primary_light: string, primary_strong: string, secondary: string, title?: string}
 ---@return OasisHighlightGroupMap highlights
 local function create_highlights(c, light_mode, theme)
   local match_paren_bg = Config.get().match_paren_bg ~= false
@@ -32,9 +32,9 @@ local function create_highlights(c, light_mode, theme)
   local highlights = {
     -- Main Theme Colors (Highlights for plugins)
     OasisTitle                 = { fg=theme.title, bg="NONE" },
-    OasisStrongPrimary         = { fg=theme.strong_primary, bg="NONE" },
+    OasisStrongPrimary         = { fg=theme.primary_strong, bg="NONE" },
     OasisPrimary               = { fg=theme.primary, bg="NONE" },
-    OasisLightPrimary          = { fg=theme.light_primary, bg="NONE" },
+    OasisLightPrimary          = { fg=theme.primary_light, bg="NONE" },
     OasisFloatPrimary          = { fg=theme.primary, bg=c.ui.float.border.bg },
     OasisSecondary             = { fg=theme.secondary, bg="NONE" },
     OasisFloatSecondary        = { fg=theme.secondary, bg=c.ui.float.border.bg },
@@ -49,8 +49,8 @@ local function create_highlights(c, light_mode, theme)
     CurSearch                  = { fg=c.ui.match.fg, bg=c.ui.match.bg, bold=true }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
     lCursor                    = { fg=c.bg.core, bg=c.syntax.exception }, -- Character under the cursor when |language-mapping| is used (see 'guicursor')
     CursorIM                   = "Cursor", -- Like Cursor, but used when in IME mode |CursorIM|
-    CursorColumn               = { bg=c.ui.cursorLine }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
-    CursorLine                 = { bg=c.ui.cursorLine }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermc.fg OR guifg) is not set.
+    CursorColumn               = { bg=c.ui.cursor_line }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
+    CursorLine                 = { bg=c.ui.cursor_line }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermc.fg OR guifg) is not set.
     Added                      = { fg=c.diff.add }, -- Added line
     Changed                    = { fg=c.diff.change }, -- Changed line
     Removed                    = { fg=c.diff.delete }, -- Deleted line
@@ -71,10 +71,10 @@ local function create_highlights(c, light_mode, theme)
     LineNr                     = { fg=c.fg.muted, bg=(c.bg.gutter or "NONE") }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
     LineNrAbove                = "LineNr", -- Line number for when the 'relativenumber' option is set, above the cursor line
     LineNrBelow                = "LineNr", -- Line number for when the 'relativenumber' option is set, below the cursor line
-    CursorLineNr               = { fg=c.ui.lineNumber, bg=(c.bg.gutter or "NONE"), bold=true }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+    CursorLineNr               = { fg=c.ui.line_number, bg=(c.bg.gutter or "NONE"), bold=true }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     CursorLineFold             = { bg=c.bg.core }, -- Like FoldColumn when 'cursorline' is set for the cursor line
     CursorLineSign             = { bg="NONE" }, -- Like SignColumn when 'cursorline' is set for the cursor line
-    MatchParen                 = { fg=c.ui.matchParen.fg, bg=(match_paren_bg and c.ui.matchParen.bg or "NONE"), bold=true, underline=true, reverse=match_paren_bg }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+    MatchParen                 = { fg=c.ui.match_parent.fg, bg=(match_paren_bg and c.ui.match_parent.bg or "NONE"), bold=true, underline=true, reverse=match_paren_bg }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     ModeMsg                    = { fg=c.syntax.statement, bold=true }, -- 'showmode' message (e.g., "-- INSERT -- ")
     MsgArea                    = { fg=c.syntax.statement }, -- Area for messages and cmdline
     MoreMsg                    = { fg=c.syntax.type, bold=true }, -- |more-prompt|
@@ -103,7 +103,7 @@ local function create_highlights(c, light_mode, theme)
     SpellLocal                 = { bg=c.bg.shadow, undercurl=true, sp=c.ui.diag.warn.fg }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
     SpellRare                  = { bg=c.bg.shadow, undercurl=true, sp=c.ui.diag.hint.fg }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
 
-    StatusLine                 = { fg=theme.light_primary, bg=c.bg.mantle }, -- Status line of current window
+    StatusLine                 = { fg=theme.primary_light, bg=c.bg.mantle }, -- Status line of current window
     StatusLineNC               = { fg=c.fg.muted, bg=c.bg.mantle }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
     StatusLineTerm             = "StatusLine", -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
     TabLine                    = { fg=c.ui.border, bg=c.bg.surface }, -- Tab pages line, not active tab page label
@@ -213,7 +213,7 @@ local function create_highlights(c, light_mode, theme)
     -- See :h treesitter-highlight-groups, some groups may not be listed,
     ["@parameter"]            = { fg=c.syntax.parameter }, -- Identifier
     ["@variable"]             = { fg=c.fg.core }, -- Identifier
-    ["@variable.builtin"]     = { fg=c.syntax.builtinVar }, -- Identifier
+    ["@variable.builtin"]     = { fg=c.syntax.builtin_var }, -- Identifier
     ["@variable.parameter"]   = "@parameter", -- Identifier
     ["@variable.css"]         = "@parameter", -- Identifier
     ["@variable.member"]      = { fg=c.syntax.identifier }, -- Identifier
@@ -234,7 +234,7 @@ local function create_highlights(c, light_mode, theme)
     ["@punctuation.bracket"]  = { fg=c.syntax.bracket }, -- Delimiter (e.g. `()`, `{}`, `[]`)
     ["@punctuation.special"]  = { fg=c.syntax.operator }, -- Delimiter (e.g. `{}` in string interpolation)
     ["@constant"]             = "Constant", -- Constant
-    ["@constant.builtin"]     = { fg=c.syntax.builtinConst, bold=true }, -- Special
+    ["@constant.builtin"]     = { fg=c.syntax.builtin_const, bold=true }, -- Special
     ["@constant.macro"]       = "Macro", -- Define
 
     ["@define"]               = "Define", -- Define
@@ -251,7 +251,7 @@ local function create_highlights(c, light_mode, theme)
     ["@boolean"]              = "Boolean", -- Boolean
     ["@float"]                = "Float", -- Float
     ["@function"]             = "Function", -- Function
-    ["@function.builtin"]     = { fg=c.syntax.builtinFunc }, -- Special
+    ["@function.builtin"]     = { fg=c.syntax.builtin_func }, -- Special
     ["@function.macro"]       = "Macro", -- Macro
     ["@method"]               = "Function", -- Function
     ["@field"]                = "Identifier", -- Identifier
@@ -375,7 +375,7 @@ local function create_highlights(c, light_mode, theme)
   -- Apply light mode overrides
   if light_mode then
     -- Emphasize syntax
-    highlights.MatchParen                      = { fg=c.ui.matchParen.fg, bg=c.ui.matchParen.bg, bold=true, reverse=match_paren_bg }
+    highlights.MatchParen                      = { fg=c.ui.match_parent.fg, bg=c.ui.match_parent.bg, bold=true, reverse=match_paren_bg }
     highlights.Type                            = { fg=c.syntax.type, bold=true }
     highlights.Function                        = { fg=c.syntax.func, bold=true }
     highlights.String                          = { fg=c.syntax.string }
@@ -383,7 +383,7 @@ local function create_highlights(c, light_mode, theme)
     highlights["@variable.parameter"]          = { fg=c.syntax.parameter, bold=true }
     highlights["@keyword.return"]              = { fg=c.syntax.exception, bold=true }
     highlights["@string.regexp"]               = { fg=c.syntax.regex, bold=true }
-    highlights["@variable.builtin"]            = { fg=c.syntax.builtinVar, bold=true }
+    highlights["@variable.builtin"]            = { fg=c.syntax.builtin_var, bold=true }
 
     -- Diff
     highlights.Added                           = { fg=c.diff.add, bold=true }
@@ -407,7 +407,7 @@ local function create_highlights(c, light_mode, theme)
 end
 
 -- Table of plugin highlight group functions
----@alias PluginGroupFn fun(hl: OasisHighlightGroupMap, c: OasisPalette, light_mode: boolean|nil, is_desert: boolean|nil, theme: {primary: string, light_primary: string, strong_primary: string, secondary: string, title?: string})
+---@alias PluginGroupFn fun(hl: OasisHighlightGroupMap, c: OasisPalette, light_mode: boolean|nil, is_desert: boolean|nil, theme: {primary: string, primary_light: string, primary_strong: string, secondary: string, title?: string})
 ---@type table<string, PluginGroupFn>
 local PLUGIN_GROUPS = {
 
@@ -433,7 +433,7 @@ local PLUGIN_GROUPS = {
   -- Lazy
   lazy = function(hl, _, _, _, theme)
     hl.LazyH1 = { fg = theme.primary, bold = true }
-    hl.LazyH2 = { fg = theme.light_primary, bold = true }
+    hl.LazyH2 = { fg = theme.primary_light, bold = true }
     hl.lazyActiveBorder = "Identifier"
   end,
 
@@ -491,7 +491,7 @@ local PLUGIN_GROUPS = {
     hl.MiniStarterFooter = "Comment"
     hl.MiniStarterInactive = { fg = c.fg.muted }
     hl.MiniStarterSection = "OasisSecondary"
-    hl.MiniStarterItemPrefix = { fg = theme.strong_primary, bold = true }
+    hl.MiniStarterItemPrefix = { fg = theme.primary_strong, bold = true }
     hl.MiniStarterQuery = { fg = c.theme.accent, bold = true }
 
     -- Mini Statusline
@@ -503,7 +503,7 @@ local PLUGIN_GROUPS = {
     hl.MiniStatuslineModeOther = { bg = c.syntax.typedef, fg = c.bg.core }
     hl.MiniStatuslineDevInfo = { fg = c.syntax.statement, bg = c.bg.surface }
     hl.MiniStatuslineFileInfo = { fg = c.syntax.statement, bg = c.bg.surface }
-    hl.MiniStatuslineFilename = { fg = theme.light_primary, bg = c.bg.mantle }
+    hl.MiniStatuslineFilename = { fg = theme.primary_light, bg = c.bg.mantle }
     hl.MiniStatuslineInactive = { fg = c.fg.comment, bg = c.bg.surface }
 
     -- Mini Tabline
@@ -540,7 +540,7 @@ local PLUGIN_GROUPS = {
   snacks = function(hl, c, _, _, theme)
     -- Snacks Dashboard
     hl.SnacksDashboardHeader = "OasisTitle"
-    hl.SnacksDashboardFile = { fg = theme.light_primary, bg = "NONE", bold = true }
+    hl.SnacksDashboardFile = { fg = theme.primary_light, bg = "NONE", bold = true }
     hl.SnacksDashboardSpecial = "OasisAccent"
     hl.SnacksDashboardIcon = "Number"
     hl.SnacksDashboardDesc = "OasisSecondary"
@@ -572,7 +572,7 @@ local PLUGIN_GROUPS = {
 ---@param highlights OasisHighlightGroupMap Highlight groups table to mutate
 ---@param light_mode boolean Whether palette is light mode
 ---@param is_desert boolean Whether palette is desert variant
----@param theme {primary: string, light_primary: string, strong_primary: string, secondary: string}
+---@param theme {primary: string, primary_light: string, primary_strong: string, secondary: string}
 local function create_plugin_highlights(c, highlights, light_mode, is_desert, theme)
   local integrations = (Config.get().integrations or {})
   local default_enabled = integrations.default_enabled ~= false
@@ -688,10 +688,10 @@ return function(c, palette_name)
 
   local theme = {
     primary = is_desert and c.theme.secondary or c.theme.primary,
-    light_primary = is_desert and c.theme.secondary_light or c.theme.light_primary,
-    strong_primary = is_desert and c.theme.secondary_strong or c.theme.strong_primary,
+    primary_light = is_desert and c.theme.secondary_light or c.theme.primary_light,
+    primary_strong = is_desert and c.theme.secondary_strong or c.theme.primary_strong,
     secondary = is_desert and c.theme.primary or c.theme.secondary,
-    title = is_desert and c.theme.title or is_desert and c.theme.secondary_strong or c.theme.strong_primary,
+    title = is_desert and c.theme.title or is_desert and c.theme.secondary_strong or c.theme.primary_strong,
   }
 
   local highlights = create_highlights(c, light_mode, theme)

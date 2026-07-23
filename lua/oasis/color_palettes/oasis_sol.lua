@@ -19,9 +19,9 @@ local base = {
     accent = p.palm,
   },
   theme = {
-    strong_primary = p.red[700],
+    primary_strong = p.red[700],
     primary = p.red[500],
-    light_primary = p.rose[500],
+    primary_light = p.rose[500],
     secondary = p.sunrise[500],
     label = p.sunrise[600],
     accent = p.palm[500],
@@ -54,13 +54,13 @@ local dark = {
     typedef = p.teal[700],
     string = opts.themed_syntax and p.khaki[600] or p.rose[500],
     regex = p.copper[500],
-    builtinVar = p.lavender[400], -- (this, document, window, etc)
-    builtinConst = p.iris[400], -- (e.g. null, undefined, Infinity, etc)
+    builtin_var = p.lavender[400], -- (this, document, window, etc)
+    builtin_const = p.iris[400], -- (e.g. null, undefined, Infinity, etc)
     constant = p.sunset[600], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
     func = p.sand[300],
-    builtinFunc = p.sand[200], -- (eg. parseInst, Array, Object etc)
+    builtin_func = p.sand[200], -- (eg. parseInst, Array, Object etc)
     statement = opts.themed_syntax and base.palette.primary[200] or p.khaki[600], -- (general statement (i.e. var, const))
     conditional = opts.themed_syntax and p.rose[700] or p.khaki[800], -- (Conditionals, Loops)
     exception = opts.themed_syntax and p.gold[400] or p.red[400], -- (try/catch, return)
@@ -77,16 +77,16 @@ local dark = {
 
   -- UI
   ui = {
-    lineNumber = p.sunset[600],
+    line_number = p.sunset[600],
     visual = { bg = base.bg.surface, fg = "none" },
     search = { bg = p.visual.grey, fg = base.fg.core },
     match = { bg = p.olive[500], fg = base.bg.core },
-    matchParen = { bg = p.stone[900], fg = p.khaki[600] },
+    match_parent = { bg = p.stone[900], fg = p.khaki[600] },
     dir = p.sky[500],
 
     title = base.theme.primary,
     border = base.theme.primary,
-    cursorLine = base.bg.mantle,
+    cursor_line = base.bg.mantle,
     nontext = base.fg.dim,
     float = {
       title = base.theme.secondary,
@@ -118,12 +118,12 @@ if need_light then
       title = base.theme.primary,
       fg = base.fg.strong,
       bg = base.bg.mantle,
-      border = { fg = base.theme.strong_primary, bg = base.bg.mantle },
+      border = { fg = base.theme.primary_strong, bg = base.bg.mantle },
     },
-    matchParen = { bg = dark.ui.matchParen.bg, fg = p.cactus[500] },
+    match_parent = { bg = dark.ui.match_parent.bg, fg = p.cactus[500] },
   })
   local light_theme = vim.tbl_deep_extend("force", {}, dark.theme, {
-    strong_primary = p.red[800],
+    primary_strong = p.red[800],
   })
   local light_terminal = LightTheme.generate_terminal(p.terminal, light_bg.core, opts.light_intensity, opts.contrast)
   light = {

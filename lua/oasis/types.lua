@@ -20,8 +20,8 @@
 
 ---@class OasisPaletteTheme
 ---@field primary string
----@field strong_primary? string
----@field light_primary? string
+---@field primary_strong? string
+---@field primary_light? string
 ---@field secondary string
 ---@field secondary_strong? string
 ---@field secondary_light? string
@@ -34,13 +34,13 @@
 ---@field identifier string
 ---@field type string
 ---@field typedef string
----@field builtinVar string
+---@field builtin_var string
 ---@field string string
 ---@field regex string
----@field builtinConst string
+---@field builtin_const string
 ---@field constant string
 ---@field func string
----@field builtinFunc string
+---@field builtin_func string
 ---@field statement string
 ---@field conditional string
 ---@field exception string
@@ -103,12 +103,12 @@
 ---@field visual OasisPaletteUiVisual
 ---@field search OasisPaletteUiSearch
 ---@field match OasisPaletteUiMatch
----@field matchParen? OasisPaletteUiMatchParen
+---@field match_parent? OasisPaletteUiMatchParen
 ---@field dir string
 ---@field title string
 ---@field border string
----@field cursorLine string
----@field lineNumber string
+---@field cursor_line string
+---@field line_number string
 ---@field nontext string
 ---@field float OasisPaletteUiFloat
 ---@field diag OasisPaletteUiDiag
@@ -315,21 +315,21 @@
 ---@field secondary? string
 ---@field label? string
 ---@field accent? string
----@field strong_primary? string
----@field light_primary? string
+---@field primary_strong? string
+---@field primary_light? string
 
 ---@class OasisPaletteSyntaxOverrides
 ---@field parameter? string
 ---@field identifier? string
 ---@field type? string
 ---@field typedef? string
----@field builtinVar? string
+---@field builtin_var? string
 ---@field string? string
 ---@field regex? string
----@field builtinConst? string
+---@field builtin_const? string
 ---@field constant? string
 ---@field func? string
----@field builtinFunc? string
+---@field builtin_func? string
 ---@field statement? string
 ---@field conditional? string
 ---@field exception? string
@@ -383,12 +383,12 @@
 ---@field visual? OasisPaletteUiVisualOverrides
 ---@field search? OasisPaletteUiSearchOverrides
 ---@field match? OasisPaletteUiMatchOverrides
----@field matchParen? OasisPaletteUiMatchParenOverrides
+---@field match_parent? OasisPaletteUiMatchParenOverrides
 ---@field dir? string
 ---@field title? string
 ---@field border? string
----@field cursorLine? string
----@field lineNumber? string
+---@field cursor_line? string
+---@field line_number? string
 ---@field nontext? string
 ---@field float? OasisPaletteUiFloatOverrides
 ---@field diag? OasisPaletteUiDiagOverrides

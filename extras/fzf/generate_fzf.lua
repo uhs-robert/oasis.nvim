@@ -41,7 +41,7 @@ local function generate_fzf_theme(name, palette)
     'export FZF_DEFAULT_OPTS=" \\',
     string.format(
       "--color=bg+:%s,bg:%s,spinner:%s,hl:%s \\",
-      palette.ui.cursorLine, -- bg+: Current line background
+      palette.ui.cursor_line, -- bg+: Current line background
       palette.bg.core, -- bg: Background
       palette.theme.accent, -- spinner: Loading spinner
       primary -- hl: Highlighted substrings

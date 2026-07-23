@@ -48,7 +48,7 @@ local function generate_bat_theme(name, display_name, palette)
     "\t\t\t\t<key>caret</key>",
     "\t\t\t\t<string>" .. primary .. "</string>",
     "\t\t\t\t<key>lineHighlight</key>",
-    "\t\t\t\t<string>" .. (palette.ui.cursorLine or palette.bg.surface) .. "</string>",
+    "\t\t\t\t<string>" .. (palette.ui.cursor_line or palette.bg.surface) .. "</string>",
     "\t\t\t\t<key>selection</key>",
     "\t\t\t\t<string>" .. palette.ui.visual.bg .. "</string>",
     "\t\t\t\t<key>selectionForeground</key>",
@@ -110,18 +110,18 @@ local function generate_bat_theme(name, display_name, palette)
   )
   add_scope("Variable", "variable, variable.other, variable.other.readwrite, variable.other.object", palette.fg.core)
   add_scope("Parameter", "variable.parameter, meta.parameter, meta.parameters variable", palette.syntax.parameter)
-  add_scope("Built-in constant", "constant.language", palette.syntax.builtinConst, "italic")
+  add_scope("Built-in constant", "constant.language", palette.syntax.builtin_const, "italic")
   add_scope(
     "Built-in variable",
     "variable.language, variable.language.this, variable.language.self, variable.language.super, support.variable, support.constant.language, support.namespace, support.other, support.constant",
-    palette.syntax.builtinVar
+    palette.syntax.builtin_var
   )
   add_scope(
     "Built-in types",
     "constant.language.null.js, constant.language.null.ts, constant.language.undefined.js, constant.language.undefined.ts, support.type.builtin.ts",
     palette.syntax.type
   )
-  add_scope("Built-in function", "support.function.builtin, support.function.magic", palette.syntax.builtinFunc)
+  add_scope("Built-in function", "support.function.builtin, support.function.magic", palette.syntax.builtin_func)
   add_scope(
     "Character, escape",
     "constant.character, constant.character.escape, constant.other.placeholder",
@@ -284,7 +284,7 @@ local function generate_bat_theme(name, display_name, palette)
   add_scope("Rust constants", "constant.other.caps.rust", palette.syntax.constant)
   add_scope("Rust function parameters", "meta.function.definition.rust variable.other.rust", palette.syntax.parameter)
   add_scope("Rust closure variables", "meta.function.call.rust variable.other.rust", palette.fg.core)
-  add_scope("Rust self", "variable.language.self.rust", palette.syntax.builtinVar)
+  add_scope("Rust self", "variable.language.self.rust", palette.syntax.builtin_var)
   add_scope(
     "Rust metavariable",
     "variable.other.metavariable.name.rust, meta.macro.metavariable.rust keyword.operator.macro.dollar.rust",
