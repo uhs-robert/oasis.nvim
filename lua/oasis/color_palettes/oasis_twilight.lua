@@ -13,7 +13,7 @@ local base = {
   bg = theme.bg,
   fg = theme.fg,
   palette = {
-    primary = p.sunrise,
+    primary = p.sundown,
     secondary = p.lavender,
     accent = p.khaki,
   },
@@ -58,19 +58,19 @@ local dark = {
     constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
-    func = p.khaki[500],
-    builtinFunc = p.khaki[300], -- (eg. parseInst, Array, Object etc)
+    func = p.sand[300],
+    builtinFunc = p.sand[200], -- (eg. parseInst, Array, Object etc)
     statement = opts.themed_syntax and base.palette.primary[400] or p.khaki[500], -- (general statement (i.e. var, const))
-    exception = opts.themed_syntax and p.red[500] or base.primary[600], -- (try/catch, return)
-    conditional = opts.themed_syntax and base.palette.primary[500] or p.khaki[800], -- (Conditionals, Loops)
+    conditional = opts.themed_syntax and base.palette.primary[600] or p.khaki[800], -- (Conditionals, Loops)
+    exception = p.red[500], -- (try/catch, return)
     special = p.sunset[200], -- (Statement not covered above)
-    operator = base.palette.primary[300],
-    punctuation = base.palette.primary[400],
+    operator = base.palette.primary[400],
+    punctuation = base.palette.primary[500],
 
     -- Neutral: (Connections / Info)
     bracket = p.slate[500], -- (bracket punctuation)
-    preproc = p.gold[400], -- (imports)
-    macro = p.gold[500], -- (imports)
+    preproc = opts.themed_syntax and p.khaki[500] or p.sundown[500], -- (imports)
+    macro = opts.themed_syntax and p.khaki[800] or p.sundown[600], -- (imports)
     comment = theme.fg.comment, -- (comments)
   },
 
