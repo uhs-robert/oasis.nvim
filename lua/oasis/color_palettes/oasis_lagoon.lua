@@ -47,10 +47,10 @@ local dark = {
   syntax = {
     -- Cold: (Data)
     parameter = p.palm[500],
-    identifier = p.sky[500],
+    identifier = opts.themed_syntax and p.teal[400] or p.sky[500],
     delimiter = p.lagoon[800],
-    type = p.teal[500],
-    typedef = p.teal[700],
+    type = opts.themed_syntax and p.khaki[600] or p.teal[500],
+    typedef = opts.themed_syntax and p.khaki[800] or p.teal[700],
     string = p.rose[500],
     regex = p.copper[500],
     builtin_var = p.lavender[500], -- (this, document, window, etc)
