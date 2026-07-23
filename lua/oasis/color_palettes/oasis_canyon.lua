@@ -14,14 +14,14 @@ local base = {
   bg = theme.bg,
   fg = theme.fg,
   palette = {
-    primary = p.sunrise,
+    primary = p.sundown,
     secondary = p.lagoon,
     accent = p.rose,
   },
   theme = {
     strong_primary = p.sunset[500],
-    primary = p.sunset[300],
-    light_primary = p.sunshine[200],
+    primary = p.sundown[400],
+    light_primary = p.sunshine[300],
     secondary = p.lagoon[300],
     label = p.rose[600],
     accent = p.rose[600],
@@ -48,7 +48,7 @@ local dark = {
     -- Cold: (Data)
     parameter = p.palm[500],
     identifier = p.sky[500],
-    delimiter = base.theme.strong_primary,
+    delimiter = base.palette.primary[700],
     type = p.teal[600],
     typedef = p.teal[700],
     string = p.rose[500],
@@ -58,19 +58,19 @@ local dark = {
     constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
-    func = p.khaki[500],
-    builtinFunc = p.khaki[300], -- (eg. parseInst, Array, Object etc)
+    func = p.sand[300],
+    builtinFunc = p.sand[200], -- (eg. parseInst, Array, Object etc)
     statement = opts.themed_syntax and base.palette.primary[400] or p.khaki[500], -- (general statement (i.e. var, const))
-    exception = opts.themed_syntax and p.red[500] or p.red[300], -- (try/catch, return)
-    conditional = opts.themed_syntax and base.palette.primary[500] or p.khaki[800], -- (Conditionals, Loops)
-    special = p.khaki[600], -- (Statement not covered above)
+    conditional = opts.themed_syntax and base.palette.primary[600] or p.khaki[800], -- (Conditionals, Loops)
+    exception = p.red[500], -- (try/catch, return)
+    special = p.sunset[200], -- (Statement not covered above)
     operator = base.palette.primary[400],
     punctuation = base.palette.primary[500],
 
     -- Neutral: (Connections / Info)
     bracket = p.slate[500], -- (bracket)
-    preproc = p.gold[400], -- (imports)
-    macro = p.gold[500], -- (imports)
+    preproc = opts.themed_syntax and p.khaki[500] or p.sundown[500], -- (imports)
+    macro = opts.themed_syntax and p.khaki[800] or p.sundown[600], -- (imports)
     comment = theme.fg.comment, -- (comments)
   },
 
@@ -84,14 +84,14 @@ local dark = {
     dir = p.sky[400],
 
     title = base.theme.primary,
-    border = base.theme.strong_primary,
+    border = base.palette.primary[700],
     cursorLine = base.bg.mantle,
     nontext = base.fg.dim,
     float = {
       title = base.theme.secondary,
       fg = base.fg.strong,
       bg = base.bg.crust,
-      border = { fg = base.theme.strong_primary, bg = base.bg.crust },
+      border = { fg = base.palette.primary[600], bg = base.bg.crust },
     },
     diag = {
       error = { fg = p.diag.error.fg, bg = p.diag.error.bg },

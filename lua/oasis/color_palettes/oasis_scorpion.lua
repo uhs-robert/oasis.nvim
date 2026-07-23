@@ -65,7 +65,7 @@ local dark = {
     func = p.sand[400],
     builtinFunc = p.sand[200], -- (eg. parseInt, Array, Object etc)
     statement = opts.themed_syntax and base.palette.primary[500] or p.khaki[500], -- (general statement (i.e. var, const))
-    exception = opts.themed_syntax and p.red[500] or p.red[400], -- (try/catch, return)
+    exception = p.red[500], -- (try/catch, return)
     conditional = opts.themed_syntax and base.palette.primary[800] or p.khaki[800], -- (Conditionals, Loops)
 
     special = p.sunset[200], -- (Statement not covered above)

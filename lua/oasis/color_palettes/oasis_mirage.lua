@@ -50,23 +50,23 @@ local dark = {
   -- Syntax
   syntax = {
     -- Cold: (Data)
-    parameter = p.lavender[500],
+    parameter = p.palm[500],
     identifier = p.sky[500],
     delimiter = base.theme.strong_primary,
-    type = p.teal[700],
-    typedef = p.teal[800],
+    type = opts.themed_syntax and p.khaki[500] or p.teal[600],
+    typedef = opts.themed_syntax and p.khaki[800] or p.teal[800],
     string = p.rose[500],
     regex = p.copper[500],
-    builtinVar = opts.themed_syntax and p.khaki[500] or base.primary[500], -- (this, document, window, etc)
-    builtinConst = opts.themed_syntax and p.khaki[800] or p.steelblue[400], -- (e.g. null, undefined, Infinity, etc)
+    builtinVar = p.lavender[500], -- (this, document, window, etc)
+    builtinConst = p.iris[400], -- (e.g. null, undefined, Infinity, etc)
     constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
     func = p.sand[300],
     builtinFunc = p.sand[200], -- (eg. parseInst, Array, Object etc)
     statement = opts.themed_syntax and primary[400] or p.khaki[500], -- (general statement (i.e. var, const))
-    conditional = opts.themed_syntax and force_aaa and primary[600] or primary[700] or p.khaki[800], -- (Conditionals, Loops)
-    exception = opts.themed_syntax and p.red[500] or base.primary[600], -- (try/catch, return)
+    conditional = opts.themed_syntax and primary[700] or p.khaki[800], -- (Conditionals, Loops)
+    exception = p.red[500], -- (try/catch, return)
     special = p.sunset[100], -- (Statement not covered above)
     operator = base.palette.primary[500],
     punctuation = base.palette.primary[600],

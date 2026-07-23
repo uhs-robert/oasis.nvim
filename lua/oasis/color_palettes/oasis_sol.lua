@@ -9,8 +9,6 @@ local theme = p.theme.sol
 local in_neovim = vim.uv ~= nil or vim.loop ~= nil
 local need_light = not in_neovim or vim.o.background == "light"
 
-local force_aaa = opts.contrast and opts.contrast.force_aaa or opts.contrast.min_ratio > 5.8
-
 -- General Reusable Colors
 local base = {
   bg = theme.bg,
@@ -54,7 +52,7 @@ local dark = {
     delimiter = base.theme.primary,
     type = p.teal[600],
     typedef = p.teal[700],
-    string = opts.themed_syntax and p.khaki[500] or p.rose[500],
+    string = opts.themed_syntax and p.khaki[600] or p.rose[500],
     regex = p.copper[500],
     builtinVar = p.lavender[400], -- (this, document, window, etc)
     builtinConst = p.iris[400], -- (e.g. null, undefined, Infinity, etc)
@@ -63,10 +61,10 @@ local dark = {
     -- Warm: (Control / Flow)
     func = p.sand[300],
     builtinFunc = p.sand[200], -- (eg. parseInst, Array, Object etc)
-    statement = opts.themed_syntax and base.palette.primary[200] or p.khaki[500], -- (general statement (i.e. var, const))
-    exception = opts.themed_syntax and p.gold[500] or p.red[400], -- (try/catch, return)
+    statement = opts.themed_syntax and base.palette.primary[200] or p.khaki[600], -- (general statement (i.e. var, const))
     conditional = opts.themed_syntax and p.rose[700] or p.khaki[800], -- (Conditionals, Loops)
-    special = p.sunset[200], -- (Statement not covered above)
+    exception = opts.themed_syntax and p.gold[400] or p.red[400], -- (try/catch, return)
+    special = p.sunset[300], -- (Statement not covered above)
     operator = base.palette.primary[300],
     punctuation = base.palette.primary[400],
 
