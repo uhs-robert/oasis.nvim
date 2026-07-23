@@ -21,7 +21,7 @@
   --link: #357b73;
   --border: #bce8e3;
   --primary: #214d48;
-  --light-primary: #1d4640;
+  --light-primary: {{day_light_primary}};
   --secondary: #683606;
   --title-match: #430192;
   --link-match: #683606;
@@ -34,7 +34,7 @@
   --n-link: #68C0B6;
   --n-border: #18252A;
   --n-primary: #79C7BE;
-  --n-light-primary: #96D4CB;
+  --n-light-primary: {{night_light_primary}};
   --n-secondary: #F8B471;
   --n-title-match: #D2ADFF;
   --n-link-match: #F8B471;
@@ -113,7 +113,7 @@
   --fg: #121717;
   --link: #357b73;
   --primary: #214d48;
-  --light-primary: #1d4640;
+  --light-primary: {{day_light_primary}};
   --secondary: #683606;
   --border: #bce8e3;
   --title-match: #430192;
@@ -127,7 +127,7 @@
   --n-link: #68C0B6;
   --n-border: #18252A;
   --n-primary: #79C7BE;
-  --n-light-primary: #96D4CB;
+  --n-light-primary: {{night_light_primary}};
   --n-secondary: #F8B471;
   --n-title-match: #D2ADFF;
   --n-link-match: #F8B471;
@@ -311,7 +311,7 @@ body {
   --fg: #121717;
   --link: #357b73;
   --primary: #214d48;
-  --light-primary: #1d4640;
+  --light-primary: {{day_light_primary}};
   --secondary: #683606;
   --border: #bce8e3;
   --title-match: #430192;
@@ -325,7 +325,7 @@ body {
   --n-link: #68C0B6;
   --n-border: #18252A;
   --n-primary: #79C7BE;
-  --n-light-primary: #96D4CB;
+  --n-light-primary: {{night_light_primary}};
   --n-secondary: #F8B471;
   --n-title-match: #D2ADFF;
   --n-link-match: #F8B471;

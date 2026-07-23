@@ -27,9 +27,9 @@ def setup(c, samecolorrows=True):
         "fg_core":        "#191210",
         "fg_dim":         "#766c69",
         "fg_muted":       "#5c504f",
-        "light_primary":  "#4f480a",
+        "primary_light":  "#4f480a",
         "primary":        "#58500b",
-        "strong_primary": "#7a742c",
+        "primary_strong": "#7a742c",
         "secondary":      "#5e1a06",
         "accent":         "#296624",
         "match":          "#b7d17a",
@@ -41,7 +41,7 @@ def setup(c, samecolorrows=True):
     # completion {{{
     c.colors.completion.category.bg = palette["mantle"]
     c.colors.completion.category.border.bottom = palette["core"]
-    c.colors.completion.category.border.top = palette["strong_primary"]
+    c.colors.completion.category.border.top = palette["primary_strong"]
     c.colors.completion.category.fg = palette["primary"]
     if samecolorrows:
         c.colors.completion.even.bg = palette["core"]
@@ -61,7 +61,7 @@ def setup(c, samecolorrows=True):
 
     ## Color of the scrollbar in completion view
     c.colors.completion.scrollbar.bg = palette["mantle"]
-    c.colors.completion.scrollbar.fg = palette["strong_primary"]
+    c.colors.completion.scrollbar.fg = palette["primary_strong"]
     # }}}
 
     # downloads {{{
@@ -127,7 +127,7 @@ def setup(c, samecolorrows=True):
     ## Foreground color of the statusbar.
     c.colors.statusbar.normal.fg = palette["fg_core"]
     c.colors.statusbar.insert.fg = palette["green"]
-    c.colors.statusbar.command.fg = palette["light_primary"]
+    c.colors.statusbar.command.fg = palette["primary_light"]
     c.colors.statusbar.passthrough.fg = palette["bright_yellow"]
     c.colors.statusbar.caret.fg = palette["bright_yellow"]
     c.colors.statusbar.caret.selection.fg = palette["bright_yellow"]
@@ -178,7 +178,7 @@ def setup(c, samecolorrows=True):
     # ## Background color of selected tabs.
     c.colors.tabs.selected.even.bg = palette["primary"]
     c.colors.tabs.selected.even.fg = palette["core"]
-    c.colors.tabs.selected.odd.bg = palette["strong_primary"]
+    c.colors.tabs.selected.odd.bg = palette["primary_strong"]
     c.colors.tabs.selected.odd.fg = palette["core"]
     # }}}
 
@@ -189,7 +189,7 @@ def setup(c, samecolorrows=True):
     c.colors.tabs.pinned.odd.fg = palette["secondary"]
     c.colors.tabs.pinned.selected.even.bg = palette["primary"]
     c.colors.tabs.pinned.selected.even.fg = palette["core"]
-    c.colors.tabs.pinned.selected.odd.bg = palette["strong_primary"]
+    c.colors.tabs.pinned.selected.odd.bg = palette["primary_strong"]
     c.colors.tabs.pinned.selected.odd.fg = palette["core"]
     # }}}
 
