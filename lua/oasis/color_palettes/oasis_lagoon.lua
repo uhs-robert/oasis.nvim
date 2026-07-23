@@ -14,14 +14,14 @@ local base = {
   bg = theme.bg,
   fg = theme.fg,
   palette = {
-    primary = p.lagoon,
+    primary = p.sapphire,
     secondary = p.sunrise,
     accent = p.rose,
   },
   theme = {
-    strong_primary = p.lagoon[700],
-    primary = p.lagoon[500],
-    light_primary = p.lagoon[300],
+    strong_primary = p.sapphire[700],
+    primary = p.sapphire[500],
+    light_primary = p.sapphire[300],
     secondary = p.sunrise[500],
     label = p.sunrise[600],
     accent = p.rose[500],
@@ -48,7 +48,7 @@ local dark = {
     -- Cold: (Data)
     parameter = p.palm[500],
     identifier = p.sky[500],
-    delimiter = base.theme.strong_primary,
+    delimiter = p.lagoon[800],
     type = p.teal[500],
     typedef = p.teal[700],
     string = p.rose[500],
@@ -62,15 +62,15 @@ local dark = {
     builtinFunc = p.sand[200], -- (eg. parseInst, Array, Object etc)
     statement = opts.themed_syntax and base.palette.primary[500] or p.khaki[500], -- (general statement (i.e. var, const))
     exception = p.red[500], -- (try/catch, return)
-    conditional = opts.themed_syntax and base.palette.primary[600] or p.khaki[800], -- (Conditionals, Loops)
+    conditional = opts.themed_syntax and p.lagoon[600] or p.khaki[800], -- (Conditionals, Loops)
     special = p.sunset[200], -- (Statement not covered above)
     operator = p.sapphire[400],
     punctuation = p.sapphire[500],
 
     -- Neutral: (Connections / Info)
     bracket = p.slate[500], -- (bracket punctuation)
-    preproc = p.khaki[600], -- (imports)
-    macro = p.khaki[800], -- (imports)
+    preproc = p.sundown[600], -- (imports)
+    macro = p.sundown[700], -- (imports)
     comment = theme.fg.comment, -- (comments)
   },
 
