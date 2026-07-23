@@ -9,8 +9,6 @@ local theme = p.theme.mirage
 local in_neovim = vim.uv ~= nil or vim.loop ~= nil
 local need_light = not in_neovim or vim.o.background == "light"
 
-local force_aaa = opts.contrast and opts.contrast.force_aaa or opts.contrast.min_ratio > 5.8
-
 -- General Reusable Colors
 local base = {
   bg = theme.bg,
@@ -53,7 +51,7 @@ local dark = {
     parameter = p.palm[500],
     identifier = p.sky[500],
     delimiter = base.theme.primary_strong,
-    type = opts.themed_syntax and p.khaki[500] or p.teal[600],
+    type = opts.themed_syntax and p.khaki[600] or p.teal[600],
     typedef = opts.themed_syntax and p.khaki[800] or p.teal[800],
     string = p.rose[500],
     regex = p.copper[500],
