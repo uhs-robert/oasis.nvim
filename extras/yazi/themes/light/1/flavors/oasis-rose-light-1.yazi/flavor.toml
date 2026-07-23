@@ -9,12 +9,12 @@ cwd = { fg = "#325b33" }
 find_keyword = { fg = "#72dacc", bold = true, italic = true, underline = true }
 find_position = { fg = "#ba141b", bg = "reset", bold = true, italic = true }
 
-marker_copied = { fg = "#5b5215", bg = "#5b5215" }
+marker_copied = { fg = "#a31217", bg = "#a31217" }
 marker_cut = { fg = "#ba141b", bg = "#ba141b" }
 marker_marked = { fg = "#184571", bg = "#184571" }
 marker_selected = { fg = "#655f22", bg = "#655f22" }
 
-count_copied = { fg = "#faeef5", bg = "#5b5215" }
+count_copied = { fg = "#faeef5", bg = "#a31217" }
 count_cut = { fg = "#faeef5", bg = "#ba141b" }
 count_selected = { fg = "#faeef5", bg = "#655f22" }
 
@@ -54,7 +54,7 @@ perm_sep = { fg = "#856674" }
 perm_type = { fg = "#184571" }
 perm_read = { fg = "#655f22" }
 perm_write = { fg = "#ba141b" }
-perm_exec = { fg = "#5b5215" }
+perm_exec = { fg = "#a31217" }
 
 # INPUT
 [input]

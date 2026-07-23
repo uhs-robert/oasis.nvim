@@ -100,7 +100,7 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Canyon Dark**
 ```
-#483228,#35231D,#FFBA75,#483228,#35231D,#F8E7D3,#94D0FE,#FF9090,#261612,#F8E7D3
+#483228,#35231D,#F9AF96,#483228,#35231D,#F8E7D3,#94D0FE,#FF9090,#261612,#F8E7D3
 ```
 
 **Oasis Canyon Light 1**
@@ -196,32 +196,32 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Lagoon Dark**
 ```
-#22385C,#1A283F,#58B8FD,#22385C,#1A283F,#D9E6FA,#F8B471,#FFA0A0,#101825,#D9E6FA
+#22385C,#1A283F,#71B8FF,#22385C,#1A283F,#D9E6FA,#F8B471,#FFA0A0,#101825,#D9E6FA
 ```
 
 **Oasis Lagoon Light 1**
 ```
-#bdd6f5,#deebfa,#075085,#bdd6f5,#deebfa,#141b26,#81460c,#ab0707,#f2f7fd,#141b26
+#bdd6f5,#deebfa,#064687,#bdd6f5,#deebfa,#141b26,#81460c,#ab0707,#f2f7fd,#141b26
 ```
 
 **Oasis Lagoon Light 2**
 ```
-#b3d2f5,#d5e6f9,#054b7d,#b3d2f5,#d5e6f9,#111620,#78410a,#a30505,#e9f2fc,#111620
+#b3d2f5,#d5e6f9,#04417e,#b3d2f5,#d5e6f9,#111620,#78410a,#a30505,#e9f2fc,#111620
 ```
 
 **Oasis Lagoon Light 3**
 ```
-#a6caf2,#c8def7,#044574,#a6caf2,#c8def7,#0e131b,#703c08,#9b0303,#dceafa,#0e131b
+#a6caf2,#c8def7,#023c75,#a6caf2,#c8def7,#0e131b,#703c08,#9b0303,#dceafa,#0e131b
 ```
 
 **Oasis Lagoon Light 4**
 ```
-#9ac2f0,#bbd6f5,#023f6b,#9ac2f0,#bbd6f5,#0e131b,#683606,#920101,#cfe2f8,#0e131b
+#9ac2f0,#bbd6f5,#01376d,#9ac2f0,#bbd6f5,#0e131b,#683606,#920101,#cfe2f8,#0e131b
 ```
 
 **Oasis Lagoon Light 5**
 ```
-#8cbaee,#adcef3,#013a62,#8cbaee,#adcef3,#0e131b,#5f3105,#8a0000,#c1daf6,#0e131b
+#8cbaee,#adcef3,#003263,#8cbaee,#adcef3,#0e131b,#5f3105,#8a0000,#c1daf6,#0e131b
 ```
 
 ## Luna
