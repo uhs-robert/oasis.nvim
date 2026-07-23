@@ -26,7 +26,7 @@ local function generate_starship_palette(name, palette)
     "[palettes." .. palette_key .. "]",
     "# Accent",
     "primary       = '" .. primary .. "'",
-    "strong_primary = '" .. palette.theme.strong_primary .. "'",
+    "primary_strong = '" .. palette.theme.primary_strong .. "'",
     "",
     "# ANSI colors (0-7)",
     "black         = '" .. t.color0 .. "'",

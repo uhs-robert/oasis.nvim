@@ -20,7 +20,7 @@ local function generate_vscode_theme(name, palette)
     and ColorUtils.adjust_brightness(palette.bg.mantle, 0.9)
     or ColorUtils.adjust_brightness(palette.bg.surface, 1.2)
 
-  local matchparen_bg = palette.ui.matchParen and palette.ui.matchParen.bg or palette.bg.surface
+  local matchparen_bg = palette.ui.match_parent and palette.ui.match_parent.bg or palette.bg.surface
   local dir_color = palette.ui.dir or primary
 
   local theme = {
@@ -40,14 +40,14 @@ local function generate_vscode_theme(name, palette)
       ["editor.background"] = palette.bg.core,
       ["editor.foreground"] = palette.fg.core,
       ["editorLineNumber.foreground"] = palette.fg.muted,
-      ["editorLineNumber.activeForeground"] = palette.ui.lineNumber,
+      ["editorLineNumber.activeForeground"] = palette.ui.line_number,
       ["editor.selectionBackground"] = ColorUtils.with_alpha(palette.ui.visual.bg, "b3"),
       ["editor.selectionHighlightBackground"] = ColorUtils.with_alpha(palette.ui.visual.bg, "66"),
       ["editor.wordHighlightBackground"] = ColorUtils.with_alpha(primary, "1a"),
       ["editor.wordHighlightStrongBackground"] = ColorUtils.with_alpha(palette.fg.muted, "33"),
       ["editor.findMatchBackground"] = ColorUtils.with_alpha(palette.ui.match.bg, "cc"),
       ["editor.findMatchHighlightBackground"] = ColorUtils.with_alpha(palette.ui.search.bg, "66"),
-      ["editor.lineHighlightBackground"] = palette.ui.cursorLine,
+      ["editor.lineHighlightBackground"] = palette.ui.cursor_line,
       ["editor.lineHighlightBorder"] = "#00000000",
       ["editorCursor.foreground"] = cursor_color,
       ["editorWhitespace.foreground"] = ColorUtils.with_alpha(palette.ui.nontext or palette.fg.dim, "66"),
@@ -282,7 +282,7 @@ local function generate_vscode_theme(name, palette)
       ["symbolIcon.methodForeground"] = palette.syntax.func,
       ["symbolIcon.moduleForeground"] = palette.syntax.preproc,
       ["symbolIcon.namespaceForeground"] = palette.syntax.preproc,
-      ["symbolIcon.nullForeground"] = palette.syntax.builtinConst,
+      ["symbolIcon.nullForeground"] = palette.syntax.builtin_const,
       ["symbolIcon.numberForeground"] = palette.syntax.constant,
       ["symbolIcon.operatorForeground"] = palette.syntax.operator,
       ["symbolIcon.packageForeground"] = palette.syntax.preproc,
@@ -346,7 +346,7 @@ local function generate_vscode_theme(name, palette)
       -- Language constants (true, false, null, undefined)
       {
         scope = { "constant.language", "constant.language.null", "constant.language.undefined", "constant.language.boolean" },
-        settings = { foreground = palette.syntax.builtinConst, fontStyle = "bold" },
+        settings = { foreground = palette.syntax.builtin_const, fontStyle = "bold" },
       },
 
       -- Named constants (SCREAMING_SNAKE, etc.)
@@ -406,7 +406,7 @@ local function generate_vscode_theme(name, palette)
       -- Built-in functions
       {
         scope = { "support.function", "support.function.builtin", "support.function.console" },
-        settings = { foreground = palette.syntax.builtinFunc },
+        settings = { foreground = palette.syntax.builtin_func },
       },
 
       -- Types / classes / enums
@@ -430,13 +430,13 @@ local function generate_vscode_theme(name, palette)
       -- Language variables (this, self, super)
       {
         scope = { "variable.language", "variable.language.this", "variable.language.self", "variable.language.super" },
-        settings = { foreground = palette.syntax.builtinVar },
+        settings = { foreground = palette.syntax.builtin_var },
       },
 
       -- Built-in constants (undefined, null, Infinity, NaN)
       {
         scope = { "support.constant", "support.constant.builtin" },
-        settings = { foreground = palette.syntax.builtinConst },
+        settings = { foreground = palette.syntax.builtin_const },
       },
 
       -- Properties / member identifiers
@@ -527,7 +527,7 @@ local function generate_vscode_theme(name, palette)
     semanticTokenColors = {
       variable = palette.fg.core,
       ["variable.readonly"] = palette.syntax.type,
-      ["variable.readonly.defaultLibrary"] = palette.syntax.builtinConst,
+      ["variable.readonly.defaultLibrary"] = palette.syntax.builtin_const,
       parameter = palette.syntax.parameter,
       ["function"] = palette.syntax.func,
       method = palette.syntax.func,

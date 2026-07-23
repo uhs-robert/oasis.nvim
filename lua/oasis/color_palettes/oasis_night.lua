@@ -15,9 +15,9 @@ local base = {
   fg = theme.fg,
   palette = { primary = p.khaki, secondary = p.red, accent = p.steelblue },
   theme = {
-    strong_primary = p.steelblue[800],
+    primary_strong = p.steelblue[800],
     primary = p.steelblue[600],
-    light_primary = p.steelblue[200],
+    primary_light = p.steelblue[200],
     secondary = p.khaki[500],
     label = p.red[500],
     accent = p.rose[500],
@@ -50,13 +50,13 @@ local dark = {
     typedef = p.teal[700],
     string = p.rose[500],
     regex = p.copper[500],
-    builtinVar = p.lavender[500], -- (this, document, window, etc)
-    builtinConst = p.iris[500], -- (e.g. null, undefined, Infinity, etc)
+    builtin_var = p.lavender[500], -- (this, document, window, etc)
+    builtin_const = p.iris[500], -- (e.g. null, undefined, Infinity, etc)
     constant = p.sunset[600], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
     func = p.sand[400],
-    builtinFunc = p.sand[200], -- (eg. parseInt, Array, Object etc)
+    builtin_func = p.sand[200], -- (eg. parseInt, Array, Object etc)
     statement = base.palette.primary[500], -- (general statement (i.e. var, const))
     conditional = base.palette.primary[800], -- (Conditionals, Loops)
     exception = p.red[500], -- (try/catch, return)
@@ -73,16 +73,16 @@ local dark = {
 
   -- UI
   ui = {
-    lineNumber = p.sunset[600],
+    line_number = p.sunset[600],
     visual = { bg = p.visual.night, fg = "none" },
     search = { bg = p.visual.grey, fg = base.fg.core },
     match = { bg = p.khaki[700], fg = base.bg.core },
-    matchParen = { bg = p.stone[900], fg = p.khaki[700] },
+    match_parent = { bg = p.stone[900], fg = p.khaki[700] },
     dir = p.sky[500],
 
     title = base.theme.primary,
     border = base.theme.primary,
-    cursorLine = base.bg.surface,
+    cursor_line = base.bg.surface,
     nontext = base.fg.dim,
     float = {
       title = base.theme.secondary,
@@ -110,7 +110,7 @@ if need_light then
   local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
     search = { bg = p.visual.orange, fg = base.fg.core },
     match = { bg = p.visual.red, fg = base.fg.core },
-    matchParen = { bg = dark.ui.matchParen.bg, fg = p.sunset[500] },
+    match_parent = { bg = dark.ui.match_parent.bg, fg = p.sunset[500] },
   })
   local light_terminal = LightTheme.generate_terminal(p.terminal, light_bg.core, opts.light_intensity, opts.contrast)
   light = {

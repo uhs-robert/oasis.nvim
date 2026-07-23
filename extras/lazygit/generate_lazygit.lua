@@ -22,7 +22,7 @@ local function generate_lazygit_theme(name, palette)
     "",
     "theme:",
     "  activeBorderColor:",
-    string.format("    - '%s'", palette.ui.matchParen.fg),
+    string.format("    - '%s'", palette.ui.match_parent.fg),
     "    - bold",
     "  inactiveBorderColor:",
     string.format("    - '%s'", primary),

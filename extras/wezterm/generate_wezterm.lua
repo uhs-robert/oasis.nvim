@@ -30,7 +30,7 @@ local function generate_wezterm_theme(name, palette)
     'selection_bg= "' .. palette.ui.search.bg .. '"',
     'selection_fg= "' .. palette.ui.search.fg .. '"',
     'split= "' .. palette.ui.border .. '"',
-    'compose_cursor= "' .. palette.ui.lineNumber .. '"',
+    'compose_cursor= "' .. palette.ui.line_number .. '"',
     'scrollbar_thumb= "' .. palette.bg.surface .. '"',
     'visual_bell= "' .. palette.bg.mantle .. '"',
     "",
@@ -54,7 +54,7 @@ local function generate_wezterm_theme(name, palette)
 
   -- Colors Indexed
   lines[#lines + 1] = "[colors.indexed]"
-  lines[#lines + 1] = string.format("16 = '%s'", palette.ui.lineNumber)
+  lines[#lines + 1] = string.format("16 = '%s'", palette.ui.line_number)
   lines[#lines + 1] = string.format("17 = '%s'", palette.syntax.exception)
   lines[#lines + 1] = ""
 

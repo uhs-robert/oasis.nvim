@@ -15,9 +15,9 @@ local base = {
   fg = theme.fg,
   palette = { primary = p.khaki, secondary = p.sunset, accent = p.cyan },
   theme = {
-    strong_primary = p.khaki[800],
+    primary_strong = p.khaki[800],
     primary = p.khaki[500],
-    light_primary = p.khaki[300],
+    primary_light = p.khaki[300],
     secondary_strong = p.khaki[800],
     secondary = p.iris[400],
     secondary_light = p.iris[200],
@@ -47,18 +47,18 @@ local dark = {
     -- Cold: (Data)
     parameter = p.palm[500],
     identifier = p.sky[500],
-    delimiter = base.theme.strong_primary,
+    delimiter = base.theme.primary_strong,
     type = p.teal[700],
     typedef = p.teal[800],
     string = p.rose[500],
     regex = p.copper[500],
-    builtinVar = p.lavender[400], -- (this, document, window, etc)
-    builtinConst = p.iris[300], -- (e.g. null, undefined, Infinity, etc)
+    builtin_var = p.lavender[400], -- (this, document, window, etc)
+    builtin_const = p.iris[300], -- (e.g. null, undefined, Infinity, etc)
     constant = p.sunset[600], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
     func = p.sand[400],
-    builtinFunc = p.sand[200], -- (eg. parseInt, Array, Object etc)
+    builtin_func = p.sand[200], -- (eg. parseInt, Array, Object etc)
     statement = opts.themed_syntax and base.palette.primary[500] or p.khaki[500], -- (general statement (i.e. var, const))
     conditional = opts.themed_syntax and base.palette.primary[800] or p.khaki[800], -- (Conditionals, Loops)
     exception = p.red[500], -- (try/catch, return)
@@ -75,16 +75,16 @@ local dark = {
 
   -- UI
   ui = {
-    lineNumber = p.sunset[600],
+    line_number = p.sunset[600],
     visual = { bg = p.visual.desert, fg = "none" },
     search = { bg = p.visual.grey, fg = base.fg.core },
     match = { bg = p.olive[500], fg = base.bg.core },
-    matchParen = { bg = p.stone[900], fg = p.khaki[700] },
+    match_parent = { bg = p.stone[900], fg = p.khaki[700] },
     dir = p.sky[500],
 
     title = base.theme.primary,
     border = base.theme.secondary,
-    cursorLine = base.bg.surface,
+    cursor_line = base.bg.surface,
     nontext = base.fg.dim,
     float = {
       title = base.theme.primary,
@@ -114,12 +114,12 @@ if need_light then
   local LightTheme = require("oasis.tools.light_theme_generator")
   local light_bg = LightTheme.generate_bg(theme.light_bg_seed, opts.light_intensity, { preserve_hsl = true })
   local light_theme = vim.tbl_deep_extend("force", {}, base.theme, {
-    strong_primary = p.iris[800],
+    primary_strong = p.iris[800],
   })
   local light_ui = vim.tbl_deep_extend("force", {}, dark.ui, {
     search = { bg = p.visual.indigo, fg = base.fg.core },
     match = { bg = p.visual.yellow, fg = base.fg.core },
-    matchParen = { bg = dark.ui.matchParen.bg, fg = p.gold[300] },
+    match_parent = { bg = dark.ui.match_parent.bg, fg = p.gold[300] },
   })
   local light_terminal = LightTheme.generate_terminal(p.terminal, light_bg.core, opts.light_intensity, opts.contrast)
   light = {

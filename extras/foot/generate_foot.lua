@@ -40,7 +40,7 @@ local function build_color_section(section_name, palette)
     lines[#lines + 1] = string.format("bright%d=%s", i, strip_color_hash(palette.terminal["color" .. (i + 8)]))
   end
 
-  lines[#lines + 1] = string.format("16=%s", strip_color_hash(palette.ui.lineNumber))
+  lines[#lines + 1] = string.format("16=%s", strip_color_hash(palette.ui.line_number))
   lines[#lines + 1] = string.format("17=%s", strip_color_hash(palette.syntax.exception))
 
   return table.concat(lines, "\n")

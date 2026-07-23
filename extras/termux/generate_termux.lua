@@ -36,7 +36,7 @@ local function generate_termux_theme(name, palette)
 
   lines[#lines + 1] = ""
   lines[#lines + 1] = "# Extended colors"
-  lines[#lines + 1] = string.format("color16: %s", palette.ui.lineNumber)
+  lines[#lines + 1] = string.format("color16: %s", palette.ui.line_number)
   lines[#lines + 1] = string.format("color17: %s", palette.syntax.exception)
 
   return table.concat(lines, "\n")

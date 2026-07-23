@@ -29,10 +29,10 @@ local function extract_tridactyl_colors(palette)
     accent = hex(palette.theme.accent),
     cursor = hex(cursor),
     label = hex(palette.theme.label),
-    light_primary = hex(palette.theme.light_primary),
+    primary_light = hex(palette.theme.primary_light),
     primary = hex(palette.theme.primary),
     secondary = hex(palette.theme.secondary),
-    strong_primary = hex(palette.theme.strong_primary),
+    primary_strong = hex(palette.theme.primary_strong),
     -- Background
     bg_core = hex(palette.bg.core),
     bg_mantle = hex(palette.bg.mantle),
@@ -52,7 +52,7 @@ local function extract_tridactyl_colors(palette)
     mode_hint = hex(palette.syntax.parameter),
     mode_visual = hex(palette.syntax.func),
     mode_insert = hex(palette.syntax.string),
-    mode_nmode = hex(palette.syntax.builtinVar),
+    mode_nmode = hex(palette.syntax.builtin_var),
     -- Terminal
     terminal_black = hex(t.black),
     terminal_blue = hex(t.blue),

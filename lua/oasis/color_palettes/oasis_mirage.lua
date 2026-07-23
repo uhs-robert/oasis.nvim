@@ -21,9 +21,9 @@ local base = {
     accent = p.lavender,
   },
   theme = {
-    strong_primary = p.teal[700],
+    primary_strong = p.teal[700],
     primary = p.teal[600],
-    light_primary = p.teal[400],
+    primary_light = p.teal[400],
     secondary = p.sunrise[500],
     label = p.sunrise[600],
     accent = p.lavender[300],
@@ -52,18 +52,18 @@ local dark = {
     -- Cold: (Data)
     parameter = p.palm[500],
     identifier = p.sky[500],
-    delimiter = base.theme.strong_primary,
+    delimiter = base.theme.primary_strong,
     type = opts.themed_syntax and p.khaki[500] or p.teal[600],
     typedef = opts.themed_syntax and p.khaki[800] or p.teal[800],
     string = p.rose[500],
     regex = p.copper[500],
-    builtinVar = p.lavender[500], -- (this, document, window, etc)
-    builtinConst = p.iris[400], -- (e.g. null, undefined, Infinity, etc)
+    builtin_var = p.lavender[500], -- (this, document, window, etc)
+    builtin_const = p.iris[400], -- (e.g. null, undefined, Infinity, etc)
     constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
     func = p.sand[300],
-    builtinFunc = p.sand[200], -- (eg. parseInst, Array, Object etc)
+    builtin_func = p.sand[200], -- (eg. parseInst, Array, Object etc)
     statement = opts.themed_syntax and primary[400] or p.khaki[500], -- (general statement (i.e. var, const))
     conditional = opts.themed_syntax and primary[700] or p.khaki[800], -- (Conditionals, Loops)
     exception = p.red[500], -- (try/catch, return)
@@ -80,22 +80,22 @@ local dark = {
 
   -- UI
   ui = {
-    lineNumber = p.sunset[500],
+    line_number = p.sunset[500],
     visual = { bg = base.bg.surface, fg = "none" },
     search = { bg = p.visual.grey, fg = base.fg.core },
     match = { bg = p.lavender[500], fg = base.bg.core },
-    matchParen = { bg = p.visual.orange, fg = p.sunrise[600] },
+    match_parent = { bg = p.visual.orange, fg = p.sunrise[600] },
     dir = p.sky[500],
 
     title = base.theme.primary,
-    border = base.theme.strong_primary,
-    cursorLine = base.bg.mantle,
+    border = base.theme.primary_strong,
+    cursor_line = base.bg.mantle,
     nontext = base.fg.dim,
     float = {
       title = base.theme.secondary,
       fg = base.fg.strong,
       bg = base.bg.crust,
-      border = { fg = base.theme.strong_primary, bg = base.bg.crust },
+      border = { fg = base.theme.primary_strong, bg = base.bg.crust },
     },
     diag = {
       error = { fg = p.diag.error.fg, bg = p.diag.error.bg },
