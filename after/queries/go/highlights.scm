@@ -32,3 +32,7 @@
   (false)
 ] @boolean
   (#set! priority 128))
+
+((nil)
+ @constant.builtin
+  (#set! priority 128))
