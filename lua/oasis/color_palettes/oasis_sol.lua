@@ -53,14 +53,14 @@ local dark = {
     type = p.teal[600],
     typedef = p.teal[700],
     string = opts.themed_syntax and p.khaki[600] or p.rose[500],
-    regex = p.copper[500],
+    regex = p.desert_rose[400],
     builtin_var = p.lavender[400], -- (this, document, window, etc)
     builtin_const = p.iris[400], -- (e.g. null, undefined, Infinity, etc)
     constant = p.sunset[600], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
-    func = p.wood[300],
-    builtin_func = p.wood[500], -- (eg. parseInt, Array, Object etc)
+    func = p.amber[200],
+    builtin_func = p.amber[400], -- (eg. parseInt, Array, Object etc)
     statement = opts.themed_syntax and base.palette.primary[200] or p.khaki[600], -- (general statement (i.e. var, const))
     conditional = opts.themed_syntax and p.rose[700] or p.khaki[800], -- (Conditionals, Loops)
     exception = opts.themed_syntax and p.gold[400] or p.red[400], -- (try/catch, return)
