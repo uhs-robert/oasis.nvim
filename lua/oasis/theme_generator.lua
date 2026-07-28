@@ -145,11 +145,11 @@ local function create_highlights(c, light_mode, theme)
     Operator                   = { fg=c.syntax.operator }, --   "sizeof", "+", "*", etc.
     Exception                  = { fg=c.syntax.exception, bold=true }, --   try, catch, throw
 
-    PreProc                    = { fg=c.syntax.preproc, bold=true, italic=true }, -- (*) Generic Preprocessor
+    PreProc                    = { fg=c.syntax.preproc }, -- (*) Generic Preprocessor
     Include                    = "PreProc", --   Preprocessor #include
     Define                     = "PreProc", --   Preprocessor #define
     PreCondit                  = "PreProc", --   Preprocessor #if, #else, #endif, etc.
-    Macro                      = { fg=c.syntax.macro, italic=true, bold=true }, --   Macros
+    Macro                      = { fg=c.syntax.macro }, --   Macros
 
     Type                       = { fg=c.syntax.type }, -- (*) int, long, char, etc.
     StorageClass               = { fg=c.syntax.type, bold=true }, --   static, register, volatile, etc.
