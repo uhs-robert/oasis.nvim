@@ -240,7 +240,7 @@ local function create_highlights(c, light_mode, theme)
     ["@define"]               = "Define", -- Define
     ["@macro"]                = "Macro", -- Macro
     ["@string"]               = "String", -- String
-    ["@string.regexp"]        = { fg=c.syntax.regex, italic=true }, -- SpecialChar
+    ["@string.regexp"]        = { fg=c.syntax.regex, bold=true }, -- SpecialChar
     ["@string.escape"]        = "Exception", -- SpecialChar
     ["@string.special"]       = "SpecialChar", -- (e.g., dates)
     ["@string.special.symbol"]= { fg=c.syntax.identifier },
@@ -285,7 +285,7 @@ local function create_highlights(c, light_mode, theme)
     ["@attribute.css"]        = { fg=c.syntax.exception, italic=true }, -- (e.g. `:hover`, `::before`)
 
     ["@type"]                 = "Type", -- Type
-    ["@type.builtin"]         = "Typedef",
+    ["@type.builtin"]         = { fg=c.syntax.typedef, bold=true },
     ["@type.definition"]      = "Typedef", -- Typedef
     ["@type.jsdoc"]           = "Typedef", -- Type
     ["@storageclass"]         = "StorageClass", -- StorageClass
