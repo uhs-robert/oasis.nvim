@@ -14,7 +14,6 @@ local function generate_kitty_theme(name, palette)
   -- For desert theme, swap primary and secondary
   local is_desert = name == "oasis_desert"
   local primary = is_desert and palette.theme.secondary or palette.theme.primary
-  local secondary = is_desert and palette.theme.primary or palette.theme.secondary
 
   local lines = {
     "# extras/kitty/oasis_" .. name .. ".conf",
@@ -38,8 +37,8 @@ local function generate_kitty_theme(name, palette)
     string.format("%-24s %s", "background", palette.bg.core),
     "",
     "# Selection",
-    string.format("%-24s %s", "selection_background", palette.ui.search.bg),
-    string.format("%-24s %s", "selection_foreground", palette.ui.search.fg),
+    string.format("%-24s %s", "selection_background", palette.ui.visual.bg),
+    string.format("%-24s %s", "selection_foreground", palette.fg.strong),
     "",
     "# Cursor",
     string.format("%-24s %s", "cursor", is_light and palette.syntax.statement or palette.theme.cursor),
