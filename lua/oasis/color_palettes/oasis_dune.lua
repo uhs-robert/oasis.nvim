@@ -47,6 +47,8 @@ local dark = {
   syntax = {
     -- Cold: (Data)
     parameter = p.palm[500],
+    preproc = p.olive[500], -- (imports)
+    macro = p.olive[600], -- (imports)
     identifier = p.sky[500],
     delimiter = base.theme.primary_strong,
     type = p.teal[600],
@@ -58,8 +60,8 @@ local dark = {
     constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
-    func = p.amber[200],
-    builtin_func = p.amber[400], -- (eg. parseInt, Array, Object etc)
+    func = p.copper[300],
+    builtin_func = p.copper[400], -- (eg. parseInt, Array, Object etc)
     statement = base.palette.primary[500], -- (general statement (i.e. var, const))
     conditional = base.palette.primary[800], -- (Conditionals, Loops)
     exception = p.red[500], -- (try/catch, return)
@@ -69,8 +71,6 @@ local dark = {
 
     -- Neutral: (Connections / Info)
     bracket = p.slate[500], -- (bracket)
-    preproc = p.sundown[500], -- (imports)
-    macro = p.sundown[600], -- (imports)
     comment = theme.fg.comment, -- (comments)
   },
 
