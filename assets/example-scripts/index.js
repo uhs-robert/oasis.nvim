@@ -11,7 +11,7 @@ export default class Oasis extends EventEmitter {
   constructor(name, options = {}) {
     super();
     this.name = name;
-    this.options = { retries: 3, ...options }; // NOTE: options.retries defaults to 3
+    this.options = { retries: 3, ...options }; // NOTE: defaults to 3
     Oasis.instanceCount++;
   }
 
@@ -20,15 +20,13 @@ export default class Oasis extends EventEmitter {
    * @returns {Promise<object|null>}
    */
   async connect(url) {
-    // TODO: add exponential backoff
-    // WARNING: secret not validated
-    // ISSUE: retries are not rate-limited
     for (let i = 0; i < this.options.retries; i++) {
       try {
         const res = await fetch(url);
         if (!res.ok) throw new Error(`bad status: ${res.status}`);
         return await res.json();
       } catch (err) {
+        // ISSUE: retries are not rate-limited
         if (i === this.options.retries - 1) throw err;
       }
     }
@@ -51,9 +49,9 @@ class ValidationError extends Error {
 try {
   if (!isReady) throw new ValidationError("not ready", "isReady");
 } catch (err) {
-  console.error(err.message, err instanceof ValidationError);
+  console.error(err.message, err instanceof ValidationError); // TODO: handle error
 } finally {
-  console.debug("done checking");
+  console.debug("done checking"); // WARNING: this is useless!
 }
 
 export { pattern, id, firstRole, label, nothing, renamed, defaultExport };
