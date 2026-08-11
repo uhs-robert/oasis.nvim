@@ -158,9 +158,9 @@ local function create_highlights(c, light_mode, theme)
 
     Special                    = { fg=c.syntax.special }, -- (*) Any special symbol
     SpecialChar                = "Exception", --   Special character in a constant
-    Tag                        = { fg=c.syntax.special, underline=true }, --   You can use CTRL-] on this
+    Tag                        = { fg=c.ui.diag.info.fg, underline=true }, --   You can use CTRL-] on this
     Delimiter                  = { fg=c.syntax.delimiter }, --   Character that needs attention
-    SpecialComment             = { fg=c.syntax.special, bold=true, italic=true }, --   Special things inside a comment (e.g. '\n')
+    SpecialComment             = { fg=c.syntax.exception, bold=true, italic=true }, --   Special things inside a comment (e.g. '\n')
     Debug                      = "Constant", --   Debugging statements
 
     Underlined                 = { underline=true }, -- Text that stands out, HTML links
@@ -215,6 +215,7 @@ local function create_highlights(c, light_mode, theme)
     ["@variable"]             = { fg=c.fg.core }, -- Identifier
     ["@variable.builtin"]     = { fg=c.syntax.builtin_var }, -- Identifier
     ["@variable.parameter"]   = "@parameter", -- Identifier
+    ["@variable.parameter.builtin"]   = { fg=c.syntax.parameter, bold=true }, -- Identifier
     ["@variable.css"]         = "@parameter", -- Identifier
     ["@variable.member"]      = { fg=c.syntax.identifier }, -- Identifier
 
@@ -256,8 +257,8 @@ local function create_highlights(c, light_mode, theme)
     ["@method"]               = "Function", -- Function
     ["@field"]                = "Identifier", -- Identifier
     ["@property"]             = "Identifier", -- Identifier
-    ["@module"]               = "Special", -- Special
-    ["@module.builtin"]       = "@variable.builtin", -- Special
+    ["@module"]               = { fg=c.syntax.builtin_var, bold=true }, -- Special
+    ["@module.builtin"]       = { fg=c.syntax.builtin_const, bold=true }, -- Special
     ["@constructor"]          = "Type", -- Special (e.g. 'Map', 'Set', 'Error')
     ["@constructor.lua"]      = "@punctuation.bracket", -- Special (e.g. {})
     ["@conditional"]          = "Conditional", -- Conditional
@@ -282,6 +283,7 @@ local function create_highlights(c, light_mode, theme)
     ["@exception"]            = "Exception", -- Exception 
 
     ["@attribute"]            = "Macro", -- Special (e.g. 'Map', 'Set', 'Error')
+    ["@attribute.builtin"]    = "Macro",
     ["@attribute.css"]        = { fg=c.syntax.exception, italic=true }, -- (e.g. `:hover`, `::before`)
 
     ["@type"]                 = "Type", -- Type
