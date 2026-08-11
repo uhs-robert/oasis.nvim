@@ -49,9 +49,11 @@ local dark = {
   syntax = {
     -- Cold: (Data)
     parameter = p.palm[500],
+    preproc = p.olive[600], -- (imports)
+    macro = p.olive[700], -- (imports)
     identifier = p.sky[500],
     delimiter = base.theme.primary_strong,
-    type = opts.themed_syntax and p.khaki[600] or p.teal[600],
+    type = opts.themed_syntax and p.khaki[300] or p.teal[600],
     typedef = opts.themed_syntax and p.khaki[800] or p.teal[800],
     string = p.rose[500],
     regex = p.desert_rose[400],
@@ -60,8 +62,8 @@ local dark = {
     constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
-    func = p.amber[200],
-    builtin_func = p.amber[400], -- (eg. parseInt, Array, Object etc)
+    func = p.copper[300],
+    builtin_func = p.copper[500], -- (eg. parseInt, Array, Object etc)
     statement = opts.themed_syntax and primary[400] or p.khaki[500], -- (general statement (i.e. var, const))
     conditional = opts.themed_syntax and primary[700] or p.khaki[800], -- (Conditionals, Loops)
     exception = p.red[500], -- (try/catch, return)
@@ -71,8 +73,6 @@ local dark = {
 
     -- Neutral: (Connections / Info)
     bracket = p.slate[500], -- (bracket punctuation)
-    preproc = p.sundown[500], -- (imports)
-    macro = p.sundown[600], -- (imports)
     comment = theme.fg.comment, -- (comments)
   },
 
