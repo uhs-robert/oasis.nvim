@@ -18,8 +18,8 @@ local terminal = {
 	bright_magenta =      "#D2ADFF",
 	cyan =                "#68C0B6",
 	bright_cyan =         "#8FD1C7",
-	white =               "#FFF7D7",
-	bright_white =        "#F7F4E9",
+	white =               "#F5F5DC",
+	bright_white =        "#FFFFF0",
 }
 
 local light_terminal = {

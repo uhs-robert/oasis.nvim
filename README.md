@@ -13,7 +13,7 @@
 
 ## 🌅 Overview
 
-Born from the classic [desert.vim](https://github.com/fugalh/desert.vim), transformed and modernized into something new entirely.
+Born from the classic [desert.vim](https://github.com/fugalh/desert.vim), transformed and modernized into a semantic system.
 
 Oasis follows a warm/cool color split philosophy (**warm = action/flow**, **cool = data/properties**).
 
