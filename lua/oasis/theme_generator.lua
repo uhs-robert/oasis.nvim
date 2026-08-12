@@ -379,8 +379,8 @@ local function create_highlights(c, light_mode, theme)
     -- Emphasize syntax
     highlights.MatchParen                      = { fg=c.ui.match_parent.fg, bg=c.ui.match_parent.bg, bold=true, reverse=match_paren_bg }
     highlights.Type                            = { fg=c.syntax.type, bold=true }
+    highlights.PreProc                         = { fg=c.syntax.preproc, bold=true }
     highlights.Function                        = { fg=c.syntax.func, bold=true }
-    highlights.String                          = { fg=c.syntax.string }
     highlights["@parameter"]                   = { fg=c.syntax.parameter, bold=true }
     highlights["@variable.parameter"]          = { fg=c.syntax.parameter, bold=true }
     highlights["@keyword.return"]              = { fg=c.syntax.exception, bold=true }
