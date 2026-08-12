@@ -24,15 +24,15 @@ def setup(c, samecolorrows=True):
         "mantle":         "#141C24",
         "shadow":         "#05070A",
         "surface":        "#1E2A38",
-        "fg_core":        "#F7F4F2",
+        "fg_core":        "#F5F5DC",
         "fg_dim":         "#7D7267",
         "fg_muted":       "#4E6578",
         "primary_light":  "#F3EA9F",
-        "primary":        "#D6CE7C",
+        "primary":        "#D8CF7F",
         "primary_strong": "#BDB76B",
         "secondary":      "#FF7979",
         "accent":         "#7FCF78",
-        "match":          "#A1C254",
+        "match":          "#ADC76B",
     }
     # }}}
 

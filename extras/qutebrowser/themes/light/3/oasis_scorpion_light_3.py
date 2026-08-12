@@ -24,7 +24,7 @@ def setup(c, samecolorrows=True):
         "mantle":         "#f0bfb0",
         "shadow":         "#f2c5b6",
         "surface":        "#eba68f",
-        "fg_core":        "#191210",
+        "fg_core":        "#181811",
         "fg_dim":         "#827774",
         "fg_muted":       "#695b58",
         "primary_light":  "#60570e",
@@ -32,7 +32,7 @@ def setup(c, samecolorrows=True):
         "primary_strong": "#878133",
         "secondary":      "#6f2009",
         "accent":         "#31732b",
-        "match":          "#b7d17a",
+        "match":          "#b9d17a",
     }
     # }}}
 
