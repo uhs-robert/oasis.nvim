@@ -28,7 +28,7 @@ local function generate_darkreader_theme(name, palette)
     "# 3. Set the values for each of the settings below:",
     "",
     "Background: " .. palette.bg.core,
-    "Text:       " .. palette.fg.core,
+    "Text:       " .. palette.theme.primary_light,
     "Scrollbar:  " .. palette.bg.surface,
     "Selection:  " .. palette.ui.visual.bg,
   }
