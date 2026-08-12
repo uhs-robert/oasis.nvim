@@ -46,8 +46,8 @@ local dark = {
   syntax = {
     -- Cold: (Data)
     parameter = p.palm[500],
-    preproc = p.olive[600], -- (imports)
-    macro = p.olive[700], -- (imports)
+    preproc = p.olive[500], -- (imports)
+    macro = p.olive[600], -- (imports)
     identifier = p.sky[500],
     delimiter = base.theme.primary_strong,
     type = p.teal[700],
