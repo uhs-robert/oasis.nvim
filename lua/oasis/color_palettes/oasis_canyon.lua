@@ -48,7 +48,7 @@ local dark = {
     -- Cold: (Data)
     parameter = p.palm[500],
     preproc = p.olive[500], -- (imports)
-    macro = p.olive[600], -- (imports)
+    macro = p.olive[500], -- (imports)
     identifier = p.sky[500],
     delimiter = base.palette.primary[700],
     type = p.teal[600],
