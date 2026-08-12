@@ -61,8 +61,8 @@ local dark = {
     constant = p.sunset[600], -- (constant: number, float, boolean, or const not string/character)
 
     -- Warm: (Control / Flow)
-    func = p.copper[300],
-    builtin_func = p.copper[500], -- (eg. parseInt, Array, Object etc)
+    func = p.copper[200],
+    builtin_func = p.copper[400], -- (eg. parseInt, Array, Object etc)
     statement = opts.themed_syntax and base.palette.primary[200] or p.khaki[600], -- (general statement (i.e. var, const))
     conditional = opts.themed_syntax and p.rose[700] or p.khaki[800], -- (Conditionals, Loops)
     exception = opts.themed_syntax and p.gold[400] or p.red[400], -- (try/catch, return)
