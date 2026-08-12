@@ -4,8 +4,8 @@
 # Author: uhs-robert
 
 export FZF_DEFAULT_OPTS=" \
---color=bg+:#b8c1d3,bg:#c6cddc,spinner:#296624,hl:#4c4718 \
---color=fg:#161412,header:#901015,info:#4c4718,pointer:#296624 \
---color=marker:#630000,fg+:#161412,prompt:#4c4718,hl+:#e1c99d \
+--color=bg+:#b8c1d3,bg:#c6cddc,spinner:#296624,hl:#4c4717 \
+--color=fg:#181811,header:#901015,info:#4c4717,pointer:#296624 \
+--color=marker:#630000,fg+:#181811,prompt:#4c4717,hl+:#e1c99d \
 --color=selected-bg:#a0acc5 \
---color=border:#4e4c2f,label:#161412"
+--color=border:#4f4b2f,label:#181811"

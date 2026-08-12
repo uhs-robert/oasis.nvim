@@ -3,14 +3,14 @@
 ## author: uhs-robert
 
 [colors]
-foreground = "#161412"
+foreground = "#181811"
 background= "#d9dee8"
 cursor_bg = "#6a5e1a"
 cursor_border = "#6a5e1a"
 cursor_fg= "#d9dee8"
 selection_bg= "#e1c99d"
 selection_fg= "#4e370e"
-split= "#5a5635"
+split= "#5b5635"
 compose_cursor= "#8d5522"
 scrollbar_thumb= "#b3bdd1"
 visual_bell= "#cbd2df"
@@ -23,7 +23,7 @@ ansi = [
   '#125393',
   '#6d20c7',
   '#2d5954',
-  '#463b0f',
+  '#3e3e1d',
 ]
 
 brights = [
@@ -34,7 +34,7 @@ brights = [
   '#1f586e',
   '#6c21c8',
   '#2d5a53',
-  '#423c24',
+  '#3e3e0d',
 ]
 
 [colors.indexed]
@@ -46,7 +46,7 @@ background = '#cbd2df'
 inactive_tab_edge = '#cfd6e2'
 
 [colors.tab_bar.active_tab]
-bg_color = '#5a551e'
+bg_color = '#5b541d'
 fg_color = '#d9dee8'
 intensity = 'Normal'
 italic = false
@@ -55,7 +55,7 @@ underline = 'None'
 
 [colors.tab_bar.inactive_tab]
 bg_color = '#b3bdd1'
-fg_color = '#5a551e'
+fg_color = '#5b541d'
 intensity = 'Normal'
 italic = false
 strikethrough = false

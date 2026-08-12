@@ -24,7 +24,7 @@ def setup(c, samecolorrows=True):
         "mantle":         "#d7edde",
         "shadow":         "#ddefe2",
         "surface":        "#bde1c8",
-        "fg_core":        "#121714",
+        "fg_core":        "#181811",
         "fg_dim":         "#938a81",
         "fg_muted":       "#647167",
         "primary_light":  "#294f2b",

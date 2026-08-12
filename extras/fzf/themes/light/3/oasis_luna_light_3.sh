@@ -5,7 +5,7 @@
 
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#d0cdf4,bg:#e2e0f8,spinner:#156e89,hl:#685f10 \
---color=fg:#100e1b,header:#aa1218,info:#685f10,pointer:#156e89 \
---color=marker:#161661,fg+:#100e1b,prompt:#685f10,hl+:#c3a1dd \
+--color=fg:#181811,header:#aa1218,info:#685f10,pointer:#156e89 \
+--color=marker:#161661,fg+:#181811,prompt:#685f10,hl+:#c3a1dd \
 --color=selected-bg:#b3aeed \
---color=border:#4c4cae,label:#100e1b"
+--color=border:#4c4cae,label:#181811"

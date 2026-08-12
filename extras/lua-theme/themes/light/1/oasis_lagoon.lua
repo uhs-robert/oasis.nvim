@@ -9,8 +9,8 @@ return {
 	bg_surface = "#bdd6f5",
 
 -- Foregrounds
-	fg_core = "#141b26",
-	fg_strong = "#374652",
+	fg_core = "#1b1b13",
+	fg_strong = "#464624",
 	fg_muted = "#607581",
 	fg_dim = "#978e86",
 
@@ -34,7 +34,7 @@ return {
 	blue = "#1561ae",
 	magenta = "#7f2fde",
 	cyan = "#366963",
-	white = "#574913",
+	white = "#4c4c24",
 	bright_black = "#534840",
 	bright_red = "#c01313",
 	bright_green = "#396c32",
@@ -42,7 +42,7 @@ return {
 	bright_blue = "#266783",
 	bright_magenta = "#7e30dd",
 	bright_cyan = "#356961",
-	bright_white = "#524a2c",
+	bright_white = "#4d4d10",
 
 -- ANSI Terminal Colors
 	color0 = "#4a4a4a",
@@ -52,7 +52,7 @@ return {
 	color4 = "#1561ae",
 	color5 = "#7f2fde",
 	color6 = "#366963",
-	color7 = "#574913",
+	color7 = "#4c4c24",
 	color8 = "#534840",
 	color9 = "#c01313",
 	color10 = "#396c32",
@@ -60,5 +60,5 @@ return {
 	color12 = "#266783",
 	color13 = "#7e30dd",
 	color14 = "#356961",
-	color15 = "#524a2c",
+	color15 = "#4d4d10",
 }
