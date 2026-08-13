@@ -138,3 +138,8 @@
 #command-line-holder * {
   background: var(--oasis-bg-mantle) !important;
 }
+
+/* Fix specifity of focused a.url */
+.focused a.url {
+  color: var(--tridactyl-of-fg);
+}
