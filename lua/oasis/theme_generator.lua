@@ -522,6 +522,13 @@ local PLUGIN_GROUPS = {
     hl.MiniTrailspace = { bg = c.syntax.exception }
   end,
 
+  -- Noice
+  noice = function(hl)
+    hl.NoiceFormatDate = "Comment"
+    hl.NoicePopupmenuMatch = "Search"
+    hl.NoiceCompletionItemKindDefault = "PmenuKind"
+  end,
+
   -- Render Markdown
   render_markdown = function(hl, c, _, _, theme)
     hl.RenderMarkdownBullet = "Special"
@@ -536,6 +543,11 @@ local PLUGIN_GROUPS = {
     hl.RenderMarkdownTableRow = { fg = c.ui.border }
     hl.RenderMarkdownHint = { fg = c.terminal.magenta }
     -- hl.RenderMarkdownWikiLink = {}
+  end,
+
+  -- Sidekick
+  sidekick = function(hl)
+    hl.SidekickSign = "SignColumn"
   end,
 
   -- Snacks
@@ -554,6 +566,11 @@ local PLUGIN_GROUPS = {
       or "OasisFloatSecondary"
     hl.SnacksPickerPrompt = "Identifier"
     hl.SnacksPickerMatch = "Constant"
+  -- Trouble
+  trouble = function(hl)
+    hl.TroubleCode = "DiagnosticInfo"
+    hl.TroubleIconEvent = "DiagnosticHint"
+    hl.TroubleIconDirectory = "Directory"
   end,
 
   -- Which Key
