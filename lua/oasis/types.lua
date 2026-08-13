@@ -231,21 +231,11 @@
 ---@field fzf_lua? boolean
 ---@field gitsigns? boolean
 ---@field lazy? boolean
----@field mini_clue? boolean
----@field mini_cmdline? boolean
----@field mini_completion? boolean
----@field mini_diff? boolean
----@field mini_files? boolean
----@field mini_icons? boolean
----@field mini_jump? boolean
----@field mini_map? boolean
----@field mini_pick? boolean
----@field mini_starter? boolean
----@field mini_statusline? boolean
----@field mini_tabline? boolean
----@field mini_trailspace? boolean
+---@field mini? boolean
+---@field render_markdown? boolean
 ---@field snacks? boolean
 ---@field which_key? boolean
+---@field yazi? boolean
 
 -- Base color scales
 ---@class OasisColorScale Tailwind-style numeric color scale
