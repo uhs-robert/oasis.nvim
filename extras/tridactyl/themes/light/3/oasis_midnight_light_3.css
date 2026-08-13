@@ -62,7 +62,7 @@
 
   --tridactly-photon-colours-code-green: var(--oasis-terminal-green);
   --tridactly-photon-colours-warning-color: var(--oasis-terminal-yellow);
-  --tridactyl-fg: var(--oasis-theme-light-primary);
+  --tridactyl-fg: var(--oasis-fg-core);
   --tridactyl-bg: var(--oasis-bg-core);
   --tridactyl-cmdl-fg: var(--oasis-theme-light-primary);
   --tridactyl-cmdl-bg: var(--oasis-bg-core);
@@ -74,6 +74,8 @@
   --tridactyl-status-fg: var(--oasis-bg-core);
   --tridactyl-of-bg: var(--oasis-bg-surface);
   --tridactyl-wk-key-next-fg: var(--oasis-theme-secondary);
+  --tridactyl-wk-group-fg: var(--oasis-theme-accent);
+  --tridactyl-url-fg: var(--oasis-terminal-bright-cyan);
 }
 
 :root #completions td.documentation,
