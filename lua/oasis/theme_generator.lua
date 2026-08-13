@@ -566,6 +566,12 @@ local PLUGIN_GROUPS = {
       or "OasisFloatSecondary"
     hl.SnacksPickerPrompt = "Identifier"
     hl.SnacksPickerMatch = "Constant"
+    hl.SnacksPickerTime = "Comment"
+    hl.SnacksPickerGitDate = "Comment"
+    hl.SnacksIndentScope = { fg = c.fg.dim }
+    hl.SnacksPickerDiagnosticCode = "DiagnosticInfo"
+  end,
+
   -- Trouble
   trouble = function(hl)
     hl.TroubleCode = "DiagnosticInfo"
