@@ -558,9 +558,9 @@ local PLUGIN_GROUPS = {
 
   -- Which Key
   which_key = function(hl)
-    hl.WhichKey = "Statement"
+    hl.WhichKey = "OasisSecondary"
     hl.WhichKeyDesc = "OasisLightPrimary"
-    hl.WhichKeyGroup = "OasisSecondary"
+    hl.WhichKeyGroup = "OasisAccent"
   end,
 
   -- Yazi
