@@ -25,6 +25,7 @@ local function generate_tmux_theme(name, palette)
     "",
     "# Surfaces and overlays",
     string.format('set -ogq @thm_core "%s"', string.lower(palette.bg.core)),
+    string.format('set -ogq @thm_crust "%s"', string.lower(palette.bg.crust)),
     string.format('set -ogq @thm_mantle "%s"', string.lower(palette.bg.mantle)),
     string.format('set -ogq @thm_surface "%s"', string.lower(palette.bg.surface)),
     string.format('set -ogq @thm_visual "%s"', string.lower(palette.ui.search.bg)),

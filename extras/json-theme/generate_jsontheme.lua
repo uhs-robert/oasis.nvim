@@ -60,6 +60,7 @@ local function generate_json_palette(name, palette)
 
   -- Backgrounds
   kv[#kv + 1] = { "bg_core", palette.bg.core }
+  kv[#kv + 1] = { "bg_crust", palette.bg.crust }
   kv[#kv + 1] = { "bg_mantle", palette.bg.mantle }
   kv[#kv + 1] = { "bg_shadow", palette.bg.shadow }
   kv[#kv + 1] = { "bg_surface", palette.bg.surface }

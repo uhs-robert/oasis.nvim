@@ -18,6 +18,7 @@ local function extract_vimiumc_colors(name, palette)
   -- Map palette structure to Vimium-C color scheme
   return {
     bg_core = palette.bg.core,
+    bg_crust = palette.bg.crust,
     bg_mantle = palette.bg.mantle,
     bg_surface = palette.bg.surface,
     fg = palette.fg.core,
