@@ -3,9 +3,10 @@
 
 return {
 -- Backgrounds
-	bg_core = "#f4e3d5",
-	bg_mantle = "#efd7c3",
 	bg_shadow = "#f1dbc9",
+	bg_core = "#f4e3d5",
+	bg_crust = "#f2dfcf",
+	bg_mantle = "#efd7c3",
 	bg_surface = "#e7c3a5",
 
 -- Foregrounds

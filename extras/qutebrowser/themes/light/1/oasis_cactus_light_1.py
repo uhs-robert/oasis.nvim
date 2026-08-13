@@ -21,6 +21,7 @@ def setup(c, samecolorrows=True):
         "bright_blue":    "#266883",
         "search":         "#c6e7d2",
         "core":           "#f1f9f4",
+        "crust":          "#ecf7f0",
         "mantle":         "#e1f2e7",
         "shadow":         "#e6f4ec",
         "surface":        "#c6e7d2",
