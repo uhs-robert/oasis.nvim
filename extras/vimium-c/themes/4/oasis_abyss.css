@@ -14,6 +14,7 @@
 
   /* ----------  DAY THEME  ---------- */
   --bg-core: #d0d0d0;
+  --bg-crust: {{day_bg_crust}};
   --bg-mantle: #c5c5c5;
   --bg-surface: #b1b1b1;
   --fg: #181811;
@@ -28,6 +29,7 @@
 
   /* ---------- NIGHT THEME ---------- */
   --n-bg-core: #000000;
+  --n-bg-crust: {{night_bg_crust}};
   --n-bg-mantle: #141414;
   --n-bg-surface: #1C1C1C;
   --n-fg: #F5F5DC;
@@ -108,6 +110,7 @@
 
   /* ----------  DAY THEME  ---------- */
   --bg-core: #d0d0d0;
+  --bg-crust: {{day_bg_crust}};
   --bg-mantle: #c5c5c5;
   --bg-surface: #b1b1b1;
   --fg: #181811;
@@ -121,6 +124,7 @@
 
   /* ---------- NIGHT THEME ---------- */
   --n-bg-core: #000000;
+  --n-bg-crust: {{night_bg_crust}};
   --n-bg-mantle: #141414;
   --n-bg-surface: #1C1C1C;
   --n-fg: #F5F5DC;
@@ -306,6 +310,7 @@ body {
 
   /* ----------  DAY THEME  ---------- */
   --bg-core: #d0d0d0;
+  --bg-crust: {{day_bg_crust}};
   --bg-mantle: #c5c5c5;
   --bg-surface: #b1b1b1;
   --fg: #181811;
@@ -319,6 +324,7 @@ body {
 
   /* ---------- NIGHT THEME ---------- */
   --n-bg-core: #000000;
+  --n-bg-crust: {{night_bg_crust}};
   --n-bg-mantle: #141414;
   --n-bg-surface: #1C1C1C;
   --n-fg: #F5F5DC;
