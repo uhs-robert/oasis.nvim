@@ -24,6 +24,7 @@ local function extract_vimium_colors(name, palette)
   return {
     fg_core = palette.fg.core,
     bg_core = palette.bg.core,
+    bg_crust = palette.bg.crust,
     bg_mantle = palette.bg.mantle,
     bg_surface = palette.bg.surface,
     float_border = palette.ui.float.border.fg,

@@ -154,11 +154,11 @@ function LightTheme.apply_intensity(base_color, intensity_level)
 end
 
 --- Generate complete light mode background set from dark mode foreground
---- Derives all backgrounds (core, mantle, shadow, surface) from one seed color
+--- Derives all backgrounds (core, crust, mantle, shadow, surface) from one seed color
 --- @param light_bg_seed string Seed color
 --- @param intensity_level number Light intensity (1-5)
 --- @param opts? table Optional overrides { target_l_core = number|table, l_step = number, preserve_hsl = boolean }
---- @return table Background colors {core, mantle, shadow, surface}
+--- @return table Background colors {core, crust, mantle, shadow, surface}
 function LightTheme.generate_bg(light_bg_seed, intensity_level, opts)
   local bg_core
 
@@ -182,6 +182,7 @@ function LightTheme.generate_bg(light_bg_seed, intensity_level, opts)
 
   -- Darken in increasing step multipliers
   local step = (opts and opts.l_step) or 3
+  local bg_crust = ColorUtils.hsl_to_rgb(h, s, l - (step * 0.5))
   local bg_shadow = ColorUtils.hsl_to_rgb(h, s, l - step)
   local bg_mantle = ColorUtils.hsl_to_rgb(h, s, l - (step * 1.5))
   local bg_surface = ColorUtils.hsl_to_rgb(h, s, l - (step * 4))
@@ -189,6 +190,7 @@ function LightTheme.generate_bg(light_bg_seed, intensity_level, opts)
   return {
     shadow = bg_shadow,
     core = bg_core,
+    crust = bg_crust,
     mantle = bg_mantle,
     surface = bg_surface,
   }

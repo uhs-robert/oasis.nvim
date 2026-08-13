@@ -35,6 +35,7 @@ local function extract_tridactyl_colors(palette)
     primary_strong = hex(palette.theme.primary_strong),
     -- Background
     bg_core = hex(palette.bg.core),
+    bg_crust = hex(palette.bg.crust),
     bg_mantle = hex(palette.bg.mantle),
     bg_shadow = hex(palette.bg.shadow),
     bg_surface = hex(palette.bg.surface),

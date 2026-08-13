@@ -63,9 +63,10 @@ local function generate_lua_palette(name, display_name, palette, output_path)
     "",
     "return {",
     "-- Backgrounds",
-    string.format('\tbg_core = "%s",', palette.bg.core),
-    string.format('\tbg_mantle = "%s",', palette.bg.mantle),
     string.format('\tbg_shadow = "%s",', palette.bg.shadow),
+    string.format('\tbg_core = "%s",', palette.bg.core),
+    string.format('\tbg_crust = "%s",', palette.bg.crust),
+    string.format('\tbg_mantle = "%s",', palette.bg.mantle),
     string.format('\tbg_surface = "%s",', palette.bg.surface),
     "",
     "-- Foregrounds",
@@ -115,8 +116,7 @@ local function main()
   print(string.format("Found %d palette(s)\n", #palette_names))
 
   local success_count, error_count = Utils.for_each_palette_variant(function(name, palette, mode, intensity)
-    local _, variant_name, subdir =
-      Utils.build_variant_path("extras/lua-theme", "lua", name, mode, intensity)
+    local _, variant_name, subdir = Utils.build_variant_path("extras/lua-theme", "lua", name, mode, intensity)
     local output_path = string.format("extras/lua-theme/themes/%s/oasis_%s.lua", subdir, name)
     local content = generate_lua_palette(variant_name, variant_name, palette, output_path)
     File.write(output_path, content)

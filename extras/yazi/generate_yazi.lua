@@ -26,6 +26,7 @@ local function extract_yazi_theme_colors(name, palette)
     hover_bg = palette.bg.surface,
     hover_bg_alt = palette.ui.visual.bg,
     bg_core = palette.bg.core,
+    bg_crust = palette.bg.crust,
     bg_mantle = palette.bg.mantle,
     bg_surface = palette.bg.surface,
     border = palette.ui.border,

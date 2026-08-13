@@ -30,6 +30,7 @@ local function generate_qutebrowser_theme(variant_name, palette)
     { key = "bright_blue", value = t.bright_blue },
     { key = "search", value = ui.match_parent.bg },
     { key = "core", value = bg.core },
+    { key = "crust", value = bg.crust },
     { key = "mantle", value = bg.mantle },
     { key = "shadow", value = bg.shadow },
     { key = "surface", value = bg.surface },
