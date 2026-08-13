@@ -10,7 +10,8 @@
 
 :root {
   /* NOTE: CUSTOMIZE YOUR FONT FAMILY */
-  --code-font-family: "Maple Mono NF", ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --code-font-family: "Maple Mono NF", "Maple Mono", ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --status-font-family: "ProFont IIx Nerd Font Mono", "Terminess Nerd Font", "JetBrainsMono Nerd Font", ui-monospace, monospace;
   --oasis-theme-accent: #ffa0a0;
   --oasis-theme-cursor: #f0e68c;
   --oasis-theme-label: #f9a05e;
@@ -57,7 +58,7 @@
   --oasis-before-content: "> ";
 
   --tridactyl-cmplt-font-family: var(--code-font-family);
-  --tridactyl-status-font-family: var(--code-font-family);
+  --tridactyl-status-font-family: var(--status-font-family);
   --tridactyl-cmdl-font-family: var(--code-font-family);
 
   --tridactly-photon-colours-code-green: var(--oasis-terminal-green);
@@ -70,6 +71,10 @@
   --tridactyl-cmplt-bg: var(--oasis-bg-core);
   --tridactyl-cmplt-border-top: var(--oasis-ui-border);
   --tridactyl-hint-active-bg: var(--oasis-bg-surface);
+  --tridactyl-hint-active-fg: var(--oasis-fg-core);
+  --tridactyl-hintspan-bg: var(--oasis-theme-primary);
+  --tridactyl-hintspan-fg: var(--oasis-bg-core);
+  --tridactyl-hintspan-pressed-fg: var(--oasis-fg-muted);
   --tridactyl-status-bg: var(--oasis-theme-primary);
   --tridactyl-status-fg: var(--oasis-bg-core);
   --tridactyl-of-bg: var(--oasis-bg-surface);
