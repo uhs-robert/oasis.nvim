@@ -232,8 +232,11 @@
 ---@field gitsigns? boolean
 ---@field lazy? boolean
 ---@field mini? boolean
+---@field noice? boolean
 ---@field render_markdown? boolean
+---@field sidekick? boolean
 ---@field snacks? boolean
+---@field trouble? boolean
 ---@field which_key? boolean
 ---@field yazi? boolean
 
