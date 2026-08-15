@@ -16,7 +16,7 @@ def setup(c, samecolorrows=True):
         "bright_yellow":  "#6d3e10",
         "green":          "#2e522b",
         "bright_green":   "#2b5226",
-        "teal":           "#29504c",
+        "teal":           "#2d5046",
         "blue":           "#104a84",
         "bright_blue":    "#1c4f63",
         "search":         "#b1b1b1",

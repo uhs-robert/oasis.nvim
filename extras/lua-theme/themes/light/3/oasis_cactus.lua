@@ -24,7 +24,7 @@ return {
 	error = "#701818",
 	warning = "#5c5413",
 	info = "#184571",
-	hint = "#145e53",
+	hint = "#135c47",
 	ok = "#1d5c14",
 
 -- ANSI Semnatic Colors
@@ -34,7 +34,7 @@ return {
 	yellow = "#615b20",
 	blue = "#145ba1",
 	magenta = "#7723d8",
-	cyan = "#32625c",
+	cyan = "#376156",
 	white = "#454520",
 	bright_black = "#4b423a",
 	bright_red = "#b31212",
@@ -42,7 +42,7 @@ return {
 	bright_yellow = "#844c14",
 	bright_blue = "#226078",
 	bright_magenta = "#7524d9",
-	bright_cyan = "#32625b",
+	bright_cyan = "#366255",
 	bright_white = "#46460f",
 
 -- ANSI Terminal Colors
@@ -52,7 +52,7 @@ return {
 	color3 = "#615b20",
 	color4 = "#145ba1",
 	color5 = "#7723d8",
-	color6 = "#32625c",
+	color6 = "#376156",
 	color7 = "#454520",
 	color8 = "#4b423a",
 	color9 = "#b31212",
@@ -60,6 +60,6 @@ return {
 	color11 = "#844c14",
 	color12 = "#226078",
 	color13 = "#7524d9",
-	color14 = "#32625b",
+	color14 = "#366255",
 	color15 = "#46460f",
 }
