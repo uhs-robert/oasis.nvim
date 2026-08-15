@@ -16,7 +16,7 @@ return {
 	fg_dim = "#938b83",
 
 -- Accents
-	theme_primary = "#285a54",
+	theme_primary = "#275b4d",
 	theme_secondary = "#78410a",
 	theme_accent = "#4c05a3",
 
@@ -24,7 +24,7 @@ return {
 	error = "#701818",
 	warning = "#5c5413",
 	info = "#184571",
-	hint = "#145e53",
+	hint = "#135c47",
 	ok = "#1d5c14",
 
 -- ANSI Semnatic Colors
@@ -34,7 +34,7 @@ return {
 	yellow = "#665f22",
 	blue = "#155fa9",
 	magenta = "#7c2bdc",
-	cyan = "#356660",
+	cyan = "#3a665a",
 	white = "#4a4a22",
 	bright_black = "#50463e",
 	bright_red = "#bc1313",
@@ -42,7 +42,7 @@ return {
 	bright_yellow = "#8a4f14",
 	bright_blue = "#24657f",
 	bright_magenta = "#7b2cdc",
-	bright_cyan = "#34675f",
+	bright_cyan = "#386759",
 	bright_white = "#4a4a10",
 
 -- ANSI Terminal Colors
@@ -52,7 +52,7 @@ return {
 	color3 = "#665f22",
 	color4 = "#155fa9",
 	color5 = "#7c2bdc",
-	color6 = "#356660",
+	color6 = "#3a665a",
 	color7 = "#4a4a22",
 	color8 = "#50463e",
 	color9 = "#bc1313",
@@ -60,6 +60,6 @@ return {
 	color11 = "#8a4f14",
 	color12 = "#24657f",
 	color13 = "#7b2cdc",
-	color14 = "#34675f",
+	color14 = "#386759",
 	color15 = "#4a4a10",
 }
