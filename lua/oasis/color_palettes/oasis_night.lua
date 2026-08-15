@@ -59,7 +59,7 @@ local dark = {
     -- Warm: (Control / Flow)
     func = p.copper[200],
     builtin_func = p.copper[400], -- (eg. parseInt, Array, Object etc)
-    statement = base.palette.primary[500], -- (general statement (i.e. var, const))
+    statement = base.palette.primary[600], -- (general statement (i.e. var, const))
     conditional = base.palette.primary[800], -- (Conditionals, Loops)
     exception = p.red[500], -- (try/catch, return)
     special = p.sunset[300], -- (Statement not covered above)
