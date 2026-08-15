@@ -298,11 +298,11 @@ local function create_highlights(c, light_mode, theme)
     ["@preproc"]              = "PreProc", -- PreProc
     ["@debug"]                = "Debug", -- Debug
     ["@tag"]                  = "Label", -- Tag
-    ["@tag.attribute"]        = "Keyword", -- Tag
-    ["@tag.delimiter"]        = { fg=c.syntax.punctuation }, -- Tag
-    ["@tag.html"]             = "Statement", -- Html tag
-    ["@tag.css"]              = "Statement", -- Html tag in CSS
-    ["@tag.builtin"]          = "Conditional", -- Html tag e.g. `<div>`
+    ["@tag.attribute"]        = { fg=c.syntax.typedef, italic=true }, -- Tag
+    ["@tag.delimiter"]        = "Statement", -- Tag
+    ["@tag.html"]             = "@tag", -- Html tag
+    ["@tag.css"]              = "@tag", -- Html tag in CSS
+    ["@tag.builtin"]          = "Operator", -- Html tag e.g. `<div>`
     ["@tag.tsx"]              = "Type", -- Tsx tag
 
     ["@markup.heading"]       = { fg = (c.theme.label and c.theme.label or theme.secondary), bold=true },
