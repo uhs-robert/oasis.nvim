@@ -299,7 +299,7 @@ local function create_highlights(c, light_mode, theme)
     ["@debug"]                = "Debug", -- Debug
     ["@tag"]                  = "Label", -- Tag
     ["@tag.attribute"]        = { fg=c.syntax.typedef, italic=true }, -- Tag
-    ["@tag.delimiter"]        = "Statement", -- Tag
+    ["@tag.delimiter"]        = { fg=c.syntax.punctuation }, -- Tag
     ["@tag.html"]             = "@tag", -- Html tag
     ["@tag.css"]              = "@tag", -- Html tag in CSS
     ["@tag.builtin"]          = "Operator", -- Html tag e.g. `<div>`
