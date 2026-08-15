@@ -16,8 +16,8 @@ local terminal = {
 	bright_blue =         "#87CEEB",
 	magenta =             "#C695FF",
 	bright_magenta =      "#D2ADFF",
-	cyan =                "#68C0B6",
-	bright_cyan =         "#8FD1C7",
+	cyan =                "#69C3AA",
+	bright_cyan =         "#8AD3BE",
 	white =               "#F5F5DC",
 	bright_white =        "#FFFFF0",
 }
@@ -544,16 +544,16 @@ local colors = {
 
   -- Teals/Cyans
   teal = {
-    [900] = "#2A5E56",
-    [800] = "#47A99B",
-    [700] = "#68C0B6",
-    [600] = "#79C7BE",
-    [500] = "#8FD1C7",
-    [400] = "#96D4CB",
-    [300] = "#A8DDD5",
-    [200] = "#BAE6DF",
-    [100] = "#CCEFE9",
-    [50] = "#DEF8F4",
+    [900] = "#24594A",
+    [800] = "#3B9F87",
+    [700] = "#55B69D",
+    [600] = "#69C3AA",
+    [500] = "#7CCDB5",
+    [400] = "#8AD3BE",
+    [300] = "#9EDCCB",
+    [200] = "#B2E5D8",
+    [100] = "#C6EEE5",
+    [50] = "#DAF7F1",
   },
 
   cyan = {
