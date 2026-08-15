@@ -68,7 +68,7 @@ local dark = {
     exception = p.red[500], -- (try/catch, return)
     special = p.sunset[300], -- (Statement not covered above)
     operator = base.palette.primary[500],
-    punctuation = base.palette.primary[600],
+    punctuation = base.palette.primary[800],
 
     -- Neutral: (Connections / Info)
     bracket = p.slate[500], -- (bracket punctuation)
