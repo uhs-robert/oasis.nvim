@@ -30,7 +30,7 @@ def setup(c, samecolorrows=True):
         "fg_muted":       "#4F5B6B",
         "primary_light":  "#ACD5FF",
         "primary":        "#5BADFF",
-        "primary_strong": "#3787D7",
+        "primary_strong": "#448FDA",
         "secondary":      "#F0E68C",
         "accent":         "#FFA0A0",
         "match":          "#F0E68C",
