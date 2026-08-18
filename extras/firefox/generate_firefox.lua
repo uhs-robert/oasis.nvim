@@ -43,7 +43,7 @@ local function generate_firefox_color_theme(name, palette)
       toolbar_field_border = hex_to_rgb(palette.bg.surface),
       toolbar_field_focus = hex_to_rgb(palette.bg.core),
       toolbar_field_border_focus = hex_to_rgb(primary),
-      toolbar_field_highlight = hex_to_rgb(palette.ui.search.bg),
+      toolbar_field_highlight = hex_to_rgb(palette.ui.visual.bg),
       toolbar_field_highlight_text = hex_to_rgb(palette.ui.search.fg),
 
       -- Tabs
@@ -57,7 +57,7 @@ local function generate_firefox_color_theme(name, palette)
       popup = hex_to_rgb(palette.bg.core),
       popup_text = hex_to_rgb(palette.fg.core),
       popup_border = hex_to_rgb(palette.bg.surface),
-      popup_highlight = hex_to_rgb(palette.ui.search.bg),
+      popup_highlight = hex_to_rgb(palette.ui.visual.bg),
       popup_highlight_text = hex_to_rgb(palette.ui.search.fg),
 
       -- Buttons
@@ -67,7 +67,7 @@ local function generate_firefox_color_theme(name, palette)
       sidebar = hex_to_rgb(palette.bg.core),
       sidebar_text = hex_to_rgb(palette.fg.core),
       sidebar_border = hex_to_rgb(primary),
-      sidebar_highlight = hex_to_rgb(palette.ui.search.bg),
+      sidebar_highlight = hex_to_rgb(palette.ui.visual.bg),
       sidebar_highlight_text = hex_to_rgb(palette.ui.search.fg),
 
       -- Icons and accents
