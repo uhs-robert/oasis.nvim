@@ -15,9 +15,9 @@
 
 Born from the classic [desert.vim](https://github.com/fugalh/desert.vim), transformed and modernized into a semantic system.
 
-Oasis follows a warm/cool color split philosophy (**warm = action/flow**, **cool = data/properties**).
+Oasis follows a warm/cool color split philosophy (**warm = expression/execution**, **cool = reference/structure**).
 
-**All themes meet AAA WCAG high contrast compliance standards**. Light themes allow contrast ratio to be customized.
+**All themes meet AAA WCAG high contrast compliance standards**. Light themes allow custom contrast ratio.
 
 <p align="center">
   <img src="./assets/socials/Oasis Social - Fit.png"
