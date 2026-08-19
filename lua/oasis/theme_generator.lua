@@ -282,8 +282,8 @@ local function create_highlights(c, light_mode, theme)
 
     ["@exception"]            = "Exception", -- Exception 
 
-    ["@attribute"]            = "Macro", -- Special (e.g. 'Map', 'Set', 'Error')
-    ["@attribute.builtin"]    = "Macro",
+    ["@attribute"]            = { fg=c.syntax.macro, italic=true }, -- Special
+    ["@attribute.builtin"]    = "@attribute",
     ["@attribute.css"]        = { fg=c.syntax.exception, italic=true }, -- (e.g. `:hover`, `::before`)
 
     ["@type"]                 = "Type", -- Type
