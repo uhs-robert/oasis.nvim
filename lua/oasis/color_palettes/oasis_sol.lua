@@ -31,7 +31,6 @@ local base = {
 
 -- Dark mode palette
 local dark = {
-  -- is_desert = true, -- Treat as a desert variant
   bg = base.bg,
   fg = base.fg,
   theme = base.theme,
