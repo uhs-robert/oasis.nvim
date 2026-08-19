@@ -26,6 +26,7 @@
 ---@field secondary_strong? string
 ---@field secondary_light? string
 ---@field label? string
+---@field title? string
 ---@field accent string
 ---@field cursor string
 

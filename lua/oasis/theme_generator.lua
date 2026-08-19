@@ -530,7 +530,7 @@ local PLUGIN_GROUPS = {
   end,
 
   -- Render Markdown
-  render_markdown = function(hl, c, _, _, theme)
+  render_markdown = function(hl, c)
     hl.RenderMarkdownBullet = "Special"
     hl.RenderMarkdownChecked = { fg = c.terminal.green }
     hl.RenderMarkdownTodo = { fg = c.ui.diag.info.fg }
