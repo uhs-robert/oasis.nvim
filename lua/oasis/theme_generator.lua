@@ -241,7 +241,7 @@ local function create_highlights(c, light_mode, theme)
     ["@define"]               = "Define", -- Define
     ["@macro"]                = "Macro", -- Macro
     ["@string"]               = "String", -- String
-    ["@string.regexp"]        = { fg=c.syntax.regex, bold=true }, -- SpecialChar
+    ["@string.regexp"]        = { fg=c.syntax.regex, italic=true }, -- SpecialChar
     ["@string.escape"]        = "Exception", -- SpecialChar
     ["@string.special"]       = "SpecialChar", -- (e.g., dates)
     ["@string.special.symbol"]= { fg=c.syntax.identifier },
@@ -384,7 +384,7 @@ local function create_highlights(c, light_mode, theme)
     highlights["@parameter"]                   = { fg=c.syntax.parameter, bold=true }
     highlights["@variable.parameter"]          = { fg=c.syntax.parameter, bold=true }
     highlights["@keyword.return"]              = { fg=c.syntax.exception, bold=true }
-    highlights["@string.regexp"]               = { fg=c.syntax.regex, bold=true }
+    highlights["@string.regexp"]               = { fg=c.syntax.regex, italic=true, bold=true }
     highlights["@variable.builtin"]            = { fg=c.syntax.builtin_var, bold=true }
 
     -- Diff
