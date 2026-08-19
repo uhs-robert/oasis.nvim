@@ -39,7 +39,7 @@ PRESETS = {
 
   -- Base "typical" colors - reference palette for testing
   BASE_COLORS = {
-    -- Syntax - Cold (Data)
+    -- Syntax: Cold
     parameter = "#C28EFF",
     identifier = "#FFD393",
     type = "#81C0B6",
@@ -48,7 +48,7 @@ PRESETS = {
     regex = "#96EA7F",
     builtin_const = "#5ABAAE",
 
-    -- Syntax - Warm (Control/Flow)
+    -- Syntax: Warm
     constant = "#F8944D",
     func = "#F8B471",
     builtin_func = "#F49F15",

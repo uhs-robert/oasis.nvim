@@ -46,29 +46,35 @@ local dark = {
 
   -- Syntax
   syntax = {
-    -- Cold: (Data)
-    parameter = p.palm[500],
-    preproc = p.olive[500], -- (imports)
-    macro = p.olive[600], -- (imports)
-    identifier = p.sky[500],
-    delimiter = base.theme.primary,
-    type = p.teal[500],
-    typedef = p.teal[700],
-    string = opts.themed_syntax and p.khaki[600] or p.rose[500],
-    regex = opts.themed_syntax and p.khaki[300] or p.rose[300],
-    builtin_var = p.lavender[400], -- (this, document, window, etc)
-    builtin_const = p.iris[400], -- (e.g. null, undefined, Infinity, etc)
-    constant = p.sunset[600], -- (constant: number, float, boolean, or const not string/character)
-
-    -- Warm: (Control / Flow)
-    func = p.copper[200],
-    builtin_func = p.copper[400], -- (eg. parseInt, Array, Object etc)
+    -- Thematic: (Special)
     statement = opts.themed_syntax and base.palette.primary[200] or p.khaki[600], -- (general statement (i.e. var, const))
     conditional = opts.themed_syntax and p.rose[700] or p.khaki[800], -- (Conditionals, Loops)
-    exception = opts.themed_syntax and p.gold[400] or p.red[400], -- (try/catch, return)
-    special = p.sunset[300], -- (Statement not covered above)
     operator = base.palette.primary[300],
     punctuation = base.palette.primary[700],
+    delimiter = base.theme.primary,
+
+    -- Cold: (Reference / Structure)
+    identifier = p.sky[500],
+    type = p.teal[500],
+    typedef = p.teal[700],
+
+    -- Transitional: (Contextual / Binding)
+    ---- Purple (Cool)
+    builtin_var = p.lavender[400], -- (this, document, window, etc)
+    builtin_const = p.iris[400], -- (e.g. null, undefined, Infinity, etc)
+    ---- Green (Warm)
+    parameter = p.palm[500],
+    macro = p.olive[600], -- (imports)
+    preproc = p.olive[500], -- (imports)
+
+    -- Warm: (Expression / Execution)
+    exception = opts.themed_syntax and p.gold[400] or p.red[400], -- (try/catch, return)
+    constant = p.sunset[600], -- (constant: number, float, boolean, or const not string/character)
+    special = p.sunset[300], -- (Statement not covered above)
+    string = opts.themed_syntax and p.khaki[600] or p.rose[500],
+    regex = opts.themed_syntax and p.khaki[300] or p.rose[300],
+    builtin_func = p.copper[400], -- (eg. parseInt, Array, Object etc)
+    func = p.copper[200],
 
     -- Neutral: (Connections / Info)
     bracket = p.slate[500], -- (bracket)

@@ -47,29 +47,35 @@ local dark = {
 
   -- Syntax
   syntax = {
-    -- Cold: (Data)
+    -- Thematic: (Special)
+    statement = opts.themed_syntax and primary[400] or p.khaki[500], -- (general statement (i.e. var, const))
+    conditional = opts.themed_syntax and primary[700] or p.khaki[800], -- (Conditionals, Loops)
+    operator = base.palette.primary[500],
+    punctuation = base.palette.primary[800],
+    delimiter = base.theme.primary_strong,
+
+    -- Cold: (Reference / Structure)
+    identifier = p.sky[500],
+    type = opts.themed_syntax and p.khaki[300] or p.teal[600],
+    typedef = opts.themed_syntax and p.khaki[800] or p.teal[800],
+
+    -- Transitional: (Contextual / Binding)
+    ---- Purple (Cool)
+    builtin_var = p.lavender[500], -- (this, document, window, etc)
+    builtin_const = p.iris[400], -- (e.g. null, undefined, Infinity, etc)
+    ---- Green (Warm)
     parameter = p.palm[500],
     preproc = p.olive[500], -- (imports)
     macro = p.olive[600], -- (imports)
-    identifier = p.sky[500],
-    delimiter = base.theme.primary_strong,
-    type = opts.themed_syntax and p.khaki[300] or p.teal[600],
-    typedef = opts.themed_syntax and p.khaki[800] or p.teal[800],
+
+    -- Warm: (Expression / Execution)
+    exception = p.red[500], -- (try/catch, return)
+    constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
+    special = p.sunset[300], -- (Statement not covered above)
     string = p.rose[500],
     regex = p.rose[300],
-    builtin_var = p.lavender[500], -- (this, document, window, etc)
-    builtin_const = p.iris[400], -- (e.g. null, undefined, Infinity, etc)
-    constant = p.sunset[500], -- (constant: number, float, boolean, or const not string/character)
-
-    -- Warm: (Control / Flow)
-    func = p.copper[200],
     builtin_func = p.copper[400], -- (eg. parseInt, Array, Object etc)
-    statement = opts.themed_syntax and primary[400] or p.khaki[500], -- (general statement (i.e. var, const))
-    conditional = opts.themed_syntax and primary[700] or p.khaki[800], -- (Conditionals, Loops)
-    exception = p.red[500], -- (try/catch, return)
-    special = p.sunset[300], -- (Statement not covered above)
-    operator = base.palette.primary[500],
-    punctuation = base.palette.primary[800],
+    func = p.copper[200],
 
     -- Neutral: (Connections / Info)
     bracket = p.slate[500], -- (bracket punctuation)
