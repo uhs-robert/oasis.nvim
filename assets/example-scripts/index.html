@@ -1,0 +1,38 @@
+<!-- assets/example-scripts/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Oasis</title>
+  <style>
+    :root {
+      --oasis-primary: #8ab4a0; /* NOTE: why do this when css exists... */
+    }
+    .oasis-card {
+      border-radius: 0.5rem;
+      background: var(--oasis-primary);
+    }
+  </style>
+</head>
+<body data-readable="true">
+  <main class="oasis-card" id="oasis" data-retries="3">
+    <h1>Oasis</h1>
+    <p>Squint harder, it's <em>syntax highlighted</em>.</p>
+    <ul>
+      <li>dark</li>
+      <li>light</li>
+    </ul>
+    <a href="https://github.com/uhs-robert/oasis.nvim" target="_blank" rel="noopener">
+      Don't forget to check out tmux-oasis and the extras!
+    </a>
+  </main>
+
+  <script>
+    // ISSUE: retries are not rate-limited
+    const contrastRatio = 4.5;
+    const scores = [4.8, 7.0, 14.8];
+    const total = scores.reduce((sum, n) => sum + n, 0) / scores.length;
+    console.debug(total > contrastRatio ? `${total} passes` : "squint harder"); // TODO: this should never happen... allegedly
+  </script>
+</body>
+</html>
