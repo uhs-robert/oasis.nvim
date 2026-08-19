@@ -2,6 +2,46 @@
 
 Check here for the latest news following an update to see if there are any breaking changes and to learn about new features.
 
+## ✨ [v6.1](https://github.com/uhs-robert/oasis.nvim/releases/tag/v6.1.0): New Integrations, Italics Usage, and Palette Retuning
+
+### ✨ New Features
+
+- **nless generator**: New `extras/nless` theme generator + README for `nless` (`less` pager) integration.
+- **Foot terminal**: Foot now supports light/dark auto-switching.
+- **Yazi**: New plugin highlight support, plus indicator padding config across all flavors.
+- **Tridactyl**: Mode indicator colors, styled completions/command prompt prefix, dedicated status font and hint span colors.
+- **Plugin support**: Added noice, sidekick, and trouble integrations.
+- **Snacks picker**: Added time/date and diagnostic highlight support.
+- **Lagoon**: Given its own themed identifier/type tier; primary swapped to sapphire.
+- **Go**: `nil` now highlighted as a builtin constant; added dedicated Go query overrides.
+- **Palette**: Added a `bg_crust` depth level across all dark themes (and exported across every extras generator).
+- **Palette**: `fg.core`/`fg.strong` now pin to a single shared color (from terminal white/bright_white) across every theme, via a new `fg()` helper; `dim`/`muted`/`comment` remain theme-specific.
+- **Example scripts**: Added multi-language demo files for screenshots/fixtures.
+
+### 🎨 Design: Italics New Philosophy
+
+Italics used to be used arbitrarily and stylistically to emphasize things; now it follows a semantic system instead.
+
+Italics are reserved for **contextual informational that should recede into the background** (decorators/attributes) and **embedded/alt-syntax that should stand apart in the foreground** (regex) rather than used loosely for emphasis. The pairing rule for each: italic + darker shade to recede into background context; italic + lighter shade to pop forward as embedded-but-visible context.
+
+- `@string.regexp` (regex): italicized, shade lightened so it still reads as foreground despite the italic.
+- `@attribute`/`@attribute.builtin` (decorators, annotations): italicized to match the embedded-syntax rule instead of plain macro styling.
+- `PreProc`/`Macro`: italic/bold dropped where it no longer matched the rule; PreProc made bold instead.
+- `@type.builtin`: switched from italic to bold, it's a primary type reference.
+
+### 🛠️ Fixes & Polish
+
+- Large pass of palette retuning across regex, func/builtin_func, preproc/macro, punctuation, statement, teal/cyan, and terminal white shades.
+- `@tag.*` highlight groups remapped for clearer contrast; missing captures added.
+- Luna: corrected secondary color, marked dark palette as desert variant, dropped dead khaki branch.
+- WhichKey now uses accent/secondary color; Yazi which-key mask uses `bg_crust`.
+- Kitty selection colors now use visual highlight; DiffText light-mode override restored.
+- tmux `@thm_green` now sources from `terminal.green` instead of `syntax.string`.
+- qutebrowser insert statusbar now uses `bright_red`; dark-reader text color uses `theme.primary_light`.
+- WCAG tool: unwrapped dark/light palette wrapper.
+- Screenshot pipeline: fixed hyprctl dispatch syntax, CR-vs-LF terminal submission, and trailing-Enter suppression on cursor motion.
+- All theme exports and screenshots regenerated to match the above retuning.
+
 ## 🚨 [v6.0](https://github.com/uhs-robert/oasis.nvim/releases/tag/v6.0.0): Moonlight Default, New Theme, and Extended Extras
 
 ### 🚨 BREAKING CHANGE: Default theme changed from `lagoon` to `moonlight`
