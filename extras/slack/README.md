@@ -164,32 +164,32 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Dune Dark**
 ```
-#463E34,#322A24,#D8CF7F,#463E34,#322A24,#F5F5DC,#7CCDB5,#D2ADFF,#27211B,#F5F5DC
+#463E34,#322A24,#D8CF7F,#463E34,#322A24,#F5F5DC,#D89A72,#69C3AA,#27211B,#F5F5DC
 ```
 
 **Oasis Dune Light 1**
 ```
-#f3daba,#f9ecda,#696224,#f3daba,#f9ecda,#1c1c13,#296352,#5107ab,#fcf6ee,#1c1c13
+#f3daba,#f9ecda,#696224,#f3daba,#f9ecda,#1c1c13,#6b3e22,#367c69,#fcf6ee,#1c1c13
 ```
 
 **Oasis Dune Light 2**
 ```
-#efd7ae,#f5e6ce,#625b20,#efd7ae,#f5e6ce,#181811,#265c4c,#4c05a3,#f9f0e1,#181811
+#efd7ae,#f5e6ce,#625b20,#efd7ae,#f5e6ce,#181811,#643a1e,#327663,#f9f0e1,#181811
 ```
 
 **Oasis Dune Light 3**
 ```
-#edcfa0,#f3dfc1,#5b541d,#edcfa0,#f3dfc1,#181811,#225646,#48039b,#f7e9d4,#181811
+#edcfa0,#f3dfc1,#5b541d,#edcfa0,#f3dfc1,#181811,#5d351b,#2f705e,#f7e9d4,#181811
 ```
 
 **Oasis Dune Light 4**
 ```
-#ecc793,#f2d8b4,#534e1a,#ecc793,#f2d8b4,#181811,#1f4f41,#430192,#f5e2c7,#181811
+#ecc793,#f2d8b4,#534e1a,#ecc793,#f2d8b4,#181811,#553018,#2b6958,#f5e2c7,#181811
 ```
 
 **Oasis Dune Light 5**
 ```
-#e8c287,#eed2a7,#4c4717,#e8c287,#eed2a7,#181811,#1b483b,#3e008a,#f2dcba,#181811
+#e8c287,#eed2a7,#4c4717,#e8c287,#eed2a7,#181811,#4e2c16,#276252,#f2dcba,#181811
 ```
 
 ## Lagoon
@@ -420,32 +420,32 @@ Custom Slack color themes for all Oasis palette variants.
 
 **Oasis Scorpion Dark**
 ```
-#361D17,#27120C,#F0E68C,#361D17,#27120C,#F5F5DC,#F7997D,#7FCF78,#1A0500,#F5F5DC
+#361D17,#27120C,#7FCF78,#361D17,#27120C,#F5F5DC,#F7997D,#D8CF7F,#1A0500,#F5F5DC
 ```
 
 **Oasis Scorpion Light 1**
 ```
-#f0bba9,#f6d5c9,#786e14,#f0bba9,#f6d5c9,#181811,#7f270d,#388032,#f9e4dd,#181811
+#f0bba9,#f6d5c9,#2c6527,#f0bba9,#f6d5c9,#181811,#7f270d,#857c2d,#f9e4dd,#181811
 ```
 
 **Oasis Scorpion Light 2**
 ```
-#ecaf9d,#f2c9bd,#706712,#ecaf9d,#f2c9bd,#181811,#77240b,#357a2f,#f6d9d0,#181811
+#ecaf9d,#f2c9bd,#295e24,#ecaf9d,#f2c9bd,#181811,#77240b,#7e762a,#f6d9d0,#181811
 ```
 
 **Oasis Scorpion Light 3**
 ```
-#eba68f,#f0bfb0,#685f10,#eba68f,#f0bfb0,#181811,#6f2009,#31732b,#f4cfc3,#181811
+#eba68f,#f0bfb0,#255721,#eba68f,#f0bfb0,#181811,#6f2009,#776f27,#f4cfc3,#181811
 ```
 
 **Oasis Scorpion Light 4**
 ```
-#e99c82,#efb6a3,#60580d,#e99c82,#efb6a3,#181811,#661d07,#2d6c27,#f2c5b6,#181811
+#e99c82,#efb6a3,#21501d,#e99c82,#efb6a3,#181811,#661d07,#716923,#f2c5b6,#181811
 ```
 
 **Oasis Scorpion Light 5**
 ```
-#e59175,#ebaa96,#58500b,#e59175,#ebaa96,#181811,#5e1a06,#296624,#efbaa9,#181811
+#e59175,#ebaa96,#1e491a,#e59175,#ebaa96,#181811,#5e1a06,#6a6220,#efbaa9,#181811
 ```
 
 ## Sol

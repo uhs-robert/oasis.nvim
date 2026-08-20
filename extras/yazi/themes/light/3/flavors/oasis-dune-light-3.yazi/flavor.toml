@@ -4,7 +4,7 @@
 
 # MANAGER
 [mgr]
-cwd = { fg = "#225646" }
+cwd = { fg = "#5d351b" }
 
 find_keyword = { fg = "#b9d17a", bold = true, italic = true, underline = true }
 find_position = { fg = "#b31419", bg = "reset", bold = true, italic = true }
@@ -66,7 +66,7 @@ selected = { reversed = true }
 # PICK
 [pick]
 border = { fg = "#5b541d" }
-active = { fg = "#225646", bold = true }
+active = { fg = "#5d351b", bold = true }
 inactive = {}
 
 # COMPLETION
@@ -77,12 +77,12 @@ border = { fg = "#5b541d" }
 [tasks]
 border = { fg = "#5b541d" }
 title = {}
-hovered = { fg = "#225646", underline = true }
+hovered = { fg = "#5d351b", underline = true }
 
 # WHICH
 [which]
 mask = { bg = "#f6e6ce" }
-cand = { fg = "#225646" }
+cand = { fg = "#5d351b" }
 rest = { fg = "#3f3f20" }
 desc = { fg = "#184571" }
 separator = "  "
@@ -127,14 +127,14 @@ rules = [
   { url = "*", is = "exec", fg = "#5b541d"},
 
   # Directory
-  { url = "*/", fg = "#60570d" },
+  { url = "*/", fg = "#60570e" },
 ]
 
 # SPOT
 [spot]
 border = { fg = "#701818" }
-title = { fg = "#225646" }
-tbl_cell = { fg = "#225646", reversed = true }
+title = { fg = "#5d351b" }
+tbl_cell = { fg = "#5d351b", reversed = true }
 tbl_col = { bold = true }
 
 # extras/yazi/icons.toml.template
