@@ -15,16 +15,16 @@ local base = {
   fg = theme.fg,
   palette = {
     primary = p.khaki,
-    secondary = p.teal,
-    accent = p.lavender,
+    secondary = p.copper,
+    accent = p.teal,
   },
   theme = {
     primary_strong = p.khaki[800],
     primary = p.khaki[600],
-    primary_light = p.khaki[200],
-    secondary = p.teal[500],
-    label = p.teal[600],
-    accent = p.lavender[300],
+    primary_light = p.khaki[300],
+    secondary = p.copper[500],
+    label = p.copper[600],
+    accent = p.teal[600],
     cursor = p.khaki[500],
   },
 }
