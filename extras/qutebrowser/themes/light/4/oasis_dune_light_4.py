@@ -28,11 +28,11 @@ def setup(c, samecolorrows=True):
         "fg_core":        "#181811",
         "fg_dim":         "#838383",
         "fg_muted":       "#6f655c",
-        "primary_light":  "#584f0b",
+        "primary_light":  "#58500c",
         "primary":        "#534e1a",
         "primary_strong": "#796b37",
-        "secondary":      "#1f4f41",
-        "accent":         "#430192",
+        "secondary":      "#553018",
+        "accent":         "#2b6958",
         "match":          "#b9d17a",
     }
     # }}}
