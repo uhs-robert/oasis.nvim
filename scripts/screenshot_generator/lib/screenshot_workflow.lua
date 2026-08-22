@@ -56,7 +56,7 @@ end
 function ScreenshotWorkflow:launch_terminal()
   print("  Launching Kitty terminal...")
   self.kitty:launch()
-  System.sleep(0.5)
+  System.sleep(1)
 end
 
 --- Capture dashboard screenshot
