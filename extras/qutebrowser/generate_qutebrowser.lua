@@ -37,6 +37,7 @@ local function generate_qutebrowser_theme(variant_name, palette)
     { key = "fg_core", value = fg.core },
     { key = "fg_dim", value = fg.dim },
     { key = "fg_muted", value = fg.muted },
+    { key = "fg_inlay", value = fg.inlay },
     { key = "primary_light", value = theme.primary_light },
     { key = "primary", value = theme.primary },
     { key = "primary_strong", value = theme.primary_strong },

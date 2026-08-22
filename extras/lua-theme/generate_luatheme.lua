@@ -74,6 +74,7 @@ local function generate_lua_palette(name, display_name, palette, output_path)
     string.format('\tfg_strong = "%s",', palette.fg.strong),
     string.format('\tfg_muted = "%s",', palette.fg.muted),
     string.format('\tfg_dim = "%s",', palette.fg.dim),
+    string.format('\tfg_inlay = "%s",', palette.fg.inlay),
     "",
     "-- Accents",
     string.format('\ttheme_primary = "%s",', primary),

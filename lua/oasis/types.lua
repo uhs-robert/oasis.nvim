@@ -15,6 +15,7 @@
 ---@field core string
 ---@field muted string
 ---@field dim string
+---@field inlay string
 ---@field strong string
 ---@field comment string
 
@@ -111,6 +112,7 @@
 ---@field cursor_line string
 ---@field line_number string
 ---@field nontext string
+---@field inlay string
 ---@field float OasisPaletteUiFloat
 ---@field diag OasisPaletteUiDiag
 ---@field picker? OasisPaletteUiPicker
@@ -301,6 +303,7 @@
 ---@field core? string
 ---@field muted? string
 ---@field dim? string
+---@field inlay? string
 ---@field strong? string
 ---@field comment? string
 
@@ -384,6 +387,7 @@
 ---@field cursor_line? string
 ---@field line_number? string
 ---@field nontext? string
+---@field inlay? string
 ---@field float? OasisPaletteUiFloatOverrides
 ---@field diag? OasisPaletteUiDiagOverrides
 
