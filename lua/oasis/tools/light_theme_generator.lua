@@ -210,6 +210,7 @@ function LightTheme.generate_fg(dark_fg, light_bg_core, intensity_level, contras
     muted = 4.5, -- AA
     comment = 4.0, -- AA (muted, blends with background)
     dim = 3.0, -- Minimal
+    inlay = 3.5, -- Minimal, distinct from dim
   }
   contrast_targets = contrast_targets or default_targets
 
@@ -223,6 +224,7 @@ function LightTheme.generate_fg(dark_fg, light_bg_core, intensity_level, contras
     muted = 42 - (intensity_factor * 12), -- 42% to 37.6%
     dim = 58 - (intensity_factor * 10), -- 58% to 54%
     comment = 38 - (intensity_factor * 8), -- 38% to 34.4%
+    inlay = 50 - (intensity_factor * 10), -- 50% to 46%
   }
 
   local result = {}
