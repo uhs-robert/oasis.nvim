@@ -90,6 +90,7 @@ local dark = {
     border = base.theme.primary_strong,
     cursor_line = base.bg.surface,
     nontext = base.fg.dim,
+    inlay = base.fg.inlay,
     float = {
       title = base.theme.secondary,
       fg = base.fg.strong,

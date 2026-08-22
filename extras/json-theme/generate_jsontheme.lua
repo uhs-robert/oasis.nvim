@@ -70,6 +70,7 @@ local function generate_json_palette(name, palette)
   kv[#kv + 1] = { "fg_strong", palette.fg.strong }
   kv[#kv + 1] = { "fg_muted", palette.fg.muted }
   kv[#kv + 1] = { "fg_dim", palette.fg.dim }
+  kv[#kv + 1] = { "fg_inlay", palette.fg.inlay }
 
   -- Accents
   kv[#kv + 1] = { "theme_primary", primary }

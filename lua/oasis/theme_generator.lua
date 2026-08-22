@@ -175,7 +175,7 @@ local function create_highlights(c, light_mode, theme)
     LspReferenceText           = { bg=c.bg.surface } , -- Used for highlighting "text" references
     LspReferenceRead           = { bg=c.bg.surface } , -- Used for highlighting "read" references
     LspReferenceWrite          = { bg=c.bg.surface } , -- Used for highlighting "write" references
-    LspInlayHint               = { fg=c.ui.nontext, bg=c.bg.shadow, italic=true } , -- Used to color the virtual text of the codelens. See |nvim_buf_set_extmark()|.
+    LspInlayHint               = { fg=c.ui.inlay, bg=c.bg.shadow, italic=true } , -- Used to color the virtual text of the codelens. See |nvim_buf_set_extmark()|.
     LspCodeLens                = { fg=c.fg.muted } , -- Used to color the virtual text of the codelens. See |nvim_buf_set_extmark()|.
     LspCodeLensSeparator       = { fg=c.fg.muted } , -- Used to color the seperator between two or more code lens.
     LspSignatureActiveParameter= { fg=c.bg.core, bg=c.syntax.constant } , -- Used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.

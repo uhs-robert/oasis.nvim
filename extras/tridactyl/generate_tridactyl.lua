@@ -43,6 +43,7 @@ local function extract_tridactyl_colors(palette)
     fg_comment = hex(palette.fg.comment),
     fg_core = hex(palette.fg.core),
     fg_dim = hex(palette.fg.dim),
+    fg_inlay = hex(palette.fg.inlay),
     fg_muted = hex(palette.fg.muted),
     fg_strong = hex(palette.fg.strong),
     -- UI
