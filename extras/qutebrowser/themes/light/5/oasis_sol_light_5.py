@@ -28,6 +28,7 @@ def setup(c, samecolorrows=True):
         "fg_core":        "#181811",
         "fg_dim":         "#666666",
         "fg_muted":       "#554947",
+        "fg_inlay":       "#525e60",
         "primary_light":  "#590000",
         "primary":        "#630000",
         "primary_strong": "#7f2727",
