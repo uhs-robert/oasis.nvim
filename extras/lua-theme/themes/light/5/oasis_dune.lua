@@ -13,7 +13,8 @@ return {
 	fg_core = "#181811",
 	fg_strong = "#38381d",
 	fg_muted = "#6a6259",
-	fg_dim = "#7f7f7f",
+	fg_dim = "#847e79",
+	fg_inlay = "#6a767c",
 
 -- Accents
 	theme_primary = "#4c4717",

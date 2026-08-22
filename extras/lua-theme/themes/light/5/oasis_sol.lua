@@ -14,6 +14,7 @@ return {
 	fg_strong = "#1c1c0e",
 	fg_muted = "#554947",
 	fg_dim = "#666666",
+	fg_inlay = "#525e60",
 
 -- Accents
 	theme_primary = "#630000",
