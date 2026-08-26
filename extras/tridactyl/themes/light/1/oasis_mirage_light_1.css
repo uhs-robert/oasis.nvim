@@ -134,8 +134,11 @@
   color: var(--oasis-theme-accent);
 }
 
-.TridactylStatusIndicator {
+.TridactylStatusIndicator, .TridactylStatusIndicator * {
   text-transform: uppercase !important;
+}
+
+.TridactylStatusIndicator, .TridactylStatusIndicator * {
   border: none !important;
   padding: 0.5ex !important;
 }
