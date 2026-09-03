@@ -149,38 +149,40 @@ To use the extras, refer to their respective documentation.
 
 <!-- extras:start -->
 
-| Tool        | Extra                                                  |
-| ----------- | ------------------------------------------------------ |
-| Alacritty   | [extras/alacritty](extras/alacritty)                   |
-| Bat         | [extras/bat](extras/bat)                               |
-| Btop        | [extras/btop](extras/btop)                             |
-| Dark Reader | [extras/dark-reader](/extras/dark-reader)              |
-| Firefox     | [extras/firefox](extras/firefox)                       |
-| Foot        | [extras/foot](extras/foot)                             |
-| FZF         | [extras/fzf](extras/fzf)                               |
-| Gemini CLI  | [extras/gemini-cli](extras/gemini-cli)                 |
-| Ghostty     | [extras/ghostty](extras/ghostty)                       |
-| iTerm       | [extras/iterm](extras/iterm)                           |
-| JSON-theme  | [extras/json-theme](/extras/json-theme)                |
-| Kitty       | [extras/kitty](extras/kitty)                           |
-| Konsole     | [extras/konsole](extras/konsole)                       |
-| LazyGit     | [extras/lazygit](extras/lazygit)                       |
-| Lua-theme   | [extras/lua-theme](/extras/lua-theme)                  |
-| Nless       | [extras/nless](/extras/nless)                          |
-| Qutebrowser | [extras/qutebrowser](extras/qutebrowser)               |
-| Slack       | [extras/slack](extras/slack)                           |
-| Starship    | [extras/starship](extras/starship)                     |
-| Termux      | [extras/termux](extras/termux)                         |
-| Thunderbird | [extras/thunderbird](extras/thunderbird)               |
-| Tridactyl   | [extras/tridactyl](extras/tridactyl)                   |
-| TMUX        | [tmux-oasis](https://github.com/uhs-robert/tmux-oasis) |
-| Vimium      | [extras/vimium](extras/vimium)                         |
-| Vimium C    | [extras/vimium-c](extras/vimium-c)                     |
-| VS Code     | [extras/vscode](extras/vscode)                         |
-| Warp        | [extras/warp](extras/warp)                             |
-| WezTerm     | [extras/wezterm](extras/wezterm)                       |
-| Yazi        | [extras/yazi](extras/yazi)                             |
-| Zed         | [extras/zed](extras/zed)                               |
+| Tool             | Extra                                                  |
+| ---------------- | ------------------------------------------------------ |
+| Alacritty        | [extras/alacritty](extras/alacritty)                   |
+| Bat              | [extras/bat](extras/bat)                               |
+| Btop             | [extras/btop](extras/btop)                             |
+| Dark Reader      | [extras/dark-reader](/extras/dark-reader)              |
+| Firefox          | [extras/firefox](extras/firefox)                       |
+| Foot             | [extras/foot](extras/foot)                             |
+| FZF              | [extras/fzf](extras/fzf)                               |
+| Gemini CLI       | [extras/gemini-cli](extras/gemini-cli)                 |
+| Ghostty          | [extras/ghostty](extras/ghostty)                       |
+| iTerm            | [extras/iterm](extras/iterm)                           |
+| JSON-theme       | [extras/json-theme](/extras/json-theme)                |
+| Kitty            | [extras/kitty](extras/kitty)                           |
+| Konsole          | [extras/konsole](extras/konsole)                       |
+| LazyGit          | [extras/lazygit](extras/lazygit)                       |
+| Lua-theme        | [extras/lua-theme](/extras/lua-theme)                  |
+| Nless            | [extras/nless](/extras/nless)                          |
+| PSReadLine       | [extras/psreadline](extras/psreadline)                 |
+| Qutebrowser      | [extras/qutebrowser](extras/qutebrowser)               |
+| Slack            | [extras/slack](extras/slack)                           |
+| Starship         | [extras/starship](extras/starship)                     |
+| Termux           | [extras/termux](extras/termux)                         |
+| Thunderbird      | [extras/thunderbird](extras/thunderbird)               |
+| Tridactyl        | [extras/tridactyl](extras/tridactyl)                   |
+| TMUX             | [tmux-oasis](https://github.com/uhs-robert/tmux-oasis) |
+| Vimium           | [extras/vimium](extras/vimium)                         |
+| Vimium C         | [extras/vimium-c](extras/vimium-c)                     |
+| VS Code          | [extras/vscode](extras/vscode)                         |
+| Warp             | [extras/warp](extras/warp)                             |
+| WezTerm          | [extras/wezterm](extras/wezterm)                       |
+| Windows Terminal | [extras/windows-terminal](extras/windows-terminal)     |
+| Yazi             | [extras/yazi](extras/yazi)                             |
+| Zed              | [extras/zed](extras/zed)                               |
 
 If you'd like an extra config added, raise a feature request and I'll put it together.
 
