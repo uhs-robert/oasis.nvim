@@ -161,3 +161,10 @@ if next(skip_list) then
   end
 end
 print()
+
+local table_output, table_ok = System.capture("lua scripts/generate_extras_table.lua")
+if table_ok then
+  print("README extras table: " .. table_output:gsub("%s+$", ""))
+else
+  print("README extras table: failed to regenerate\n" .. table_output)
+end
