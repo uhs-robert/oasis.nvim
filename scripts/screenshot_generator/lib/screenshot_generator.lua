@@ -35,6 +35,7 @@ end
 function ScreenshotGenerator:run()
   DependencyChecker.check_all()
   Directory.create(Config.TEMP_DIR)
+  Directory.create(Config.OUTPUT_DIR)
   Tmux.backup_config()
 
   -- Wrap main logic in pcall to ensure cleanup happens even on errors

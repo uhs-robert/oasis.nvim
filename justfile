@@ -35,3 +35,7 @@ extra name:
 # Generate theme screenshots (requires Hyprland, Kitty, tmux)
 screenshots:
     ./scripts/screenshot_generator/run_with_cleanup.sh
+
+# Publish generated screenshots to the `screenshots` branch
+screenshots-publish:
+    ./scripts/publish_screenshots.sh
