@@ -330,17 +330,17 @@ local function main()
       "",
       "## Installation",
       "",
-      "`.xpi` files are not committed to this repository. Get one from the GitHub release assets, or build it yourself:",
+      "`.xpi` files are not committed to this repository. Download `oasis-thunderbird-themes.zip` from the latest GitHub release assets, or you can build them yourself:",
       "",
       "```bash",
-      "just extra thunderbird",
+      "lua extras/thunderbird/generate_thunderbird.lua",
       "```",
       "",
-      "1. Download your preferred `.xpi` theme file from the release assets (or `themes/` after building locally)",
+      "1. Download and extract `oasis-thunderbird-themes.zip` (or use `themes/` after building locally)",
       "2. Open Thunderbird",
       "3. Go to **Tools** → **Add-ons and Themes** (or press `Ctrl+Shift+A`)",
       "4. Click the gear icon ⚙️ and select **Install Add-on From File...**",
-      "5. Navigate to and select the downloaded `.xpi` file",
+      "5. Navigate to and select your preferred `.xpi` file",
       "6. Click **Add** to install the theme",
       "7. The theme will be applied automatically",
       "",
@@ -354,6 +354,10 @@ local function main()
     end
     table.sort(palette_list)
 
+    table.insert(
+      readme_lines,
+      "- The release zip and a local build share the same layout, rooted at `themes/`."
+    )
     table.insert(readme_lines, "- Dark variants live in `themes/dark/` as `oasis_<palette>_dark.xpi`.")
     table.insert(
       readme_lines,
@@ -371,14 +375,6 @@ local function main()
     table.insert(readme_lines, "1. Go to **Tools** → **Add-ons and Themes**")
     table.insert(readme_lines, "2. Find the Oasis theme in the **Themes** section")
     table.insert(readme_lines, "3. Click **Remove** or **Disable**")
-    table.insert(readme_lines, "")
-    table.insert(readme_lines, "## Development")
-    table.insert(readme_lines, "")
-    table.insert(readme_lines, "To regenerate all themes:")
-    table.insert(readme_lines, "")
-    table.insert(readme_lines, "```bash")
-    table.insert(readme_lines, "lua extras/thunderbird/generate_thunderbird.lua")
-    table.insert(readme_lines, "```")
     table.insert(readme_lines, "")
 
     local readme_content = table.concat(readme_lines, "\n")

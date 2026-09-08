@@ -27,15 +27,19 @@ jobs:
       - name: Build .xpi themes
         run: lua extras/thunderbird/generate_thunderbird.lua
 
-      - name: Upload .xpi assets to the release
-        env:
-          GH_TOKEN: ${{ github.token }}
-          TAG: ${{ github.event.release.tag_name || inputs.tag }}
+      - name: Bundle the themes
         run: |
-          mapfile -t assets < <(find extras/thunderbird/themes -name '*.xpi' | sort)
-          if [ ${#assets[@]} -eq 0 ]; then
+          count=$(find extras/thunderbird/themes -name '*.xpi' | wc -l)
+          if [ "$count" -eq 0 ]; then
             echo "No .xpi files were generated"
             exit 1
           fi
-          echo "Uploading ${#assets[@]} assets to $TAG"
-          gh release upload "$TAG" "${assets[@]}" --clobber
+          echo "Bundling $count themes"
+          cd extras/thunderbird
+          zip -qr -X "$GITHUB_WORKSPACE/oasis-thunderbird-themes.zip" themes
+
+      - name: Upload the bundle to the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.event.release.tag_name || inputs.tag }}
+        run: gh release upload "$TAG" oasis-thunderbird-themes.zip --clobber
