@@ -1,0 +1,11 @@
+/* Oasis Thunderbird Theme Stylesheet */
+/* This stylesheet enables experimental theme color variables */
+
+:root {
+  /* Custom color variables are injected by the theme manifest */
+}
+
+/* Custom Folder Tree */
+  #folderPane #folderTree li.children {
+    background-color: var(--tree_card_bg) !important;
+  }
