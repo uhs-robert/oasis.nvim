@@ -135,6 +135,10 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+# Generated extras artifacts
+# Built on demand and published as GitHub release assets, not tracked in history
+extras/thunderbird/themes/**/*.xpi
+
 #AI
 GEMINI.md
 AGENTS.md

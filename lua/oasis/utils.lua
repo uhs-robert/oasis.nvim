@@ -369,10 +369,11 @@ end
 --- @param name string Palette name (e.g., "lagoon")
 --- @param mode string "dark" or "light"
 --- @param intensity number|nil Intensity level 1-5 for light mode
+--- @param output_root string|nil When non-empty, replaces base_dir for the actual output location
 --- @return string output_path Full path to output file
 --- @return string variant_name Name used in the file (e.g., "lagoon_dark", "lagoon_light_3")
 --- @return string subdir Relative directory under themes/ (e.g., "dark", "light/3")
-function Utils.build_variant_path(base_dir, extension, name, mode, intensity)
+function Utils.build_variant_path(base_dir, extension, name, mode, intensity, output_root)
   local variant_name
   local subdir
 
@@ -387,8 +388,10 @@ function Utils.build_variant_path(base_dir, extension, name, mode, intensity)
     error("Palette mode must be 'dark' or 'light'")
   end
 
+  local effective_base = (output_root ~= nil and output_root ~= "") and output_root or base_dir
+
   -- All themes go in themes/<mode>/ (or light/<intensity>) for consistent organization
-  local output_dir = string.format("%s/themes/%s", base_dir, subdir)
+  local output_dir = string.format("%s/themes/%s", effective_base, subdir)
   get_directory().create(output_dir)
 
   local filename
@@ -410,15 +413,17 @@ end
 --- @param name string Palette name (e.g., "lagoon")
 --- @param mode string "dark" or "light"
 --- @param intensity number|nil Intensity level 1-5 for light mode
+--- @param output_root string|nil When non-empty, replaces base_dir for the actual output location
 --- @return string output_path Full path to output file with display name
 --- @return string variant_name Internal variant name (e.g., "lagoon_dark")
 --- @return string display_name Human-friendly name (e.g., "Oasis Lagoon Dark")
-function Utils.build_display_variant_path(base_dir, extension, name, mode, intensity)
+function Utils.build_display_variant_path(base_dir, extension, name, mode, intensity, output_root)
   -- Reuse build_variant_path for variant naming and directory creation
-  local _, variant_name, subdir = Utils.build_variant_path(base_dir, extension, name, mode, intensity)
+  local _, variant_name, subdir = Utils.build_variant_path(base_dir, extension, name, mode, intensity, output_root)
   local display_name = Utils.format_display_name(variant_name)
 
-  local output_dir = string.format("%s/themes/%s", base_dir, subdir)
+  local effective_base = (output_root ~= nil and output_root ~= "") and output_root or base_dir
+  local output_dir = string.format("%s/themes/%s", effective_base, subdir)
   get_directory().create(output_dir)
 
   local filename

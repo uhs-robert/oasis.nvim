@@ -225,26 +225,29 @@ local function generate_manifest(name, palette)
 end
 
 -- Create .xpi file
-local function create_xpi(variant_name, output_path, manifest_json)
+local function create_xpi(variant_name, output_path, subdir, manifest_json)
+  local src_dir = string.format("extras/thunderbird/src/%s/oasis_%s", subdir, variant_name)
   local temp_dir = "/tmp/oasis_thunderbird_" .. variant_name
 
   local output_dir = output_path:match("(.+)/[^/]+$") or "extras/thunderbird/themes/dark"
   os.execute("mkdir -p " .. output_dir)
 
-  -- Create temp directory structure
+  -- Write tracked sources (manifest.json, styles.css) so theme content stays reviewable
+  os.execute("mkdir -p " .. src_dir)
+  File.write(src_dir .. "/manifest.json", manifest_json)
+  File.write(src_dir .. "/styles.css", generate_stylesheet())
+
+  -- Stage archive contents in a temp dir: sources from src/, icons from assets/
   os.execute("rm -rf " .. temp_dir)
   os.execute("mkdir -p " .. temp_dir .. "/images")
-
-  -- Write manifest.json
-  File.write(temp_dir .. "/manifest.json", manifest_json)
-
-  -- Write styles.css
-  File.write(temp_dir .. "/styles.css", generate_stylesheet())
-
-  -- Copy icon files
+  os.execute(string.format("cp %s/manifest.json %s/manifest.json", src_dir, temp_dir))
+  os.execute(string.format("cp %s/styles.css %s/styles.css", src_dir, temp_dir))
   os.execute("cp extras/thunderbird/assets/icon16.png " .. temp_dir .. "/images/")
   os.execute("cp extras/thunderbird/assets/icon48.png " .. temp_dir .. "/images/")
   os.execute("cp extras/thunderbird/assets/icon128.png " .. temp_dir .. "/images/")
+
+  -- Normalize mtimes so a no-op regeneration produces byte-identical zip entries
+  os.execute(string.format('find "%s" -exec touch -t 198001010000 {} +', temp_dir))
 
   -- Create .xpi (zip archive)
   -- Get absolute path to project root
@@ -257,7 +260,11 @@ local function create_xpi(variant_name, output_path, manifest_json)
   handle:close()
 
   local abs_output_path = string.format("%s/%s", cwd, output_path)
-  local zip_cmd = string.format('cd "%s" && zip -q -r "%s" . && cd - >/dev/null', temp_dir, abs_output_path)
+
+  -- zip updates rather than replaces an existing archive, so remove stale output first
+  os.execute(string.format('rm -f "%s"', abs_output_path))
+
+  local zip_cmd = string.format('cd "%s" && zip -q -r -X "%s" . && cd - >/dev/null', temp_dir, abs_output_path)
 
   local success = os.execute(zip_cmd)
 
@@ -295,7 +302,7 @@ local function main()
       Utils.build_variant_path("extras/thunderbird", "xpi", name, mode, intensity)
 
     local manifest = generate_manifest(variant_name, palette)
-    local success = create_xpi(variant_name, output_path, manifest)
+    local success = create_xpi(variant_name, output_path, subdir, manifest)
 
     if success then
       print(string.format("✓ Generated: %s", output_path))
@@ -323,7 +330,13 @@ local function main()
       "",
       "## Installation",
       "",
-      "1. Download your preferred `.xpi` theme file from the `themes/` directory",
+      "`.xpi` files are not committed to this repository. Get one from the GitHub release assets, or build it yourself:",
+      "",
+      "```bash",
+      "just extra thunderbird",
+      "```",
+      "",
+      "1. Download your preferred `.xpi` theme file from the release assets (or `themes/` after building locally)",
       "2. Open Thunderbird",
       "3. Go to **Tools** → **Add-ons and Themes** (or press `Ctrl+Shift+A`)",
       "4. Click the gear icon ⚙️ and select **Install Add-on From File...**",
@@ -347,6 +360,10 @@ local function main()
       "- Light variants are grouped under `themes/light/<1-5>/` as `oasis_<palette>_light_<intensity>.xpi`."
     )
     table.insert(readme_lines, "- Palettes: " .. table.concat(palette_list, ", "))
+    table.insert(
+      readme_lines,
+      "- Per-theme sources (`manifest.json`, `styles.css`) live in `src/<subdir>/oasis_<variant>/` and are tracked for review; the built `.xpi` files are not."
+    )
     table.insert(readme_lines, "")
 
     table.insert(readme_lines, "## Uninstallation")

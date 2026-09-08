@@ -6,6 +6,7 @@
 package.path = package.path .. ";./lua/?.lua;./lua/?/init.lua"
 local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
+local Satellites = require("oasis.satellites")
 
 local function generate_tmux_theme(name, palette)
   local display_name = Utils.format_display_name(name)
@@ -56,9 +57,12 @@ local function main()
 
   print(string.format("Found %d palette(s)\n", #palette_names))
 
+  local output_root = Satellites.output_root("tmux", "extras/tmux")
+
   local success_count, error_count = Utils.for_each_palette_variant(function(name, palette, mode, intensity)
     -- Build output path using shared utility
-    local output_path, variant_name = Utils.build_variant_path("extras/tmux", "conf", name, mode, intensity)
+    local output_path, variant_name =
+      Utils.build_variant_path("extras/tmux", "conf", name, mode, intensity, output_root)
 
     -- Generate and write theme
     local theme = generate_tmux_theme(variant_name, palette)

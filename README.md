@@ -155,27 +155,27 @@ To use the extras, refer to their respective documentation.
 | Bat              | [extras/bat](extras/bat)                               |
 | Btop             | [extras/btop](extras/btop)                             |
 | CSS              | [extras/css](extras/css)                               |
-| Dark Reader      | [extras/dark-reader](/extras/dark-reader)              |
+| Dark Reader      | [extras/dark-reader](extras/dark-reader)               |
 | Firefox          | [extras/firefox](extras/firefox)                       |
 | Foot             | [extras/foot](extras/foot)                             |
 | FZF              | [extras/fzf](extras/fzf)                               |
 | Gemini CLI       | [extras/gemini-cli](extras/gemini-cli)                 |
 | Ghostty          | [extras/ghostty](extras/ghostty)                       |
 | iTerm            | [extras/iterm](extras/iterm)                           |
-| JSON-theme       | [extras/json-theme](/extras/json-theme)                |
+| JSON-theme       | [extras/json-theme](extras/json-theme)                 |
 | Kitty            | [extras/kitty](extras/kitty)                           |
 | Konsole          | [extras/konsole](extras/konsole)                       |
 | LazyGit          | [extras/lazygit](extras/lazygit)                       |
-| Lua-theme        | [extras/lua-theme](/extras/lua-theme)                  |
-| Nless            | [extras/nless](/extras/nless)                          |
+| Lua-theme        | [extras/lua-theme](extras/lua-theme)                   |
+| Nless            | [extras/nless](extras/nless)                           |
 | PSReadLine       | [extras/psreadline](extras/psreadline)                 |
 | Qutebrowser      | [extras/qutebrowser](extras/qutebrowser)               |
 | Slack            | [extras/slack](extras/slack)                           |
 | Starship         | [extras/starship](extras/starship)                     |
 | Termux           | [extras/termux](extras/termux)                         |
 | Thunderbird      | [extras/thunderbird](extras/thunderbird)               |
-| Tridactyl        | [extras/tridactyl](extras/tridactyl)                   |
 | TMUX             | [tmux-oasis](https://github.com/uhs-robert/tmux-oasis) |
+| Tridactyl        | [extras/tridactyl](extras/tridactyl)                   |
 | Vimium           | [extras/vimium](extras/vimium)                         |
 | Vimium C         | [extras/vimium-c](extras/vimium-c)                     |
 | VS Code          | [extras/vscode](extras/vscode)                         |
