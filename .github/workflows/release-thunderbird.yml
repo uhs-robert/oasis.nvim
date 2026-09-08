@@ -1,0 +1,41 @@
+name: Release Thunderbird themes
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag to upload the .xpi assets to
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install lua and zip
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lua5.4 zip
+          sudo ln -sf /usr/bin/lua5.4 /usr/local/bin/lua
+
+      - name: Build .xpi themes
+        run: lua extras/thunderbird/generate_thunderbird.lua
+
+      - name: Upload .xpi assets to the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.event.release.tag_name || inputs.tag }}
+        run: |
+          mapfile -t assets < <(find extras/thunderbird/themes -name '*.xpi' | sort)
+          if [ ${#assets[@]} -eq 0 ]; then
+            echo "No .xpi files were generated"
+            exit 1
+          fi
+          echo "Uploading ${#assets[@]} assets to $TAG"
+          gh release upload "$TAG" "${assets[@]}" --clobber

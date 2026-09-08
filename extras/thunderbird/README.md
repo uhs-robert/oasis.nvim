@@ -4,10 +4,10 @@ Oasis color themes for Mozilla Thunderbird, packaged as WebExtension themes.
 
 ## Installation
 
-`.xpi` files are not committed to this repository. Get one from the GitHub release assets, or build it yourself:
+`.xpi` files are not committed to this repository. Get one from the latest GitHub release assets, or you can build it yourself:
 
 ```bash
-just extra thunderbird
+lua extras/thunderbird/generate_thunderbird.lua
 ```
 
 1. Download your preferred `.xpi` theme file from the release assets (or `themes/` after building locally)
@@ -30,11 +30,3 @@ just extra thunderbird
 1. Go to **Tools** → **Add-ons and Themes**
 2. Find the Oasis theme in the **Themes** section
 3. Click **Remove** or **Disable**
-
-## Development
-
-To regenerate all themes:
-
-```bash
-lua extras/thunderbird/generate_thunderbird.lua
-```
