@@ -91,28 +91,37 @@ local function generate_firefox_color_theme(name, palette)
   }
 end
 
--- Compress JSON for Firefox Color using json-url LZMA codec
-local function compress_for_firefox(json_str)
-  -- Check if Node.js and json-url are available
-  local check_node = assert(io.popen("command -v node 2>/dev/null"))
-  local node_path = check_node:read("*a"):gsub("%s+", "")
-  check_node:close()
+local compress_script = "extras/firefox/compress.js"
+
+--- Verify Node.js, compress.js and the json-url dependency are all available
+--- @return boolean ok True when compression can run
+--- @return string|nil err Actionable message when ok is false
+local function check_dependencies()
+  local node_check = assert(io.popen("command -v node 2>/dev/null"))
+  local node_path = node_check:read("*a"):gsub("%s+", "")
+  node_check:close()
 
   if node_path == "" then
-    print("Warning: Node.js not found. Install Node.js and run 'npm install' in extras/firefox/")
-    return nil
+    return false, "Node.js not found. Install Node.js, then run: npm install --prefix extras/firefox"
   end
 
-  -- Check if compress.js exists
-  local compress_script = "extras/firefox/compress.js"
-  local script_check = io.open(compress_script, "r")
-  if not script_check then
-    print("Error: compress.js not found at " .. compress_script)
-    return nil
-  end
-  script_check:close()
+  local script_handle = io.open(compress_script, "r")
+  if not script_handle then return false, "compress.js not found at " .. compress_script end
+  script_handle:close()
 
-  -- Use the Node.js script to compress
+  local resolve = assert(io.popen("cd extras/firefox && node -e \"require('json-url')\" 2>&1"))
+  local resolve_output = resolve:read("*a")
+  local resolve_ok = resolve:close()
+
+  if not resolve_ok then
+    return false, "json-url is not installed. Run: npm install --prefix extras/firefox\n" .. resolve_output
+  end
+
+  return true, nil
+end
+
+-- Compress JSON for Firefox Color using json-url LZMA codec
+local function compress_for_firefox(json_str)
   local cmd = string.format("echo '%s' | node %s", json_str:gsub("'", "'\\''"), compress_script)
   local handle = assert(io.popen(cmd .. " 2>&1"))
   local result = handle:read("*a")
@@ -123,10 +132,7 @@ local function compress_for_firefox(json_str)
     return nil
   end
 
-  -- Trim whitespace
-  result = result:gsub("^%s+", ""):gsub("%s+$", "")
-
-  return result
+  return (result:gsub("^%s+", ""):gsub("%s+$", ""))
 end
 
 -- Generate README content with theme links
@@ -247,6 +253,16 @@ end
 
 local function main()
   print("\n=== Oasis Firefox Color Theme Generator ===\n")
+
+  local deps_ok, deps_err = check_dependencies()
+  if not deps_ok then
+    print("Error: " .. deps_err)
+    print(string.format("\n=== Summary ==="))
+    print(string.format("Success: %d", 0))
+    print(string.format("Errors: %d", 1))
+    print()
+    return
+  end
 
   local palette_names = Utils.get_palette_names()
 
