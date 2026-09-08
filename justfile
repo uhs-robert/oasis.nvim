@@ -32,6 +32,10 @@ extras:
 extra name:
     lua extras/{{name}}/generate_*.lua
 
+# Regenerate a satellite repo's themes into its sibling checkout, e.g. `just sync tmux`
+sync tool:
+    ./scripts/sync_satellite.sh {{tool}}
+
 # Generate theme screenshots (requires Hyprland, Kitty, tmux)
 screenshots:
     ./scripts/screenshot_generator/run_with_cleanup.sh
