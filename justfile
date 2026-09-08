@@ -39,3 +39,7 @@ screenshots:
 # Publish generated screenshots to the `screenshots` branch
 screenshots-publish:
     ./scripts/publish_screenshots.sh
+
+# Restore assets/screenshots and assets/socials from the `screenshots` branch
+screenshots-fetch:
+    ./scripts/fetch_screenshots.sh
