@@ -3,8 +3,8 @@
 ## author: uhs-robert
 
 # Recolor: zathura maps white to lightcolor and black to darkcolor.
-# Left off so documents render as authored; toggle it with ctrl-r.
-set recolor false
+# On by default so the theme is visible on first open; ctrl-r restores the authored colors.
+set recolor true
 set recolor-keephue true
 # The page sits on surface so it reads as paper against the window background.
 set recolor-lightcolor           "#b5e7e2"
