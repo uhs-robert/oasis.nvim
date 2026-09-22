@@ -2,6 +2,13 @@
 
 Check here for the latest news following an update to see if there are any breaking changes and to learn about new features.
 
+## ✨ [v6.2](https://github.com/uhs-robert/oasis.nvim/releases/tag/v6.2.0): Zathura and Thunderbird Release Assets
+
+### ✨ New Features
+
+- **Zathura**: New `extras/zathura` theme generator for every palette and light intensity. Recolor is on by default; the README explains how to turn it off.
+- **Thunderbird**: Every release now includes `oasis-thunderbird-themes.zip` with all `.xpi` themes, so you no longer need to build them locally.
+
 ## ✨ [v6.1](https://github.com/uhs-robert/oasis.nvim/releases/tag/v6.1.0): New Integrations, Italics Usage, and Palette Retuning
 
 ### ✨ New Features
