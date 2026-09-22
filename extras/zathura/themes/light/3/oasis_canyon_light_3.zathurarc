@@ -1,0 +1,37 @@
+# extras/zathura/oasis_canyon_light_3.zathurarc
+## name: Oasis Canyon Light 3
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor
+set recolor true
+set recolor-keephue true
+set recolor-lightcolor           "#eed3bd"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#eed3bd"
+set default-fg                   "#181811"
+set statusbar-bg                 "#e9c7ab"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#e9c7ab"
+set inputbar-fg                  "#33331a"
+
+# Search
+set highlight-color              "#e1b69d"
+set highlight-active-color       "#72aeda"
+
+# Completion
+set completion-bg                "#eed3bd"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#e1b38c"
+set completion-highlight-fg      "#33331a"
+set completion-group-bg          "#e9c7ab"
+set completion-group-fg          "#833d26"
+
+# Notifications
+set notification-bg              "#e9c7ab"
+set notification-fg              "#181811"
+set notification-error-bg        "#e9c7ab"
+set notification-error-fg        "#9d1116"
+set notification-warning-bg      "#e9c7ab"
+set notification-warning-fg      "#735b27"

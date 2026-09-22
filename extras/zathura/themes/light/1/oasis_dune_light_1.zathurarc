@@ -1,0 +1,37 @@
+# extras/zathura/oasis_dune_light_1.zathurarc
+## name: Oasis Dune Light 1
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor
+set recolor true
+set recolor-keephue true
+set recolor-lightcolor           "#fcf6ee"
+set recolor-darkcolor            "#1c1c13"
+
+# Chrome
+set default-bg                   "#fcf6ee"
+set default-fg                   "#1c1c13"
+set statusbar-bg                 "#f9ecda"
+set statusbar-fg                 "#1c1c13"
+set inputbar-bg                  "#f9ecda"
+set inputbar-fg                  "#464624"
+
+# Search
+set highlight-color              "#e1c99d"
+set highlight-active-color       "#b9d17a"
+
+# Completion
+set completion-bg                "#fcf6ee"
+set completion-fg                "#1c1c13"
+set completion-highlight-bg      "#f3daba"
+set completion-highlight-fg      "#464624"
+set completion-group-bg          "#f9ecda"
+set completion-group-fg          "#6a653f"
+
+# Notifications
+set notification-bg              "#f9ecda"
+set notification-fg              "#1c1c13"
+set notification-error-bg        "#f9ecda"
+set notification-error-fg        "#c0151b"
+set notification-warning-bg      "#f9ecda"
+set notification-warning-fg      "#a36226"

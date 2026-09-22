@@ -1,0 +1,37 @@
+# extras/zathura/oasis_desert_light_2.zathurarc
+## name: Oasis Desert Light 2
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor
+set recolor true
+set recolor-keephue true
+set recolor-lightcolor           "#f6f2db"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#f6f2db"
+set default-fg                   "#181811"
+set statusbar-bg                 "#f1ebc9"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#f1ebc9"
+set inputbar-fg                  "#434322"
+
+# Search
+set highlight-color              "#e1c99d"
+set highlight-active-color       "#b9d17a"
+
+# Completion
+set completion-bg                "#f6f2db"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#eae0aa"
+set completion-highlight-fg      "#434322"
+set completion-group-bg          "#f1ebc9"
+set completion-group-fg          "#686230"
+
+# Notifications
+set notification-bg              "#f1ebc9"
+set notification-fg              "#181811"
+set notification-error-bg        "#f1ebc9"
+set notification-error-fg        "#ba141b"
+set notification-warning-bg      "#f1ebc9"
+set notification-warning-fg      "#9e6025"

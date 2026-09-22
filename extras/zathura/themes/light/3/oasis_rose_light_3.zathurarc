@@ -1,0 +1,37 @@
+# extras/zathura/oasis_rose_light_3.zathurarc
+## name: Oasis Rose Light 3
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor
+set recolor true
+set recolor-keephue true
+set recolor-lightcolor           "#f3d6e8"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#f3d6e8"
+set default-fg                   "#181811"
+set statusbar-bg                 "#eec4de"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#eec4de"
+set inputbar-fg                  "#37371c"
+
+# Search
+set highlight-color              "#dba3c6"
+set highlight-active-color       "#72dacc"
+
+# Completion
+set completion-bg                "#f3d6e8"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#e5a7cd"
+set completion-highlight-fg      "#37371c"
+set completion-group-bg          "#eec4de"
+set completion-group-fg          "#7c445a"
+
+# Notifications
+set notification-bg              "#eec4de"
+set notification-fg              "#181811"
+set notification-error-bg        "#eec4de"
+set notification-error-fg        "#a41217"
+set notification-warning-bg      "#eec4de"
+set notification-warning-fg      "#8d5522"

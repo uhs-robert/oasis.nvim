@@ -1,0 +1,37 @@
+# extras/zathura/oasis_twilight_light_3.zathurarc
+## name: Oasis Twilight Light 3
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor
+set recolor true
+set recolor-keephue true
+set recolor-lightcolor           "#eadff4"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#eadff4"
+set default-fg                   "#181811"
+set statusbar-bg                 "#dfceee"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#dfceee"
+set inputbar-fg                  "#3a3a1e"
+
+# Search
+set highlight-color              "#e1b69d"
+set highlight-active-color       "#dd6f6f"
+
+# Completion
+set completion-bg                "#eadff4"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#ccb1e4"
+set completion-highlight-fg      "#3a3a1e"
+set completion-group-bg          "#dfceee"
+set completion-group-fg          "#8f422a"
+
+# Notifications
+set notification-bg              "#dfceee"
+set notification-fg              "#181811"
+set notification-error-bg        "#dfceee"
+set notification-error-fg        "#aa1318"
+set notification-warning-bg      "#dfceee"
+set notification-warning-fg      "#915823"

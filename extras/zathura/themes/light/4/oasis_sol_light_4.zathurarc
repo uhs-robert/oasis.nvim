@@ -1,0 +1,37 @@
+# extras/zathura/oasis_sol_light_4.zathurarc
+## name: Oasis Sol Light 4
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor
+set recolor true
+set recolor-keephue true
+set recolor-lightcolor           "#efb7b7"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#efb7b7"
+set default-fg                   "#181811"
+set statusbar-bg                 "#eba4a4"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#eba4a4"
+set inputbar-fg                  "#252512"
+
+# Search
+set highlight-color              "#e19d9d"
+set highlight-active-color       "#7ad1a7"
+
+# Completion
+set completion-bg                "#efb7b7"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#e48585"
+set completion-highlight-fg      "#252512"
+set completion-group-bg          "#eba4a4"
+set completion-group-fg          "#842020"
+
+# Notifications
+set notification-bg              "#eba4a4"
+set notification-fg              "#181811"
+set notification-error-bg        "#eba4a4"
+set notification-error-fg        "#563e09"
+set notification-warning-bg      "#eba4a4"
+set notification-warning-fg      "#76471d"

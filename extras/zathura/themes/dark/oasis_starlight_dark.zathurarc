@@ -1,0 +1,37 @@
+# extras/zathura/oasis_starlight_dark.zathurarc
+## name: Oasis Starlight Dark
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor
+set recolor true
+set recolor-keephue true
+set recolor-lightcolor           "#000000"
+set recolor-darkcolor            "#F5F5DC"
+
+# Chrome
+set default-bg                   "#000000"
+set default-fg                   "#F5F5DC"
+set statusbar-bg                 "#0C131C"
+set statusbar-fg                 "#F5F5DC"
+set inputbar-bg                  "#0C131C"
+set inputbar-fg                  "#FFFFF0"
+
+# Search
+set highlight-color              "#666666"
+set highlight-active-color       "#F0E68C"
+
+# Completion
+set completion-bg                "#000000"
+set completion-fg                "#F5F5DC"
+set completion-highlight-bg      "#4D4528"
+set completion-highlight-fg      "#FFFFF0"
+set completion-group-bg          "#0C131C"
+set completion-group-fg          "#5BADFF"
+
+# Notifications
+set notification-bg              "#0C131C"
+set notification-fg              "#F5F5DC"
+set notification-error-bg        "#0C131C"
+set notification-error-fg        "#FF7979"
+set notification-warning-bg      "#0C131C"
+set notification-warning-fg      "#FF9633"

@@ -1,0 +1,37 @@
+# extras/zathura/oasis_twilight_light_5.zathurarc
+## name: Oasis Twilight Light 5
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor
+set recolor true
+set recolor-keephue true
+set recolor-lightcolor           "#dbc8ec"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#dbc8ec"
+set default-fg                   "#181811"
+set statusbar-bg                 "#d0b7e6"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#d0b7e6"
+set inputbar-fg                  "#2d2d17"
+
+# Search
+set highlight-color              "#e1b69d"
+set highlight-active-color       "#dd6f6f"
+
+# Completion
+set completion-bg                "#dbc8ec"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#bd9bdc"
+set completion-highlight-fg      "#2d2d17"
+set completion-group-bg          "#d0b7e6"
+set completion-group-fg          "#7b3925"
+
+# Notifications
+set notification-bg              "#d0b7e6"
+set notification-fg              "#181811"
+set notification-error-bg        "#d0b7e6"
+set notification-error-fg        "#931015"
+set notification-warning-bg      "#d0b7e6"
+set notification-warning-fg      "#7f4d1f"

@@ -1,0 +1,37 @@
+# extras/zathura/oasis_night_light_2.zathurarc
+## name: Oasis Night Light 2
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor
+set recolor true
+set recolor-keephue true
+set recolor-lightcolor           "#e4edf7"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#e4edf7"
+set default-fg                   "#181811"
+set statusbar-bg                 "#d2e2f1"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#d2e2f1"
+set inputbar-fg                  "#404021"
+
+# Search
+set highlight-color              "#e1b69d"
+set highlight-active-color       "#dd6f6f"
+
+# Completion
+set completion-bg                "#e4edf7"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#b4cfe9"
+set completion-highlight-fg      "#404021"
+set completion-group-bg          "#d2e2f1"
+set completion-group-fg          "#496078"
+
+# Notifications
+set notification-bg              "#d2e2f1"
+set notification-fg              "#181811"
+set notification-error-bg        "#d2e2f1"
+set notification-error-fg        "#b4141a"
+set notification-warning-bg      "#d2e2f1"
+set notification-warning-fg      "#995d24"

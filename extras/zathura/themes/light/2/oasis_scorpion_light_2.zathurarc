@@ -1,0 +1,37 @@
+# extras/zathura/oasis_scorpion_light_2.zathurarc
+## name: Oasis Scorpion Light 2
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor
+set recolor true
+set recolor-keephue true
+set recolor-lightcolor           "#f6d9d0"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#f6d9d0"
+set default-fg                   "#181811"
+set statusbar-bg                 "#f2c9bd"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#f2c9bd"
+set inputbar-fg                  "#38381c"
+
+# Search
+set highlight-color              "#e1b69d"
+set highlight-active-color       "#b9d17a"
+
+# Completion
+set completion-bg                "#f6d9d0"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#ecaf9d"
+set completion-highlight-fg      "#38381c"
+set completion-group-bg          "#f2c9bd"
+set completion-group-fg          "#8c3f2a"
+
+# Notifications
+set notification-bg              "#f2c9bd"
+set notification-fg              "#181811"
+set notification-error-bg        "#f2c9bd"
+set notification-error-fg        "#a61218"
+set notification-warning-bg      "#f2c9bd"
+set notification-warning-fg      "#8e5621"

@@ -1,0 +1,37 @@
+# extras/zathura/oasis_moonlight_light_1.zathurarc
+## name: Oasis Moonlight Light 1
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor
+set recolor true
+set recolor-keephue true
+set recolor-lightcolor           "#f3f2eb"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#f3f2eb"
+set default-fg                   "#181811"
+set statusbar-bg                 "#eae9dd"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#eae9dd"
+set inputbar-fg                  "#434322"
+
+# Search
+set highlight-color              "#e1b69d"
+set highlight-active-color       "#dd6f6f"
+
+# Completion
+set completion-bg                "#f3f2eb"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#dcd9c5"
+set completion-highlight-fg      "#434322"
+set completion-group-bg          "#eae9dd"
+set completion-group-fg          "#4c647c"
+
+# Notifications
+set notification-bg              "#eae9dd"
+set notification-fg              "#181811"
+set notification-error-bg        "#eae9dd"
+set notification-error-fg        "#bb141b"
+set notification-warning-bg      "#eae9dd"
+set notification-warning-fg      "#9e6025"

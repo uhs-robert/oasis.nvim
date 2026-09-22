@@ -1,0 +1,37 @@
+# extras/zathura/oasis_luna_light_5.zathurarc
+## name: Oasis Luna Light 5
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor
+set recolor true
+set recolor-keephue true
+set recolor-lightcolor           "#cbc7f2"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#cbc7f2"
+set default-fg                   "#181811"
+set statusbar-bg                 "#bab4ee"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#bab4ee"
+set inputbar-fg                  "#2a2a16"
+
+# Search
+set highlight-color              "#c3a1dd"
+set highlight-active-color       "#d1be7a"
+
+# Completion
+set completion-bg                "#cbc7f2"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#9d95e6"
+set completion-highlight-fg      "#2a2a16"
+set completion-group-bg          "#bab4ee"
+set completion-group-fg          "#4f4b24"
+
+# Notifications
+set notification-bg              "#bab4ee"
+set notification-fg              "#181811"
+set notification-error-bg        "#bab4ee"
+set notification-error-fg        "#8e0f15"
+set notification-warning-bg      "#bab4ee"
+set notification-warning-fg      "#7c4b1e"

@@ -1,0 +1,37 @@
+# extras/zathura/oasis_midnight_light_3.zathurarc
+## name: Oasis Midnight Light 3
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor
+set recolor true
+set recolor-keephue true
+set recolor-lightcolor           "#d9dee8"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#d9dee8"
+set default-fg                   "#181811"
+set statusbar-bg                 "#cbd2df"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#cbd2df"
+set inputbar-fg                  "#37371c"
+
+# Search
+set highlight-color              "#e1c99d"
+set highlight-active-color       "#b9d17a"
+
+# Completion
+set completion-bg                "#d9dee8"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#b3bdd1"
+set completion-highlight-fg      "#37371c"
+set completion-group-bg          "#cbd2df"
+set completion-group-fg          "#a12727"
+
+# Notifications
+set notification-bg              "#cbd2df"
+set notification-fg              "#181811"
+set notification-error-bg        "#cbd2df"
+set notification-error-fg        "#a41217"
+set notification-warning-bg      "#cbd2df"
+set notification-warning-fg      "#8d5522"

@@ -1,0 +1,37 @@
+# extras/zathura/oasis_sol_light_2.zathurarc
+## name: Oasis Sol Light 2
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor
+set recolor true
+set recolor-keephue true
+set recolor-lightcolor           "#f5d1d1"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#f5d1d1"
+set default-fg                   "#181811"
+set statusbar-bg                 "#f1bebe"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#f1bebe"
+set inputbar-fg                  "#34341a"
+
+# Search
+set highlight-color              "#e19d9d"
+set highlight-active-color       "#7ad1a7"
+
+# Completion
+set completion-bg                "#f5d1d1"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#ea9f9f"
+set completion-highlight-fg      "#34341a"
+set completion-group-bg          "#f1bebe"
+set completion-group-fg          "#9d2525"
+
+# Notifications
+set notification-bg              "#f1bebe"
+set notification-fg              "#181811"
+set notification-error-bg        "#f1bebe"
+set notification-error-fg        "#674a0b"
+set notification-warning-bg      "#f1bebe"
+set notification-warning-fg      "#895320"

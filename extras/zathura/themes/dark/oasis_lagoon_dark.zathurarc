@@ -1,0 +1,37 @@
+# extras/zathura/oasis_lagoon_dark.zathurarc
+## name: Oasis Lagoon Dark
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor
+set recolor true
+set recolor-keephue true
+set recolor-lightcolor           "#101825"
+set recolor-darkcolor            "#F5F5DC"
+
+# Chrome
+set default-bg                   "#101825"
+set default-fg                   "#F5F5DC"
+set statusbar-bg                 "#1A283F"
+set statusbar-fg                 "#F5F5DC"
+set inputbar-bg                  "#1A283F"
+set inputbar-fg                  "#FFFFF0"
+
+# Search
+set highlight-color              "#666666"
+set highlight-active-color       "#F9A05E"
+
+# Completion
+set completion-bg                "#101825"
+set completion-fg                "#F5F5DC"
+set completion-highlight-bg      "#22385C"
+set completion-highlight-fg      "#FFFFF0"
+set completion-group-bg          "#1A283F"
+set completion-group-fg          "#71B8FF"
+
+# Notifications
+set notification-bg              "#1A283F"
+set notification-fg              "#F5F5DC"
+set notification-error-bg        "#1A283F"
+set notification-error-fg        "#FF7979"
+set notification-warning-bg      "#1A283F"
+set notification-warning-fg      "#FFA34D"

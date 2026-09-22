@@ -1,0 +1,37 @@
+# extras/zathura/oasis_desert_light_3.zathurarc
+## name: Oasis Desert Light 3
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor
+set recolor true
+set recolor-keephue true
+set recolor-lightcolor           "#f3edcf"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#f3edcf"
+set default-fg                   "#181811"
+set statusbar-bg                 "#eee6bd"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#eee6bd"
+set inputbar-fg                  "#404021"
+
+# Search
+set highlight-color              "#e1c99d"
+set highlight-active-color       "#b9d17a"
+
+# Completion
+set completion-bg                "#f3edcf"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#e7db9e"
+set completion-highlight-fg      "#404021"
+set completion-group-bg          "#eee6bd"
+set completion-group-fg          "#655f2d"
+
+# Notifications
+set notification-bg              "#eee6bd"
+set notification-fg              "#181811"
+set notification-error-bg        "#eee6bd"
+set notification-error-fg        "#b51419"
+set notification-warning-bg      "#eee6bd"
+set notification-warning-fg      "#995d25"

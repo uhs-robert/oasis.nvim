@@ -1,0 +1,37 @@
+# extras/zathura/oasis_abyss_light_1.zathurarc
+## name: Oasis Abyss Light 1
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor
+set recolor true
+set recolor-keephue true
+set recolor-lightcolor           "#e7e7e7"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#e7e7e7"
+set default-fg                   "#181811"
+set statusbar-bg                 "#dcdcdc"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#dcdcdc"
+set inputbar-fg                  "#3d3d1f"
+
+# Search
+set highlight-color              "#e1c99d"
+set highlight-active-color       "#b9d17a"
+
+# Completion
+set completion-bg                "#e7e7e7"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#c8c8c8"
+set completion-highlight-fg      "#3d3d1f"
+set completion-group-bg          "#dcdcdc"
+set completion-group-fg          "#ac2828"
+
+# Notifications
+set notification-bg              "#dcdcdc"
+set notification-fg              "#181811"
+set notification-error-bg        "#dcdcdc"
+set notification-error-fg        "#af1319"
+set notification-warning-bg      "#dcdcdc"
+set notification-warning-fg      "#955a23"

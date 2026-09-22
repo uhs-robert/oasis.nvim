@@ -1,0 +1,37 @@
+# extras/zathura/oasis_cactus_dark.zathurarc
+## name: Oasis Cactus Dark
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor
+set recolor true
+set recolor-keephue true
+set recolor-lightcolor           "#151E17"
+set recolor-darkcolor            "#F5F5DC"
+
+# Chrome
+set default-bg                   "#151E17"
+set default-fg                   "#F5F5DC"
+set statusbar-bg                 "#212C22"
+set statusbar-fg                 "#F5F5DC"
+set inputbar-bg                  "#212C22"
+set inputbar-fg                  "#FFFFF0"
+
+# Search
+set highlight-color              "#666666"
+set highlight-active-color       "#C28EFF"
+
+# Completion
+set completion-bg                "#151E17"
+set completion-fg                "#F5F5DC"
+set completion-highlight-bg      "#2F3D33"
+set completion-highlight-fg      "#FFFFF0"
+set completion-group-bg          "#212C22"
+set completion-group-fg          "#7FBB82"
+
+# Notifications
+set notification-bg              "#212C22"
+set notification-fg              "#F5F5DC"
+set notification-error-bg        "#212C22"
+set notification-error-fg        "#FF7979"
+set notification-warning-bg      "#212C22"
+set notification-warning-fg      "#FF9633"
