@@ -28,6 +28,39 @@ return {
 	hint = "#135c47",
 	ok = "#1d5c14",
 
+-- Theme Variants
+	theme_primary_strong = "#802649",
+	theme_primary_light = "#471227",
+	theme_secondary_strong = "#224123",
+	theme_label = "#325d34",
+	theme_cursor = "#71670f",
+
+-- UI
+	ui_border = "#693c4e",
+	ui_title = "#6a3b4e",
+	ui_dir = "#224351",
+	ui_cursor_line = "#e7acd1",
+	ui_nontext = "#6e646a",
+	ui_visual_bg = "#de8fc1",
+	ui_search_bg = "#dba3c6",
+	ui_search_fg = "#481335",
+	ui_match_bg = "#72dacc",
+	ui_match_fg = "#09342f",
+	ui_float_bg = "#e7acd1",
+	ui_float_fg = "#263527",
+	ui_float_title = "#263527",
+	ui_float_border = "#693c4e",
+	ui_picker_bg = "#e7acd1",
+	ui_picker_fg = "#263527",
+	ui_picker_title = "#263527",
+	ui_picker_border = "#693c4e",
+
+-- Diagnostic Backgrounds
+	error_bg = "#d59090",
+	warning_bg = "#cec897",
+	info_bg = "#92b2d3",
+	hint_bg = "#97cebe",
+
 -- ANSI Semnatic Colors
 	black = "#303030",
 	red = "#8f0e0e",
