@@ -2,8 +2,9 @@
 ## name: Oasis Lagoon Light 1
 ## author: uhs-robert
 
-# Recolor: zathura maps white to lightcolor and black to darkcolor
-set recolor true
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# Left off so documents render as authored; toggle it with ctrl-r.
+set recolor false
 set recolor-keephue true
 set recolor-lightcolor           "#f2f7fd"
 set recolor-darkcolor            "#1b1b13"
@@ -17,8 +18,24 @@ set inputbar-bg                  "#deebfa"
 set inputbar-fg                  "#464624"
 
 # Search
-set highlight-color              "#9fcae0"
-set highlight-active-color       "#dd986f"
+set highlight-color              "rgba(159,202,224,0.4)"
+set highlight-active-color       "rgba(221,152,111,0.5)"
+set highlight-fg                 "#351908"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#f2f7fd"
+set index-fg                     "#1b1b13"
+set index-active-bg              "#bdd6f5"
+set index-active-fg              "#464624"
+
+# Render placeholder
+set render-loading-bg            "#f2f7fd"
+set render-loading-fg            "#607581"
+
+# Signatures
+set signature-success-color      "#2f5f72"
+set signature-warning-color      "#a26226"
+set signature-error-color        "#c0151b"
 
 # Completion
 set completion-bg                "#f2f7fd"

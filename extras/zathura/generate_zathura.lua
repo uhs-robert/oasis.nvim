@@ -11,6 +11,12 @@ local function setting(key, value)
   return string.format('set %-28s "%s"', key, value)
 end
 
+-- Search highlights sit on top of the page, so they need an alpha channel.
+local function rgba(color, alpha)
+  local r, g, b = color:match("^#(%x%x)(%x%x)(%x%x)$")
+  return string.format("rgba(%d,%d,%d,%s)", tonumber(r, 16), tonumber(g, 16), tonumber(b, 16), alpha)
+end
+
 local function generate_zathura_theme(name, palette)
   local display_name = Utils.format_display_name(name)
 
@@ -19,8 +25,9 @@ local function generate_zathura_theme(name, palette)
     "## name: " .. display_name,
     "## author: uhs-robert",
     "",
-    "# Recolor: zathura maps white to lightcolor and black to darkcolor",
-    "set recolor true",
+    "# Recolor: zathura maps white to lightcolor and black to darkcolor.",
+    "# Left off so documents render as authored; toggle it with ctrl-r.",
+    "set recolor false",
     "set recolor-keephue true",
     setting("recolor-lightcolor", palette.bg.core),
     setting("recolor-darkcolor", palette.fg.core),
@@ -34,8 +41,24 @@ local function generate_zathura_theme(name, palette)
     setting("inputbar-fg", palette.fg.strong),
     "",
     "# Search",
-    setting("highlight-color", palette.ui.search.bg),
-    setting("highlight-active-color", palette.ui.match.bg),
+    setting("highlight-color", rgba(palette.ui.search.bg, "0.4")),
+    setting("highlight-active-color", rgba(palette.ui.match.bg, "0.5")),
+    setting("highlight-fg", palette.ui.match.fg),
+    "",
+    "# Index (the toggle_index file listing)",
+    setting("index-bg", palette.bg.core),
+    setting("index-fg", palette.fg.core),
+    setting("index-active-bg", palette.ui.visual.bg),
+    setting("index-active-fg", palette.fg.strong),
+    "",
+    "# Render placeholder",
+    setting("render-loading-bg", palette.bg.core),
+    setting("render-loading-fg", palette.fg.muted),
+    "",
+    "# Signatures",
+    setting("signature-success-color", palette.ui.dir),
+    setting("signature-warning-color", palette.ui.line_number),
+    setting("signature-error-color", palette.syntax.exception),
     "",
     "# Completion",
     setting("completion-bg", palette.bg.core),

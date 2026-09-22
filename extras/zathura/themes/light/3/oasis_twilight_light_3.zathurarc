@@ -2,8 +2,9 @@
 ## name: Oasis Twilight Light 3
 ## author: uhs-robert
 
-# Recolor: zathura maps white to lightcolor and black to darkcolor
-set recolor true
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# Left off so documents render as authored; toggle it with ctrl-r.
+set recolor false
 set recolor-keephue true
 set recolor-lightcolor           "#eadff4"
 set recolor-darkcolor            "#181811"
@@ -17,8 +18,24 @@ set inputbar-bg                  "#dfceee"
 set inputbar-fg                  "#3a3a1e"
 
 # Search
-set highlight-color              "#e1b69d"
-set highlight-active-color       "#dd6f6f"
+set highlight-color              "rgba(225,182,157,0.4)"
+set highlight-active-color       "rgba(221,111,111,0.5)"
+set highlight-fg                 "#350808"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#eadff4"
+set index-fg                     "#181811"
+set index-active-bg              "#ccb1e4"
+set index-active-fg              "#3a3a1e"
+
+# Render placeholder
+set render-loading-bg            "#eadff4"
+set render-loading-fg            "#686376"
+
+# Signatures
+set signature-success-color      "#2a5364"
+set signature-warning-color      "#915823"
+set signature-error-color        "#aa1318"
 
 # Completion
 set completion-bg                "#eadff4"

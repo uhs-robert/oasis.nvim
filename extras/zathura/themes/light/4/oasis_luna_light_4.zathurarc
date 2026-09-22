@@ -2,8 +2,9 @@
 ## name: Oasis Luna Light 4
 ## author: uhs-robert
 
-# Recolor: zathura maps white to lightcolor and black to darkcolor
-set recolor true
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# Left off so documents render as authored; toggle it with ctrl-r.
+set recolor false
 set recolor-keephue true
 set recolor-lightcolor           "#d6d4f5"
 set recolor-darkcolor            "#181811"
@@ -17,8 +18,24 @@ set inputbar-bg                  "#c4c1f1"
 set inputbar-fg                  "#333319"
 
 # Search
-set highlight-color              "#c3a1dd"
-set highlight-active-color       "#d1be7a"
+set highlight-color              "rgba(195,161,221,0.4)"
+set highlight-active-color       "rgba(209,190,122,0.5)"
+set highlight-fg                 "#31290d"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#d6d4f5"
+set index-fg                     "#181811"
+set index-active-bg              "#a7a2e9"
+set index-active-fg              "#333319"
+
+# Render placeholder
+set render-loading-bg            "#d6d4f5"
+set render-loading-fg            "#5e5c6e"
+
+# Signatures
+set signature-success-color      "#264b5b"
+set signature-warning-color      "#875221"
+set signature-error-color        "#9d1116"
 
 # Completion
 set completion-bg                "#d6d4f5"

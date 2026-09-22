@@ -2,8 +2,9 @@
 ## name: Oasis Moonlight Light 4
 ## author: uhs-robert
 
-# Recolor: zathura maps white to lightcolor and black to darkcolor
-set recolor true
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# Left off so documents render as authored; toggle it with ctrl-r.
+set recolor false
 set recolor-keephue true
 set recolor-lightcolor           "#e2dfce"
 set recolor-darkcolor            "#181811"
@@ -17,8 +18,24 @@ set inputbar-bg                  "#d9d6c0"
 set inputbar-fg                  "#38381c"
 
 # Search
-set highlight-color              "#e1b69d"
-set highlight-active-color       "#dd6f6f"
+set highlight-color              "rgba(225,182,157,0.4)"
+set highlight-active-color       "rgba(221,111,111,0.5)"
+set highlight-fg                 "#350808"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#e2dfce"
+set index-fg                     "#181811"
+set index-active-bg              "#cbc6a8"
+set index-active-fg              "#38381c"
+
+# Render placeholder
+set render-loading-bg            "#e2dfce"
+set render-loading-fg            "#5b646c"
+
+# Signatures
+set signature-success-color      "#285061"
+set signature-warning-color      "#8d5622"
+set signature-error-color        "#a51217"
 
 # Completion
 set completion-bg                "#e2dfce"

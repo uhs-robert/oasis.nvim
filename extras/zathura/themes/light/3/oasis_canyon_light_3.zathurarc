@@ -2,8 +2,9 @@
 ## name: Oasis Canyon Light 3
 ## author: uhs-robert
 
-# Recolor: zathura maps white to lightcolor and black to darkcolor
-set recolor true
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# Left off so documents render as authored; toggle it with ctrl-r.
+set recolor false
 set recolor-keephue true
 set recolor-lightcolor           "#eed3bd"
 set recolor-darkcolor            "#181811"
@@ -17,8 +18,24 @@ set inputbar-bg                  "#e9c7ab"
 set inputbar-fg                  "#33331a"
 
 # Search
-set highlight-color              "#e1b69d"
-set highlight-active-color       "#72aeda"
+set highlight-color              "rgba(225,182,157,0.4)"
+set highlight-active-color       "rgba(114,174,218,0.5)"
+set highlight-fg                 "#092234"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#eed3bd"
+set index-fg                     "#181811"
+set index-active-bg              "#e1b38c"
+set index-active-fg              "#33331a"
+
+# Render placeholder
+set render-loading-bg            "#eed3bd"
+set render-loading-fg            "#6d5b52"
+
+# Signatures
+set signature-success-color      "#264c5b"
+set signature-warning-color      "#735b27"
+set signature-error-color        "#9d1116"
 
 # Completion
 set completion-bg                "#eed3bd"

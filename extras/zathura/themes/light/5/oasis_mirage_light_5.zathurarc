@@ -2,8 +2,9 @@
 ## name: Oasis Mirage Light 5
 ## author: uhs-robert
 
-# Recolor: zathura maps white to lightcolor and black to darkcolor
-set recolor true
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# Left off so documents render as authored; toggle it with ctrl-r.
+set recolor false
 set recolor-keephue true
 set recolor-lightcolor           "#c1eae6"
 set recolor-darkcolor            "#181811"
@@ -17,8 +18,24 @@ set inputbar-bg                  "#b0e4df"
 set inputbar-fg                  "#3a3a1e"
 
 # Search
-set highlight-color              "#9fe0d7"
-set highlight-active-color       "#dd986f"
+set highlight-color              "rgba(159,224,215,0.4)"
+set highlight-active-color       "rgba(221,152,111,0.5)"
+set highlight-fg                 "#351908"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#c1eae6"
+set index-fg                     "#181811"
+set index-active-bg              "#93dbd4"
+set index-active-fg              "#3a3a1e"
+
+# Render placeholder
+set render-loading-bg            "#c1eae6"
+set render-loading-fg            "#5b6766"
+
+# Signatures
+set signature-success-color      "#295264"
+set signature-warning-color      "#905723"
+set signature-error-color        "#a91218"
 
 # Completion
 set completion-bg                "#c1eae6"

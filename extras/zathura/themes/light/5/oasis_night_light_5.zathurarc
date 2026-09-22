@@ -2,8 +2,9 @@
 ## name: Oasis Night Light 5
 ## author: uhs-robert
 
-# Recolor: zathura maps white to lightcolor and black to darkcolor
-set recolor true
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# Left off so documents render as authored; toggle it with ctrl-r.
+set recolor false
 set recolor-keephue true
 set recolor-lightcolor           "#b7d5f0"
 set recolor-darkcolor            "#181811"
@@ -17,8 +18,24 @@ set inputbar-bg                  "#a4caec"
 set inputbar-fg                  "#2e2e18"
 
 # Search
-set highlight-color              "#e1b69d"
-set highlight-active-color       "#dd6f6f"
+set highlight-color              "rgba(225,182,157,0.4)"
+set highlight-active-color       "rgba(221,111,111,0.5)"
+set highlight-fg                 "#350808"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#b7d5f0"
+set index-fg                     "#181811"
+set index-active-bg              "#84b7e6"
+set index-active-fg              "#2e2e18"
+
+# Render placeholder
+set render-loading-bg            "#b7d5f0"
+set render-loading-fg            "#535b64"
+
+# Signatures
+set signature-success-color      "#244757"
+set signature-warning-color      "#824e1f"
+set signature-error-color        "#951016"
 
 # Completion
 set completion-bg                "#b7d5f0"

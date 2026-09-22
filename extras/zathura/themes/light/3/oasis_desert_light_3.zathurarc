@@ -2,8 +2,9 @@
 ## name: Oasis Desert Light 3
 ## author: uhs-robert
 
-# Recolor: zathura maps white to lightcolor and black to darkcolor
-set recolor true
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# Left off so documents render as authored; toggle it with ctrl-r.
+set recolor false
 set recolor-keephue true
 set recolor-lightcolor           "#f3edcf"
 set recolor-darkcolor            "#181811"
@@ -17,8 +18,24 @@ set inputbar-bg                  "#eee6bd"
 set inputbar-fg                  "#404021"
 
 # Search
-set highlight-color              "#e1c99d"
-set highlight-active-color       "#b9d17a"
+set highlight-color              "rgba(225,201,157,0.4)"
+set highlight-active-color       "rgba(185,209,122,0.5)"
+set highlight-fg                 "#26310d"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#f3edcf"
+set index-fg                     "#181811"
+set index-active-bg              "#e7db9e"
+set index-active-fg              "#404021"
+
+# Render placeholder
+set render-loading-bg            "#f3edcf"
+set render-loading-fg            "#6e6b62"
+
+# Signatures
+set signature-success-color      "#2c596b"
+set signature-warning-color      "#995d25"
+set signature-error-color        "#b51419"
 
 # Completion
 set completion-bg                "#f3edcf"

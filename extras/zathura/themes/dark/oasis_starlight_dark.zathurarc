@@ -2,8 +2,9 @@
 ## name: Oasis Starlight Dark
 ## author: uhs-robert
 
-# Recolor: zathura maps white to lightcolor and black to darkcolor
-set recolor true
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# Left off so documents render as authored; toggle it with ctrl-r.
+set recolor false
 set recolor-keephue true
 set recolor-lightcolor           "#000000"
 set recolor-darkcolor            "#F5F5DC"
@@ -17,8 +18,24 @@ set inputbar-bg                  "#0C131C"
 set inputbar-fg                  "#FFFFF0"
 
 # Search
-set highlight-color              "#666666"
-set highlight-active-color       "#F0E68C"
+set highlight-color              "rgba(102,102,102,0.4)"
+set highlight-active-color       "rgba(240,230,140,0.5)"
+set highlight-fg                 "#000000"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#000000"
+set index-fg                     "#F5F5DC"
+set index-active-bg              "#4D4528"
+set index-active-fg              "#FFFFF0"
+
+# Render placeholder
+set render-loading-bg            "#000000"
+set render-loading-fg            "#4F5B6B"
+
+# Signatures
+set signature-success-color      "#87CEEB"
+set signature-warning-color      "#FF9633"
+set signature-error-color        "#FF7979"
 
 # Completion
 set completion-bg                "#000000"

@@ -2,8 +2,9 @@
 ## name: Oasis Sol Light 2
 ## author: uhs-robert
 
-# Recolor: zathura maps white to lightcolor and black to darkcolor
-set recolor true
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# Left off so documents render as authored; toggle it with ctrl-r.
+set recolor false
 set recolor-keephue true
 set recolor-lightcolor           "#f5d1d1"
 set recolor-darkcolor            "#181811"
@@ -17,8 +18,24 @@ set inputbar-bg                  "#f1bebe"
 set inputbar-fg                  "#34341a"
 
 # Search
-set highlight-color              "#e19d9d"
-set highlight-active-color       "#7ad1a7"
+set highlight-color              "rgba(225,157,157,0.4)"
+set highlight-active-color       "rgba(122,209,167,0.5)"
+set highlight-fg                 "#0d311f"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#f5d1d1"
+set index-fg                     "#181811"
+set index-active-bg              "#ea9f9f"
+set index-active-fg              "#34341a"
+
+# Render placeholder
+set render-loading-bg            "#f5d1d1"
+set render-loading-fg            "#6b5c5a"
+
+# Signatures
+set signature-success-color      "#264d5c"
+set signature-warning-color      "#895320"
+set signature-error-color        "#674a0b"
 
 # Completion
 set completion-bg                "#f5d1d1"

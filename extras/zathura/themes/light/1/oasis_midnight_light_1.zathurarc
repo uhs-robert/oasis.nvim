@@ -2,8 +2,9 @@
 ## name: Oasis Midnight Light 1
 ## author: uhs-robert
 
-# Recolor: zathura maps white to lightcolor and black to darkcolor
-set recolor true
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# Left off so documents render as authored; toggle it with ctrl-r.
+set recolor false
 set recolor-keephue true
 set recolor-lightcolor           "#eceff4"
 set recolor-darkcolor            "#181811"
@@ -17,8 +18,24 @@ set inputbar-bg                  "#dde3ec"
 set inputbar-fg                  "#424221"
 
 # Search
-set highlight-color              "#e1c99d"
-set highlight-active-color       "#b9d17a"
+set highlight-color              "rgba(225,201,157,0.4)"
+set highlight-active-color       "rgba(185,209,122,0.5)"
+set highlight-fg                 "#26310d"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#eceff4"
+set index-fg                     "#181811"
+set index-active-bg              "#c5cede"
+set index-active-fg              "#424221"
+
+# Render placeholder
+set render-loading-bg            "#eceff4"
+set render-loading-fg            "#646e77"
+
+# Signatures
+set signature-success-color      "#2d5a6c"
+set signature-warning-color      "#9c5e24"
+set signature-error-color        "#b7141a"
 
 # Completion
 set completion-bg                "#eceff4"

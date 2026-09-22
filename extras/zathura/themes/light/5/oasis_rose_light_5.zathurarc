@@ -2,8 +2,9 @@
 ## name: Oasis Rose Light 5
 ## author: uhs-robert
 
-# Recolor: zathura maps white to lightcolor and black to darkcolor
-set recolor true
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# Left off so documents render as authored; toggle it with ctrl-r.
+set recolor false
 set recolor-keephue true
 set recolor-lightcolor           "#ecbedb"
 set recolor-darkcolor            "#181811"
@@ -17,8 +18,24 @@ set inputbar-bg                  "#e7acd1"
 set inputbar-fg                  "#2a2a16"
 
 # Search
-set highlight-color              "#dba3c6"
-set highlight-active-color       "#72dacc"
+set highlight-color              "rgba(219,163,198,0.4)"
+set highlight-active-color       "rgba(114,218,204,0.5)"
+set highlight-fg                 "#09342f"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#ecbedb"
+set index-fg                     "#181811"
+set index-active-bg              "#de8fc1"
+set index-active-fg              "#2a2a16"
+
+# Render placeholder
+set render-loading-bg            "#ecbedb"
+set render-loading-fg            "#5f535b"
+
+# Signatures
+set signature-success-color      "#224351"
+set signature-warning-color      "#7c4b1e"
+set signature-error-color        "#8e0f15"
 
 # Completion
 set completion-bg                "#ecbedb"

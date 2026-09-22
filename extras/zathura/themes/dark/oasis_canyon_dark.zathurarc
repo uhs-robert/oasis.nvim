@@ -2,8 +2,9 @@
 ## name: Oasis Canyon Dark
 ## author: uhs-robert
 
-# Recolor: zathura maps white to lightcolor and black to darkcolor
-set recolor true
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# Left off so documents render as authored; toggle it with ctrl-r.
+set recolor false
 set recolor-keephue true
 set recolor-lightcolor           "#261612"
 set recolor-darkcolor            "#F5F5DC"
@@ -17,8 +18,24 @@ set inputbar-bg                  "#35231D"
 set inputbar-fg                  "#FFFFF0"
 
 # Search
-set highlight-color              "#666666"
-set highlight-active-color       "#ADC76B"
+set highlight-color              "rgba(102,102,102,0.4)"
+set highlight-active-color       "rgba(173,199,107,0.5)"
+set highlight-fg                 "#261612"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#261612"
+set index-fg                     "#F5F5DC"
+set index-active-bg              "#483228"
+set index-active-fg              "#FFFFF0"
+
+# Render placeholder
+set render-loading-bg            "#261612"
+set render-loading-fg            "#9A6549"
+
+# Signatures
+set signature-success-color      "#92D3ED"
+set signature-warning-color      "#FFC43D"
+set signature-error-color        "#FF7979"
 
 # Completion
 set completion-bg                "#261612"

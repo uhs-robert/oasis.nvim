@@ -2,8 +2,9 @@
 ## name: Oasis Dune Light 5
 ## author: uhs-robert
 
-# Recolor: zathura maps white to lightcolor and black to darkcolor
-set recolor true
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# Left off so documents render as authored; toggle it with ctrl-r.
+set recolor false
 set recolor-keephue true
 set recolor-lightcolor           "#f2dcba"
 set recolor-darkcolor            "#181811"
@@ -17,8 +18,24 @@ set inputbar-bg                  "#eed2a7"
 set inputbar-fg                  "#38381d"
 
 # Search
-set highlight-color              "#e1c99d"
-set highlight-active-color       "#b9d17a"
+set highlight-color              "rgba(225,201,157,0.4)"
+set highlight-active-color       "rgba(185,209,122,0.5)"
+set highlight-fg                 "#26310d"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#f2dcba"
+set index-fg                     "#181811"
+set index-active-bg              "#e8c287"
+set index-active-fg              "#38381d"
+
+# Render placeholder
+set render-loading-bg            "#f2dcba"
+set render-loading-fg            "#6a6259"
+
+# Signatures
+set signature-success-color      "#285061"
+set signature-warning-color      "#8e5622"
+set signature-error-color        "#a61218"
 
 # Completion
 set completion-bg                "#f2dcba"

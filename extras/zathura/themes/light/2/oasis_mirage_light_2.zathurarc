@@ -2,8 +2,9 @@
 ## name: Oasis Mirage Light 2
 ## author: uhs-robert
 
-# Recolor: zathura maps white to lightcolor and black to darkcolor
-set recolor true
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# Left off so documents render as authored; toggle it with ctrl-r.
+set recolor false
 set recolor-keephue true
 set recolor-lightcolor           "#e3f6f4"
 set recolor-darkcolor            "#181811"
@@ -17,8 +18,24 @@ set inputbar-bg                  "#d2f0ed"
 set inputbar-fg                  "#434322"
 
 # Search
-set highlight-color              "#9fe0d7"
-set highlight-active-color       "#dd986f"
+set highlight-color              "rgba(159,224,215,0.4)"
+set highlight-active-color       "rgba(221,152,111,0.5)"
+set highlight-fg                 "#351908"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#e3f6f4"
+set index-fg                     "#181811"
+set index-active-bg              "#b5e7e2"
+set index-active-fg              "#434322"
+
+# Render placeholder
+set render-loading-bg            "#e3f6f4"
+set render-loading-fg            "#647271"
+
+# Signatures
+set signature-success-color      "#2e5c6f"
+set signature-warning-color      "#9e6025"
+set signature-error-color        "#bb141b"
 
 # Completion
 set completion-bg                "#e3f6f4"
