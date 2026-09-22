@@ -1,0 +1,55 @@
+# extras/zathura/oasis_desert_light_2.zathurarc
+## name: Oasis Desert Light 2
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# On by default so the theme is visible on first open; ctrl-r restores the authored colors.
+set recolor true
+set recolor-keephue true
+# The page sits on surface so it reads as paper against the window background.
+set recolor-lightcolor           "#eae0aa"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#f6f2db"
+set default-fg                   "#181811"
+set statusbar-bg                 "#f1ebc9"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#f1ebc9"
+set inputbar-fg                  "#434322"
+
+# Search
+set highlight-color              "rgba(225,201,157,0.4)"
+set highlight-active-color       "rgba(185,209,122,0.5)"
+set highlight-fg                 "#26310d"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#f6f2db"
+set index-fg                     "#181811"
+set index-active-bg              "#eae0aa"
+set index-active-fg              "#434322"
+
+# Render placeholder
+set render-loading-bg            "#f6f2db"
+set render-loading-fg            "#716f66"
+
+# Signatures
+set signature-success-color      "#2e5c6f"
+set signature-warning-color      "#9e6025"
+set signature-error-color        "#ba141b"
+
+# Completion
+set completion-bg                "#f6f2db"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#eae0aa"
+set completion-highlight-fg      "#434322"
+set completion-group-bg          "#f1ebc9"
+set completion-group-fg          "#686230"
+
+# Notifications
+set notification-bg              "#f1ebc9"
+set notification-fg              "#181811"
+set notification-error-bg        "#f1ebc9"
+set notification-error-fg        "#ba141b"
+set notification-warning-bg      "#f1ebc9"
+set notification-warning-fg      "#9e6025"

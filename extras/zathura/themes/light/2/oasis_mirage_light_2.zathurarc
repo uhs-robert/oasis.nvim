@@ -1,0 +1,55 @@
+# extras/zathura/oasis_mirage_light_2.zathurarc
+## name: Oasis Mirage Light 2
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# On by default so the theme is visible on first open; ctrl-r restores the authored colors.
+set recolor true
+set recolor-keephue true
+# The page sits on surface so it reads as paper against the window background.
+set recolor-lightcolor           "#b5e7e2"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#e3f6f4"
+set default-fg                   "#181811"
+set statusbar-bg                 "#d2f0ed"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#d2f0ed"
+set inputbar-fg                  "#434322"
+
+# Search
+set highlight-color              "rgba(159,224,215,0.4)"
+set highlight-active-color       "rgba(221,152,111,0.5)"
+set highlight-fg                 "#351908"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#e3f6f4"
+set index-fg                     "#181811"
+set index-active-bg              "#b5e7e2"
+set index-active-fg              "#434322"
+
+# Render placeholder
+set render-loading-bg            "#e3f6f4"
+set render-loading-fg            "#647271"
+
+# Signatures
+set signature-success-color      "#2e5c6f"
+set signature-warning-color      "#9e6025"
+set signature-error-color        "#bb141b"
+
+# Completion
+set completion-bg                "#e3f6f4"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#b5e7e2"
+set completion-highlight-fg      "#434322"
+set completion-group-bg          "#d2f0ed"
+set completion-group-fg          "#44695f"
+
+# Notifications
+set notification-bg              "#d2f0ed"
+set notification-fg              "#181811"
+set notification-error-bg        "#d2f0ed"
+set notification-error-fg        "#bb141b"
+set notification-warning-bg      "#d2f0ed"
+set notification-warning-fg      "#9e6025"

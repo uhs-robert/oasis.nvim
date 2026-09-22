@@ -1,0 +1,55 @@
+# extras/zathura/oasis_lagoon_light_1.zathurarc
+## name: Oasis Lagoon Light 1
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# On by default so the theme is visible on first open; ctrl-r restores the authored colors.
+set recolor true
+set recolor-keephue true
+# The page sits on surface so it reads as paper against the window background.
+set recolor-lightcolor           "#bdd6f5"
+set recolor-darkcolor            "#1b1b13"
+
+# Chrome
+set default-bg                   "#f2f7fd"
+set default-fg                   "#1b1b13"
+set statusbar-bg                 "#deebfa"
+set statusbar-fg                 "#1b1b13"
+set inputbar-bg                  "#deebfa"
+set inputbar-fg                  "#464624"
+
+# Search
+set highlight-color              "rgba(159,202,224,0.4)"
+set highlight-active-color       "rgba(221,152,111,0.5)"
+set highlight-fg                 "#351908"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#f2f7fd"
+set index-fg                     "#1b1b13"
+set index-active-bg              "#bdd6f5"
+set index-active-fg              "#464624"
+
+# Render placeholder
+set render-loading-bg            "#f2f7fd"
+set render-loading-fg            "#607581"
+
+# Signatures
+set signature-success-color      "#2f5f72"
+set signature-warning-color      "#a26226"
+set signature-error-color        "#c0151b"
+
+# Completion
+set completion-bg                "#f2f7fd"
+set completion-fg                "#1b1b13"
+set completion-highlight-bg      "#bdd6f5"
+set completion-highlight-fg      "#464624"
+set completion-group-bg          "#deebfa"
+set completion-group-fg          "#2b66a3"
+
+# Notifications
+set notification-bg              "#deebfa"
+set notification-fg              "#1b1b13"
+set notification-error-bg        "#deebfa"
+set notification-error-fg        "#c0151b"
+set notification-warning-bg      "#deebfa"
+set notification-warning-fg      "#a26226"

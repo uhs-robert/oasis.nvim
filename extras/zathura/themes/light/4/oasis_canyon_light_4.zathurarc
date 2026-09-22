@@ -1,0 +1,55 @@
+# extras/zathura/oasis_canyon_light_4.zathurarc
+## name: Oasis Canyon Light 4
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# On by default so the theme is visible on first open; ctrl-r restores the authored colors.
+set recolor true
+set recolor-keephue true
+# The page sits on surface so it reads as paper against the window background.
+set recolor-lightcolor           "#dfab80"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#ebcbb1"
+set default-fg                   "#181811"
+set statusbar-bg                 "#e6bf9f"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#e6bf9f"
+set inputbar-fg                  "#2e2e17"
+
+# Search
+set highlight-color              "rgba(225,182,157,0.4)"
+set highlight-active-color       "rgba(114,174,218,0.5)"
+set highlight-fg                 "#092234"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#ebcbb1"
+set index-fg                     "#181811"
+set index-active-bg              "#dfab80"
+set index-active-fg              "#2e2e17"
+
+# Render placeholder
+set render-loading-bg            "#ebcbb1"
+set render-loading-fg            "#68574e"
+
+# Signatures
+set signature-success-color      "#244756"
+set signature-warning-color      "#6d5725"
+set signature-error-color        "#951015"
+
+# Completion
+set completion-bg                "#ebcbb1"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#dfab80"
+set completion-highlight-fg      "#2e2e17"
+set completion-group-bg          "#e6bf9f"
+set completion-group-fg          "#7c3b24"
+
+# Notifications
+set notification-bg              "#e6bf9f"
+set notification-fg              "#181811"
+set notification-error-bg        "#e6bf9f"
+set notification-error-fg        "#951015"
+set notification-warning-bg      "#e6bf9f"
+set notification-warning-fg      "#6d5725"

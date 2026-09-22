@@ -1,0 +1,55 @@
+# extras/zathura/oasis_midnight_light_1.zathurarc
+## name: Oasis Midnight Light 1
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# On by default so the theme is visible on first open; ctrl-r restores the authored colors.
+set recolor true
+set recolor-keephue true
+# The page sits on surface so it reads as paper against the window background.
+set recolor-lightcolor           "#c5cede"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#eceff4"
+set default-fg                   "#181811"
+set statusbar-bg                 "#dde3ec"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#dde3ec"
+set inputbar-fg                  "#424221"
+
+# Search
+set highlight-color              "rgba(225,201,157,0.4)"
+set highlight-active-color       "rgba(185,209,122,0.5)"
+set highlight-fg                 "#26310d"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#eceff4"
+set index-fg                     "#181811"
+set index-active-bg              "#c5cede"
+set index-active-fg              "#424221"
+
+# Render placeholder
+set render-loading-bg            "#eceff4"
+set render-loading-fg            "#646e77"
+
+# Signatures
+set signature-success-color      "#2d5a6c"
+set signature-warning-color      "#9c5e24"
+set signature-error-color        "#b7141a"
+
+# Completion
+set completion-bg                "#eceff4"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#c5cede"
+set completion-highlight-fg      "#424221"
+set completion-group-bg          "#dde3ec"
+set completion-group-fg          "#b42a2a"
+
+# Notifications
+set notification-bg              "#dde3ec"
+set notification-fg              "#181811"
+set notification-error-bg        "#dde3ec"
+set notification-error-fg        "#b7141a"
+set notification-warning-bg      "#dde3ec"
+set notification-warning-fg      "#9c5e24"

@@ -1,0 +1,55 @@
+# extras/zathura/oasis_moonlight_light_1.zathurarc
+## name: Oasis Moonlight Light 1
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# On by default so the theme is visible on first open; ctrl-r restores the authored colors.
+set recolor true
+set recolor-keephue true
+# The page sits on surface so it reads as paper against the window background.
+set recolor-lightcolor           "#dcd9c5"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#f3f2eb"
+set default-fg                   "#181811"
+set statusbar-bg                 "#eae9dd"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#eae9dd"
+set inputbar-fg                  "#434322"
+
+# Search
+set highlight-color              "rgba(225,182,157,0.4)"
+set highlight-active-color       "rgba(221,111,111,0.5)"
+set highlight-fg                 "#350808"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#f3f2eb"
+set index-fg                     "#181811"
+set index-active-bg              "#dcd9c5"
+set index-active-fg              "#434322"
+
+# Render placeholder
+set render-loading-bg            "#f3f2eb"
+set render-loading-fg            "#667078"
+
+# Signatures
+set signature-success-color      "#2e5c6e"
+set signature-warning-color      "#9e6025"
+set signature-error-color        "#bb141b"
+
+# Completion
+set completion-bg                "#f3f2eb"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#dcd9c5"
+set completion-highlight-fg      "#434322"
+set completion-group-bg          "#eae9dd"
+set completion-group-fg          "#4c647c"
+
+# Notifications
+set notification-bg              "#eae9dd"
+set notification-fg              "#181811"
+set notification-error-bg        "#eae9dd"
+set notification-error-fg        "#bb141b"
+set notification-warning-bg      "#eae9dd"
+set notification-warning-fg      "#9e6025"

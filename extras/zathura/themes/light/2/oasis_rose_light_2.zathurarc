@@ -1,0 +1,55 @@
+# extras/zathura/oasis_rose_light_2.zathurarc
+## name: Oasis Rose Light 2
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# On by default so the theme is visible on first open; ctrl-r restores the authored colors.
+set recolor true
+set recolor-keephue true
+# The page sits on surface so it reads as paper against the window background.
+set recolor-lightcolor           "#e8b3d5"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#f6e2ef"
+set default-fg                   "#181811"
+set statusbar-bg                 "#f1d0e5"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#f1d0e5"
+set inputbar-fg                  "#3d3d1f"
+
+# Search
+set highlight-color              "rgba(219,163,198,0.4)"
+set highlight-active-color       "rgba(114,218,204,0.5)"
+set highlight-fg                 "#09342f"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#f6e2ef"
+set index-fg                     "#181811"
+set index-active-bg              "#e8b3d5"
+set index-active-fg              "#3d3d1f"
+
+# Render placeholder
+set render-loading-bg            "#f6e2ef"
+set render-loading-fg            "#74646d"
+
+# Signatures
+set signature-success-color      "#2b5667"
+set signature-warning-color      "#955b23"
+set signature-error-color        "#af131a"
+
+# Completion
+set completion-bg                "#f6e2ef"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#e8b3d5"
+set completion-highlight-fg      "#3d3d1f"
+set completion-group-bg          "#f1d0e5"
+set completion-group-fg          "#844960"
+
+# Notifications
+set notification-bg              "#f1d0e5"
+set notification-fg              "#181811"
+set notification-error-bg        "#f1d0e5"
+set notification-error-fg        "#af131a"
+set notification-warning-bg      "#f1d0e5"
+set notification-warning-fg      "#955b23"

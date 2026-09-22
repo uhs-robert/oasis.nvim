@@ -183,6 +183,7 @@ To use the extras, refer to their respective documentation.
 | WezTerm          | [extras/wezterm](extras/wezterm)                       |
 | Windows Terminal | [extras/windows-terminal](extras/windows-terminal)     |
 | Yazi             | [extras/yazi](extras/yazi)                             |
+| Zathura          | [extras/zathura](extras/zathura)                       |
 | Zed              | [extras/zed](extras/zed)                               |
 
 If you'd like an extra config added, raise a feature request and I'll put it together.

@@ -1,0 +1,55 @@
+# extras/zathura/oasis_starlight_light_5.zathurarc
+## name: Oasis Starlight Light 5
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# On by default so the theme is visible on first open; ctrl-r restores the authored colors.
+set recolor true
+set recolor-keephue true
+# The page sits on surface so it reads as paper against the window background.
+set recolor-lightcolor           "#d7cbac"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#ebe5d5"
+set default-fg                   "#181811"
+set statusbar-bg                 "#e4dbc5"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#e4dbc5"
+set inputbar-fg                  "#3c3c1f"
+
+# Search
+set highlight-color              "rgba(218,207,164,0.4)"
+set highlight-active-color       "rgba(221,152,111,0.5)"
+set highlight-fg                 "#351908"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#ebe5d5"
+set index-fg                     "#181811"
+set index-active-bg              "#d7cbac"
+set index-active-fg              "#3c3c1f"
+
+# Render placeholder
+set render-loading-bg            "#ebe5d5"
+set render-loading-fg            "#606871"
+
+# Signatures
+set signature-success-color      "#2a5466"
+set signature-warning-color      "#945924"
+set signature-error-color        "#ad1319"
+
+# Completion
+set completion-bg                "#ebe5d5"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#d7cbac"
+set completion-highlight-fg      "#3c3c1f"
+set completion-group-bg          "#e4dbc5"
+set completion-group-fg          "#265c93"
+
+# Notifications
+set notification-bg              "#e4dbc5"
+set notification-fg              "#181811"
+set notification-error-bg        "#e4dbc5"
+set notification-error-fg        "#ad1319"
+set notification-warning-bg      "#e4dbc5"
+set notification-warning-fg      "#945924"

@@ -1,0 +1,55 @@
+# extras/zathura/oasis_abyss_light_1.zathurarc
+## name: Oasis Abyss Light 1
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# On by default so the theme is visible on first open; ctrl-r restores the authored colors.
+set recolor true
+set recolor-keephue true
+# The page sits on surface so it reads as paper against the window background.
+set recolor-lightcolor           "#c8c8c8"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#e7e7e7"
+set default-fg                   "#181811"
+set statusbar-bg                 "#dcdcdc"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#dcdcdc"
+set inputbar-fg                  "#3d3d1f"
+
+# Search
+set highlight-color              "rgba(225,201,157,0.4)"
+set highlight-active-color       "rgba(185,209,122,0.5)"
+set highlight-fg                 "#26310d"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#e7e7e7"
+set index-fg                     "#181811"
+set index-active-bg              "#c8c8c8"
+set index-active-fg              "#3d3d1f"
+
+# Render placeholder
+set render-loading-bg            "#e7e7e7"
+set render-loading-fg            "#6a685f"
+
+# Signatures
+set signature-success-color      "#2b5667"
+set signature-warning-color      "#955a23"
+set signature-error-color        "#af1319"
+
+# Completion
+set completion-bg                "#e7e7e7"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#c8c8c8"
+set completion-highlight-fg      "#3d3d1f"
+set completion-group-bg          "#dcdcdc"
+set completion-group-fg          "#ac2828"
+
+# Notifications
+set notification-bg              "#dcdcdc"
+set notification-fg              "#181811"
+set notification-error-bg        "#dcdcdc"
+set notification-error-fg        "#af1319"
+set notification-warning-bg      "#dcdcdc"
+set notification-warning-fg      "#955a23"

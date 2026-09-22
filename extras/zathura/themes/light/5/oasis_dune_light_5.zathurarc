@@ -1,0 +1,55 @@
+# extras/zathura/oasis_dune_light_5.zathurarc
+## name: Oasis Dune Light 5
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# On by default so the theme is visible on first open; ctrl-r restores the authored colors.
+set recolor true
+set recolor-keephue true
+# The page sits on surface so it reads as paper against the window background.
+set recolor-lightcolor           "#e8c287"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#f2dcba"
+set default-fg                   "#181811"
+set statusbar-bg                 "#eed2a7"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#eed2a7"
+set inputbar-fg                  "#38381d"
+
+# Search
+set highlight-color              "rgba(225,201,157,0.4)"
+set highlight-active-color       "rgba(185,209,122,0.5)"
+set highlight-fg                 "#26310d"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#f2dcba"
+set index-fg                     "#181811"
+set index-active-bg              "#e8c287"
+set index-active-fg              "#38381d"
+
+# Render placeholder
+set render-loading-bg            "#f2dcba"
+set render-loading-fg            "#6a6259"
+
+# Signatures
+set signature-success-color      "#285061"
+set signature-warning-color      "#8e5622"
+set signature-error-color        "#a61218"
+
+# Completion
+set completion-bg                "#f2dcba"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#e8c287"
+set completion-highlight-fg      "#38381d"
+set completion-group-bg          "#eed2a7"
+set completion-group-fg          "#5b5736"
+
+# Notifications
+set notification-bg              "#eed2a7"
+set notification-fg              "#181811"
+set notification-error-bg        "#eed2a7"
+set notification-error-fg        "#a61218"
+set notification-warning-bg      "#eed2a7"
+set notification-warning-fg      "#8e5622"

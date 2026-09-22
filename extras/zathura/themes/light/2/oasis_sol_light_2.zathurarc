@@ -1,0 +1,55 @@
+# extras/zathura/oasis_sol_light_2.zathurarc
+## name: Oasis Sol Light 2
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# On by default so the theme is visible on first open; ctrl-r restores the authored colors.
+set recolor true
+set recolor-keephue true
+# The page sits on surface so it reads as paper against the window background.
+set recolor-lightcolor           "#ea9f9f"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#f5d1d1"
+set default-fg                   "#181811"
+set statusbar-bg                 "#f1bebe"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#f1bebe"
+set inputbar-fg                  "#34341a"
+
+# Search
+set highlight-color              "rgba(225,157,157,0.4)"
+set highlight-active-color       "rgba(122,209,167,0.5)"
+set highlight-fg                 "#0d311f"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#f5d1d1"
+set index-fg                     "#181811"
+set index-active-bg              "#ea9f9f"
+set index-active-fg              "#34341a"
+
+# Render placeholder
+set render-loading-bg            "#f5d1d1"
+set render-loading-fg            "#6b5c5a"
+
+# Signatures
+set signature-success-color      "#264d5c"
+set signature-warning-color      "#895320"
+set signature-error-color        "#674a0b"
+
+# Completion
+set completion-bg                "#f5d1d1"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#ea9f9f"
+set completion-highlight-fg      "#34341a"
+set completion-group-bg          "#f1bebe"
+set completion-group-fg          "#9d2525"
+
+# Notifications
+set notification-bg              "#f1bebe"
+set notification-fg              "#181811"
+set notification-error-bg        "#f1bebe"
+set notification-error-fg        "#674a0b"
+set notification-warning-bg      "#f1bebe"
+set notification-warning-fg      "#895320"

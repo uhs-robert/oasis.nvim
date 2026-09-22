@@ -1,0 +1,55 @@
+# extras/zathura/oasis_luna_light_3.zathurarc
+## name: Oasis Luna Light 3
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# On by default so the theme is visible on first open; ctrl-r restores the authored colors.
+set recolor true
+set recolor-keephue true
+# The page sits on surface so it reads as paper against the window background.
+set recolor-lightcolor           "#b3aeed"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#e2e0f8"
+set default-fg                   "#181811"
+set statusbar-bg                 "#d0cdf4"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#d0cdf4"
+set inputbar-fg                  "#3a3a1e"
+
+# Search
+set highlight-color              "rgba(195,161,221,0.4)"
+set highlight-active-color       "rgba(209,190,122,0.5)"
+set highlight-fg                 "#31290d"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#e2e0f8"
+set index-fg                     "#181811"
+set index-active-bg              "#b3aeed"
+set index-active-fg              "#3a3a1e"
+
+# Render placeholder
+set render-loading-bg            "#e2e0f8"
+set render-loading-fg            "#666376"
+
+# Signatures
+set signature-success-color      "#295363"
+set signature-warning-color      "#915823"
+set signature-error-color        "#aa1218"
+
+# Completion
+set completion-bg                "#e2e0f8"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#b3aeed"
+set completion-highlight-fg      "#3a3a1e"
+set completion-group-bg          "#d0cdf4"
+set completion-group-fg          "#5f592b"
+
+# Notifications
+set notification-bg              "#d0cdf4"
+set notification-fg              "#181811"
+set notification-error-bg        "#d0cdf4"
+set notification-error-fg        "#aa1218"
+set notification-warning-bg      "#d0cdf4"
+set notification-warning-fg      "#915823"

@@ -1,0 +1,55 @@
+# extras/zathura/oasis_twilight_light_4.zathurarc
+## name: Oasis Twilight Light 4
+## author: uhs-robert
+
+# Recolor: zathura maps white to lightcolor and black to darkcolor.
+# On by default so the theme is visible on first open; ctrl-r restores the authored colors.
+set recolor true
+set recolor-keephue true
+# The page sits on surface so it reads as paper against the window background.
+set recolor-lightcolor           "#c5a7e0"
+set recolor-darkcolor            "#181811"
+
+# Chrome
+set default-bg                   "#e3d4f0"
+set default-fg                   "#181811"
+set statusbar-bg                 "#d8c3ea"
+set statusbar-fg                 "#181811"
+set inputbar-bg                  "#d8c3ea"
+set inputbar-fg                  "#34341a"
+
+# Search
+set highlight-color              "rgba(225,182,157,0.4)"
+set highlight-active-color       "rgba(221,111,111,0.5)"
+set highlight-fg                 "#350808"
+
+# Index (the toggle_index file listing)
+set index-bg                     "#e3d4f0"
+set index-fg                     "#181811"
+set index-active-bg              "#c5a7e0"
+set index-active-fg              "#34341a"
+
+# Render placeholder
+set render-loading-bg            "#e3d4f0"
+set render-loading-fg            "#625d6e"
+
+# Signatures
+set signature-success-color      "#264d5d"
+set signature-warning-color      "#895321"
+set signature-error-color        "#9f1117"
+
+# Completion
+set completion-bg                "#e3d4f0"
+set completion-fg                "#181811"
+set completion-highlight-bg      "#c5a7e0"
+set completion-highlight-fg      "#34341a"
+set completion-group-bg          "#d8c3ea"
+set completion-group-fg          "#863d28"
+
+# Notifications
+set notification-bg              "#d8c3ea"
+set notification-fg              "#181811"
+set notification-error-bg        "#d8c3ea"
+set notification-error-fg        "#9f1117"
+set notification-warning-bg      "#d8c3ea"
+set notification-warning-fg      "#895321"
