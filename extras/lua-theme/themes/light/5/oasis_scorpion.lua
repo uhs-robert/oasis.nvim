@@ -17,8 +17,8 @@ return {
 	fg_inlay = "#5d646b",
 
 -- Accents
-	theme_primary = "#1e491a",
-	theme_secondary = "#5e1a06",
+	theme_primary = "#5e1a06",
+	theme_secondary = "#1e491a",
 	theme_accent = "#6a6220",
 
 -- Status
@@ -27,6 +27,39 @@ return {
 	info = "#184571",
 	hint = "#135c47",
 	ok = "#1d5c14",
+
+-- Theme Variants
+	theme_primary_strong = "#7f3e27",
+	theme_primary_light = "#551a04",
+	theme_secondary_strong = "#3a7036",
+	theme_label = "#773218",
+	theme_cursor = "#71670f",
+
+-- UI
+	ui_border = "#613d31",
+	ui_title = "#723422",
+	ui_dir = "#20404d",
+	ui_cursor_line = "#ebaa96",
+	ui_nontext = "#69625e",
+	ui_visual_bg = "#e59175",
+	ui_search_bg = "#e1b69d",
+	ui_search_fg = "#4e260e",
+	ui_match_bg = "#b9d17a",
+	ui_match_fg = "#26310d",
+	ui_float_bg = "#ebaa96",
+	ui_float_fg = "#4a2216",
+	ui_float_title = "#4a2216",
+	ui_float_border = "#613d31",
+	ui_picker_bg = "#ebaa96",
+	ui_picker_fg = "#4a2216",
+	ui_picker_title = "#4a2216",
+	ui_picker_border = "#613d31",
+
+-- Diagnostic Backgrounds
+	error_bg = "#d59090",
+	warning_bg = "#cec897",
+	info_bg = "#92b2d3",
+	hint_bg = "#97cebe",
 
 -- ANSI Semnatic Colors
 	black = "#2c2c2c",

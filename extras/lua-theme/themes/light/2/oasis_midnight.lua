@@ -17,8 +17,8 @@ return {
 	fg_inlay = "#7e7872",
 
 -- Accents
-	theme_primary = "#625b20",
-	theme_secondary = "#7e0404",
+	theme_primary = "#7e0404",
+	theme_secondary = "#625b20",
 	theme_accent = "#357a2f",
 
 -- Status
@@ -27,6 +27,39 @@ return {
 	info = "#184571",
 	hint = "#135c47",
 	ok = "#1d5c14",
+
+-- Theme Variants
+	theme_primary_strong = "#933131",
+	theme_primary_light = "#740404",
+	theme_secondary_strong = "#86803f",
+	theme_label = "#911c1c",
+	theme_cursor = "#887d16",
+
+-- UI
+	ui_border = "#5f5b38",
+	ui_title = "#ab2828",
+	ui_dir = "#2a5566",
+	ui_cursor_line = "#d5d9e5",
+	ui_nontext = "#727a81",
+	ui_visual_bg = "#bdc4d7",
+	ui_search_bg = "#e1c99d",
+	ui_search_fg = "#4e370e",
+	ui_match_bg = "#b9d17a",
+	ui_match_fg = "#26310d",
+	ui_float_bg = "#d5d9e5",
+	ui_float_fg = "#7f1e1e",
+	ui_float_title = "#7f1e1e",
+	ui_float_border = "#5f5b38",
+	ui_picker_bg = "#d5d9e5",
+	ui_picker_fg = "#4f4c2f",
+	ui_picker_title = "#4f4c2f",
+	ui_picker_border = "#5e5b40",
+
+-- Diagnostic Backgrounds
+	error_bg = "#d59090",
+	warning_bg = "#cec897",
+	info_bg = "#92b2d3",
+	hint_bg = "#97cebe",
 
 -- ANSI Semnatic Colors
 	black = "#414141",
