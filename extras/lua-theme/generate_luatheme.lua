@@ -143,6 +143,19 @@ local function generate_lua_palette(display_name, palette, output_path, is_deser
   lines[#lines + 1] = string.format('\tinfo_bg = "%s",', get_diag_bg(diag, "info"))
   lines[#lines + 1] = string.format('\thint_bg = "%s",', get_diag_bg(diag, "hint"))
 
+  local syntax = palette.syntax or {}
+  local syntax_keys = {}
+  for key, value in pairs(syntax) do
+    if type(value) == "string" then syntax_keys[#syntax_keys + 1] = key end
+  end
+  table.sort(syntax_keys)
+
+  lines[#lines + 1] = ""
+  lines[#lines + 1] = "-- Syntax"
+  for _, key in ipairs(syntax_keys) do
+    lines[#lines + 1] = string.format('\tsyntax_%s = "%s",', key, syntax[key])
+  end
+
   lines[#lines + 1] = ""
   lines[#lines + 1] = "-- ANSI Semnatic Colors"
   for _, key in ipairs(terminal_semantic_keys) do

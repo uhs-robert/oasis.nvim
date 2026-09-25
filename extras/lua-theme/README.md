@@ -25,4 +25,5 @@ print(colors.color1)        -- terminal red
 - Theme variants: `theme_primary_strong`, `theme_primary_light`, `theme_secondary_strong`, `theme_label`, `theme_cursor`
 - UI: `ui_border`, `ui_title`, `ui_dir`, `ui_cursor_line`, `ui_nontext`, `ui_visual_bg`, `ui_search_bg`, `ui_search_fg`, `ui_match_bg`, `ui_match_fg`, `ui_float_bg`, `ui_float_fg`, `ui_float_title`, `ui_float_border`, `ui_picker_bg`, `ui_picker_fg`, `ui_picker_title`, `ui_picker_border` (palettes without a dedicated picker reuse their float colors)
 - Diagnostic backgrounds: `error_bg`, `warning_bg`, `info_bg`, `hint_bg` (no `ok_bg`; its background is "none" in the source palette)
+- Syntax: `syntax_bracket`, `syntax_builtin_const`, `syntax_builtin_func`, `syntax_builtin_var`, `syntax_comment`, `syntax_conditional`, `syntax_constant`, `syntax_delimiter`, `syntax_exception`, `syntax_func`, `syntax_identifier`, `syntax_macro`, `syntax_operator`, `syntax_parameter`, `syntax_preproc`, `syntax_punctuation`, `syntax_regex`, `syntax_special`, `syntax_statement`, `syntax_string`, `syntax_type`, `syntax_typedef`
 - Terminal: `black`..`bright_white`, `color0`..`color15`
