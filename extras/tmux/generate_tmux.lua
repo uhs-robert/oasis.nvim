@@ -8,12 +8,7 @@ local Utils = require("oasis.utils")
 local File = require("oasis.lib.file")
 local Satellites = require("oasis.satellites")
 
--- The pane border sits on bg.mantle. fg.dim clears 3.5:1 there only in dark mode and fg.muted only in light mode
-local function border_colour(palette, mode)
-  return mode == "light" and palette.fg.muted or palette.fg.dim
-end
-
-local function generate_tmux_theme(name, palette, mode)
+local function generate_tmux_theme(name, palette)
   local display_name = Utils.format_display_name(name)
 
   local lines = {
@@ -35,7 +30,7 @@ local function generate_tmux_theme(name, palette, mode)
     string.format('set -ogq @thm_mantle "%s"', string.lower(palette.bg.mantle)),
     string.format('set -ogq @thm_surface "%s"', string.lower(palette.bg.surface)),
     string.format('set -ogq @thm_visual "%s"', string.lower(palette.ui.search.bg)),
-    string.format('set -ogq @thm_border "%s"', string.lower(border_colour(palette, mode))),
+    string.format('set -ogq @thm_border "%s"', string.lower(palette.fg.muted)),
     "",
     "# General",
     string.format('set -ogq @thm_red "%s"', string.lower(palette.terminal.red)),
@@ -71,7 +66,7 @@ local function main()
       Utils.build_variant_path("extras/tmux", "conf", name, mode, intensity, output_root)
 
     -- Generate and write theme
-    local theme = generate_tmux_theme(variant_name, palette, mode)
+    local theme = generate_tmux_theme(variant_name, palette)
     File.write(output_path, theme)
     print(string.format("✓ Generated: %s", output_path))
   end)
